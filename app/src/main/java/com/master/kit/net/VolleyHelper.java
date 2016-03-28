@@ -30,16 +30,16 @@ public class VolleyHelper {
     /**
      * 请求是否启用缓存 默认不启用
      */
-    public  boolean cacheEnabled = false;
+    public  boolean cacheEnabled = VolleyConfig.cacheEnabled;
     public VolleyHelper(Context context) {
-        initCache();
         this.context = context;
+        initCache();
     }
 
     public VolleyHelper(Context context, boolean cacheEnabled) {
         this.cacheEnabled = cacheEnabled;
-        initCache();
         this.context = context;
+        initCache();
 
     }
     private void initCache(){
@@ -164,7 +164,7 @@ public class VolleyHelper {
             }
         }) {
             @Override
-            protected Map<String, String> getPostParams() throws AuthFailureError {
+            protected Map<String, String> getParams() throws AuthFailureError {
                 return volleyPackage.params;
             }
         };
