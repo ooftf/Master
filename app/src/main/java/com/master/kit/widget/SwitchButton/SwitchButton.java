@@ -27,7 +27,10 @@ public class SwitchButton extends View {
      * 圆形slider和Frame之间的间隙
      */
     int gap;
-
+    /**
+     * 大于这个距离我们认为是滑动事件，小于这个距离我们认为是点击事件
+     */
+    private int  effectiveDistance = 5;
     private Paint paintFrame;
     
     public SwitchButton(Context context) {
@@ -156,13 +159,13 @@ public class SwitchButton extends View {
     }
 
     float currentX;
-    float startX;
+    float downX;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 super.onTouchEvent(event);
-                startX = event.getX();
+                downX = event.getX();
                 break;
             case MotionEvent.ACTION_MOVE:
                 progress += (event.getX() - currentX)/getWidth();
@@ -174,7 +177,7 @@ public class SwitchButton extends View {
                 super.onTouchEvent(event);
                 break;
             case MotionEvent.ACTION_UP:
-                if(Math.abs(startX-event.getX())<0.5*getWidth()){
+                if(Math.abs(downX -event.getX())<effectiveDistance){
                     super.onTouchEvent(event);
                 }else{
                     if (progress<0.5){

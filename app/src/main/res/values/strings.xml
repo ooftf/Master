@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Master</string>
+    <string name="title_activity_switch_button">SwitchButtonActivity</string>
 </resources>
