@@ -38,6 +38,7 @@ public class ActivitySet<T extends Activity> extends HashSet<T> {
         for (Activity a : this) {
             if (a.getClass().equals(cla)) {
                 a.finish();
+
             }
         }
     }

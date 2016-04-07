@@ -34,18 +34,6 @@ public class CameraActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         LogUtil.e("Intent",data+"");
         imageView.setImageBitmap(AlbumUtil.getBitmapFromIntent(this,data));
-       /* if(requestCode == 1000){
-            Log.e("resultCode",resultCode+"");
-            Uri uri = data.getData();
-            CameraReaderUtil.getImageAbsolutePath(this,data.getData());
-            LogUtil.e("getImageAbsolutePath",CameraReaderUtil.getImageAbsolutePath(this,uri));
-            LogUtil.e("getImagePathFromUri",CameraReaderUtil.getImagePathFromUri(uri,this));
-            try {
-                LogUtil.e("getImagePathFromUri",CameraReaderUtil.readBitmapFromUri(uri,400*400,this).getByteCount()+"");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }*/
     }
 
 }
