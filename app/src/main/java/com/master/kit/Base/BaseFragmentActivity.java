@@ -1,14 +1,11 @@
 package com.master.kit.Base;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 
-import com.master.kit.utils.ActivityUtil;
+import com.master.kit.utils.ActivitySet;
 import com.master.kit.utils.LogUtil;
-
-import java.util.ArrayList;
 
 /**
  * Created by master on 2016/3/3.
@@ -18,7 +15,7 @@ public class BaseFragmentActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         LogUtil.e(this.getClass().getSimpleName(),"onCreate");
-        ActivityUtil.sActivityList.add(this);
+        ActivitySet.sActivitySet.add(this);
         super.onCreate(savedInstanceState);
     }
 
@@ -55,7 +52,7 @@ public class BaseFragmentActivity extends FragmentActivity {
     @Override
     protected void onDestroy() {
         LogUtil.e(this.getClass().getSimpleName(),"onDestroy");
-        ActivityUtil.sActivityList.remove(this);
+        ActivitySet.sActivitySet.remove(this);
         super.onDestroy();
     }
 

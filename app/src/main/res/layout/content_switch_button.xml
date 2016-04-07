@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_switch_button"
     tools:context="com.master.kit.TestActivity.SwitchButtonActivity">
     <com.master.kit.widget.SwitchButton.SwitchButton
-        android:layout_width="70dp"
+        android:layout_width="75dp"
         android:layout_height="40dp"/>
 
 </LinearLayout>
