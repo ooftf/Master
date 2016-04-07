@@ -1,5 +1,6 @@
 package com.master.kit.TestActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import com.master.kit.R;
 import com.master.kit.utils.AlbumUtil;
 import com.master.kit.utils.LogUtil;
 
-public class CameraActivity extends AppCompatActivity {
+public class CameraActivity extends Activity {
 
     private ImageView imageView;
 
