@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class DateUtil {
 
-	public static SimpleDateFormat sDefaultDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	public static SimpleDateFormat sDefaultDateFormat;
 	/**
 	 * "yyyy-MM-dd HH:mm:ss"
 	 */
@@ -18,6 +18,12 @@ public class DateUtil {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		return calendar;
+	}
+	public static SimpleDateFormat getDefaultDateFormat(){
+		if(sDefaultDateFormat == null){
+			sDefaultDateFormat = new SimpleDateFormat(sDefaultPattern);
+		}
+		return sDefaultDateFormat;
 	}
 
 	public static String getCurrentTime(String pattern) throws ParseException {
@@ -36,7 +42,7 @@ public class DateUtil {
 	}
 
 	public static Date formartStringToDate(String time) throws ParseException {
-		return sDefaultDateFormat.parse(time);
+		return getDefaultDateFormat().parse(time);
 	}
 
 	public static Date formartStringToDate(String time, String pattern) throws ParseException {
@@ -46,7 +52,7 @@ public class DateUtil {
 
 	public static Calendar formartStringToCalendar(String time) throws ParseException {
 		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(sDefaultDateFormat.parse(time));
+		calendar.setTime(getDefaultDateFormat().parse(time));
 		return calendar;
 	}
 	/**
@@ -64,7 +70,7 @@ public class DateUtil {
 	}
 
 	public static String formartDateToString(Date date) throws ParseException {
-		return sDefaultDateFormat.format(date);
+		return getDefaultDateFormat().format(date);
 	}
 
 	public static String formartDateToString(Date date, String pattern) throws ParseException {
@@ -73,7 +79,7 @@ public class DateUtil {
 	}
 
 	public static String formartCalendarToString(Calendar calendar) throws ParseException {
-		return sDefaultDateFormat.format(calendar.getTime());
+		return getDefaultDateFormat().format(calendar.getTime());
 	}
 
 	public static String formartCalendarToString(Calendar calendar, String pattern) throws ParseException {
@@ -90,6 +96,34 @@ public class DateUtil {
 		result.setTime(calendar.getTime());
 		return result;
 	}
+	static int[] fields;
 
+	/**
+	 * 比较到指定单位field
+	 * first 大于 second 返回正数
+	 * first = second 返回0
+	 * first 小于 second 返回负数
+	 * @param first
+	 * @param second
+	 * @param field
+     * @return
+     */
+	public static int compare(Calendar first,Calendar second,int field){
+
+		for(int temp:getFiedls()){
+			int result = first.get(temp)-second.get(temp);
+			//如果结果 两个数不想等，或者只比较到这个单位那么已经得到比较结果
+			if(result != 0||field ==temp){
+				return result;
+			}
+		}
+		return 0;
+	}
+	public static int[] getFiedls(){
+		if(fields==null){
+			fields = new int[]{Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR_OF_DAY,Calendar.MINUTE,Calendar.SECOND};
+		}
+		return fields;
+	}
 
 }

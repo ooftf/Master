@@ -13,12 +13,6 @@ public class SwitchFristActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SwitchFristActivity.this,SwitchSecondActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 }

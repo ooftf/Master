@@ -15,7 +15,7 @@ public class BaseFragmentActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         LogUtil.e(this.getClass().getSimpleName(),"onCreate");
-        ActivitySet.sActivitySet.add(this);
+        ActivitySet.getInstance().add(this);
         super.onCreate(savedInstanceState);
     }
 
@@ -52,7 +52,7 @@ public class BaseFragmentActivity extends FragmentActivity {
     @Override
     protected void onDestroy() {
         LogUtil.e(this.getClass().getSimpleName(),"onDestroy");
-        ActivitySet.sActivitySet.remove(this);
+        ActivitySet.getInstance().remove(this);
         super.onDestroy();
     }
 
