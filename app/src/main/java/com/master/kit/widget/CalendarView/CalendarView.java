@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import cz.msebera.android.httpclient.impl.client.cache.FailureCacheValue;
+
 /**
  * Created by master on 2016/4/7.
  */
@@ -49,23 +51,43 @@ public class CalendarView extends View {
     Paint mDatePaint;
     String[] mWeekHeader;
     Paint mPaintWeekHeader;
+    Paint mPaintTodayBG;
     private void init() {
         mCalendar = Calendar.getInstance();
         mDatePoints = new ArrayList<>();
-
+        initDataPoint();
 
         mWeekHeader = new String[]{"日","一","二","三","四","五","六"};
 
         initPaint();
+
     }
 
     private void initPaint() {
         mDatePaint = new Paint();
         mDatePaint.setAntiAlias(true);
         mPaintWeekHeader = new Paint();
+        mPaintWeekHeader.setAntiAlias(true);
         mPaintWeekHeader.setColor(Color.parseColor("#000000"));
+        mPaintTodayBG = new Paint();
+        mPaintTodayBG.setAntiAlias(true);
+        mPaintTodayBG.setColor(Color.parseColor("#2EA7E0"));
     }
+    public void setDate(Calendar calendar){
+        mCalendar = calendar;
+        update();
 
+    }
+    public void setDate(int year,int month){
+        mCalendar.set(Calendar.YEAR,year);
+        mCalendar.set(Calendar.MONTH,month-1);
+        update();
+    }
+    private void update(){
+        initDataPoint();
+        invalidate();
+
+    }
 
     float dayWidth;
     float dayHeight;
@@ -76,7 +98,8 @@ public class CalendarView extends View {
         dayHeight = h/7;
 
         mDatePaint.setTextSize(Math.min(dayWidth,dayHeight)/3);
-        initDataPoint();
+        mPaintWeekHeader.setTextSize(Math.min(dayWidth,dayHeight)/3);
+
     }
 
     private void initDataPoint() {
@@ -156,6 +179,7 @@ public class CalendarView extends View {
                 //当前日期
                 mDatePaint.setColor(Color.parseColor("#ff0000"));
                 String day = String.valueOf(getDay());
+                canvas.drawCircle(getX(),getY(),Math.min(dayWidth,dayHeight)/3,mPaintTodayBG);
                 CanvasUtil.drawText(day,getX(),getY(),canvas,mDatePaint);
             }else{
                 //飞当前日期

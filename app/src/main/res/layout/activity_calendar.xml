@@ -9,6 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.master.kit.TestActivity.CalendarActivity">
     <com.master.kit.widget.CalendarView.CalendarView
-        android:layout_width="wrap_content"
+        android:id="@+id/cv_main"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </RelativeLayout>
