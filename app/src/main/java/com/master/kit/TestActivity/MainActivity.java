@@ -19,7 +19,10 @@ public class MainActivity extends BaseActivity {
         switch (v.getId()){
             case R.id.CalendarActivity:
                 startActivity(CalendarActivity.class);
-            break;
+                break;
+            case R.id.PageLayoutActivity:
+                startActivity(PageLayoutActivity.class);
+                break;
         }
     }
 

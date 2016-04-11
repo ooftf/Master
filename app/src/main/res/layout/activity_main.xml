@@ -7,6 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.master.kit.TestActivity.MainActivity">
     <Button
         android:layout_width="match_parent"
@@ -14,4 +15,10 @@
         android:onClick="onClick"
         android:id="@+id/CalendarActivity"
         android:text="CalendarActivity"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:id="@+id/PageLayoutActivity"
+        android:text="PageLayoutActivity"/>
 </LinearLayout>
