@@ -8,15 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.master.kit.R;
-import com.master.kit.widget.PageLayout.PageLayout;
+import com.master.kit.widget.VerticalPageLayout.VerticalPageLayout;
 
 public class PageLayoutActivity extends AppCompatActivity {
-    PageLayout mPageLayout;
+    VerticalPageLayout mPageLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_layout);
-        mPageLayout = (PageLayout) findViewById(R.id.pl_main);
+        mPageLayout = (VerticalPageLayout) findViewById(R.id.pl_main);
         mPageLayout.setAdapter(new BaseAdapter() {
             @Override
             public int getCount() {

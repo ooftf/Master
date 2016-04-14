@@ -11,10 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".TestActivity.SwitchButtonActivity" />
-        <activity android:name=".TestActivity.CameraActivity"></activity>
-        <activity android:name=".TestActivity.SwitchFristActivity"></activity>
+        <activity android:name=".TestActivity.CameraActivity" />
+        <activity android:name=".TestActivity.SwitchFristActivity" />
         <activity android:name=".TestActivity.SwitchSecondActivity" />
-        <activity android:name=".TestActivity.CalendarActivity"></activity>
+        <activity android:name=".TestActivity.CalendarActivity" />
         <activity android:name=".TestActivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestActivity.PageLayoutActivity"></activity>
+        <activity android:name=".TestActivity.PageLayoutActivity" />
+        <activity android:name=".TestActivity.GesturePasswordActivity"></activity>
     </application>
 
 </manifest>

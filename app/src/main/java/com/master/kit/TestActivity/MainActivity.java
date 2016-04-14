@@ -23,6 +23,9 @@ public class MainActivity extends BaseActivity {
             case R.id.PageLayoutActivity:
                 startActivity(PageLayoutActivity.class);
                 break;
+            case R.id.GesturePasswordActivity:
+                startActivity(GesturePasswordActivity.class);
+                break;
         }
     }
 

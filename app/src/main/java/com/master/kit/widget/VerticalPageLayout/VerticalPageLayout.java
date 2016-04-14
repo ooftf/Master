@@ -1,11 +1,10 @@
-package com.master.kit.widget.PageLayout;
+package com.master.kit.widget.VerticalPageLayout;
 
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -20,33 +19,37 @@ import java.util.Set;
 
 /**
  * 上下分页的布局
+ * 思路： 1 2 3 三个布局块循环显示（在边界处可能是两个），在updateView的时候回收离镜头超过1距离的视图块，然后生离镜头距离小于1的视图块，在onlayout中根据试图表示的位置进行布局
  * Created by master on 2016/4/11.
  */
-public class PageLayout extends FrameLayout{
-    public PageLayout(Context context) {
+public class VerticalPageLayout extends FrameLayout{
+    public VerticalPageLayout(Context context) {
         super(context);
         init();
     }
 
 
 
-    public PageLayout(Context context, AttributeSet attrs) {
+    public VerticalPageLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public PageLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public VerticalPageLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public PageLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public VerticalPageLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
     }
     LayoutParams params;
     DataSetObserver mDataSetObserver;
+    /**
+     * 翻页动画
+     */
     Scroller mScroller;
     /**
      * 翻页动画 消耗时间
@@ -142,13 +145,14 @@ public class PageLayout extends FrameLayout{
         if(adapter == null){
             return false;
         }
+        float  dest;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 startY = getScrollY();
                 break;
             case MotionEvent.ACTION_MOVE:
-                float  dest = getScrollY() -(event.getY()-currentY);
-
+                dest = getScrollY() -(event.getY()-currentY);
+                //边界处理
                 if(dest<0)dest =0 ;
                 if(dest>(adapter.getCount()-1)*getHeight()){
                     dest=(adapter.getCount()-1)*getHeight();
@@ -156,8 +160,15 @@ public class PageLayout extends FrameLayout{
                 scrollTo(0, (int) dest);
                 break;
             case MotionEvent.ACTION_UP:
+                dest = getScrollY() -(event.getY()-currentY);
+                //边界处理
+                if(dest<0)dest =0 ;
+                if(dest>(adapter.getCount()-1)*getHeight()){
+                    dest=(adapter.getCount()-1)*getHeight();
+                }
+                scrollTo(0, (int) dest);
+                //判断本次滑动是否足够触发翻页
                 float temp = getScrollY() - startY;
-                //int temp = (int) (getScrollY()/(float)getHeight()+0.5);
                 if(temp> getHeight()/3){
                     //下一页
                     position++;
@@ -166,22 +177,13 @@ public class PageLayout extends FrameLayout{
                     //上一页
                     position--;
                 }
-              /*  if(temp >position){
-
-
-                }else if(temp == position){
-                    //不变
-                }else{
-
-                }*/
-               // position = temp ;
-               // scrollTo(0,position*getHeight());
                 mScroller.startScroll(0,getScrollY(),0,position*getHeight()-getScrollY(),duration);
                 invalidate();
                 updateView();
                 break;
         }
         currentY = event.getY();
+        super.onTouchEvent(event);
         return true;
     }
 
