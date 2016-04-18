@@ -27,4 +27,18 @@
         android:onClick="onClick"
         android:id="@+id/GesturePasswordActivity"
         android:text="GesturePasswordActivity"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:id="@+id/TouchActivity"
+        android:text="TouchActivity"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:id="@+id/ViewPagerActivity"
+        android:text="ViewPagerActivity"/>
+
+
 </LinearLayout>

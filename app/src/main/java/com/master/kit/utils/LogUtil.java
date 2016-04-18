@@ -90,6 +90,22 @@ public class LogUtil {
             Log.e(tag,message);
         }
     }
+    public static void e(String tag,int i,Object... message) {
+        if (LEVEL <= ERROR) {
+
+            if (TextUtils.isEmpty(tag)) {
+                tag = getDefaultTag();
+            }
+            StringBuffer sb = new StringBuffer();
+            for(Object s:message){
+                sb.append(s);
+                for(int j =0;j<i-s.toString().length();j++){
+                    sb.append("-");
+                }
+            }
+            Log.e(tag,sb.toString());
+        }
+    }
     public static String getDefaultTag() {
         return "Default";
     }

@@ -46,6 +46,7 @@ public class SwitchButton extends View {
     public SwitchButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
+
     }
 
     public boolean isOpen() {
@@ -66,7 +67,7 @@ public class SwitchButton extends View {
             @Override
             public void onClick(View v) {
                 if(listener!=null){
-                    setOpen(listener.beforeStateChanged(isOpen));
+                    setOpen(listener.beforeStateChanged(SwitchButton.this,isOpen));
                     invalidate();
                 }else{
                     setOpen(!isOpen);
@@ -149,13 +150,13 @@ public class SwitchButton extends View {
     public void setBeforeStateChangedListener(BeforeStateChangedListener listener){
         this.listener = listener;
     }
-    interface  BeforeStateChangedListener{
+    public interface  BeforeStateChangedListener{
         /**
          *
          * @param going 改变之前的状态
          * @return  改变之后的状态
          */
-        Boolean beforeStateChanged(boolean going);
+        Boolean beforeStateChanged(SwitchButton view,boolean going);
     }
 
     float currentX;
@@ -164,6 +165,7 @@ public class SwitchButton extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
+                getParent().requestDisallowInterceptTouchEvent(true);
                 super.onTouchEvent(event);
                 downX = event.getX();
                 break;
@@ -181,10 +183,8 @@ public class SwitchButton extends View {
                     super.onTouchEvent(event);
                 }else{
                     if (progress<0.5){
-                        progress = 0;
                         setOpen(false);
                     }else{
-                        progress = 1;
                         setOpen(true);
                     }
                 }
