@@ -2,11 +2,11 @@ package com.master.kit.TestActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.master.kit.R;
 import com.master.kit.TestActivity.TouchEventTest.TouchActivity;
 import com.master.kit.TestActivity.ViewPagerTest.ViewPagerActivity;
-
 public class MainActivity extends BaseActivity {
 
     @Override
