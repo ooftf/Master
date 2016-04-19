@@ -6,9 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-       <!-- <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>-->
     </style>
+
     <style name="MasterDialogTheme" parent="android:Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
@@ -22,6 +23,7 @@
         <item name="android:windowBackground">@drawable/shape_rectangle_corners_solid_while</item>
         <!-- 除去背景色 -->
     </style>
+
     <style name="BlankDialogTheme" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
@@ -33,13 +35,17 @@
         <!-- 背景是否变暗 -->
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 除去背景色 -->
-        <item name="android:windowBackground">@drawable/shape_rectangle_corners_solid_translucent</item>
+        <item name="android:windowBackground">@drawable/shape_rectangle_corners_solid_translucent
+        </item>
         <item name="android:background">#00FFFFFF</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -171,7 +171,7 @@ public class CircleIndicator extends LinearLayout implements
        // mViewpager.setCurrentItem(size
          //       * (viewPager.getAdapter().getCount() / size / 2));
        // System.out.println("++++++++++++++++"+size*(viewPager.getAdapter().getCount() / size / 2));
-      mViewpager.setCurrentItem(size*100);
+      mViewpager.setCurrentItem(size*(100/size));
         mViewpager.setOnTouchListener(new OnTouchListener() {
 
             @Override

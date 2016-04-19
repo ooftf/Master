@@ -16,9 +16,6 @@ import com.master.kit.utils.DensityUtil;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-import cz.msebera.android.httpclient.impl.client.cache.FailureCacheValue;
-
 /**
  * Created by master on 2016/4/7.
  */
@@ -52,7 +49,9 @@ public class CalendarView extends View {
     String[] mWeekHeader;
     Paint mPaintWeekHeader;
     Paint mPaintTodayBG;
+    int wrapSize;
     private void init() {
+        wrapSize = DensityUtil.dip2px(getContext(),200);
         mCalendar = Calendar.getInstance();
         mDatePoints = new ArrayList<>();
         initDataPoint();
@@ -84,7 +83,7 @@ public class CalendarView extends View {
         update();
     }
     private void update(){
-        initDataPoint();
+      //  initDataPoint();
         invalidate();
 
     }
@@ -134,20 +133,32 @@ public class CalendarView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int dest;
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
         if(widthMode == MeasureSpec.AT_MOST&&heightMode == MeasureSpec.AT_MOST){
-            widthSize = DensityUtil.dip2px(getContext(),200);
-            heightSize = DensityUtil.dip2px(getContext(),200);
-            setMeasuredDimension(widthSize,heightSize);
+            dest = Math.min(Math.min(widthSize,widthSize),wrapSize);
+            setMeasuredDimension(dest,dest);
         }else if(widthMode == MeasureSpec.AT_MOST&&heightMode == MeasureSpec.EXACTLY){
-            widthSize = heightSize;
-            setMeasuredDimension(widthSize,heightSize);
+            dest = Math.min(widthSize,heightSize);
+            setMeasuredDimension(dest,dest);
+        }else if(widthMode == MeasureSpec.AT_MOST&&heightMode == MeasureSpec.UNSPECIFIED){
+            dest = Math.min(widthSize,wrapSize);
+            setMeasuredDimension(dest,dest);
+        }else if(widthMode == MeasureSpec.EXACTLY&&heightMode == MeasureSpec.UNSPECIFIED){
+            dest = widthSize;
+            setMeasuredDimension(dest,dest);
         }else if(widthMode == MeasureSpec.EXACTLY&&heightMode == MeasureSpec.AT_MOST){
-            heightSize = widthSize;
-            setMeasuredDimension(widthSize,heightSize);
+            dest = Math.min(widthSize,heightSize);
+            setMeasuredDimension(dest,dest);
+        }else if(widthMode == MeasureSpec.UNSPECIFIED&&heightMode == MeasureSpec.EXACTLY){
+            dest  = heightSize;
+            setMeasuredDimension(dest,dest);
+        }else if(widthMode == MeasureSpec.UNSPECIFIED&&heightMode == MeasureSpec.AT_MOST){
+            dest  = wrapSize;
+            setMeasuredDimension(dest,dest);
         }else{
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
