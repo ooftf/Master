@@ -26,6 +26,7 @@ public class Banner extends RelativeLayout {
 	private ViewPager mVpBanner;
 	private OnItemClickListener mListener;
 	private final float defaultProportion = 300/640f;
+	List<View> recycleViews;
 	@SuppressLint("NewApi")
 	public Banner(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
 		super(context, attrs, defStyleAttr, defStyleRes);
@@ -49,6 +50,7 @@ public class Banner extends RelativeLayout {
 
 	void init(Context context) {
 		mContext = context;
+		recycleViews = new ArrayList<>();
 		View.inflate(mContext, R.layout.widget_banner, this);
 		mCiBanner = (CircleIndicator) findViewById(R.id.ci_banner);
 		mVpBanner = (ViewPager) findViewById(R.id.vp_banner);
@@ -104,14 +106,20 @@ public class Banner extends RelativeLayout {
 			@Override
 			public Object instantiateItem(ViewGroup container, int srcPosition) {
 				final int position = srcPosition % uris.size();
-				final ImageView imageView = new ImageView(mContext);
-				imageView.setScaleType(ScaleType.FIT_XY);
+				ImageView imageView;
+				if(recycleViews.size()==0){
+					imageView = new ImageView(mContext);
+					imageView.setScaleType(ScaleType.FIT_XY);
+				}else{
+					imageView = (ImageView) recycleViews.get(0);
+					recycleViews.remove(imageView);
+				}
 				//imageView.setAdjustViewBounds(true);
 				imageView.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
 						if (mListener != null) {
-							mListener.onItemClick(imageView, uris.get(position), position);
+							mListener.onItemClick((ImageView) v, uris.get(position), position);
 						}
 
 					}
@@ -125,6 +133,7 @@ public class Banner extends RelativeLayout {
 			@Override
 			public void destroyItem(ViewGroup container, int position, Object object) {
 				container.removeView((View) object);
+				recycleViews.add((View) object);
 			}
 		});
 		mCiBanner.setViewPager(mVpBanner, uris.size());
