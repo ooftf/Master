@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.master.kit.R;
 import com.master.kit.TestActivity.DesignTest.DesignActivity;
+import com.master.kit.TestActivity.ListView.ListViewActivity;
 import com.master.kit.TestActivity.TouchEventTest.TouchActivity;
 import com.master.kit.TestActivity.ViewPagerTest.ViewPagerActivity;
 public class MainActivity extends BaseActivity {
@@ -35,6 +36,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.DesignActivity:
                 startActivity(DesignActivity.class);
+                break;
+            case R.id.ListViewActivity:
+                startActivity(ListViewActivity.class);
                 break;
 
 
