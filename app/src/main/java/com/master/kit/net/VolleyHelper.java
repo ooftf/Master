@@ -44,9 +44,9 @@ public class VolleyHelper {
     }
     private void initCache(){
         if (cacheEnabled) {
-            mRequestQueue = Volley.newRequestQueue(context);
+            mRequestQueue = Volley.newRequestQueue(context,new OkHttpHurlStack());
         } else {
-            mRequestQueue = Volley.newRequestQueue(context, 0);
+            mRequestQueue = Volley.newRequestQueue(context,new OkHttpHurlStack(), 0);
         }
     }
 
@@ -117,75 +117,13 @@ public class VolleyHelper {
     }
 
     public Request post(final VolleyPackage volleyPackage) {
-        final Dialog loadingDialog;
-        if (volleyPackage.isShowDialog) {
-            loadingDialog = new LoadingDialog(context);
-            loadingDialog.show();
-            volleyPackage.loadingDialog = (LoadingDialog) loadingDialog;
-        } else {
-            loadingDialog = null;
-        }
-        volleyPackage.url = volleyPackage.baseUrl + volleyPackage.partUrl;
-        System.out.println("开始时间::" + System.currentTimeMillis());
-        System.out.println("请求地址::" + volleyPackage.url);
-        System.out.println("请求参数::" + volleyPackage.params);
-        final StringRequest request = new StringRequest(Method.POST, volleyPackage.url, new Listener<String>() {
-
-            @Override
-            public void onResponse(String success) {
-                System.out.println("结束时间::" + System.currentTimeMillis());
-                if (volleyPackage.isShowDialog) {
-                    loadingDialog.dismiss();
-                }
-                if (volleyPackage.resultCls != null) {
-                    volleyPackage.resultBean = JSON.parseObject(success, volleyPackage.resultCls);
-                }
-                volleyPackage.resultString = success;
-                System.out.println("请求成功结果::" + success);
-                /**
-                 * 可以在此处填写公共处理部分代码
-                 */
-                if (volleyPackage.requestHandler != null) {
-                    volleyPackage.requestHandler.successHandle(volleyPackage);
-                }
-            }
-        }, new ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                volleyPackage.volleyError = error;
-                System.out.println("结束时间::" + System.currentTimeMillis());
-                if (volleyPackage.isShowDialog)
-                    loadingDialog.dismiss();
-                System.out.println("请求失败结果::" + error);
-                if (volleyPackage.requestHandler != null) {
-                    volleyPackage.requestHandler.failureHandle(volleyPackage);
-                }
-
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                return volleyPackage.params;
-            }
-        };
-        request.setTag(volleyPackage);
-        if (loadingDialog != null) {
-            loadingDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialogInterface) {
-                    request.cancel();
-                }
-            });
-        }
-        mRequestQueue.add(request);
-        return request;
+       return post(volleyPackage,volleyPackage);
     }
 
     /**
      *在activity的生命周期onDestory中调用
      */
     public void finish() {
-
         mRequestQueue.cancelAll(new RequestQueue.RequestFilter() {
 
             @Override

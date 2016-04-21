@@ -1,5 +1,7 @@
 package com.master.kit.utils;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +17,6 @@ public class UrlParser {
 	public Map<String, String> getParams() {
 		return params;
 	}
-
 	public UrlParser(String url) {
 		params = new HashMap<>();
 		this.urlOriginal = url;
