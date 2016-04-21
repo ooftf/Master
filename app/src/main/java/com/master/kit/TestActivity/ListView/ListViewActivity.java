@@ -64,8 +64,12 @@ public class ListViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                // int i = listView.getFirstVisiblePosition();
-                list.add("5");
-                list.remove(1);
+              /*  list.add("5");
+                list.remove(1);*/
+                list = new ArrayList<>();
+                for(int i=0;i<100;i++){
+                    list.add("第"+(i+1)+"个");
+                }
                 adapter.notifyDataSetChanged();
                 //adapter.notifyDataSetInvalidated();
               //  listView.setVerticalScrollbarPosition(i);
