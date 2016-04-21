@@ -14,7 +14,7 @@ import java.net.URL;
 public class OkHttpHurlStack extends HurlStack {
     OkHttpClient okHttpClient ;
     OkUrlFactory okUrlFactory;
-    {
+    public OkHttpHurlStack(){
         okHttpClient =  new OkHttpClient();
         okUrlFactory = new OkUrlFactory(okHttpClient);
     }
