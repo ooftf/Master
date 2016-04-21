@@ -39,6 +39,12 @@
         android:onClick="onClick"
         android:id="@+id/ViewPagerActivity"
         android:text="ViewPagerActivity"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:id="@+id/DesignActivity"
+        android:text="DesignActivity"/>
 
 
 </LinearLayout>

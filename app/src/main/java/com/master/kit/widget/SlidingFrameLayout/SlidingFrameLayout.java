@@ -5,6 +5,7 @@ import java.util.List;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.util.AttributeSet;
@@ -132,5 +133,14 @@ public class SlidingFrameLayout extends FrameLayout {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public void scrollTo(int x, int y) {
+		//(0到-getWidth())
+		super.scrollTo(x, y);
+		float progress = x/(float)-getWidth();
+		int value = (int) (200*(1-progress));
+		setBackgroundColor(Color.argb(value, 20, 20, 20));
 	}
 }

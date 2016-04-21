@@ -25,7 +25,13 @@ public class Banner extends RelativeLayout {
 	private CircleIndicator mCiBanner;
 	private ViewPager mVpBanner;
 	private OnItemClickListener mListener;
+	/**
+	 * 默认宽高比
+	 */
 	private final float defaultProportion = 300/640f;
+	/**
+	 * 复用集合
+	 */
 	List<View> recycleViews;
 	@SuppressLint("NewApi")
 	public Banner(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {

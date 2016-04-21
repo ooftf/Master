@@ -28,7 +28,9 @@
             android:name=".TestActivity.TouchEventTest.TouchActivity"
             android:label="@string/title_activity_touch"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TestActivity.ViewPagerTest.ViewPagerActivity"></activity>
+        <activity android:name=".TestActivity.ViewPagerTest.ViewPagerActivity" />
+        <activity android:name=".TestActivity.DesignTest.DesignActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
