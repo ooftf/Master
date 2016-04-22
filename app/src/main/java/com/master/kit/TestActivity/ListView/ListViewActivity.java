@@ -67,7 +67,7 @@ public class ListViewActivity extends AppCompatActivity {
               /*  list.add("5");
                 list.remove(1);*/
                 list = new ArrayList<>();
-                for(int i=0;i<100;i++){
+                for(int i=0;i<90;i++){
                     list.add("第"+(i+1)+"个");
                 }
                 adapter.notifyDataSetChanged();

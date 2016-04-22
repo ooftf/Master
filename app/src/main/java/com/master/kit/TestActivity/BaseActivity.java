@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.master.kit.R;
+import com.master.kit.widget.SlidingFrameLayout.SlidingFrameLayout;
 
 /**
  * Created by master on 2016/4/1.
@@ -19,4 +20,10 @@ public class BaseActivity  extends Activity{
         startActivity(new Intent(this,cla));
     }
 
+    @Override
+    public void setContentView(int layoutResID) {
+        SlidingFrameLayout slidingFrameLayout = new SlidingFrameLayout(this);
+        View inflate = View.inflate(this, layoutResID,slidingFrameLayout);
+        super.setContentView(inflate);
+    }
 }
