@@ -33,10 +33,10 @@
             android:name=".TestActivity.DesignTest.DesignActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TestActivity.ListView.ListViewActivity" />
-        <activity android:name=".TestActivity.SoftKeyboardTest.SoftKeyboardActivity"
-            android:windowSoftInputMode="adjustUnspecified">
-
-        </activity>
+        <activity
+            android:name=".TestActivity.SoftKeyboardTest.SoftKeyboardActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity android:name=".TestActivity.CPBTest.CPBActivity"></activity>
     </application>
 
 </manifest>

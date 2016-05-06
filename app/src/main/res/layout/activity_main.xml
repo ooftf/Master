@@ -57,6 +57,12 @@
         android:onClick="onClick"
         android:id="@+id/SoftKeyboardActivity"
         android:text="SoftKeyboardActivity"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:id="@+id/CPBActivity"
+        android:text="CPBActivity"/>
 
 
 </LinearLayout>

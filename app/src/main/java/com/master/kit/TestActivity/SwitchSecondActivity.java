@@ -2,6 +2,7 @@ package com.master.kit.TestActivity;
 
 
 import android.os.Bundle;
+import android.view.View;
 
 
 public class SwitchSecondActivity extends BaseActivity {
@@ -9,6 +10,11 @@ public class SwitchSecondActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
 
     }
 }

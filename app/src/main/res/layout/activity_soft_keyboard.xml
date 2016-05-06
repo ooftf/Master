@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+    android:id="@+id/rootlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
 
-    android:orientation="vertical" >
-<Button
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:text="标题"/>
-    <ScrollView
+    android:orientation="vertical">
+
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="50dp"
+        android:text="标题" />
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">-->
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view_main"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="#ff0000" />
+
         <EditText
-            android:layout_marginTop="400dp"
             android:id="@+id/et_captcha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,12 +34,33 @@
             android:background="@mipmap/refund_top"
             android:gravity="center"
             android:hint="请输入验证码"
-            android:padding="5dp"
+            android:inputType="number"
             android:maxLength="4"
+            android:padding="5dp"
             android:textColor="#3f3a39"
             android:textColorHint="#c5c5c5"
             android:textSize="16sp" />
-    </ScrollView>
+
+        <EditText
+            android:id="@+id/bank_authcode_et"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@mipmap/refund_top"
+            android:gravity="center"
+            android:hint="请输入验证码"
+            android:inputType="number"
+            android:maxLength="6"
+            android:paddingBottom="5dp"
+            android:paddingLeft="9dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:singleLine="true"
+            android:textColor="#c5c5c5"
+            android:textSize="13sp" />
+    </LinearLayout>
+    <!-- </ScrollView>-->
     <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,20 +73,18 @@
             android:orientation="vertical" >-->
 
 
+    <!-- <LinearLayout
+         android:layout_marginTop="400dp"
+         android:layout_width="match_parent"
+         android:layout_height="50dp"
+         >-->
 
-           <!-- <LinearLayout
-                android:layout_marginTop="400dp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                >-->
 
-
-<!--
-            </LinearLayout>-->
-<!--
-        </LinearLayout>
-    </LinearLayout>-->
-
+    <!--
+                </LinearLayout>-->
+    <!--
+            </LinearLayout>
+        </LinearLayout>-->
 
 
 </LinearLayout>

@@ -32,4 +32,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.squareup.okhttp:okhttp:2.0.0'
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.7.5'
+    compile project(':cpb')
 }

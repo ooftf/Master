@@ -13,7 +13,7 @@ import com.master.kit.widget.SlidingFrameLayout.SlidingFrameLayout;
 /**
  * Created by master on 2016/4/1.
  */
-public class BaseActivity  extends Activity{
+public abstract class BaseActivity  extends Activity{
 
 
     public void startActivity(Class cla) {
@@ -26,4 +26,7 @@ public class BaseActivity  extends Activity{
         View inflate = View.inflate(this, layoutResID,slidingFrameLayout);
         super.setContentView(inflate);
     }
+
+    public abstract void onLayoutChange(View v, int left, int top, int right,
+                                        int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom);
 }

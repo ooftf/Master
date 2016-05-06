@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.master.kit.R;
+import com.master.kit.TestActivity.CPBTest.CPBActivity;
 import com.master.kit.TestActivity.DesignTest.DesignActivity;
 import com.master.kit.TestActivity.ListView.ListViewActivity;
 import com.master.kit.TestActivity.SoftKeyboardTest.SoftKeyboardActivity;
@@ -44,12 +45,15 @@ public class MainActivity extends BaseActivity {
             case R.id.SoftKeyboardActivity:
                 startActivity(SoftKeyboardActivity.class);
                 break;
-
-
-
+            case R.id.CPBActivity:
+                startActivity(CPBActivity.class);
+                break;
         }
     }
 
 
+    @Override
+    public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
 
+    }
 }
