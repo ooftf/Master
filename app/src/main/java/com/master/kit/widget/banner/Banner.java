@@ -95,10 +95,8 @@ public class Banner extends RelativeLayout {
 		uris = new ArrayList<String>(urisl);
 		//this.uris.addAll(urisl);
 		mVpBanner.setAdapter(new PagerAdapter() {
-
 			@Override
 			public boolean isViewFromObject(View arg0, Object arg1) {
-
 				return arg0 == arg1;
 			}
 
@@ -117,14 +115,12 @@ public class Banner extends RelativeLayout {
 					imageView = (ImageView) recycleViews.get(0);
 					recycleViews.remove(imageView);
 				}
-				//imageView.setAdjustViewBounds(true);
 				imageView.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
 						if (mListener != null) {
 							mListener.onItemClick((ImageView) v, uris.get(position), position);
 						}
-
 					}
 				});
 				callback.displayImage(uris.get(position),imageView);
