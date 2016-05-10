@@ -42,9 +42,9 @@ public class CircularProgressBar extends View {
     float maxAngle;
     Paint p;
     float strokeWidth = 15;
-    int growthAngle;
+    float growthAngle;
     private void init() {
-        schedule = (int) (1000/60f);
+        schedule = (int) (1000/100f);
         wrapSize = 200;
         startAngle = 0;
         minAngle = 60;
@@ -61,11 +61,13 @@ public class CircularProgressBar extends View {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startAngle+=Math.abs(growthAngle)*1.2;
+                startAngle+=Math.abs(growthAngle)*1.5;
                 startAngle = startAngle%360;
                 sweepAngle+=growthAngle;
-                if(sweepAngle>maxAngle||sweepAngle<minAngle){
-                    growthAngle = -growthAngle;
+                if(sweepAngle>maxAngle){
+                    growthAngle = -Math.abs(growthAngle);
+                }else if(sweepAngle<minAngle){
+                    growthAngle = Math.abs(growthAngle);
                 }
                 invalidate();
                 handler.removeCallbacksAndMessages(null);
@@ -122,9 +124,9 @@ public class CircularProgressBar extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-       // canvas.drawCircle(getWidth()/2,getHeight()/2,getWidth()/2,null);
+
         if(rectF == null)return;
-        canvas.drawArc(rectF,startAngle,sweepAngle,false,p);
+        canvas.drawArc(rectF,startAngle-sweepAngle,sweepAngle,false,p);
     }
 
     @Override

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.master.kit.R;
-import com.nostra13.universalimageloader.core.ImageLoader;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -14,7 +12,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
@@ -88,7 +85,7 @@ public class Banner extends RelativeLayout {
 	}
 
 	private List<String> uris;
-	public void setUris(final List<String> urisl) {
+	public void setUris(final List<String> urisl, final DiaplayImageCallback callback) {
 
 		if (urisl == null || urisl.size() < 1) {
 			mVpBanner.setAdapter(null);
@@ -130,8 +127,7 @@ public class Banner extends RelativeLayout {
 
 					}
 				});
-				ImageLoader.getInstance().displayImage(uris.get(position), imageView);
-
+				callback.displayImage(uris.get(position),imageView);
 				container.addView(imageView,new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 				return imageView;
 			}
@@ -146,6 +142,9 @@ public class Banner extends RelativeLayout {
 		mCiBanner.setVisibility(View.VISIBLE);
 
 
+	}
+	public interface DiaplayImageCallback{
+		void displayImage(String url,ImageView view);
 	}
 
 	public void startCycle() {
