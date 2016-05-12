@@ -1,1 +1,1 @@
-include ':app', ':cpb'
+include ':app', ':cpb', ':decoupling'

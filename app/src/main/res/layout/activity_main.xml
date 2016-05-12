@@ -14,52 +14,61 @@
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:id="@+id/CalendarActivity"
-        android:text="CalendarActivity"/>
+        android:text="CalendarActivity"
+        android:textAllCaps="false"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:id="@+id/PageLayoutActivity"
+        android:textAllCaps="false"
         android:text="PageLayoutActivity"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClick"
+        android:textAllCaps="false"
         android:id="@+id/GesturePasswordActivity"
         android:text="GesturePasswordActivity"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClick"
+        android:textAllCaps="false"
         android:id="@+id/TouchActivity"
         android:text="TouchActivity"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClick"
+        android:textAllCaps="false"
         android:id="@+id/ViewPagerActivity"
         android:text="ViewPagerActivity"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClick"
+        android:textAllCaps="false"
         android:id="@+id/DesignActivity"
         android:text="DesignActivity"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClick"
+        android:textAllCaps="false"
         android:id="@+id/ListViewActivity"
         android:text="ListViewActivity"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
         android:onClick="onClick"
         android:id="@+id/SoftKeyboardActivity"
         android:text="SoftKeyboardActivity"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
         android:onClick="onClick"
         android:id="@+id/CPBActivity"
         android:text="CPBActivity"/>

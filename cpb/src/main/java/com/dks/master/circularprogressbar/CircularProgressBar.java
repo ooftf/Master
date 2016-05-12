@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Scroller;
 
 /**
  * Created by master on 2016/4/27.
@@ -37,44 +38,87 @@ public class CircularProgressBar extends View {
     }
     Handler handler;
     int schedule ;
-
+    /**
+     * 最小角度
+     */
     float minAngle;
+    /**
+     * 最小角度
+     */
     float maxAngle;
+    /**
+     * 绘制进度条的画笔
+     */
     Paint p;
-    float strokeWidth = 15;
+    /**
+     * 进度条宽度
+     */
+    float strokeWidth = 12;
+    /**
+     * 旋转速度
+     */
     float growthAngle;
+    /**
+     * 进度条长度变换距离
+     */
+    int distance;
     private void init() {
+        initData();
+        initPain();
+        initSchedule();
+
+    }
+
+    private void initData() {
         schedule = (int) (1000/100f);
         wrapSize = 200;
         startAngle = 0;
-        minAngle = 60;
-        maxAngle = 300;
+        minAngle = 30;
+        maxAngle = 330;
         sweepAngle = minAngle;
-        growthAngle = 6;
+        growthAngle = 9;
+    }
+
+    private void initSchedule() {
+        scroller = new Scroller(getContext());
+        scroller.setFinalX((int) minAngle);
+        distance =(int)(maxAngle-minAngle);
+        scroller.startScroll( scroller.getFinalX(),(int)minAngle, distance,(int)(maxAngle-minAngle),schedule*100);
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(scroller.computeScrollOffset()){
+                    startAngle+=Math.abs(growthAngle)*0.3;
+                    sweepAngle = scroller.getCurrX();
+                    invalidate();
+                }else{
+                    distance = -distance;
+                    if(distance <0){
+                        startAngle = startAngle + scroller.getFinalX();
+                        scroller.startScroll( scroller.getFinalX(),(int)minAngle, distance,(int)(maxAngle-minAngle),schedule*100);
+                    }else{
+                        startAngle = startAngle - scroller.getFinalX();
+                        scroller.startScroll( scroller.getFinalX(),(int)minAngle, distance,(int)(maxAngle-minAngle),schedule*100);
+                    }
+
+                }
+                handler.removeCallbacksAndMessages(null);
+                handler.postDelayed(this,schedule);
+            }
+        },schedule);
+    }
+
+    private void initPain() {
         p = new Paint();
         p.setStyle(Paint.Style.STROKE);
         p.setStrokeWidth(strokeWidth);
         p.setColor(Color.parseColor("#ff0000"));
         p.setAntiAlias(true);
         p.setStrokeCap(Paint.Cap.ROUND);
-        handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startAngle+=Math.abs(growthAngle)*1.5;
-                startAngle = startAngle%360;
-                sweepAngle+=growthAngle;
-                if(sweepAngle>maxAngle){
-                    growthAngle = -Math.abs(growthAngle);
-                }else if(sweepAngle<minAngle){
-                    growthAngle = Math.abs(growthAngle);
-                }
-                invalidate();
-                handler.removeCallbacksAndMessages(null);
-                handler.postDelayed(this,schedule);
-            }
-        },schedule);
     }
+
+    Scroller scroller;
 
     int wrapSize;
     @Override
@@ -126,7 +170,14 @@ public class CircularProgressBar extends View {
         super.onDraw(canvas);
 
         if(rectF == null)return;
-        canvas.drawArc(rectF,startAngle-sweepAngle,sweepAngle,false,p);
+
+        if(distance <0){
+            canvas.drawArc(rectF,startAngle - sweepAngle,sweepAngle,false,p);
+        }else{
+            canvas.drawArc(rectF,startAngle,sweepAngle,false,p);
+        }
+
+
     }
 
     @Override

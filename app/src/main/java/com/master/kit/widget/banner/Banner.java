@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.master.kit.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.media.Image;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -127,7 +132,6 @@ public class Banner extends RelativeLayout {
 				container.addView(imageView,new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 				return imageView;
 			}
-
 			@Override
 			public void destroyItem(ViewGroup container, int position, Object object) {
 				container.removeView((View) object);
