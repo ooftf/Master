@@ -11,11 +11,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.master.kit.R;
+import com.master.kit.TestActivity.BaseActivity;
 import com.master.kit.utils.LogUtil;
 
 import java.lang.reflect.Field;
 
-public class ViewPagerActivity extends AppCompatActivity {
+public class ViewPagerActivity extends BaseActivity {
 
     private ViewPager viewPager;
     private Handler handler;

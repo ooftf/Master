@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import com.master.kit.R;
 
-public class SwitchButtonActivity extends Activity {
+public class SwitchButtonActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

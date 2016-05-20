@@ -185,4 +185,5 @@ public class CircularProgressBar extends View {
         super.onDetachedFromWindow();
         handler.removeCallbacksAndMessages(null);
     }
+
 }

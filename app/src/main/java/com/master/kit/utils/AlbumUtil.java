@@ -33,6 +33,12 @@ public class AlbumUtil {
         activity.startActivityForResult(intent, requestCode);
     }
 
+    /**
+     * 配合selectPhoto使用
+     * @param context
+     * @param intent
+     * @return
+     */
     public static Bitmap getBitmapFromIntent(Context context,Intent intent) {
         try {
             return (Bitmap) readBitmapFromUri(intent.getData(),400*800,context);
@@ -41,6 +47,12 @@ public class AlbumUtil {
         }
         return null;
     }
+
+    /**
+     * 配合selectCutedPhoto使用
+     * @param intent
+     * @return
+     */
     public static Bitmap getCutedBitmapFromIntent(Intent intent) {
         return (Bitmap) intent.getExtras().get("data");
     }

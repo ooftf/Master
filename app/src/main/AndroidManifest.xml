@@ -3,13 +3,16 @@
     package="com.master.kit">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
+
+        <!-- @style/AppTheme.NoActionBar -->
         <activity android:name=".TestActivity.SwitchButtonActivity" />
         <activity android:name=".TestActivity.CameraActivity" />
         <activity android:name=".TestActivity.SwitchFristActivity" />
@@ -35,8 +38,10 @@
         <activity android:name=".TestActivity.ListView.ListViewActivity" />
         <activity
             android:name=".TestActivity.SoftKeyboardTest.SoftKeyboardActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
-        <activity android:name=".TestActivity.CPBTest.CPBActivity"></activity>
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".TestActivity.CPBTest.CPBActivity" />
+        <activity android:name=".TestActivity.DesignTest.TabActivity" />
+        <activity android:name=".TestActivity.WebView.WebViewActivity"></activity>
     </application>
 
 </manifest>

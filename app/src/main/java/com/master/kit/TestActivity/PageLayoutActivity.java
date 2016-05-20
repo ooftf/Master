@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.master.kit.R;
 import com.master.kit.widget.VerticalPageLayout.VerticalPageLayout;
 
-public class PageLayoutActivity extends AppCompatActivity {
+public class PageLayoutActivity extends BaseActivity {
     VerticalPageLayout mPageLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

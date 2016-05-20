@@ -11,7 +11,7 @@ import com.master.kit.R;
 import com.master.kit.utils.AlbumUtil;
 import com.master.kit.utils.LogUtil;
 
-public class CameraActivity extends Activity {
+public class CameraActivity extends BaseActivity {
 
     private ImageView imageView;
 

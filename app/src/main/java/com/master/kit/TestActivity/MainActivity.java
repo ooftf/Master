@@ -11,6 +11,8 @@ import com.master.kit.TestActivity.ListView.ListViewActivity;
 import com.master.kit.TestActivity.SoftKeyboardTest.SoftKeyboardActivity;
 import com.master.kit.TestActivity.TouchEventTest.TouchActivity;
 import com.master.kit.TestActivity.ViewPagerTest.ViewPagerActivity;
+import com.master.kit.TestActivity.WebView.WebViewActivity;
+
 public class MainActivity extends BaseActivity {
 
     @Override
@@ -48,12 +50,10 @@ public class MainActivity extends BaseActivity {
             case R.id.CPBActivity:
                 startActivity(CPBActivity.class);
                 break;
+            case R.id.WebViewActivity:
+                startActivity(WebViewActivity.class);
+                break;
+
         }
-    }
-
-
-    @Override
-    public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-
     }
 }

@@ -72,6 +72,13 @@
         android:onClick="onClick"
         android:id="@+id/CPBActivity"
         android:text="CPBActivity"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:onClick="onClick"
+        android:id="@+id/WebViewActivity"
+        android:text="WebViewActivity"/>
 
 
 </LinearLayout>

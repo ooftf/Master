@@ -12,11 +12,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.master.kit.R;
+import com.master.kit.TestActivity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListViewActivity extends AppCompatActivity {
+public class ListViewActivity extends BaseActivity {
     BaseAdapter adapter;
     private ListView listView;
     List<String> list;
