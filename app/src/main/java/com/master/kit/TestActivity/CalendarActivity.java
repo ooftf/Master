@@ -1,9 +1,8 @@
 package com.master.kit.TestActivity;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
+import com.master.kit.Base.BaseActivity;
 import com.master.kit.R;
 import com.master.kit.widget.CalendarView.CalendarView;
 

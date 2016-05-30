@@ -12,6 +12,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/cpb" />
             <option value="$PROJECT_DIR$/decoupling" />
+            <option value="$PROJECT_DIR$/mastervolley" />
+            <option value="$PROJECT_DIR$/retrofit" />
           </set>
         </option>
         <option name="myModules">
@@ -20,6 +22,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/cpb" />
             <option value="$PROJECT_DIR$/decoupling" />
+            <option value="$PROJECT_DIR$/mastervolley" />
+            <option value="$PROJECT_DIR$/retrofit" />
           </set>
         </option>
       </GradleProjectSettings>

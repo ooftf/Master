@@ -1,12 +1,11 @@
 package com.master.kit.TestActivity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.master.kit.Base.BaseActivity;
 import com.master.kit.R;
 import com.master.kit.utils.AlbumUtil;
 import com.master.kit.utils.LogUtil;
@@ -33,6 +32,7 @@ public class CameraActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         LogUtil.e("Intent",data+"");
+        if(resultCode == 0) return;
         imageView.setImageBitmap(AlbumUtil.getBitmapFromIntent(this,data));
     }
 

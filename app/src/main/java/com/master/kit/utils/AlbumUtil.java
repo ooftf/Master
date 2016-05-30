@@ -40,6 +40,7 @@ public class AlbumUtil {
      * @return
      */
     public static Bitmap getBitmapFromIntent(Context context,Intent intent) {
+
         try {
             return (Bitmap) readBitmapFromUri(intent.getData(),400*800,context);
         } catch (IOException e) {

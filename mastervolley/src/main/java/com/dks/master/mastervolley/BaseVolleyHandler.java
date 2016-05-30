@@ -1,4 +1,4 @@
-package com.master.kit.net;
+package com.dks.master.mastervolley;
 
 /**
  * Created by master on 2016/3/4.
@@ -16,12 +16,12 @@ public abstract class BaseVolleyHandler {
      */
     public abstract void customSuccessHandle(VolleyPackage result);
     /**
-     * Failure
+     * Success
      */
     public void successHandle(VolleyPackage result){
-        if(!baseSuccessHandle(result)){
+        if(baseSuccessHandle(result)) return;
             customSuccessHandle(result);
-        }
+
     }
 
 
@@ -41,8 +41,8 @@ public abstract class BaseVolleyHandler {
      * Failure
      */
     public void failureHandle(VolleyPackage result){
-        if(!baseFailureHandle(result)){
-            customFailureHandle(result);
-        }
+        if(baseFailureHandle(result)) return;
+        customFailureHandle(result);
+
     }
 }

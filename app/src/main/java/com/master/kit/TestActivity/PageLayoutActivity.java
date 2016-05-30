@@ -1,12 +1,12 @@
 package com.master.kit.TestActivity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.master.kit.Base.BaseActivity;
 import com.master.kit.R;
 import com.master.kit.widget.VerticalPageLayout.VerticalPageLayout;
 

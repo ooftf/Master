@@ -1,18 +1,15 @@
 package com.master.kit.TestActivity.ListView;
 
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.master.kit.R;
-import com.master.kit.TestActivity.BaseActivity;
+import com.master.kit.Base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,12 +1,10 @@
-package com.master.kit.net;
+package com.dks.master.mastervolley;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.widget.TextView;
-
-import com.master.kit.R;
 
 /**
  * Created by master on 2015/12/18.
@@ -36,9 +34,9 @@ public class LoadingDialog extends Dialog {
 
     }
 
+    int showCounnt;
     @Override
     public void show() {
-
         if (!isShowing()) {
             super.show();
             handler.postDelayed(new Runnable() {

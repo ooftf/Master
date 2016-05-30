@@ -8,11 +8,10 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.master.kit.R;
-import com.master.kit.TestActivity.BaseActivity;
+import com.master.kit.Base.BaseActivity;
 import com.master.kit.widget.SwitchButton.SwitchButton;
 
 public class TouchActivity extends BaseActivity {

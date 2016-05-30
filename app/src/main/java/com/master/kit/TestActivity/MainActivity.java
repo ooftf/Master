@@ -2,11 +2,12 @@ package com.master.kit.TestActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
+import com.master.kit.Base.BaseActivity;
 import com.master.kit.R;
 import com.master.kit.TestActivity.CPBTest.CPBActivity;
 import com.master.kit.TestActivity.DesignTest.DesignActivity;
+import com.master.kit.TestActivity.DesignTest.DesignDispatchActivity;
 import com.master.kit.TestActivity.ListView.ListViewActivity;
 import com.master.kit.TestActivity.SoftKeyboardTest.SoftKeyboardActivity;
 import com.master.kit.TestActivity.TouchEventTest.TouchActivity;
@@ -38,8 +39,8 @@ public class MainActivity extends BaseActivity {
             case R.id.ViewPagerActivity:
                 startActivity(ViewPagerActivity.class);
                 break;
-            case R.id.DesignActivity:
-                startActivity(DesignActivity.class);
+            case R.id.DesignDispatchActivity:
+                startActivity(DesignDispatchActivity.class);
                 break;
             case R.id.ListViewActivity:
                 startActivity(ListViewActivity.class);
@@ -53,6 +54,10 @@ public class MainActivity extends BaseActivity {
             case R.id.WebViewActivity:
                 startActivity(WebViewActivity.class);
                 break;
+            case R.id.CameraActivity:
+                startActivity(CameraActivity.class);
+                break;
+
 
         }
     }

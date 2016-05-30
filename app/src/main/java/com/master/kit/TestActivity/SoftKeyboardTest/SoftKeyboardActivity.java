@@ -1,15 +1,12 @@
 package com.master.kit.TestActivity.SoftKeyboardTest;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.master.kit.R;
-import com.master.kit.TestActivity.BaseActivity;
-import com.master.kit.TestActivity.MainActivity;
+import com.master.kit.Base.BaseActivity;
 import com.master.kit.utils.LogUtil;
 
 

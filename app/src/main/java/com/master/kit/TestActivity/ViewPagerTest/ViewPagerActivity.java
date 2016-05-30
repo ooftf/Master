@@ -1,20 +1,15 @@
 package com.master.kit.TestActivity.ViewPagerTest;
 
-import android.content.SyncStatusObserver;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.master.kit.R;
-import com.master.kit.TestActivity.BaseActivity;
-import com.master.kit.utils.LogUtil;
-
-import java.lang.reflect.Field;
+import com.master.kit.Base.BaseActivity;
 
 public class ViewPagerActivity extends BaseActivity {
 

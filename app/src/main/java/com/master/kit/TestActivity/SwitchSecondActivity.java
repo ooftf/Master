@@ -2,7 +2,8 @@ package com.master.kit.TestActivity;
 
 
 import android.os.Bundle;
-import android.view.View;
+
+import com.master.kit.Base.BaseActivity;
 
 
 public class SwitchSecondActivity extends BaseActivity {

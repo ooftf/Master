@@ -1,4 +1,4 @@
-package com.master.kit.TestActivity;
+package com.master.kit.Base;
 
 import android.app.Activity;
 import android.content.Intent;

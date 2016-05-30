@@ -1,4 +1,4 @@
-package com.master.kit.net;
+package com.dks.master.mastervolley;
 
 import android.content.Context;
 
@@ -37,10 +37,10 @@ public class OkHttpsHurlStack extends HurlStack{
     private static Hashtable<String,SSLSocketFactory> getSocketFactoryMap(Context context){
         if(socketFactoryMap == null){
             try {
-                String[] hosts = {"kyfw.12306.cn"};
+                String[] hosts = {"kyfw.12306.cn"};//作用的域名
                 //int[] certRes = {R.raw.kyfw};
-                int[] certRes = {15};
-                String[] certPass = {"asdfqaz"};
+                int[] certRes = {15};//密钥地址
+                String[] certPass = {"asdfqaz"};//打开密钥的密码
                 socketFactoryMap = new Hashtable<>(hosts.length);
                 for (int i = 0; i < certRes.length; i++) {
                     int res = certRes[i];
