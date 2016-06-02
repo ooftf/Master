@@ -1,4 +1,4 @@
-package com.master.kit.widget.SlidingMenuView;
+package com.master.kit.widget.slidingmenuview;
 
 import android.content.Context;
 import android.view.GestureDetector;

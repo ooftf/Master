@@ -1,4 +1,4 @@
-package com.master.kit.TestActivity;
+package com.master.kit.testcase;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.master.kit.Base.BaseActivity;
+import com.master.kit.base.BaseActivity;
 import com.master.kit.R;
-import com.master.kit.widget.VerticalPageLayout.VerticalPageLayout;
+import com.master.kit.widget.verticalpagelayout.VerticalPageLayout;
 
 public class PageLayoutActivity extends BaseActivity {
     VerticalPageLayout mPageLayout;

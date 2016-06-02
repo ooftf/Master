@@ -1,16 +1,11 @@
-package com.master.kit.TestActivity.WebView;
+package com.master.kit.testcase.webview;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-import com.master.kit.R;
-
-import java.util.logging.Logger;
 
 public class WebViewActivity extends AppCompatActivity {
 

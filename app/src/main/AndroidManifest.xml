@@ -14,36 +14,36 @@
         android:theme="@style/AppTheme.NoActionBar">
 
         <!-- @style/AppTheme.NoActionBar -->
-        <activity android:name=".TestActivity.SwitchButtonActivity" />
-        <activity android:name=".TestActivity.CameraActivity" />
-        <activity android:name=".TestActivity.SwitchFristActivity" />
-        <activity android:name=".TestActivity.SwitchSecondActivity" />
-        <activity android:name=".TestActivity.CalendarActivity" />
-        <activity android:name=".TestActivity.MainActivity">
+        <activity android:name=".testcase.SwitchButtonActivity" />
+        <activity android:name=".testcase.CameraActivity" />
+        <activity android:name=".testcase.SwitchFristActivity" />
+        <activity android:name=".testcase.SwitchSecondActivity" />
+        <activity android:name=".testcase.CalendarActivity" />
+        <activity android:name=".testcase.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestActivity.PageLayoutActivity" />
-        <activity android:name=".TestActivity.GesturePasswordActivity" />
+        <activity android:name=".testcase.PageLayoutActivity" />
+        <activity android:name=".testcase.GesturePasswordActivity" />
         <activity
-            android:name=".TestActivity.TouchEventTest.TouchActivity"
+            android:name=".testcase.touchevent.TouchActivity"
             android:label="@string/title_activity_touch"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TestActivity.ViewPagerTest.ViewPagerActivity" />
+        <activity android:name=".testcase.viewpager.ViewPagerActivity" />
         <activity
-            android:name=".TestActivity.DesignTest.DesignActivity"
+            android:name=".testcase.design.DesignActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TestActivity.ListView.ListViewActivity" />
+        <activity android:name=".testcase.listview.ListViewActivity" />
         <activity
-            android:name=".TestActivity.SoftKeyboardTest.SoftKeyboardActivity"
+            android:name=".testcase.softkeyboard.SoftKeyboardActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".TestActivity.CPBTest.CPBActivity" />
-        <activity android:name=".TestActivity.DesignTest.TabActivity" />
-        <activity android:name=".TestActivity.WebView.WebViewActivity" />
-        <activity android:name=".TestActivity.DesignTest.DesignDispatchActivity"></activity>
+        <activity android:name=".testcase.cpb.CPBActivity" />
+        <activity android:name=".testcase.design.TabActivity" />
+        <activity android:name=".testcase.webview.WebViewActivity" />
+        <activity android:name=".testcase.design.DesignDispatchActivity"></activity>
     </application>
 
 </manifest>

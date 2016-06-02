@@ -1,4 +1,4 @@
-package com.master.kit.widget.VerticalRuningLayout;
+package com.master.kit.widget.verticalruninglayout;
 
 import java.util.List;
 

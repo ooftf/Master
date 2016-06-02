@@ -1,4 +1,4 @@
-package com.master.kit.widget.CalendarView;
+package com.master.kit.widget.calendarview;
 
 import android.annotation.TargetApi;
 import android.content.Context;

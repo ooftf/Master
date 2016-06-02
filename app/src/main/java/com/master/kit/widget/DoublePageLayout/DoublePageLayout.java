@@ -1,4 +1,4 @@
-package com.master.kit.widget.DoublePageLayout;
+package com.master.kit.widget.doublepagelayout;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

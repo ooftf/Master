@@ -1,4 +1,4 @@
-package com.master.kit.TestActivity.ListView;
+package com.master.kit.testcase.listview;
 
 import android.os.Bundle;
 import android.view.Gravity;
@@ -9,7 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.master.kit.R;
-import com.master.kit.Base.BaseActivity;
+import com.master.kit.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;

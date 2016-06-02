@@ -1,8 +1,8 @@
-package com.master.kit.TestActivity;
+package com.master.kit.testcase;
 
 import android.os.Bundle;
 
-import com.master.kit.Base.BaseActivity;
+import com.master.kit.base.BaseActivity;
 
 public class SwitchFristActivity extends BaseActivity {
 

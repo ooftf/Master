@@ -1,18 +1,17 @@
-package com.master.kit.TestActivity;
+package com.master.kit.testcase;
 
 import android.os.Bundle;
 import android.view.View;
 
-import com.master.kit.Base.BaseActivity;
+import com.master.kit.base.BaseActivity;
 import com.master.kit.R;
-import com.master.kit.TestActivity.CPBTest.CPBActivity;
-import com.master.kit.TestActivity.DesignTest.DesignActivity;
-import com.master.kit.TestActivity.DesignTest.DesignDispatchActivity;
-import com.master.kit.TestActivity.ListView.ListViewActivity;
-import com.master.kit.TestActivity.SoftKeyboardTest.SoftKeyboardActivity;
-import com.master.kit.TestActivity.TouchEventTest.TouchActivity;
-import com.master.kit.TestActivity.ViewPagerTest.ViewPagerActivity;
-import com.master.kit.TestActivity.WebView.WebViewActivity;
+import com.master.kit.testcase.cpb.CPBActivity;
+import com.master.kit.testcase.design.DesignDispatchActivity;
+import com.master.kit.testcase.listview.ListViewActivity;
+import com.master.kit.testcase.softkeyboard.SoftKeyboardActivity;
+import com.master.kit.testcase.touchevent.TouchActivity;
+import com.master.kit.testcase.viewpager.ViewPagerActivity;
+import com.master.kit.testcase.webview.WebViewActivity;
 
 public class MainActivity extends BaseActivity {
 

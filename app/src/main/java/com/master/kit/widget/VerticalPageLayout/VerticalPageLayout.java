@@ -1,4 +1,4 @@
-package com.master.kit.widget.VerticalPageLayout;
+package com.master.kit.widget.verticalpagelayout;
 
 import android.annotation.TargetApi;
 import android.content.Context;

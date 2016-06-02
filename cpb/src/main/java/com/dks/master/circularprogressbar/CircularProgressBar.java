@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RectF;
 import android.os.Build;
 import android.os.Handler;
@@ -53,7 +54,7 @@ public class CircularProgressBar extends View {
     /**
      * 进度条宽度
      */
-    float strokeWidth = 12;
+    float strokeWidth = 10;
     /**
      * 旋转速度
      */
@@ -176,8 +177,6 @@ public class CircularProgressBar extends View {
         }else{
             canvas.drawArc(rectF,startAngle,sweepAngle,false,p);
         }
-
-
     }
 
     @Override

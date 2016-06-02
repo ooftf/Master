@@ -1,4 +1,4 @@
-package com.master.kit.widget.MasterPopupWindow;
+package com.master.kit.widget.masterpopupwindow;
 
 import android.app.Activity;
 import android.content.Context;

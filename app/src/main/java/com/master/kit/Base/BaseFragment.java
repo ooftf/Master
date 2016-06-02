@@ -1,4 +1,4 @@
-package com.master.kit.Base;
+package com.master.kit.base;
 
 import android.content.Context;
 import android.content.res.Configuration;

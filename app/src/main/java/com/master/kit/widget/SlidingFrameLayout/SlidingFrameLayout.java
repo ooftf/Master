@@ -1,4 +1,4 @@
-package com.master.kit.widget.SlidingFrameLayout;
+package com.master.kit.widget.slidingframelayout;
 
 import java.util.List;
 
@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
@@ -20,6 +19,7 @@ import android.widget.Scroller;
  <item name="android:windowIsTranslucent">true</item>
  */
 public class SlidingFrameLayout extends FrameLayout {
+
 
 	public SlidingFrameLayout(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);

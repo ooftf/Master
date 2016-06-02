@@ -1,83 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main.CoordinatorLayout"
+    android:id="@+id/main_CoordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_light">
 
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/main_appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/main_CollapsingToolbar"
             android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|snap"
-            android:layout_height="300dp">
-            <ImageView
 
-                android:scaleType="centerCrop"
+            >
+
+            <ImageView
+                android:id="@+id/main_imageview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@mipmap/ic_launcher"/>
-
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                app:layout_collapseMode="parallax" />
         </android.support.design.widget.CollapsingToolbarLayout>
-        <android.support.v7.widget.Toolbar
 
-            app:layout_scrollFlags="scroll|snap"
-            app:layout_collapseMode="pin"
+        <ImageView
+            android:id="@+id/head_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-48dp"
+            android:elevation="8dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_scrollFlags="scroll" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/main_toolbar"
             android:layout_width="match_parent"
-            android:title="Toolbar"
-            android:layout_height="?attr/actionBarSize">
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="-48dp"
+            app:theme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            android:navigationIcon="@drawable/abc_ic_ab_back_mtrl_am_alpha">
+
         </android.support.v7.widget.Toolbar>
 
         <LinearLayout
-
-            android:orientation="vertical"
-            app:layout_scrollFlags="scroll|enterAlways"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_scrollFlags="scroll|enterAlways">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="20sp"
                 android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="我是标题一，我骄傲"
                 android:textColor="@android:color/white"
-                android:text="标题一"/>
+                android:textSize="20sp" />
+
             <TextView
-                android:textColor="@android:color/white"
-                android:textSize="15sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:gravity="center"
-                android:layout_margin="10dp"
-                android:text="标题二"/>
+                android:text="老大，我是标题二啊"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
         </LinearLayout>
-         <android.support.design.widget.TabLayout
-             android:id="@+id/main.TabLayout"
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/main_TabLayout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
+
         </android.support.design.widget.TabLayout>
 
     </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.widget.NestedScrollView
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:lineSpacingExtra="8dp"
-            android:text="@string/default_long"
             android:padding="@dimen/activity_horizontal_margin"
-            />
+            android:text="@string/default_long"
+            android:textSize="20sp" />
     </android.support.v4.widget.NestedScrollView>
-
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/main_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        android:layout_margin="10dp"
+        android:layout_gravity="bottom|right|end"
+        />
 
 </android.support.design.widget.CoordinatorLayout>

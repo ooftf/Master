@@ -1,4 +1,4 @@
-package com.master.kit.widget.ZoomImageView;
+package com.master.kit.widget.zoomimageview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,13 +7,9 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.Point;
 import android.graphics.PointF;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ImageView;
 
 public class ZoomImageView extends ImageView {

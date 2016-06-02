@@ -1,4 +1,4 @@
-package com.master.kit.widget.IndicatorTextView;
+package com.master.kit.widget.indicatortextview;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.master.kit.widget.GesturePassword;
+package com.master.kit.widget.gesturepassword;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -16,7 +16,6 @@ import android.view.View;
 
 import com.master.kit.R;
 import com.master.kit.utils.DensityUtil;
-import com.master.kit.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;

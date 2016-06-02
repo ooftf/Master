@@ -1,4 +1,4 @@
-package com.master.kit.widget.SwitchButton;
+package com.master.kit.widget.switchbutton;
 
 import android.annotation.TargetApi;
 import android.content.Context;

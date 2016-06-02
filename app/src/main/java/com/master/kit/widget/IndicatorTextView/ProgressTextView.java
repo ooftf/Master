@@ -1,4 +1,4 @@
-package com.master.kit.widget.IndicatorTextView;
+package com.master.kit.widget.indicatortextview;
 
 import android.content.Context;
 import android.graphics.Bitmap;

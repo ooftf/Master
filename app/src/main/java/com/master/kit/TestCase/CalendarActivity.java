@@ -1,10 +1,10 @@
-package com.master.kit.TestActivity;
+package com.master.kit.testcase;
 
 import android.os.Bundle;
 
-import com.master.kit.Base.BaseActivity;
+import com.master.kit.base.BaseActivity;
 import com.master.kit.R;
-import com.master.kit.widget.CalendarView.CalendarView;
+import com.master.kit.widget.calendarview.CalendarView;
 
 public class CalendarActivity extends BaseActivity {
 
