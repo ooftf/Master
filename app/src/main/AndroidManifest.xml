@@ -41,7 +41,7 @@
             android:name=".testcase.softkeyboard.SoftKeyboardActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".testcase.cpb.CPBActivity" />
-        <activity android:name=".testcase.design.TabActivity" />
+        <activity android:name=".testcase.design.tab.TabActivity" />
         <activity android:name=".testcase.webview.WebViewActivity" />
         <activity android:name=".testcase.design.DesignDispatchActivity"></activity>
     </application>

@@ -6,5 +6,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="transparent">#00000000</color>
     <color name="background">#FFFFFF</color>
+    <color name="translucent">#11000000</color>
 
 </resources>

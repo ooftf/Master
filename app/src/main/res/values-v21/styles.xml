@@ -1,9 +1,12 @@
 <resources>
 
-   <!-- <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        &lt;!&ndash;<item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>&ndash;&gt;
-    </style>-->
+   <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+   <item name="colorPrimary">@color/colorPrimary</item>
+   <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+   <item name="colorAccent">@color/colorAccent</item>
+   <item name="android:windowBackground">@color/transparent</item>
+   <item name="android:windowIsTranslucent">true</item>
+   <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+   <item name="android:statusBarColor">@color/translucent</item>
+</style>
 </resources>

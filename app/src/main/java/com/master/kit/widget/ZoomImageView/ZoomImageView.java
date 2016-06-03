@@ -108,7 +108,6 @@ public class ZoomImageView extends ImageView {
 				p0.set(event.getX(0), event.getY(0));
 				matrix.postScale(dis2 / dis, dis2 / dis, (p1.x + p0.x) / 2, (p1.y + p0.y) / 2);
 				// matrix.postScale(sx, sy)
-
 			}
 			if (pointerCount == 1) {
 				matrix.postTranslate(event.getX() - p0.x, event.getY() - p0.y);
