@@ -8,6 +8,7 @@ import com.master.kit.R;
 import com.master.kit.testcase.cpb.CPBActivity;
 import com.master.kit.testcase.design.DesignDispatchActivity;
 import com.master.kit.testcase.listview.ListViewActivity;
+import com.master.kit.testcase.net.NetActivity;
 import com.master.kit.testcase.softkeyboard.SoftKeyboardActivity;
 import com.master.kit.testcase.touchevent.TouchActivity;
 import com.master.kit.testcase.viewpager.ViewPagerActivity;
@@ -55,6 +56,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.CameraActivity:
                 startActivity(CameraActivity.class);
+                break;
+            case R.id.NetActivity:
+                startActivity(NetActivity.class);
                 break;
 
 

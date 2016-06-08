@@ -6,120 +6,134 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import android.widget.TextView;
+
+
 public class VerticalRuningLayout extends RelativeLayout {
 
 
+    @SuppressLint("NewApi")
+    public VerticalRuningLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        init();
+    }
 
-	@SuppressLint("NewApi")
-	public VerticalRuningLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-		super(context, attrs, defStyleAttr, defStyleRes);
-		init();
-	}
+    @SuppressLint("NewApi")
+    public VerticalRuningLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init();
+    }
 
-	@SuppressLint("NewApi")
-	public VerticalRuningLayout(Context context, AttributeSet attrs, int defStyleAttr) {
-		super(context, attrs, defStyleAttr);
-		init();
-	}
+    public VerticalRuningLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
 
-	public VerticalRuningLayout(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		init();
-	}
+    public VerticalRuningLayout(Context context) {
+        super(context);
+        init();
+    }
 
-	public VerticalRuningLayout(Context context) {
-		super(context);
-		init();
-	}
+    int childHeight;
+    int mLines = 3;
+    TextView[] childs;
 
-	int childHeight;
-	int lines = 3;
-	TextView[] childs;
+    private void init() {
 
-	private void init() {
-		childs = new TextView[lines * 2];
-		scroller = new Scroller(getContext());
-		childHeight = 0;
-		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, childHeight);
-		for (int i = 0; i < childs.length; i++) {
-			childs[i] = new TextView(getContext());
-			childs[i].setGravity(Gravity.CENTER_VERTICAL);
-			childs[i].setLayoutParams(params);
-			addView(childs[i]);
-		}
-	}
+        scroller = new Scroller(getContext());
+        childHeight = 0;
 
-	@Override
-	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-		childHeight = h/lines;
-		super.onSizeChanged(w, h, oldw, oldh);
-		for (int i = 0; i < childs.length; i++) {
-			childs[i].setHeight(childHeight);
-		}
+    }
+
+    private void newChilds(int ReasureId) {
+        removeAllViews();
+        childs = new TextView[mLines * 2];
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        for (int i = 0; i < childs.length; i++) {
+            childs[i] = (TextView) inflater.inflate(ReasureId, this,false);
+            childs[i].getLayoutParams().height = getHeight()/mLines;
+           // childs[i].setLayoutParams(childs[i].getLayoutParams());
+            addView(childs[i]);
+            childs[i].setText(mData.get(i % mData.size()));
+        }
+    }
 
 
-	}
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+     /*   childHeight = h / mLines;
+        for (int i = 0; i < childs.length; i++) {
+            childs[i].setHeight(3);
+        }*/
+        super.onSizeChanged(w, h, oldw, oldh);
+    }
 
-	int position = 0;
+    int position = 0;
 
-	Scroller scroller;
-	Handler hander = new Handler();
-	long delayMillis = 4000;
-	List<String> data;
+    Scroller scroller;
+    Handler hander = new Handler();
+    long delayMillis = 4000;
+    List<String> mData;
 
-	public void setData(List<String> data) {
-		if (data == null)
-			return;
-		if (data.size() < lines * 2)
-			return;
-		this.data = data;
-		//int location = 0;
-		for (int i = 0; i < childs.length; i++) {
-			Log.e("setData", data.get(i));
-			childs[i].setText(data.get(i));
-		}
-		hander.removeCallbacksAndMessages(null);
-		hander.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				scroller.startScroll(0, 0, 0, childHeight * lines, (int) delayMillis / 2);
-				int lpositon = (position + 1) * lines ;
-				for (int i = 0; i < lines; i++) {
-					childs[i + lines].setText(VerticalRuningLayout.this.data.get((lpositon+i)% VerticalRuningLayout.this.data.size()));
-				}
-				invalidate();
-				hander.removeCallbacksAndMessages(null);
-				hander.postDelayed(this, delayMillis);
-			}
-		}, delayMillis);
+    public void setData(final List<String> data, final int ReasureId,int lines) {
+        if (data == null)
+            return;
+        /*if (data.size() < lines * 2)
+			return;*/
+        if (data.size() < 1) return;
+        this.mData = data;
+        mLines = lines;
+        post(new Runnable() {
+            @Override
+            public void run() {
+                newChilds(ReasureId);
+                childHeight = getHeight()/mLines;
+                hander.removeCallbacksAndMessages(null);
+                hander.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        scroller.startScroll(0, 0, 0, childHeight * mLines, (int) delayMillis / 2);
+                        int lpositon = (position + 1) * mLines;
+                        for (int i = 0; i < mLines; i++) {
+                            childs[i + mLines].setText(mData.get((lpositon + i) % mData.size()));
+                        }
+                        invalidate();
+                        hander.removeCallbacksAndMessages(null);
+                        hander.postDelayed(this, delayMillis);
+                    }
+                }, delayMillis);
+            }
+        });
 
-	}
 
-	@Override
-	public void computeScroll() {
-		if (scroller.computeScrollOffset()) {
+    }
 
-			scrollTo(scroller.getCurrX(), scroller.getCurrY());
-			postInvalidate();
-		} else {
-			position++;
-			int lpositon = position * lines ;
-			for (int i = 0; i < lines; i++) {
-				childs[i].setText(data.get((lpositon + i)% data.size()));
-			}
-		}
-	}
+    @Override
+    public void computeScroll() {
+        if (mData == null)
+            return;
+        if (mData.size() < 1) return;
+        if (scroller.computeScrollOffset()) {
 
-	@Override
-	protected void onLayout(boolean changed, int l, int t, int r, int b) {
-		for (int i = 0; i < getChildCount(); i++) {
-			getChildAt(i).layout(0, i * b / lines, r, (i + 1) * b / lines);
-		}
-	}
+            scrollTo(scroller.getCurrX(), scroller.getCurrY());
+            postInvalidate();
+        } else {
+            position++;
+            int lpositon = position * mLines;
+            for (int i = 0; i < mLines; i++) {
+                childs[i].setText(mData.get((lpositon + i) % mData.size()));
+            }
+        }
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        for (int i = 0; i < getChildCount(); i++) {
+            getChildAt(i).layout(0, i * (b - t) / mLines, r, (i + 1) * (b - t) / mLines);
+        }
+    }
 
 }
