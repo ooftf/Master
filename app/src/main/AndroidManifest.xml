@@ -11,7 +11,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar.TranslucentStatus">
 
         <!-- @style/AppTheme.NoActionBar -->
         <activity android:name=".testcase.SwitchButtonActivity" />
@@ -19,7 +19,9 @@
         <activity android:name=".testcase.SwitchFristActivity" />
         <activity android:name=".testcase.SwitchSecondActivity" />
         <activity android:name=".testcase.CalendarActivity" />
-        <activity android:name=".testcase.MainActivity">
+        <activity
+            android:name=".testcase.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,7 +46,9 @@
         <activity android:name=".testcase.design.tab.TabActivity" />
         <activity android:name=".testcase.webview.WebViewActivity" />
         <activity android:name=".testcase.design.DesignDispatchActivity" />
-        <activity android:name=".testcase.net.NetActivity"></activity>
+        <activity android:name=".testcase.net.NetActivity" />
+        <activity android:name=".testcase.design.flexible.FlexibleActivity" />
+        <activity android:name=".testcase.AlbumActivity"></activity>
     </application>
 
 </manifest>

@@ -35,6 +35,8 @@ import static android.support.v4.view.ViewPager.OnPageChangeListener;
 public class CircleIndicator extends LinearLayout implements
         OnPageChangeListener {
 
+
+
     private final static int DEFAULT_INDICATOR_WIDTH = 5;
     private ViewPager mViewpager;
     private int mIndicatorMargin = -1;
@@ -51,7 +53,6 @@ public class CircleIndicator extends LinearLayout implements
     private Handler handler;
     private InnerRunnable mRunable;
     private int mDelayMillis = 3000;
-    private boolean isCycle = false;
 
     public CircleIndicator(Context context) {
         super(context);
@@ -64,7 +65,7 @@ public class CircleIndicator extends LinearLayout implements
     }
 
     private void init(Context context, AttributeSet attrs) {
-    	handler = new Handler();
+        handler = new Handler();
         setOrientation(LinearLayout.HORIZONTAL);
         setGravity(Gravity.CENTER);
         handleTypedArray(context, attrs);
@@ -168,61 +169,20 @@ public class CircleIndicator extends LinearLayout implements
     public void setViewPager(ViewPager viewPager, int size) {
         mSize = size;
         mViewpager = viewPager;
-       // mViewpager.setCurrentItem(size
-         //       * (viewPager.getAdapter().getCount() / size / 2));
-       // System.out.println("++++++++++++++++"+size*(viewPager.getAdapter().getCount() / size / 2));
-      mViewpager.setCurrentItem(size*(100/size));
-        mViewpager.setOnTouchListener(new OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        if (isCycle) {
-                            stop();
-                        }
-
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        if (isCycle) {
-                            start();
-                        }
-                        break;
-                    case MotionEvent.ACTION_CANCEL:
-                        if (isCycle) {
-                            start();
-                        }
-                        break;
-
-                    default:
-                        break;
-                }
-                return false;
-            }
-        });
+        mViewpager.setCurrentItem(size*(100/size));
         setViewPager(viewPager);
     }
 
     private void start() {
-        System.out.println("开始");
-        // flag = true;
-
         if (mRunable == null) {
             mRunable = new InnerRunnable();
-            handler.postDelayed(mRunable, mDelayMillis);
-        } else {
-            handler.removeCallbacks(mRunable);
-            handler.postDelayed(mRunable, mDelayMillis);
+
         }
+        handler.removeCallbacksAndMessages(null);
+        handler.postDelayed(mRunable, mDelayMillis);
 
     }
     private void stop() {
-        System.out.println("停止");
-        // flag = false;
-        /*if (mRunable != null) {
-            handler.removeCallbacks(mRunable);
-
-        }*/
         handler.removeCallbacksAndMessages(null);
 
     }
@@ -231,12 +191,10 @@ public class CircleIndicator extends LinearLayout implements
     }
 
     public void startCycle() {
-        isCycle = true;
         start();
     }
 
     public void stopCycle() {
-        isCycle = false;
         stop();
     }
 
@@ -350,9 +308,9 @@ public class CircleIndicator extends LinearLayout implements
     class InnerRunnable implements Runnable {
         @Override
         public void run() {
-        	if(mViewpager!=null){
-        		mViewpager.setCurrentItem(mViewpager.getCurrentItem() + 1);
-        	}        
+            if(mViewpager!=null){
+                mViewpager.setCurrentItem(mViewpager.getCurrentItem() + 1);
+            }
             handler.postDelayed(this, mDelayMillis);
         }
 

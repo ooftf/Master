@@ -4,9 +4,32 @@
    <item name="colorPrimary">@color/colorPrimary</item>
    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
    <item name="colorAccent">@color/colorAccent</item>
-   <item name="android:windowBackground">@color/transparent</item>
+  <!-- <item name="android:windowBackground">@color/transparent</item>
    <item name="android:windowIsTranslucent">true</item>
+      <item name="android:windowAnimationStyle">@android:style/Animation.Activity</item>-->
+ <!--     <item name="@android:windowAnimationStyle">@android:style/Animation.Activity</item>-->
+
   <!-- <item name="android:windowDrawsSystemBarBackgrounds">true</item>
    <item name="android:statusBarColor">@color/translucent</item>-->
 </style>
+  <!-- <style name="myact">
+
+      <item name="@android:activityOpenEnterAnimation">@anim/act_enter</item>
+
+      <item name="@android:activityOpenExitAnimation">@anim/act_exit</item>
+
+      <item name="@android:activityCloseEnterAnimation">@anim/act_enter</item>
+
+      <item name="@android:activityCloseExitAnimation">@anim/act_exit</item>
+
+   </style>-->
+   <style name="AppTheme.NoActionBar.TranslucentStatus" parent="AppTheme.NoActionBar">
+      <!--   <item name="android:windowBackground">@color/transparent</item>
+         <item name="android:windowIsTranslucent">true</item>-->
+      <item name="colorPrimary">@color/colorPrimary</item>
+      <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+      <item name="colorAccent">@color/colorAccent</item>
+      <item name="android:windowBackground">@color/transparent</item>
+      <item name="android:windowIsTranslucent">true</item>
+   </style>
 </resources>

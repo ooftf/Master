@@ -1,124 +1,116 @@
 package com.master.kit.utils;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.UUID;
+
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.MediaStore.MediaColumns;
-import android.text.format.DateFormat;
+import android.support.annotation.NonNull;
 
-public final class CameraUtil {
+public class CameraUtil {
+    int requestCode;
+    Activity activity;
+    /**
+     * 存放图片的文件名
+     */
+    String filename = "camera";
+    /**
+     * 存放拍照图片的url
+     */
+    Uri savePicUri;
+    public CameraUtil(Activity activity, int requestCode) {
+        this.requestCode = requestCode;
+        this.activity = activity;
+    }
 
-	private static final String TAG = "MicroMsg.SDK.CameraUtil";
+    public void openCamera() {
+        Intent intent = createCameraIntent();
+        activity.startActivityForResult(intent, requestCode);
+    }
+    /**
+     * 创建  开启拍摄的Intent
+     * @return
+     */
+    @NonNull
+    private Intent createCameraIntent() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File cameraPicturesFile = createCameraPicturesFile();
+        savePicUri = Uri.fromFile(cameraPicturesFile);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, savePicUri);
+        return intent;
+    }
 
-	private static String filePath = null;
+    /**
+     * 创建 存放图片的文件
+     * @return
+     */
+    private File createCameraPicturesFile(){
+        File file = new File(publicAppExternalDir(), filename);
+        if (!file.exists()) file.mkdirs();
+        try {
+            File imageFile = File.createTempFile(UUID.randomUUID().toString(), ".jpg", file);
+            return imageFile;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-	private static  String PHOTO_DEFAULT_EXT = "";
-	private CameraUtil() {
-		// can't be instantiated
-	}
 
-	public static boolean takePhoto(final Activity activity, final String dir, final String filename, final int cmd) {
-		filePath = dir + filename;
+    /**
+     * contents are deleted if app is uninstalled.
+     *
+     * @return
+     */
+    private String publicAppExternalDir() {
+        return activity.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getPath();
+    }
 
-		final Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		final File cameraDir = new File(dir);
-		if (!cameraDir.exists()) {
-			return false;
-		}
+    /**
+     * 处理得到的图片
+     * @param requestCode
+     * @param resultCode
+     * @param callbacks
+     */
+    public void handleActivityResult(int requestCode, int resultCode, Callbacks callbacks){
+        if(requestCode == this.requestCode){
+            if(resultCode == Activity.RESULT_OK){
+                onPictureReturnedFromCamera(callbacks);
+            }else{
+                callbacks.onCanceled();
+            }
+        }
 
-		final File file = new File(filePath);
-		final Uri outputFileUri = Uri.fromFile(file);
-		intent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-		try {
-			activity.startActivityForResult(intent, cmd);
+    }
+    private void onPictureReturnedFromCamera(Callbacks callbacks){
+        try {
+            File file = new File(new URI(savePicUri.toString()));
+            callbacks.onImagePicked(file);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+            callbacks.onImagePickerError(e);
+        }
+    }
 
-		} catch (final ActivityNotFoundException e) {
-			return false;
-		}
-		return true;
-	}
-
-	public static String getResultPhotoPath(Context context, final Intent intent, final String dir) {
-		if (filePath != null && new File(filePath).exists()) {
-			return filePath;
-		}
-
-		return resolvePhotoFromIntent(context, intent, dir);
-	}
-
-	public static String resolvePhotoFromIntent(final Context ctx, final Intent data, final String dir) {
-		if (ctx == null || data == null || dir == null) {
-			LogUtil.e(TAG, "resolvePhotoFromIntent fail, invalid argument");
-			return null;
-		}
-
-		String filePath = null;
-
-		final Uri uri = Uri.parse(data.toURI());
-		Cursor cu = ctx.getContentResolver().query(uri, null, null, null, null);
-		if (cu != null && cu.getCount() > 0) {
-			try {
-				cu.moveToFirst();
-				final int pathIndex = cu.getColumnIndex(MediaColumns.DATA);
-				LogUtil.e(TAG, "orition: " + cu.getString(cu.getColumnIndex(MediaStore.Images.ImageColumns.ORIENTATION)));
-				filePath = cu.getString(pathIndex);
-				LogUtil.d(TAG, "photo from resolver, path:" + filePath);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		} else if (data.getData() != null) {
-			filePath = data.getData().getPath();
-			if (!(new File(filePath)).exists()) {
-				filePath = null;
-			}
-			LogUtil.d(TAG, "photo file from data, path:" + filePath);
-
-		} else if (data.getAction() != null && data.getAction().equals("inline-data")) {
-
-			try {
-				final String fileName =  System.currentTimeMillis() + PHOTO_DEFAULT_EXT;
-				filePath = dir + fileName;
-
-				final Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-				final File file = new File(filePath);
-				if (!file.exists()) {
-					file.createNewFile();
-				}
-
-				BufferedOutputStream out;
-				out = new BufferedOutputStream(new FileOutputStream(file));
-				final int cQuality = 100;
-				bitmap.compress(Bitmap.CompressFormat.PNG, cQuality, out);
-				out.close();
-				LogUtil.d(TAG, "photo image from data, path:" + filePath);
-
-			} catch (final Exception e) {
-				e.printStackTrace();
-			}
-
-		} else {
-			if (cu != null) {
-				cu.close();
-				cu = null;
-			}
-			LogUtil.e(TAG, "resolve photo from intent failed");
-			return null;
-		}
-		if (cu != null) {
-			cu.close();
-			cu = null;
-		}
-		return filePath;
-	}
-
+    /**
+     * 通知手机相册更新这张照片，如果不需要让系统相册显示，则不需要调用
+     */
+    public void notifyGallery() {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        mediaScanIntent.setData(savePicUri);
+        activity.sendBroadcast(mediaScanIntent);
+    }
+    public interface Callbacks{
+        void onImagePicked(File imageFile);
+        void  onImagePickerError(Exception e);
+        void onCanceled();
+    }
 }

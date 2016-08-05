@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.master.kit.R;
+import com.master.kit.utils.DensityUtil;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -22,6 +23,8 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 
 public class Banner extends RelativeLayout {
+
+
 
 	private Context mContext;
 	private CircleIndicator mCiBanner;
@@ -65,26 +68,25 @@ public class Banner extends RelativeLayout {
 		setProportion(defaultProportion);
 
 	}
-	public void setProportion(final float heightVSwidth){
-		mVpBanner.post(new Runnable() {
-
-			@Override
-			public void run() {
-				mVpBanner.setLayoutParams(new RelativeLayout.LayoutParams(mVpBanner.getMeasuredWidth(),(int)(mVpBanner.getMeasuredWidth()*heightVSwidth)));
-
-			}
-		});
+	public void setProportion(float heightVSwidth){
+		mVpBanner.getLayoutParams().width = DensityUtil.getScreenWidthPixels(getContext());
+		mVpBanner.getLayoutParams().height = (int)(DensityUtil.getScreenWidthPixels(getContext())*heightVSwidth);
+		/*mVpBanner.setLayoutParams(new RelativeLayout.LayoutParams(DensityUtil.getScreenWidthPixels(getContext()),(int)(DensityUtil.getScreenWidthPixels(getContext())*heightVSwidth)));*/
 	}
 
 	/**
 	 * 优先抢到触摸事件的处理权限
 	 * @param ev
 	 * @return
-     */
+	 */
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent ev) {
 		if(ev.getAction() == MotionEvent.ACTION_DOWN){
 			requestDisallowInterceptTouchEvent(true);
+			stopCycle();
+		}
+		if(ev.getAction() == MotionEvent.ACTION_UP||ev.getAction() == MotionEvent.ACTION_CANCEL){
+			startCycle();
 		}
 		return super.dispatchTouchEvent(ev);
 	}

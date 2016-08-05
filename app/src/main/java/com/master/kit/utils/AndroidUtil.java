@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.text.TextUtils;
 
@@ -117,5 +119,17 @@ public class AndroidUtil {
 		intent.setDataAndType(Uri.parse("file://" + apkPath), "application/vnd.android.package-archive");
 
 		context.startActivity(intent);
+	}
+	public static boolean isNetworkAvailable(Context context) {
+		ConnectivityManager mgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo[] info = mgr.getAllNetworkInfo();
+		if (info != null) {
+			for (int i = 0; i < info.length; i++) {
+				if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }

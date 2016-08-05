@@ -90,6 +90,11 @@ public class LogUtil {
             Log.e(tag,message);
         }
     }
+    public static void e(String message) {
+        if (LEVEL <= ERROR) {
+            Log.e(getDefaultTag(),message);
+        }
+    }
     public static void e(String tag,int i,Object... message) {
         if (LEVEL <= ERROR) {
 

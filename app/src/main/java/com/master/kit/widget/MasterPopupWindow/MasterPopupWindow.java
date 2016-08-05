@@ -1,12 +1,16 @@
 package com.master.kit.widget.masterpopupwindow;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.IBinder;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 
 public class MasterPopupWindow extends PopupWindow {
@@ -16,6 +20,7 @@ public class MasterPopupWindow extends PopupWindow {
 		// TODO Auto-generated constructor stub
 	}
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public MasterPopupWindow(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
 		super(context, attrs, defStyleAttr, defStyleRes);
 		// TODO Auto-generated constructor stub
@@ -66,8 +71,7 @@ public class MasterPopupWindow extends PopupWindow {
 	 */
 	public void showAtLocation(View parent, int gravity, int x, int y,boolean isAsDialog) {
 		if(isAsDialog){
-			setFocusable(true);
-			setBackgroundDrawable(new BitmapDrawable());
+			asDialog();
 			Activity activity = (Activity) getContentView().getContext();
 			View currentFocus = activity.getCurrentFocus();
 			if (currentFocus != null) {
@@ -78,6 +82,15 @@ public class MasterPopupWindow extends PopupWindow {
 			}
 		}
 		super.showAtLocation(parent, gravity, x, y);		
+	}
+
+	/**
+	 * 点击非popupwdindow区域，消失；返回键消失；
+	 * 必须写在调用父类show()方法之前
+	 */
+	private void asDialog() {
+		setFocusable(true);
+		setBackgroundDrawable(new BitmapDrawable());
 	}
 
 }

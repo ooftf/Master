@@ -27,5 +27,12 @@
             android:onClick="onClick"
             android:text="TabActivity"
             android:textAllCaps="false" />
+        <Button
+            android:id="@+id/FlexibleActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="FlexibleActivity"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>

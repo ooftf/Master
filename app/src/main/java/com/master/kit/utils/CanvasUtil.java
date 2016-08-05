@@ -1,6 +1,8 @@
 package com.master.kit.utils;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 
 /**
@@ -17,5 +19,14 @@ public class CanvasUtil {
      */
     public static void drawText(String text, float x, float y, Canvas canvas , Paint paint ){
         canvas.drawText(text,x-paint.measureText(text)/2,y+paint.measureText(text,0,1)/2,paint);
+    }
+
+    public static Bitmap rotateBitmap(Bitmap bitmap, int degree) {
+        Bitmap result = Bitmap.createBitmap(bitmap.getHeight(), bitmap.getWidth(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(result);
+        Matrix matrix = new Matrix();
+        matrix.setRotate(degree, result.getWidth() / 2, result.getWidth() / 2);
+        canvas.drawBitmap(bitmap, matrix, new Paint());
+        return result;
     }
 }

@@ -7,10 +7,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:fitsSystemWindows="true"
-    android:background="@color/background"
-    tools:context=".testcase.GesturePasswordActivity">
-    <com.master.kit.widget.gesturepassword.GesturePasswordView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    tools:context=".testcase.AlbumActivity">
+
 </RelativeLayout>
