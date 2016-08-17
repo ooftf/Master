@@ -15,7 +15,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 
-public class CameraUtil {
+public class CameraHelper {
     int requestCode;
     Activity activity;
     /**
@@ -26,7 +26,7 @@ public class CameraUtil {
      * 存放拍照图片的url
      */
     Uri savePicUri;
-    public CameraUtil(Activity activity, int requestCode) {
+    public CameraHelper(Activity activity, int requestCode) {
         this.requestCode = requestCode;
         this.activity = activity;
     }

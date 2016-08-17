@@ -1,10 +1,16 @@
 package com.master.kit.testcase;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
-import com.master.kit.base.BaseActivity;
 import com.master.kit.R;
+import com.master.kit.base.BaseActivity;
 import com.master.kit.testcase.cpb.CPBActivity;
 import com.master.kit.testcase.design.DesignDispatchActivity;
 import com.master.kit.testcase.listview.ListViewActivity;
@@ -14,54 +20,72 @@ import com.master.kit.testcase.touchevent.TouchActivity;
 import com.master.kit.testcase.viewpager.ViewPagerActivity;
 import com.master.kit.testcase.webview.WebViewActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends BaseActivity {
+
+    @BindView(R.id.recycler_view)
+    RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        initDatas();
+        mRecyclerView.setAdapter(new RecyclerView.Adapter() {
+            LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+            @Override
+            public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                View view = inflater.inflate(R.layout.item_recyclerview_main,parent,false);
+                RecyclerView.ViewHolder holder = new RecyclerHolder(view);
+                return holder;
+            }
+
+            @Override
+            public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+                ((Button)holder.itemView).setText(list.get(position).getSimpleName());
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(list.get(position));
+                    }
+                });
+            }
+            @Override
+            public int getItemCount() {
+                return list.size();
+            }
+        });
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
-    public void onClick(View v){
-        switch (v.getId()){
-            case R.id.CalendarActivity:
-                startActivity(CalendarActivity.class);
-                break;
-            case R.id.PageLayoutActivity:
-                startActivity(PageLayoutActivity.class);
-                break;
-            case R.id.GesturePasswordActivity:
-                startActivity(GesturePasswordActivity.class);
-                break;
-            case R.id.TouchActivity:
-                startActivity(TouchActivity.class);
-                break;
-            case R.id.ViewPagerActivity:
-                startActivity(ViewPagerActivity.class);
-                break;
-            case R.id.DesignDispatchActivity:
-                startActivity(DesignDispatchActivity.class);
-                break;
-            case R.id.ListViewActivity:
-                startActivity(ListViewActivity.class);
-                break;
-            case R.id.SoftKeyboardActivity:
-                startActivity(SoftKeyboardActivity.class);
-                break;
-            case R.id.CPBActivity:
-                startActivity(CPBActivity.class);
-                break;
-            case R.id.WebViewActivity:
-                startActivity(WebViewActivity.class);
-                break;
-            case R.id.CameraActivity:
-                startActivity(CameraActivity.class);
-                break;
-            case R.id.NetActivity:
-                startActivity(NetActivity.class);
-                break;
+    List<Class> list;
+    private void initDatas() {
+        list = new ArrayList();
+        list.add(CalendarActivity.class);
+        list.add(PageLayoutActivity.class);
+        list.add(GesturePasswordActivity.class);
+        list.add(TouchActivity.class);
+        list.add(ViewPagerActivity.class);
+        list.add(DesignDispatchActivity.class);
+        list.add(ListViewActivity.class);
+        list.add(SoftKeyboardActivity.class);
+        list.add(CPBActivity.class);
+        list.add(WebViewActivity.class);
+        list.add(CameraActivity.class);
+        list.add(NetActivity.class);
+        list.add(AlbumActivity.class);
+    }
 
+    class RecyclerHolder extends RecyclerView.ViewHolder{
 
+        public RecyclerHolder(View itemView) {
+            super(itemView);
         }
     }
 }

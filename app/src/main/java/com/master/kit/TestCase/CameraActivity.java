@@ -1,18 +1,14 @@
 package com.master.kit.testcase;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Camera;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.master.kit.base.BaseActivity;
 import com.master.kit.R;
-import com.master.kit.utils.AlbumUtil;
 import com.master.kit.utils.BitmapUtils;
-import com.master.kit.utils.CameraUtil;
+import com.master.kit.utils.CameraHelper;
 import com.master.kit.utils.LogUtil;
 
 import java.io.File;
@@ -20,17 +16,16 @@ import java.io.File;
 public class CameraActivity extends BaseActivity {
 
     private ImageView imageView;
-    CameraUtil cameraUtil;
+    CameraHelper cameraHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-        cameraUtil = new CameraUtil(CameraActivity.this,100);
+        cameraHelper = new CameraHelper(CameraActivity.this,100);
         findViewById(R.id.btn_main).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // CameraUtil.takePhoto(CameraActivity.this, Environment.getExternalStorageDirectory().getPath(),"aa",1000)
-                cameraUtil.openCamera();
+                cameraHelper.openCamera();
             }
         });
         imageView = (ImageView) findViewById(R.id.iv_main);
@@ -39,7 +34,7 @@ public class CameraActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        cameraUtil.handleActivityResult(requestCode, resultCode,new CameraUtil.Callbacks() {
+        cameraHelper.handleActivityResult(requestCode, resultCode,new CameraHelper.Callbacks() {
             @Override
             public void onImagePicked(File imageFile) {
                 imageView.setImageBitmap(BitmapUtils.readBitmapFromPath(imageFile.getPath(),800*800));
