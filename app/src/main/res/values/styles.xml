@@ -34,7 +34,7 @@
         <!-- 背景是否变暗 -->
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 除去背景色 -->
-        <item name="android:windowBackground">@drawable/shape_rectangle_corners_solid_translucent
+        <item name="android:windowBackground">@color/white
         </item>
         <item name="android:background">#00FFFFFF</item>
     </style>

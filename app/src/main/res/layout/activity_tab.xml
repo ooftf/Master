@@ -49,7 +49,7 @@
             android:layout_marginTop="-48dp"
             app:theme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_scrollFlags="scroll|enterAlways|snap"
-            android:navigationIcon="@drawable/abc_ic_ab_back_mtrl_am_alpha">
+            android:navigationIcon="@drawable/ic_menu_send">
 
         </android.support.v7.widget.Toolbar>
 

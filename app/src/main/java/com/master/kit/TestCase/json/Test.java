@@ -1,4 +1,4 @@
-package com.master.kit.testcase.jaon;
+package com.master.kit.testcase.json;
 
 /**
  * Created by master on 2016/4/19.

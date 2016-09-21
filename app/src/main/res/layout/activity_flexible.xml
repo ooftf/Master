@@ -29,7 +29,7 @@
                 android:src="@mipmap/ic_launcher" />
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                app:navigationIcon="@drawable/abc_ic_ab_back_mtrl_am_alpha"
+                app:navigationIcon="@drawable/ic_menu_send"
                 app:navigationContentDescription="back"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_appbar_height"

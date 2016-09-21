@@ -1,5 +1,8 @@
 package com.master.kit.testcase;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +23,7 @@ import com.master.kit.testcase.touchevent.TouchActivity;
 import com.master.kit.testcase.viewpager.ViewPagerActivity;
 import com.master.kit.testcase.webview.WebViewActivity;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +56,23 @@ public class MainActivity extends BaseActivity {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(list.get(position));
+                        if(Activity.class.isAssignableFrom(list.get(position))){
+                            startActivity(list.get(position));
+                        }else if(Dialog.class.isAssignableFrom(list.get(position))){
+                            try {
+                                Dialog dialog = (Dialog) list.get(position).getConstructor(Context.class).newInstance(MainActivity.this);
+                                dialog.show();
+                            } catch (InstantiationException e) {
+                                e.printStackTrace();
+                            } catch (IllegalAccessException e) {
+                                e.printStackTrace();
+                            } catch (InvocationTargetException e) {
+                                e.printStackTrace();
+                            } catch (NoSuchMethodException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
                     }
                 });
             }
@@ -80,6 +100,11 @@ public class MainActivity extends BaseActivity {
         list.add(CameraActivity.class);
         list.add(NetActivity.class);
         list.add(AlbumActivity.class);
+        list.add(NewInstanceActivity.class);
+        list.add(DialogDemo.class);
+        list.add(PullToRefreshActivity.class);
+
+
     }
 
     class RecyclerHolder extends RecyclerView.ViewHolder{

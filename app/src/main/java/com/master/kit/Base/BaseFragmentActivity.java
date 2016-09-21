@@ -1,5 +1,6 @@
 package com.master.kit.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -57,5 +58,9 @@ public class BaseFragmentActivity extends FragmentActivity {
     }
 
 
-
+    @Override
+    protected void onNewIntent(Intent intent) {
+        LogUtil.e(this.getClass().getSimpleName(),"onNewIntent");
+        super.onNewIntent(intent);
+    }
 }
