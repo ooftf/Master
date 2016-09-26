@@ -12,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.master.kit.R;
+import com.ooftf.pulltorefresh.widget.PullToLoadMoreFooter;
 import com.ooftf.pulltorefresh.widget.PullToRefreshHeader;
 
 import java.util.ArrayList;
@@ -54,6 +55,19 @@ public class PullToRefreshActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.e("OnItemClickListener","position::"+position);
+            }
+        });
+        final PullToLoadMoreFooter pullToLoadMoreFooter = new PullToLoadMoreFooter(this);
+        pullToLoadMoreFooter.setListView(mainListview);
+        pullToLoadMoreFooter.setOnLoadingMoreListener(new PullToLoadMoreFooter.OnLoadingMoreListener() {
+            @Override
+            public void OnLoadingMore() {
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pullToLoadMoreFooter.loadingComplete();
+                    }
+                },5000);
             }
         });
     }

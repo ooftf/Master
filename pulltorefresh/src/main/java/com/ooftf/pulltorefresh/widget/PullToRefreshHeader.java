@@ -30,8 +30,6 @@ public class PullToRefreshHeader extends LinearLayout {
         init();
 
     }
-
-
     public PullToRefreshHeader(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
@@ -69,7 +67,7 @@ public class PullToRefreshHeader extends LinearLayout {
     private void initLayout() {
     }
     private void InitialStateLayout(){
-        state = LISTVIEW_STATE;
+
         onListView();
     }
     TextView mTextDesc;
@@ -120,7 +118,7 @@ public class PullToRefreshHeader extends LinearLayout {
             currentY = ev.getY();
             result= true;
         }else if(REFRESHING_STATE == state){
-            result = true;
+            result = false;
         }
         currentY = ev.getY();
         return result;
