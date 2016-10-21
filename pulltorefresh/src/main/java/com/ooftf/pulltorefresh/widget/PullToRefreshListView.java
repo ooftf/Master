@@ -5,6 +5,7 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
 import android.widget.ListView;
 
 /**
@@ -42,7 +43,6 @@ public class PullToRefreshListView extends ListView implements IPullToRefreshabl
         if(!header.onContentTouchEvent(ev)){
             super.onTouchEvent(ev);
         }
-
         return true;
     }
 
@@ -58,5 +58,10 @@ public class PullToRefreshListView extends ListView implements IPullToRefreshabl
     public boolean isAtTop() {
         return getFirstVisiblePosition() == 0;
 
+    }
+
+    @Override
+    public ViewGroup.LayoutParams getChildLayoutParams() {
+        return new ListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 }

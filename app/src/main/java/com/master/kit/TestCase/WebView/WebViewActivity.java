@@ -1,5 +1,6 @@
 package com.master.kit.testcase.webview;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.CookieManager;
@@ -7,12 +8,15 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.ooftf.pulltorefresh.widget.APullToRefreshHeader;
+import com.ooftf.pulltorefresh.widget.PullToRefreshWebView;
+
 public class WebViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final WebView webView = new WebView(this);
+        final PullToRefreshWebView webView = new PullToRefreshWebView(this);
         setContentView(webView);
         webView.getSettings().setJavaScriptEnabled(true);
         //webView.loadUrl("www.baidu.com");
@@ -41,6 +45,17 @@ public class WebViewActivity extends AppCompatActivity {
         });
         CookieManager cookieManager =  CookieManager.getInstance();
         cookieManager.setAcceptCookie(true);
+        webView.setOnRefreshListener(new APullToRefreshHeader.OnRefreshListener() {
+            @Override
+            public void onRefreshing() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        webView.onRefreshComplete();
+                    }
+                },2000);
+            }
+        });
     }
     class JSHandler{
         @JavascriptInterface
