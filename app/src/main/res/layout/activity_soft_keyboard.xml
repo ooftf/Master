@@ -33,13 +33,12 @@
             android:background="@mipmap/refund_top"
             android:gravity="center"
             android:hint="请输入验证码"
-            android:inputType="number"
-            android:maxLength="4"
             android:padding="5dp"
             android:textColor="#3f3a39"
             android:textColorHint="#c5c5c5"
             android:textSize="16sp" />
-
+        <!--android:inputType="number"
+        android:maxLength="4"-->
         <EditText
             android:id="@+id/bank_authcode_et"
             android:layout_width="100dp"
@@ -72,7 +71,7 @@
             android:orientation="vertical" >-->
 
 
-    <!-- <LinearLayout
+    <!-- <LinearLayout。
          android:layout_marginTop="400dp"
          android:layout_width="match_parent"
          android:layout_height="50dp"

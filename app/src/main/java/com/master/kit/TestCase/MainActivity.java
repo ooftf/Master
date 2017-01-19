@@ -14,8 +14,10 @@ import android.widget.TextView;
 
 import com.master.kit.R;
 import com.master.kit.base.BaseActivity;
+import com.master.kit.testcase.annotation.AnnotationActivity;
 import com.master.kit.testcase.cpb.CPBActivity;
 import com.master.kit.testcase.design.DesignDispatchActivity;
+import com.master.kit.testcase.filedownload.DownloadActivity;
 import com.master.kit.testcase.listview.ListViewActivity;
 import com.master.kit.testcase.net.NetActivity;
 import com.master.kit.testcase.softkeyboard.SoftKeyboardActivity;
@@ -103,8 +105,9 @@ public class MainActivity extends BaseActivity {
         list.add(NewInstanceActivity.class);
         list.add(DialogDemo.class);
         list.add(PullToRefreshActivity.class);
-
-
+        list.add(KeyBoardActivity.class);
+        list.add(AnnotationActivity.class);
+        list.add(DownloadActivity.class);
     }
 
     class RecyclerHolder extends RecyclerView.ViewHolder{

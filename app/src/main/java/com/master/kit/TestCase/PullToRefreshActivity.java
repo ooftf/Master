@@ -29,17 +29,35 @@ public class PullToRefreshActivity extends AppCompatActivity {
     @BindView(R.id.main_listview)
     com.ooftf.pulltorefresh.widget.PullToRefreshListView mainListview;
     Handler handler;
+
+    MyAdapter myAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pull_to_refresh);
         ButterKnife.bind(this);
-        MyAdapter myAdapter = new MyAdapter(this);
+        myAdapter = new MyAdapter(this);
         mainListview.setAdapter(myAdapter);
         for(int i =0;i<100;i++){
             myAdapter.getDatas().add(i+"");
         }
         handler = new Handler();
+        final PullToLoadMoreFooter pullToLoadMoreFooter = new PullToLoadMoreFooter(this);
+        pullToLoadMoreFooter.setListView(mainListview);
+        pullToLoadMoreFooter.setOnLoadingMoreListener(new PullToLoadMoreFooter.OnLoadingMoreListener() {
+            @Override
+            public void OnLoadingMore() {
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        for(int i =0;i<100;i++){
+                            myAdapter.getDatas().add(i+"");
+                        }
+                        pullToLoadMoreFooter.loadingComplete();
+                    }
+                },5000);
+            }
+        });
         mainListview.setOnRefreshListener(new PullToRefreshHeader.OnRefreshListener() {
             @Override
             public void onRefreshing() {
@@ -47,6 +65,7 @@ public class PullToRefreshActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         mainListview.onRefreshComplete();
+                        pullToLoadMoreFooter.hasMore();
                     }
                 },5000);
             }
@@ -57,19 +76,7 @@ public class PullToRefreshActivity extends AppCompatActivity {
                 Log.e("OnItemClickListener","position::"+position);
             }
         });
-        final PullToLoadMoreFooter pullToLoadMoreFooter = new PullToLoadMoreFooter(this);
-        pullToLoadMoreFooter.setListView(mainListview);
-        pullToLoadMoreFooter.setOnLoadingMoreListener(new PullToLoadMoreFooter.OnLoadingMoreListener() {
-            @Override
-            public void OnLoadingMore() {
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        pullToLoadMoreFooter.loadingComplete();
-                    }
-                },5000);
-            }
-        });
+
     }
     class MyAdapter extends BaseAdapter{
         List<String> datas;

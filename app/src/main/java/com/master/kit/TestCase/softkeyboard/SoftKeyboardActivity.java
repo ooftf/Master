@@ -30,7 +30,21 @@ public class SoftKeyboardActivity extends BaseActivity implements View.OnLayoutC
         keyHeight = screenHeight / 3;
         llcontent= (LinearLayout) findViewById(R.id.ll_content);
         view = findViewById(R.id.view_main);
-        activityRootView.addOnLayoutChangeListener(this);
+        //activityRootView.addOnLayoutChangeListener(this);
+        KeyboardWatcher keyboardWatcher = new KeyboardWatcher(this);
+        keyboardWatcher.setListener(new KeyboardWatcher.OnKeyboardToggleListener() {
+            @Override
+            public void onKeyboardShown(int keyboardSize) {
+                view.setVisibility(View.GONE);
+                Toast.makeText(SoftKeyboardActivity.this, "监听到软键盘弹起...", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onKeyboardClosed() {
+                Toast.makeText(SoftKeyboardActivity.this, "监听到软件盘关闭...", Toast.LENGTH_SHORT).show();
+                view.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override
@@ -59,7 +73,7 @@ public class SoftKeyboardActivity extends BaseActivity implements View.OnLayoutC
         }else if(oldBottom != 0 && bottom != 0 &&(bottom - oldBottom > keyHeight)){
 
             Toast.makeText(SoftKeyboardActivity.this, "监听到软件盘关闭...", Toast.LENGTH_SHORT).show();
-            view.setVisibility(View.VISIBLE);
+            //view.setVisibility(View.VISIBLE);
         }
     }
 }

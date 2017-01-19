@@ -17,4 +17,5 @@ Entre las Preview 4 y 5, tendrás acceso a las API y al SDK finales de Android N
 A su vez, a partir de la Preview 4, podrás publicar aplicaciones en dispositivos con Android N cuyo nivel de API sea el oficial (por ejemplo, dispositivos de consumidores inscritos en el Programa de Android beta). Puedes realizar primero publicaciones en los canales alpha y beta de Google Play, a fin de probar tus aplicaciones con consumidores de Android beta antes de proceder con la distribución a gran escala en la tienda.
 
 A medida que pruebes Android N y lo uses para tus desarrollos, te recomendamos enfáticamente mantener actualizado tu entorno de desarrollo conforme se lancen actualizaciones de la muestra. Para facilitar el proceso, puedes registrar tus dispositivos de prueba en el Programa de Android Beta y obtener actualizaciones inalámbricas (OTA) en cada versión milestone. Como alternativa, habrá disponibles imágenes de preview actualizadas que puedes descargar y actualizar de manera manual.</string>
+    <string name="title_activity_key_board">KeyBoardActivity</string>
 </resources>
