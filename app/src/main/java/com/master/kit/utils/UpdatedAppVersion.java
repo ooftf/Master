@@ -50,8 +50,6 @@ public class UpdatedAppVersion {
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-
-
                     File fileApk = new File(AppPath + "/" + fileName);
                     Uri uri = Uri.fromFile(fileApk);
                     AndroidUtil.installApk(uri, application);

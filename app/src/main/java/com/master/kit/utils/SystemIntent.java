@@ -42,9 +42,9 @@ public class SystemIntent {
 					ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId, null, null);
 
 			while (phone.moveToNext()) {
-				String usernumber = phone
+				String userNumber = phone
 						.getString(phone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-				list.add(usernumber);
+				list.add(userNumber);
 			}
 			phone.close();
 			Contact contact = new Contact();

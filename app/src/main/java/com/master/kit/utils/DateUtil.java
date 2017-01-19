@@ -28,20 +28,20 @@ public class DateUtil {
 
 	public static String getCurrentTime(String pattern) throws ParseException {
 		Date date = new Date();
-		return formartDateToString(date, pattern);
+		return formatDateToString(date, pattern);
 	}
 
 	public static String getCurrentTime() {
 		Date date = new Date();
 		try {
-			return formartDateToString(date, sDefaultPattern);
+			return formatDateToString(date, sDefaultPattern);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	public static Date formartStringToDate(String time) throws ParseException {
+	public static Date formatStringToDate(String time) throws ParseException {
 		return getDefaultDateFormat().parse(time);
 	}
 
@@ -50,7 +50,7 @@ public class DateUtil {
 		return dateFormat.parse(time);
 	}
 
-	public static Calendar formartStringToCalendar(String time) throws ParseException {
+	public static Calendar formatStringToCalendar(String time) throws ParseException {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(getDefaultDateFormat().parse(time));
 		return calendar;
@@ -69,26 +69,26 @@ public class DateUtil {
 		return calendar;
 	}
 
-	public static String formartDateToString(Date date) throws ParseException {
+	public static String formatDateToString(Date date) throws ParseException {
 		return getDefaultDateFormat().format(date);
 	}
 
-	public static String formartDateToString(Date date, String pattern) throws ParseException {
+	public static String formatDateToString(Date date, String pattern) throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
 		return dateFormat.format(date);
 	}
 
-	public static String formartCalendarToString(Calendar calendar) throws ParseException {
+	public static String formatCalendarToString(Calendar calendar) throws ParseException {
 		return getDefaultDateFormat().format(calendar.getTime());
 	}
 
-	public static String formartCalendarToString(Calendar calendar, String pattern) throws ParseException {
-		return formartDateToString(calendar.getTime(), pattern);
+	public static String formatCalendarToString(Calendar calendar, String pattern) throws ParseException {
+		return formatDateToString(calendar.getTime(), pattern);
 	}
 
-	public static String formart(String time, String srcPattern, String destPattern) throws ParseException {
+	public static String format(String time, String srcPattern, String destPattern) throws ParseException {
 		Date date = formartStringToDate(time, srcPattern);
-		return formartDateToString(date, destPattern);
+		return formatDateToString(date, destPattern);
 	}
 
 	public static Calendar copyCalendar(Calendar calendar) {
@@ -110,7 +110,7 @@ public class DateUtil {
      */
 	public static int compare(Calendar first,Calendar second,int field){
 
-		for(int temp:getFiedls()){
+		for(int temp: getFields()){
 			int result = first.get(temp)-second.get(temp);
 			//如果结果 两个数不想等，或者只比较到这个单位那么已经得到比较结果
 			if(result != 0||field ==temp){
@@ -119,7 +119,7 @@ public class DateUtil {
 		}
 		return 0;
 	}
-	public static int[] getFiedls(){
+	public static int[] getFields(){
 		if(fields==null){
 			fields = new int[]{Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH,Calendar.HOUR_OF_DAY,Calendar.MINUTE,Calendar.SECOND};
 		}

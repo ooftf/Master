@@ -5,13 +5,9 @@ import java.util.List;
 
 import com.master.kit.R;
 import com.master.kit.utils.DensityUtil;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.media.Image;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -92,7 +88,7 @@ public class Banner extends RelativeLayout {
 	}
 
 	private List<String> uris;
-	public void setUris(final List<String> urisl, final DiaplayImageCallback callback) {
+	public void setUris(final List<String> urisl, final DisplayImageCallback callback) {
 
 		if (urisl == null || urisl.size() < 1) {
 			mVpBanner.setAdapter(null);
@@ -145,7 +141,7 @@ public class Banner extends RelativeLayout {
 
 
 	}
-	public interface DiaplayImageCallback{
+	public interface DisplayImageCallback {
 		void displayImage(String url,ImageView view);
 	}
 
