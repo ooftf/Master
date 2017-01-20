@@ -61,8 +61,11 @@
             android:label="@string/title_activity_key_board"
             android:theme="@style/AppTheme.NoActionBar.TranslucentStatus" />
         <activity android:name=".testcase.annotation.AnnotationActivity" />
-        <activity android:name=".testcase.filedownload.DownloadActivity"></activity>
-        <service android:name=".testcase.filedownload.DownloadService"></service>
+        <activity android:name=".testcase.filedownload.DownloadActivity" />
+
+        <service android:name=".testcase.filedownload.DownloadService" />
+
+        <activity android:name=".testcase.retrofit.RetrofitActivity"></activity>
     </application>
 
 </manifest>
