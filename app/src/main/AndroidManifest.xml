@@ -65,7 +65,8 @@
 
         <service android:name=".testcase.filedownload.DownloadService" />
 
-        <activity android:name=".testcase.retrofit.RetrofitActivity"></activity>
+        <activity android:name=".testcase.retrofit.RetrofitActivity" />
+        <activity android:name=".testcase.banner.BannerActivity"></activity>
     </application>
 
 </manifest>

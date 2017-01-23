@@ -12,8 +12,8 @@ import android.support.annotation.AnimatorRes;
 import android.support.annotation.DrawableRes;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
@@ -51,7 +51,7 @@ public class CircleIndicator extends LinearLayout implements
     private Animator mAnimationIn;
     private int mSize;
     private Handler handler;
-    private InnerRunnable mRunable;
+    private InnerRunnable mRunnable;
     private int mDelayMillis = 3000;
 
     public CircleIndicator(Context context) {
@@ -156,8 +156,8 @@ public class CircleIndicator extends LinearLayout implements
 
         mCurrentPosition = mViewpager.getCurrentItem() % mSize;
         createIndicators(viewPager);
-        //mViewpager.removeOnPageChangeListener(this);
-        mViewpager.setOnPageChangeListener(this);
+        mViewpager.removeOnPageChangeListener(this);
+        mViewpager.addOnPageChangeListener(this);
         onPageSelected(mCurrentPosition);
     }
 
@@ -169,48 +169,23 @@ public class CircleIndicator extends LinearLayout implements
     public void setViewPager(ViewPager viewPager, int size) {
         mSize = size;
         mViewpager = viewPager;
-        mViewpager.setCurrentItem(size*(100/size));
         setViewPager(viewPager);
-    }
-
-    private void start() {
-        if (mRunable == null) {
-            mRunable = new InnerRunnable();
-
-        }
-        handler.removeCallbacksAndMessages(null);
-        handler.postDelayed(mRunable, mDelayMillis);
-
-    }
-    private void stop() {
-        handler.removeCallbacksAndMessages(null);
-
     }
     public void setDelayed(int delayMillis) {
         mDelayMillis = delayMillis;
     }
 
     public void startCycle() {
-        start();
+        if (mRunnable == null) {
+            mRunnable = new InnerRunnable();
+
+        }
+        handler.removeCallbacksAndMessages(null);
+        handler.postDelayed(mRunnable, mDelayMillis);
     }
 
     public void stopCycle() {
-        stop();
-    }
-
-
-
-    /**
-     * @deprecated User ViewPager addOnPageChangeListener
-     */
-    @Deprecated
-    public void addOnPageChangeListener(
-            OnPageChangeListener onPageChangeListener) {
-        if (mViewpager == null) {
-            throw new NullPointerException(
-                    "can not find Viewpager , setViewPager first");
-        }
-        mViewpager.setOnPageChangeListener(onPageChangeListener);
+        handler.removeCallbacksAndMessages(null);
     }
 
     @Override
@@ -221,12 +196,14 @@ public class CircleIndicator extends LinearLayout implements
 
     @Override
     public void onPageSelected(int position) {
+
         position = position % mSize;
+
         if (mViewpager.getAdapter() == null
                 || mViewpager.getAdapter().getCount() <= 0) {
             return;
         }
-
+        if(mCurrentPosition == position) return;//用来解决采用 视觉欺骗方式实现循环后，在视觉差那一步造成的多余动画
         if (mAnimationIn.isRunning())
             mAnimationIn.end();
         if (mAnimationOut.isRunning())
@@ -242,10 +219,9 @@ public class CircleIndicator extends LinearLayout implements
         selectedIndicator.setBackgroundResource(mIndicatorBackgroundResId);
         mAnimationOut.setTarget(selectedIndicator);
         mAnimationOut.start();
-        System.out.println("mCurrentPosition::" + mCurrentPosition);
-        System.out.println("position::" + position);
         mCurrentPosition = position;
     }
+
 
     @Override
     public void onPageScrollStateChanged(int state) {
@@ -309,6 +285,7 @@ public class CircleIndicator extends LinearLayout implements
         @Override
         public void run() {
             if(mViewpager!=null){
+                Log.e("setCurrentItem",""+(mViewpager.getCurrentItem() + 1));
                 mViewpager.setCurrentItem(mViewpager.getCurrentItem() + 1);
             }
             handler.postDelayed(this, mDelayMillis);

@@ -7,7 +7,7 @@
         android:id="@+id/vp_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <com.master.widget.CircleIndicator
+    <com.master.kit.widget.banner.CircleIndicator
         android:id="@+id/ci_banner"
         android:layout_width="match_parent"
         android:layout_height="20dp"

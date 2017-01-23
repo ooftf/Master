@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
+import com.master.kit.testcase.banner.BannerActivity;
 import com.master.kit.R;
 import com.master.kit.base.BaseActivity;
 import com.master.kit.testcase.annotation.AnnotationActivity;
@@ -108,6 +108,8 @@ public class MainActivity extends BaseActivity {
         list.add(KeyBoardActivity.class);
         list.add(AnnotationActivity.class);
         list.add(DownloadActivity.class);
+        list.add(BannerActivity.class);
+
     }
 
     class RecyclerHolder extends RecyclerView.ViewHolder{
