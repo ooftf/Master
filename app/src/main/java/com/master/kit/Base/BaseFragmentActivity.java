@@ -6,7 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 
 import com.master.kit.utils.ActivitySet;
-import com.master.kit.utils.LogUtil;
+import com.ooftf.kit.utils.LogUtil;
+
 
 /**
  * Created by master on 2016/3/3.

@@ -11,7 +11,7 @@ import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import com.master.kit.utils.DensityUtil;
+import com.ooftf.kit.utils.DensityUtil;
 
 public class ProgressTextView extends TextView {
 

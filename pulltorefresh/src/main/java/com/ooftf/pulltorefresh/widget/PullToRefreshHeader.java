@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 
 import android.view.LayoutInflater;
@@ -13,8 +14,6 @@ import android.widget.TextView;
 import com.ooftf.pulltorefresh.R;
 
 /**
- * 存在问题：下拉刷新的时候，因为ListView接受到了down事件所以item会比那成pressed状态，但是up事件被拦截下来，所以pressed状态不会消失
- * 临时解决方案：去掉item的pressed状态
  *
  *
  * Created by master on 2016/9/20.
@@ -31,6 +30,7 @@ public class PullToRefreshHeader extends APullToRefreshHeader {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     public PullToRefreshHeader(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 

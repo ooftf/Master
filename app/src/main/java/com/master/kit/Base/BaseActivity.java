@@ -7,8 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.master.kit.utils.ActivitySet;
-import com.master.kit.utils.LogUtil;
 import com.master.kit.widget.slidingframelayout.SlidingFrameLayout;
+import com.ooftf.kit.utils.LogUtil;
 
 /**
  * Created by master on 2016/4/1.

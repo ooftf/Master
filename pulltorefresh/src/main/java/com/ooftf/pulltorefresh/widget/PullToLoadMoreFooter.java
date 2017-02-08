@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ooftf.kit.utils.DensityUtil;
 import com.ooftf.pulltorefresh.R;
 
 /**
@@ -48,7 +49,7 @@ public class PullToLoadMoreFooter extends RelativeLayout {
     int heightPx;
 
     private void init() {
-        heightPx = PullToRefreshHeader.dip2px(getContext(), 56);
+        heightPx = DensityUtil.dip2px(getContext(), 56);
         fillLayout();
         scrollListener = new AbsListView.OnScrollListener() {
             @Override
@@ -61,11 +62,11 @@ public class PullToLoadMoreFooter extends RelativeLayout {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if (firstVisibleItem + visibleItemCount == totalItemCount && state == LIST_VIEW_STATE) {
+                if (firstVisibleItem + visibleItemCount == totalItemCount && state == HIDE_STATE) {
                     onPullUpToLoadState();
                 }
                 if (firstVisibleItem + visibleItemCount < totalItemCount && state == PULL_UP_TO_LOAD_STATE) {
-                    onListViewState();
+                    onHideState();
                 }
             }
         };
@@ -81,9 +82,9 @@ public class PullToLoadMoreFooter extends RelativeLayout {
     }
 
     int state;
-    int LIST_VIEW_STATE = 0;
-    int PULL_UP_TO_LOAD_STATE = 1;
-    int LOADING_STATE = 2;
+    int HIDE_STATE = 0;//没有显示的状态
+    int PULL_UP_TO_LOAD_STATE = 1; //释放加载更多的状态
+    int LOADING_STATE = 2; // 正在加载状态
     ListView listView;
 
     public void setListView(ListView listView) {
@@ -93,9 +94,9 @@ public class PullToLoadMoreFooter extends RelativeLayout {
         noMore();
     }
 
-    private void onListViewState() {
-        Log.e("", "onListViewState");
-        state = LIST_VIEW_STATE;
+    private void onHideState() {
+        Log.e("", "onHideState");
+        state = HIDE_STATE;
         mTextDesc.setText("看不见我");
     }
 
@@ -113,7 +114,7 @@ public class PullToLoadMoreFooter extends RelativeLayout {
     }
 
     public void loadingComplete() {
-        onListViewState();
+        onHideState();
     }
     public void noMore(){
         listView.removeFooterView(this);
@@ -121,6 +122,7 @@ public class PullToLoadMoreFooter extends RelativeLayout {
 
     }
     public void hasMore(){
+        listView.removeFooterView(this);
         listView.addFooterView(this);
         listView.setOnScrollListener(scrollListener);
     }

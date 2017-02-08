@@ -7,9 +7,11 @@ import android.widget.ImageView;
 
 import com.master.kit.base.BaseActivity;
 import com.master.kit.R;
-import com.master.kit.utils.BitmapUtils;
+
 import com.master.kit.utils.CameraHelper;
-import com.master.kit.utils.LogUtil;
+import com.ooftf.kit.utils.BitmapUtils;
+import com.ooftf.kit.utils.LogUtil;
+
 
 import java.io.File;
 

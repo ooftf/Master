@@ -4,13 +4,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Scroller;
 
 import com.master.kit.R;
 import com.master.kit.testcase.retrofit.ApiService;
 import com.master.kit.wapper.image_loader.ImageLoaderFactory;
-import com.master.kit.widget.banner.Banner;
-import com.master.kit.widget.banner.BannerPagerAdapter;
+import com.ooftf.banner.Banner;
+import com.ooftf.banner.BannerPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

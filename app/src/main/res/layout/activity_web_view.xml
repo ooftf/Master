@@ -9,5 +9,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.master.kit.testcase.webview.WebViewActivity">
-
+    <com.ooftf.pulltorefresh.widget.PullToRefreshRoot
+        android:id="@+id/pull_to_refresh_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></WebView>
+    </com.ooftf.pulltorefresh.widget.PullToRefreshRoot>
 </RelativeLayout>

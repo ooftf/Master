@@ -9,8 +9,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/white"
     tools:context="com.master.kit.testcase.PullToRefreshActivity">
-    <com.ooftf.pulltorefresh.widget.PullToRefreshListView
-        android:id="@+id/main_listview"
+    <com.ooftf.pulltorefresh.widget.PullToRefreshRoot
+        android:id="@+id/main_pull_to_refresh_root"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/main_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+    </com.ooftf.pulltorefresh.widget.PullToRefreshRoot>
 </RelativeLayout>

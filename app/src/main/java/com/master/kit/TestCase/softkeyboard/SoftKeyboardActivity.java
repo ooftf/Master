@@ -7,8 +7,7 @@ import android.widget.Toast;
 
 import com.master.kit.R;
 import com.master.kit.base.BaseActivity;
-import com.master.kit.utils.LogUtil;
-
+import com.ooftf.kit.utils.LogUtil;
 
 public class SoftKeyboardActivity extends BaseActivity implements View.OnLayoutChangeListener {
     //Activity最外层的Layout视图

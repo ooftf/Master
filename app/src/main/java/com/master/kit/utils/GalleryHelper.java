@@ -12,25 +12,6 @@ import java.io.IOException;
  * Created by master on 2016/3/29.
  */
 public class GalleryHelper {
-   /* public static void selectCutedPhoto(Activity activity, int requestCode) {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("image*//**//*");
-        intent.putExtra("crop", "true");
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
-        intent.putExtra("outputX", 80);
-        intent.putExtra("outputY", 80);
-        intent.putExtra("return-data", true);
-        activity.startActivityForResult(intent, requestCode);
-    }
-
-    public static void selectPhoto(Activity activity, int requestCode) {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image*//*");
-        activity.startActivityForResult(intent, requestCode);
-    }*/
-
     int requestCode;
     Activity activity;
     public GalleryHelper(Activity activity,int requestCode){

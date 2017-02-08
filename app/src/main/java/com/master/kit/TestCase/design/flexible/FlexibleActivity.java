@@ -21,7 +21,7 @@ public class FlexibleActivity extends AppCompatActivity {
     @BindView(R.id.main_collapsing)
     CollapsingToolbarLayout mainCollapsing;
     @BindView(R.id.CardView)
-    android.support.v7.widget.CardView CardView;
+    CardView cardView;
     @BindView(R.id.fab)
     FloatingActionButton fab;
     @BindView(R.id.main_appbar)

@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.master.kit.utils.LogUtil;
+import com.ooftf.kit.utils.LogUtil;
 
 /**
  * Created by master on 2016/4/12.

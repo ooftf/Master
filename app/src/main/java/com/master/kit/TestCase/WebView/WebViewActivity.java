@@ -1,69 +1,79 @@
 package com.master.kit.testcase.webview;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.ooftf.pulltorefresh.widget.APullToRefreshHeader;
-import com.ooftf.pulltorefresh.widget.PullToRefreshWebView;
+import com.master.kit.R;
+import com.ooftf.pulltorefresh.widget.PullToRefreshRoot;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class WebViewActivity extends AppCompatActivity {
+
+    @BindView(R.id.web_view)
+    WebView webView;
+    @BindView(R.id.pull_to_refresh_root)
+    PullToRefreshRoot pullToRefreshRoot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final PullToRefreshWebView webView = new PullToRefreshWebView(this);
-        setContentView(webView);
+        setContentView(R.layout.activity_web_view);
+        ButterKnife.bind(this);
         webView.getSettings().setJavaScriptEnabled(true);
         //webView.loadUrl("www.baidu.com");
         webView.loadUrl("http://reg.163.com/resetpwd/index.do");
         webView.getSettings().setDefaultTextEncodingName("utf-8");
         webView.addJavascriptInterface(new JSHandler(), "Objectaaa");
-        webView.setWebViewClient(new WebViewClient(){
+        webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
-                if(url.contains("/register/H5Register")){
+                if (url.contains("/register/H5Register")) {
 
-                }else if(url.contains("/redPacket/index")){
+                } else if (url.contains("/redPacket/index")) {
 
-                }else if(url.contains("/certification/realName")){
+                } else if (url.contains("/certification/realName")) {
 
-                }else if(url.contains("/invest/investlist")){
+                } else if (url.contains("/invest/investlist")) {
                     //投资列表
 
-                }else{
+                } else {
 //
                     webView.loadUrl(url);
                 }
                 return true;
             }
         });
-        CookieManager cookieManager =  CookieManager.getInstance();
+        CookieManager cookieManager = CookieManager.getInstance();
         cookieManager.setAcceptCookie(true);
-        webView.setOnRefreshListener(new APullToRefreshHeader.OnRefreshListener() {
+        pullToRefreshRoot.setOnRefreshListener(new PullToRefreshRoot.OnRefreshListener() {
             @Override
             public void onRefreshing() {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        webView.onRefreshComplete();
+                        pullToRefreshRoot.onRefreshComplete();
                     }
                 },2000);
             }
         });
     }
-    class JSHandler{
+
+    class JSHandler {
         @JavascriptInterface
-        public void startInvestment(){
+        public void startInvestment() {
 
         }
+
         @JavascriptInterface
-        public void inviteFriends(){
+        public void inviteFriends() {
             //邀请好友
 
         }

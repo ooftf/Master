@@ -8,9 +8,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.master.kit.R;
-import com.master.kit.utils.BitmapUtils;
+
 import com.master.kit.utils.GalleryHelper;
-import com.master.kit.utils.LogUtil;
+import com.ooftf.kit.utils.BitmapUtils;
+
 
 import java.io.IOException;
 
