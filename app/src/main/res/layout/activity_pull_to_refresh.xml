@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/white"
-    tools:context="com.master.kit.testcase.PullToRefreshActivity">
+    tools:context="com.master.kit.testcase.pulltorefresh.PullToRefreshActivity">
     <com.ooftf.pulltorefresh.widget.PullToRefreshRoot
         android:id="@+id/main_pull_to_refresh_root"
         android:layout_width="match_parent"

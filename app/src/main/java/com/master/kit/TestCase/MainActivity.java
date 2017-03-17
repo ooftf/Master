@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.google.firebase.crash.FirebaseCrash;
 import com.master.kit.testcase.banner.BannerActivity;
 import com.master.kit.R;
 import com.master.kit.base.BaseActivity;
@@ -21,6 +20,9 @@ import com.master.kit.testcase.design.DesignDispatchActivity;
 import com.master.kit.testcase.filedownload.DownloadActivity;
 import com.master.kit.testcase.listview.ListViewActivity;
 import com.master.kit.testcase.net.NetActivity;
+import com.master.kit.testcase.pulltorefresh.HandMark;
+import com.master.kit.testcase.pulltorefresh.PullToRefreshActivity;
+import com.master.kit.testcase.retrofit.SignInActivity;
 import com.master.kit.testcase.softkeyboard.SoftKeyboardActivity;
 import com.master.kit.testcase.touchevent.TouchActivity;
 import com.master.kit.testcase.viewpager.ViewPagerActivity;
@@ -110,6 +112,8 @@ public class MainActivity extends BaseActivity {
         list.add(AnnotationActivity.class);
         list.add(DownloadActivity.class);
         list.add(BannerActivity.class);
+        list.add(HandMark.class);
+        list.add(SignInActivity.class);
 
     }
 

@@ -11,11 +11,14 @@ import com.master.kit.wapper.image_loader.ImageLoaderFactory;
 import com.ooftf.banner.Banner;
 import com.ooftf.banner.BannerPagerAdapter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,10 +40,24 @@ public class BannerActivity extends AppCompatActivity {
     }
 
     private void initBanner() {
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Log.e("request",chain.request()+"");
+                Log.e("connection",chain.connection()+"");
+                Log.e("toString",chain.toString()+"");
+                okhttp3.Response response = chain.proceed(chain.request());
+                Log.e("body",response.body().string()+"");
+                Log.e("message",response.message()+"");
+                return response;
+            }
+        }).build();
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 //.addConverterFactory(ScalarsConverterFactory.create())
-                .baseUrl("https://api.etongdai.com/").build();
+                .baseUrl("https://api.etongdai.com/")
+                .client(okHttpClient)
+                .build();
         ApiService api = retrofit.create(ApiService.class);
         Call<BannerBean> call = api.getBanner("1", "2");
         call.enqueue(new Callback<BannerBean>() {

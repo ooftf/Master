@@ -55,7 +55,7 @@
         <activity android:name=".testcase.design.flexible.FlexibleActivity" />
         <activity android:name=".testcase.AlbumActivity" />
         <activity android:name=".testcase.NewInstanceActivity" />
-        <activity android:name=".testcase.PullToRefreshActivity" />
+        <activity android:name=".testcase.pulltorefresh.PullToRefreshActivity" />
         <activity
             android:name=".testcase.KeyBoardActivity"
             android:label="@string/title_activity_key_board"
@@ -66,13 +66,16 @@
         <service android:name=".testcase.filedownload.DownloadService" />
 
         <activity android:name=".testcase.retrofit.RetrofitActivity" />
-        <activity android:name=".testcase.banner.BannerActivity"></activity>
-        <service
-            android:name=".MyFirebaseMessagingService">
+        <activity android:name=".testcase.banner.BannerActivity" />
+
+        <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".testcase.pulltorefresh.HandMark" />
+        <activity android:name=".testcase.retrofit.SignInActivity"></activity>
     </application>
 
 </manifest>
