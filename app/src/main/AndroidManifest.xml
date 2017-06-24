@@ -75,7 +75,8 @@
         </service>
 
         <activity android:name=".testcase.pulltorefresh.HandMark" />
-        <activity android:name=".testcase.retrofit.SignInActivity"></activity>
+        <activity android:name=".testcase.retrofit.SignInActivity" />
+        <activity android:name=".testcase.AAEditTextActivity"></activity>
     </application>
 
 </manifest>

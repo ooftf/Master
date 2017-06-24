@@ -1,78 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:paddingLeft="@dimen/layout_spacing"
-        android:paddingRight="@dimen/layout_spacing"
-        android:paddingTop="@dimen/layout_spacing"
-        android:text="手机验证"
-        android:textSize="@dimen/font_appbar"
-        android:textStyle="bold" />
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/layout_spacing"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingLeft="@dimen/layout_spacing"
+            android:paddingRight="@dimen/layout_spacing"
+            android:paddingTop="@dimen/layout_spacing"
+            android:text="手机验证"
+            android:textSize="@dimen/font_appbar"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_spacing"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_spacing"
+                android:text="验证码" />
+
+            <EditText
+                android:id="@+id/valid_code"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_clearance"
+                android:layout_weight="1"
+                android:background="@null"
+                android:digits="1234567890ZXCVBNMASDFGHJKLQWERTYUIOPzxcvbnmasdfghjklqwertyuiop"
+                android:hint="请输入短信验证码" />
+
+            <View
+                android:layout_width="@dimen/layout_line"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/layout_spacing"
+                android:layout_marginRight="@dimen/layout_spacing_small"
+                android:background="@color/font_black" />
+
+            <TextView
+                android:id="@+id/get_again"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/layout_spacing"
+                android:gravity="center_horizontal"
+                android:text="再次获取"
+                android:textColor="@color/blue_main" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/layout_spacing"
-            android:text="验证码" />
+            android:layout_marginBottom="@dimen/layout_clearance"
+            android:layout_marginLeft="68dp"
+            android:layout_marginTop="@dimen/layout_clearance"
+            android:text="验证码输入错误"
+            android:textColor="@color/red"
+            android:textSize="10sp"
+            android:visibility="visible" />
 
-        <EditText
-            android:digits="1234567890ZXCVBNMASDFGHJKLQWERTYUIOPzxcvbnmasdfghjklqwertyuiop"
-            android:id="@+id/valid_code"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <include layout="@layout/include_gray_line" />
+
+        <Button
+            android:id="@+id/right"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/layout_clearance"
             android:background="@null"
-            android:hint="请输入短信验证码" />
-
-        <View
-            android:layout_width="@dimen/layout_line"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/layout_spacing"
-            android:layout_marginRight="@dimen/layout_spacing_small"
-            android:background="@color/font_black" />
-        <TextView
-            android:gravity="center_horizontal"
-            android:id="@+id/get_again"
-            android:layout_marginRight="@dimen/layout_spacing"
-            android:text="再次获取"
+            android:padding="@dimen/layout_spacing"
+            android:text="确定"
             android:textColor="@color/blue_main"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content" />
+            android:textSize="@dimen/font_appbar" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/error"
-        android:visibility="invisible"
-        android:layout_marginBottom="@dimen/layout_clearance"
-        android:layout_marginTop="@dimen/layout_clearance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="68dp"
-        android:text="验证码输入错误"
-        android:textColor="@color/red"
-        android:textSize="10sp" />
-    <include layout="@layout/include_gray_line" />
-
-    <Button
-        android:id="@+id/right"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:padding="@dimen/layout_spacing"
-        android:text="确定"
-        android:textColor="@color/blue_main"
-        android:textSize="@dimen/font_appbar" />
-</LinearLayout>
+</FrameLayout>

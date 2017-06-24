@@ -4,6 +4,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.util.Log;
+
+import static android.R.attr.left;
 
 /**
  * Created by master on 2016/4/8.
@@ -17,8 +21,12 @@ public class CanvasUtil {
      * @param canvas
      * @param paint
      */
-    public static void drawText(String text, float x, float y, Canvas canvas , Paint paint ){
-        canvas.drawText(text,x-paint.measureText(text)/2,y+paint.measureText(text,0,1)/2,paint);
+    public static void drawText(String text, float x, float y, Canvas canvas , Paint paint){
+        Rect rect = new Rect();
+        paint.getTextBounds(text,0,1,rect);
+        float halfH = (rect.bottom-rect.top)/2;
+        float halfW = paint.measureText(text)/2;
+        canvas.drawText(text,x-halfW,y+halfH,paint);
     }
 
     public static Bitmap rotateBitmap(Bitmap bitmap, int degree) {

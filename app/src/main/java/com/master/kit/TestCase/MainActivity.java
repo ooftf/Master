@@ -114,6 +114,7 @@ public class MainActivity extends BaseActivity {
         list.add(BannerActivity.class);
         list.add(HandMark.class);
         list.add(SignInActivity.class);
+        list.add(AAEditTextActivity.class);
 
     }
 

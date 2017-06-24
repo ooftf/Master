@@ -79,7 +79,7 @@ public class PullToRefreshActivity extends AppCompatActivity {
             @Override
             public void run() {
                 fillData();
-                pullToLoadMoreFooter.loadingComplete();
+                pullToLoadMoreFooter.loadingComplete(false);
             }
         }, 5000);
     }
@@ -88,6 +88,7 @@ public class PullToRefreshActivity extends AppCompatActivity {
         for (int i = 0; i < 100; i++) {
             myAdapter.getDatas().add(i + "");
         }
+        myAdapter.notifyDataSetChanged();
     }
 
     class MyAdapter extends BaseAdapter {
