@@ -1,6 +1,8 @@
 package com.master.kit.testcase.softkeyboard;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -9,6 +11,7 @@ import com.master.kit.R;
 import com.master.kit.base.BaseActivity;
 import com.ooftf.kit.utils.LogUtil;
 
+@RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
 public class SoftKeyboardActivity extends BaseActivity implements View.OnLayoutChangeListener {
     //Activity最外层的Layout视图
     private View activityRootView;

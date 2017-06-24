@@ -1,5 +1,6 @@
 package com.master.kit.widget.indicatortextview;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.ooftf.kit.utils.DensityUtil;
 
+@SuppressLint("AppCompatCustomView")
 public class ProgressTextView extends TextView {
 
 	public ProgressTextView(Context context) {

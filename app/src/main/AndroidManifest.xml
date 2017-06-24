@@ -48,7 +48,6 @@
             android:name=".testcase.softkeyboard.SoftKeyboardActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".testcase.cpb.CPBActivity" />
-        <activity android:name=".testcase.design.tab.TabActivity" />
         <activity android:name=".testcase.webview.WebViewActivity" />
         <activity android:name=".testcase.design.DesignDispatchActivity" />
         <activity android:name=".testcase.net.NetActivity" />
@@ -67,13 +66,6 @@
 
         <activity android:name=".testcase.retrofit.RetrofitActivity" />
         <activity android:name=".testcase.banner.BannerActivity" />
-
-        <service android:name=".MyFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-
         <activity android:name=".testcase.pulltorefresh.HandMark" />
         <activity android:name=".testcase.retrofit.SignInActivity" />
         <activity android:name=".testcase.AAEditTextActivity"></activity>

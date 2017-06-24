@@ -12,6 +12,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
+@SuppressLint("AppCompatCustomView")
 public class ZoomImageView extends ImageView {
 
 	@SuppressLint("NewApi")

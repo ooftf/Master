@@ -24,24 +24,24 @@ import java.util.List;
 /**
  * Created by master on 2016/4/12.
  */
-public class GesturePasswordView extends View {
-    public GesturePasswordView(Context context) {
+public class GesturePassword extends View {
+    public GesturePassword(Context context) {
         super(context);
         init();
     }
 
-    public GesturePasswordView(Context context, AttributeSet attrs) {
+    public GesturePassword(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public GesturePasswordView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public GesturePassword(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public GesturePasswordView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public GesturePassword(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
     }
