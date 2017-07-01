@@ -3,14 +3,24 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Master.iml" filepath="$PROJECT_DIR$/Master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Master.iml" filepath="$PROJECT_DIR$/Master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/banner/banner.iml" filepath="$PROJECT_DIR$/banner/banner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/banner/banner.iml" filepath="$PROJECT_DIR$/banner/banner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cpb/cpb.iml" filepath="$PROJECT_DIR$/cpb/cpb.iml" />
       <module fileurl="file://$PROJECT_DIR$/cpb/cpb.iml" filepath="$PROJECT_DIR$/cpb/cpb.iml" />
       <module fileurl="file://$PROJECT_DIR$/decoupling/decoupling.iml" filepath="$PROJECT_DIR$/decoupling/decoupling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/decoupling/decoupling.iml" filepath="$PROJECT_DIR$/decoupling/decoupling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mastervolley/mastervolley.iml" filepath="$PROJECT_DIR$/mastervolley/mastervolley.iml" />
       <module fileurl="file://$PROJECT_DIR$/mastervolley/mastervolley.iml" filepath="$PROJECT_DIR$/mastervolley/mastervolley.iml" />
       <module fileurl="file://$PROJECT_DIR$/nestedscroll/nestedscroll.iml" filepath="$PROJECT_DIR$/nestedscroll/nestedscroll.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nestedscroll/nestedscroll.iml" filepath="$PROJECT_DIR$/nestedscroll/nestedscroll.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" filepath="$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" />
       <module fileurl="file://$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" filepath="$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" />
       <module fileurl="file://$PROJECT_DIR$/retrofit/retrofit.iml" filepath="$PROJECT_DIR$/retrofit/retrofit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/retrofit/retrofit.iml" filepath="$PROJECT_DIR$/retrofit/retrofit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/utils/utils.iml" filepath="$PROJECT_DIR$/utils/utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils/utils.iml" filepath="$PROJECT_DIR$/utils/utils.iml" />
     </modules>
   </component>
