@@ -1,5 +1,7 @@
 package com.ooftf.kit.utils;
 
+import android.util.Log;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -111,8 +113,10 @@ public class DateUtil {
 	public static int compare(Calendar first,Calendar second,int field){
 
 		for(int temp: getFields()){
+			Log.e("result",first.get(temp)+":"+second.get(temp));
 			int result = first.get(temp)-second.get(temp);
 			//如果结果 两个数不想等，或者只比较到这个单位那么已经得到比较结果
+			Log.e("result",result+"");
 			if(result != 0||field ==temp){
 				return result;
 			}
