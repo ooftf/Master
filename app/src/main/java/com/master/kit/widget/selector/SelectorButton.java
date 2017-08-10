@@ -59,38 +59,6 @@ public class SelectorButton extends Button {
         typedArray.recycle();
     }
 
-    /*private void init() {
-        setBackgroundResource(normal);
-        setOnTouchListener(new OnTouchListener() {
-            boolean isCancel = false;
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        setBackgroundResource(selected);
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        if(!isCancel){
-
-                            setBackgroundResource(normal);
-                            SelectorButton.this.performClick();
-                        }
-                        isCancel = false;
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        if (event.getX() > getMeasuredWidth()
-                                || event.getY() > getMeasuredHeight()
-                                || event.getX() < 0 || event.getY() < 0) {
-                            setBackgroundResource(normal);
-                            isCancel = true;
-                        }
-                        break;
-                }
-                return false;
-            }
-        });
-    }*/
     private void init() {
         setBackgroundResource(normal);
         setOnTouchListener(new OnTouchListener() {

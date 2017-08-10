@@ -1,0 +1,38 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.master.kit.testcase.pulltorefresh.HandMarkFragment">
+
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:background="@color/black"
+                android:text="111111111111111111111111"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+            <TextView
+                android:background="@color/red"
+                android:text="222222222222222222222222"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+            <TextView
+                android:background="@color/white"
+                android:text="333333333333333333333333"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+            <TextView
+                android:background="#00ff00"
+                android:text="444444444444444444444"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+        </LinearLayout>
+
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+</FrameLayout>

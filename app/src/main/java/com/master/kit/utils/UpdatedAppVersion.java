@@ -15,6 +15,8 @@ import android.support.v4.app.NotificationCompat;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.BinaryHttpResponseHandler;
 import com.master.kit.R;
+import com.ooftf.kit.utils.AndroidUtil;
+import com.ooftf.kit.utils.IOUtil;
 
 import java.io.File;
 
@@ -50,8 +52,6 @@ public class UpdatedAppVersion {
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-
-
                     File fileApk = new File(AppPath + "/" + fileName);
                     Uri uri = Uri.fromFile(fileApk);
                     AndroidUtil.installApk(uri, application);

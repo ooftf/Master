@@ -1,34 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.master.kit">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
+        android:name=".global.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".TestActivity.SwitchButtonActivity" />
-        <activity android:name=".TestActivity.CameraActivity" />
-        <activity android:name=".TestActivity.SwitchFristActivity" />
-        <activity android:name=".TestActivity.SwitchSecondActivity" />
-        <activity android:name=".TestActivity.CalendarActivity" />
-        <activity android:name=".TestActivity.MainActivity">
+        android:theme="@style/AppTheme.NoActionBar.TranslucentStatus"
+        tools:replace="android:icon, android:theme">
+
+        <!-- @style/AppTheme.NoActionBar -->
+        <activity android:name=".testcase.SwitchButtonActivity" />
+        <activity android:name=".testcase.CameraActivity" />
+        <activity android:name=".testcase.SwitchFristActivity" />
+        <activity android:name=".testcase.SwitchSecondActivity" />
+        <activity android:name=".testcase.CalendarActivity" />
+        <activity
+            android:name=".testcase.MainActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestActivity.PageLayoutActivity" />
-        <activity android:name=".TestActivity.GesturePasswordActivity" />
+        <activity android:name=".testcase.PageLayoutActivity" />
+        <activity android:name=".testcase.GesturePasswordActivity" />
         <activity
-            android:name=".TestActivity.TouchEventTest.TouchActivity"
+            android:name=".testcase.touchevent.TouchActivity"
             android:label="@string/title_activity_touch"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TestActivity.ViewPagerTest.ViewPagerActivity"></activity>
+        <activity android:name=".testcase.viewpager.ViewPagerActivity" />
+        <activity
+            android:name=".testcase.design.DesignActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".testcase.listview.ListViewActivity" />
+        <activity
+            android:name=".testcase.softkeyboard.SoftKeyboardActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".testcase.cpb.CPBActivity" />
+        <activity android:name=".testcase.webview.WebViewActivity" />
+        <activity android:name=".testcase.design.DesignDispatchActivity" />
+        <activity android:name=".testcase.net.NetActivity" />
+        <activity android:name=".testcase.design.flexible.FlexibleActivity" />
+        <activity android:name=".testcase.AlbumActivity" />
+        <activity android:name=".testcase.NewInstanceActivity" />
+        <activity android:name=".testcase.pulltorefresh.PullToRefreshActivity" />
+        <activity
+            android:name=".testcase.KeyBoardActivity"
+            android:label="@string/title_activity_key_board"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatus" />
+        <activity android:name=".testcase.annotation.AnnotationActivity" />
+        <activity android:name=".testcase.filedownload.DownloadActivity" />
+
+        <service android:name=".testcase.filedownload.DownloadService" />
+
+        <activity android:name=".testcase.retrofit.RetrofitActivity" />
+        <activity android:name=".testcase.banner.BannerActivity" />
+        <activity android:name=".testcase.pulltorefresh.HandMark" />
+        <activity android:name=".testcase.retrofit.SignInActivity" />
+        <activity android:name=".testcase.AAEditTextActivity"></activity>
     </application>
 
 </manifest>

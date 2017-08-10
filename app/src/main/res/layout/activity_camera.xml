@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.master.kit.TestActivity.CameraActivity">
+    android:background="@color/background"
+    tools:context="com.master.kit.testcase.CameraActivity">
     <Button
         android:id="@+id/btn_main"
         android:layout_width="wrap_content"

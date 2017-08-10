@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+   <color name="colorPrimaryDark">#303F9F</color>
+  <!--  <color name="colorPrimaryDark">#66666666</color>-->
     <color name="colorAccent">#FF4081</color>
+    <color name="transparent">#00000000</color>
+    <color name="background">#FFFFFF</color>
+    <color name="translucent">#11000000</color>
+    <color name="appbar_background">#FFFFFF</color>
+    <color name="blue_main">#008CE8</color>
+    <color name="blue_main_light">#B2DEF8</color>
+
+    <color name="gray_line">#dddddd</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="red">#FF0000</color>
+    <color name="gray_key_pressed">#CCCCCC</color>
+    <color name="gray_bg">#EFF4F7</color>
+    <color name="font_black">#333333</color>
+    <color name="font_gray">#999999</color>
+    <color name="font_blue_light">#A3CAF4</color>
+    <color name="text_hint">#bbbbbb</color>
+    <!--人脸识别 -->
+    <color name="logout_red_normal">#f44d3b</color>
+    <color name="logout_red_pressed">#7ff44d3b</color>
+    <!--蓝色按钮-->
+    <color name="btn_blue_normal">#00afec</color>
+    <color name="btn_blue_pressed">#7f00afec</color>
+    <color name="color_grey_line">#e7e7e7</color>
+    <color name="red_f34e3b">#f34e3b</color>
+    <color name="red_f35e3e">#f35e3e</color>
+    <color name="main_title_color">#333333</color>
+    <color name="main_header_footer_divide_color">#979797</color>
+    <color name="credit_product_money_color">#ff8828</color>
+    <color name="credit_product_loan_term_color">#6db247</color>
+
+    <color name="drawer_item_selected_bg">#01b0ec</color>
+
+    <color name="score_purple">#1337f7</color>
 </resources>
