@@ -16,7 +16,7 @@
     <color name="black">#000000</color>
 
     <color name="red">#FF0000</color>
-
+    <color name="gray_key_pressed">#CCCCCC</color>
     <color name="gray_bg">#EFF4F7</color>
     <color name="font_black">#333333</color>
     <color name="font_gray">#999999</color>

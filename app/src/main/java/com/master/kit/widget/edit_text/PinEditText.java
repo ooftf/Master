@@ -1,5 +1,6 @@
 package com.master.kit.widget.edit_text;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -12,6 +13,7 @@ import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 /**
  *
@@ -19,7 +21,8 @@ import android.view.View;
  *
  */
 
-public class PinEditText extends android.support.v7.widget.AppCompatEditText {
+@SuppressLint("AppCompatCustomView")
+public class PinEditText extends EditText {
     int w;
     int h;
     Paint strokePaint;
@@ -95,6 +98,7 @@ public class PinEditText extends android.support.v7.widget.AppCompatEditText {
         throw new RuntimeException("setCustomSelectionActionModeCallback() not supported.");
     }
     private void initStrokePaint() {
+        getPaint().setColor(getCurrentTextColor());
         strokePaint = new Paint();
         strokePaint.setAntiAlias(true);
         strokePaint.setStyle(Paint.Style.STROKE);

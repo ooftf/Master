@@ -67,10 +67,8 @@ public class MasterPopupWindow extends PopupWindow {
 	 * @param gravity
 	 * @param x
 	 * @param y
-	 * @param isAsDialog
 	 */
-	public void showAtLocation(View parent, int gravity, int x, int y,boolean isAsDialog) {
-		if(isAsDialog){
+	public void showAtLocation(View parent, int gravity, int x, int y) {
 			asDialog();
 			Activity activity = (Activity) getContentView().getContext();
 			View currentFocus = activity.getCurrentFocus();
@@ -80,7 +78,6 @@ public class MasterPopupWindow extends PopupWindow {
 						.getSystemService(Context.INPUT_METHOD_SERVICE);
 				im.hideSoftInputFromWindow(applicationWindowToken, InputMethodManager.HIDE_NOT_ALWAYS);
 			}
-		}
 		super.showAtLocation(parent, gravity, x, y);		
 	}
 
