@@ -147,7 +147,7 @@ public class CalendarView extends View {
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
         if (widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.AT_MOST) {
-            dest = Math.min(Math.min(widthSize, widthSize), wrapSize);
+            dest = Math.min(Math.min(widthSize, heightSize), wrapSize);
             setMeasuredDimension(dest, dest);
         } else if (widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.EXACTLY) {
             dest = Math.min(widthSize, heightSize);
