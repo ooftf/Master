@@ -24,9 +24,8 @@ public class CanvasUtil {
     public static void drawText(String text, float x, float y, Canvas canvas , Paint paint){
         Rect rect = new Rect();
         paint.getTextBounds(text,0,1,rect);
-        float halfH = (rect.bottom-rect.top)/2;
         float halfW = paint.measureText(text)/2;
-        canvas.drawText(text,x-halfW,y+halfH,paint);
+        canvas.drawText(text,x-halfW,y+halfW,paint);
     }
 
     public static Bitmap rotateBitmap(Bitmap bitmap, int degree) {
