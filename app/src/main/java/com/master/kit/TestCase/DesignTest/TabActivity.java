@@ -1,9 +1,9 @@
-package com.master.kit.TestCase.DesignTest;
+package com.master.kit.testcase.DesignTest;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import com.master.kit.Base.BaseActivity;
+import com.master.kit.base.BaseActivity;
 import com.master.kit.R;
 
 import butterknife.BindView;
