@@ -11,7 +11,7 @@ import com.master.kit.R;
 
 import java.util.zip.Inflater;
 
-class DialogDemo extends Dialog {
+public class DialogDemo extends Dialog {
 
     public DialogDemo(Context context) {
         super(context, R.style.BlankDialogTheme);

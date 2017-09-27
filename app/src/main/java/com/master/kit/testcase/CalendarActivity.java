@@ -13,6 +13,5 @@ public class CalendarActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         CalendarView calendarView = (CalendarView) findViewById(R.id.cv_main);
-        calendarView.setDate(2015,5);
     }
 }

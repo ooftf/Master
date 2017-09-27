@@ -40,6 +40,7 @@ public class BaseViewGroup extends FrameLayout {
         boolean result =  super.dispatchTouchEvent(ev);
 
         LogUtil.e(null,25,this.getClass().getSimpleName(),"end","dispatchTouchEvent",dispatchTouchEvent,"super",result);
+        LogUtil.e("-----------------------------一次循环结束--------------------------------------");
         return dispatchTouchEvent;
     }
 
@@ -58,5 +59,6 @@ public class BaseViewGroup extends FrameLayout {
         LogUtil.e(null,25,this.getClass().getSimpleName(),"end","onTouchEvent" ,onTouchEvent ,"super",result);
         return onTouchEvent;
     }
+
 
 }

@@ -33,7 +33,7 @@
                 app:navigationContentDescription="back"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_appbar_height"
-                app:layout_collapseMode="pin"></android.support.v7.widget.Toolbar>
+                app:layout_collapseMode="pin"/>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 

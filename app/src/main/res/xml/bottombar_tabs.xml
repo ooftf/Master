@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_widget"
+        icon="@drawable/ic_widget_24dp"
+        title="控件" />
+    <tab
+        id="@+id/tab_logic"
+        icon="@drawable/ic_logic_24dp"
+        title="逻辑" />
+    <tab
+        id="@+id/tab_debug"
+        icon="@drawable/ic_debug_24dp"
+        title="调试" />
+    <tab
+        id="@+id/tab_other"
+        icon="@drawable/ic_other_24dp"
+        title="其他" />
+</tabs>

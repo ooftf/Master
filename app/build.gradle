@@ -6,11 +6,12 @@ dependencies {
     compile project(':mastervolley')
     compile project(':pulltorefresh')
     compile project(path: ':pulltorefresh')
-    compile "com.android.support:appcompat-v7:$rootProject.ext.supportVersion"
-    compile "com.android.support:support-v4:$rootProject.ext.supportVersion"
+    compile "com.android.support:appcompat-v7:$support"
+    compile "com.android.support:support-v4:$support"
     compile project(path: ':banner')
-    compile "com.android.support:cardview-v7:$rootProject.ext.supportVersion"
+    compile "com.android.support:cardview-v7:$support"
     compile project(':retrofit')
+    compile 'com.android.support:support-v4:25.1.0'
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.alibaba:fastjson:1.2.7'
     compile 'com.mcxiaoke.volley:library:1.0.19'
@@ -19,7 +20,7 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.0.0'
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.7.5'
     compile 'de.hdodenhof:circleimageview:2.0.0'
-    compile 'com.jakewharton:butterknife:8.4.0'
+    compile "com.jakewharton:butterknife:$butterknife"
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
@@ -28,9 +29,8 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.android.support:support-v4:25.1.0'
-    compile 'com.android.support:support-v4:25.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
     testCompile 'junit:junit:4.12'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife"
+    compile 'com.roughike:bottom-bar:2.3.1'
 }

@@ -27,7 +27,7 @@ public class DesignActivity extends BaseActivity {
        // setSupportActionBar(toolbar);
        // toolbar.inflateMenu();
         toolbar.setTitle("我只是个熊啊");
-        collapsingToolbarLayout.setTitle("我们都是熊啊");
+       // collapsingToolbarLayout.setTitle("我们都是熊啊");
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

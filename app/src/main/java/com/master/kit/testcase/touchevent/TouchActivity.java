@@ -3,6 +3,7 @@ package com.master.kit.testcase.touchevent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -47,6 +48,12 @@ public class TouchActivity extends BaseActivity {
         first = (BaseViewGroup) findViewById(R.id.first);
         second = (BaseViewGroup) findViewById(R.id.second);
         third = (BaseViewGroup) findViewById(R.id.third);
+        /*third.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("onClick","over");
+            }
+        });*/
     }
 
     NavigationView navigationView;

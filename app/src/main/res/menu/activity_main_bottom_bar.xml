@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_widget"
+        android:title="控件"
+        android:icon="@drawable/ic_widget_24dp"
+        />
+    <item android:id="@+id/action_logic"
+        android:title="逻辑"
+        android:icon="@drawable/ic_logic_24dp"
+        />
+    <item android:id="@+id/action_debug"
+        android:title="调试"
+        android:icon="@drawable/ic_debug_24dp"
+        />
+    <item android:id="@+id/action_other"
+        android:title="其他"
+        android:icon="@drawable/ic_other_24dp"
+        />
+</menu>
