@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.master.kit.base.BaseActivity;
+import tf.oof.com.service.base.BaseActivity;
 import com.master.kit.R;
 
 import com.master.kit.utils.CameraHelper;
-import com.ooftf.kit.utils.BitmapUtils;
-import com.ooftf.kit.utils.LogUtil;
+import tf.oof.com.service.utils.BitmapUtils;
+import tf.oof.com.service.utils.LogUtil;
 
 
 import java.io.File;

@@ -8,8 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.master.kit.R;
-import com.master.kit.base.BaseActivity;
-import com.ooftf.kit.utils.LogUtil;
+import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.utils.LogUtil;
 
 @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
 public class SoftKeyboardActivity extends BaseActivity implements View.OnLayoutChangeListener {

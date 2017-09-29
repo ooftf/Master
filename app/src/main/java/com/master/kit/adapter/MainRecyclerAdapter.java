@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.master.kit.R;
-import com.master.kit.base.BaseActivity;
-import com.master.kit.base.BaseRecyclerAdapter;
+import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseRecyclerAdapter;
 
 import java.lang.reflect.InvocationTargetException;
 

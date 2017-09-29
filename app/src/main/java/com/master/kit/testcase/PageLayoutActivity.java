@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.master.kit.base.BaseActivity;
+import tf.oof.com.service.base.BaseActivity;
 import com.master.kit.R;
 import com.master.kit.widget.verticalpagelayout.VerticalPageLayout;
 

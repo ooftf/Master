@@ -5,17 +5,14 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.ooftf.kit.utils.DensityUtil;
-import com.ooftf.pulltorefresh.R;
 
-import static com.ooftf.kit.utils.DensityUtil.dip2px;
+import com.ooftf.pulltorefresh.R;
 
 /**
  * Created by master on 2016/9/22.

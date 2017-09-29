@@ -15,7 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.master.kit.R;
-import com.ooftf.kit.utils.DensityUtil;
+import tf.oof.com.service.utils.DensityUtil;
 
 
 import java.util.ArrayList;

@@ -9,6 +9,10 @@
         icon="@drawable/ic_logic_24dp"
         title="逻辑" />
     <tab
+        id="@+id/tab_app"
+        icon="@drawable/ic_app_24dp"
+        title="APP" />
+    <tab
         id="@+id/tab_debug"
         icon="@drawable/ic_debug_24dp"
         title="调试" />

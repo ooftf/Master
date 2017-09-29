@@ -3,7 +3,7 @@ package com.master.kit.testcase.DesignTest;
 import android.os.Bundle;
 import android.view.View;
 
-import com.master.kit.base.BaseActivity;
+import tf.oof.com.service.base.BaseActivity;
 import com.master.kit.R;
 import com.master.kit.testcase.design.DesignActivity;
 

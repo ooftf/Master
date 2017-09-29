@@ -3,7 +3,7 @@ package com.master.kit.testcase.DesignTest;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import com.master.kit.base.BaseActivity;
+import tf.oof.com.service.base.BaseActivity;
 import com.master.kit.R;
 
 import butterknife.BindView;

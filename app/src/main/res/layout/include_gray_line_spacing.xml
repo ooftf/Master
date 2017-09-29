@@ -5,7 +5,7 @@
     android:background="@color/white"
     android:orientation="vertical">
     <View
-        android:layout_marginLeft="@dimen/layout_spacing"
+        android:layout_marginLeft="@dimen/layout_screen_spacing"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_line"
         android:background="@color/gray_line"

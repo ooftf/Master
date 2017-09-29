@@ -1,12 +1,11 @@
 package com.master.kit.testcase;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.master.kit.R;
-import com.master.kit.base.BaseActivity;
+import tf.oof.com.service.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

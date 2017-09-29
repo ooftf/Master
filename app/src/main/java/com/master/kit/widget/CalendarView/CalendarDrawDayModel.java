@@ -4,8 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import com.ooftf.kit.utils.CanvasUtil;
-import com.ooftf.kit.utils.DateUtil;
+import tf.oof.com.service.utils.DateUtil;
 
 import java.util.Calendar;
 

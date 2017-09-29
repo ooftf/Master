@@ -17,7 +17,7 @@
             <option value="$PROJECT_DIR$/nestedscroll" />
             <option value="$PROJECT_DIR$/pulltorefresh" />
             <option value="$PROJECT_DIR$/retrofit" />
-            <option value="$PROJECT_DIR$/utils" />
+            <option value="$PROJECT_DIR$/service" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

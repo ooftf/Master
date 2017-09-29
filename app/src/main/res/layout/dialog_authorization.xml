@@ -14,30 +14,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:paddingLeft="@dimen/layout_spacing"
-            android:paddingRight="@dimen/layout_spacing"
-            android:paddingTop="@dimen/layout_spacing"
+            android:paddingLeft="@dimen/layout_screen_spacing"
+            android:paddingRight="@dimen/layout_screen_spacing"
+            android:paddingTop="@dimen/layout_screen_spacing"
             android:text="手机验证"
-            android:textSize="@dimen/font_appbar"
+            android:textSize="@dimen/font_large"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/layout_spacing"
+            android:layout_marginTop="@dimen/layout_screen_spacing"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/layout_spacing"
+                android:layout_marginLeft="@dimen/layout_screen_spacing"
                 android:text="验证码" />
 
             <EditText
                 android:id="@+id/valid_code"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/layout_clearance"
+                android:layout_marginLeft="@dimen/layout_screen_spacing"
                 android:layout_weight="1"
                 android:background="@null"
                 android:digits="1234567890ZXCVBNMASDFGHJKLQWERTYUIOPzxcvbnmasdfghjklqwertyuiop"
@@ -46,15 +46,15 @@
             <View
                 android:layout_width="@dimen/layout_line"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/layout_spacing"
-                android:layout_marginRight="@dimen/layout_spacing_small"
+                android:layout_marginLeft="@dimen/layout_screen_spacing"
+                android:layout_marginRight="@dimen/layout_screen_spacing"
                 android:background="@color/font_black" />
 
             <TextView
                 android:id="@+id/get_again"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/layout_spacing"
+                android:layout_marginRight="@dimen/layout_screen_spacing"
                 android:gravity="center_horizontal"
                 android:text="再次获取"
                 android:textColor="@color/blue_main" />
@@ -64,9 +64,9 @@
             android:id="@+id/error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/layout_clearance"
+            android:layout_marginBottom="@dimen/layout_screen_spacing"
             android:layout_marginLeft="68dp"
-            android:layout_marginTop="@dimen/layout_clearance"
+            android:layout_marginTop="@dimen/layout_screen_spacing"
             android:text="验证码输入错误"
             android:textColor="@color/red"
             android:textSize="10sp"
@@ -79,9 +79,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:padding="@dimen/layout_spacing"
+            android:padding="@dimen/layout_screen_spacing"
             android:text="确定"
             android:textColor="@color/blue_main"
-            android:textSize="@dimen/font_appbar" />
+            android:textSize="@dimen/font_large" />
     </LinearLayout>
 </FrameLayout>

@@ -9,10 +9,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.ooftf.kit.utils.DensityUtil;
+
 
 import java.util.ArrayList;
 import java.util.List;
+
+import tf.oof.com.service.utils.DensityUtil;
 
 public class Banner extends RelativeLayout {
 

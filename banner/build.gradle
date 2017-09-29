@@ -27,8 +27,6 @@ dependencies {
     })
     compile "com.android.support:appcompat-v7:$support"
     compile "com.android.support:support-v4:$support"
-
     testCompile 'junit:junit:4.12'
-
-    compile project(':utils')
+    compile project(':service')
 }

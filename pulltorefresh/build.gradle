@@ -22,6 +22,6 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile "com.android.support:appcompat-v7:$support"
-    compile project(':utils')
+    compile project(':service')
     compile 'com.jakewharton:butterknife-annotations:8.4.0'
 }

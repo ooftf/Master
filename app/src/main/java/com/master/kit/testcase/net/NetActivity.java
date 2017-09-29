@@ -14,7 +14,7 @@ import com.dks.master.mastervolley.BaseVolleyHandler;
 import com.dks.master.mastervolley.VolleyHelper;
 import com.dks.master.mastervolley.VolleyPackage;
 import com.master.kit.R;
-import com.master.kit.base.BaseActivity;
+import tf.oof.com.service.base.BaseActivity;
 import com.master.kit.widget.verticalruninglayout.VerticalRuningLayout;
 
 import java.util.ArrayList;

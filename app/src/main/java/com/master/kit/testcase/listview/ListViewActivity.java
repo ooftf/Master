@@ -9,7 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.master.kit.R;
-import com.master.kit.base.BaseActivity;
+import tf.oof.com.service.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,7 +2,7 @@ package com.master.kit.testcase;
 
 import android.os.Bundle;
 
-import com.master.kit.base.BaseActivity;
+import tf.oof.com.service.base.BaseActivity;
 import com.master.kit.R;
 
 public class GesturePasswordActivity extends BaseActivity {

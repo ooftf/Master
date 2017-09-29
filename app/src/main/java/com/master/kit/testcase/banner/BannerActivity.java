@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.master.kit.R;
 import com.master.kit.testcase.retrofit.ApiService;
-import com.master.kit.wapper.image_loader.ImageLoaderFactory;
+import tf.oof.com.service.engine.image_loader.ImageLoaderFactory;
 import com.ooftf.banner.Banner;
 import com.ooftf.banner.BannerPagerAdapter;
 
@@ -72,7 +72,7 @@ public class BannerActivity extends AppCompatActivity {
                 banner.setUris(list, new BannerPagerAdapter.DisplayImageCallback() {
                     @Override
                     public void displayImage(String url, ImageView view) {
-                        ImageLoaderFactory.create().displayImage(BannerActivity.this,url,view);
+                        ImageLoaderFactory.create().display(BannerActivity.this,url,view);
                     }
                 });
 

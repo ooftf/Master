@@ -10,9 +10,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.ooftf.kit.utils.CanvasUtil;
-import com.ooftf.kit.utils.DateUtil;
-import com.ooftf.kit.utils.DensityUtil;
+import tf.oof.com.service.utils.CanvasUtil;
+import tf.oof.com.service.utils.DateUtil;
+import tf.oof.com.service.utils.DensityUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;

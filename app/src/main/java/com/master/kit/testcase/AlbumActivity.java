@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import com.master.kit.R;
 
 import com.master.kit.utils.GalleryHelper;
-import com.ooftf.kit.utils.BitmapUtils;
+import tf.oof.com.service.utils.BitmapUtils;
 
 
 import java.io.IOException;

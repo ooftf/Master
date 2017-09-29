@@ -1,6 +1,6 @@
 package com.master.kit.testcase;
 
-import com.master.kit.base.BaseActivity;
+import tf.oof.com.service.base.BaseActivity;
 
 /**
  * Created by master on 2017/1/22.

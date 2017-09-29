@@ -1,10 +1,9 @@
 package com.master.kit.testcase;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import com.master.kit.R;
-import com.master.kit.base.BaseActivity;
+import tf.oof.com.service.base.BaseActivity;
 
 public class AAEditTextActivity extends BaseActivity {
 
