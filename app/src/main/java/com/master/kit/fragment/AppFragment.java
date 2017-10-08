@@ -16,6 +16,7 @@ import com.master.kit.testcase.GesturePasswordActivity;
 import com.master.kit.testcase.PageLayoutActivity;
 import com.master.kit.testcase.banner.BannerActivity;
 import com.master.kit.testcase.cpb.CPBActivity;
+import com.ooftf.applet.breakfast.BreakfastActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,6 +74,7 @@ public class AppFragment extends BaseFragment {
         adapter.add(GesturePasswordActivity.class);
         adapter.add(BannerActivity.class);
         adapter.add(AAEditTextActivity.class);
+        adapter.add(BreakfastActivity.class);
         adapter.notifyDataSetChanged();
     }
 }

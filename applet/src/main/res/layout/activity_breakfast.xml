@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context="com.ooftf.applet.breakfast.BreakfastActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:background="@color/colorPrimary"
+        app:title="早餐时间"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_appbar_height" />
+    <LinearLayout
+        android:paddingLeft="@dimen/layout_edge_spacing"
+        android:paddingRight="@dimen/layout_edge_spacing"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/breakfast_item_height"
+        android:orientation="horizontal">
+
+        <EditText
+            android:text="7"
+            android:gravity="center"
+            android:id="@+id/hour"
+            android:inputType="number"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/breakfast_item_height"
+            android:layout_weight="1" />
+
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/breakfast_item_height"
+            android:layout_weight="1"
+            android:text="时" />
+
+        <EditText
+            android:text="40"
+            android:gravity="center"
+            android:id="@+id/minute"
+            android:inputType="number"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/breakfast_item_height"
+            android:layout_weight="1" />
+        <TextView
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/breakfast_item_height"
+            android:layout_weight="1"
+            android:text="分" />
+    </LinearLayout>
+    <TextView
+        android:paddingLeft="@dimen/layout_edge_spacing"
+        android:paddingRight="@dimen/layout_edge_spacing"
+        android:textSize="@dimen/font_large"
+        android:id="@+id/result"
+        android:gravity="center_vertical"
+        android:text="预计需要时间："
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/breakfast_item_height" />
+    <Button
+        android:textSize="@dimen/font_large"
+        android:id="@+id/refresh"
+        android:text="重新计算"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/breakfast_item_height" />
+</LinearLayout>
