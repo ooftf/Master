@@ -1,47 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/home_item_height"
     android:gravity="center_vertical"
+    android:orientation="horizontal"
     android:paddingLeft="@dimen/layout_edge_spacing"
-    android:paddingRight="@dimen/layout_edge_spacing"
-    android:orientation="horizontal">
+    android:paddingRight="@dimen/layout_edge_spacing">
 
-    <ImageView
-        android:scaleType="fitCenter"
+    <com.makeramen.roundedimageview.RoundedImageView
         android:id="@id/icon"
         android:layout_width="@dimen/home_item_icon_size"
-        android:layout_height="@dimen/home_item_icon_size" />
+        android:layout_height="@dimen/home_item_icon_size"
+        android:background="@color/colorPrimary"
+        android:scaleType="fitCenter"
+        app:riv_corner_radius="@dimen/home_item_icon_size"
+        app:riv_mutate_background="true" />
 
     <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/home_item_height"
         android:layout_marginLeft="@dimen/layout_edge_spacing"
         android:layout_marginRight="@dimen/layout_edge_spacing"
-        android:orientation="vertical"
-        android:gravity="center_vertical"
         android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/home_item_height">
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
         <TextView
-            android:gravity="bottom"
-            android:layout_weight="1"
             android:id="@+id/name"
-            android:text="name"
             android:layout_width="match_parent"
-            android:layout_height="0dp" />
-        <TextView
-            android:gravity="top"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:textColor="@color/font_gray"
-            android:textSize="@dimen/font_small"
+            android:gravity="bottom"
+            android:text="name" />
+
+        <TextView
             android:id="@+id/describe"
-            android:text="describe"
             android:layout_width="match_parent"
-            android:layout_height="0dp" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top"
+            android:text="describe"
+            android:textColor="@color/font_gray"
+            android:textSize="@dimen/font_small" />
     </LinearLayout>
+
     <ImageView
         android:id="@+id/issue"
-        android:scaleType="fitCenter"
-        android:src="@drawable/vector_prompt"
         android:layout_width="@dimen/layout_icon"
-        android:layout_height="@dimen/layout_icon" />
+        android:layout_height="@dimen/layout_icon"
+        android:scaleType="fitCenter"
+        android:src="@drawable/vector_prompt" />
 </LinearLayout>

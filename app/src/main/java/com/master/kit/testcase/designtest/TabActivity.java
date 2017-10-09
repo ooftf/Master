@@ -1,4 +1,4 @@
-package com.master.kit.testcase.DesignTest;
+package com.master.kit.testcase.designtest;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;

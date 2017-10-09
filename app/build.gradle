@@ -22,11 +22,9 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile project(':cpb')
     compile project(':mastervolley')
     compile project(':pulltorefresh')
-    compile project(path: ':pulltorefresh')
-    compile project(path: ':banner')
+    compile project(':banner')
     compile project(':retrofit')
     compile project(':service')
     compile project(':applet')
@@ -49,4 +47,5 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.github.bumptech.glide:glide:4.2.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
+    compile 'com.makeramen:roundedimageview:2.3.0'
 }

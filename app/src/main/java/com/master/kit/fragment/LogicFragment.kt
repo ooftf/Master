@@ -25,9 +25,7 @@ class LogicFragment : BaseHomeFragment() {
 
     companion object {
         fun newInstance(): LogicFragment {
-
             val args = Bundle()
-
             val fragment = LogicFragment()
             fragment.arguments = args
             return fragment
