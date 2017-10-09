@@ -1,45 +1,4 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="actionMenuTextColor">@color/colorPrimaryContrast</item>
-        <item name="titleTextColor">@color/colorPrimaryContrast</item>
-        <!-- <item name="android:windowBackground">@android:color/black</item>-->
-        <!-- <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>-->
-    </style>
-
-    <style name="MasterDialogTheme" parent="android:Theme.Dialog">
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">false</item>
-        <item name="android:windowNoTitle">true</item>
-        <!-- 除去title -->
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:windowBackground">@drawable/shape_rectangle_corners_solid_while</item>
-        <!-- 除去背景色 -->
-    </style>
-
-    <style name="BlankDialogTheme" parent="@android:style/Theme.Dialog">
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <!-- 除去title -->
-        <item name="android:windowNoTitle">true</item>
-
-        <item name="android:windowContentOverlay">@null</item>
-        <!-- 背景是否变暗 -->
-        <item name="android:backgroundDimEnabled">true</item>
-        <!-- 除去背景色 -->
-        <item name="android:windowBackground">@color/white</item>
-        <item name="android:background">#00FFFFFF</item>
-    </style>
-
     <style name="AppTheme.BackgroundTranslucent">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>

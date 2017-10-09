@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Button
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/CalendarActivity"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:height="48dp"
-    android:background="@null"
-    android:gravity="center_vertical|left"
-    android:paddingLeft="16dp"
-    android:textAllCaps="false" />
+    android:layout_height="@dimen/home_item_height"
+    android:gravity="center_vertical"
+    android:paddingLeft="@dimen/layout_edge_spacing"
+    android:paddingRight="@dimen/layout_edge_spacing"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:scaleType="fitCenter"
+        android:id="@id/icon"
+        android:layout_width="@dimen/home_item_icon_size"
+        android:layout_height="@dimen/home_item_icon_size" />
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/layout_edge_spacing"
+        android:layout_marginRight="@dimen/layout_edge_spacing"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/home_item_height">
+        <TextView
+            android:gravity="bottom"
+            android:layout_weight="1"
+            android:id="@+id/name"
+            android:text="name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <TextView
+            android:gravity="top"
+            android:layout_weight="1"
+            android:textColor="@color/font_gray"
+            android:textSize="@dimen/font_small"
+            android:id="@+id/describe"
+            android:text="describe"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/issue"
+        android:scaleType="fitCenter"
+        android:src="@drawable/vector_prompt"
+        android:layout_width="@dimen/layout_icon"
+        android:layout_height="@dimen/layout_icon" />
+</LinearLayout>

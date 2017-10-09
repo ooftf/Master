@@ -156,7 +156,6 @@ public class PullToRefreshRoot extends LinearLayout{
             case MotionEvent.ACTION_UP:
                 onScrollState();
                 header.paddingAnimation(-header.getHeightPx());
-
         }
     }
 

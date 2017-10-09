@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.master.kit.R;
 import com.master.kit.testcase.retrofit.ApiService;
-import tf.oof.com.service.engine.image_loader.ImageLoaderFactory;
+import com.master.kit.engine.imageloader.ImageLoaderFactory;
 import com.ooftf.banner.Banner;
 import com.ooftf.banner.BannerPagerAdapter;
 

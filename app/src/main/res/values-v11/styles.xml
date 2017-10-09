@@ -11,9 +11,7 @@
                 <!-- 除去title -->
                 <item name="android:windowContentOverlay">@null</item>
                 <item name="android:backgroundDimEnabled">true</item>
-                <item name="android:windowBackground">
-                        @drawable/shape_rectangle_corners_solid_while
-                </item>
+                <item name="android:windowBackground">@drawable/shape_dialog_background</item>
                 <!-- 除去背景色 -->
         </style>
 </resources>

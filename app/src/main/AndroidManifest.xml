@@ -65,7 +65,6 @@
 
         <activity android:name=".testcase.retrofit.RetrofitActivity" />
         <activity android:name=".testcase.banner.BannerActivity" />
-        <activity android:name=".testcase.pulltorefresh.HandMark" />
         <activity android:name=".testcase.retrofit.SignInActivity" />
         <activity android:name=".testcase.AAEditTextActivity" />
         <activity android:name=".base.Main2Activity"></activity>

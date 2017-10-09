@@ -8,7 +8,7 @@ import android.widget.ImageView;
  */
 
 public interface IImageLoader {
-     void init(Context context);
      void display(Context context, String url, ImageView view);
+     void display(Context context, String url, ImageLoaderListener listener);
      void display(Context context, String url, ImageView view,ImageLoaderConfig config);
 }

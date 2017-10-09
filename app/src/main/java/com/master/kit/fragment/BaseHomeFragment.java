@@ -1,10 +1,7 @@
 package com.master.kit.fragment;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,13 +10,6 @@ import android.view.ViewGroup;
 
 import com.master.kit.R;
 import com.master.kit.adapter.MainRecyclerAdapter;
-import com.master.kit.testcase.DialogDemo;
-import com.master.kit.testcase.KeyBoardActivity;
-import com.master.kit.testcase.NewInstanceActivity;
-import com.master.kit.testcase.listview.ListViewActivity;
-import com.master.kit.testcase.net.NetActivity;
-import com.master.kit.testcase.pulltorefresh.PullToRefreshActivity;
-import com.master.kit.testcase.touchevent.TouchActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,9 +50,9 @@ abstract public class BaseHomeFragment extends BaseFragment {
         adapter = new MainRecyclerAdapter((BaseActivity) getActivity());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        DividerItemDecoration divider = new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
-        divider.setDrawable(new ColorDrawable(Color.GRAY));
-        recyclerView.addItemDecoration(divider);
+       /* DividerItemDecoration divider = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
+        //divider.setDrawable(new ColorDrawable(Color.GRAY));
+        recyclerView.addItemDecoration(divider);*/
     }
     abstract protected void initData();
 }

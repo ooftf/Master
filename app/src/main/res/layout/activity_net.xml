@@ -43,6 +43,5 @@
         android:id="@+id/vrl"
         android:background="#ff0000"
         android:layout_width="match_parent"
-        android:layout_height="100dp"></com.master.kit.widget.verticalruninglayout.VerticalRuningLayout>
-
+        android:layout_height="100dp"/>
 </LinearLayout>

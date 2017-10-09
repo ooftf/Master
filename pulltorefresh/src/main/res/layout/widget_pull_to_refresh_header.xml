@@ -4,7 +4,6 @@
     android:gravity="center_horizontal"
     android:layout_height="56dp">
     <ImageView
-        android:src="@mipmap/ic_launcher"
         android:layout_width="32dp"
         android:layout_height="32dp" />
     <TextView

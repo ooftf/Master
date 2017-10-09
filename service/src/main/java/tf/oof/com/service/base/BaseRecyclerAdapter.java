@@ -35,4 +35,8 @@ abstract public class BaseRecyclerAdapter<T,WH extends RecyclerView.ViewHolder> 
     public int getItemCount() {
         return list.size();
     }
+
+    public T getItem(int position){
+        return list.get(position);
+    }
 }

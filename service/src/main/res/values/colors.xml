@@ -6,7 +6,12 @@
     <!--  <color name="colorPrimaryDark">#66666666</color>-->
     <color name="colorAccent">#FF4081</color>
     <color name="transparent">#00000000</color>
-    <color name="background">#FFFFFF</color>
+    <color name="background">#FAFAFA</color>
+    <color name="dialogBackground">#FAFAFA</color>
     <color name="translucent">#11000000</color>
     <color name="appbar_background">#FFFFFF</color>
+
+    <color name="font_black">#212121</color>
+    <color name="font_gray">#757575</color>
+    <color name="gray">#808080</color>
 </resources>
