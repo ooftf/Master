@@ -4,20 +4,28 @@ import android.app.Activity
 import android.content.Context
 import android.support.v7.widget.Toolbar
 import android.util.AttributeSet
+import android.util.Log
 import tf.oof.com.service.R
 
 /**
  * Created by master on 2017/10/10 0010.
  */
 class TailoredToolbar :Toolbar {
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs,R.style.ToolbarTheme){
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+        Log.e(TAG, "Hello")
         init()
     }
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, R.style.ToolbarTheme){
+
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs) {
+        Log.e(TAG, "world")
         init()
     }
     private fun init() {
         setNavigationOnClickListener { (context as Activity).finish() }
+        setBackgroundColor(resources.getColor(R.color.colorPrimary))
+    }
+
+    companion object {
+        private val TAG = javaClass.simpleName
     }
 }

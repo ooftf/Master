@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:orientation="vertical"
     android:gravity="center_horizontal|bottom"
-    tools:context="com.master.kit.activity.LogoActivity">
+    android:orientation="vertical"
+    tools:context="com.master.kit.activity.SplashActivity">
     <ImageView
-        android:layout_marginBottom="@dimen/layout_item_height"
-        android:src="@drawable/logo_essence"
         android:layout_width="@dimen/layout_logo_size"
-        android:layout_height="@dimen/layout_logo_size" />
+        android:layout_height="@dimen/layout_logo_size"
+        android:layout_gravity="center"
+        android:src="@drawable/logo_essence" />
 </LinearLayout>

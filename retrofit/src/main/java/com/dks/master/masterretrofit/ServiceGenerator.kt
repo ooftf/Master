@@ -2,6 +2,7 @@ package com.tf.oof.meacalculatorl.net
 
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
+import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.internal.platform.Platform
 import retrofit2.Retrofit
@@ -31,7 +32,7 @@ class ServiceGenerator<T>(private var baseUrl:String, private var serviceClz:Cla
         Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .client(okHttpClient)
                 .build()
     }

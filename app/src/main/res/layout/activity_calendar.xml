@@ -14,7 +14,7 @@
         app:navigationIcon="@drawable/vector_arrow_left"
         app:title="日历" />
 
-    <com.master.kit.widget.calendarview.CalendarView
+    <com.master.kit.widget.calendar.CalendarView
         android:id="@+id/cv_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

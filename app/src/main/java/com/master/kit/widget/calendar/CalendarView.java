@@ -1,4 +1,4 @@
-package com.master.kit.widget.calendarview;
+package com.master.kit.widget.calendar;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -10,13 +10,13 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import tf.oof.com.service.utils.CanvasUtil;
-import tf.oof.com.service.utils.DateUtil;
-import tf.oof.com.service.utils.DensityUtil;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import tf.oof.com.service.utils.CanvasUtil;
+import tf.oof.com.service.utils.DateUtil;
+import tf.oof.com.service.utils.DensityUtil;
 
 /**
  * Created by master on 2016/4/7.
@@ -212,6 +212,7 @@ public class CalendarView extends View {
         private int compareCurrentMonth() {
             return DateUtil.compare(calendarDay, mCalendar, Calendar.MONTH);
         }
+
         public void onDraw(Canvas canvas) {
             drawDay.draw(canvas, mCalendar, calendarDay, getX(), getY(), compareCurrentMonth(), dayWidth, dayHeight);
         }

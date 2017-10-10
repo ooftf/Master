@@ -1,12 +1,12 @@
-package com.master.kit.widget.calendarview;
+package com.master.kit.widget.calendar;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import tf.oof.com.service.utils.DateUtil;
-
 import java.util.Calendar;
+
+import tf.oof.com.service.utils.DateUtil;
 
 /**
  * Created by master on 2017/8/10 0010.

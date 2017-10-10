@@ -23,13 +23,14 @@
         <activity android:name=".testcase.SwitchFristActivity" />
         <activity android:name=".testcase.SwitchSecondActivity" />
         <activity android:name=".testcase.CalendarActivity" />
-        <activity android:name=".testcase.MainActivity"/>
+        <activity android:name=".testcase.MainActivity" />
         <activity
-            android:name=".activity.LogoActivity"
+            android:name=".activity.SplashActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -66,7 +67,9 @@
         <activity android:name=".testcase.retrofit.SignInActivity" />
         <activity android:name=".testcase.AAEditTextActivity" />
         <activity android:name=".base.Main2Activity" />
-
+        <activity
+            android:name=".activity.GuideActivity"
+            android:label="@string/title_activity_guide"></activity>
     </application>
 
 </manifest>

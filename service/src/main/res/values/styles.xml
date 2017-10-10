@@ -13,11 +13,6 @@
     <style name="AppTheme.Fullscreen">
         <item name="android:windowFullscreen">true</item>
     </style>
-    <style name="ToolbarTheme">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/layout_appbar_height</item>
-        <item name="android:background">@color/colorPrimary</item>
-    </style>
     <style name="DialogTheme" parent="android:Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>

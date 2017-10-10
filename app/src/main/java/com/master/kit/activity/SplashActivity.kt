@@ -6,10 +6,10 @@ import com.master.kit.R
 import com.master.kit.testcase.MainActivity
 import tf.oof.com.service.base.BaseActivity
 
-class LogoActivity : BaseActivity() {
+class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_logo)
+        setContentView(R.layout.activity_splash)
         Handler().postDelayed({
             if(isShowing){
                 startNextActivity()

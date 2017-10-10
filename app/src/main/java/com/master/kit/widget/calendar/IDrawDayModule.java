@@ -1,4 +1,4 @@
-package com.master.kit.widget.calendarview;
+package com.master.kit.widget.calendar;
 
 import android.graphics.Canvas;
 
