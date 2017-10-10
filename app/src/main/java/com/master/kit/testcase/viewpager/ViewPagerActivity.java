@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.master.kit.R;
-import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseSlidingActivity;
 
-public class ViewPagerActivity extends BaseActivity {
+public class ViewPagerActivity extends BaseSlidingActivity {
 
     private ViewPager viewPager;
     private Handler handler;

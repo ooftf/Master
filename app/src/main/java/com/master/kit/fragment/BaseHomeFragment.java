@@ -15,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseSlidingActivity;
 import tf.oof.com.service.base.BaseFragment;
 
 /**
@@ -47,7 +48,7 @@ abstract public class BaseHomeFragment extends BaseFragment {
         unbinder.unbind();
     }
     private void setupRecyclerView() {
-        adapter = new MainRecyclerAdapter((BaseActivity) getActivity());
+        adapter = new MainRecyclerAdapter(getBaseActivity());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
        /* DividerItemDecoration divider = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);

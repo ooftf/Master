@@ -1,2 +1,2 @@
-include ':app', ':cpb', ':retrofit', ':mastervolley', ':pulltorefresh', ':banner', ':service', ':applet'
+include ':app', ':retrofit', ':pulltorefresh', ':banner', ':service', ':applet'
 

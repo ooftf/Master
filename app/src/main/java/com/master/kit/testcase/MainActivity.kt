@@ -7,6 +7,7 @@ import com.master.kit.R
 import com.master.kit.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
 import tf.oof.com.service.base.BaseActivity
+import tf.oof.com.service.base.BaseSlidingActivity
 import tf.oof.com.service.engine.FragmentSwitchManager
 
 class MainActivity : BaseActivity() {

@@ -3,11 +3,11 @@ package com.master.kit.testcase.designtest;
 import android.os.Bundle;
 import android.view.View;
 
-import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseSlidingActivity;
 import com.master.kit.R;
 import com.master.kit.testcase.design.DesignActivity;
 
-public class DesignDispatchActivity extends BaseActivity {
+public class DesignDispatchActivity extends BaseSlidingActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,30 +7,23 @@ import android.view.View
 import android.widget.Toast
 import tf.oof.com.service.utils.LogUtil
 import tf.oof.com.service.widget.SlidingFrameLayout
-
 import java.util.ArrayList
 
 /**
- * Created by master on 2016/4/1.
+ * Created by master on 2017/10/10 0010.
  */
-abstract class BaseActivity : AppCompatActivity() {
+open class BaseActivity :AppCompatActivity() {
     private var refreshList: MutableList<Runnable> = ArrayList()
-     var isShowing = false
+    var isShowing = false
         private set
-     var isTouchable = false
+    var isTouchable = false
         private set
-     var isAlive = false
+    var isAlive = false
         private set
     private var mToast: Toast? = null
 
     fun startActivity(cla: Class<*>) {
         startActivity(Intent(this, cla))
-    }
-
-    override fun setContentView(layoutResID: Int) {
-        val slidingFrameLayout = SlidingFrameLayout(this)
-        val inflate = View.inflate(this, layoutResID, slidingFrameLayout)
-        super.setContentView(inflate)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -93,7 +86,7 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onNewIntent(intent)
     }
 
-    fun toast(content: String,duration:Int=Toast.LENGTH_SHORT) {
+    fun toast(content: String,duration:Int= Toast.LENGTH_SHORT) {
         mToast?.cancel()
         mToast = Toast.makeText(this, content, duration)
         mToast?.show()

@@ -2,19 +2,14 @@ package com.master.kit.testcase;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.WindowManager;
 
 import com.master.kit.R;
 
-import java.util.zip.Inflater;
-
 public class DialogDemo extends Dialog {
 
     public DialogDemo(Context context) {
-        super(context, R.style.BlankDialogTheme);
+        super(context, R.style.DialogTheme_Blank);
         setContentView(R.layout.dialog_authorization);
         WindowManager.LayoutParams attributes = getWindow().getAttributes();
         attributes.width = (int) (getContext().getResources().getDisplayMetrics().widthPixels*0.8);

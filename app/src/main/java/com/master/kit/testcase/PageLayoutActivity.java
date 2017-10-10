@@ -6,11 +6,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseSlidingActivity;
 import com.master.kit.R;
 import com.master.kit.widget.verticalpagelayout.VerticalPageLayout;
 
-public class PageLayoutActivity extends BaseActivity {
+public class PageLayoutActivity extends BaseSlidingActivity {
     VerticalPageLayout mPageLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

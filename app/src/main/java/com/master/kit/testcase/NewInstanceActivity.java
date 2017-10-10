@@ -5,12 +5,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.master.kit.R;
-import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseSlidingActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class NewInstanceActivity extends BaseActivity {
+public class NewInstanceActivity extends BaseSlidingActivity {
 
     @BindView(R.id.click)
     Button click;

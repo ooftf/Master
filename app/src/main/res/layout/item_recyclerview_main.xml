@@ -12,10 +12,7 @@
         android:id="@id/icon"
         android:layout_width="@dimen/home_item_icon_size"
         android:layout_height="@dimen/home_item_icon_size"
-        android:background="@color/colorPrimary"
-        android:scaleType="fitCenter"
-        app:riv_corner_radius="@dimen/home_item_icon_size"
-        app:riv_mutate_background="true" />
+        android:scaleType="fitCenter" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -27,6 +24,8 @@
         android:orientation="vertical">
 
         <TextView
+            android:lines="1"
+            android:ellipsize="end"
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="0dp"

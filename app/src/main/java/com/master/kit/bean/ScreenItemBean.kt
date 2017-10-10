@@ -1,7 +1,9 @@
 package com.master.kit.bean
 
+import com.master.kit.R
+
 /**
  * Created by master on 2017/10/9 0009.
  */
 
-class ScreenItemBean(var name: String, var describe: String, var icon: Int, var clz: Class<*>,var isIssue:Boolean)
+class ScreenItemBean(var clz: Class<*>,var name: String = clz.simpleName, var describe: String = clz.name, var icon: Int = R.drawable.logo_legacy, var isIssue:Boolean = false)

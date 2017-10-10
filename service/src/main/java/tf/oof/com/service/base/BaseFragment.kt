@@ -135,5 +135,7 @@ open class BaseFragment : Fragment() {
         mToast = Toast.makeText(context, content, duration)
         mToast?.show()
     }
-
+    public fun getBaseActivity():BaseActivity{
+        return activity as BaseActivity
+    }
 }

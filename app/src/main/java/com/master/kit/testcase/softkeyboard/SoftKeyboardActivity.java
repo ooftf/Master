@@ -8,11 +8,11 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.master.kit.R;
-import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseSlidingActivity;
 import tf.oof.com.service.utils.LogUtil;
 
 @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
-public class SoftKeyboardActivity extends BaseActivity implements View.OnLayoutChangeListener {
+public class SoftKeyboardActivity extends BaseSlidingActivity implements View.OnLayoutChangeListener {
     //Activity最外层的Layout视图
     private View activityRootView;
     //屏幕高度

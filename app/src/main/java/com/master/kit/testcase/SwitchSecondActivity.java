@@ -3,10 +3,10 @@ package com.master.kit.testcase;
 
 import android.os.Bundle;
 
-import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseSlidingActivity;
 
 
-public class SwitchSecondActivity extends BaseActivity {
+public class SwitchSecondActivity extends BaseSlidingActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

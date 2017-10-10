@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseSlidingActivity;
 import com.master.kit.R;
 
 import com.master.kit.utils.CameraHelper;
@@ -15,7 +15,7 @@ import tf.oof.com.service.utils.LogUtil;
 
 import java.io.File;
 
-public class CameraActivity extends BaseActivity {
+public class CameraActivity extends BaseSlidingActivity {
 
     private ImageView imageView;
     CameraHelper cameraHelper;

@@ -3,14 +3,14 @@ package com.master.kit.testcase.designtest;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseSlidingActivity;
 import com.master.kit.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class TabActivity extends BaseActivity {
+public class TabActivity extends BaseSlidingActivity {
 
     @BindView(R.id.main_appbar)
     Toolbar appbar;

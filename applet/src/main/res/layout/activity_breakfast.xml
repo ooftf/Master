@@ -8,63 +8,32 @@
     android:background="@color/background"
     tools:context="com.ooftf.applet.breakfast.BreakfastActivity">
 
-    <android.support.v7.widget.Toolbar
+    <tf.oof.com.service.base.TailoredToolbar
+        android:id="@+id/toolbar"
+        app:navigationIcon="@drawable/vector_arrow_left"
         android:background="@color/colorPrimary"
         app:title="早餐时间"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height" />
-    <LinearLayout
-        android:paddingLeft="@dimen/layout_edge_spacing"
-        android:paddingRight="@dimen/layout_edge_spacing"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/breakfast_item_height"
-        android:orientation="horizontal">
-
-        <EditText
-            android:text="7"
-            android:gravity="center"
-            android:id="@+id/hour"
-            android:inputType="number"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/breakfast_item_height"
-            android:layout_weight="1" />
-
-
-        <TextView
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/breakfast_item_height"
-            android:layout_weight="1"
-            android:text="时" />
-
-        <EditText
-            android:text="40"
-            android:gravity="center"
-            android:id="@+id/minute"
-            android:inputType="number"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/breakfast_item_height"
-            android:layout_weight="1" />
-        <TextView
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/breakfast_item_height"
-            android:layout_weight="1"
-            android:text="分" />
-    </LinearLayout>
     <TextView
+
+        android:background="@color/colorPrimary"
+        android:drawablePadding="8dp"
+        android:drawableLeft="@drawable/vector_breakfast_icon"
         android:paddingLeft="@dimen/layout_edge_spacing"
         android:paddingRight="@dimen/layout_edge_spacing"
         android:textSize="@dimen/font_large"
         android:id="@+id/result"
+        android:textColor="@color/colorPrimaryContrast"
         android:gravity="center_vertical"
         android:text="预计需要时间："
         android:layout_width="match_parent"
         android:layout_height="@dimen/breakfast_item_height" />
-    <Button
-        android:textSize="@dimen/font_large"
-        android:id="@+id/refresh"
-        android:text="重新计算"
+    <TimePicker
+        android:textSize="26dp"
+        android:timePickerMode="clock"
+        android:id="@+id/timePicker"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/breakfast_item_height" />
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

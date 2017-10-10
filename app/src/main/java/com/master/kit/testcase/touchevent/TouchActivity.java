@@ -11,17 +11,17 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 
 import com.master.kit.R;
-import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseSlidingActivity;
 import com.master.kit.widget.switchbutton.SwitchButton;
 
-public class TouchActivity extends BaseActivity {
+public class TouchActivity extends BaseSlidingActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touch);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        Toolbar toolbar =  findViewById(R.id.toolbar);
+        FloatingActionButton fab =  findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,13 +30,13 @@ public class TouchActivity extends BaseActivity {
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView =  findViewById(R.id.nav_view);
         initViewGroup();
         initClick();
     }
@@ -44,9 +44,9 @@ public class TouchActivity extends BaseActivity {
     BaseViewGroup second;
     BaseViewGroup third;
     private void initViewGroup() {
-        first = (BaseViewGroup) findViewById(R.id.first);
-        second = (BaseViewGroup) findViewById(R.id.second);
-        third = (BaseViewGroup) findViewById(R.id.third);
+        first =  findViewById(R.id.first);
+        second =  findViewById(R.id.second);
+        third =  findViewById(R.id.third);
         /*third.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +116,7 @@ public class TouchActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {

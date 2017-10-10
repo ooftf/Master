@@ -1,32 +1,28 @@
 package com.master.kit.testcase.banner;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 
 import com.master.kit.R;
-import com.master.kit.testcase.retrofit.ApiService;
+import com.master.kit.testcase.retrofit.IETongDaiService;
 import com.master.kit.engine.imageloader.ImageLoaderFactory;
+import com.master.kit.testcase.retrofit.ServiceHolder;
 import com.ooftf.banner.Banner;
 import com.ooftf.banner.BannerPagerAdapter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import tf.oof.com.service.base.BaseSlidingActivity;
 
 
-public class BannerActivity extends AppCompatActivity {
+public class BannerActivity extends BaseSlidingActivity {
     private static final String TGA =  Thread.currentThread().getStackTrace()[1].getClassName();
     @BindView(R.id.banner)
     Banner banner;
@@ -40,25 +36,7 @@ public class BannerActivity extends AppCompatActivity {
     }
 
     private void initBanner() {
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
-            @Override
-            public okhttp3.Response intercept(Chain chain) throws IOException {
-                Log.e("request",chain.request()+"");
-                Log.e("connection",chain.connection()+"");
-                Log.e("toString",chain.toString()+"");
-                okhttp3.Response response = chain.proceed(chain.request());
-                Log.e("body",response.body().string()+"");
-                Log.e("message",response.message()+"");
-                return response;
-            }
-        }).build();
-        Retrofit retrofit = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                //.addConverterFactory(ScalarsConverterFactory.create())
-                .baseUrl("https://api.etongdai.com/")
-                .client(okHttpClient)
-                .build();
-        ApiService api = retrofit.create(ApiService.class);
+        IETongDaiService api = ServiceHolder.INSTANCE.getService();
         Call<BannerBean> call = api.getBanner("1", "2");
         call.enqueue(new Callback<BannerBean>() {
             @Override
@@ -99,5 +77,17 @@ public class BannerActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        banner.stopCycle();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        banner.stopCycle();
     }
 }

@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +14,7 @@ import com.master.kit.R;
 import com.master.kit.bean.ScreenItemBean;
 
 import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseSlidingActivity;
 import tf.oof.com.service.base.BaseRecyclerAdapter;
 
 import java.lang.reflect.InvocationTargetException;
@@ -45,7 +45,7 @@ public class MainRecyclerAdapter extends BaseRecyclerAdapter<ScreenItemBean,Main
     public void onBindViewHolder(RecyclerHolder holder, final int position) {
         final ScreenItemBean bean = getItem(position);
         holder.describe.setText(bean.getDescribe());
-        holder.name.setText(bean.getName());
+        holder.name.setText(bean.getName()+"("+bean.getClz().getSimpleName()+")");
         holder.icon.setImageResource(bean.getIcon());
         if(bean.isIssue()){
             holder.issue.setVisibility(View.VISIBLE);

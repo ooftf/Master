@@ -2,11 +2,11 @@ package com.master.kit.testcase;
 
 import android.os.Bundle;
 
-import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseSlidingActivity;
 import com.master.kit.R;
 import com.master.kit.widget.calendarview.CalendarView;
 
-public class CalendarActivity extends BaseActivity {
+public class CalendarActivity extends BaseSlidingActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

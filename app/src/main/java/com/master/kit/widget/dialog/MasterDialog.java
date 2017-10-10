@@ -20,7 +20,7 @@ import com.master.kit.R;
 public class MasterDialog extends Dialog {
 
     public MasterDialog(Context context) {
-        super(context, R.style.MasterDialogTheme);
+        super(context, R.style.DialogTheme_Master);
         init();
     }
 

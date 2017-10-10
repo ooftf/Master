@@ -1,43 +1,35 @@
 package com.ooftf.applet.breakfast
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
-
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.TimePicker
 import com.ooftf.applet.R
 import kotlinx.android.synthetic.main.activity_breakfast.*
-import tf.oof.com.service.base.BaseActivity
-import tf.oof.com.service.utils.StringUtil
+import tf.oof.com.service.base.BaseSlidingActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class BreakfastActivity : BaseActivity() {
+class BreakfastActivity : BaseSlidingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_breakfast)
-        hour.addTextChangedListener(textWatcher)
-        minute.addTextChangedListener(textWatcher)
-        refresh.setOnClickListener{
-            computingTime()
-        }
+        setSupportActionBar(toolbar)
+        setupTimePicker()
         computingTime()
     }
-    var textWatcher = object:TextWatcher {
-        override fun afterTextChanged(s: Editable?) {
+    @Suppress("DEPRECATION")
+    private fun setupTimePicker() {
+        timePicker.setIs24HourView(true)
+        timePicker.currentHour = 7
+        timePicker.currentMinute = 40
+        timePicker.setOnTimeChangedListener { _: TimePicker, _: Int, _: Int ->
             computingTime()
         }
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-        }
-
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-        }
-
     }
+
     fun computingTime(){
         var difference = getTargetTime().timeInMillis - Calendar.getInstance().timeInMillis
         result.text ="预计需要时间："+difference/1000/60/60+"时"+difference/1000/60%60+"分"
@@ -60,18 +52,25 @@ class BreakfastActivity : BaseActivity() {
     private fun CalendarToString(c:Calendar):String{
         return SimpleDateFormat("dd-HH-mm").format(c.time)
     }
+    @Suppress("DEPRECATION")
     private fun getHour():Int{
-        return if(StringUtil.isInteger(hour.text.toString())){
-            Integer.valueOf(hour.text.toString())
-        }else{
-            0
-        }
+        return timePicker.currentHour;
     }
+    @Suppress("DEPRECATION")
     private fun getMinute():Int{
-        return if (StringUtil.isInteger(minute.text.toString())){
-            Integer.valueOf(minute.text.toString())
-        }else{
-            0
+        return timePicker.currentMinute;
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.activity_breakfast_toolbar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        super.onOptionsItemSelected(item)
+        when (item.itemId) {
+            R.id.action_refresh -> computingTime()
         }
+        return true
     }
 }

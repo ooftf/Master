@@ -15,11 +15,11 @@ import com.master.kit.testcase.webview.WebViewActivity
 
 class LogicFragment : BaseHomeFragment() {
     override fun initData() {
-        adapter.add(ScreenItemBean(DesignDispatchActivity::class.java.simpleName,"",R.mipmap.ic_launcher,DesignDispatchActivity::class.java,false))
-        adapter.add(ScreenItemBean(ViewPagerActivity::class.java.simpleName,"",R.mipmap.ic_launcher,ViewPagerActivity::class.java,false))
-        adapter.add(ScreenItemBean(SignInActivity::class.java.simpleName,"",R.mipmap.ic_launcher,SignInActivity::class.java,false))
-        adapter.add(ScreenItemBean(WebViewActivity::class.java.simpleName,"",R.mipmap.ic_launcher,WebViewActivity::class.java,false))
-        adapter.add(ScreenItemBean(DownloadActivity::class.java.simpleName,"",R.mipmap.ic_launcher,DownloadActivity::class.java,false))
+        adapter.add(ScreenItemBean(DesignDispatchActivity::class.java))
+        adapter.add(ScreenItemBean(ViewPagerActivity::class.java))
+        adapter.add(ScreenItemBean(SignInActivity::class.java))
+        adapter.add(ScreenItemBean(WebViewActivity::class.java))
+        adapter.add(ScreenItemBean(DownloadActivity::class.java))
         adapter.notifyDataSetChanged()
     }
 
