@@ -3,6 +3,8 @@ package com.master.kit.activity;
 import android.os.Bundle;
 
 import com.master.kit.R;
+
+import butterknife.ButterKnife;
 import tf.oof.com.service.base.BaseSlidingActivity;
 
 public class ProgressBarActivity extends BaseSlidingActivity {

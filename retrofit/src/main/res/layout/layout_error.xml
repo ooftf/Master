@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:gravity="center"
+    android:id="@+id/error_container"
+    android:layout_height="match_parent">
+    <ImageView
+        android:src="@drawable/vector_net_error"
+        android:layout_width="96dp"
+        android:layout_height="96dp" />
+    <TextView
+        android:text="网络出错请稍后再试"
+        android:textSize="@dimen/font_large"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="重试"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

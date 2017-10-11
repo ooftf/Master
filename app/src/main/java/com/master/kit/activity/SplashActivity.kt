@@ -11,7 +11,7 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         Handler().postDelayed({
-            if(isShowing){
+            if(isShowing()){
                 startNextActivity()
             }else{
                 postOnResume( Runnable{ startNextActivity()  })

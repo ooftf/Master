@@ -10,8 +10,9 @@
     <color name="dialogBackground">#FAFAFA</color>
     <color name="translucent">#11000000</color>
     <color name="appbar_background">#FFFFFF</color>
-
+    <color name="red">#FF0000</color>
     <color name="font_black">#212121</color>
     <color name="font_gray">#757575</color>
     <color name="gray">#808080</color>
+    <color name="translucent_background">#88000000</color>
 </resources>

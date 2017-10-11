@@ -12,12 +12,10 @@ import tf.oof.com.service.R
  */
 class TailoredToolbar :Toolbar {
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        Log.e(TAG, "Hello")
         init()
     }
 
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs) {
-        Log.e(TAG, "world")
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs,defStyleAttr) {
         init()
     }
     private fun init() {
@@ -25,7 +23,4 @@ class TailoredToolbar :Toolbar {
         setBackgroundColor(resources.getColor(R.color.colorPrimary))
     }
 
-    companion object {
-        private val TAG = javaClass.simpleName
-    }
 }

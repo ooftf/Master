@@ -3,23 +3,31 @@ package tf.oof.com.service.base
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.widget.Toast
 import tf.oof.com.service.utils.LogUtil
-import tf.oof.com.service.widget.SlidingFrameLayout
-import java.util.ArrayList
+import java.util.*
 
 /**
  * Created by master on 2017/10/10 0010.
  */
-open class BaseActivity :AppCompatActivity() {
+open class BaseActivity : AppCompatActivity(), ILifecycle {
+    override fun isAlive(): Boolean {
+        return alive
+    }
+
+    override fun isShowing(): Boolean {
+        return showing
+    }
+
+    override fun isTouchable(): Boolean {
+        return touchable
+    }
+
+
     private var refreshList: MutableList<Runnable> = ArrayList()
-    var isShowing = false
-        private set
-    var isTouchable = false
-        private set
-    var isAlive = false
-        private set
+    private var showing = false
+    private var touchable = false
+    private var alive = false
     private var mToast: Toast? = null
 
     fun startActivity(cla: Class<*>) {
@@ -29,11 +37,11 @@ open class BaseActivity :AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         LogUtil.e(this.javaClass.simpleName, "onCreate")
         super.onCreate(savedInstanceState)
-        isAlive = true
+        alive = true
     }
 
     override fun onStart() {
-        isShowing = true
+        showing = true
         LogUtil.e(this.javaClass.simpleName, "onStart")
         super.onStart()
     }
@@ -44,26 +52,26 @@ open class BaseActivity :AppCompatActivity() {
     }
 
     override fun onResume() {
-        isTouchable = true
+        touchable = true
         LogUtil.e(this.javaClass.simpleName, "onResume")
         super.onResume()
         doOnResume()
     }
 
     override fun onPause() {
-        isTouchable = false
+        touchable = false
         LogUtil.e(this.javaClass.simpleName, "onPause")
         super.onPause()
     }
 
     override fun onStop() {
-        isShowing = false
+        showing = false
         LogUtil.e(this.javaClass.simpleName, "onStop")
         super.onStop()
     }
 
     override fun onDestroy() {
-        isAlive = false
+        alive = false
         LogUtil.e(this.javaClass.simpleName, "onDestroy")
         super.onDestroy()
     }
@@ -86,7 +94,7 @@ open class BaseActivity :AppCompatActivity() {
         super.onNewIntent(intent)
     }
 
-    fun toast(content: String,duration:Int= Toast.LENGTH_SHORT) {
+    fun toast(content: String, duration: Int = Toast.LENGTH_SHORT) {
         mToast?.cancel()
         mToast = Toast.makeText(this, content, duration)
         mToast?.show()

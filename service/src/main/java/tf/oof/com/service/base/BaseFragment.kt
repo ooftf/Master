@@ -14,19 +14,29 @@ import tf.oof.com.service.utils.LogUtil
 /**
  * Created by master on 2016/4/12.
  */
-open class BaseFragment : Fragment() {
-    var isShowing: Boolean = false
-        private set
+open class BaseFragment : Fragment(), ILifecycle {
+    override fun isAlive(): Boolean {
+        return alive
+    }
+
+    override fun isShowing(): Boolean {
+        return showing
+    }
+
+    override fun isTouchable(): Boolean {
+        return touchable
+    }
+
     private var isLoaded: Boolean = false
     var doRefresh: Runnable? = null
     var mToast: Toast? = null
-    var isTouchable = false
-        private set
-    var isAlive = false
-        private set
+    private var touchable = false
+    private var showing = false
+    private var alive = false
+
 
     override fun onAttach(context: Context) {
-        isAlive = true
+        alive = true
         LogUtil.e(javaClass.simpleName, "onAttach")
         super.onAttach(context)
     }
@@ -52,7 +62,7 @@ open class BaseFragment : Fragment() {
     }
 
     override fun onResume() {
-        isTouchable = true
+        touchable = true
         LogUtil.e(javaClass.simpleName, "onResume")
         super.onResume()
         doOnResume()
@@ -60,7 +70,7 @@ open class BaseFragment : Fragment() {
     }
 
     override fun onPause() {
-        isTouchable = false
+        touchable = false
         LogUtil.e(javaClass.simpleName, "onPause")
         super.onPause()
     }
@@ -81,7 +91,7 @@ open class BaseFragment : Fragment() {
     }
 
     override fun onDetach() {
-        isAlive = false
+        alive = false
         LogUtil.e(javaClass.simpleName, "onDetach")
         super.onDetach()
     }
@@ -102,7 +112,7 @@ open class BaseFragment : Fragment() {
     }
 
     private fun loadJudgment() {
-        if (isTouchable && isShowing && !isLoaded) {
+        if (touchable && showing && !isLoaded) {
             isLoaded = true
             onLazyLoad()
         }
@@ -113,7 +123,7 @@ open class BaseFragment : Fragment() {
     }
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        isShowing = isVisibleToUser
+        showing = isVisibleToUser
         LogUtil.e(javaClass.simpleName, "setUserVisibleHint")
         super.setUserVisibleHint(isVisibleToUser)
         loadJudgment()
@@ -130,12 +140,13 @@ open class BaseFragment : Fragment() {
         }
     }
 
-    fun toast(content: String,duration:Int=Toast.LENGTH_SHORT) {
+    fun toast(content: String, duration: Int = Toast.LENGTH_SHORT) {
         mToast?.cancel()
         mToast = Toast.makeText(context, content, duration)
         mToast?.show()
     }
-    public fun getBaseActivity():BaseActivity{
+
+    public fun getBaseActivity(): BaseActivity {
         return activity as BaseActivity
     }
 }
