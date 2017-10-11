@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.master.kit.R
-import com.rd.animation.type.AnimationType
 import kotlinx.android.synthetic.main.activity_guide.*
 import tf.oof.com.service.base.BaseActivity
 
@@ -25,7 +24,7 @@ class GuideActivity : BaseActivity() {
         viewPager.adapter = mSectionsPagerAdapter
         viewPager.offscreenPageLimit = 5
         pageIndicatorView.setViewPager(viewPager)
-        pageIndicatorView.setAnimationType(AnimationType.WORM)
+
     }
 
     class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {

@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-
 import tf.oof.com.service.utils.LogUtil
+import java.util.*
 
 /**
  * Created by master on 2016/4/12.
@@ -28,12 +28,11 @@ open class BaseFragment : Fragment(), ILifecycle {
     }
 
     private var isLoaded: Boolean = false
-    var doRefresh: Runnable? = null
     var mToast: Toast? = null
     private var touchable = false
     private var showing = false
     private var alive = false
-
+    private var postOnResumeList: MutableList<() -> Unit> = ArrayList()
 
     override fun onAttach(context: Context) {
         alive = true
@@ -129,14 +128,16 @@ open class BaseFragment : Fragment(), ILifecycle {
         loadJudgment()
     }
 
-    fun postOnResume(doRefresh: Runnable) {
-        this.doRefresh = doRefresh
+    fun postOnResume(doResume: () -> Unit) {
+        postOnResumeList.add(doResume)
     }
 
     private fun doOnResume() {
-        if (doRefresh != null) {
-            doRefresh!!.run()
-            doRefresh = null
+        val iterator = postOnResumeList.iterator()
+        while (iterator.hasNext()) {
+            val next = iterator.next()
+            next.invoke()
+            iterator.remove()
         }
     }
 
@@ -146,7 +147,7 @@ open class BaseFragment : Fragment(), ILifecycle {
         mToast?.show()
     }
 
-    public fun getBaseActivity(): BaseActivity {
+    fun getBaseActivity(): BaseActivity {
         return activity as BaseActivity
     }
 }

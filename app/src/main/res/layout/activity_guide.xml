@@ -9,12 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <com.rd.PageIndicatorView
-        android:layout_marginBottom="56dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
         android:id="@+id/pageIndicatorView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="56dp"
+        app:piv_animationType="worm"
+        app:piv_padding="@dimen/layout_horizontal_margin"
         app:piv_viewPager="@id/viewPager" />
 </RelativeLayout>
 

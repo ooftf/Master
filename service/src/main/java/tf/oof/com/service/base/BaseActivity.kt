@@ -24,7 +24,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycle {
     }
 
 
-    private var refreshList: MutableList<Runnable> = ArrayList()
+    private var postOnResumeList: MutableList<() -> Unit> = ArrayList()
     private var showing = false
     private var touchable = false
     private var alive = false
@@ -77,16 +77,16 @@ open class BaseActivity : AppCompatActivity(), ILifecycle {
     }
 
     private fun doOnResume() {
-        val iterator = refreshList.iterator()
+        val iterator = postOnResumeList.iterator()
         while (iterator.hasNext()) {
             val next = iterator.next()
-            next.run()
+            next.invoke()
             iterator.remove()
         }
     }
 
-    public fun postOnResume(doRefresh: Runnable) {
-        refreshList.add(doRefresh)
+    fun postOnResume(doResume: () -> Unit) {
+        postOnResumeList.add(doResume)
     }
 
     override fun onNewIntent(intent: Intent) {
