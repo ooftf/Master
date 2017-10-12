@@ -2,7 +2,7 @@ package com.master.kit.testcase.retrofit
 
 import android.os.Bundle
 import com.dks.master.masterretrofit.BaseBean
-import com.dks.master.masterretrofit.ViewResponseObserver
+import com.dks.master.masterretrofit.ControlViewObserver
 import com.dks.master.masterretrofit.IViewResponse
 import com.dks.master.masterretrofit.ResponseDialog
 import com.master.kit.R
@@ -24,13 +24,13 @@ class SignInActivity : BaseSlidingActivity() {
         service
                 .signIn(name.text.toString(), PWD.text.toString(), "sssssssssssss", "ssssssssssssss")
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(SignInObserver(ResponseDialog(this),this))
+                .subscribe(SignInObserver(EResponseDialog(this),this))
     }
 
-    class SignInObserver(viewResponse:IViewResponse,target: SignInActivity) : ViewResponseObserver<BaseBean,SignInActivity>(viewResponse,target) {
-        override fun onNext(value: BaseBean) {
-            super.onNext(value)
-            getTarget()?.toast("")
+    class SignInObserver(viewResponse:IEResponse,target: SignInActivity) : EControlViewObserver<BaseBean,SignInActivity>(viewResponse,target) {
+        override fun onResponseSuccess(bean: BaseBean) {
+            super.onResponseSuccess(bean)
+            getTarget()?.toast("登录成功")
         }
     }
 

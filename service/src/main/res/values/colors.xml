@@ -15,4 +15,5 @@
     <color name="font_gray">#757575</color>
     <color name="gray">#808080</color>
     <color name="translucent_background">#88000000</color>
+    <color name="divider_gray">#7E7E7E</color>
 </resources>

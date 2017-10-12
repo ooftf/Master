@@ -2,8 +2,6 @@
 <resources>
     <color name="blue_main">#008CE8</color>
     <color name="blue_main_light">#B2DEF8</color>
-
-    <color name="gray_line">#dddddd</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 
@@ -20,7 +18,6 @@
     <!--蓝色按钮-->
     <color name="btn_blue_normal">#00afec</color>
     <color name="btn_blue_pressed">#7f00afec</color>
-    <color name="color_grey_line">#e7e7e7</color>
     <color name="red_f34e3b">#f34e3b</color>
     <color name="red_f35e3e">#f35e3e</color>
     <color name="main_title_color">#333333</color>

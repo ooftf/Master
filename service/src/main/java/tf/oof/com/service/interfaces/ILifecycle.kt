@@ -1,10 +1,9 @@
-package tf.oof.com.service.base
+package tf.oof.com.service.interfaces
 
 /**
  * Created by master on 2017/10/11 0011.
  */
-interface ILifecycle {
-    fun isAlive():Boolean
+interface ILifecycle :IJudgeAlive{
     fun isShowing():Boolean
     fun isTouchable():Boolean
 }

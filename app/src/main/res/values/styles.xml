@@ -1,9 +1,18 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme.BackgroundTransparent">
         <!--这两个属性必须都有-->
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="AppTheme.TranslucentStatus">
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+    </style>
+    <style name="AppTheme.BackgroundTransparent.TranslucentStatus">
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+    </style>
+    <style name="AppTheme.TranslucentStatus.Splash">
+        <item name="android:windowBackground">@drawable/background_white_stripe</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

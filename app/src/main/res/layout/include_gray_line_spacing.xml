@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/layout_line"
+    android:layout_height="@dimen/layout_divider"
     android:background="@color/white"
     android:orientation="vertical">
     <View
         android:layout_marginLeft="@dimen/layout_screen_spacing"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_line"
-        android:background="@color/gray_line"
+        android:layout_height="@dimen/layout_divider"
+        android:background="@color/divider_gray"
         />
 </LinearLayout>

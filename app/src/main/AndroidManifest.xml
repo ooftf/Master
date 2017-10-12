@@ -23,11 +23,13 @@
         <activity android:name=".testcase.SwitchFristActivity" />
         <activity android:name=".testcase.SwitchSecondActivity" />
         <activity android:name=".testcase.CalendarActivity" />
-        <activity android:name=".testcase.MainActivity" />
+        <activity android:name=".testcase.MainActivity"
+            android:launchMode="singleTask"
+            />
         <activity
             android:name=".activity.SplashActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.Fullscreen">
+            android:theme="@style/AppTheme.TranslucentStatus.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,19 +59,21 @@
         <activity
             android:name=".testcase.KeyBoardActivity"
             android:label="@string/title_activity_key_board"
-            android:theme="@style/AppTheme.BackgroundTransparent.TranslucentStatus" />
+            android:theme="@style/AppTheme.TranslucentStatus" />
         <activity android:name=".testcase.annotation.AnnotationActivity" />
         <activity android:name=".testcase.filedownload.DownloadActivity" />
 
         <service android:name=".testcase.filedownload.DownloadService" />
 
-        <activity android:name=".testcase.banner.BannerActivity" />
+        <activity
+            android:theme="@style/AppTheme.BackgroundTransparent.TranslucentStatus"
+            android:name=".testcase.banner.BannerActivity" />
         <activity android:name=".testcase.retrofit.SignInActivity" />
         <activity android:name=".testcase.AAEditTextActivity" />
         <activity android:name=".base.Main2Activity" />
         <activity
             android:name=".activity.GuideActivity"
-            android:theme="@style/AppTheme.BackgroundTransparent.TranslucentStatus" />
+            android:theme="@style/AppTheme.TranslucentStatus" />
     </application>
 
 </manifest>

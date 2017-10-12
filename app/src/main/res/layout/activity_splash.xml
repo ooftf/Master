@@ -3,22 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     tools:context="com.master.kit.activity.SplashActivity">
     <ImageView
         android:layout_width="@dimen/layout_logo_size"
         android:layout_height="@dimen/layout_logo_size"
         android:layout_centerInParent="true"
-        android:src="@drawable/logo_essence" />
+        android:src="@drawable/logo_full" />
 
     <TextView
         android:id="@+id/skip"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="@dimen/layout_edge_spacing"
-        android:layout_marginTop="@dimen/layout_edge_spacing"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/layout_edge_spacing"
         android:background="@drawable/shape_circular_translucent"
         android:gravity="center"
         android:text="跳过"

@@ -11,7 +11,7 @@ import io.reactivex.Observable
  * Created by master on 2017/1/19.
  */
 
-interface IETongDaiService {
+interface IEService {
     @POST("service/more/index")
     @FormUrlEncoded
     fun getBanner(@Field("useClientVersion") userClientVersion: String, @Field("terminalType") terminalType: String): Call<BannerBean>

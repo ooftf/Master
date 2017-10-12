@@ -5,7 +5,7 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import com.master.kit.R;
-import com.master.kit.testcase.retrofit.IETongDaiService;
+import com.master.kit.testcase.retrofit.IEService;
 import com.master.kit.engine.imageloader.ImageLoaderFactory;
 import com.master.kit.testcase.retrofit.ServiceHolder;
 import com.ooftf.banner.Banner;
@@ -36,7 +36,7 @@ public class BannerActivity extends BaseSlidingActivity {
     }
 
     private void initBanner() {
-        IETongDaiService api = ServiceHolder.INSTANCE.getService();
+        IEService api = ServiceHolder.INSTANCE.getService();
         Call<BannerBean> call = api.getBanner("1", "2");
         call.enqueue(new Callback<BannerBean>() {
             @Override

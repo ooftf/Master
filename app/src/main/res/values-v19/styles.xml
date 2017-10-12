@@ -2,7 +2,5 @@
 <resources>
 
 
-    <style name="AppTheme.BackgroundTransparent.TranslucentStatus">
-        <item name="android:windowTranslucentStatus">true</item>
-    </style>
+
 </resources>

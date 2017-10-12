@@ -6,6 +6,6 @@ package com.dks.master.masterretrofit
 interface IViewResponse {
     fun onLoading()
     fun onError()
-    fun onSuccess()
+    fun onResponse()
     fun isAlive():Boolean
 }

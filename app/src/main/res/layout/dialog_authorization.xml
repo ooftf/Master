@@ -44,7 +44,7 @@
                 android:hint="请输入短信验证码" />
 
             <View
-                android:layout_width="@dimen/layout_line"
+                android:layout_width="@dimen/layout_divider"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/layout_screen_spacing"
                 android:layout_marginRight="@dimen/layout_screen_spacing"

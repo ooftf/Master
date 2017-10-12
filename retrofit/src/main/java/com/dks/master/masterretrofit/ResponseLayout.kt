@@ -5,12 +5,14 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
-import tf.oof.com.service.base.ILifecycle
+import tf.oof.com.service.interfaces.ILifecycle
 
 /**
+ * 适合只加载一次的页面，比如进入activity就要加载数据，并且每次数据都是独立的。不适合多次加载的列表页面
+ *
  * Created by master on 2017/10/11 0011.
  */
-class ResponseLayout : FrameLayout, IViewResponse {
+open class ResponseLayout : FrameLayout, IViewResponse {
     override fun isAlive(): Boolean {
         if (context is ILifecycle) {
             return (context as ILifecycle).isAlive()
@@ -61,7 +63,7 @@ class ResponseLayout : FrameLayout, IViewResponse {
     }
 
     var loaded = false
-    override fun onSuccess() {
+    override fun onResponse() {
         state = STATE_SUCCESS
         loaded = true
         refreshView()

@@ -9,9 +9,10 @@ import android.widget.ProgressBar
 import tf.oof.com.service.base.BaseActivity
 
 /**
+ * 适合独立的请求防止多次点击，比如点击按钮的请求
  * Created by master on 2017/10/11 0011.
  */
-class ResponseDialog : Dialog, IViewResponse {
+open class ResponseDialog : Dialog, IViewResponse {
     var activity: BaseActivity
 
     constructor(activity: BaseActivity) : super(activity, R.style.DialogTheme_Empty) {
@@ -44,7 +45,7 @@ class ResponseDialog : Dialog, IViewResponse {
         }, 1000)
     }
 
-    override fun onSuccess() {
+    override fun onResponse() {
         dismiss()
     }
 

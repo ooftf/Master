@@ -1,5 +1,7 @@
 package com.master.kit.testcase
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,6 +13,11 @@ import tf.oof.com.service.base.BaseSlidingActivity
 import tf.oof.com.service.engine.FragmentSwitchManager
 
 class MainActivity : BaseActivity() {
+    companion object {
+        fun getStartIntent(context: Context): Intent {
+            return Intent(context,MainActivity::class.java)
+        }
+    }
     private lateinit var switchManager: FragmentSwitchManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,5 +63,14 @@ class MainActivity : BaseActivity() {
             R.id.action_settings -> toast(System.currentTimeMillis().toString() + "")
         }
         return true
+    }
+    var backPressedTime = 0L
+    override fun onBackPressed() {
+        if(System.currentTimeMillis()-backPressedTime<2000){
+            android.os.Process.killProcess( android.os.Process.myPid())
+        }else{
+            backPressedTime = System.currentTimeMillis()
+            toast("再按一次退出应用")
+        }
     }
 }

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import tf.oof.com.service.interfaces.ILifecycle
 import tf.oof.com.service.utils.LogUtil
 import java.util.*
 

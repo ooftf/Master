@@ -6,6 +6,7 @@ import com.master.kit.R
 import com.ooftf.applet.breakfast.BreakfastActivity
 
 import com.master.kit.bean.ScreenItemBean
+import com.master.kit.testcase.MainActivity
 
 /**
  * Created by master on 2017/9/26 0026.

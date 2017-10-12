@@ -5,6 +5,7 @@ import com.master.kit.R
 import com.master.kit.bean.ScreenItemBean
 import com.master.kit.testcase.DialogDemo
 import com.master.kit.testcase.KeyBoardActivity
+import com.master.kit.testcase.MainActivity
 import com.master.kit.testcase.NewInstanceActivity
 import com.master.kit.testcase.listview.ListViewActivity
 import com.master.kit.testcase.pulltorefresh.PullToRefreshActivity
