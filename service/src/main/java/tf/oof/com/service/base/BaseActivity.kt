@@ -11,7 +11,7 @@ import java.util.*
 /**
  * Created by master on 2017/10/10 0010.
  */
-open class BaseActivity : AppCompatActivity(), ILifecycle {
+open class  BaseActivity : AppCompatActivity(), ILifecycle {
     override fun isAlive(): Boolean {
         return alive
     }
@@ -25,7 +25,8 @@ open class BaseActivity : AppCompatActivity(), ILifecycle {
     }
 
 
-    private var postOnResumeList: MutableList<() -> Unit> = ArrayList()
+    private val onResumeList: MutableList<() -> Unit> by lazy { ArrayList<() -> Unit>() }
+    private val onDestroyList: MutableList<() -> Unit> by lazy { ArrayList<() -> Unit>() }
     private var showing = false
     private var touchable = false
     private var alive = false
@@ -76,9 +77,16 @@ open class BaseActivity : AppCompatActivity(), ILifecycle {
         LogUtil.e(this.javaClass.simpleName, "onDestroy")
         super.onDestroy()
     }
-
+    private fun doOnDestroy() {
+        val iterator = onResumeList.iterator()
+        while (iterator.hasNext()) {
+            val next = iterator.next()
+            next.invoke()
+            iterator.remove()
+        }
+    }
     private fun doOnResume() {
-        val iterator = postOnResumeList.iterator()
+        val iterator = onDestroyList.iterator()
         while (iterator.hasNext()) {
             val next = iterator.next()
             next.invoke()
@@ -87,9 +95,11 @@ open class BaseActivity : AppCompatActivity(), ILifecycle {
     }
 
     fun postOnResume(doResume: () -> Unit) {
-        postOnResumeList.add(doResume)
+        onResumeList.add(doResume)
     }
-
+    fun postOnDestroy(doOnDestroy:()->Unit){
+        onDestroyList.add(doOnDestroy)
+    }
     override fun onNewIntent(intent: Intent) {
         LogUtil.e(this.javaClass.simpleName, "onNewIntent")
         super.onNewIntent(intent)
@@ -100,4 +110,5 @@ open class BaseActivity : AppCompatActivity(), ILifecycle {
         mToast = Toast.makeText(this, content, duration)
         mToast?.show()
     }
+
 }

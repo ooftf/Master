@@ -2,8 +2,7 @@ package com.master.kit.testcase.retrofit
 
 import com.dks.master.masterretrofit.BaseBean
 import io.reactivex.disposables.Disposable
-import tf.oof.com.service.interfaces.IJudgeAlive
-import tf.oof.com.service.interfaces.ILifecycle
+import tf.oof.com.service.interfaces.ILifeListener
 import java.lang.ref.WeakReference
 
 /**
@@ -12,19 +11,17 @@ import java.lang.ref.WeakReference
  * R 响应界面
  * Created by master on 2017/10/12 0012.
  */
-open class EControlViewObserver<T : BaseBean, A : IJudgeAlive>(responseView: IEResponse, target: A) : EControlObserver<T, A>(target) {
+open class EControlViewObserver<T : BaseBean, A : ILifeListener>(responseView: IEResponse, target: A) : EControlObserver<T, A>(target) {
     private var responseReference: WeakReference<IEResponse> = WeakReference(responseView)
     override fun onError(e: Throwable?) {
-        if (!isAlive()) return
         getResponseView()?.onError()
 
     }
 
     fun getResponseView() = responseReference.get()
-    override fun onSubscribe(d: Disposable?) {
-        if (!isAlive()) return
+    override fun onSubscribe(d: Disposable) {
+        super.onSubscribe(d)
         getResponseView()?.onLoading()
-
     }
 
     override fun onComplete() {
@@ -32,9 +29,9 @@ open class EControlViewObserver<T : BaseBean, A : IJudgeAlive>(responseView: IER
     }
 
     override fun onNext(bean: T) {
-        if (!isAlive()) return
-        getResponseView()?.onResponse()
         super.onNext(bean)
+        getResponseView()?.onResponse()
+
     }
     override fun onResponseSuccess(bean: T) {
         getResponseView()?.onResponseSuccess(bean)
@@ -51,4 +48,5 @@ open class EControlViewObserver<T : BaseBean, A : IJudgeAlive>(responseView: IER
     override fun onResponseFailOffSiteLogin(bean: T) {
         getResponseView()?.onResponseFailOffSiteLogin(bean)
     }
+
 }

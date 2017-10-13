@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
 
-import static android.R.attr.start;
-
 /**
  * 存在问题：下拉刷新的时候，因为ListView接受到了down事件所以item会比那成pressed状态，但是up事件被拦截下来，所以pressed状态不会消失
  * 临时解决方案：去掉item的pressed状态
@@ -56,13 +54,13 @@ public abstract class APullToRefreshHeader extends LinearLayout {
         setGravity(Gravity.CENTER_HORIZONTAL);
         setContentView();
         //初始的时候隐藏自己
-        headSelf();
+        hideSelf();
         //设置和父控件有关的属性
         ViewGroup.LayoutParams params = new LinearLayoutCompat.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
         setLayoutParams(params);
 
     }
-    void headSelf(){
+    void hideSelf(){
         post(new Runnable() {
             @Override
             public void run() {

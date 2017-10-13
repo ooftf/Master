@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 
 /**
  * Created by master on 2017/2/8.
@@ -106,11 +105,7 @@ public class PullToRefreshRoot extends LinearLayout{
      */
     boolean isTargetOnTop(){
         target = getChildAt(1);
-        if(target instanceof ListView){
-            return ((ListView)target).getFirstVisiblePosition()==0;
-        }
-        Log.e("getScrollY",target.getScrollY()+"");
-        return target.getScrollY() == 0;
+        return !target.canScrollVertically(-1);
     }
 
 

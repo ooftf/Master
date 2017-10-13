@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/layout_edge_spacing">
 
     <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@id/icon"
+        android:id="@+id/icon"
         android:layout_width="@dimen/home_item_icon_size"
         android:layout_height="@dimen/home_item_icon_size"
         android:scaleType="fitCenter" />
@@ -34,6 +34,8 @@
             android:text="name" />
 
         <TextView
+            android:lines="2"
+            android:ellipsize="end"
             android:id="@+id/describe"
             android:layout_width="match_parent"
             android:layout_height="0dp"

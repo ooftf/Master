@@ -14,7 +14,7 @@ import io.reactivex.Observable
 interface IEService {
     @POST("service/more/index")
     @FormUrlEncoded
-    fun getBanner(@Field("useClientVersion") userClientVersion: String, @Field("terminalType") terminalType: String): Call<BannerBean>
+    fun getBanner(@Field("useClientVersion") userClientVersion: String, @Field("terminalType") terminalType: String): Observable<BannerBean>
     @POST("service/user/login")
     @FormUrlEncoded
     fun signIn(@Field("useLoginName") username: String,

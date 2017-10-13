@@ -1,14 +1,12 @@
 package com.master.kit.fragment
 
 import android.os.Bundle
-import com.master.kit.R
 import com.master.kit.bean.ScreenItemBean
 import com.master.kit.testcase.DialogDemo
 import com.master.kit.testcase.KeyBoardActivity
-import com.master.kit.testcase.MainActivity
 import com.master.kit.testcase.NewInstanceActivity
 import com.master.kit.testcase.listview.ListViewActivity
-import com.master.kit.testcase.pulltorefresh.PullToRefreshActivity
+import ooftf.com.widget.activity.PullToRefreshActivity
 import com.master.kit.testcase.touchevent.TouchActivity
 
 /**
@@ -20,7 +18,6 @@ class DebugFragment : BaseHomeFragment() {
     override fun initData() {
         adapter.add(ScreenItemBean(NewInstanceActivity::class.java))
         adapter.add(ScreenItemBean(DialogDemo::class.java))
-        adapter.add(ScreenItemBean(PullToRefreshActivity::class.java))
         adapter.add(ScreenItemBean(KeyBoardActivity::class.java))
         adapter.add(ScreenItemBean(ListViewActivity::class.java))
         adapter.add(ScreenItemBean(TouchActivity::class.java))

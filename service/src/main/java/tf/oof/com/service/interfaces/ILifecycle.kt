@@ -3,7 +3,8 @@ package tf.oof.com.service.interfaces
 /**
  * Created by master on 2017/10/11 0011.
  */
-interface ILifecycle :IJudgeAlive{
+interface ILifecycle : ILifeListener {
+    fun isAlive():Boolean
     fun isShowing():Boolean
     fun isTouchable():Boolean
 }

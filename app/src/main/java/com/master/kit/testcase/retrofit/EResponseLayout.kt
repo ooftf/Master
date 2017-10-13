@@ -7,11 +7,12 @@ import android.util.AttributeSet
 import com.dks.master.masterretrofit.BaseBean
 import com.dks.master.masterretrofit.ResponseLayout
 import com.master.kit.testcase.MainActivity
+import retrofit2.Response
 
 /**
  * Created by master on 2017/10/12 0012.
  */
-abstract class EResponseLayout : ResponseLayout, IEResponse {
+class EResponseLayout : ResponseLayout, IEResponse {
     val activity: Activity by lazy {
         if (context is Activity) {
             context as Activity

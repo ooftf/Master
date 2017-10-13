@@ -9,10 +9,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.master.kit.R;
-import com.ooftf.pulltorefresh.widget.PullToRefreshRoot;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ooftf.com.widget.self.pulltorefresh.PullToRefreshRoot;
 
 public class WebViewActivity extends AppCompatActivity {
 

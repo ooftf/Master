@@ -6,8 +6,15 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context="com.master.kit.testcase.banner.BannerActivity">
-    <com.ooftf.banner.Banner
-        android:id="@+id/banner"
+
+    <com.master.kit.testcase.retrofit.EResponseLayout
+        android:id="@+id/responseLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.ooftf.banner.Banner>
+        android:layout_height="match_parent">
+
+        <com.ooftf.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.master.kit.testcase.retrofit.EResponseLayout>
 </RelativeLayout>

@@ -1,8 +1,8 @@
 package com.dks.master.masterretrofit
 
 import io.reactivex.Observer
-import tf.oof.com.service.interfaces.IJudgeAlive
-import tf.oof.com.service.interfaces.ILifecycle
+import io.reactivex.disposables.Disposable
+import tf.oof.com.service.interfaces.ILifeListener
 import java.lang.ref.WeakReference
 
 /**
@@ -11,16 +11,22 @@ import java.lang.ref.WeakReference
  *
  * Created by master on 2017/8/18 0018.
  */
-abstract class ControlObserver<T,A: IJudgeAlive>(target:A) : Observer<T> {
+abstract class ControlObserver<T, A : ILifeListener>(target: A) : Observer<T> {
     var targetReference: WeakReference<A> = WeakReference(target)
     fun getTarget(): A? {
         return targetReference.get()
     }
-    fun isAlive(): Boolean {
-        return if(getTarget()!=null){
-            getTarget()!!.isAlive()
-        }else{
-            false
+    var onDestroy:(()->Unit)? = null
+    override fun onSubscribe(d: Disposable) {
+        onDestroy = {
+            if(!d.isDisposed){
+                d.dispose()
+            }
         }
+        getTarget()?.postOnDestroy(onDestroy!!)
+    }
+
+    override fun onComplete() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

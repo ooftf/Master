@@ -65,8 +65,8 @@ open class ResponseLayout : FrameLayout, IViewResponse {
     var loaded = false
     override fun onResponse() {
         state = STATE_SUCCESS
-        loaded = true
         refreshView()
+        loaded = true
     }
 
     private fun refreshView() {

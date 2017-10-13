@@ -2,8 +2,7 @@ package com.master.kit.testcase.retrofit
 
 import com.dks.master.masterretrofit.ControlObserver
 import com.dks.master.masterretrofit.BaseBean
-import tf.oof.com.service.interfaces.IJudgeAlive
-import tf.oof.com.service.interfaces.ILifecycle
+import tf.oof.com.service.interfaces.ILifeListener
 
 /**
  * T bean
@@ -11,10 +10,9 @@ import tf.oof.com.service.interfaces.ILifecycle
  * R 响应界面
  * Created by master on 2017/10/12 0012.
  */
-abstract class EControlObserver<T : BaseBean, A: IJudgeAlive>(target: A) : ControlObserver<T, A>(target) {
+abstract class EControlObserver<T : BaseBean, A: ILifeListener>(target: A) : ControlObserver<T, A>(target) {
 
     override fun onNext(bean: T) {
-        if (!isAlive()) return
         if (bean.isSuccess) {
             onResponseSuccess(bean)
         } else {
