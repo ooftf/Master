@@ -1,4 +1,0 @@
-<resources>
-    <string name="app_name">pulltorefresh</string>
-    <string name="load_more_tip">上拉加载更多</string>
-</resources>

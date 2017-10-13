@@ -22,7 +22,7 @@ android {
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':pulltorefresh')
+    compile project(':self-made')
     compile project(':banner')
     compile project(':retrofit')
     compile project(':service')

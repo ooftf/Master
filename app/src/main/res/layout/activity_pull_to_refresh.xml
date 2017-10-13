@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/layout_horizontal_margin"
     android:paddingTop="@dimen/layout_vertical_margin"
     tools:context="com.master.kit.testcase.pulltorefresh.PullToRefreshActivity">
-    <com.ooftf.pulltorefresh.widget.PullToRefreshRoot
+    <ooftf.com.widget.self.pulltorefresh.PullToRefreshRoot
         android:id="@+id/main_pull_to_refresh_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -17,5 +17,5 @@
             android:id="@+id/main_list_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ListView>
-    </com.ooftf.pulltorefresh.widget.PullToRefreshRoot>
+    </ooftf.com.widget.self.pulltorefresh.PullToRefreshRoot>
 </RelativeLayout>
