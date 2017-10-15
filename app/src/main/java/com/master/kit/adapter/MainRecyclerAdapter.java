@@ -13,11 +13,10 @@ import android.widget.TextView;
 import com.master.kit.R;
 import com.master.kit.bean.ScreenItemBean;
 
-import tf.oof.com.service.base.BaseActivity;
-import tf.oof.com.service.base.BaseSlidingActivity;
-import tf.oof.com.service.base.BaseRecyclerAdapter;
-
 import java.lang.reflect.InvocationTargetException;
+
+import tf.oof.com.service.base.BaseActivity;
+import tf.oof.com.service.base.BaseRecyclerAdapter;
 
 
 /**
@@ -27,9 +26,12 @@ import java.lang.reflect.InvocationTargetException;
 public class MainRecyclerAdapter extends BaseRecyclerAdapter<ScreenItemBean,MainRecyclerAdapter.RecyclerHolder> {
     LayoutInflater inflater;
     BaseActivity baseActivity;
-    public MainRecyclerAdapter(BaseActivity context){
+    TextView textView;
+
+    public MainRecyclerAdapter(BaseActivity context, TextView textView) {
         this.baseActivity = context;
         inflater = LayoutInflater.from(context);
+        this.textView = textView;
     }
     //LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
 
@@ -44,6 +46,14 @@ public class MainRecyclerAdapter extends BaseRecyclerAdapter<ScreenItemBean,Main
     @Override
     public void onBindViewHolder(RecyclerHolder holder, final int position) {
         final ScreenItemBean bean = getItem(position);
+        if (position == 0) {
+            holder.title.setVisibility(View.VISIBLE);//第一个title必显示
+        } else if (bean.getCategory().equals(getItem(position - 1).getCategory())) {
+            holder.title.setVisibility(View.GONE);//如果和上一个属于同一个类别，不显示
+        } else {
+            holder.title.setVisibility(View.VISIBLE);//如果和上一个不属于同一个类别，显示
+        }
+        holder.title.setText(bean.getCategory());
         holder.describe.setText(bean.getDescribe());
         holder.name.setText(bean.getName()+"("+bean.getClz().getSimpleName()+")");
         holder.icon.setImageResource(bean.getIcon());
@@ -76,13 +86,22 @@ public class MainRecyclerAdapter extends BaseRecyclerAdapter<ScreenItemBean,Main
             }
         });
     }
+
+    @Override
+    public void onViewRecycled(RecyclerHolder holder) {
+        super.onViewRecycled(holder);
+        textView.setText(holder.getAdapterPosition());
+    }
+
     public static class RecyclerHolder extends RecyclerView.ViewHolder {
         public TextView name;
         public TextView describe;
         public ImageView icon;
         public ImageView issue;
+        public TextView title;
         public RecyclerHolder(View itemView) {
             super(itemView);
+            title = itemView.findViewById(R.id.title);
             name = itemView.findViewById(R.id.name);
             describe = itemView.findViewById(R.id.describe);
             icon = itemView.findViewById(R.id.icon);
