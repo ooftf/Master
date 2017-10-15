@@ -7,7 +7,6 @@ import android.util.AttributeSet
 import com.dks.master.masterretrofit.BaseBean
 import com.dks.master.masterretrofit.ResponseLayout
 import com.master.kit.testcase.MainActivity
-import retrofit2.Response
 
 /**
  * Created by master on 2017/10/12 0012.
@@ -33,14 +32,18 @@ class EResponseLayout : ResponseLayout, IEResponse {
     }
 
     override fun onResponseFailMessage(bean: BaseBean) {
-        showToMainDialog(bean)
+        AlertDialog
+                .Builder(activity)
+                .setMessage(bean.info)
+                .setPositiveButton("确定", { dialog, which -> dialog.dismiss() })
+                .show()
     }
 
     private fun showToMainDialog(bean: BaseBean) {
         AlertDialog
                 .Builder(activity)
                 .setMessage(bean.info)
-                .setNeutralButton("返回首页", { dialog, which -> activity.startActivity(MainActivity.getStartIntent(activity)) })
+                .setNeutralButton("返回首页", { _, _ -> activity.startActivity(MainActivity.getStartIntent(activity)) })
                 .show()
     }
 

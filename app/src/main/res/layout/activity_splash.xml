@@ -5,17 +5,19 @@
     android:layout_height="match_parent"
     tools:context="com.master.kit.activity.SplashActivity">
     <ImageView
-        android:layout_width="@dimen/layout_logo_size"
-        android:layout_height="@dimen/layout_logo_size"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
-        android:src="@drawable/logo_full" />
+        android:adjustViewBounds="true"
+        android:src="@drawable/dragon_left" />
 
     <TextView
         android:id="@+id/skip"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:layout_margin="@dimen/layout_edge_spacing"
         android:background="@drawable/shape_circular_translucent"
         android:gravity="center"

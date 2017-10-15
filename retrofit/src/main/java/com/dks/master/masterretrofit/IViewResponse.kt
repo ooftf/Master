@@ -7,5 +7,4 @@ interface IViewResponse {
     fun onLoading()
     fun onError()
     fun onResponse()
-    fun isAlive():Boolean
 }

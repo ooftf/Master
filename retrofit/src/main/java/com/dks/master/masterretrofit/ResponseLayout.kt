@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
-import tf.oof.com.service.interfaces.ILifecycle
 
 /**
  * 适合只加载一次的页面，比如进入activity就要加载数据，并且每次数据都是独立的。不适合多次加载的列表页面
@@ -13,13 +12,6 @@ import tf.oof.com.service.interfaces.ILifecycle
  * Created by master on 2017/10/11 0011.
  */
 open class ResponseLayout : FrameLayout, IViewResponse {
-    override fun isAlive(): Boolean {
-        if (context is ILifecycle) {
-            return (context as ILifecycle).isAlive()
-        } else {
-            throw CloneNotSupportedException("所在Activity需要实现ILifecycle接口")
-        }
-    }
 
     constructor(context: Context?) : super(context) {
         init()
@@ -40,6 +32,7 @@ open class ResponseLayout : FrameLayout, IViewResponse {
     lateinit var inflater: LayoutInflater
     lateinit var startView: View
     lateinit var errorView: View
+    lateinit var retry: View
     var success: View? = null
     private fun init() {
         success = getChildAt(0)
@@ -48,6 +41,7 @@ open class ResponseLayout : FrameLayout, IViewResponse {
         inflater.inflate(R.layout.layout_error, this)
         startView = findViewById(R.id.start_container)
         errorView = findViewById(R.id.error_container)
+        retry = findViewById(R.id.retry)
         refreshView()
     }
 
@@ -81,6 +75,11 @@ open class ResponseLayout : FrameLayout, IViewResponse {
         }
     }
 
+    fun setOnRetryListener(listener: () -> Unit) {
+        retry.setOnClickListener {
+            listener()
+        }
+    }
     companion object {
         val STATE_INITIAL = 0
         val STATE_LOADING = 1

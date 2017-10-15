@@ -74,11 +74,12 @@ open class  BaseActivity : AppCompatActivity(), ILifecycle {
 
     override fun onDestroy() {
         alive = false
+        doOnDestroy()
         LogUtil.e(this.javaClass.simpleName, "onDestroy")
         super.onDestroy()
     }
     private fun doOnDestroy() {
-        val iterator = onResumeList.iterator()
+        val iterator = onDestroyList.iterator()
         while (iterator.hasNext()) {
             val next = iterator.next()
             next.invoke()
@@ -86,7 +87,7 @@ open class  BaseActivity : AppCompatActivity(), ILifecycle {
         }
     }
     private fun doOnResume() {
-        val iterator = onDestroyList.iterator()
+        val iterator = onResumeList.iterator()
         while (iterator.hasNext()) {
             val next = iterator.next()
             next.invoke()
@@ -97,7 +98,8 @@ open class  BaseActivity : AppCompatActivity(), ILifecycle {
     fun postOnResume(doResume: () -> Unit) {
         onResumeList.add(doResume)
     }
-    fun postOnDestroy(doOnDestroy:()->Unit){
+
+    override fun postOnDestroy(doOnDestroy: () -> Unit) {
         onDestroyList.add(doOnDestroy)
     }
     override fun onNewIntent(intent: Intent) {

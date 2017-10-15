@@ -1,27 +1,14 @@
 package com.master.kit.testcase.banner
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.ImageView
-
-import com.master.kit.R
-import com.master.kit.testcase.retrofit.IEService
-import com.master.kit.engine.imageloader.ImageLoaderFactory
-import com.master.kit.testcase.retrofit.ServiceHolder
-import com.ooftf.banner.Banner
-import com.ooftf.banner.BannerPagerAdapter
-
-import java.util.ArrayList
-
-import butterknife.BindView
 import butterknife.ButterKnife
+import com.master.kit.R
+import com.master.kit.engine.imageloader.ImageLoaderFactory
 import com.master.kit.testcase.retrofit.EControlViewObserver
 import com.master.kit.testcase.retrofit.IEResponse
+import com.master.kit.testcase.retrofit.ServiceHolder
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_banner.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import tf.oof.com.service.base.BaseSlidingActivity
 
 
@@ -31,10 +18,11 @@ class BannerActivity : BaseSlidingActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_banner)
         ButterKnife.bind(this)
-        initBanner()
+        requestBanner()
+        responseLayout.setOnRetryListener { requestBanner() }
     }
 
-    private fun initBanner() {
+    private fun requestBanner() {
         ServiceHolder
                 .service
                 .getBanner("1","2")

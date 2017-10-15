@@ -25,7 +25,6 @@ open class EControlViewObserver<T : BaseBean, A : ILifeListener>(responseView: I
     }
 
     override fun onComplete() {
-
     }
 
     override fun onNext(bean: T) {

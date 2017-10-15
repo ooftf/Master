@@ -34,22 +34,16 @@ open class ResponseDialog : Dialog, IViewResponse {
     private val handler: Handler by lazy {
         Handler()
     }
-
     override fun onError() {
         imageError.visibility = View.VISIBLE
         progressBar.visibility = View.GONE
         handler.postDelayed({
-            if (isAlive()) {
+            if (activity.isAlive()) {
                 dismiss()
             }
         }, 1000)
     }
-
     override fun onResponse() {
         dismiss()
-    }
-
-    override fun isAlive(): Boolean {
-        return activity.isAlive()
     }
 }

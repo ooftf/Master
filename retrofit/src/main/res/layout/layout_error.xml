@@ -16,6 +16,7 @@
         android:text="网络出错请稍后再试"
         android:textSize="@dimen/font_large" />
     <TextView
+        android:id="@+id/retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/layout_vertical_margin"

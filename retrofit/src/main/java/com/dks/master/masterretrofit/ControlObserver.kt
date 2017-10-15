@@ -16,17 +16,10 @@ abstract class ControlObserver<T, A : ILifeListener>(target: A) : Observer<T> {
     fun getTarget(): A? {
         return targetReference.get()
     }
-    var onDestroy:(()->Unit)? = null
-    override fun onSubscribe(d: Disposable) {
-        onDestroy = {
-            if(!d.isDisposed){
-                d.dispose()
-            }
-        }
-        getTarget()?.postOnDestroy(onDestroy!!)
-    }
 
-    override fun onComplete() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onSubscribe(d: Disposable) {
+        getTarget()?.postOnDestroy {
+            d.dispose()
+        }
     }
 }

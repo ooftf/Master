@@ -16,6 +16,10 @@ import java.util.*
  * Created by master on 2016/4/12.
  */
 open class BaseFragment : Fragment(), ILifecycle {
+    override fun postOnDestroy(doOnDestroy: () -> Unit) {
+        onDestroyList.add(doOnDestroy)
+    }
+
     override fun isAlive(): Boolean {
         return alive
     }
@@ -33,8 +37,8 @@ open class BaseFragment : Fragment(), ILifecycle {
     private var touchable = false
     private var showing = false
     private var alive = false
-    private var postOnResumeList: MutableList<() -> Unit> = ArrayList()
-
+    private var onResumeList: MutableList<() -> Unit> = ArrayList()
+    private val onDestroyList: MutableList<() -> Unit> by lazy { ArrayList<() -> Unit>() }
     override fun onAttach(context: Context) {
         alive = true
         LogUtil.e(javaClass.simpleName, "onAttach")
@@ -92,6 +96,7 @@ open class BaseFragment : Fragment(), ILifecycle {
 
     override fun onDetach() {
         alive = false
+        doOnDestroy()
         LogUtil.e(javaClass.simpleName, "onDetach")
         super.onDetach()
     }
@@ -130,11 +135,11 @@ open class BaseFragment : Fragment(), ILifecycle {
     }
 
     fun postOnResume(doResume: () -> Unit) {
-        postOnResumeList.add(doResume)
+        onResumeList.add(doResume)
     }
 
     private fun doOnResume() {
-        val iterator = postOnResumeList.iterator()
+        val iterator = onResumeList.iterator()
         while (iterator.hasNext()) {
             val next = iterator.next()
             next.invoke()
@@ -150,5 +155,14 @@ open class BaseFragment : Fragment(), ILifecycle {
 
     fun getBaseActivity(): BaseActivity {
         return activity as BaseActivity
+    }
+
+    private fun doOnDestroy() {
+        val iterator = onResumeList.iterator()
+        while (iterator.hasNext()) {
+            val next = iterator.next()
+            next.invoke()
+            iterator.remove()
+        }
     }
 }

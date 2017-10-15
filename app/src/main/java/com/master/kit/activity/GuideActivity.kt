@@ -24,7 +24,6 @@ class GuideActivity : BaseActivity() {
         viewPager.adapter = mSectionsPagerAdapter
         viewPager.offscreenPageLimit = 5
         pageIndicatorView.setViewPager(viewPager)
-
     }
 
     class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
