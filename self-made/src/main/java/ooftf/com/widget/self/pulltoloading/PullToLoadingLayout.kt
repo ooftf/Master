@@ -2,6 +2,7 @@ package ooftf.com.widget.self.pulltoloading
 
 import android.content.Context
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AbsListView
 import android.widget.FrameLayout
 import android.widget.ListView
@@ -29,8 +30,16 @@ class PullToLoadingLayout(context: Context, var pullToLoading: PullToLoading, va
                 }
             }
         }
+        state = STATE_NORMAL
+        pullToLoading.normal()
+
     }
 
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        layoutParams.width = LayoutParams.MATCH_PARENT
+        layoutParams.height = LayoutParams.WRAP_CONTENT
+    }
     /**
      * 在setAdapter 之前调用
      *

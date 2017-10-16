@@ -26,6 +26,18 @@ class WidgetFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean(PullToRefreshActivity::class.java, "自定义下拉刷星控件", "自定义下拉刷新控件，可实现接口，编写不同header,上拉加载更多控件！", R.drawable.logo_orb, true, "自定义"))
         adapter.add(ScreenItemBean(ProgressBarActivity::class.java, "环形进度条", "仿Material进度条", R.drawable.vector_progress_bar, false, "非自定义"))
         adapter.add(ScreenItemBean(GuideActivity::class.java, category = "非自定义"))
+        adapter.add(ScreenItemBean(GuideActivity::class.java, category = "非自定义"))
+        adapter.add(ScreenItemBean(GuideActivity::class.java, category = "非自定义"))
+        adapter.add(ScreenItemBean(GuideActivity::class.java, category = "非自定义"))
+        adapter.add(ScreenItemBean(GuideActivity::class.java, category = "非自定义"))
+        adapter.add(ScreenItemBean(GuideActivity::class.java, category = "非自定义"))
+        adapter.add(ScreenItemBean(GuideActivity::class.java, category = "非自定义"))
+        adapter.add(ScreenItemBean(GuideActivity::class.java, category = "非自定义"))
+        adapter.add(ScreenItemBean(GuideActivity::class.java, category = "非自定义"))
+        adapter.add(ScreenItemBean(GuideActivity::class.java, category = "非自定义"))
+        adapter.add(ScreenItemBean(GuideActivity::class.java, category = "非自定义"))
+        adapter.add(ScreenItemBean(GuideActivity::class.java, category = "非自定义"))
+        adapter.add(ScreenItemBean(GuideActivity::class.java, category = "非自定义"))
         adapter.notifyDataSetChanged()
     }
 
