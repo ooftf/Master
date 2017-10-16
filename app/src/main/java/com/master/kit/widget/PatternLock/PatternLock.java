@@ -1,4 +1,4 @@
-package com.master.kit.widget.gesturepassword;
+package com.master.kit.widget.PatternLock;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -15,38 +15,53 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.master.kit.R;
-import tf.oof.com.service.utils.DensityUtil;
-
 
 import java.util.ArrayList;
 import java.util.List;
 
+import tf.oof.com.service.utils.DensityUtil;
+
 /**
  * Created by master on 2016/4/12.
  */
-public class GesturePassword extends View {
-    public GesturePassword(Context context) {
+public class PatternLock extends View {
+    OnSlidingCompleteListener listener;
+    Paint mPaintPoint;
+    Paint mPaintLine;
+    List<Point> points;
+    Bitmap error;
+    Bitmap success;
+    Bitmap normal;
+    int wrapSize;
+    float currentX;
+    float currentY;
+    boolean isTouching = false;
+    /**
+     * 已经选择的点
+     */
+    List<Point> mSelectedLsit;
+
+    public PatternLock(Context context) {
         super(context);
         init();
     }
 
-    public GesturePassword(Context context, AttributeSet attrs) {
+    public PatternLock(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public GesturePassword(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PatternLock(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public GesturePassword(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public PatternLock(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
     }
 
-    OnSlidingCompleteListener listener;
     private void init() {
         wrapSize = DensityUtil.dip2px(getContext(), 200);
         initPoint();
@@ -55,20 +70,13 @@ public class GesturePassword extends View {
         mSelectedLsit = new ArrayList<>();
     }
 
-    Paint mPaintPoint;
-    Paint mPaintLine;
-
     private void initPaints() {
         mPaintPoint = new Paint();
         mPaintPoint.setAntiAlias(true);
         mPaintLine = new Paint();
         mPaintLine.setAntiAlias(true);
         mPaintLine.setColor(Color.parseColor("#ffffff"));
-
-
     }
-
-    List<Point> points;
 
     private void initPoint() {
         points = new ArrayList<>();
@@ -77,11 +85,6 @@ public class GesturePassword extends View {
             points.add(temp);
         }
     }
-
-    Bitmap error;
-    Bitmap success;
-    Bitmap normal;
-    int wrapSize;
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -121,13 +124,6 @@ public class GesturePassword extends View {
         super.onSizeChanged(w, h, oldw, oldh);
     }
 
-    interface OnSlidingCompleteListener{
-        public void onSlidingComplete(List<Integer> list);
-    }
-
-    float currentX;
-    float currentY;
-    boolean isTouching = false;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
@@ -201,20 +197,19 @@ public class GesturePassword extends View {
             }
     }
 
-    /**
-     * 已经选择的点
-     */
-    List<Point> mSelectedLsit;
+    interface OnSlidingCompleteListener {
+        void onSlidingComplete(List<Integer> list);
+    }
 
     /**
      * position 从0开始
      */
     class Point {
+        int position;
+
         Point(int position) {
             this.position = position;
         }
-
-        int position;
 
         /**
          * 从0开始
