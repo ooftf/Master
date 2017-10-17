@@ -3,6 +3,7 @@ package com.master.kit.testcase.banner
 import android.os.Bundle
 import butterknife.ButterKnife
 import com.master.kit.R
+import com.master.kit.activity.GuideActivity
 import com.master.kit.engine.imageloader.ImageLoaderFactory
 import com.master.kit.testcase.retrofit.EControlViewObserver
 import com.master.kit.testcase.retrofit.IEResponse
@@ -20,6 +21,9 @@ class BannerActivity : BaseSlidingActivity() {
         ButterKnife.bind(this)
         requestBanner()
         responseLayout.setOnRetryListener { requestBanner() }
+        next.setOnClickListener {
+            startActivity(GuideActivity::class.java)
+        }
     }
 
     private fun requestBanner() {
@@ -28,15 +32,6 @@ class BannerActivity : BaseSlidingActivity() {
                 .getBanner("1","2")
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(HomeObserver(responseLayout,this))
-    }
-    override fun onStart() {
-        super.onStart()
-        banner.stopCycle()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        banner.stopCycle()
     }
 
     companion object {

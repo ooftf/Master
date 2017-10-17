@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">self-made</string>
     <string name="load_more_tip">上拉加载更多</string>
+    <string name="shared_element_icon">icon</string>
 </resources>

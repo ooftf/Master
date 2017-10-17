@@ -2,14 +2,11 @@ package com.ooftf.banner;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +17,14 @@ public class Banner extends RelativeLayout {
 
 
     private static final String TAG = "Banner";
-    private Context mContext;
-    private CircleIndicator mCircleIndicator;
-    private ViewPager mViewPager;
-
     /**
      * 默认宽高比
      */
     private final float defaultProportion = 300 / 640f;
+    private Context mContext;
+    private CircleIndicator mCircleIndicator;
+    private ViewPager mViewPager;
+    private List<String> uris;
 
     @SuppressLint("NewApi")
     public Banner(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -53,8 +50,8 @@ public class Banner extends RelativeLayout {
     void init(Context context) {
         mContext = context;
         View.inflate(mContext, R.layout.widget_banner, this);
-        mCircleIndicator = (CircleIndicator) findViewById(R.id.ci_banner);
-        mViewPager = (ViewPager) findViewById(R.id.vp_banner);
+        mCircleIndicator = findViewById(R.id.ci_banner);
+        mViewPager = findViewById(R.id.vp_banner);
         setProportion(defaultProportion);
         mViewPager.setOffscreenPageLimit(0);
     }
@@ -81,8 +78,6 @@ public class Banner extends RelativeLayout {
         }
         return super.dispatchTouchEvent(ev);
     }
-
-    private List<String> uris;
 
     /**
      * 设置ViewPager 要显示的URI   在里面对于urls做了复制操作，urls在外部改变，内部的uris也不会改变
@@ -122,5 +117,18 @@ public class Banner extends RelativeLayout {
         mCircleIndicator.stopCycle();
     }
 
+    @Override
+    protected void onWindowVisibilityChanged(int visibility) {
+        if (visibility == View.VISIBLE) {
+            startCycle();
+        } else {
+            stopCycle();
+        }
+        super.onWindowVisibilityChanged(visibility);
+    }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+    }
 }

@@ -23,16 +23,14 @@
         <activity android:name=".testcase.SwitchFristActivity" />
         <activity android:name=".testcase.SwitchSecondActivity" />
         <activity android:name=".testcase.CalendarActivity" />
-        <activity android:name=".testcase.MainActivity"
-            android:launchMode="singleTask"
-            />
+        <activity
+            android:name=".testcase.MainActivity"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.SplashActivity"
-            android:launchMode="singleTask"
             android:theme="@style/AppTheme.TranslucentStatus.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -66,8 +64,8 @@
         <service android:name=".testcase.filedownload.DownloadService" />
 
         <activity
-            android:theme="@style/AppTheme.BackgroundTransparent.TranslucentStatus"
-            android:name=".testcase.banner.BannerActivity" />
+            android:name=".testcase.banner.BannerActivity"
+            android:theme="@style/AppTheme.BackgroundTransparent.TranslucentStatus" />
         <activity android:name=".testcase.retrofit.SignInActivity" />
         <activity android:name=".testcase.AAEditTextActivity" />
         <activity android:name=".base.Main2Activity" />

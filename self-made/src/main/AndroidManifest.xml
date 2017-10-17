@@ -9,8 +9,12 @@
         <activity android:name=".activity.TourGuideActivity" />
         <activity android:name=".activity.GravActivity" />
         <activity android:name=".activity.OperationEditTextActivity" />
-        <activity android:name=".activity.SharedElementsActivity"/>
-        <activity android:name=".activity.SharedElementsSecondaryActivity"/>
+        <activity
+            android:name=".activity.SharedElementsActivity"
+            android:theme="@style/AppTheme.BackgroundTransparent.SharedElement" />
+        <activity
+            android:name=".activity.SharedElementsSecondaryActivity"
+            android:theme="@style/AppTheme.BackgroundTransparent.SharedElement" />
     </application>
 
 </manifest>

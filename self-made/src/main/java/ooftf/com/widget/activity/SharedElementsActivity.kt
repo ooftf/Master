@@ -17,8 +17,7 @@ class SharedElementsActivity : BaseActivity() {
         next.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
                 val i = Intent(this@SharedElementsActivity, SharedElementsSecondaryActivity::class.java)
-                val transitionName = getString(R.string.app_name)
-
+                val transitionName = getString(R.string.shared_element_icon)
                 val transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(this@SharedElementsActivity, sharedView, transitionName)
 
                 startActivity(i, transitionActivityOptions.toBundle())
