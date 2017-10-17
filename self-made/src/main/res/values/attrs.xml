@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="OperationEditText">
+        <attr name="icon_hide" format="reference"/>
+        <attr name="icon_show" format="reference"/>
+        <attr name="icon_del" format="reference"/>
+        <attr name="maskOperationEnabled" format="boolean"/>
+        <attr name="delOperationEnabled" format="boolean"/>
+    </declare-styleable>
+</resources>

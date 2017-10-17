@@ -1,8 +1,9 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -12,6 +13,17 @@
     </style>
     <style name="AppTheme.Fullscreen">
         <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="AppTheme.BackgroundTransparent">
+        <!--这两个属性必须都有-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="AppTheme.TranslucentStatus">
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+    </style>
+    <style name="AppTheme.BackgroundTransparent.TranslucentStatus">
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
     </style>
     <style name="DialogTheme" parent="android:Theme.Dialog">
         <item name="android:windowFrame">@null</item>

@@ -10,7 +10,7 @@ import com.master.kit.testcase.CalendarActivity
 import com.master.kit.testcase.GesturePasswordActivity
 import com.master.kit.testcase.PageLayoutActivity
 import com.master.kit.testcase.banner.BannerActivity
-import ooftf.com.widget.activity.PullToRefreshActivity
+import ooftf.com.widget.activity.*
 
 /**
  * Created by master on 2017/9/26 0026.
@@ -22,10 +22,14 @@ class WidgetFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean(PageLayoutActivity::class.java, "竖向翻页", "类似竖向viewpager", R.drawable.vector_page_flip, false, "自定义控件"))
         adapter.add(ScreenItemBean(GesturePasswordActivity::class.java, "手势密码", "手势密码控件", R.drawable.vector_gesture_cipher, false, "自定义控件"))
         adapter.add(ScreenItemBean(BannerActivity::class.java, "轮播图", "利用viewpager制作的轮播图", R.drawable.vector_banner, true, "自定义控件"))
+        adapter.add(ScreenItemBean(OperationEditTextActivity::class.java, "可操作输入框", "自定义OperationEditTextLayout", category = "自定义控件"))
         adapter.add(ScreenItemBean(AAEditTextActivity::class.java, "方格输入控件", "类似密码输入控件，但是可以设置内容显示", R.drawable.vector_pin_edit_text, false, "自定义控件"))
         adapter.add(ScreenItemBean(PullToRefreshActivity::class.java, "自定义下拉刷星控件", "自定义下拉刷新控件，可实现接口，编写不同header,上拉加载更多控件！", R.drawable.logo_orb, true, "自定义控件"))
         adapter.add(ScreenItemBean(ProgressBarActivity::class.java, "环形进度条", "仿Material进度条", R.drawable.vector_progress_bar, false, "非自定义"))
         adapter.add(ScreenItemBean(GuideActivity::class.java, "引导页面", "采用第三方库pageindicatorview制作的指示器", category = "非自定义"))
+        adapter.add(ScreenItemBean(TourGuideActivity::class.java, "教学页面", "采用第三方库TourGuide制作的教学页面", category = "非自定义"))
+        adapter.add(ScreenItemBean(GravActivity::class.java, "背景动画", "采用第三方库Grav制作的教学页面", category = "非自定义"))
+        adapter.add(ScreenItemBean(SharedElementsActivity::class.java, "分享元素", "采用transition的方式制作分享元素动画", category = "非自定义"))
         adapter.notifyDataSetChanged()
     }
 

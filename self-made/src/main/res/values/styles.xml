@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppTheme.BackgroundTransparent.SharedElement">
+        <item name="android:windowEnterTransition" tools:targetApi="lollipop">@transition/explode</item>
+        <item name="android:windowExitTransition" tools:targetApi="lollipop">@transition/explode</item>
+        <item name="android:windowSharedElementEnterTransition" tools:targetApi="lollipop">@transition/changebounds</item>
+        <item name="android:windowSharedElementExitTransition" tools:targetApi="lollipop">@transition/changebounds</item>
+    </style>
+
+</resources>
