@@ -17,7 +17,20 @@ class VerticalRunningLayout : RelativeLayout {
     var position = 0
         internal set
     private val scroller: ScrollerPlus by lazy {
-        ScrollerPlus(context)
+        object : ScrollerPlus(context) {
+            override fun onMoving(currX: Int, currY: Int) {
+                scrollTo(currX, currY)
+            }
+
+            override fun onFinish() {
+                position++
+                val recycle = findViewsByPosition(position - 1)
+                if (recycle != null) {
+                    removeView(recycle)
+                }
+                addItemView(position + 1)
+            }
+        }
     }
     private var delayMillis: Long = 4000
     private var unUsedViewPool: MutableList<View> = ArrayList()
@@ -74,7 +87,7 @@ class VerticalRunningLayout : RelativeLayout {
             recyclerAllViews()
             addItemView(position)
             addItemView(position + 1)
-            startScroll()
+            runningTimer.start()
         }
     }
 
@@ -116,7 +129,7 @@ class VerticalRunningLayout : RelativeLayout {
         addView(item)
     }
 
-    private fun convertPosition(totalPosition:Int = position)=totalPosition%adapter!!.count
+    private fun convertPosition(totalPosition: Int = position) = totalPosition % adapter!!.count
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         if (w != 0 && h != 0) {
             childHeight = h
@@ -125,35 +138,16 @@ class VerticalRunningLayout : RelativeLayout {
         super.onSizeChanged(w, h, oldw, oldh)
     }
 
-    private val runningTimer: LoopTimer by lazy {
-        LoopTimer(delayMillis / 2, delayMillis)
-    }
-
-    private fun startScroll() {
-        runningTimer.start {
+    private val runningTimer = object : LoopTimer(delayMillis / 2, delayMillis) {
+        override fun onTrick() {
             scrollToNextPosition()
         }
     }
 
-    private fun stopScroll() {
-        runningTimer.cancel()
-    }
+
 
     private fun scrollToNextPosition() {
-        scroller.startScroll(0,
-                this.position * childHeight,
-                0,
-                childHeight,
-                delayMillis.toInt() / 2,
-                { currX, currY -> scrollTo(currX, currY) },
-                {
-                    position++
-                    val recycle = findViewsByPosition(position - 1)
-                    if (recycle != null) {
-                        removeView(recycle)
-                    }
-                    addItemView(position + 1)
-                })
+        scroller.startScroll(0, this.position * childHeight, 0, childHeight, delayMillis.toInt() / 2)
     }
 
 
@@ -186,9 +180,9 @@ class VerticalRunningLayout : RelativeLayout {
     override fun onWindowVisibilityChanged(visibility: Int) {
         super.onWindowVisibilityChanged(visibility)
         if (visibility == View.VISIBLE) {
-            startScroll()
+            runningTimer.start()
         } else {
-            stopScroll()
+            runningTimer.cancel()
         }
     }
 

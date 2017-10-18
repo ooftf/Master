@@ -4,10 +4,10 @@ import android.os.Bundle
 import ooftf.com.widget.R
 import tf.oof.com.service.base.BaseSlidingActivity
 
-class GravActivity : BaseSlidingActivity() {
+class PhotoViewActivity : BaseSlidingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_grav)
+        setContentView(R.layout.activity_photo_view)
     }
 }

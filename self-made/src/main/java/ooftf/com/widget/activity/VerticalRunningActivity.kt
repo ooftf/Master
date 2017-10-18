@@ -1,17 +1,16 @@
 package ooftf.com.widget.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_vertical_running.*
-
 import ooftf.com.widget.R
+import tf.oof.com.service.base.BaseSlidingActivity
 import tf.oof.com.service.base.adapter.SimpleAdapter
 
-class VerticalRunningActivity : AppCompatActivity() {
+class VerticalRunningActivity : BaseSlidingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

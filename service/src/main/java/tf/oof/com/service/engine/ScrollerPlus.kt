@@ -7,12 +7,28 @@ import android.widget.Scroller
 /**
  * Created by master on 2017/10/18 0018.
  */
-class ScrollerPlus: Scroller {
+abstract class ScrollerPlus : Scroller {
     constructor(context: Context?) : super(context)
     constructor(context: Context?, interpolator: Interpolator?) : super(context, interpolator)
     constructor(context: Context?, interpolator: Interpolator?, flywheel: Boolean) : super(context, interpolator, flywheel)
-    private val loopTimer :LoopTimer by lazy {
-        LoopTimer(period = 1000 / 100.toLong())
+
+    private val loopTimer: LoopTimer by lazy {
+        object : LoopTimer(period = 1000 / 100.toLong()) {
+            override fun onTrick() {
+                if (computeScrollOffset()) {
+                    onMoving(currX, currY)
+                } else {
+                    loopTimer.cancel()
+                    onFinish()
+                }
+            }
+        }
+    }
+
+    abstract fun onMoving(currX: Int, currY: Int)
+
+    open fun onFinish() {
+
     }
 
     /**
@@ -20,18 +36,12 @@ class ScrollerPlus: Scroller {
      *
      * 可以理解为，computeScrollOffset 返回值，代表 两次computeScrollOffset时得出的结果是否有差值
      */
-    fun startScroll(startX: Int, startY: Int, dx: Int, dy: Int, duration: Int, moving:(currX:Int,currY:Int)->Unit, onFinish:()->Unit) {
+    override fun startScroll(startX: Int, startY: Int, dx: Int, dy: Int, duration: Int) {
         super.startScroll(startX, startY, dx, dy, duration)
-        loopTimer.start{
-            if(computeScrollOffset()){
-                moving(currX,currY)
-            }else{
-                loopTimer.cancel()
-                onFinish()
-            }
-        }
+        loopTimer.start()
     }
-    fun cancel(){
+
+    fun cancel() {
         loopTimer.cancel()
     }
 }

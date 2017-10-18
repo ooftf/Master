@@ -31,6 +31,7 @@ class WidgetFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean(TourGuideActivity::class.java, "教学页面", "采用第三方库TourGuide制作的教学页面", category = "非自定义"))
         adapter.add(ScreenItemBean(GravActivity::class.java, "背景动画", "采用第三方库Grav制作的教学页面", category = "非自定义"))
         adapter.add(ScreenItemBean(SharedElementsActivity::class.java, "分享元素", "采用transition的方式制作分享元素动画", category = "非自定义"))
+        adapter.add(ScreenItemBean(PhotoViewActivity::class.java, "PhotoView", "采用PhotoView的方式制作可控制图片", category = "非自定义"))
         adapter.notifyDataSetChanged()
     }
 

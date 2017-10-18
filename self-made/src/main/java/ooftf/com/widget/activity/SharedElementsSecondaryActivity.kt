@@ -1,10 +1,10 @@
 package ooftf.com.widget.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import ooftf.com.widget.R
+import tf.oof.com.service.base.BaseSlidingActivity
 
-class SharedElementsSecondaryActivity : AppCompatActivity() {
+class SharedElementsSecondaryActivity : BaseSlidingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
