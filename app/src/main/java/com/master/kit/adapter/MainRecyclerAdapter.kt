@@ -12,7 +12,7 @@ import android.widget.TextView
 import com.master.kit.R
 import com.master.kit.bean.ScreenItemBean
 import tf.oof.com.service.base.BaseActivity
-import tf.oof.com.service.base.CategoryRecyclerAdapter
+import tf.oof.com.service.base.adapter.CategoryRecyclerAdapter
 import java.lang.reflect.InvocationTargetException
 
 

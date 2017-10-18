@@ -15,6 +15,8 @@
         app:maskOperationEnabled="true">
 
         <EditText
+            android:hint="请输入密码"
+            android:paddingLeft="@dimen/layout_edge_spacing"
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_item_height" />
     </ooftf.com.widget.self.OperationEditTextLayout>

@@ -15,6 +15,7 @@
         <activity
             android:name=".activity.SharedElementsSecondaryActivity"
             android:theme="@style/AppTheme.BackgroundTransparent.SharedElement" />
+        <activity android:name=".activity.VerticalRunningActivity"></activity>
     </application>
 
 </manifest>

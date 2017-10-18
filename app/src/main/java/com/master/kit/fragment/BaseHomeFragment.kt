@@ -3,7 +3,6 @@ package com.master.kit.fragment
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,18 +11,12 @@ import android.widget.TextView
 import com.master.kit.R
 import com.master.kit.adapter.MainRecyclerAdapter
 
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.Unbinder
-import kotlinx.android.synthetic.main.content_touch.view.*
 import kotlinx.android.synthetic.main.fragment_widget.*
 import kotlinx.android.synthetic.main.layout_sticky_header.*
 import ooftf.com.widget.self.pulltoloading.PullToLoadingLayout
 import ooftf.com.widget.self.pulltoloading.PullToLoadingView
-import tf.oof.com.service.base.BaseActivity
-import tf.oof.com.service.base.BaseSlidingActivity
 import tf.oof.com.service.base.BaseFragment
-import tf.oof.com.service.base.CategoryRecyclerAdapter
+import tf.oof.com.service.base.adapter.CategoryRecyclerAdapter
 
 /**
  * Created by master on 2017/9/29 0029.

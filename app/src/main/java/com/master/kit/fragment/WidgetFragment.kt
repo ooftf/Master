@@ -23,6 +23,7 @@ class WidgetFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean(GesturePasswordActivity::class.java, "手势密码", "手势密码控件", R.drawable.vector_gesture_cipher, false, "自定义控件"))
         adapter.add(ScreenItemBean(BannerActivity::class.java, "轮播图", "利用viewpager制作的轮播图", R.drawable.vector_banner, true, "自定义控件"))
         adapter.add(ScreenItemBean(OperationEditTextActivity::class.java, "可操作输入框", "自定义OperationEditTextLayout", category = "自定义控件"))
+        adapter.add(ScreenItemBean(VerticalRunningActivity::class.java, "自动竖向滚动控件", "自定义VerticalRunningLayout", category = "自定义控件"))
         adapter.add(ScreenItemBean(AAEditTextActivity::class.java, "方格输入控件", "类似密码输入控件，但是可以设置内容显示", R.drawable.vector_pin_edit_text, false, "自定义控件"))
         adapter.add(ScreenItemBean(PullToRefreshActivity::class.java, "自定义下拉刷星控件", "自定义下拉刷新控件，可实现接口，编写不同header,上拉加载更多控件！", R.drawable.logo_orb, true, "自定义控件"))
         adapter.add(ScreenItemBean(ProgressBarActivity::class.java, "环形进度条", "仿Material进度条", R.drawable.vector_progress_bar, false, "非自定义"))

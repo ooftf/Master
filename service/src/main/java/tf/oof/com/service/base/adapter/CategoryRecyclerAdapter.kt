@@ -1,4 +1,4 @@
-package tf.oof.com.service.base
+package tf.oof.com.service.base.adapter
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -7,7 +7,7 @@ import android.view.View
 /**
  * Created by master on 2017/10/16 0016.
  */
-abstract class CategoryRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : RecyclerHeaderFooterAdapter<T, WH>() {
+abstract class CategoryRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : HeaderFooterRecyclerAdapter<T, WH>() {
     abstract fun getCategory(position: Int): String
     /**
      * 注意事项：(悬浮标题的id)和(列表Item标题的id)保持一致，最好采用include同一个布局的方式

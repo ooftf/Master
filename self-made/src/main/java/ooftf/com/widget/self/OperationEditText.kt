@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -112,7 +113,9 @@ class OperationEditTextLayout : RelativeLayout {
     }
 
     private fun calculatePadding() {
-        editText.setPadding(editText.paddingLeft, editText.paddingTop,editText.width-delView.left, editText.paddingBottom)
+        if(delView.left>0){
+            editText.setPadding(editText.paddingLeft, editText.paddingTop,editText.width-delView.left, editText.paddingBottom)
+        }
     }
 
     fun hideMaskOperation() {
@@ -146,6 +149,7 @@ class OperationEditTextLayout : RelativeLayout {
         maskView.setImageResource(iconHideId)
         visibleControl()
         gravity = Gravity.CENTER_VERTICAL
+        maskPassword = editText.transformationMethod != null
         maskPassword()
     }
 
@@ -160,6 +164,7 @@ class OperationEditTextLayout : RelativeLayout {
     }
 
     private fun maskPassword() {
+        if (!maskOperationEnabled)return
         maskPassword = true
         maskView.setImageResource(iconHideId)
         var selection = editText.selectionStart
@@ -168,6 +173,7 @@ class OperationEditTextLayout : RelativeLayout {
     }
 
     private fun unmaskPassword() {
+        if (!maskOperationEnabled)return
         maskPassword = false
         maskView.setImageResource(iconShowId)
         var selection = editText.selectionStart

@@ -1,11 +1,8 @@
-package tf.oof.com.service.base
+package tf.oof.com.service.base.adapter
 
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import tf.oof.com.service.R
 
 import java.util.ArrayList
 
@@ -13,7 +10,7 @@ import java.util.ArrayList
  * Created by master on 2017/9/25 0025.
  */
 
-abstract class RecyclerHeaderFooterAdapter<T, WH : RecyclerView.ViewHolder> : BaseRecyclerAdapter<T,RecyclerView.ViewHolder>() {
+abstract class HeaderFooterRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : BaseRecyclerAdapter<T, RecyclerView.ViewHolder>() {
     private var header: MutableList<View> = ArrayList()
     private var footer: MutableList<View> = ArrayList()
     override fun getItemCount(): Int {

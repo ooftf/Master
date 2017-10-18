@@ -80,6 +80,7 @@ open class ResponseLayout : FrameLayout, IViewResponse {
             listener()
         }
     }
+
     companion object {
         val STATE_INITIAL = 0
         val STATE_LOADING = 1

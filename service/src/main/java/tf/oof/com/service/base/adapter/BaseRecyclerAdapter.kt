@@ -1,4 +1,4 @@
-package tf.oof.com.service.base
+package tf.oof.com.service.base.adapter
 
 import android.support.v7.widget.RecyclerView
 
