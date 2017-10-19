@@ -12,29 +12,18 @@ import android.widget.FrameLayout
  * Created by master on 2017/10/11 0011.
  */
 open class ResponseLayout : FrameLayout, IViewResponse {
-
-    constructor(context: Context?) : super(context) {
-        init()
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init()
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        init()
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
-        init()
-    }
-
+    constructor(context: Context?) : super(context)
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
     lateinit var inflater: LayoutInflater
     lateinit var startView: View
     lateinit var errorView: View
     lateinit var retry: View
     var success: View? = null
-    private fun init() {
+
+    override fun onFinishInflate() {
+        super.onFinishInflate()
         success = getChildAt(0)
         inflater = LayoutInflater.from(context)
         inflater.inflate(R.layout.layout_start, this)
