@@ -16,38 +16,45 @@ class VerticalRunningLayout : RelativeLayout {
     private var childHeight = 0
     var position = 0
         internal set
-    private val scroller: ScrollerPlus by lazy {
-        object : ScrollerPlus(context) {
-            override fun onMoving(currX: Int, currY: Int) {
-                scrollTo(currX, currY)
+    private val scroller = object : ScrollerPlus(context) {
+                override fun onMoving(currX: Int, currY: Int) {
+                    scrollTo(currX, currY)
+                }
+
+                override fun onFinish() {
+                    position++
+                    val recycle = findViewsByPosition(position - 1)
+                    if (recycle != null) {
+                        removeView(recycle)
+                    }
+                    addItemView(position + 1)
+                }
             }
 
-            override fun onFinish() {
-                position++
-                val recycle = findViewsByPosition(position - 1)
-                if (recycle != null) {
-                    removeView(recycle)
-                }
-                addItemView(position + 1)
-            }
-        }
-    }
     private var delayMillis: Long = 4000
     private var unUsedViewPool: MutableList<View> = ArrayList()
     var adapter: BaseAdapter? = null
         set(value) {
             //处理原来的adapter
-            if (adapter != null) {
-                adapter!!.unregisterDataSetObserver(observer)
+            field?.let {
+                it.unregisterDataSetObserver(observer)
             }
             //赋予新的adapter
             field = value
-            if (adapter != null) {
-                adapter!!.registerDataSetObserver(observer)
+            field?.let {
+                it.registerDataSetObserver(observer)
             }
             reLayout()
         }
-    private var observer: DataSetObserver
+    private var observer = object : DataSetObserver() {
+        override fun onChanged() {
+            reLayout()
+        }
+
+        override fun onInvalidated() {
+            reLayout()
+        }
+    }
     private var listener: ((position: Int) -> Unit)? = null
 
     constructor(context: Context, attrs: AttributeSet,
@@ -59,18 +66,6 @@ class VerticalRunningLayout : RelativeLayout {
 
     fun setOnItemClickListener(listener: (position: Int) -> Unit) {
         this.listener = listener
-    }
-
-    init {
-        observer = object : DataSetObserver() {
-            override fun onChanged() {
-                reLayout()
-            }
-
-            override fun onInvalidated() {
-                reLayout()
-            }
-        }
     }
 
     override fun onAttachedToWindow() {
@@ -109,24 +104,27 @@ class VerticalRunningLayout : RelativeLayout {
     }
 
     private fun addItemView(position: Int) {
-        if (adapter == null || adapter!!.count == 0) return
-        val item: View
-        if (unUsedViewPool.size > 0) {
-            item = adapter!!.getView(convertPosition(position), unUsedViewPool[0], this)
-        } else {
-            item = adapter!!.getView(convertPosition(position), null, this)
-            if (item.layoutParams == null) {
-                item.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+        adapter?.let {
+            if(it.count == 0) return@addItemView
+            val item: View
+            if (unUsedViewPool.size > 0) {
+                item = it.getView(convertPosition(position), unUsedViewPool[0], this)
+            } else {
+                item = it.getView(convertPosition(position), null, this)
+                if (item.layoutParams == null) {
+                    item.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+                }
             }
-        }
-        item.setTag(TAG_KEY_POSITION, position)
-        item.setOnClickListener { v ->
-            val position = v.getTag(TAG_KEY_POSITION) as Int
-            if (listener != null && adapter != null && adapter!!.count > 0) {
-                listener?.invoke(convertPosition(position))
+            item.setTag(TAG_KEY_POSITION, position)
+            item.setOnClickListener { v ->
+                val position = v.getTag(TAG_KEY_POSITION) as Int
+                listener?.let {
+                    it(convertPosition(position))
+                }
             }
+            addView(item)
         }
-        addView(item)
+
     }
 
     private fun convertPosition(totalPosition: Int = position) = totalPosition % adapter!!.count
@@ -143,7 +141,6 @@ class VerticalRunningLayout : RelativeLayout {
             scrollToNextPosition()
         }
     }
-
 
 
     private fun scrollToNextPosition() {

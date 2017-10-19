@@ -16,7 +16,6 @@ class BreakfastActivity : BaseSlidingActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_breakfast)
-        setSupportActionBar(toolbar)
         setupTimePicker()
         computingTime()
     }

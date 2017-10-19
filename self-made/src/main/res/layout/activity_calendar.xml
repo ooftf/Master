@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".testcase.GesturePasswordActivity">
+    tools:context="ooftf.com.widget.activity.CalendarActivity">
 
     <tf.oof.com.service.base.TailoredToolbar
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height"
         app:navigationIcon="@drawable/vector_arrow_left"
-        app:title="手势密码" />
+        app:title="日历" />
 
-    <com.master.kit.widget.PatternLock.PatternLock
+    <ooftf.com.widget.self.calendar.CalendarView
+        android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

@@ -15,15 +15,14 @@ class VerticalRunningActivity : BaseSlidingActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vertical_running)
-        setSupportActionBar(toolbar)
-         var adapter = object : SimpleAdapter<String>() {
+        var adapter = object : SimpleAdapter<String>() {
             override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-                var view :TextView
-                var  inflater = LayoutInflater.from(this@VerticalRunningActivity)
-                if(convertView == null){
-                    view = inflater.inflate(R.layout.layout_vertical_running_layout_item,parent,false) as TextView
-                }else{
-                    view = convertView as TextView
+                var view: TextView
+                var inflater = LayoutInflater.from(this@VerticalRunningActivity)
+                view = if (convertView == null) {
+                    inflater.inflate(R.layout.layout_vertical_running_layout_item, parent, false) as TextView
+                } else {
+                    convertView as TextView
                 }
                 view.text = getItem(position)
                 return view

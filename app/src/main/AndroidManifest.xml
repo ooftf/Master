@@ -22,7 +22,7 @@
         <activity android:name=".testcase.CameraActivity" />
         <activity android:name=".testcase.SwitchFristActivity" />
         <activity android:name=".testcase.SwitchSecondActivity" />
-        <activity android:name=".testcase.CalendarActivity" />
+        <activity android:name="ooftf.com.widget.activity.CalendarActivity" />
         <activity
             android:name=".testcase.MainActivity"
             android:launchMode="singleTask" />
@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".testcase.PageLayoutActivity" />
-        <activity android:name=".testcase.GesturePasswordActivity" />
+        <activity android:name="ooftf.com.widget.activity.PatternLockActivity" />
         <activity
             android:name=".testcase.touchevent.TouchActivity"
             android:label="@string/title_activity_touch" />
@@ -67,8 +67,7 @@
             android:name=".testcase.banner.BannerActivity"
             android:theme="@style/AppTheme.BackgroundTransparent.TranslucentStatus" />
         <activity android:name=".testcase.retrofit.SignInActivity" />
-        <activity android:name=".testcase.AAEditTextActivity" />
-        <activity android:name=".base.Main2Activity" />
+        <activity android:name="ooftf.com.widget.activity.PinEditTextActivity" />
         <activity
             android:name=".activity.GuideActivity"
             android:theme="@style/AppTheme.TranslucentStatus" />

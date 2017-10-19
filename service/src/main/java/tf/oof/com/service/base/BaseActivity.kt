@@ -3,6 +3,7 @@ package tf.oof.com.service.base
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.widget.Toast
 import tf.oof.com.service.interfaces.ILifecycle
 import tf.oof.com.service.utils.LogUtil
@@ -36,10 +37,18 @@ open class  BaseActivity : AppCompatActivity(), ILifecycle {
         startActivity(Intent(this, cla))
     }
 
+    override fun setSupportActionBar(toolbar: Toolbar?) {
+        throw CloneNotSupportedException("因为setSupportActionBar会导致，之前setNavigationOnClickListener之前设定的事件失效，默认禁止")
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         LogUtil.e(this.javaClass.simpleName, "onCreate")
         super.onCreate(savedInstanceState)
         alive = true
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        LogUtil.e(this.javaClass.simpleName, "onPostCreate")
     }
 
     override fun onStart() {

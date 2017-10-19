@@ -27,9 +27,6 @@ public class KeyBoardActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         keyBoard = new KeyBoard(KeyBoardActivity.this);
         keyBoard.bindEditText(editTest);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

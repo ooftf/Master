@@ -4,16 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:background="@color/background"
     android:orientation="vertical"
-    tools:context="com.master.kit.testcase.AAEditTextActivity">
+    android:gravity="center_horizontal"
+    tools:context="ooftf.com.widget.activity.PinEditTextActivity">
     <tf.oof.com.service.base.TailoredToolbar
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height"
         app:navigationIcon="@drawable/vector_arrow_left" />
-    <com.master.kit.widget.edit_text.PinEditText
+    <ooftf.com.widget.self.PinEditText
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
         android:maxLength="6"
         android:padding="0dp"
         android:layout_width="336dp"

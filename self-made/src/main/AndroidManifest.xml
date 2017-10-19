@@ -16,7 +16,8 @@
             android:name=".activity.SharedElementsSecondaryActivity"
             android:theme="@style/AppTheme.BackgroundTransparent.SharedElement" />
         <activity android:name=".activity.VerticalRunningActivity" />
-        <activity android:name=".activity.PhotoViewActivity"></activity>
+        <activity android:name=".activity.PhotoViewActivity" />
+        <activity android:name=".activity.PinEntryActivity"></activity>
     </application>
 
 </manifest>

@@ -12,6 +12,7 @@ import com.master.kit.R;
 
 /**
  * 每当 adapter调用getView()时，就要调用本类的setPosition()来
+ * 不成熟，有问题存在
  * @author master
  *
  */

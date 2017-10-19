@@ -5,17 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.master.kit.testcase.CalendarActivity">
+    tools:context="ooftf.com.widget.activity.PatternLockActivity">
 
     <tf.oof.com.service.base.TailoredToolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height"
         app:navigationIcon="@drawable/vector_arrow_left"
-        app:title="日历" />
+        app:title="手势密码" />
 
-    <com.master.kit.widget.calendar.CalendarView
-        android:id="@+id/cv_main"
+    <ooftf.com.widget.self.PatternLock
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

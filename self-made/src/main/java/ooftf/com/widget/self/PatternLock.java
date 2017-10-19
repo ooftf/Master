@@ -1,4 +1,4 @@
-package com.master.kit.widget.PatternLock;
+package ooftf.com.widget.self;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -14,11 +14,10 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.master.kit.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import ooftf.com.widget.R;
 import tf.oof.com.service.utils.DensityUtil;
 
 /**
@@ -65,7 +64,7 @@ public class PatternLock extends View {
     private void init() {
         wrapSize = DensityUtil.dip2px(getContext(), 200);
         initPoint();
-        normal = BitmapFactory.decodeResource(getResources(), R.mipmap.locus_round_click);
+        normal = BitmapFactory.decodeResource(getResources(), R.drawable.locus_round_click);
         initPaints();
         mSelectedLsit = new ArrayList<>();
     }

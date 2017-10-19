@@ -1,11 +1,10 @@
-package com.master.kit.widget.edit_text;
+package ooftf.com.widget.self;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PointF;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -15,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import tf.oof.com.service.utils.CanvasUtil;
+
 /**
  *
  * Created by master on 2017/6/22 0022.
@@ -23,30 +24,30 @@ import android.widget.EditText;
 
 @SuppressLint("AppCompatCustomView")
 public class PinEditText extends EditText {
+    private static final String XML_NAMESPACE_ANDROID = "http://schemas.android.com/apk/res/android";
     int w;
     int h;
     Paint strokePaint;
     PointF[] point;
     float contentW;
     int maxLength;
-
     public PinEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
-        getMaxLength(attrs);
+        init(attrs);
     }
 
     public PinEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
-        getMaxLength(attrs);
+        init(attrs);
     }
 
-    private void init() {
-        setCursorVisible(false);
+    private void init(AttributeSet attrs) {
+        maxLength = attrs.getAttributeIntValue(XML_NAMESPACE_ANDROID, "maxLength", 4);
         initStrokePaint();
         setBackgroundDrawable(null);
-
+        setCursorVisible(false);
+        setTextIsSelectable(false);
+        setLongClickable(false);
         /**
          * 将光标固定在文本结尾
          */
@@ -91,7 +92,7 @@ public class PinEditText extends EditText {
                 }
             });
         }
-        setLongClickable(false);
+
     }
     @Override
     public void setCustomSelectionActionModeCallback(ActionMode.Callback actionModeCallback) {
@@ -137,7 +138,7 @@ public class PinEditText extends EditText {
     private void drawTextByCenter(Canvas canvas) {
         String text = getText().toString();
         for (int i = 0; i < text.length(); i++) {
-            drawTextByCenter(String.valueOf(text.charAt(i)), point[i].x, point[i].y, canvas, getPaint());
+            CanvasUtil.drawText(String.valueOf(text.charAt(i)), point[i].x, point[i].y, canvas, getPaint());
         }
     }
 
@@ -147,24 +148,5 @@ public class PinEditText extends EditText {
         for (int i = 0; i < maxLength; i++) {
             point[i] = new PointF((strokePaint.getStrokeWidth() + contentW / 2) + i * (strokePaint.getStrokeWidth() + contentW), h / 2);
         }
-    }
-
-    public void getMaxLength(AttributeSet attrs) {
-        boolean isContainsMaxLength = false;
-        for (int i = 0; i < attrs.getAttributeCount(); i++) {
-            if (attrs.getAttributeName(i).toLowerCase().contains("maxlength")) {
-                isContainsMaxLength = true;
-                maxLength = attrs.getAttributeIntValue(i, 0);
-            }
-        }
-        if (!isContainsMaxLength)
-            throw new IllegalArgumentException("maxLength 是必选属性");
-    }
-    void drawTextByCenter(String text, float x, float y, Canvas canvas , Paint paint){
-        Rect rect = new Rect();
-        paint.getTextBounds(text,0,1,rect);
-        float halfH = (rect.bottom-rect.top)/2;
-        float halfW = paint.measureText(text)/2;
-        canvas.drawText(text,x-halfW,y+halfH,paint);
     }
 }

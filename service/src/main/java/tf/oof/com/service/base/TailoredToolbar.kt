@@ -21,6 +21,6 @@ class TailoredToolbar :Toolbar {
     private fun init() {
         setNavigationOnClickListener { (context as Activity).finish() }
         setBackgroundColor(resources.getColor(R.color.colorPrimary))
-    }
 
+    }
 }
