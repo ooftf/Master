@@ -1,6 +1,7 @@
 package com.master.kit.testcase.retrofit
 
 import com.dks.master.masterretrofit.BaseBean
+import com.master.kit.bean.PicCaptchaBean
 import com.master.kit.testcase.banner.BannerBean
 
 import okhttp3.ResponseBody
@@ -21,4 +22,6 @@ interface IEService {
                         @Field("useLoginPswd") password: String,
                         @Field("identify") PIN: String,
                         @Field("uuid") uuid: String): Observable<BaseBean>
+    @POST("service/system/identify")
+    fun picCaptcha(): Observable<PicCaptchaBean>
 }

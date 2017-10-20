@@ -9,7 +9,7 @@ import tf.oof.com.service.base.BaseActivity
 /**
  * Created by master on 2017/10/12 0012.
  */
-class EResponseDialog(activity: BaseActivity): ResponseDialog(activity),IEResponse {
+class EResponseDialog(activity: BaseActivity): ResponseDialog(activity),IEResponse<BaseBean> {
     override fun onResponseSuccess(bean: BaseBean) {
 
     }

@@ -11,7 +11,7 @@ import com.master.kit.testcase.MainActivity
 /**
  * Created by master on 2017/10/12 0012.
  */
-class EResponseLayout : ResponseLayout, IEResponse {
+class EResponseLayout : ResponseLayout, IEResponse<BaseBean> {
     val activity: Activity by lazy {
         if (context is Activity) {
             context as Activity
