@@ -1,9 +1,7 @@
 package com.master.kit.testcase.banner
 
-import android.os.BaseBundle
 import android.os.Bundle
 import butterknife.ButterKnife
-import com.dks.master.masterretrofit.BaseBean
 import com.master.kit.R
 import com.master.kit.activity.GuideActivity
 import com.master.kit.engine.imageloader.ImageLoaderFactory
@@ -35,11 +33,6 @@ class BannerActivity : BaseSlidingActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(HomeObserver(responseLayout,this))
     }
-
-    companion object {
-        private val TGA = Thread.currentThread().stackTrace[1].className
-    }
-
     class HomeObserver(responseView: IEResponse<BannerBean>, target: BannerActivity) : EControlViewObserver<BannerBean, BannerActivity>(responseView, target) {
         override fun onResponseSuccess(bean: BannerBean) {
             super.onResponseSuccess(bean)

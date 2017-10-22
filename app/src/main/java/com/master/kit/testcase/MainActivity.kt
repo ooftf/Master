@@ -9,7 +9,6 @@ import com.master.kit.R
 import com.master.kit.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
 import tf.oof.com.service.base.BaseActivity
-import tf.oof.com.service.base.BaseSlidingActivity
 import tf.oof.com.service.engine.FragmentSwitchManager
 
 class MainActivity : BaseActivity() {
@@ -22,6 +21,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
         setupBottomBar()
     }
 
@@ -63,7 +63,8 @@ class MainActivity : BaseActivity() {
         }
         return true
     }
-    var backPressedTime = 0L
+
+    private var backPressedTime = 0L
     override fun onBackPressed() {
         if(System.currentTimeMillis()-backPressedTime<2000){
             android.os.Process.killProcess( android.os.Process.myPid())

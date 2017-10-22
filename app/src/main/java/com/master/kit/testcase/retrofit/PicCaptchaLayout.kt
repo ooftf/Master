@@ -1,25 +1,40 @@
 package com.master.kit.testcase.retrofit
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.util.AttributeSet
 import android.util.Base64
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
-import com.dks.master.masterretrofit.BaseBean
 import com.master.kit.R
 import com.master.kit.bean.PicCaptchaBean
-import com.master.kit.widget.slidingmenuview.SlidingMenuView.view
+import io.reactivex.android.schedulers.AndroidSchedulers
 import tf.oof.com.service.base.BaseActivity
 
 /**
  * Created by master on 2017/10/20 0020.
  */
 class PicCaptchaLayout :RelativeLayout ,IEResponse<PicCaptchaBean>{
+    override fun onAttachedToWindow() {
+        Log.e("onAttachedToWindow", "onAttachedToWindow")
+        super.onAttachedToWindow()
+        picCaptchaRequest()
+    }
+
+    override fun onFinishInflate() {
+        Log.e("onFinishInflate", "onFinishInflate")
+        super.onFinishInflate()
+    }
+
+    init {
+        post {
+            Log.e("post", "post")
+        }
+    }
     private val dialog:EResponseDialog by lazy {
         EResponseDialog(activity)
     }
@@ -28,7 +43,12 @@ class PicCaptchaLayout :RelativeLayout ,IEResponse<PicCaptchaBean>{
         progressBar.visibility = View.VISIBLE
     }
 
+    private fun picCaptchaRequest() {
+        ServiceHolder.service.picCaptcha().observeOn(AndroidSchedulers.mainThread())
+                .subscribe(PicCaptchaObserver(this, activity))
+    }
     override fun onError() {
+        Log.e("onError", "onError")
         pic.visibility = View.VISIBLE
         progressBar.visibility = View.INVISIBLE
         pic.setImageResource(R.drawable.vector_net_error)
@@ -42,7 +62,7 @@ class PicCaptchaLayout :RelativeLayout ,IEResponse<PicCaptchaBean>{
     override fun onResponseSuccess(bean: PicCaptchaBean) {
         bean.body?.let {
             val bytes = Base64.decode(
-                    it.identify, Base64.DEFAULT)
+                    it.indentify, Base64.DEFAULT)
             val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
             pic.setImageBitmap(bitmap)
         }
@@ -59,8 +79,9 @@ class PicCaptchaLayout :RelativeLayout ,IEResponse<PicCaptchaBean>{
     }
 
     override fun onResponseFailMessage(bean: PicCaptchaBean) {
+        Log.e("onResponseFailMessage", "onResponseFailMessage")
         pic.setImageResource(R.drawable.vector_net_error)
-        dialog.onResponseFailMessage(bean)
+        //dialog.onResponseFailMessage(bean)
     }
 
     constructor(context: Context?) : super(context)
@@ -75,5 +96,8 @@ class PicCaptchaLayout :RelativeLayout ,IEResponse<PicCaptchaBean>{
         pic = findViewById(R.id.imageView)
         progressBar = findViewById(R.id.progressBar)
         activity = context as BaseActivity
+        pic.setOnClickListener { picCaptchaRequest() }
     }
+
+    class PicCaptchaObserver(viewResponse: IEResponse<PicCaptchaBean>, target: BaseActivity) : EControlViewObserver<PicCaptchaBean, BaseActivity>(viewResponse, target)
 }

@@ -1,7 +1,7 @@
 package com.master.kit.testcase.retrofit
 
-import com.dks.master.masterretrofit.ControlObserver
 import com.dks.master.masterretrofit.BaseBean
+import com.dks.master.masterretrofit.ControlObserver
 import tf.oof.com.service.interfaces.ILifeListener
 
 /**
@@ -13,7 +13,7 @@ import tf.oof.com.service.interfaces.ILifeListener
 abstract class EControlObserver<T : BaseBean, A: ILifeListener>(target: A) : ControlObserver<T, A>(target) {
 
     override fun onNext(bean: T) {
-        if (bean.isSuccess) {
+        if (bean.success) {
             onResponseSuccess(bean)
         } else {
             when (bean.code) {

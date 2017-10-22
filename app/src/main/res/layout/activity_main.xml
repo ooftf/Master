@@ -8,13 +8,12 @@
     android:orientation="vertical"
     tools:context="com.master.kit.testcase.MainActivity">
 
-    <android.support.v7.widget.Toolbar
-        app:actionMenuTextColor="@color/white"
-        app:subtitleTextColor="@color/white"
+    <tf.oof.com.service.base.TailoredToolbar
         android:id="@+id/toolbar"
-        android:background="?attr/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:actionMenuTextColor="@color/white" />
 
     <FrameLayout
         android:id="@+id/frame_fragment"
@@ -23,7 +22,7 @@
         android:layout_weight="1" />
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
-        app:bb_tabXmlResource="@xml/bottombar_tabs"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_appbar_height"/>
+        android:layout_height="@dimen/layout_appbar_height"
+        app:bb_tabXmlResource="@xml/bottombar_tabs" />
 </LinearLayout>

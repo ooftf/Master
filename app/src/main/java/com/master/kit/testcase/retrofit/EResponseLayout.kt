@@ -35,7 +35,7 @@ class EResponseLayout : ResponseLayout, IEResponse<BaseBean> {
         AlertDialog
                 .Builder(activity)
                 .setMessage(bean.info)
-                .setPositiveButton("确定", { dialog, which -> dialog.dismiss() })
+                .setPositiveButton("确定", { dialog, _ -> dialog.dismiss() })
                 .show()
     }
 

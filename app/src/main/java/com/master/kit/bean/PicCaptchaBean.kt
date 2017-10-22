@@ -8,7 +8,7 @@ import com.dks.master.masterretrofit.BaseBean
 class PicCaptchaBean : BaseBean() {
     var body: Body? = null
     class Body{
-        var identify: String? = null
+        var indentify: String? = null
         var uuid: String? = null
     }
 }

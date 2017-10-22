@@ -1,15 +1,16 @@
 package com.master.kit.testcase.design;
 
+import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.master.kit.R;
+
 import tf.oof.com.service.base.BaseSlidingActivity;
 
 public class DesignActivity extends BaseSlidingActivity {
@@ -23,10 +24,10 @@ public class DesignActivity extends BaseSlidingActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_design);
         initViews();
-        //appBarLayout = (AppBarLayout) findViewById(R.id.main_appbar);
+        appBarLayout = findViewById(R.id.main_appbar);
        // toolbar.inflateMenu();
         toolbar.setTitle("我只是个熊啊");
-       // collapsingToolbarLayout.setTitle("我们都是熊啊");
+        collapsingToolbarLayout.setTitle("我们都是熊啊");
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,9 +40,9 @@ public class DesignActivity extends BaseSlidingActivity {
     }
 
     private void initViews() {
-        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_CoordinatorLayout);
-        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.main_collapsing);
-        floatingActionButton = (FloatingActionButton) findViewById(R.id.main_fab);
+        coordinatorLayout = findViewById(R.id.main_CoordinatorLayout);
+        toolbar = findViewById(R.id.main_toolbar);
+        collapsingToolbarLayout = findViewById(R.id.main_collapsing);
+        floatingActionButton = findViewById(R.id.main_fab);
     }
 }

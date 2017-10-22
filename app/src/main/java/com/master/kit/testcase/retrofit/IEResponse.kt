@@ -6,7 +6,7 @@ import com.dks.master.masterretrofit.IViewResponse
 /**
  * Created by master on 2017/10/12 0012.
  */
-interface IEResponse<T:BaseBean>:IViewResponse {
+interface IEResponse<in T : BaseBean> : IViewResponse {
     fun onResponseSuccess(bean:T)
     fun onResponseFailOffSiteLogin(bean:T)
     fun onResponseFailSessionOverdue(bean:T)

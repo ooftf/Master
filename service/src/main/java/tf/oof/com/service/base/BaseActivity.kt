@@ -38,7 +38,10 @@ open class  BaseActivity : AppCompatActivity(), ILifecycle {
     }
 
     override fun setSupportActionBar(toolbar: Toolbar?) {
-        throw CloneNotSupportedException("因为setSupportActionBar会导致，之前setNavigationOnClickListener之前设定的事件失效，默认禁止")
+        super.setSupportActionBar(toolbar)
+        toolbar?.setNavigationOnClickListener {
+            finish()
+        }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         LogUtil.e(this.javaClass.simpleName, "onCreate")
