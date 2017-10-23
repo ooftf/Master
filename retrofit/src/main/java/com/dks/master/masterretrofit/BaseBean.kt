@@ -12,7 +12,6 @@ open class BaseBean {
      * code :
      * info :
      */
-
     var time: Long = 0
     var success: Boolean = false
     var code: String? = null

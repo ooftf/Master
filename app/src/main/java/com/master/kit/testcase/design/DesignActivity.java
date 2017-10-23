@@ -24,10 +24,10 @@ public class DesignActivity extends BaseSlidingActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_design);
         initViews();
-        appBarLayout = findViewById(R.id.main_appbar);
-       // toolbar.inflateMenu();
         toolbar.setTitle("我只是个熊啊");
-        collapsingToolbarLayout.setTitle("我们都是熊啊");
+       // setSupportActionBar(toolbar);
+       // toolbar.inflateMenu();
+        //collapsingToolbarLayout.setTitle("我们都是熊啊");
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +40,7 @@ public class DesignActivity extends BaseSlidingActivity {
     }
 
     private void initViews() {
+        appBarLayout = findViewById(R.id.main_appbar);
         coordinatorLayout = findViewById(R.id.main_CoordinatorLayout);
         toolbar = findViewById(R.id.main_toolbar);
         collapsingToolbarLayout = findViewById(R.id.main_collapsing);
