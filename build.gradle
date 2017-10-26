@@ -4,14 +4,14 @@ buildscript {
     ext.min_sdk = 19
     ext.target_sdk = 26
     ext.build_tools = "26.0.2"
-    ext.support = "26.+"
+    ext.support = "27.0.0"
     ext.butterknife = "8.8.1"
     repositories {
         jcenter()
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.0'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
