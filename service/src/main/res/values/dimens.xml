@@ -5,11 +5,18 @@
     <dimen name="fab_margin">16dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
 
-    <dimen name="font_tiny">12sp</dimen>
-    <dimen name="font_small">14sp</dimen>
-    <dimen name="font_default">16sp</dimen>
-    <dimen name="font_large">18sp</dimen>
-    <dimen name="font_huge">20sp</dimen>
+    <dimen name="font_tiny">10sp</dimen>
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_default">14sp</dimen>
+    <dimen name="font_large">16sp</dimen>
+    <dimen name="font_huge">18sp</dimen>
+    <dimen name="font_max">20sp</dimen>
+    <dimen name="line_height">0.5dp</dimen>
+    <dimen name="layout_margin_tiny">4dp</dimen>
+    <dimen name="layout_margin_small">8dp</dimen>
+    <dimen name="layout_margin_default">12dp</dimen>
+    <dimen name="layout_margin_large">16dp</dimen>
+    <dimen name="layout_margin_huge">20dp</dimen>
 
     <dimen name="layout_status_bar_height">24dp</dimen>
 
