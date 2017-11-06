@@ -42,7 +42,7 @@ abstract class BaseHomeFragment : BaseFragment() {
         /* DividerItemDecoration divider = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
         //divider.setDrawable(new ColorDrawable(Color.GRAY));
         recyclerView.addItemDecoration(divider);*/
-        var pullToLoadingLayout = PullToLoadingLayout(context,PullToLoadingView(context),false)
+        var pullToLoadingLayout = PullToLoadingLayout(activity!!, PullToLoadingView(activity!!), false)
         pullToLoadingLayout.setLoadEvent {
             Handler().postDelayed({
                 pullToLoadingLayout.loadOver()

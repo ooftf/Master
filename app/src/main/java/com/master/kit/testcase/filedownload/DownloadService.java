@@ -11,7 +11,7 @@ import android.content.IntentFilter;
 import android.os.Environment;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.support.v7.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -36,13 +36,13 @@ public class DownloadService extends Service {
      */
     private final String BROADCAST_ACTION_CLICK = "servicetask";
     /**
-     * 通知
-     */
-    private Notification notification;
-    /**
      * 通知的Id
      */
     private final int NOTIFICATION_ID = 1;
+    /**
+     * 通知
+     */
+    private Notification notification;
     /**
      * 通知管理器
      */
@@ -60,14 +60,6 @@ public class DownloadService extends Service {
      */
     private String filePath = Environment.getExternalStorageDirectory() + "/download/";
     private File file;
-
-    /**
-     * 通知栏操作的四种状态
-     */
-    private enum Status {
-        DOWNLOADING, PAUSE, FAIL, SUCCESS
-    }
-
     /**
      * 当前在状态 默认正在下载中
      */
@@ -79,7 +71,6 @@ public class DownloadService extends Service {
     public IBinder onBind(Intent intent) {
         return null;
     }
-
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -97,41 +88,6 @@ public class DownloadService extends Service {
         IntentFilter filter = new IntentFilter();
         filter.addAction(BROADCAST_ACTION_CLICK);
         registerReceiver(myBroadcastReceiver, filter);
-    }
-
-
-    /**
-     * 更新通知界面的按钮的广播
-     */
-    private class MyBroadcastReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (!intent.getAction().equals(BROADCAST_ACTION_CLICK)) {
-                return;
-            }
-            switch (status) {
-                case DOWNLOADING:
-                    /**当在下载中点击暂停按钮**/
-                    downloadTask.pause();
-                    pauseDownload();
-                    break;
-                case SUCCESS:
-                    /**当下载完成点击完成按钮时关闭通知栏**/
-                    notificationManager.cancel(NOTIFICATION_ID);
-                    break;
-                case FAIL:
-                    downloadTask.reuse();
-                    startDownload();
-                    break;
-                case PAUSE:
-                    /**当在暂停时点击下载按钮**/
-                    downloadTask.reuse();
-                    downloadTask.start();
-                    startDownload();
-                    break;
-            }
-        }
     }
 
     /**
@@ -249,11 +205,10 @@ public class DownloadService extends Service {
         /**设置不可手动清除**/
         notification.flags = Notification.FLAG_NO_CLEAR;
         /**获取通知管理器**/
-        notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+        notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         /**发送一个通知**/
         notificationManager.notify(NOTIFICATION_ID, notification);
     }
-
 
     /**
      * 在通知栏显示文件名
@@ -355,6 +310,47 @@ public class DownloadService extends Service {
             unregisterReceiver(myBroadcastReceiver);
         }
         super.onDestroy();
+    }
+
+    /**
+     * 通知栏操作的四种状态
+     */
+    private enum Status {
+        DOWNLOADING, PAUSE, FAIL, SUCCESS
+    }
+
+    /**
+     * 更新通知界面的按钮的广播
+     */
+    private class MyBroadcastReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (!intent.getAction().equals(BROADCAST_ACTION_CLICK)) {
+                return;
+            }
+            switch (status) {
+                case DOWNLOADING:
+                    /**当在下载中点击暂停按钮**/
+                    downloadTask.pause();
+                    pauseDownload();
+                    break;
+                case SUCCESS:
+                    /**当下载完成点击完成按钮时关闭通知栏**/
+                    notificationManager.cancel(NOTIFICATION_ID);
+                    break;
+                case FAIL:
+                    downloadTask.reuse();
+                    startDownload();
+                    break;
+                case PAUSE:
+                    /**当在暂停时点击下载按钮**/
+                    downloadTask.reuse();
+                    downloadTask.start();
+                    startDownload();
+                    break;
+            }
+        }
     }
 
 }
