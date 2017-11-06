@@ -23,4 +23,6 @@ dependencies {
     compile "com.android.support:recyclerview-v7:$support"
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile "com.jakewharton:butterknife:$butterknife"
+    kapt "com.jakewharton:butterknife-compiler:$butterknife"
 }

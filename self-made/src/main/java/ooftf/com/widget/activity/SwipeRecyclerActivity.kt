@@ -18,15 +18,16 @@ class SwipeRecyclerActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         adapter = SwipeRecyclerAdapter(this)
         recyclerView.adapter = adapter
-        adapter.add(SwipeBean(0))
-        adapter.add(SwipeBean(1))
-        adapter.add(SwipeBean(2))
-        adapter.add(SwipeBean(3))
+
+        adapter.body.add(SwipeBean(0))
+        adapter.body.add(SwipeBean(1))
+        adapter.body.add(SwipeBean(2))
+        adapter.body.add(SwipeBean(3))
         adapter.notifyDataSetChanged()
         timer = Timer()
         timer.schedule(object : TimerTask() {
             override fun run() {
-                adapter.getList().forEach { it.position++ }
+                adapter.body.forEach { it.position++ }
                 runOnUiThread { adapter.notifyDataSetChanged() }
             }
         }, 0, 5000)
