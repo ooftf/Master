@@ -27,8 +27,6 @@ dependencies {
     compile project(':retrofit')
     compile project(':service')
     compile project(':applet')
-    compile "com.jakewharton:butterknife:$butterknife"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife"
     compile 'com.alibaba:fastjson:1.2.7'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.liulishuo.filedownloader:library:1.3.9'

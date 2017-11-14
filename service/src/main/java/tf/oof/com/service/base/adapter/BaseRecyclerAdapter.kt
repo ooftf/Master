@@ -1,8 +1,7 @@
 package tf.oof.com.service.base.adapter
 
 import android.support.v7.widget.RecyclerView
-
-import java.util.ArrayList
+import java.util.*
 
 /**
  * Created by master on 2017/9/25 0025.
@@ -28,7 +27,7 @@ abstract class BaseRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : RecyclerVi
         list.clear()
     }
 
-    fun getList(): List<T> {
+    fun getList(): MutableList<T> {
         return list
     }
 
