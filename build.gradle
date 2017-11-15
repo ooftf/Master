@@ -3,7 +3,7 @@ buildscript {
     ext.compile_sdk = 27
     ext.min_sdk = 19
     ext.target_sdk = 26
-    ext.build_tools = "26.0.0"
+    ext.build_tools = "27.0.0"
     ext.support = "27.0.0"
     ext.butterknife = "8.8.1"
     repositories {

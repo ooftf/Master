@@ -74,7 +74,8 @@
             android:theme="@style/AppTheme.TranslucentStatus" />
         <activity
             android:name=".activity.Main3Activity"
-            android:label="@string/title_activity_main3"></activity>
+            android:label="@string/title_activity_main3" />
+        <activity android:name=".activity.DrawableDebugActivity"></activity>
     </application>
 
 </manifest>
