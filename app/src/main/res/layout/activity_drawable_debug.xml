@@ -101,7 +101,7 @@
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
     <tf.oof.com.service.base.TailoredToolbar xmlns:app="http://schemas.android.com/apk/res-auto"
-        app:title="我的特效啊啊啊啊"
+        app:title="透视试图"
         android:id="@+id/tailoredToolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp" />

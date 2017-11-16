@@ -5,6 +5,7 @@ import android.content.Context
 import android.support.v7.widget.Toolbar
 import android.util.AttributeSet
 import android.util.Log
+import android.view.Gravity
 import android.widget.TextView
 import tf.oof.com.service.R
 
@@ -22,19 +23,5 @@ class TailoredToolbar :Toolbar {
 
     override fun setTitle(title: CharSequence?) {
         super.setTitle(title)
-        post {
-            var title: TextView? = null
-            (0..childCount)
-                    .filter { getChildAt(it) is TextView }
-                    .map { getChildAt(it) as TextView }
-                    .filter {
-                        Log.e("text", it.text.toString())
-                        it.text == getTitle()
-                    }
-                    .forEach { title = it }
-            title?.let {
-                it.offsetLeftAndRight((width - it.width) / 2 - it.left)
-            }
-        }
     }
 }
