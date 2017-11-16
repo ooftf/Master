@@ -9,11 +9,11 @@ import android.widget.TextView
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter
 import ooftf.com.widget.R
 import ooftf.com.widget.bean.SwipeBean
+import javax.inject.Inject
 
 /**
  * Created by 99474 on 2017/11/7 0007.
  */
-
 class SwipeRecyclerAdapter(var context: Context) : RecyclerSwipeAdapter<SwipeRecyclerAdapter.ViewHolder>() {
     var body = ArrayList<SwipeBean>()
     override fun getItemCount(): Int {
@@ -31,8 +31,8 @@ class SwipeRecyclerAdapter(var context: Context) : RecyclerSwipeAdapter<SwipeRec
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.content.text = body[position].position.toString()
+        mItemManger.bindView(holder.itemView, position)
     }
-
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var content = itemView.findViewById<TextView>(R.id.content)
     }

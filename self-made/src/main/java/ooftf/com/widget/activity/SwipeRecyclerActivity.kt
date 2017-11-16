@@ -8,13 +8,21 @@ import ooftf.com.widget.R
 import ooftf.com.widget.adapter.SwipeRecyclerAdapter
 import ooftf.com.widget.bean.SwipeBean
 import java.util.*
+import javax.inject.Inject
 
+/**
+ * 只要改变的内容（即使调用notifyDataSetChanged）不影响布局也就是不会触发（SwipeLayout的onLayout ？）就不会导致划出来菜单栏自动回缩
+ *
+ * 结论：菜单栏回缩有可能是SwipeLayout的onLayout监听里面
+ */
 class SwipeRecyclerActivity : AppCompatActivity() {
+    @Inject
     lateinit var adapter: SwipeRecyclerAdapter
     lateinit var timer: Timer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_swipe_recycler)
+        setSupportActionBar(tailoredToolbar)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         adapter = SwipeRecyclerAdapter(this)
         recyclerView.adapter = adapter
