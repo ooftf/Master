@@ -135,7 +135,9 @@ open class BaseFragment : Fragment(), ILifecycle {
     }
 
     fun postOnResume(doResume: () -> Unit) {
-        onResumeList.add(doResume)
+        if(!onResumeList.contains(doResume)){
+            onResumeList.add(doResume)
+        }
     }
 
     private fun doOnResume() {

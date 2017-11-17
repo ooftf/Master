@@ -106,13 +106,16 @@ open class  BaseActivity : AppCompatActivity(), ILifecycle {
             iterator.remove()
         }
     }
-
     fun postOnResume(doResume: () -> Unit) {
-        onResumeList.add(doResume)
+        if(!onResumeList.contains(doResume)){
+            onResumeList.add(doResume)
+        }
     }
 
     override fun postOnDestroy(doOnDestroy: () -> Unit) {
-        onDestroyList.add(doOnDestroy)
+        if(!onDestroyList.contains(doOnDestroy)){
+            onDestroyList.add(doOnDestroy)
+        }
     }
     override fun onNewIntent(intent: Intent) {
         LogUtil.e(this.javaClass.simpleName, "onNewIntent")

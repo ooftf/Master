@@ -1,4 +1,4 @@
-package com.master.kit.global;
+package tf.oof.com.service.base;
 
 import android.app.Application;
 import android.support.multidex.MultiDexApplication;

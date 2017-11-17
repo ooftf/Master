@@ -14,7 +14,14 @@ import javax.inject.Inject
 /**
  * Created by 99474 on 2017/11/7 0007.
  */
-class SwipeRecyclerAdapter(var context: Context) : RecyclerSwipeAdapter<SwipeRecyclerAdapter.ViewHolder>() {
+class SwipeRecyclerAdapter : RecyclerSwipeAdapter<SwipeRecyclerAdapter.ViewHolder> {
+    var context: Context
+
+    @Inject constructor(context: Context) {
+        this.context = context
+        inflater = LayoutInflater.from(context)
+    }
+
     var body = ArrayList<SwipeBean>()
     override fun getItemCount(): Int {
         return body.size
@@ -24,7 +31,7 @@ class SwipeRecyclerAdapter(var context: Context) : RecyclerSwipeAdapter<SwipeRec
         return R.id.swipeLayout
     }
 
-    var inflater = LayoutInflater.from(context)
+    var inflater: LayoutInflater
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(inflater.inflate(R.layout.item_swiper, parent, false))
     }
@@ -33,6 +40,7 @@ class SwipeRecyclerAdapter(var context: Context) : RecyclerSwipeAdapter<SwipeRec
         holder.content.text = body[position].position.toString()
         mItemManger.bindView(holder.itemView, position)
     }
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var content = itemView.findViewById<TextView>(R.id.content)
     }
