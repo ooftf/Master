@@ -13,10 +13,19 @@ android {
         versionName "1.0"
         multiDexEnabled true
     }
+    signingConfigs {
+        config {
+            storeFile file('lihang.jks')
+            keyAlias 'master'
+            keyPassword 'master965661686'
+            storePassword '965661686'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
@@ -29,5 +38,4 @@ dependencies {
     compile project(':service')
     compile project(':applet')
     annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
-
 }
