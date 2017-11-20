@@ -8,6 +8,7 @@ buildscript {
     ext.butterknife = "8.8.1"
     repositories {
         jcenter()
+        google()
 
     }
     dependencies {
@@ -19,6 +20,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        google()
         mavenCentral()
         maven {
             url "https://maven.google.com"
