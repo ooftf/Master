@@ -13,9 +13,23 @@
         android:layout_height="@dimen/layout_appbar_height"
         app:navigationIcon="@drawable/vector_arrow_left"
         app:title="日历" />
-
     <ooftf.com.widget.self.calendar.CalendarView
+        app:auto_row="true"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:background="@color/White"
+        android:paddingLeft="20dp"
+        android:paddingBottom="40dp"
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="200dp" />
+    <ooftf.com.widget.self.calendar.CalendarView
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:background="@color/White"
+        android:paddingLeft="20dp"
+        android:paddingBottom="40dp"
+        android:id="@+id/calendarView2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
 </LinearLayout>

@@ -7,4 +7,7 @@
         <attr name="maskOperationEnabled" format="boolean"/>
         <attr name="delOperationEnabled" format="boolean"/>
     </declare-styleable>
+    <declare-styleable name="CalendarView">
+        <attr name="auto_row" format="boolean"/>
+    </declare-styleable>
 </resources>

@@ -5,7 +5,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -20,20 +19,19 @@ import ooftf.com.widget.R
  */
 class OperationEditTextLayout : RelativeLayout {
     constructor(context: Context?) : super(context) {
-        init(null)
     }
 
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init(attrs)
+    constructor(context: Context?, attrs: AttributeSet) : super(context, attrs) {
+        obtainAttrs(attrs)
     }
 
 
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        init(attrs)
+    constructor(context: Context?, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        obtainAttrs(attrs)
     }
 
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
-        init(attrs)
+    constructor(context: Context?, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
+        obtainAttrs(attrs)
     }
 
     private var iconShowId = R.drawable.vector_drawable_attention_fill
@@ -42,8 +40,7 @@ class OperationEditTextLayout : RelativeLayout {
     private var maskOperationEnabled = false
     private var delOperationEnabled = false
     private lateinit var editText: EditText
-    private fun init(attrs: AttributeSet?) {
-        if (attrs != null) {
+    private fun obtainAttrs(attrs: AttributeSet) {
             val attrsArray = context.obtainStyledAttributes(attrs, R.styleable.OperationEditText)
             iconShowId = attrsArray.getResourceId(R.styleable.OperationEditText_icon_show, R.drawable.vector_drawable_attention_fill)
             iconHideId = attrsArray.getResourceId(R.styleable.OperationEditText_icon_hide, R.drawable.vector_drawable_attention_forbid_fill)
@@ -51,7 +48,6 @@ class OperationEditTextLayout : RelativeLayout {
             maskOperationEnabled = attrsArray.getBoolean(R.styleable.OperationEditText_maskOperationEnabled, false)
             delOperationEnabled = attrsArray.getBoolean(R.styleable.OperationEditText_delOperationEnabled, false)
             attrsArray.recycle()
-        }
     }
 
     override fun onFinishInflate() {
