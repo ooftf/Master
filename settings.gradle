@@ -1,2 +1,2 @@
-include ':app', ':retrofit', ':banner', ':service', ':applet', ':self-made'
+include ':app', ':retrofit', ':service', ':applet', ':self-made'
 

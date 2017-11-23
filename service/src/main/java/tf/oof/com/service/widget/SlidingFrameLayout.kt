@@ -20,11 +20,6 @@ import android.widget.Scroller
  * }
  * }
  *
- *
- *
- *
- *
- *
  * 需要在主题中设置如下属性
  * <item name="android:windowBackground">@color/transparent</item>
  * <item name="android:windowIsTranslucent">true</item>
@@ -40,15 +35,6 @@ class SlidingFrameLayout : FrameLayout {
     private var startX: Float = 0.toFloat()
     private var startTime: Long = 0
     private var duration = 500
-
-    val isRootActivity: Boolean
-        get() {
-            val manager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-            val runningTaskInfos = manager.getRunningTasks(1)
-            val i = runningTaskInfos[0].numActivities
-            return i == 1
-        }
-
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
 
@@ -71,8 +57,6 @@ class SlidingFrameLayout : FrameLayout {
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
         if (!enabled)
-            return false
-        if (isRootActivity)
             return false
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {

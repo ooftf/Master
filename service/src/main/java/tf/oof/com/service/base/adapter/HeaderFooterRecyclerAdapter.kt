@@ -25,7 +25,7 @@ abstract class HeaderFooterRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : Ba
         }
     }
 
-    fun getItemViewTypeSecondary(position: Int): Int {
+    open fun getItemViewTypeSecondary(position: Int): Int {
         return VIEW_TYPE_BODY
     }
 
@@ -53,15 +53,11 @@ abstract class HeaderFooterRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : Ba
         footer.forEach { if (it.hashCode() == type) return it }
         return null
     }
-    private fun isHeader(position: Int): Boolean {
-        return position < header.size
-    }
-    public fun isBody(position: Int): Boolean {
-        return position >= header.size&&position<header.size+list.size
-    }
-    private fun isFooter(position: Int): Boolean {
-        return position >= header.size + list.size
-    }
+    fun isHeader(position: Int): Boolean= position < header.size
+
+    fun isBody(position: Int): Boolean =
+            position >= header.size&&position<header.size+list.size
+    fun isFooter(position: Int): Boolean = position >= header.size + list.size
 
     private fun isHeaderByType(viewType: Int): Boolean {
         header.forEach { if(it.hashCode() == viewType){
