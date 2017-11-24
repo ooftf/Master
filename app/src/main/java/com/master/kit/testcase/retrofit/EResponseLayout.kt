@@ -5,7 +5,7 @@ import android.content.Context
 import android.support.v7.app.AlertDialog
 import android.util.AttributeSet
 import com.dks.master.masterretrofit.BaseBean
-import com.dks.master.masterretrofit.ResponseLayout
+import com.dks.master.masterretrofit.View.ResponseLayout
 import com.master.kit.testcase.MainActivity
 
 /**

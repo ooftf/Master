@@ -1,8 +1,8 @@
-package com.dks.master.masterretrofit
+package com.dks.master.masterretrofit.Controller
 
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
-import tf.oof.com.service.interfaces.ILifeListener
+import tf.oof.com.service.interfaces.DestroyListener
 import java.lang.ref.WeakReference
 
 /**
@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference
  *
  * Created by master on 2017/8/18 0018.
  */
-abstract class ControlObserver<T, A : ILifeListener>(target: A) : Observer<T> {
+abstract class ControlObserver<T, A : DestroyListener>(target: A) : Observer<T> {
     var targetReference: WeakReference<A> = WeakReference(target)
     fun getTarget(): A? {
         return targetReference.get()

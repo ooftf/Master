@@ -11,7 +11,7 @@ import javax.inject.Inject
  * Created by 99474 on 2017/11/23 0023.
  */
 @Module
-class ImageLoaderModule @Inject constructor() {
+class ImageLoaderModule {
     @Provides
     fun provideImageLoader():IImageLoader = GlideImp()
 }

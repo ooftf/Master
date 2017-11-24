@@ -1,4 +1,4 @@
-package com.dks.master.masterretrofit
+package com.dks.master.masterretrofit.View
 
 import android.app.Dialog
 import android.os.Handler
@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import com.dks.master.masterretrofit.R
 import tf.oof.com.service.base.BaseActivity
 
 /**
  * 适合独立的请求防止多次点击，比如点击按钮的请求
  * Created by master on 2017/10/11 0011.
  */
-open class ResponseDialog : Dialog, IViewResponse {
+open class ResponseDialog : Dialog, ResponseView {
     var activity: BaseActivity
 
     constructor(activity: BaseActivity) : super(activity, R.style.DialogTheme_Empty) {

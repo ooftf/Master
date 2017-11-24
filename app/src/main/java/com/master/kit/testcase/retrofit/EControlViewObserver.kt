@@ -2,7 +2,7 @@ package com.master.kit.testcase.retrofit
 
 import com.dks.master.masterretrofit.BaseBean
 import io.reactivex.disposables.Disposable
-import tf.oof.com.service.interfaces.ILifeListener
+import tf.oof.com.service.interfaces.DestroyListener
 import java.lang.ref.WeakReference
 
 /**
@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference
  * R 响应界面
  * Created by master on 2017/10/12 0012.
  */
-open class EControlViewObserver<T : BaseBean, A : ILifeListener>(responseView: IEResponse<T>, target: A) : EControlObserver<T, A>(target) {
+open class EControlViewObserver<T : BaseBean, A : DestroyListener>(responseView: IEResponse<T>, target: A) : EControlObserver<T, A>(target) {
     private var responseReference: WeakReference<IEResponse<T>> = WeakReference(responseView)
     override fun onError(e: Throwable?) {
         getResponseView()?.onError()

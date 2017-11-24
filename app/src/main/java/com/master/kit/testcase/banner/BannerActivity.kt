@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import com.master.kit.R
 import com.master.kit.activity.GuideActivity
-import com.master.kit.engine.imageloader.DaggerBannerComponent
-import com.master.kit.engine.imageloader.GlideImp
+import com.master.kit.dagger.DaggerBannerComponent
 import com.master.kit.testcase.retrofit.EControlViewObserver
 import com.master.kit.testcase.retrofit.IEResponse
 import com.master.kit.testcase.retrofit.ServiceHolder
@@ -20,7 +19,7 @@ import javax.inject.Inject
 
 class BannerActivity : BaseSlidingActivity() {
 
-    @Inject lateinit var  imageLoader:IImageLoader
+    @Inject lateinit var imageLoader: IImageLoader
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         DaggerBannerComponent.create().inject(this)
@@ -32,14 +31,15 @@ class BannerActivity : BaseSlidingActivity() {
             startActivity(GuideActivity::class.java)
         }
     }
+
     private fun setupBanner() {
-        banner.setImageLoader(object :ImageLoaderInterface<ImageView>{
+        banner.setImageLoader(object : ImageLoaderInterface<ImageView> {
             override fun createImageView(context: Context): ImageView? {
                 return null;
             }
 
             override fun displayImage(context: Context, path: Any, imageView: ImageView) {
-               val bean = path as BannerBean.BodyEntity.PicListEntity
+                val bean = path as BannerBean.BodyEntity.PicListEntity
                 imageLoader.display(context, bean.picUrl, imageView)
             }
 
@@ -49,14 +49,14 @@ class BannerActivity : BaseSlidingActivity() {
     private fun requestBanner() {
         ServiceHolder
                 .service
-                .getBanner("1","2")
+                .getBanner("1", "2")
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(HomeObserver(responseLayout,this))
+                .subscribe(HomeObserver(responseLayout, this))
     }
+
     class HomeObserver(responseView: IEResponse<BannerBean>, target: BannerActivity) : EControlViewObserver<BannerBean, BannerActivity>(responseView, target) {
         override fun onResponseSuccess(bean: BannerBean) {
             super.onResponseSuccess(bean)
-            val list = bean.body.picList.map { it.picUrl }
             getTarget()?.banner?.let {
                 it.setImages(bean.body.picList)
                 it.start()

@@ -1,8 +1,8 @@
 package com.master.kit.testcase.retrofit
 
 import com.dks.master.masterretrofit.BaseBean
-import com.dks.master.masterretrofit.ControlObserver
-import tf.oof.com.service.interfaces.ILifeListener
+import com.dks.master.masterretrofit.Controller.ControlObserver
+import tf.oof.com.service.interfaces.DestroyListener
 
 /**
  * T bean
@@ -10,7 +10,7 @@ import tf.oof.com.service.interfaces.ILifeListener
  * R 响应界面
  * Created by master on 2017/10/12 0012.
  */
-abstract class EControlObserver<T : BaseBean, A: ILifeListener>(target: A) : ControlObserver<T, A>(target) {
+abstract class EControlObserver<T : BaseBean, A: DestroyListener>(target: A) : ControlObserver<T, A>(target) {
 
     override fun onNext(bean: T) {
         if (bean.success) {
