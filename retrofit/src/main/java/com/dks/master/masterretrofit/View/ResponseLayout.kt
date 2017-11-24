@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.dks.master.masterretrofit.R
+import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.layout_error.view.*
 import kotlinx.android.synthetic.main.layout_start.view.*
 
@@ -49,7 +50,9 @@ open class ResponseLayout : FrameLayout, ResponseView {
 
     private fun invisibleAll() {
         if (loaded) return
-        (0..childCount).forEach{
+        Logger.e(childCount.toString())
+        (0..childCount-1).forEach{
+            Logger.e(it.toString())
             getChildAt(it).visibility = View.INVISIBLE
         }
     }

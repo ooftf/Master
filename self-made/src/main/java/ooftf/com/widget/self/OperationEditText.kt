@@ -15,6 +15,8 @@ import ooftf.com.widget.R
 
 
 /**
+ *  删除按钮的大小为40dp
+ *  隐藏转换按钮的大小为38dp
  * Created by master on 2017/10/17 0017.
  */
 class OperationEditTextLayout : RelativeLayout {
@@ -39,25 +41,28 @@ class OperationEditTextLayout : RelativeLayout {
     private var iconDelId = R.drawable.vector_icon_del
     private var maskOperationEnabled = false
     private var delOperationEnabled = false
+    private var editTextId = -1;
     private lateinit var editText: EditText
     private fun obtainAttrs(attrs: AttributeSet) {
-            val attrsArray = context.obtainStyledAttributes(attrs, R.styleable.OperationEditText)
-            iconShowId = attrsArray.getResourceId(R.styleable.OperationEditText_icon_show, R.drawable.vector_drawable_attention_fill)
-            iconHideId = attrsArray.getResourceId(R.styleable.OperationEditText_icon_hide, R.drawable.vector_drawable_attention_forbid_fill)
-            iconDelId = attrsArray.getResourceId(R.styleable.OperationEditText_icon_del, R.drawable.vector_icon_del)
-            maskOperationEnabled = attrsArray.getBoolean(R.styleable.OperationEditText_maskOperationEnabled, false)
-            delOperationEnabled = attrsArray.getBoolean(R.styleable.OperationEditText_delOperationEnabled, false)
-            attrsArray.recycle()
+        val attrsArray = context.obtainStyledAttributes(attrs, R.styleable.OperationEditText)
+        iconShowId = attrsArray.getResourceId(R.styleable.OperationEditText_icon_show, R.drawable.vector_drawable_attention_fill)
+        iconHideId = attrsArray.getResourceId(R.styleable.OperationEditText_icon_hide, R.drawable.vector_drawable_attention_forbid_fill)
+        iconDelId = attrsArray.getResourceId(R.styleable.OperationEditText_icon_del, R.drawable.vector_icon_del)
+        maskOperationEnabled = attrsArray.getBoolean(R.styleable.OperationEditText_maskOperationEnabled, false)
+        delOperationEnabled = attrsArray.getBoolean(R.styleable.OperationEditText_delOperationEnabled, false)
+        editTextId = attrsArray.getResourceId(R.styleable.OperationEditText_editTextId, -1)
+        attrsArray.recycle()
     }
 
     override fun onFinishInflate() {
         super.onFinishInflate()
-        if (getChildAt(0) is EditText) {
+        if(editTextId != -1){
+            editText = findViewById(editTextId)
+        }else if(getChildAt(0) is EditText){
             editText = getChildAt(0) as EditText
-        } else {
-            throw IllegalAccessException("OperationEditTextLayout 只支持一个EditText子节点")
+        }else{
+            throw IllegalAccessException("OperationEditTextLayout 未找到EditText节点")
         }
-
         initViews()
         addListener()
     }
@@ -109,9 +114,9 @@ class OperationEditTextLayout : RelativeLayout {
     }
 
     private fun calculatePadding() {
-        if(delView.left>0){
-            editText.setPadding(editText.paddingLeft, editText.paddingTop,editText.width-delView.left, editText.paddingBottom)
-        }
+       /* if (delView.left > 0) {
+            editText.setPadding(editText.paddingLeft, editText.paddingTop, editText.width - delView.left, editText.paddingBottom)
+        }*/
     }
 
     fun hideMaskOperation() {
@@ -160,7 +165,7 @@ class OperationEditTextLayout : RelativeLayout {
     }
 
     private fun maskPassword() {
-        if (!maskOperationEnabled)return
+        if (!maskOperationEnabled) return
         maskPassword = true
         maskView.setImageResource(iconHideId)
         var selection = editText.selectionStart
@@ -169,7 +174,7 @@ class OperationEditTextLayout : RelativeLayout {
     }
 
     private fun unmaskPassword() {
-        if (!maskOperationEnabled)return
+        if (!maskOperationEnabled) return
         maskPassword = false
         maskView.setImageResource(iconShowId)
         var selection = editText.selectionStart

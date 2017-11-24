@@ -6,6 +6,7 @@
         <attr name="icon_del" format="reference"/>
         <attr name="maskOperationEnabled" format="boolean"/>
         <attr name="delOperationEnabled" format="boolean"/>
+        <attr name="editTextId" format="reference"/>
     </declare-styleable>
     <declare-styleable name="CalendarView">
         <attr name="auto_row" format="boolean"/>

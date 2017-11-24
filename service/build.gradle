@@ -50,4 +50,5 @@ dependencies {
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
     kapt "com.jakewharton:butterknife-compiler:$butterknife"
     kapt 'com.google.dagger:dagger-compiler:2.13'
+    compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
 }
