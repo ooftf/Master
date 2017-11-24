@@ -1,6 +1,8 @@
 package com.master.kit.testcase.retrofit
 
 
+import android.app.Activity
+import android.app.Application
 import android.os.Bundle
 import android.support.v4.view.ViewCompat
 import android.util.Log
