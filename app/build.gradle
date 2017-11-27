@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'packer'
 android {
     compileSdkVersion compile_sdk
     buildToolsVersion build_tools
@@ -30,6 +31,12 @@ android {
         }
     }
 }
+//packer-begin
+packer {
+    archiveNameFormat = '${appPkg}-${buildType}-v${versionName}-${channel}'
+    archiveOutput = new File(project.rootProject.buildDir, "apks")
+    channelList = ['*Douban*', 'Google/', '中文/@#市场']
+}
 dependencies {
     testCompile 'junit:junit:4.12'
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -39,4 +46,12 @@ dependencies {
     compile project(':applet')
     kapt 'com.github.bumptech.glide:compiler:4.2.0'
     kapt 'com.google.dagger:dagger-compiler:2.13'
+    annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") {
+        changing = true
+    }
+    compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") { changing = true }
+    implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$tinkerpatch_version") {
+        changing = true
+    }
 }
+apply from: 'tinkerpatch.gradle'

@@ -30,7 +30,7 @@ class WidgetFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean(SharedElementsActivity::class.java, "分享元素", "采用transition的方式制作分享元素动画", category = "非自定义"))
         adapter.add(ScreenItemBean(PhotoViewActivity::class.java, "PhotoView", "采用PhotoView的方式制作可控制图片", category = "非自定义"))
         adapter.add(ScreenItemBean(PinEntryActivity::class.java, "PinEntry", "使用第三方库PinEntryEditText", category = "非自定义"))
-        adapter.add(ScreenItemBean(SwipeActivity::class.java, "Swipe", "使用第三方库SwipeLayout", category = "非自定义"))
+        adapter.add(ScreenItemBean(SwipeActivity::class.java, "Swipe", "使用第三方库SwipeLayout修改后，再修改后", category = "非自定义"))
         adapter.add(ScreenItemBean(SwipeRecyclerActivity::class.java, "SwipeRecycler", "使用第三方库SwipeLayout", category = "非自定义"))
         adapter.notifyDataSetChanged()
     }

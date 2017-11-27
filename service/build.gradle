@@ -51,4 +51,8 @@ dependencies {
     kapt "com.jakewharton:butterknife-compiler:$butterknife"
     kapt 'com.google.dagger:dagger-compiler:2.13'
     compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
+    compile "com.mcxiaoke.packer-ng:helper:$packer_ng_version"
+    annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") { changing = true }
+    compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") { changing = true }
+    implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$tinkerpatch_version") { changing = true }
 }

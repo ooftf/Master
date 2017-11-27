@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.master.kit.R
 import com.master.kit.fragment.*
+import com.mcxiaoke.packer.helper.PackerNg
 import kotlinx.android.synthetic.main.activity_main.*
 import tf.oof.com.service.base.BaseActivity
 import tf.oof.com.service.engine.FragmentSwitchManager
@@ -22,6 +23,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        setTitle(PackerNg.getChannel(this))
         setupBottomBar()
     }
 
