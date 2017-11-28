@@ -158,13 +158,12 @@ class CalendarView : View {
         unitWidth = widthRemovePadding(w) / 7f
         unitHeight = heightRemovePadding(h) / getRows().toFloat()
     }
-
     private fun heightRemovePadding(height: Int) = height - paddingTop - paddingBottom
     private fun widthRemovePadding(width: Int) = width - paddingLeft - paddingRight
     private fun initDataPoint() {
         mDatePoints.clear()
         val first = theFirstCalendar
-        (0..(7 * getWeeks() - 1)).forEach {
+        (0 until 7 * getWeeks()).forEach {
             val calendarDay = DateUtil.copyCalendar(first)
             val temp = DatePoint(calendarDay, it)
             mDatePoints.add(temp)
@@ -251,5 +250,4 @@ class CalendarView : View {
             drawModule.draw(canvas, calendar, x, y, compareCurrentMonth(), unitWidth, unitHeight)
         }
     }
-
 }

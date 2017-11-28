@@ -4,9 +4,16 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+
+    <ooftf.com.widget.self.ReturnTopLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:scrollId="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    <include layout="@layout/layout_sticky_header" />
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <include layout="@layout/layout_sticky_header" />
+    </ooftf.com.widget.self.ReturnTopLayout>
 </FrameLayout>
