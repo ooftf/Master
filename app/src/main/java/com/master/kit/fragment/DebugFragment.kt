@@ -2,6 +2,7 @@ package com.master.kit.fragment
 
 import android.os.Bundle
 import com.master.kit.activity.DrawableDebugActivity
+import com.master.kit.activity.FingerprintActivity
 import com.master.kit.bean.ScreenItemBean
 import com.master.kit.testcase.DialogDemo
 import com.master.kit.testcase.KeyBoardActivity
@@ -23,6 +24,7 @@ class DebugFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean(ListViewActivity::class.java))
         adapter.add(ScreenItemBean(TouchActivity::class.java))
         adapter.add(ScreenItemBean(DrawableDebugActivity::class.java))
+        adapter.add(ScreenItemBean(FingerprintActivity::class.java))
         adapter.notifyDataSetChanged()
     }
 

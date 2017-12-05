@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
 
     <application
         android:name="tf.oof.com.service.base.MyApplication"
@@ -70,7 +72,8 @@
         <activity
             android:name=".activity.GuideActivity"
             android:theme="@style/AppTheme.TranslucentStatus" />
-        <activity android:name=".activity.DrawableDebugActivity"></activity>
+        <activity android:name=".activity.DrawableDebugActivity" />
+        <activity android:name=".activity.FingerprintActivity"></activity>
     </application>
 
 </manifest>

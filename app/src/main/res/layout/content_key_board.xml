@@ -15,7 +15,7 @@
     tools:context="com.master.kit.testcase.KeyBoardActivity"
     tools:showIn="@layout/activity_key_board">
     <EditText
-        android:id="@+id/edit_test"
+        android:id="@+id/editTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText

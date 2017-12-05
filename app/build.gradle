@@ -38,6 +38,7 @@ packer {
     channelList = ['*Douban*', 'Google/', '中文/@#市场']
 }
 dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':self-made')
