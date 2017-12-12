@@ -1,5 +1,7 @@
 package com.tf.oof.meacalculatorl.net
 
+import com.dks.master.masterretrofit.KeepCookieJar
+import com.dks.master.masterretrofit.ParamInterceptor
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import io.reactivex.schedulers.Schedulers
@@ -29,7 +31,10 @@ open abstract class ServiceGenerator<T>(private var baseUrl: String, var ignoreS
                 .build()
     }
     private val okHttpClient: OkHttpClient by lazy {
-        var builder = OkHttpClient.Builder().addInterceptor(logInterceptor)
+        var builder = OkHttpClient.Builder()
+                .addInterceptor(ParamInterceptor())
+                .addInterceptor(logInterceptor)
+                .cookieJar(KeepCookieJar())
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)

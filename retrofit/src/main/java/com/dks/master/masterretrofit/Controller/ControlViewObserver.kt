@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference
 /**
  * Created by master on 2017/8/18 0018.
  */
-abstract class ControlViewObserver<T,A: DestroyListener,R: ResponseView?>(responseView:R, target:A) : ControlObserver<T, A>(target) {
+abstract class ControlViewObserver<T,A: DestroyListener,R: ResponseView?>(responseView:R, target:A?) : ControlObserver<T, A>(target) {
     private var responseReference:WeakReference<R> = WeakReference(responseView)
     override fun onSubscribe(d: Disposable) {
         super.onSubscribe(d)

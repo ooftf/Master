@@ -25,7 +25,7 @@ class FragmentSwitchManager(
     fun switchFragment(tagId: Int) {
         val fragmentTransaction = manager.beginTransaction()
         hideAll(fragmentTransaction)
-        var fragment: Fragment = findFragment(fragmentTransaction,tagId)
+        var fragment: Fragment = findFragment(fragmentTransaction, tagId)
         onDoSwitch?.invoke(tagId, fragment)
         fragmentTransaction.show(fragment).commitAllowingStateLoss()
     }
@@ -35,12 +35,13 @@ class FragmentSwitchManager(
                 .filter { it != null }
                 .forEach { fragmentTransaction.hide(it) }
     }
-    private fun  findFragment(fragmentTransaction: FragmentTransaction,tagId: Int):Fragment{
+
+    private fun findFragment(fragmentTransaction: FragmentTransaction, tagId: Int): Fragment {
         var fragment: Fragment? = manager.findFragmentByTag(tagId.toString())
         if (null == fragment) {
             fragment = createFragment(tagId)
             fragmentTransaction.add(containerViewId, fragment, tagId.toString())
         }
-        return  fragment
+        return fragment
     }
 }

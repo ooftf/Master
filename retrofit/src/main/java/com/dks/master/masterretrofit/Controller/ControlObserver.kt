@@ -11,12 +11,9 @@ import java.lang.ref.WeakReference
  *
  * Created by master on 2017/8/18 0018.
  */
-abstract class ControlObserver<T, A : DestroyListener>(target: A) : Observer<T> {
-    var targetReference: WeakReference<A> = WeakReference(target)
-    fun getTarget(): A? {
-        return targetReference.get()
-    }
-
+abstract class ControlObserver<T, A : DestroyListener>(target: A?) : Observer<T> {
+    var targetReference: WeakReference<A>? = if (target == null) null else WeakReference(target)
+    fun getTarget() = targetReference?.get()
     override fun onSubscribe(d: Disposable) {
         getTarget()?.postOnDestroy {
             d.dispose()
