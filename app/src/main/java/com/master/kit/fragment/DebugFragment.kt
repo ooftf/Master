@@ -1,6 +1,7 @@
 package com.master.kit.fragment
 
 import android.os.Bundle
+import com.master.kit.R
 import com.master.kit.activity.DrawableDebugActivity
 import com.master.kit.activity.FingerprintActivity
 import com.master.kit.bean.ScreenItemBean
@@ -24,7 +25,7 @@ class DebugFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean(ListViewActivity::class.java))
         adapter.add(ScreenItemBean(TouchActivity::class.java))
         adapter.add(ScreenItemBean(DrawableDebugActivity::class.java))
-        adapter.add(ScreenItemBean(FingerprintActivity::class.java))
+        adapter.add(ScreenItemBean(FingerprintActivity::class.java,icon= R.drawable.vector_fingerprint))
         adapter.notifyDataSetChanged()
     }
 

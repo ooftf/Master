@@ -3,6 +3,7 @@ package com.master.kit.widget.masterpopupwindow;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.IBinder;
@@ -89,5 +90,25 @@ public class MasterPopupWindow extends PopupWindow {
 		setFocusable(true);
 		setBackgroundDrawable(new BitmapDrawable());
 	}
+	@Override
+	public void showAsDropDown(View anchor) {
+		if(Build.VERSION.SDK_INT >= 24) {
+			Rect rect = new Rect();
+			anchor.getGlobalVisibleRect(rect);
+			int h = anchor.getResources().getDisplayMetrics().heightPixels - rect.bottom;
+			setHeight(h);
+		}
+		super.showAsDropDown(anchor);
+	}
 
+	@Override
+	public void showAsDropDown(View anchor, int xoff, int yoff) {
+		if(Build.VERSION.SDK_INT >= 24) {
+			Rect rect = new Rect();
+			anchor.getGlobalVisibleRect(rect);
+			int h = anchor.getResources().getDisplayMetrics().heightPixels - rect.bottom;
+			setHeight(h);
+		}
+		super.showAsDropDown(anchor, xoff, yoff);
+	}
 }
