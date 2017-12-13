@@ -1,12 +1,15 @@
 package com.tf.oof.meacalculatorl.net
 
+import android.util.Log
 import com.dks.master.masterretrofit.KeepCookieJar
 import com.dks.master.masterretrofit.ParamInterceptor
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.internal.platform.Platform
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -34,6 +37,7 @@ open abstract class ServiceGenerator<T>(private var baseUrl: String, var ignoreS
         var builder = OkHttpClient.Builder()
                 .addInterceptor(ParamInterceptor())
                 .addInterceptor(logInterceptor)
+                .addNetworkInterceptor(StethoInterceptor())
                 .cookieJar(KeepCookieJar())
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)

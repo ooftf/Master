@@ -2,6 +2,7 @@ package tf.oof.com.service.base
 
 import android.app.Application
 import android.support.multidex.MultiDexApplication
+import com.facebook.stetho.Stetho
 
 import com.liulishuo.filedownloader.FileDownloader
 import com.orhanobut.logger.AndroidLogAdapter
@@ -19,8 +20,11 @@ class MyApplication : MultiDexApplication() {
         setupThinker()
         FileDownloader.init(applicationContext)
         setupLogger()
+        setupStetho()
     }
-
+    private fun setupStetho(){
+        Stetho.initializeWithDefaults(this);
+    }
     private fun setupThinker() {
         // 我们可以从这里获得Tinker加载过程的信息
         var tinkerApplicationLike = TinkerPatchApplicationLike.getTinkerPatchApplicationLike();
@@ -31,7 +35,6 @@ class MyApplication : MultiDexApplication() {
                 .setPatchRollbackOnScreenOff(true)
                 .setPatchRestartOnSrceenOff(true)
                 .setFetchPatchIntervalByHours(3);
-
         // 每隔3个小时(通过setFetchPatchIntervalByHours设置)去访问后台时候有更新,通过handler实现轮训的效果
         TinkerPatch.with().fetchPatchUpdateAndPollWithInterval();
     }
