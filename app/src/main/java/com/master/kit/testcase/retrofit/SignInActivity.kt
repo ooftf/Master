@@ -14,8 +14,10 @@ import com.master.kit.testcase.retrofit.ServiceHolder.service
 import com.nineoldandroids.animation.ObjectAnimator
 import com.nineoldandroids.animation.ValueAnimator
 import com.orhanobut.logger.Logger
+import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.item_swiper.*
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import tf.oof.com.service.base.BaseSlidingActivity
 
@@ -57,6 +59,7 @@ class SignInActivity : BaseSlidingActivity() {
     private fun signInRequest() {
         service
                 .signIn(name.text.toString(), PWD.text.toString(), "sssssssssssss", "ssssssssssssss")
+                .bindToLifecycle(window.decorView)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(SignInObserver(EResponseDialog(this), this))
     }

@@ -173,4 +173,33 @@ public class AndroidUtil {
 			return null;
 		}
 	}
+	//版本比较
+	public static boolean isNewVersion(String local, String server) {
+		if (TextUtils.isEmpty(server)) {
+			return false;
+		}
+		server = server.replaceAll("v","");
+		String[] splitLocal = local.split("\\.");
+		String[] splitServer = server.split("\\.");
+		if(splitLocal.length!=splitServer.length){//如果版本号不相同代表有新版本
+			return true;
+		}
+		for (int i = 0; i < splitLocal.length; i++) {
+			int serverNum;
+			int localNum;
+			try{
+				serverNum = Integer.valueOf(splitServer[i]);
+				localNum = Integer.valueOf(splitLocal[i]);
+			}catch (Exception e){
+				return false;
+			}
+			if(serverNum>localNum){
+				return true;
+			}else if(serverNum<localNum){
+				return false;
+			}
+		}
+		return false;
+	}
+
 }

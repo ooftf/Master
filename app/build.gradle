@@ -40,11 +40,11 @@ packer {
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':self-made')
-    compile project(':retrofit')
-    compile project(':service')
-    compile project(':applet')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':self-made')
+    api project(':retrofit')
+    api project(':service')
+    api project(':applet')
     kapt 'com.github.bumptech.glide:compiler:4.2.0'
     kapt 'com.google.dagger:dagger-compiler:2.13'
     annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") {

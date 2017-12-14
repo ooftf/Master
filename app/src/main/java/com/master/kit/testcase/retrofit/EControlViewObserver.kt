@@ -13,7 +13,7 @@ import java.lang.ref.WeakReference
  */
 open class EControlViewObserver<T : BaseBean, A : DestroyListener>(responseView: IEResponse<T>, target: A) : EControlObserver<T, A>(target) {
     private var responseReference: WeakReference<IEResponse<T>> = WeakReference(responseView)
-    override fun onError(e: Throwable?) {
+    override fun onError(e: Throwable) {
         getResponseView()?.onError()
 
     }

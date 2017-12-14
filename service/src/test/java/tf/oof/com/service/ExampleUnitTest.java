@@ -2,6 +2,8 @@ package tf.oof.com.service;
 
 import org.junit.Test;
 
+import tf.oof.com.service.utils.Math;
+
 import static org.junit.Assert.*;
 
 /**
@@ -13,5 +15,11 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
+    }
+    @Test
+    public void power_isCorrect() throws Exception {
+        System.out.println(Math.power(1.1,4));
+        System.out.println(Math.distance(1,2,2,1));
+        //assertEquals(16, Math.power(2,4));
     }
 }

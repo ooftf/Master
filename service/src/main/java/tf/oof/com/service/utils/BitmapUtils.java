@@ -57,7 +57,7 @@ public class BitmapUtils {
      */
     private static  void calculateInSampleSize(long requestPixels, BitmapFactory.Options options) {
         long picSize = options.outHeight * options.outWidth;
-        int inSampleSize = (int) Math.sqrt(picSize / requestPixels);
+        int inSampleSize = (int) java.lang.Math.sqrt(picSize / requestPixels);
         if (inSampleSize <= 1) {
             inSampleSize = 1;
         }
