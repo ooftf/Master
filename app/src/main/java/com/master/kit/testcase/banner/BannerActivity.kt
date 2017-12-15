@@ -9,6 +9,7 @@ import com.master.kit.dagger.DaggerBannerComponent
 import com.master.kit.testcase.retrofit.EControlViewObserver
 import com.master.kit.testcase.retrofit.IEResponse
 import com.master.kit.testcase.retrofit.ServiceHolder
+import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import com.youth.banner.loader.ImageLoaderInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_banner.*
@@ -50,17 +51,16 @@ class BannerActivity : BaseSlidingActivity() {
         ServiceHolder
                 .service
                 .getBanner("1", "2")
+                .bindToLifecycle(banner)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(HomeObserver(responseLayout, this))
+                .subscribe(HomeObserver(responseLayout))
     }
 
-    class HomeObserver(responseView: IEResponse<BannerBean>, target: BannerActivity) : EControlViewObserver<BannerBean, BannerActivity>(responseView, target) {
+    inner class HomeObserver(responseView: IEResponse<BannerBean>) : EControlViewObserver<BannerBean>(responseView) {
         override fun onResponseSuccess(bean: BannerBean) {
             super.onResponseSuccess(bean)
-            getTarget()?.banner?.let {
-                it.setImages(bean.body.picList)
-                it.start()
-            }
+            banner.setImages(bean.body.picList)
+            banner.start()
         }
     }
 }

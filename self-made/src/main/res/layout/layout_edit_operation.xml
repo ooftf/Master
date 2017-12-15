@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+    android:gravity="center_vertical"
+    android:layout_centerVertical="true"
+    android:orientation="horizontal">
+
     <ImageView
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:scaleType="fitCenter"
         android:id="@+id/mask"
-        android:padding="5dp"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        />
+        android:padding="5dp"
+        android:scaleType="fitCenter" />
+
     <ImageView
-        android:padding="6dp"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/mask"
-        android:scaleType="fitCenter"
         android:id="@+id/del"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        />
+        android:padding="6dp"
+        android:scaleType="fitCenter" />
 
-</merge>
+</LinearLayout>

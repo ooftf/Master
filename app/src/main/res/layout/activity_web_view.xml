@@ -10,11 +10,11 @@
     android:paddingTop="@dimen/layout_vertical_margin"
     tools:context="com.master.kit.testcase.webview.WebViewActivity">
     <ooftf.com.widget.self.pulltorefresh.PullToRefreshRoot
-        android:id="@+id/pull_to_refresh_root"
+        android:id="@+id/pullToRefreshRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <WebView
-            android:id="@+id/web_view"
+            android:id="@+id/webView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></WebView>
     </ooftf.com.widget.self.pulltorefresh.PullToRefreshRoot>

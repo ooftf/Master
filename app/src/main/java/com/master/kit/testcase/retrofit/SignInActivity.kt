@@ -1,23 +1,13 @@
 package com.master.kit.testcase.retrofit
-
-
-import android.app.Activity
-import android.app.Application
 import android.os.Bundle
-import android.support.v4.view.ViewCompat
-import android.util.Log
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import com.dks.master.masterretrofit.BaseBean
 import com.master.kit.R
 import com.master.kit.testcase.retrofit.ServiceHolder.service
-import com.nineoldandroids.animation.ObjectAnimator
 import com.nineoldandroids.animation.ValueAnimator
-import com.orhanobut.logger.Logger
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_sign_in.*
-import kotlinx.android.synthetic.main.item_swiper.*
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import tf.oof.com.service.base.BaseSlidingActivity
 
@@ -57,18 +47,22 @@ class SignInActivity : BaseSlidingActivity() {
 
 
     private fun signInRequest() {
+        if(picCaptcha.uuid == null){
+            toast("获取验证码失败")
+            return
+        }
         service
-                .signIn(name.text.toString(), PWD.text.toString(), "sssssssssssss", "ssssssssssssss")
+                .signIn(name.text.toString(), PWD.text.toString(), pin.text.toString(), picCaptcha.uuid!!)
                 .bindToLifecycle(window.decorView)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(SignInObserver(EResponseDialog(this), this))
+                .subscribe(SignInObserver(EResponseDialog(this)))
     }
 
 
-    class SignInObserver(viewResponse: IEResponse<BaseBean>, target: SignInActivity) : EControlViewObserver<BaseBean, SignInActivity>(viewResponse, target) {
+    inner class SignInObserver(viewResponse: IEResponse<BaseBean>) : EControlViewObserver<BaseBean>(viewResponse) {
         override fun onResponseSuccess(bean: BaseBean) {
             super.onResponseSuccess(bean)
-            getTarget()?.toast("登录成功")
+            toast("登录成功")
         }
     }
 

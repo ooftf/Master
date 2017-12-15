@@ -66,4 +66,6 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
     api 'com.trello.rxlifecycle2:rxlifecycle-kotlin:2.2.1'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 }

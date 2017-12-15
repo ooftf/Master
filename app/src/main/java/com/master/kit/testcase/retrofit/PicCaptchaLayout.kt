@@ -12,13 +12,14 @@ import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import com.master.kit.R
 import com.master.kit.bean.PicCaptchaBean
+import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import tf.oof.com.service.base.BaseActivity
 
 /**
  * Created by master on 2017/10/20 0020.
  */
-class PicCaptchaLayout :RelativeLayout ,IEResponse<PicCaptchaBean>{
+class PicCaptchaLayout : RelativeLayout, IEResponse<PicCaptchaBean> {
     override fun onAttachedToWindow() {
         Log.e("onAttachedToWindow", "onAttachedToWindow")
         super.onAttachedToWindow()
@@ -35,18 +36,25 @@ class PicCaptchaLayout :RelativeLayout ,IEResponse<PicCaptchaBean>{
             Log.e("post", "post")
         }
     }
-    private val dialog:EResponseDialog by lazy {
+
+    private val dialog: EResponseDialog by lazy {
         EResponseDialog(activity)
     }
+
     override fun onLoading() {
         pic.visibility = View.INVISIBLE
         progressBar.visibility = View.VISIBLE
     }
 
     private fun picCaptchaRequest() {
-        ServiceHolder.service.picCaptcha().observeOn(AndroidSchedulers.mainThread())
-                .subscribe(PicCaptchaObserver(this, activity))
+        ServiceHolder
+                .service
+                .picCaptcha()
+                .bindToLifecycle(this)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(PicCaptchaObserver(this))
     }
+
     override fun onError() {
         Log.e("onError", "onError")
         pic.visibility = View.VISIBLE
@@ -88,16 +96,23 @@ class PicCaptchaLayout :RelativeLayout ,IEResponse<PicCaptchaBean>{
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
-    private var pic:ImageView
-    private var progressBar:ProgressBar
-    private var activity:BaseActivity
+
+    private var pic: ImageView
+    private var progressBar: ProgressBar
+    private var activity: BaseActivity
+
     init {
-        LayoutInflater.from(context).inflate(R.layout.layout_pic_captcha,this)
+        LayoutInflater.from(context).inflate(R.layout.layout_pic_captcha, this)
         pic = findViewById(R.id.imageView)
         progressBar = findViewById(R.id.progressBar)
         activity = context as BaseActivity
         pic.setOnClickListener { picCaptchaRequest() }
     }
-
-    class PicCaptchaObserver(viewResponse: IEResponse<PicCaptchaBean>, target: BaseActivity) : EControlViewObserver<PicCaptchaBean, BaseActivity>(viewResponse, target)
+    var uuid :String? = null
+   inner class PicCaptchaObserver(viewResponse: IEResponse<PicCaptchaBean>) : EControlViewObserver<PicCaptchaBean>(viewResponse){
+        override fun onResponseSuccess(bean: PicCaptchaBean) {
+            super.onResponseSuccess(bean)
+            uuid = bean.body?.uuid
+        }
+    }
 }

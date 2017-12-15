@@ -3,9 +3,6 @@ package com.master.kit.testcase.retrofit
 import com.dks.master.masterretrofit.BaseBean
 import com.master.kit.bean.PicCaptchaBean
 import com.master.kit.testcase.banner.BannerBean
-
-import okhttp3.ResponseBody
-import retrofit2.Call
 import retrofit2.http.*
 import io.reactivex.Observable
 /**
@@ -13,11 +10,13 @@ import io.reactivex.Observable
  */
 
 interface IEService {
+
+    @FormUrlEncoded
     @POST("service/more/index")
-    @FormUrlEncoded
     fun getBanner(@Field("useClientVersion") userClientVersion: String, @Field("terminalType") terminalType: String): Observable<BannerBean>
-    @POST("service/user/login")
+
     @FormUrlEncoded
+    @POST("service/user/login")
     fun signIn(@Field("useLoginName") username: String,
                         @Field("useLoginPswd") password: String,
                         @Field("identify") PIN: String,

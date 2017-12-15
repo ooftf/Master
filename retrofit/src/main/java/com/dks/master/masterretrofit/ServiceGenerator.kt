@@ -1,6 +1,8 @@
 package com.tf.oof.meacalculatorl.net
 
+import android.app.Service
 import android.util.Log
+import com.dks.master.masterretrofit.BuildConfig
 import com.dks.master.masterretrofit.KeepCookieJar
 import com.dks.master.masterretrofit.ParamInterceptor
 import com.facebook.stetho.okhttp3.StethoInterceptor
@@ -23,10 +25,10 @@ import javax.net.ssl.*
 /**
  * Created by master on 2017/8/15 0015.
  */
-open abstract class ServiceGenerator<T>(private var baseUrl: String, var ignoreSSL: Boolean = false) {
+open  class ServiceGenerator(private var baseUrl: String, var ignoreSSL: Boolean = false) {
     private val logInterceptor: LoggingInterceptor by lazy {
         LoggingInterceptor.Builder()
-                .loggable(true)
+                .loggable(BuildConfig.DEBUG)
                 .setLevel(Level.BASIC)
                 .log(Platform.INFO)
                 .request("Request")
@@ -35,17 +37,17 @@ open abstract class ServiceGenerator<T>(private var baseUrl: String, var ignoreS
     }
     private val okHttpClient: OkHttpClient by lazy {
         var builder = OkHttpClient.Builder()
-                .addInterceptor(ParamInterceptor())
+                //.addInterceptor(ParamInterceptor())
                 .addInterceptor(logInterceptor)
-                .addNetworkInterceptor(StethoInterceptor())
-                .cookieJar(KeepCookieJar())
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
+                //.addNetworkInterceptor(StethoInterceptor())
+     /*           .cookieJar(KeepCookieJar())
+                .connectTimeout(300, TimeUnit.SECONDS)
+                .readTimeout(300, TimeUnit.SECONDS)
+                .writeTimeout(300, TimeUnit.SECONDS)
         if (ignoreSSL) {
             builder.hostnameVerifier(ignoreHostnameVerifier)
                     .sslSocketFactory(ignoreSSLSocketFactory)
-        }
+        }*/
         builder.build()
     }
     private val retrofit: Retrofit by lazy {
@@ -81,9 +83,10 @@ open abstract class ServiceGenerator<T>(private var baseUrl: String, var ignoreS
             }
         }
     }
-    val service: T by lazy {
+   fun <T> createService(cla:Class<T>) = retrofit.create(cla)
+    /*val service:  by lazy {
         val mySuperClass = this.javaClass.genericSuperclass
         val type = (mySuperClass as ParameterizedType).getActualTypeArguments()[0]
         retrofit.create(type as Class<T>)
-    }
+    }*/
 }

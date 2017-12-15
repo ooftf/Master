@@ -1,9 +1,7 @@
 package com.master.kit.testcase.retrofit
 
 import com.dks.master.masterretrofit.BaseBean
-import io.reactivex.disposables.Disposable
-import tf.oof.com.service.interfaces.DestroyListener
-import java.lang.ref.WeakReference
+import com.dks.master.masterretrofit.Controller.ControlViewObserver
 
 /**
  * T bean
@@ -11,41 +9,51 @@ import java.lang.ref.WeakReference
  * R 响应界面
  * Created by master on 2017/10/12 0012.
  */
-open class EControlViewObserver<T : BaseBean, A : DestroyListener>(responseView: IEResponse<T>, target: A) : EControlObserver<T, A>(target) {
-    private var responseReference: WeakReference<IEResponse<T>> = WeakReference(responseView)
-    override fun onError(e: Throwable) {
-        getResponseView()?.onError()
+open class EControlViewObserver<T : BaseBean>(var eResponseView: IEResponse<T>?) : ControlViewObserver<T>(eResponseView) {
 
-    }
-
-    fun getResponseView() = responseReference.get()
-    override fun onSubscribe(d: Disposable) {
-        super.onSubscribe(d)
-        getResponseView()?.onLoading()
+    override fun onNext(bean: T) {
+        super.onNext(bean)
+        if (bean.success) {
+            onResponseSuccess(bean)
+        } else {
+            when (bean.code) {
+                CODE_OFF_SITE_LOGIN -> {
+                    onResponseFailOffSiteLogin(bean)
+                }
+                CODE_SESSION_OVERDUE -> {
+                    onResponseFailSessionOverdue(bean)
+                }
+                else -> {
+                    onResponseFailMessage(bean)
+                }
+            }
+        }
     }
 
     override fun onComplete() {
     }
 
-    override fun onNext(bean: T) {
-        super.onNext(bean)
-        getResponseView()?.onResponse()
-
-    }
-    override fun onResponseSuccess(bean: T) {
-        getResponseView()?.onResponseSuccess(bean)
+    open fun onResponseSuccess(bean: T) {
+        eResponseView?.onResponseSuccess(bean)
     }
 
-    override fun onResponseFailSessionOverdue(bean: T) {
-        getResponseView()?.onResponseFailSessionOverdue(bean)
+    open fun onResponseFailSessionOverdue(bean: T) {
+        eResponseView?.onResponseFailSessionOverdue(bean)
     }
 
-    override fun onResponseFailMessage(bean: T) {
-        getResponseView()?.onResponseFailMessage(bean)
+    open fun onResponseFailMessage(bean: T) {
+        eResponseView?.onResponseFailMessage(bean)
     }
 
-    override fun onResponseFailOffSiteLogin(bean: T) {
-        getResponseView()?.onResponseFailOffSiteLogin(bean)
+    open fun onResponseFailOffSiteLogin(bean: T) {
+        eResponseView?.onResponseFailOffSiteLogin(bean)
     }
+
+
+    companion object {
+        val CODE_OFF_SITE_LOGIN = "800001"
+        val CODE_SESSION_OVERDUE = "800000"
+    }
+
 
 }
