@@ -1,5 +1,7 @@
 package com.dks.master.masterretrofit;
 
+import android.util.Log;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +27,7 @@ public class ParamInterceptor implements Interceptor {
             if (body instanceof FormBody) {
                 FormBody formBody = (FormBody) body;
                 for (int i = 0; i < formBody.size(); i++) {
-                    oldParams.put(formBody.encodedName(i), formBody.encodedValue(i));
+                    oldParams.put(formBody.name(i), formBody.value(i));
                 }
             }
             FormBody newFormBody = addParam(oldParams);
@@ -40,7 +42,8 @@ public class ParamInterceptor implements Interceptor {
         oldParams.put("appVersion", "");
         FormBody.Builder builder = new FormBody.Builder();
         for (Map.Entry<String, String> entry : oldParams.entrySet()) {
-            builder.addEncoded(entry.getKey(), entry.getValue());
+            Log.e("param", entry.getKey() + "=" + entry.getValue());
+            builder.add(entry.getKey(), entry.getValue());
         }
         return builder.build();
     }

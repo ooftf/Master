@@ -35,4 +35,14 @@ public class ExampleUnitTest {
         System.out.println("sbs8-----" + BannerBean.class.getSimpleName().hashCode());
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void kotlin() {
+        System.out.println("start");
+        new KotlinInitSuper();
+        System.out.println("-----------------");
+        new KotlinInitSuper(5);
+        System.out.println("-----------------");
+        new KotlinInitSuper(5, "456", new A());
+    }
 }

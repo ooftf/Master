@@ -1,24 +1,17 @@
 package com.tf.oof.meacalculatorl.net
 
-import android.app.Service
-import android.util.Log
 import com.dks.master.masterretrofit.BuildConfig
-import com.dks.master.masterretrofit.KeepCookieJar
 import com.dks.master.masterretrofit.ParamInterceptor
-import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.internal.platform.Platform
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.reflect.ParameterizedType
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
-import java.util.concurrent.TimeUnit
 import javax.net.ssl.*
 
 
@@ -37,7 +30,7 @@ open  class ServiceGenerator(private var baseUrl: String, var ignoreSSL: Boolean
     }
     private val okHttpClient: OkHttpClient by lazy {
         var builder = OkHttpClient.Builder()
-                //.addInterceptor(ParamInterceptor())
+                .addInterceptor(ParamInterceptor())
                 .addInterceptor(logInterceptor)
                 //.addNetworkInterceptor(StethoInterceptor())
      /*           .cookieJar(KeepCookieJar())
@@ -74,7 +67,7 @@ open  class ServiceGenerator(private var baseUrl: String, var ignoreSSL: Boolean
             }
         }
         ssl.init(null, arrayOf<TrustManager>(xtm), SecureRandom())
-        ssl.getSocketFactory()
+        ssl.socketFactory
     }
     val ignoreHostnameVerifier: HostnameVerifier by lazy {
         object : HostnameVerifier {
