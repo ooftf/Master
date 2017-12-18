@@ -1,7 +1,8 @@
 package com.tf.oof.meacalculatorl.net
-
 import com.dks.master.masterretrofit.BuildConfig
+import com.dks.master.masterretrofit.KeepCookieJar
 import com.dks.master.masterretrofit.ParamInterceptor
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import io.reactivex.schedulers.Schedulers
@@ -12,6 +13,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
+import java.util.concurrent.TimeUnit
 import javax.net.ssl.*
 
 
@@ -32,15 +34,15 @@ open  class ServiceGenerator(private var baseUrl: String, var ignoreSSL: Boolean
         var builder = OkHttpClient.Builder()
                 .addInterceptor(ParamInterceptor())
                 .addInterceptor(logInterceptor)
-                //.addNetworkInterceptor(StethoInterceptor())
-     /*           .cookieJar(KeepCookieJar())
+                .addNetworkInterceptor(StethoInterceptor())
+                .cookieJar(KeepCookieJar())
                 .connectTimeout(300, TimeUnit.SECONDS)
                 .readTimeout(300, TimeUnit.SECONDS)
                 .writeTimeout(300, TimeUnit.SECONDS)
         if (ignoreSSL) {
             builder.hostnameVerifier(ignoreHostnameVerifier)
                     .sslSocketFactory(ignoreSSLSocketFactory)
-        }*/
+        }
         builder.build()
     }
     private val retrofit: Retrofit by lazy {
@@ -77,9 +79,4 @@ open  class ServiceGenerator(private var baseUrl: String, var ignoreSSL: Boolean
         }
     }
    fun <T> createService(cla:Class<T>) = retrofit.create(cla)
-    /*val service:  by lazy {
-        val mySuperClass = this.javaClass.genericSuperclass
-        val type = (mySuperClass as ParameterizedType).getActualTypeArguments()[0]
-        retrofit.create(type as Class<T>)
-    }*/
 }

@@ -39,7 +39,7 @@ public class ParamInterceptor implements Interceptor {
 
     FormBody addParam(Map<String, String> oldParams) {
         oldParams.put("terminalType", "3");
-        oldParams.put("appVersion", "");
+        oldParams.put("appVersion", "2.5.1");
         FormBody.Builder builder = new FormBody.Builder();
         for (Map.Entry<String, String> entry : oldParams.entrySet()) {
             Log.e("param", entry.getKey() + "=" + entry.getValue());
