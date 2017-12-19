@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_dialog_background"
+    android:paddingTop="16dp"
+    android:orientation="vertical">
+    <TextView
+        android:textColor="@color/font_black"
+        android:id="@+id/title"
+        android:gravity="center"
+        android:textSize="@dimen/font_huge"
+        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textSize="@dimen/font_large"
+        android:textColor="@color/font_black"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:id="@+id/content"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        android:background="@color/line_gray"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/blue_light"
+            android:id="@+id/negative"
+            android:gravity="center"
+            android:text="取消"
+            android:textSize="@dimen/font_large"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="48dp" />
+        <View
+            android:id="@+id/line"
+            android:background="@color/line_gray"
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:textColor="@color/blue_light"
+            android:id="@+id/positive"
+            android:gravity="center"
+            android:text="确定"
+            android:textSize="@dimen/font_large"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="48dp" />
+
+    </LinearLayout>
+</LinearLayout>
