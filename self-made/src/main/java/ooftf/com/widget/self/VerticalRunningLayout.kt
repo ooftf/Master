@@ -117,9 +117,9 @@ class VerticalRunningLayout : RelativeLayout {
             }
             item.setTag(TAG_KEY_POSITION, position)
             item.setOnClickListener { v ->
-                val position = v.getTag(TAG_KEY_POSITION) as Int
+                val positionInner = v.getTag(TAG_KEY_POSITION) as Int
                 listener?.let {
-                    it(convertPosition(position))
+                    it(convertPosition(positionInner))
                 }
             }
             addView(item)

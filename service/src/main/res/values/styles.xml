@@ -45,4 +45,9 @@
         <!-- 背景色 -->
         <item name="android:windowBackground">@color/dialogBackground</item>
     </style>
+
+    <style name="DialogTheme.Transparent">
+        <!-- 背景色 -->
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
 </resources>

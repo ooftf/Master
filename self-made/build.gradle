@@ -23,5 +23,6 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     api project(':service')
+    implementation 'com.github.lh994749769:CalendarView:1.0.0'
     kapt 'com.google.dagger:dagger-compiler:2.13'
 }

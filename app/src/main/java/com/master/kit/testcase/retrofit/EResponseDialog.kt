@@ -34,7 +34,7 @@ class EResponseDialog(activity: BaseActivity): ResponseDialog(activity),IERespon
         AlertDialog
                 .Builder(activity)
                 .setMessage(bean.info)
-                .setNeutralButton("返回首页", { dialog, which -> activity.startActivity(MainActivity.getStartIntent(activity)) })
+                .setNeutralButton("返回首页", { _, _ -> activity.startActivity(MainActivity.getStartIntent(activity)) })
                 .setCancelable(false)
                 .show()
     }

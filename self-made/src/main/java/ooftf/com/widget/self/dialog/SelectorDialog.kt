@@ -12,7 +12,7 @@ import ooftf.com.widget.R
 /**
  * Created by 99474 on 2017/11/1 0001.
  */
-class SelectorDialog(var activity: Activity) : Dialog(activity, R.style.Theme_CustomDialog) {
+class SelectorDialog(var activity: Activity) : Dialog(activity, R.style.DialogTheme_Transparent) {
     var title: TextView
         private set
     var content: TextView
@@ -38,35 +38,35 @@ class SelectorDialog(var activity: Activity) : Dialog(activity, R.style.Theme_Cu
         negative.visibility = View.GONE
         line.visibility = View.GONE
         positive.setOnClickListener {
-            dismiss();
+            dismiss()
         }
         negative.setOnClickListener {
-            dismiss();
+            dismiss()
         }
     }
 
     fun setTitleText(text: CharSequence): SelectorDialog {
         title.visibility = View.VISIBLE
-        title.setText(text)
-        return this;
+        title.text = text
+        return this
     }
 
     fun setContentText(text: CharSequence): SelectorDialog {
         content.visibility = View.VISIBLE
-        content.setText(text)
-        return this;
+        content.text = text
+        return this
     }
 
     fun setPositiveText(text: CharSequence): SelectorDialog {
         setPositiveVisibility(View.VISIBLE)
-        positive.setText(text)
-        return this;
+        positive.text = text
+        return this
     }
 
     fun setNegativeText(text: CharSequence): SelectorDialog {
         setNegativeVisibility(View.VISIBLE)
-        negative.setText(text)
-        return this;
+        negative.text = text
+        return this
     }
 
     fun setPositiveListener(listener: (TextView, SelectorDialog) -> Unit): SelectorDialog {
@@ -74,7 +74,7 @@ class SelectorDialog(var activity: Activity) : Dialog(activity, R.style.Theme_Cu
         positive.setOnClickListener {
             listener(positive, this)
         }
-        return this;
+        return this
     }
 
     fun setNegativeListener(listener: (TextView, SelectorDialog) -> Unit): SelectorDialog {
@@ -82,7 +82,7 @@ class SelectorDialog(var activity: Activity) : Dialog(activity, R.style.Theme_Cu
         negative.setOnClickListener {
             listener(positive, this)
         }
-        return this;
+        return this
     }
     fun setPositiveVisibility(visibility:Int){
         positive.visibility = visibility

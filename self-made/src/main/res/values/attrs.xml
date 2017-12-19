@@ -8,9 +8,6 @@
         <attr name="delOperationEnabled" format="boolean"/>
         <attr name="editTextId" format="reference"/>
     </declare-styleable>
-    <declare-styleable name="CalendarView">
-        <attr name="auto_row" format="boolean"/>
-    </declare-styleable>
     <declare-styleable name="ReturnTopLayout">
         <attr name="scrollId" format="reference"/>
     </declare-styleable>

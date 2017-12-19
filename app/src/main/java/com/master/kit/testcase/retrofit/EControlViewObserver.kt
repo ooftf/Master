@@ -11,20 +11,20 @@ import com.dks.master.masterretrofit.Controller.ControlViewObserver
  */
 open class EControlViewObserver<T : BaseBean>(var eResponseView: IEResponse<T>?) : ControlViewObserver<T>(eResponseView) {
 
-    override fun onNext(bean: T) {
-        super.onNext(bean)
-        if (bean.success) {
-            onResponseSuccess(bean)
+    override fun onNext(value: T) {
+        super.onNext(value)
+        if (value.success) {
+            onResponseSuccess(value)
         } else {
-            when (bean.code) {
+            when (value.code) {
                 CODE_OFF_SITE_LOGIN -> {
-                    onResponseFailOffSiteLogin(bean)
+                    onResponseFailOffSiteLogin(value)
                 }
                 CODE_SESSION_OVERDUE -> {
-                    onResponseFailSessionOverdue(bean)
+                    onResponseFailSessionOverdue(value)
                 }
                 else -> {
-                    onResponseFailMessage(bean)
+                    onResponseFailMessage(value)
                 }
             }
         }

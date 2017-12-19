@@ -25,11 +25,11 @@ class KeyBoard(context: Context) : MasterPopupWindow(context) {
 
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.widget_key_board, null)
-        setContentView(view)
+        contentView = view
         ButterKnife.bind(view)
         setBackgroundDrawable(ColorDrawable(Color.parseColor("#ffffff")))
-        setWidth(ViewGroup.LayoutParams.MATCH_PARENT)
-        setHeight(ViewGroup.LayoutParams.WRAP_CONTENT)
+        width = ViewGroup.LayoutParams.MATCH_PARENT
+        height = ViewGroup.LayoutParams.WRAP_CONTENT
         initData()
         view.findViewById<GridView>(R.id.gridKey).adapter = object : BaseAdapter() {
             override fun getCount(): Int {
@@ -54,25 +54,25 @@ class KeyBoard(context: Context) : MasterPopupWindow(context) {
                 textView.layoutParams = AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, 200)
                 textView.gravity = Gravity.CENTER
                 textView.setOnClickListener { v ->
-                    val textView = (v as TextView).getText().toString()
-                    if (textView == "<") {
-                        if (editText.getText().length > 0) {
-                            editText.getText().delete(editText.getText().length - 1, editText.getText().length)
+                    val textViewInner = (v as TextView).text.toString()
+                    if (textViewInner == "<") {
+                        if (editText.text.isNotEmpty()) {
+                            editText.text.delete(editText.text.length - 1, editText.text.length)
                         }
-                    } else if (textView == "确定") {
+                    } else if (textViewInner == "确定") {
                         dismiss()
                     } else {
-                        editText.getText().append(textView)
+                        editText.text.append(textViewInner)
                     }
                 }
-                textView.setText(data.get(position))
+                textView.text = data[position]
                 return textView
             }
         }
     }
 
     private fun initData() {
-        data = ArrayList<String>()
+        data = ArrayList()
         upsetOrder()
     }
 
@@ -100,18 +100,14 @@ class KeyBoard(context: Context) : MasterPopupWindow(context) {
 
     fun bindEditText(editText: EditText) {
         this.editText = editText
-        editText.setInputType(InputType.TYPE_NULL)
-        this.editText.onFocusChangeListener = object : View.OnFocusChangeListener {
-            override fun onFocusChange(v: View, hasFocus: Boolean) = if (hasFocus) {
+        editText.inputType = InputType.TYPE_NULL
+        this.editText.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
                 showAtLocation(this@KeyBoard.editText, Gravity.BOTTOM, 0, 0)
             } else {
                 dismiss()
             }
         }
-        this.editText.setOnClickListener(object : View.OnClickListener {
-            public override fun onClick(v: View) {
-                showAtLocation(this@KeyBoard.editText, Gravity.BOTTOM, 0, 0)
-            }
-        })
+        this.editText.setOnClickListener { showAtLocation(this@KeyBoard.editText, Gravity.BOTTOM, 0, 0) }
     }
 }

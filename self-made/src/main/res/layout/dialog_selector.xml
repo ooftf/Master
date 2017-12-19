@@ -3,57 +3,58 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_dialog_background"
-    android:paddingTop="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="16dp">
     <TextView
-        android:textColor="@color/font_black"
         android:id="@+id/title"
-        android:gravity="center"
-        android:textSize="@dimen/font_huge"
-        android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:textSize="@dimen/font_large"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
         android:textColor="@color/font_black"
+        android:textSize="@dimen/font_huge" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_vertical"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:id="@+id/content"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textColor="@color/font_black"
+        android:textSize="@dimen/font_large" />
     <View
-        android:background="@color/line_gray"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/line_height"/>
+        android:layout_height="@dimen/line_height"
+        android:background="@color/divider_gray" />
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <TextView
-            android:textColor="@color/blue_light"
             android:id="@+id/negative"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="取消"
-            android:textSize="@dimen/font_large"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="48dp" />
+            android:textColor="@color/blue_light"
+            android:textSize="@dimen/font_large" />
         <View
             android:id="@+id/line"
-            android:background="@color/line_gray"
             android:layout_width="@dimen/line_height"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@color/divider_gray" />
         <TextView
-            android:textColor="@color/blue_light"
             android:id="@+id/positive"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="确定"
-            android:textSize="@dimen/font_large"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="48dp" />
+            android:textColor="@color/blue_light"
+            android:textSize="@dimen/font_large" />
 
     </LinearLayout>
 </LinearLayout>

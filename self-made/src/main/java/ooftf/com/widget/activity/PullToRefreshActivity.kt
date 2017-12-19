@@ -34,7 +34,7 @@ class PullToRefreshActivity : BaseSlidingActivity() {
         pullToRefreshRoot.setOnRefreshListener {
             simulatePullDownRefresh(pullToLoadMoreFooter)
         }
-        listView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id -> Log.e("OnItemClickListener", "position::" + position) }
+        listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ -> Log.e("OnItemClickListener", "position::" + position) }
 
     }
 

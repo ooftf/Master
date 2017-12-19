@@ -1,7 +1,6 @@
 package ooftf.com.widget.self
 
 import android.content.Context
-import android.content.res.TypedArray
 import android.os.Build
 import android.support.annotation.RequiresApi
 import android.support.v7.widget.GridLayoutManager
@@ -11,12 +10,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
-import android.widget.AbsListView
-import android.widget.GridLayout
-import android.widget.ListView
-import android.widget.RelativeLayout
-import android.widget.ScrollView
-
+import android.widget.*
 import ooftf.com.widget.R
 import tf.oof.com.service.engine.LoopTimer
 
@@ -92,7 +86,7 @@ class ReturnTopLayout : RelativeLayout {
             }
         }
         //用触摸事件代替滑动监听事件
-        scrollView.setOnTouchListener { v, event ->
+        scrollView.setOnTouchListener { _, event ->
             if (scrollView.scrollY > 0) {
                 returnTop.visibility = View.VISIBLE
             } else {
@@ -137,9 +131,6 @@ class ReturnTopLayout : RelativeLayout {
     private fun recyclerView() {
         val recyclerView = contentView as RecyclerView
         recyclerView.setOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-            }
 
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
