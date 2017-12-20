@@ -8,20 +8,20 @@
     android:orientation="vertical"
     tools:context="ooftf.com.widget.activity.OperationEditTextActivity">
 
-    <ooftf.com.widget.self.OperationEditTextLayout
+    <com.ooftf.operation.OperationEditTextLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:delOperationEnabled="true"
         app:maskOperationEnabled="true">
 
         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_item_height"
             android:hint="请输入密码"
-            android:paddingLeft="@dimen/layout_edge_spacing"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/layout_item_height" />
-    </ooftf.com.widget.self.OperationEditTextLayout>
+            android:paddingLeft="@dimen/layout_edge_spacing" />
+    </com.ooftf.operation.OperationEditTextLayout>
 
-    <ooftf.com.widget.self.OperationEditTextLayout
+    <com.ooftf.operation.OperationEditTextLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:delOperationEnabled="true"
@@ -29,6 +29,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="@dimen/layout_item_height" />
-    </ooftf.com.widget.self.OperationEditTextLayout>
+            android:layout_height="@dimen/layout_item_height"
+            android:paddingLeft="@dimen/layout_edge_spacing" />
+    </com.ooftf.operation.OperationEditTextLayout>
 </LinearLayout>

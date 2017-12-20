@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="OperationEditText">
-        <attr name="icon_hide" format="reference"/>
-        <attr name="icon_show" format="reference"/>
-        <attr name="icon_del" format="reference"/>
-        <attr name="maskOperationEnabled" format="boolean"/>
-        <attr name="delOperationEnabled" format="boolean"/>
-        <attr name="editTextId" format="reference"/>
-    </declare-styleable>
     <declare-styleable name="ReturnTopLayout">
         <attr name="scrollId" format="reference"/>
     </declare-styleable>
