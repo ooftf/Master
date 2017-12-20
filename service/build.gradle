@@ -68,5 +68,5 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     compile 'com.alibaba:fastjson:1.1.67.android'
-    compile 'com.github.lh994749769:LoggingInterceptor:2.0.4'
+    compile 'com.github.ooftf:LoggingInterceptor:2.0.4'
 }
