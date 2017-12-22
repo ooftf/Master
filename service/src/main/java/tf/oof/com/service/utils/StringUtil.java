@@ -2,9 +2,6 @@ package tf.oof.com.service.utils;
 
 import android.text.TextUtils;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * Created by master on 2017/6/12 0012.
  */
@@ -12,6 +9,19 @@ import java.util.regex.Pattern;
 public class StringUtil {
     public static boolean isEmpty(String str) {
         return TextUtils.isEmpty(str);
+    }
+
+    public static String zeroPaddingToDouble(String src) {
+        if (src.length() > 1) {
+            return src;
+        } else if(src.length() == 1) {
+            return "0" + src;
+        }else{
+            return "00";
+        }
+    }
+    public static String zeroPaddingToDouble(int src) {
+        return zeroPaddingToDouble(String.valueOf(src));
     }
 
     public static boolean isInteger(String str) {

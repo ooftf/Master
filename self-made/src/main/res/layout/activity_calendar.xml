@@ -23,7 +23,8 @@
         android:paddingLeft="20dp"
         android:paddingRight="10dp"
         android:paddingTop="20dp"
-        app:auto_row="true" />
+        app:auto_row="true"
+         />
 
     <com.ooftf.calendar.CalendarView
         android:id="@+id/calendarView2"
