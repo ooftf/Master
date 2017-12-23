@@ -29,7 +29,7 @@ class VerticalRunningActivity : BaseSlidingActivity() {
             }
 
         }
-        verticalRunningLayout.adapter = adapter
+        spialeLayout.adapter = adapter
         adapter.list.add(" First ")
         adapter.list.add(" Second ")
         adapter.notifyDataSetChanged()

@@ -17,6 +17,13 @@ import tf.oof.com.service.utils.DensityUtil;
 @SuppressLint("AppCompatCustomView")
 public class ProgressTextView extends TextView {
 
+    /**
+     * 当前进度  取值0-100  有可能超过100
+     */
+    float progress;
+    Paint paint;
+    float underlineWidth;
+
 	public ProgressTextView(Context context) {
 		super(context);
 		init();
@@ -26,24 +33,16 @@ public class ProgressTextView extends TextView {
 		super(context, attrs);
 		init();
 	}
-
 	public ProgressTextView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		init();
 	}
 
 	private void init() {
-		underlineWidth = DensityUtil.dip2px(getContext(), 2);
-		paint = new Paint();
+        underlineWidth = DensityUtil.INSTANCE.dip2px(getContext(), 2);
+        paint = new Paint();
 		progress = 0;
 	}
-
-	/**
-	 * 当前进度  取值0-100  有可能超过100
-	 */
-	float progress;
-	Paint paint;
-	float underlineWidth;
 	// private Handler handler;
 
 	/**
@@ -78,12 +77,12 @@ public class ProgressTextView extends TextView {
 	}
 
 	public float getUnderlineWidth() {
-		return DensityUtil.px2dip(getContext(), underlineWidth);
-	}
+        return DensityUtil.INSTANCE.px2dip(getContext(), underlineWidth);
+    }
 
 	public void setUnderlineWidth(float underlineWidthDP) {
-		this.underlineWidth = DensityUtil.dip2px(getContext(), underlineWidthDP);
-	}
+        this.underlineWidth = DensityUtil.INSTANCE.dip2px(getContext(), underlineWidthDP);
+    }
 
 	@Override
 	protected void onDraw(Canvas canvas) {

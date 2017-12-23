@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:orientation="vertical"
     tools:context="ooftf.com.widget.activity.VerticalRunningActivity">
     <tf.oof.com.service.base.TailoredToolbar
         android:id="@+id/toolbar"
-        app:title="自动滚动控件"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_appbar_height"
         app:navigationIcon="@drawable/vector_arrow_left"
+        app:title="自动滚动控件" />
+
+    <com.ooftf.spiale.SpialeLayout
+        android:id="@+id/spialeLayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_appbar_height"/>
-    <ooftf.com.widget.self.VerticalRunningLayout
-        android:background="@color/colorPrimary"
-        android:id="@+id/verticalRunningLayout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_item_height"/>
+        android:layout_height="@dimen/layout_item_height"
+        android:background="@color/colorPrimary" />
 </LinearLayout>

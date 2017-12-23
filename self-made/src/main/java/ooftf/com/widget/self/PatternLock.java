@@ -62,7 +62,7 @@ public class PatternLock extends View {
     }
 
     private void init() {
-        wrapSize = DensityUtil.dip2px(getContext(), 200);
+        wrapSize = DensityUtil.INSTANCE.dip2px(getContext(), 200);
         initPoint();
         normal = BitmapFactory.decodeResource(getResources(), R.drawable.locus_round_click);
         initPaints();
