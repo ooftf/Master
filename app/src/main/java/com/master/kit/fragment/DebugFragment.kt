@@ -4,12 +4,13 @@ import android.os.Bundle
 import com.master.kit.R
 import com.master.kit.activity.DrawableDebugActivity
 import com.master.kit.activity.FingerprintActivity
+import com.master.kit.activity.debug.TranslationDebugActivity
+import com.master.kit.activity.widget.UltraViewPagerActivity
 import com.master.kit.bean.ScreenItemBean
 import com.master.kit.testcase.DialogDemo
 import com.master.kit.testcase.KeyBoardActivity
 import com.master.kit.testcase.NewInstanceActivity
 import com.master.kit.testcase.listview.ListViewActivity
-import ooftf.com.widget.activity.PullToRefreshActivity
 import com.master.kit.testcase.touchevent.TouchActivity
 
 /**
@@ -26,6 +27,9 @@ class DebugFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean(TouchActivity::class.java))
         adapter.add(ScreenItemBean(DrawableDebugActivity::class.java))
         adapter.add(ScreenItemBean(FingerprintActivity::class.java,icon= R.drawable.vector_fingerprint))
+        adapter.add(ScreenItemBean(UltraViewPagerActivity::class.java))
+        adapter.add(ScreenItemBean(TranslationDebugActivity::class.java))
+
         adapter.notifyDataSetChanged()
     }
 

@@ -9,8 +9,6 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
-
-
     <application
         android:name="tf.oof.com.service.base.MyApplication"
         android:allowBackup="true"
@@ -74,7 +72,9 @@
             android:name=".activity.GuideActivity"
             android:theme="@style/AppTheme.TranslucentStatus" />
         <activity android:name=".activity.DrawableDebugActivity" />
-        <activity android:name=".activity.FingerprintActivity"></activity>
+        <activity android:name=".activity.FingerprintActivity" />
+        <activity android:name=".activity.widget.UltraViewPagerActivity" />
+        <activity android:name=".activity.debug.TranslationDebugActivity"></activity>
     </application>
 
 </manifest>

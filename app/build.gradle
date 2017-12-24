@@ -60,5 +60,8 @@ dependencies {
         changing = true
     }
     implementation 'com.github.ooftf:JsBridge-TencentX5:1.1.0'
+    compile('com.alibaba.android:ultraviewpager:1.0.6.1@aar') {
+        transitive = true
+    }
 }
 apply from: 'tinkerpatch.gradle'
