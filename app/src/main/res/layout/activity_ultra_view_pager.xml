@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.master.kit.activity.widget.UltraViewPagerActivity">
 
-    <com.master.kit.widget.VerticalViewPager
+    <com.ooftf.vertical.VerticalViewPager
         android:id="@+id/ultraViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

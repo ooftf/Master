@@ -5,7 +5,4 @@
         <attr name="normal" format="reference"/>
         <attr name="selected" format="reference"/>
     </declare-styleable>
-    <declare-styleable name="ScrollEdgeInterceptorLayout">
-        <attr name="scrollId" format="reference"/>
-    </declare-styleable>
 </resources>
