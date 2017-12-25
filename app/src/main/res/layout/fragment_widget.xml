@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.master.kit.widget.ScrollEdgeInterceptorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:scrollId="@+id/recycler_view"
+    android:id="@+id/interceptor"
     android:orientation="vertical">
-
     <ooftf.com.widget.self.ReturnTopLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         app:scrollId="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <include layout="@layout/layout_sticky_header" />
     </ooftf.com.widget.self.ReturnTopLayout>
-</FrameLayout>
+</com.master.kit.widget.ScrollEdgeInterceptorLayout>

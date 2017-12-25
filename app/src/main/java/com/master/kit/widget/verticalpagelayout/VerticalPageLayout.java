@@ -137,7 +137,6 @@ public class VerticalPageLayout extends FrameLayout{
         requestLayout();
     }
 
-
     float currentY;
     float startY;
     @Override

@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:src="@drawable/logo_legacy" />
 
-        <ooftf.com.widget.self.OperationEditTextLayout
+        <com.ooftf.operation.OperationEditTextLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_item_height"
             android:layout_marginLeft="@dimen/layout_edge_spacing"
@@ -47,7 +47,7 @@
                     android:background="@null"
                     android:hint="账号" />
             </android.support.design.widget.TextInputLayout>
-        </ooftf.com.widget.self.OperationEditTextLayout>
+        </com.ooftf.operation.OperationEditTextLayout>
 
         <View
             android:layout_width="match_parent"
@@ -55,7 +55,7 @@
             android:background="@color/divider_gray" />
 
 
-        <ooftf.com.widget.self.OperationEditTextLayout
+        <com.ooftf.operation.OperationEditTextLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_item_height"
             android:layout_marginLeft="@dimen/layout_edge_spacing"
@@ -74,7 +74,7 @@
                     android:background="@null"
                     android:hint="密码" />
             </android.support.design.widget.TextInputLayout>
-        </ooftf.com.widget.self.OperationEditTextLayout>
+        </com.ooftf.operation.OperationEditTextLayout>
 
         <View
             android:layout_width="match_parent"

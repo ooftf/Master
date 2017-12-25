@@ -33,6 +33,7 @@ abstract class BaseHomeFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         setupRecyclerView()
         initData()
+        interceptor.setTag(this.javaClass.simpleName)
     }
 
     private fun setupRecyclerView() {

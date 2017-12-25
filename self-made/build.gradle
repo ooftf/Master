@@ -25,6 +25,6 @@ dependencies {
     api project(':service')
     kapt 'com.google.dagger:dagger-compiler:2.13'
     implementation 'com.github.ooftf:CalendarView:1.0.3'
-    implementation 'com.github.ooftf:OperationEditTextLayout:1.0.2'
+    api 'com.github.ooftf:OperationEditTextLayout:1.0.2'
     implementation 'com.github.ooftf:SpialeLayout:1.0.0'
 }
