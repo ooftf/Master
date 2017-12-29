@@ -4,11 +4,16 @@
     android:id="@+id/activity_download"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_main"
+    android:background="@color/background"
     android:paddingBottom="@dimen/layout_vertical_margin"
     android:paddingLeft="@dimen/layout_horizontal_margin"
     android:paddingRight="@dimen/layout_horizontal_margin"
     android:paddingTop="@dimen/layout_vertical_margin"
     tools:context="com.master.kit.testcase.filedownload.DownloadActivity">
-
+    <Button
+        android:id="@+id/button"
+        android:layout_centerInParent="true"
+        android:text="开始"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

@@ -3,7 +3,6 @@ package com.master.kit.activity
 import android.os.Bundle
 import android.os.CountDownTimer
 import com.master.kit.R
-import com.master.kit.testcase.MainActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 import tf.oof.com.service.base.BaseActivity
 

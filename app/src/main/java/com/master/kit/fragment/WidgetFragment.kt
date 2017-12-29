@@ -5,7 +5,6 @@ import com.master.kit.R
 import com.master.kit.activity.GuideActivity
 import com.master.kit.activity.ProgressBarActivity
 import com.master.kit.bean.ScreenItemBean
-import com.master.kit.testcase.PageLayoutActivity
 import com.master.kit.testcase.banner.BannerActivity
 import ooftf.com.widget.activity.*
 
@@ -16,7 +15,6 @@ import ooftf.com.widget.activity.*
 class WidgetFragment : BaseHomeFragment() {
     override fun initData() {
         adapter.add(ScreenItemBean(CalendarActivity::class.java, "自定义日历", "可以改变单个日期的显示样式", R.drawable.vector_calendar, true, "自定义控件"))
-        adapter.add(ScreenItemBean(PageLayoutActivity::class.java, "竖向翻页", "类似竖向viewpager", R.drawable.vector_page_flip, false, "自定义控件"))
         adapter.add(ScreenItemBean(PatternLockActivity::class.java, "手势密码", "手势密码控件", R.drawable.vector_gesture_cipher, false, "自定义控件"))
         adapter.add(ScreenItemBean(BannerActivity::class.java, "轮播图", "利用viewpager制作的轮播图", R.drawable.vector_banner, true, "自定义控件"))
         adapter.add(ScreenItemBean(OperationEditTextActivity::class.java, "可操作输入框", "自定义OperationEditTextLayout", category = "自定义控件"))

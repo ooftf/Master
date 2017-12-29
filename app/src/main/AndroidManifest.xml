@@ -20,11 +20,9 @@
 
         <!-- @style/AppTheme.NoActionBar -->
         <activity android:name=".testcase.SwitchButtonActivity" />
-        <activity android:name=".testcase.SwitchFristActivity" />
-        <activity android:name=".testcase.SwitchSecondActivity" />
         <activity android:name="ooftf.com.widget.activity.CalendarActivity" />
         <activity
-            android:name=".testcase.MainActivity"
+            android:name=".activity.MainActivity"
             android:launchMode="singleTask" />
         <activity
             android:name=".activity.SplashActivity"
@@ -35,7 +33,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".testcase.PageLayoutActivity" />
         <activity android:name="ooftf.com.widget.activity.PatternLockActivity" />
         <activity
             android:name=".testcase.touchevent.TouchActivity"
@@ -73,8 +70,8 @@
             android:theme="@style/AppTheme.TranslucentStatus" />
         <activity android:name=".activity.DrawableDebugActivity" />
         <activity android:name=".activity.FingerprintActivity" />
-        <activity android:name=".activity.widget.UltraViewPagerActivity" />
-        <activity android:name=".activity.debug.TranslationDebugActivity"></activity>
+        <activity android:name=".activity.debug.VerticalPagerActivity" />
+        <activity android:name=".activity.debug.TranslationDebugActivity"/>
     </application>
 
 </manifest>

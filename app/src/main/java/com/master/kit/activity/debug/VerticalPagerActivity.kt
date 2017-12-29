@@ -1,4 +1,4 @@
-package com.master.kit.activity.widget
+package com.master.kit.activity.debug
 
 import android.os.Bundle
 import com.master.kit.R
@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.activity_ultra_view_pager.*
 import tf.oof.com.service.base.BaseActivity
 
 
-class UltraViewPagerActivity : BaseActivity() {
+class VerticalPagerActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

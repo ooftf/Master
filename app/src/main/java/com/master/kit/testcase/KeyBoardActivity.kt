@@ -13,8 +13,9 @@ import com.master.kit.widget.keyboard.KeyBoard
 import butterknife.BindView
 import butterknife.ButterKnife
 import kotlinx.android.synthetic.main.content_key_board.*
+import tf.oof.com.service.base.BaseActivity
 
-class KeyBoardActivity : AppCompatActivity() {
+class KeyBoardActivity : BaseActivity() {
 
     lateinit var keyBoard: KeyBoard
     override fun onCreate(savedInstanceState: Bundle?) {

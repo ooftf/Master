@@ -1,14 +1,12 @@
 package com.master.kit.testcase
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 
 import com.master.kit.R
 import tf.oof.com.service.base.BaseSlidingActivity
 
-import butterknife.BindView
 import butterknife.ButterKnife
+import com.master.kit.activity.MainActivity
 import kotlinx.android.synthetic.main.activity_new_instance.*
 
 class NewInstanceActivity : BaseSlidingActivity() {

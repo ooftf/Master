@@ -6,7 +6,7 @@ import android.support.v7.app.AlertDialog
 import android.util.AttributeSet
 import com.dks.master.masterretrofit.BaseBean
 import com.dks.master.masterretrofit.View.ResponseLayout
-import com.master.kit.testcase.MainActivity
+import com.master.kit.activity.MainActivity
 
 /**
  * Created by master on 2017/10/12 0012.

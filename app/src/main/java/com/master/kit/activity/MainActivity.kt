@@ -1,4 +1,4 @@
-package com.master.kit.testcase
+package com.master.kit.activity
 
 import android.content.Context
 import android.content.Intent
@@ -15,7 +15,7 @@ import tf.oof.com.service.engine.FragmentSwitchManager
 class MainActivity : BaseActivity() {
     companion object {
         fun getStartIntent(context: Context): Intent {
-            return Intent(context,MainActivity::class.java)
+            return Intent(context, MainActivity::class.java)
         }
     }
     private lateinit var switchManager: FragmentSwitchManager

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context="com.master.kit.testcase.MainActivity">
+    tools:context="com.master.kit.activity.MainActivity">
 
     <tf.oof.com.service.base.TailoredToolbar
         android:id="@+id/toolbar"
