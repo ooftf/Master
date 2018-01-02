@@ -138,7 +138,7 @@ public class PinEditText extends EditText {
     private void drawTextByCenter(Canvas canvas) {
         String text = getText().toString();
         for (int i = 0; i < text.length(); i++) {
-            CanvasUtil.drawText(String.valueOf(text.charAt(i)), point[i].x, point[i].y, canvas, getPaint());
+            CanvasUtil.INSTANCE.drawTextForCenter(String.valueOf(text.charAt(i)), point[i].x, point[i].y, canvas, getPaint());
         }
     }
 

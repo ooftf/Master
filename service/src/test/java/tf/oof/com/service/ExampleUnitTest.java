@@ -18,8 +18,8 @@ public class ExampleUnitTest {
     }
     @Test
     public void power_isCorrect() throws Exception {
-        System.out.println(Math.power(1.1,4));
-        System.out.println(Math.distance(1,2,2,1));
+        System.out.println(Math.INSTANCE.power(1.1,4));
+        System.out.println(Math.INSTANCE.distance(1,2,2,1));
         //assertEquals(16, Math.power(2,4));
     }
 }
