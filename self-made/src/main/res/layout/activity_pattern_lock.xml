@@ -16,7 +16,8 @@
         app:navigationIcon="@drawable/vector_arrow_left"
         app:title="手势密码" />
 
-    <ooftf.com.widget.self.PatternLock
+    <com.ooftf.pattern.PatternLock
+        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>
