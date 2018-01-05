@@ -27,5 +27,5 @@ dependencies {
     implementation 'com.github.ooftf:CalendarView:1.0.3'
     api 'com.github.ooftf:OperationEditTextLayout:1.0.2'
     implementation 'com.github.ooftf:SpialeLayout:1.0.0'
-    implementation 'com.github.ooftf:PatternLock:1.0.0'
+    implementation 'com.github.ooftf:PatternLock:1.0.1'
 }
