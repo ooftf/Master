@@ -28,26 +28,21 @@
             android:layout_gravity="center"
             android:src="@drawable/logo_legacy" />
 
-        <com.ooftf.operation.OperationEditTextLayout
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_item_height"
-            android:layout_marginLeft="@dimen/layout_edge_spacing"
-            app:delOperationEnabled="true"
-            app:editTextId="@+id/name"
-            app:maskOperationEnabled="false">
+            android:layout_marginLeft="@dimen/layout_edge_spacing">
 
-            <android.support.design.widget.TextInputLayout
+            <com.ooftf.operation.OperationEditText
+                android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null"
-                    android:hint="账号" />
-            </android.support.design.widget.TextInputLayout>
-        </com.ooftf.operation.OperationEditTextLayout>
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="账号"
+                app:oet_delEnabled="true"
+                app:oet_maskEnabled="false" />
+        </android.support.design.widget.TextInputLayout>
 
         <View
             android:layout_width="match_parent"
@@ -55,26 +50,20 @@
             android:background="@color/divider_gray" />
 
 
-        <com.ooftf.operation.OperationEditTextLayout
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_item_height"
-            android:layout_marginLeft="@dimen/layout_edge_spacing"
-            app:delOperationEnabled="true"
-            app:editTextId="@+id/PWD"
-            app:maskOperationEnabled="true">
+            android:layout_marginLeft="@dimen/layout_edge_spacing">
 
-            <android.support.design.widget.TextInputLayout
+            <com.ooftf.operation.OperationEditText
+                android:id="@+id/PWD"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/PWD"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null"
-                    android:hint="密码" />
-            </android.support.design.widget.TextInputLayout>
-        </com.ooftf.operation.OperationEditTextLayout>
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="密码"
+                app:oet_delEnabled="true"
+                app:oet_maskEnabled="true" />
+        </android.support.design.widget.TextInputLayout>
 
         <View
             android:layout_width="match_parent"
@@ -87,26 +76,21 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">-
 
-            <ooftf.com.widget.self.OperationEditTextLayout
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="@dimen/layout_item_height"
                 android:layout_marginLeft="@dimen/layout_edge_spacing"
-                android:layout_weight="1"
-                app:delOperationEnabled="true"
-                app:editTextId="@+id/pin"
-                app:maskOperationEnabled="false">
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                android:layout_weight="1">
 
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/pin"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@null"
-                        android:hint="图形验证码" />
-                </android.support.design.widget.TextInputLayout>
-            </ooftf.com.widget.self.OperationEditTextLayout>
+                <com.ooftf.operation.OperationEditText
+                    android:id="@+id/pin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:hint="图形验证码"
+                    app:oet_delEnabled="true"
+                    app:oet_maskEnabled="false" />
+            </android.support.design.widget.TextInputLayout>
 
             <com.master.kit.testcase.retrofit.PicCaptchaLayout
                 android:id="@+id/picCaptcha"
