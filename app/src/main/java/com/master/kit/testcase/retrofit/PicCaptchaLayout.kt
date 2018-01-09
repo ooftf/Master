@@ -41,7 +41,7 @@ class PicCaptchaLayout : RelativeLayout, IEResponse<PicCaptchaBean> {
         EResponseDialog(activity)
     }
 
-    override fun onLoading() {
+    override fun onStart() {
         pic.visibility = View.INVISIBLE
         progressBar.visibility = View.VISIBLE
     }
