@@ -29,10 +29,6 @@ open class EControlViewObserver<T : BaseBean>(var eResponseView: IEResponse<T>?)
             }
         }
     }
-
-    override fun onComplete() {
-    }
-
     open fun onResponseSuccess(bean: T) {
         eResponseView?.onResponseSuccess(bean)
     }

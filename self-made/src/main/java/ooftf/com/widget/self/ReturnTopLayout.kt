@@ -3,8 +3,6 @@ package ooftf.com.widget.self
 import android.content.Context
 import android.os.Build
 import android.support.annotation.RequiresApi
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -130,25 +128,13 @@ class ReturnTopLayout : RelativeLayout {
 
     private fun recyclerView() {
         val recyclerView = contentView as RecyclerView
-        recyclerView.setOnScrollListener(object : RecyclerView.OnScrollListener() {
-
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                val layoutManager = recyclerView!!.layoutManager
-                if (layoutManager is LinearLayoutManager) {
-                    val position = layoutManager.findFirstVisibleItemPosition()
-                    if (position > 0) {
-                        returnTop.visibility = View.VISIBLE
-                    } else {
-                        returnTop.visibility = View.GONE
-                    }
-                } else if (layoutManager is GridLayoutManager) {
-                    val position = layoutManager.findFirstVisibleItemPosition()
-                    if (position > layoutManager.spanCount - 1) {
-                        returnTop.visibility = View.VISIBLE
-                    } else {
-                        returnTop.visibility = View.GONE
-                    }
+                if (recyclerView!!.computeVerticalScrollOffset() > 0) {
+                    returnTop.visibility = View.VISIBLE
+                } else {
+                    returnTop.visibility = View.GONE
                 }
             }
         })

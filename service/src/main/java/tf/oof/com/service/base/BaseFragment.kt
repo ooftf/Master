@@ -54,7 +54,6 @@ open class BaseFragment : Fragment(), ILifecycle {
         LogUtil.e(javaClass.simpleName, "onCreateView")
         return super.onCreateView(inflater, container, savedInstanceState)
     }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         LogUtil.e(javaClass.simpleName, "onActivityCreated")
         super.onActivityCreated(savedInstanceState)

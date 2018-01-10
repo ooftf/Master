@@ -36,7 +36,7 @@ class MainActivity : BaseActivity() {
                 R.id.tab_debug,
                 R.id.tab_other,
                 R.id.tab_app,
-                onDoSwitch = null
+                onPreSwitch = null
         ) {
             when (it) {
                 R.id.tab_widget -> return@FragmentSwitchManager WidgetFragment.newInstance()
