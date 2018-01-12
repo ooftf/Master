@@ -30,6 +30,8 @@ class WidgetFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean(PinEntryActivity::class.java, "PinEntry", "使用第三方库PinEntryEditText", category = "非自定义"))
         adapter.add(ScreenItemBean(SwipeActivity::class.java, "Swipe", "使用第三方库SwipeLayout修改后，再修改后", category = "非自定义"))
         adapter.add(ScreenItemBean(SwipeRecyclerActivity::class.java, "SwipeRecycler", "使用第三方库SwipeLayout", category = "非自定义"))
+        adapter.add(ScreenItemBean(LotteryActivity::class.java, "LotteryActivity", "LotteryActivity", category = "非自定义"))
+
         adapter.notifyDataSetChanged()
     }
 

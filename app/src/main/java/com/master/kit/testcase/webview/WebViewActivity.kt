@@ -18,10 +18,10 @@ class WebViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_web_view)
         webView.settings.javaScriptEnabled = true
         //webView.loadUrl("www.baidu.com");
-        webView.loadUrl("http://reg.163.com/resetpwd/index.do")
+        webView.loadUrl("http://www.baidu.com")
         webView.settings.defaultTextEncodingName = "utf-8"
         webView.addJavascriptInterface(JSHandler(), "Objectaaa")
-        webView.webViewClient = object : WebViewClient() {
+       /* webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
 
                 if (url.contains("/register/H5Register")) {
@@ -39,7 +39,7 @@ class WebViewActivity : AppCompatActivity() {
                 }
                 return true
             }
-        }
+        }*/
         val cookieManager = CookieManager.getInstance()
         cookieManager.setAcceptCookie(true)
         pullToRefreshRoot.setOnRefreshListener { Handler().postDelayed({ pullToRefreshRoot.onRefreshComplete() }, 2000) }

@@ -2,6 +2,8 @@ package tf.oof.com.service.utils;
 
 import android.text.TextUtils;
 
+import java.util.List;
+
 /**
  * Created by master on 2017/6/12 0012.
  */
@@ -14,14 +16,28 @@ public class StringUtil {
     public static String zeroPaddingToDouble(String src) {
         if (src.length() > 1) {
             return src;
-        } else if(src.length() == 1) {
+        } else if (src.length() == 1) {
             return "0" + src;
-        }else{
+        } else {
             return "00";
         }
     }
+
     public static String zeroPaddingToDouble(int src) {
         return zeroPaddingToDouble(String.valueOf(src));
+    }
+
+    public static String listToString(List list, String splitCharacter) {
+        if (list == null) return null;
+        String result = "";
+        for (int i = 0; i < list.size(); i++) {
+            if (i == list.size() - 1) {
+                result += list.get(i);
+            } else {
+                result += list.get(i) + splitCharacter;
+            }
+        }
+        return result;
     }
 
     public static boolean isInteger(String str) {

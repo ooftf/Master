@@ -71,7 +71,8 @@
         <activity android:name=".activity.DrawableDebugActivity" />
         <activity android:name=".activity.FingerprintActivity" />
         <activity android:name=".activity.debug.VerticalPagerActivity" />
-        <activity android:name=".activity.debug.TranslationDebugActivity"/>
+        <activity android:name=".activity.debug.TranslationDebugActivity" />
+        <activity android:name=".activity.debug.RegexActivity"></activity>
     </application>
 
 </manifest>

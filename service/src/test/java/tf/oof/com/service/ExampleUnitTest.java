@@ -2,7 +2,7 @@ package tf.oof.com.service;
 
 import org.junit.Test;
 
-import tf.oof.com.service.utils.Math;
+import tf.oof.com.service.utils.MathUtil;
 
 import static org.junit.Assert.*;
 
@@ -18,8 +18,8 @@ public class ExampleUnitTest {
     }
     @Test
     public void power_isCorrect() throws Exception {
-        System.out.println(Math.INSTANCE.power(1.1,4));
-        System.out.println(Math.INSTANCE.distance(1,2,2,1));
+        System.out.println(MathUtil.INSTANCE.power(1.1,4));
+        System.out.println(MathUtil.INSTANCE.distance(1,2,2,1));
         //assertEquals(16, Math.power(2,4));
     }
 }

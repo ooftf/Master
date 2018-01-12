@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="37.5dp"
+    android:layout_height="32dp">
+
+</android.support.v7.widget.RecyclerView>

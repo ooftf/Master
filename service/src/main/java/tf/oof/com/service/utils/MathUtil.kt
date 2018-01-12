@@ -6,7 +6,7 @@ import android.graphics.Point
  * Created by 99474 on 2017/12/14 0014.
  */
 
-object Math {
+object MathUtil {
     //求多次幂
     fun power(base: Double, power: Int): Double {
         var result = 1.0
