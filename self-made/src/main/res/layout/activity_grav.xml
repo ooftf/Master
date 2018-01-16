@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_yellow"
     tools:context="ooftf.com.widget.activity.GravActivity">
-    <com.github.glomadrian.grav.GravView
+    <!--<com.github.glomadrian.grav.GravView
         android:id="@+id/grav"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,5 +27,5 @@
         app:shake_max_duration="20000"
         app:shake_variance="500dp"
         tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp" />
+        tools:layout_editor_absoluteX="8dp" />-->
 </RelativeLayout >

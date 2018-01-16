@@ -1,8 +1,6 @@
 package com.master.kit.adapter
 
 import android.app.Activity
-import android.app.Dialog
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +11,6 @@ import com.master.kit.R
 import com.master.kit.bean.ScreenItemBean
 import tf.oof.com.service.base.BaseActivity
 import tf.oof.com.service.base.adapter.CategoryRecyclerAdapter
-import java.lang.reflect.InvocationTargetException
 
 
 /**
@@ -51,20 +48,6 @@ open class MainRecyclerAdapter(private var baseActivity: BaseActivity, internal 
         holder.itemView.setOnClickListener {
             if (Activity::class.java.isAssignableFrom(bean.clz)) {
                 baseActivity.startActivity(bean.clz)
-            } else if (Dialog::class.java.isAssignableFrom(bean.clz)) {
-                try {
-                    val dialog = bean.clz.getConstructor(Context::class.java).newInstance(baseActivity) as Dialog
-                    dialog.show()
-                } catch (e: InstantiationException) {
-                    e.printStackTrace()
-                } catch (e: IllegalAccessException) {
-                    e.printStackTrace()
-                } catch (e: InvocationTargetException) {
-                    e.printStackTrace()
-                } catch (e: NoSuchMethodException) {
-                    e.printStackTrace()
-                }
-
             }
         }
     }

@@ -4,11 +4,11 @@ import android.os.Bundle
 import com.master.kit.R
 import com.master.kit.activity.DrawableDebugActivity
 import com.master.kit.activity.FingerprintActivity
+import com.master.kit.activity.debug.DialogDebugActivity
 import com.master.kit.activity.debug.RegexActivity
 import com.master.kit.activity.debug.TranslationDebugActivity
 import com.master.kit.activity.debug.VerticalPagerActivity
 import com.master.kit.bean.ScreenItemBean
-import com.master.kit.testcase.DialogDemo
 import com.master.kit.testcase.KeyBoardActivity
 import com.master.kit.testcase.NewInstanceActivity
 import com.master.kit.testcase.listview.ListViewActivity
@@ -22,7 +22,7 @@ class DebugFragment : BaseHomeFragment() {
 
     override fun initData() {
         adapter.add(ScreenItemBean(NewInstanceActivity::class.java))
-        adapter.add(ScreenItemBean(DialogDemo::class.java))
+        adapter.add(ScreenItemBean(DialogDebugActivity::class.java))
         adapter.add(ScreenItemBean(KeyBoardActivity::class.java))
         adapter.add(ScreenItemBean(ListViewActivity::class.java))
         adapter.add(ScreenItemBean(TouchActivity::class.java))
