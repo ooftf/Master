@@ -1,4 +1,4 @@
-package com.dks.master.masterretrofit
+package com.master.kit.bean
 
 /**
  * Created by master on 2017/2/23.

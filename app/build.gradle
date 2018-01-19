@@ -47,7 +47,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(':self-made')
-    api project(':retrofit')
     api project(':service')
     api project(':applet')
     kapt 'com.github.bumptech.glide:compiler:4.2.0'
@@ -64,5 +63,6 @@ dependencies {
         transitive = true
     }
     compile 'com.github.ooftf:VerticalPagerLayout:1.0.1'
+    compile 'com.github.ooftf:HiHttp:1.0.4'
 }
 apply from: 'tinkerpatch.gradle'

@@ -4,6 +4,8 @@ import com.master.kit.testcase.banner.BannerBean;
 
 import org.junit.Test;
 
+import kotlin.text.Regex;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -44,5 +46,9 @@ public class ExampleUnitTest {
         new KotlinInitSuper(5);
         System.out.println("-----------------");
         new KotlinInitSuper(5, "456", new A());
+    }
+    @Test
+    public void re(){
+        Regex regex = new Regex("^[^\\u4e00-\\u9fa5]+$");
     }
 }

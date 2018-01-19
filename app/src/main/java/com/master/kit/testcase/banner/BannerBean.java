@@ -1,6 +1,6 @@
 package com.master.kit.testcase.banner;
 
-import com.dks.master.masterretrofit.BaseBean;
+import com.master.kit.bean.BaseBean;
 
 import java.util.List;
 

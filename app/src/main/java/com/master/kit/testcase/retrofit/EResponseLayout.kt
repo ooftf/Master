@@ -4,9 +4,9 @@ import android.app.Activity
 import android.content.Context
 import android.support.v7.app.AlertDialog
 import android.util.AttributeSet
-import com.dks.master.masterretrofit.BaseBean
-import com.dks.master.masterretrofit.View.ResponseLayout
+import com.master.kit.bean.BaseBean
 import com.master.kit.activity.MainActivity
+import com.ooftf.hi.view.ResponseLayout
 
 /**
  * Created by master on 2017/10/12 0012.

@@ -1,7 +1,7 @@
 package com.master.kit.testcase.retrofit
 import android.os.Bundle
 import android.widget.LinearLayout
-import com.dks.master.masterretrofit.BaseBean
+import com.master.kit.bean.BaseBean
 import com.master.kit.R
 import com.master.kit.testcase.retrofit.ServiceHolder.service
 import com.nineoldandroids.animation.ValueAnimator
@@ -10,6 +10,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import tf.oof.com.service.base.BaseSlidingActivity
+import tf.oof.com.service.engine.inputfilter.RegexInputFilter
 
 class SignInActivity : BaseSlidingActivity() {
     var height = 0
@@ -43,6 +44,7 @@ class SignInActivity : BaseSlidingActivity() {
         sign_in.setOnClickListener {
             signInRequest()
         }
+        name.filters = arrayOf(RegexInputFilter("[\\u4e00-\\u9fa5|A-Z|a-z|0-9]"))
     }
 
 
@@ -57,7 +59,6 @@ class SignInActivity : BaseSlidingActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(SignInObserver(EResponseDialog(this)))
     }
-
 
     inner class SignInObserver(viewResponse: IEResponse<BaseBean>) : EControlViewObserver<BaseBean>(viewResponse) {
         override fun onResponseSuccess(bean: BaseBean) {

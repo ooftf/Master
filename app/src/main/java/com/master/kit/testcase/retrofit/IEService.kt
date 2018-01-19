@@ -1,6 +1,6 @@
 package com.master.kit.testcase.retrofit
 
-import com.dks.master.masterretrofit.BaseBean
+import com.master.kit.bean.BaseBean
 import com.master.kit.bean.PicCaptchaBean
 import com.master.kit.testcase.banner.BannerBean
 import retrofit2.http.*

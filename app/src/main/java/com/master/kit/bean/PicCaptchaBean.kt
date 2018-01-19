@@ -1,7 +1,5 @@
 package com.master.kit.bean
 
-import com.dks.master.masterretrofit.BaseBean
-
 /**
  * Created by master on 2017/10/20 0020.
  */

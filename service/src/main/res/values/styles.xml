@@ -25,6 +25,9 @@
     <style name="AppTheme.BackgroundTransparent.TranslucentStatus">
         <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
     </style>
+
+
+
     <style name="DialogTheme" parent="android:Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>

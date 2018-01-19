@@ -36,12 +36,10 @@ public class DialogDemo extends Dialog {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             Log.e("isDestroyed", activity.isDestroyed() + "");
         }
-
         Log.e("FragmentIsDestroyed", activity.getSupportFragmentManager().isDestroyed() + "");
         Log.e("isFinishing", activity.isFinishing() + ".............");
         LoopTimer loopTimer = new LoopTimer(1000, 1000) {
             int i = 0;
-
             @Override
             public void onTrick() {
                 i++;

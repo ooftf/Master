@@ -1,9 +1,9 @@
 package com.master.kit.testcase.retrofit
 
 import android.support.v7.app.AlertDialog
-import com.dks.master.masterretrofit.BaseBean
-import com.dks.master.masterretrofit.View.ResponseDialog
+import com.master.kit.bean.BaseBean
 import com.master.kit.activity.MainActivity
+import com.ooftf.hi.view.ResponseDialog
 import tf.oof.com.service.base.BaseActivity
 
 /**

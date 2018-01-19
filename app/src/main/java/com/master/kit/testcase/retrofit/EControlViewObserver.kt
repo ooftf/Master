@@ -1,7 +1,7 @@
 package com.master.kit.testcase.retrofit
 
-import com.dks.master.masterretrofit.BaseBean
-import com.dks.master.masterretrofit.Controller.ControlViewObserver
+import com.master.kit.bean.BaseBean
+import com.ooftf.hi.controller.DispatchObserver
 
 /**
  * T bean
@@ -9,7 +9,7 @@ import com.dks.master.masterretrofit.Controller.ControlViewObserver
  * R 响应界面
  * Created by master on 2017/10/12 0012.
  */
-open class EControlViewObserver<T : BaseBean>(var eResponseView: IEResponse<T>?) : ControlViewObserver<T>(eResponseView) {
+open class EControlViewObserver<T : BaseBean>(var eResponseView: IEResponse<T>?) : DispatchObserver<T>(eResponseView) {
 
     override fun onNext(value: T) {
         super.onNext(value)

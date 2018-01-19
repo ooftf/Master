@@ -1,11 +1,16 @@
 package com.master.kit.testcase.retrofit
 
-import com.master.kit.BuildConfig
-import com.tf.oof.meacalculatorl.net.ServiceGenerator
+import com.ooftf.hi.engine.ServiceGenerator
+
 
 /**
  * Created by master on 2017/8/15 0015.
  */
-object ServiceHolder{
-    var service = ServiceGenerator("https://api.etongdai.com/",true).createService(IEService::class.java)
+object ServiceHolder {
+    val service: IEService by lazy {
+        val generator = ServiceGenerator()
+        generator.baseUrl = "https://api.etongdai.com/"
+        generator.ignoreSSL = true
+        generator.createService(IEService::class.java)
+    }
 }
