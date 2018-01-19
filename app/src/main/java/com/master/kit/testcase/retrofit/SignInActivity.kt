@@ -44,7 +44,7 @@ class SignInActivity : BaseSlidingActivity() {
         sign_in.setOnClickListener {
             signInRequest()
         }
-        name.filters = arrayOf(RegexInputFilter("[\\u4e00-\\u9fa5|A-Z|a-z|0-9]"))
+        name.filters = arrayOf(RegexInputFilter(RegexInputFilter.REGEX_CN_NUMBER_LETTER))
     }
 
 

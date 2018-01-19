@@ -27,4 +27,11 @@ class RegexInputFilter(private var pattern:String) : InputFilter {
             return resultString
         }
     }
+    companion object {
+        val REGEX_CN_NUMBER_LETTER = "[\\u4e00-\\u9fa5|A-Z|a-z|0-9]"
+        val REGEX_CN = "[\\u4e00-\\u9fa5]"
+        val REGEX_NUMBER = "[0-9]"
+        val REGEX_LETTER = "[A-Z|a-z]"
+        val REGEX_CN_NUMBER = "[\\u4e00-\\u9fa5|0-9]"
+    }
 }
