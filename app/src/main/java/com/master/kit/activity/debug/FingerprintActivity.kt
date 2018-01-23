@@ -1,4 +1,4 @@
-package com.master.kit.activity
+package com.master.kit.activity.debug
 
 import android.content.Context
 import android.hardware.fingerprint.FingerprintManager

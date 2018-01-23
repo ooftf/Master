@@ -2,5 +2,6 @@
     <string name="app_name">service</string>
     <string name="digits_letterAndNumber">1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM</string>
     <string name="digits_idCard">1234567890Xx</string>
+    <string name="digits_ip">1234567890.</string>
     <string name="digits_letter">qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM</string>
 </resources>

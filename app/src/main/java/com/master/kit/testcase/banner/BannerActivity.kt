@@ -4,11 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.ImageView
 import com.master.kit.R
-import com.master.kit.activity.GuideActivity
+import com.master.kit.activity.widget.GuideActivity
 import com.master.kit.dagger.DaggerBannerComponent
-import com.master.kit.testcase.retrofit.EControlViewObserver
-import com.master.kit.testcase.retrofit.IEResponse
-import com.master.kit.testcase.retrofit.ServiceHolder
+import com.master.kit.net.etd.PresenterObserver
+import com.master.kit.net.etd.ResponseView
+import com.master.kit.net.ServiceHolder
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import com.youth.banner.loader.ImageLoaderInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -56,7 +56,7 @@ class BannerActivity : BaseSlidingActivity() {
                 .subscribe(HomeObserver(responseLayout))
     }
 
-    inner class HomeObserver(responseView: IEResponse<BannerBean>) : EControlViewObserver<BannerBean>(responseView) {
+    inner class HomeObserver(responseView: ResponseView<BannerBean>) : PresenterObserver<BannerBean>(responseView) {
         override fun onResponseSuccess(bean: BannerBean) {
             super.onResponseSuccess(bean)
             banner.setImages(bean.body.picList)

@@ -45,7 +45,7 @@
         <activity
             android:name=".testcase.softkeyboard.SoftKeyboardActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".activity.ProgressBarActivity" />
+        <activity android:name=".activity.widget.ProgressBarActivity" />
         <activity android:name=".testcase.webview.WebViewActivity" />
         <activity android:name=".testcase.design.DesignDispatchActivity" />
         <activity android:name=".testcase.design.flexible.FlexibleActivity" />
@@ -66,14 +66,15 @@
         <activity android:name=".testcase.retrofit.SignInActivity" />
         <activity android:name="ooftf.com.widget.activity.PinEditTextActivity" />
         <activity
-            android:name=".activity.GuideActivity"
+            android:name=".activity.widget.GuideActivity"
             android:theme="@style/AppTheme.TranslucentStatus" />
-        <activity android:name=".activity.DrawableDebugActivity" />
-        <activity android:name=".activity.FingerprintActivity" />
+        <activity android:name=".activity.debug.DrawableDebugActivity" />
+        <activity android:name=".activity.debug.FingerprintActivity" />
         <activity android:name=".activity.debug.VerticalPagerActivity" />
         <activity android:name=".activity.debug.TranslationDebugActivity" />
         <activity android:name=".activity.debug.RegexActivity" />
-        <activity android:name=".activity.debug.DialogDebugActivity"></activity>
+        <activity android:name=".activity.debug.DialogDebugActivity" />
+        <activity android:name=".activity.app.MobApiActivity"></activity>
     </application>
 
 </manifest>

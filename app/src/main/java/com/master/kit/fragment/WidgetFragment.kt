@@ -2,8 +2,8 @@ package com.master.kit.fragment
 
 import android.os.Bundle
 import com.master.kit.R
-import com.master.kit.activity.GuideActivity
-import com.master.kit.activity.ProgressBarActivity
+import com.master.kit.activity.widget.GuideActivity
+import com.master.kit.activity.widget.ProgressBarActivity
 import com.master.kit.bean.ScreenItemBean
 import com.master.kit.testcase.banner.BannerActivity
 import ooftf.com.widget.activity.*

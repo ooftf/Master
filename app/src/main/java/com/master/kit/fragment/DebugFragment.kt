@@ -2,8 +2,8 @@ package com.master.kit.fragment
 
 import android.os.Bundle
 import com.master.kit.R
-import com.master.kit.activity.DrawableDebugActivity
-import com.master.kit.activity.FingerprintActivity
+import com.master.kit.activity.debug.DrawableDebugActivity
+import com.master.kit.activity.debug.FingerprintActivity
 import com.master.kit.activity.debug.DialogDebugActivity
 import com.master.kit.activity.debug.RegexActivity
 import com.master.kit.activity.debug.TranslationDebugActivity

@@ -3,7 +3,10 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import com.master.kit.bean.BaseBean
 import com.master.kit.R
-import com.master.kit.testcase.retrofit.ServiceHolder.service
+import com.master.kit.net.etd.PresenterObserver
+import com.master.kit.net.etd.ResponseDialog
+import com.master.kit.net.etd.ResponseView
+import com.master.kit.net.ServiceHolder.service
 import com.nineoldandroids.animation.ValueAnimator
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -57,10 +60,10 @@ class SignInActivity : BaseSlidingActivity() {
                 .signIn(name.text.toString(), PWD.text.toString(), pin.text.toString(), picCaptcha.uuid!!)
                 .bindToLifecycle(window.decorView)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(SignInObserver(EResponseDialog(this)))
+                .subscribe(SignInObserver(ResponseDialog(this)))
     }
 
-    inner class SignInObserver(viewResponse: IEResponse<BaseBean>) : EControlViewObserver<BaseBean>(viewResponse) {
+    inner class SignInObserver(viewResponse: ResponseView<BaseBean>) : PresenterObserver<BaseBean>(viewResponse) {
         override fun onResponseSuccess(bean: BaseBean) {
             super.onResponseSuccess(bean)
             toast("登录成功")

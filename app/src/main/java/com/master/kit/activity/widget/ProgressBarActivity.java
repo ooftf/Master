@@ -1,4 +1,4 @@
-package com.master.kit.activity;
+package com.master.kit.activity.widget;
 
 import android.os.Bundle;
 
