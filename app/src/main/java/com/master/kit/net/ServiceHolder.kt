@@ -2,7 +2,7 @@ package com.master.kit.net
 
 import com.master.kit.net.etd.EtdService
 import com.master.kit.net.mob.MobService
-import com.ooftf.hi.engine.FormParamInterceptor
+import com.ooftf.hi.engine.ParamInterceptor
 import com.ooftf.hi.engine.ServiceGenerator
 
 
@@ -16,7 +16,7 @@ object ServiceHolder {
         generator.ignoreSSL = true
         generator.loggable = true
         generator.buildOkhttp = {
-            it.addInterceptor(object : FormParamInterceptor() {
+            it.addInterceptor(object : ParamInterceptor() {
                 override fun paramTransform(oldParams: MutableMap<String, String>): MutableMap<String, String> {
                     oldParams.put("terminalType", "3")
                     oldParams.put("appVersion", "3.0.0")
@@ -30,15 +30,15 @@ object ServiceHolder {
         val generator = ServiceGenerator()
         generator.baseUrl = "http://apicloud.mob.com/"
         generator.loggable = true
-       /* generator.buildOkhttp = {
-            it.addInterceptor(object : FormParamInterceptor() {
+        generator.buildOkhttp = {
+            it.addInterceptor(object : ParamInterceptor() {
                 override fun paramTransform(oldParams: MutableMap<String, String>): MutableMap<String, String> {
                     oldParams.put("terminalType", "3")
                     oldParams.put("appVersion", "3.0.0")
                     return oldParams
                 }
             })
-        }*/
+        }
         generator.createService(MobService::class.java)
     }
 }

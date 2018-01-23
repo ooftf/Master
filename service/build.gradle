@@ -19,7 +19,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-    api 'com.android.support.constraint:constraint-layout:1.0.2'
     api "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     api "com.android.support:appcompat-v7:$support"
     api "com.android.support:support-v4:$support"
@@ -32,7 +31,6 @@ dependencies {
     api 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     api 'com.liulishuo.filedownloader:library:1.6.9'
     api 'com.roughike:bottom-bar:2.3.1'
-    api 'com.android.support.constraint:constraint-layout:1.0.2'
     api 'com.github.bumptech.glide:glide:4.2.0'
     api 'com.makeramen:roundedimageview:2.3.0'
     api 'com.android.support:multidex:1.0.2'
@@ -58,13 +56,9 @@ dependencies {
     compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") { changing = true }
     api("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$tinkerpatch_version") { changing = true }
     api 'com.google.code.gson:gson:2.8.1'
-    api 'com.squareup.retrofit2:retrofit:2.3.0'
-    api 'com.squareup.retrofit2:converter-gson:2.3.0'
-    api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     api 'io.reactivex.rxjava2:rxandroid:2.0.1'
     api 'com.trello.rxlifecycle2:rxlifecycle-kotlin:2.2.1'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     compile 'com.alibaba:fastjson:1.1.67.android'
-    compile 'com.github.ooftf:LoggingInterceptor:2.0.4'
 }
