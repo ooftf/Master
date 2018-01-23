@@ -10,15 +10,15 @@ import retrofit2.http.Query
  */
 interface MobService {
     @GET("appstore/bank/card/query")
-    fun bankQuery(@Query("key") key: String,@Query("card") card: String): Observable<BankCardQueryBean>
+    fun bankQuery(@Query("card") card: String): Observable<BankCardQueryBean>
     @GET("v1/mobile/address/query")
-    fun phoneQuery(@Query("key") key: String,@Query("phone") phone: String):Observable<PhoneQueryBean>
+    fun phoneQuery(@Query("phone") phone: String): Observable<PhoneQueryBean>
     @GET("idcard/query")
-    fun idCardQuery(@Query("key") key: String,@Query("cardno") cardno: String):Observable<IdCardQueryBean>
+    fun idCardQuery(@Query("cardno") cardno: String): Observable<IdCardQueryBean>
     @GET("v1/postcode/query")
-    fun postcodeQuery(@Query("key") key: String,@Query("code") code: String):Observable<PostcodeQueryBean>
+    fun postcodeQuery(@Query("code") code: String): Observable<PostcodeQueryBean>
     @GET("ip/query")
-    fun ipQuery(@Query("key") key: String,@Query("ip") ip: String):Observable<IpQueryBean>
+    fun ipQuery(@Query("ip") ip: String): Observable<IpQueryBean>
 
 
 }

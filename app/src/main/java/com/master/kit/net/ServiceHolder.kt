@@ -33,8 +33,7 @@ object ServiceHolder {
         generator.buildOkhttp = {
             it.addInterceptor(object : ParamInterceptor() {
                 override fun paramTransform(oldParams: MutableMap<String, String>): MutableMap<String, String> {
-                    oldParams.put("terminalType", "3")
-                    oldParams.put("appVersion", "3.0.0")
+                    oldParams["key"] = "3ab0f1586b2"
                     return oldParams
                 }
             })

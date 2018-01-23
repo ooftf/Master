@@ -1,8 +1,8 @@
 package com.master.kit.activity.app
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
+import android.support.v7.app.AppCompatActivity
 import com.google.gson.Gson
 import com.master.kit.R
 import com.master.kit.net.ServiceHolder
@@ -21,7 +21,7 @@ class MobApiActivity : AppCompatActivity() {
         bankCardQuery.setOnClickListener {
             ServiceHolder
                     .mobService
-                    .bankQuery("3ab0f1586b2",bankCard.text.toString())
+                    .bankQuery(bankCard.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(BankCardObserve(HiResponseDialog(this)))
@@ -29,7 +29,7 @@ class MobApiActivity : AppCompatActivity() {
         phoneQuery.setOnClickListener {
             ServiceHolder
                     .mobService
-                    .phoneQuery("3ab0f1586b2",phone.text.toString())
+                    .phoneQuery(phone.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(BankCardObserve(HiResponseDialog(this)))
@@ -37,7 +37,7 @@ class MobApiActivity : AppCompatActivity() {
         idCardQuery.setOnClickListener {
             ServiceHolder
                     .mobService
-                    .idCardQuery("3ab0f1586b2",idCard.text.toString())
+                    .idCardQuery(idCard.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(BankCardObserve(HiResponseDialog(this)))
@@ -45,7 +45,7 @@ class MobApiActivity : AppCompatActivity() {
         postcodeQuery.setOnClickListener {
             ServiceHolder
                     .mobService
-                    .postcodeQuery("3ab0f1586b2",postcode.text.toString())
+                    .postcodeQuery(postcode.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(BankCardObserve(HiResponseDialog(this)))
@@ -53,13 +53,14 @@ class MobApiActivity : AppCompatActivity() {
         ipQuery.setOnClickListener {
             ServiceHolder
                     .mobService
-                    .ipQuery("3ab0f1586b2",ip.text.toString())
+                    .ipQuery(ip.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(BankCardObserve(HiResponseDialog(this)))
         }
     }
-    inner class BankCardObserve<T>(view : HiResponseView<T>): HiPresenterObserver<T>(view){
+
+    inner class BankCardObserve<T>(view: HiResponseView<T>) : HiPresenterObserver<T>(view) {
         override fun onNext(value: T) {
             super.onNext(value)
             AlertDialog

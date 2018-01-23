@@ -1,106 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="@color/background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
     tools:context="com.master.kit.activity.app.MobApiActivity">
-    <LinearLayout
-        android:orientation="horizontal"
+
+    <tf.oof.com.service.base.TailoredToolbar
         android:layout_width="match_parent"
-        android:layout_height="56dp">
+        android:layout_height="wrap_content"
+        app:title="MobApi" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal">
         <com.ooftf.operation.OperationEditText
-            android:layout_marginLeft="8dp"
             android:id="@+id/bankCard"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
             android:layout_weight="1"
             android:hint="银行卡查询"
-            app:oet_delEnabled="true"
             android:inputType="number"
-            android:layout_height="match_parent" />
+            app:oet_delEnabled="true" />
         <ImageView
-            android:src="@drawable/ic_menu_send"
             android:id="@+id/bankCardQuery"
             android:layout_width="80dp"
-            android:layout_height="56dp" />
+            android:layout_height="56dp"
+            android:src="@drawable/ic_menu_send" />
     </LinearLayout>
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="56dp">
+        android:layout_height="56dp"
+        android:orientation="horizontal">
         <com.ooftf.operation.OperationEditText
-            android:layout_marginLeft="8dp"
             android:id="@+id/phone"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
             android:layout_weight="1"
             android:hint="电话号码查询"
-            app:oet_delEnabled="true"
             android:inputType="number"
-            android:layout_height="match_parent" />
+            app:oet_delEnabled="true" />
         <ImageView
-            android:src="@drawable/ic_menu_send"
             android:id="@+id/phoneQuery"
             android:layout_width="80dp"
-            android:layout_height="56dp" />
+            android:layout_height="56dp"
+            android:src="@drawable/ic_menu_send" />
     </LinearLayout>
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="56dp">
+        android:layout_height="56dp"
+        android:orientation="horizontal">
         <com.ooftf.operation.OperationEditText
-            android:layout_marginLeft="8dp"
             android:id="@+id/idCard"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
             android:layout_weight="1"
-            android:hint="身份证查询"
-            app:oet_delEnabled="true"
             android:digits="@string/digits_idCard"
-            android:layout_height="match_parent" />
+            android:hint="身份证查询"
+            app:oet_delEnabled="true" />
         <ImageView
-            android:src="@drawable/ic_menu_send"
             android:id="@+id/idCardQuery"
             android:layout_width="80dp"
-            android:layout_height="56dp" />
+            android:layout_height="56dp"
+            android:src="@drawable/ic_menu_send" />
     </LinearLayout>
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="56dp">
+        android:layout_height="56dp"
+        android:orientation="horizontal">
         <com.ooftf.operation.OperationEditText
-            android:layout_marginLeft="8dp"
             android:id="@+id/postcode"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
             android:layout_weight="1"
             android:hint="邮编查询"
-            app:oet_delEnabled="true"
             android:inputType="number"
-            android:layout_height="match_parent" />
+            app:oet_delEnabled="true" />
         <ImageView
-            android:src="@drawable/ic_menu_send"
             android:id="@+id/postcodeQuery"
             android:layout_width="80dp"
-            android:layout_height="56dp" />
+            android:layout_height="56dp"
+            android:src="@drawable/ic_menu_send" />
     </LinearLayout>
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="56dp">
+        android:layout_height="56dp"
+        android:orientation="horizontal">
         <com.ooftf.operation.OperationEditText
-            android:layout_marginLeft="8dp"
             android:id="@+id/ip"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
             android:layout_weight="1"
-            android:hint="IP查询"
             android:digits="@string/digits_ip"
-            app:oet_delEnabled="true"
+            android:hint="IP查询"
             android:inputType="numberDecimal"
-            android:layout_height="match_parent" />
+            app:oet_delEnabled="true" />
         <ImageView
-            android:src="@drawable/ic_menu_send"
             android:id="@+id/ipQuery"
             android:layout_width="80dp"
-            android:layout_height="56dp" />
+            android:layout_height="56dp"
+            android:src="@drawable/ic_menu_send" />
     </LinearLayout>
 </LinearLayout>
