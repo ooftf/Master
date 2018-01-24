@@ -9,6 +9,7 @@ import com.orhanobut.logger.Logger
 import com.squareup.leakcanary.LeakCanary
 import com.tinkerpatch.sdk.TinkerPatch
 import com.tinkerpatch.sdk.loader.TinkerPatchApplicationLike
+import tf.oof.com.service.engine.ActivityManager
 
 /**
  * Created by master on 2016/12/26.
@@ -22,6 +23,7 @@ class MyApplication : MultiDexApplication() {
         FileDownloader.init(applicationContext)
         setupLogger()
         //setupStetho()
+        ActivityManager.init(this)
     }
 
     private fun setupLeakCanary() {
