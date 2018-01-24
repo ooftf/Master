@@ -1,6 +1,7 @@
 package com.master.kit.fragment
 
 import android.os.Bundle
+import android.support.v4.view.ViewPager
 
 import com.master.kit.R
 import com.master.kit.activity.app.MobApiActivity
@@ -27,5 +28,7 @@ class AppFragment : BaseHomeFragment() {
             fragment.arguments = args
             return fragment
         }
+
+
     }
 }

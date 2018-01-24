@@ -1,11 +1,13 @@
 package com.master.kit.activity.app
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import com.google.gson.Gson
 import com.master.kit.R
 import com.master.kit.net.ServiceHolder
+import com.master.kit.widget.MaterialProgressDrawable
 import com.ooftf.hi.controller.HiPresenterObserver
 import com.ooftf.hi.view.HiResponseDialog
 import com.ooftf.hi.view.HiResponseView
@@ -19,6 +21,12 @@ class MobApiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mob_api)
         bankCardQuery.setOnClickListener {
+            val materialProgressDrawable = MaterialProgressDrawable(this, bankCardQuery)
+            //materialProgressDrawable.setBackgroundColor(Color.parseColor("#00000000"))
+            materialProgressDrawable.setColorSchemeColors(Color.parseColor("#00FF00"))
+            bankCardQuery.setImageDrawable(materialProgressDrawable)
+            //materialProgressDrawable.setStartEndTrim(0.2f, 0.8f);
+            materialProgressDrawable.start();
             ServiceHolder
                     .mobService
                     .bankQuery(bankCard.text.toString())
