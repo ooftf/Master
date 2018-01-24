@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity
 import com.google.gson.Gson
 import com.master.kit.R
 import com.master.kit.net.ServiceHolder
-import com.master.kit.widget.MaterialProgressDrawable
 import com.ooftf.hi.controller.HiPresenterObserver
 import com.ooftf.hi.view.HiResponseDialog
 import com.ooftf.hi.view.HiResponseView
@@ -26,7 +25,7 @@ class MobApiActivity : AppCompatActivity() {
             materialProgressDrawable.setColorSchemeColors(Color.parseColor("#00FF00"))
             bankCardQuery.setImageDrawable(materialProgressDrawable)
             //materialProgressDrawable.setStartEndTrim(0.2f, 0.8f);
-            materialProgressDrawable.start();
+            materialProgressDrawable.start()
             ServiceHolder
                     .mobService
                     .bankQuery(bankCard.text.toString())
