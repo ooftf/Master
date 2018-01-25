@@ -24,18 +24,15 @@ import tf.oof.com.service.base.adapter.CategoryRecyclerAdapter
 
 abstract class BaseHomeFragment : BaseFragment() {
     lateinit var adapter: MainRecyclerAdapter
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_widget, container, false)
-        return view
+    override fun getContentLayoutId(): Int {
+        return R.layout.fragment_widget
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onLazyLoad() {
         setupRecyclerView()
         initData()
         interceptor.setTag(this.javaClass.simpleName)
     }
-
     private fun setupRecyclerView() {
         adapter = MainRecyclerAdapter(getBaseActivity(),stickyView)
         recycler_view.adapter = adapter

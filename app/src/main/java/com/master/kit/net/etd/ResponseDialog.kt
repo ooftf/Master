@@ -3,7 +3,7 @@ package com.master.kit.net.etd
 import android.support.v7.app.AlertDialog
 import com.master.kit.bean.BaseBean
 import com.master.kit.activity.MainActivity
-import com.ooftf.hi.view.HiResponseDialog
+import com.ooftf.hihttp.view.HiResponseDialog
 import tf.oof.com.service.base.BaseActivity
 
 /**

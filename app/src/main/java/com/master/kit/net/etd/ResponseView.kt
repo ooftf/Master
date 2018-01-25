@@ -1,7 +1,8 @@
 package com.master.kit.net.etd
 
 import com.master.kit.bean.BaseBean
-import com.ooftf.hi.view.HiResponseView
+import com.ooftf.hihttp.view.HiResponseView
+
 /**
  * Created by master on 2017/10/12 0012.
  */

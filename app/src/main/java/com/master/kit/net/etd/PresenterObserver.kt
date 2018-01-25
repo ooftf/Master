@@ -1,7 +1,7 @@
 package com.master.kit.net.etd
 
 import com.master.kit.bean.BaseBean
-import com.ooftf.hi.controller.HiPresenterObserver
+import com.ooftf.hihttp.controller.HiPresenterObserver
 
 
 /**

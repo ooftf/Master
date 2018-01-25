@@ -62,7 +62,7 @@ dependencies {
     compile('com.alibaba.android:ultraviewpager:1.0.6.1@aar') {
         transitive = true
     }
-    compile 'com.github.ooftf:HiHttp:1.1.2'
+    compile 'com.github.ooftf:HiHttp:2.0.0'
     compile 'com.github.ooftf:VerticalPagerLayout:1.0.1'
 }
 apply from: 'tinkerpatch.gradle'
