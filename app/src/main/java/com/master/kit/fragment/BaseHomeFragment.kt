@@ -15,8 +15,8 @@ import kotlinx.android.synthetic.main.fragment_widget.*
 import kotlinx.android.synthetic.main.layout_sticky_header.*
 import ooftf.com.widget.self.pulltoloading.PullToLoadingLayout
 import ooftf.com.widget.self.pulltoloading.PullToLoadingView
-import tf.oof.com.service.base.BaseFragment
-import tf.oof.com.service.base.adapter.CategoryRecyclerAdapter
+import tf.ooftf.com.service.base.BaseFragment
+import tf.ooftf.com.service.base.adapter.CategoryRecyclerAdapter
 
 /**
  * Created by master on 2017/9/29 0029.
@@ -25,15 +25,14 @@ import tf.oof.com.service.base.adapter.CategoryRecyclerAdapter
 abstract class BaseHomeFragment : BaseFragment() {
     lateinit var adapter: MainRecyclerAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_widget, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_widget, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupRecyclerView()
         initData()
-        interceptor.setTag(this.javaClass.simpleName)
+        interceptor.tag = this.javaClass.simpleName
     }
 
     private fun setupRecyclerView() {

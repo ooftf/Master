@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.master.kit.R
 import com.master.kit.adapter.UltraPagerAdapter
 import kotlinx.android.synthetic.main.activity_ultra_view_pager.*
-import tf.oof.com.service.base.BaseActivity
+import tf.ooftf.com.service.base.BaseActivity
 
 
 class VerticalPagerActivity : BaseActivity() {

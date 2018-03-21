@@ -9,8 +9,8 @@ import com.master.kit.R
 import com.master.kit.fragment.*
 import com.mcxiaoke.packer.helper.PackerNg
 import kotlinx.android.synthetic.main.activity_main.*
-import tf.oof.com.service.base.BaseActivity
-import tf.oof.com.service.engine.FragmentSwitchManager
+import tf.ooftf.com.service.base.BaseActivity
+import tf.ooftf.com.service.engine.FragmentSwitchManager
 
 class MainActivity : BaseActivity() {
     companion object {
@@ -23,10 +23,9 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        setTitle(PackerNg.getChannel(this))
+        title = PackerNg.getChannel(this)
         setupBottomBar()
     }
-
     private fun setupBottomBar() {
         switchManager = FragmentSwitchManager(
                 supportFragmentManager,

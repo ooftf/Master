@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import com.master.kit.R
 import kotlinx.android.synthetic.main.activity_translation_debug.*
-import tf.oof.com.service.base.BaseActivity
+import tf.ooftf.com.service.base.BaseActivity
 
 class TranslationDebugActivity : BaseActivity() {
     var y = 0f

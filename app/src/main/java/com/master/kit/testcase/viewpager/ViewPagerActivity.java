@@ -1,15 +1,16 @@
 package com.master.kit.testcase.viewpager;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.master.kit.R;
-import tf.oof.com.service.base.BaseSlidingActivity;
+
+import tf.ooftf.com.service.base.BaseSlidingActivity;
 
 public class ViewPagerActivity extends BaseSlidingActivity {
 
@@ -20,7 +21,7 @@ public class ViewPagerActivity extends BaseSlidingActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager);
-        viewPager = (ViewPager) findViewById(R.id.vp_main);
+        viewPager = findViewById(R.id.vp_main);
         viewPager.setAdapter(new PagerAdapter() {
             @Override
             public int getCount() {

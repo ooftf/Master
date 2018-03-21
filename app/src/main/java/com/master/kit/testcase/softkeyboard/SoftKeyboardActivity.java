@@ -8,11 +8,13 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.master.kit.R;
-import tf.oof.com.service.base.BaseSlidingActivity;
-import tf.oof.com.service.utils.LogUtil;
+
+import tf.ooftf.com.service.base.BaseSlidingActivity;
+import tf.ooftf.com.service.utils.LogUtil;
 
 @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
 public class SoftKeyboardActivity extends BaseSlidingActivity implements View.OnLayoutChangeListener {
+    View view;
     //Activity最外层的Layout视图
     private View activityRootView;
     //屏幕高度
@@ -20,7 +22,7 @@ public class SoftKeyboardActivity extends BaseSlidingActivity implements View.On
     //软件盘弹起后所占高度阀值
     private int keyHeight = 0;
     private LinearLayout llcontent;
-    View view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,7 @@ public class SoftKeyboardActivity extends BaseSlidingActivity implements View.On
         screenHeight = this.getWindowManager().getDefaultDisplay().getHeight();
         //阀值设置为屏幕高度的1/3
         keyHeight = screenHeight / 3;
-        llcontent= (LinearLayout) findViewById(R.id.ll_content);
+        llcontent = findViewById(R.id.ll_content);
         view = findViewById(R.id.view_main);
         //activityRootView.addOnLayoutChangeListener(this);
         KeyboardWatcher keyboardWatcher = new KeyboardWatcher(this);

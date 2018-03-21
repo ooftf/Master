@@ -6,15 +6,14 @@ import android.widget.ImageView
 import com.master.kit.R
 import com.master.kit.activity.widget.GuideActivity
 import com.master.kit.dagger.DaggerBannerComponent
-import com.master.kit.net.etd.PresenterObserver
-import com.master.kit.net.etd.ResponseView
-import com.master.kit.net.ServiceHolder
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import com.youth.banner.loader.ImageLoaderInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_banner.*
-import tf.oof.com.service.base.BaseSlidingActivity
-import tf.oof.com.service.engine.image_loader.IImageLoader
+import tf.ooftf.com.service.base.BaseSlidingActivity
+import tf.ooftf.com.service.net.ServiceHolder
+import tf.ooftf.com.service.net.etd.PresenterObserver
+import tf.ooftf.com.service.net.etd.ResponseView
 import javax.inject.Inject
 
 
@@ -36,7 +35,7 @@ class BannerActivity : BaseSlidingActivity() {
     private fun setupBanner() {
         banner.setImageLoader(object : ImageLoaderInterface<ImageView> {
             override fun createImageView(context: Context): ImageView? {
-                return null;
+                return null
             }
 
             override fun displayImage(context: Context, path: Any, imageView: ImageView) {

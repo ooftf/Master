@@ -3,9 +3,10 @@ package com.master.kit.testcase.design;
 import android.os.Bundle;
 import android.view.View;
 
-import tf.oof.com.service.base.BaseSlidingActivity;
 import com.master.kit.R;
 import com.master.kit.testcase.design.flexible.FlexibleActivity;
+
+import tf.ooftf.com.service.base.BaseSlidingActivity;
 
 public class DesignDispatchActivity extends BaseSlidingActivity {
 

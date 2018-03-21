@@ -10,7 +10,8 @@
     android:paddingRight="@dimen/layout_horizontal_margin"
     android:paddingTop="@dimen/layout_vertical_margin"
     tools:context="com.master.kit.activity.widget.ProgressBarActivity">
-    <tf.oof.com.service.base.TailoredToolbar
+
+    <tf.ooftf.com.service.base.TailoredToolbar
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height"
         android:title="进度条"

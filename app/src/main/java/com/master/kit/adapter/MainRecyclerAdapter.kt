@@ -1,16 +1,16 @@
 package com.master.kit.adapter
 
-import android.app.Activity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.alibaba.android.arouter.launcher.ARouter
 import com.master.kit.R
 import com.master.kit.bean.ScreenItemBean
-import tf.oof.com.service.base.BaseActivity
-import tf.oof.com.service.base.adapter.CategoryRecyclerAdapter
+import tf.ooftf.com.service.base.BaseActivity
+import tf.ooftf.com.service.base.adapter.CategoryRecyclerAdapter
 
 
 /**
@@ -37,7 +37,7 @@ open class MainRecyclerAdapter(private var baseActivity: BaseActivity, internal 
         }
         holder.title.text = bean.category
         holder.describe.text = bean.describe
-        holder.name.text = bean.name + "(" + bean.clz.simpleName + ")"
+        holder.name.text = bean.name + "(" + bean.clz + ")"
         holder.icon.setImageResource(bean.icon)
         if (bean.isIssue) {
             holder.issue.visibility = View.VISIBLE
@@ -46,9 +46,10 @@ open class MainRecyclerAdapter(private var baseActivity: BaseActivity, internal 
         }
 
         holder.itemView.setOnClickListener {
-            if (Activity::class.java.isAssignableFrom(bean.clz)) {
+            /*if (Activity::class.java.isAssignableFrom(bean.clz)) {
                 baseActivity.startActivity(bean.clz)
-            }
+            }*/
+            ARouter.getInstance().build(bean.clz).navigation()
         }
     }
     class RecyclerHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

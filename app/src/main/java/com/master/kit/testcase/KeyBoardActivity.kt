@@ -3,17 +3,12 @@ package com.master.kit.testcase
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.EditText
-
+import butterknife.ButterKnife
 import com.master.kit.R
 import com.master.kit.widget.keyboard.KeyBoard
-
-import butterknife.BindView
-import butterknife.ButterKnife
 import kotlinx.android.synthetic.main.content_key_board.*
-import tf.oof.com.service.base.BaseActivity
+import tf.ooftf.com.service.base.BaseActivity
 
 class KeyBoardActivity : BaseActivity() {
 

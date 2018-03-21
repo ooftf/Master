@@ -1,11 +1,11 @@
 package com.master.kit.activity.debug
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.master.kit.R
 import kotlinx.android.synthetic.main.activity_regex.*
-import tf.oof.com.service.engine.inputfilter.RegexInputFilter
-import tf.oof.com.service.engine.inputfilter.IdCardNumInputFilter
+import tf.ooftf.com.service.engine.inputfilter.IdCardNumInputFilter
+import tf.ooftf.com.service.engine.inputfilter.RegexInputFilter
 
 class RegexActivity : AppCompatActivity() {
 

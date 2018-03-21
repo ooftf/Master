@@ -1,13 +1,11 @@
 package com.master.kit.testcase
 
 import android.os.Bundle
-
-import com.master.kit.R
-import tf.oof.com.service.base.BaseSlidingActivity
-
 import butterknife.ButterKnife
+import com.master.kit.R
 import com.master.kit.activity.MainActivity
 import kotlinx.android.synthetic.main.activity_new_instance.*
+import tf.ooftf.com.service.base.BaseSlidingActivity
 
 class NewInstanceActivity : BaseSlidingActivity() {
 

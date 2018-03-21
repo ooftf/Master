@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.master.kit.R;
 
-import tf.oof.com.service.base.BaseSlidingActivity;
+import tf.ooftf.com.service.base.BaseSlidingActivity;
 
 public class DesignActivity extends BaseSlidingActivity {
     AppBarLayout appBarLayout;

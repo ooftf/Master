@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.master.kit.R
 import kotlinx.android.synthetic.main.activity_guide.*
-import tf.oof.com.service.base.BaseActivity
+import tf.ooftf.com.service.base.BaseActivity
 
 class GuideActivity : BaseActivity() {
 

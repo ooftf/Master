@@ -7,12 +7,16 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
-import tf.oof.com.service.utils.LogUtil;
+import tf.ooftf.com.service.utils.LogUtil;
 
 /**
  * Created by master on 2016/4/14.
  */
 public class BaseViewGroup extends FrameLayout {
+    public boolean dispatchTouchEvent;
+    public boolean onInterceptTouchEvent;
+    public boolean onTouchEvent;
+
     public BaseViewGroup(Context context) {
         super(context);
     }
@@ -20,20 +24,15 @@ public class BaseViewGroup extends FrameLayout {
     public BaseViewGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-
     public BaseViewGroup(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public BaseViewGroup(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
 
     }
 
-    public boolean dispatchTouchEvent;
-    public boolean onInterceptTouchEvent;
-    public boolean onTouchEvent;
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         LogUtil.e(null,25,this.getClass().getSimpleName(),"start","dispatchTouchEvent",dispatchTouchEvent );

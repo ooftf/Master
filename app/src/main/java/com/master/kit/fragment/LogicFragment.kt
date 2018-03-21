@@ -1,13 +1,6 @@
 package com.master.kit.fragment
 
 import android.os.Bundle
-import com.master.kit.R
-import com.master.kit.bean.ScreenItemBean
-import com.master.kit.testcase.design.DesignDispatchActivity
-import com.master.kit.testcase.filedownload.DownloadActivity
-import com.master.kit.testcase.retrofit.SignInActivity
-import com.master.kit.testcase.viewpager.ViewPagerActivity
-import com.master.kit.testcase.webview.WebViewActivity
 
 /**
  * Created by master on 2017/9/26 0026.
@@ -15,11 +8,11 @@ import com.master.kit.testcase.webview.WebViewActivity
 
 class LogicFragment : BaseHomeFragment() {
     override fun initData() {
-        adapter.add(ScreenItemBean(DesignDispatchActivity::class.java))
+        /*adapter.add(ScreenItemBean(DesignDispatchActivity::class.java))
         adapter.add(ScreenItemBean(ViewPagerActivity::class.java))
         adapter.add(ScreenItemBean(SignInActivity::class.java))
         adapter.add(ScreenItemBean(WebViewActivity::class.java))
-        adapter.add(ScreenItemBean(DownloadActivity::class.java))
+        adapter.add(ScreenItemBean(DownloadActivity::class.java))*/
         adapter.notifyDataSetChanged()
     }
 

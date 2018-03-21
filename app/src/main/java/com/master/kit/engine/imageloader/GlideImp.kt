@@ -9,9 +9,6 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 
-import tf.oof.com.service.engine.image_loader.IImageLoader
-import tf.oof.com.service.engine.image_loader.ImageLoaderConfig
-import tf.oof.com.service.engine.image_loader.ImageLoaderListener
 /**
  * Created by master on 2017/1/22.
  */

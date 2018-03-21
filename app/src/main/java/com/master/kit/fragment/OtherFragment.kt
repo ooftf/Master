@@ -1,9 +1,6 @@
 package com.master.kit.fragment
 
 import android.os.Bundle
-import com.master.kit.bean.ScreenItemBean
-import com.master.kit.testcase.annotation.AnnotationActivity
-import com.master.kit.testcase.softkeyboard.SoftKeyboardActivity
 
 /**
  * Created by master on 2017/9/26 0026.
@@ -11,8 +8,8 @@ import com.master.kit.testcase.softkeyboard.SoftKeyboardActivity
 
 class OtherFragment : BaseHomeFragment() {
     override fun initData() {
-        adapter.add(ScreenItemBean(AnnotationActivity::class.java))
-        adapter.add(ScreenItemBean(SoftKeyboardActivity::class.java))
+        /*adapter.add(ScreenItemBean(AnnotationActivity::class.java))
+        adapter.add(ScreenItemBean(SoftKeyboardActivity::class.java))*/
         adapter.notifyDataSetChanged()
     }
 

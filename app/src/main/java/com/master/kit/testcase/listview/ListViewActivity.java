@@ -9,20 +9,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.master.kit.R;
-import tf.oof.com.service.base.BaseSlidingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import tf.ooftf.com.service.base.BaseSlidingActivity;
+
 public class ListViewActivity extends BaseSlidingActivity {
     BaseAdapter adapter;
-    private ListView listView;
     List<String> list;
+    private ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
-        listView = (ListView) findViewById(R.id.lv_main);
+        listView = findViewById(R.id.lv_main);
         list = new ArrayList<>();
         for(int i=0;i<100;i++){
             list.add("第"+i+"个");

@@ -10,7 +10,7 @@ import android.view.WindowManager;
 
 import com.master.kit.R;
 
-import tf.oof.com.service.engine.LoopTimer;
+import tf.ooftf.com.service.engine.LoopTimer;
 
 public class DialogDemo extends Dialog {
     FragmentActivity activity;

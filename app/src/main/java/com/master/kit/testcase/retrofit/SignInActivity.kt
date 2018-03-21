@@ -1,19 +1,19 @@
 package com.master.kit.testcase.retrofit
 import android.os.Bundle
 import android.widget.LinearLayout
-import com.master.kit.bean.BaseBean
 import com.master.kit.R
-import com.master.kit.net.etd.PresenterObserver
-import com.master.kit.net.etd.ResponseDialog
-import com.master.kit.net.etd.ResponseView
-import com.master.kit.net.ServiceHolder.service
+import com.master.kit.bean.BaseBean
 import com.nineoldandroids.animation.ValueAnimator
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
-import tf.oof.com.service.base.BaseSlidingActivity
-import tf.oof.com.service.engine.inputfilter.RegexInputFilter
+import tf.ooftf.com.service.base.BaseSlidingActivity
+import tf.ooftf.com.service.engine.inputfilter.RegexInputFilter
+import tf.ooftf.com.service.net.ServiceHolder.service
+import tf.ooftf.com.service.net.etd.PresenterObserver
+import tf.ooftf.com.service.net.etd.ResponseDialog
+import tf.ooftf.com.service.net.etd.ResponseView
 
 class SignInActivity : BaseSlidingActivity() {
     var height = 0
@@ -31,7 +31,7 @@ class SignInActivity : BaseSlidingActivity() {
                     lp.topMargin = animation.animatedValue as Int
                     imageView.requestLayout()
                 }
-                animator.setDuration(360)
+                animator.duration = 360
                 animator.start()
             } else {
                 var animator = ValueAnimator.ofInt(-height,0)
@@ -40,7 +40,7 @@ class SignInActivity : BaseSlidingActivity() {
                     lp.topMargin = animation.animatedValue as Int
                     imageView.requestLayout()
                 }
-                animator.setDuration(360)
+                animator.duration = 360
                 animator.start()
             }
         }
