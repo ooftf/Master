@@ -4,8 +4,8 @@ import android.os.Bundle
 import butterknife.ButterKnife
 import com.master.kit.R
 import com.master.kit.activity.MainActivity
+import com.ooftf.service.base.BaseSlidingActivity
 import kotlinx.android.synthetic.main.activity_new_instance.*
-import tf.ooftf.com.service.base.BaseSlidingActivity
 
 class NewInstanceActivity : BaseSlidingActivity() {
 

@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context="ooftf.com.widget.activity.PatternLockActivity">
 
-    <tf.oof.com.service.base.TailoredToolbar
+    <com.ooftf.service.base.TailoredToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height"
@@ -18,8 +18,8 @@
 
     <com.ooftf.pattern.PatternLock
         android:id="@+id/patternLock"
-        android:padding="18dp"
-        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:padding="18dp" />
 </LinearLayout>

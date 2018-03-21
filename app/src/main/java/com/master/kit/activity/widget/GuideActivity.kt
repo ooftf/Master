@@ -9,8 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.master.kit.R
+import com.ooftf.service.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_guide.*
-import tf.ooftf.com.service.base.BaseActivity
 
 class GuideActivity : BaseActivity() {
 

@@ -8,9 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.master.kit.R;
-
-import tf.ooftf.com.service.base.BaseSlidingActivity;
-import tf.ooftf.com.service.utils.LogUtil;
+import com.ooftf.service.base.BaseSlidingActivity;
+import com.ooftf.service.utils.LogUtil;
 
 @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
 public class SoftKeyboardActivity extends BaseSlidingActivity implements View.OnLayoutChangeListener {

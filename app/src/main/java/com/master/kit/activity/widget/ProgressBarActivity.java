@@ -3,8 +3,7 @@ package com.master.kit.activity.widget;
 import android.os.Bundle;
 
 import com.master.kit.R;
-
-import tf.ooftf.com.service.base.BaseSlidingActivity;
+import com.ooftf.service.base.BaseSlidingActivity;
 
 public class ProgressBarActivity extends BaseSlidingActivity {
 

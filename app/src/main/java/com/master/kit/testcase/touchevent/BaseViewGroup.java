@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
-import tf.ooftf.com.service.utils.LogUtil;
+import com.ooftf.service.utils.LogUtil;
 
 /**
  * Created by master on 2016/4/14.

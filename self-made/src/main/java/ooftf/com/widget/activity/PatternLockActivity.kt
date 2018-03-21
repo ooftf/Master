@@ -1,9 +1,8 @@
 package ooftf.com.widget.activity
 
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_pin_entry.*
+import com.ooftf.service.base.BaseSlidingActivity
 import ooftf.com.widget.R
-import tf.oof.com.service.base.BaseSlidingActivity
 
 class PatternLockActivity : BaseSlidingActivity() {
 

@@ -7,15 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-
 import com.master.kit.R
 import com.master.kit.adapter.MainRecyclerAdapter
-
+import com.ooftf.service.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_widget.*
 import kotlinx.android.synthetic.main.layout_sticky_header.*
 import ooftf.com.widget.self.pulltoloading.PullToLoadingLayout
 import ooftf.com.widget.self.pulltoloading.PullToLoadingView
-import tf.ooftf.com.service.base.BaseFragment
 import tf.ooftf.com.service.base.adapter.CategoryRecyclerAdapter
 
 /**

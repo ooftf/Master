@@ -1,12 +1,8 @@
 package ooftf.com.widget.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_pin_entry.*
-
+import com.ooftf.service.base.BaseSlidingActivity
 import ooftf.com.widget.R
-import ooftf.com.widget.R.id.toolbar
-import tf.oof.com.service.base.BaseSlidingActivity
 
 class PinEntryActivity : BaseSlidingActivity() {
 

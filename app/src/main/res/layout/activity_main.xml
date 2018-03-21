@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="com.master.kit.activity.MainActivity">
 
-    <tf.ooftf.com.service.base.TailoredToolbar
+    <com.ooftf.service.base.TailoredToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

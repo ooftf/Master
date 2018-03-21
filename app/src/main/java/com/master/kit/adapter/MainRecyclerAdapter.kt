@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter
 import com.master.kit.R
 import com.master.kit.bean.ScreenItemBean
-import tf.ooftf.com.service.base.BaseActivity
+import com.ooftf.service.base.BaseActivity
 import tf.ooftf.com.service.base.adapter.CategoryRecyclerAdapter
 
 

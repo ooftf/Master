@@ -10,8 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.master.kit.R;
-
-import tf.ooftf.com.service.base.BaseSlidingActivity;
+import com.ooftf.service.base.BaseSlidingActivity;
 
 public class DesignActivity extends BaseSlidingActivity {
     AppBarLayout appBarLayout;

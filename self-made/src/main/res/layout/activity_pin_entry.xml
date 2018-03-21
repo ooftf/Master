@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/background"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
     tools:context="ooftf.com.widget.activity.PinEntryActivity">
-    <tf.oof.com.service.base.TailoredToolbar
-        android:layout_width="match_parent"
+
+    <com.ooftf.service.base.TailoredToolbar
         android:id="@+id/toolbar"
-        app:title="PinEntryEditText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_appbar_height"
         app:navigationIcon="@drawable/vector_arrow_left"
-        android:layout_height="@dimen/layout_appbar_height"/>
+        app:title="PinEntryEditText" />
     <com.alimuzaffar.lib.pin.PinEntryEditText
         android:id="@+id/txt_pin_entry"
         android:layout_width="368dp"

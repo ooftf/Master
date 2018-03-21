@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="ooftf.com.widget.activity.OperationEditTextActivity">
 
-    <tf.oof.com.service.base.TailoredToolbar
+    <com.ooftf.service.base.TailoredToolbar
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height"
         app:navigationIcon="@drawable/vector_arrow_left"
@@ -20,13 +20,13 @@
         android:layout_marginTop="10dp"
         android:background="@color/divider_gray" />
     <com.ooftf.operation.OperationEditText
-        app:oet_delEnabled="true"
-        app:oet_maskEnabled="true"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_item_height"
         android:background="@null"
         android:hint="请输入账号"
-        android:paddingLeft="@dimen/layout_edge_spacing" />
+        android:paddingLeft="@dimen/layout_edge_spacing"
+        app:oet_delEnabled="true"
+        app:oet_maskEnabled="true" />
 
     <View
         android:layout_width="match_parent"

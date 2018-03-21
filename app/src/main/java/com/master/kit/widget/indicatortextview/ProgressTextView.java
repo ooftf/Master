@@ -12,7 +12,7 @@ import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import tf.ooftf.com.service.utils.DensityUtil;
+import com.ooftf.service.utils.DensityUtil;
 
 @SuppressLint("AppCompatCustomView")
 public class ProgressTextView extends TextView {

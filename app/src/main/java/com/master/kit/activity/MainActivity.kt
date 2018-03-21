@@ -5,19 +5,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.master.kit.R
 import com.master.kit.fragment.*
 import com.mcxiaoke.packer.helper.PackerNg
+import com.ooftf.service.base.BaseActivity
+import com.ooftf.service.engine.FragmentSwitchManager
 import kotlinx.android.synthetic.main.activity_main.*
-import tf.ooftf.com.service.base.BaseActivity
-import tf.ooftf.com.service.engine.FragmentSwitchManager
 
+@Route(path = "/main/main")
 class MainActivity : BaseActivity() {
     companion object {
         fun getStartIntent(context: Context): Intent {
             return Intent(context, MainActivity::class.java)
         }
     }
+
     private lateinit var switchManager: FragmentSwitchManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,7 @@ class MainActivity : BaseActivity() {
         title = PackerNg.getChannel(this)
         setupBottomBar()
     }
+
     private fun setupBottomBar() {
         switchManager = FragmentSwitchManager(
                 supportFragmentManager,

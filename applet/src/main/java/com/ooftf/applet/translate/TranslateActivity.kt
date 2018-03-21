@@ -2,7 +2,7 @@ package com.ooftf.applet.translate
 
 import android.os.Bundle
 import com.ooftf.applet.R
-import tf.oof.com.service.base.BaseSlidingActivity
+import com.ooftf.service.base.BaseSlidingActivity
 
 /**
  * Created by master on 2017/10/10 0010.

@@ -2,18 +2,18 @@ package com.master.kit.testcase.retrofit
 import android.os.Bundle
 import android.widget.LinearLayout
 import com.master.kit.R
-import com.master.kit.bean.BaseBean
 import com.nineoldandroids.animation.ValueAnimator
+import com.ooftf.service.base.BaseSlidingActivity
+import com.ooftf.service.net.ServiceHolder.service
+import com.ooftf.service.net.etd.PresenterObserver
+import com.ooftf.service.net.etd.ResponseDialog
+import com.ooftf.service.net.etd.ResponseView
+import com.ooftf.service.net.etd.bean.BaseBean
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
-import tf.ooftf.com.service.base.BaseSlidingActivity
 import tf.ooftf.com.service.engine.inputfilter.RegexInputFilter
-import tf.ooftf.com.service.net.ServiceHolder.service
-import tf.ooftf.com.service.net.etd.PresenterObserver
-import tf.ooftf.com.service.net.etd.ResponseDialog
-import tf.ooftf.com.service.net.etd.ResponseView
 
 class SignInActivity : BaseSlidingActivity() {
     var height = 0

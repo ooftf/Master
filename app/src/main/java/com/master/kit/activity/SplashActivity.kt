@@ -3,8 +3,8 @@ package com.master.kit.activity
 import android.os.Bundle
 import android.os.CountDownTimer
 import com.master.kit.R
+import com.ooftf.service.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_splash.*
-import tf.ooftf.com.service.base.BaseActivity
 
 class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

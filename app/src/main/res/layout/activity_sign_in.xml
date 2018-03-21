@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context="com.master.kit.testcase.retrofit.SignInActivity">
 
-    <tf.ooftf.com.service.base.TailoredToolbar
+    <com.ooftf.service.base.TailoredToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
                     app:oet_maskEnabled="false" />
             </android.support.design.widget.TextInputLayout>
 
-            <tf.ooftf.com.service.net.etd.PicCaptchaLayout
+            <com.ooftf.service.net.etd.PicCaptchaLayout
                 android:id="@+id/picCaptcha"
                 android:layout_width="80dp"
                 android:layout_height="36dp"

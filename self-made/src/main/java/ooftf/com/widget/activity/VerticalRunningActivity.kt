@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.ooftf.service.base.BaseSlidingActivity
+import com.ooftf.service.base.adapter.SimpleAdapter
 import kotlinx.android.synthetic.main.activity_vertical_running.*
 import ooftf.com.widget.R
-import tf.oof.com.service.base.BaseSlidingActivity
-import tf.oof.com.service.base.adapter.SimpleAdapter
 
 class VerticalRunningActivity : BaseSlidingActivity() {
 

@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.master.kit.R;
+import com.ooftf.service.base.BaseSlidingActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import tf.ooftf.com.service.base.BaseSlidingActivity;
 
 public class TabActivity extends BaseSlidingActivity {
 

@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
-        <activity android:name=".breakfast.BreakfastActivity"></activity>
+        <activity android:name=".activity.BreakfastActivity"></activity>
     </application>
 
 </manifest>

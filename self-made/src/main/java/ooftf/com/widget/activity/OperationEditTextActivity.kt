@@ -1,8 +1,8 @@
 package ooftf.com.widget.activity
 
 import android.os.Bundle
+import com.ooftf.service.base.BaseSlidingActivity
 import ooftf.com.widget.R
-import tf.oof.com.service.base.BaseSlidingActivity
 
 class OperationEditTextActivity : BaseSlidingActivity() {
 

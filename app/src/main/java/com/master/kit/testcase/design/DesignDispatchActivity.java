@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.master.kit.R;
 import com.master.kit.testcase.design.flexible.FlexibleActivity;
-
-import tf.ooftf.com.service.base.BaseSlidingActivity;
+import com.ooftf.service.base.BaseSlidingActivity;
 
 public class DesignDispatchActivity extends BaseSlidingActivity {
 

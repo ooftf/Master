@@ -1,6 +1,7 @@
 package com.master.kit.dagger
 
 import com.master.kit.engine.imageloader.GlideImp
+import com.ooftf.service.engine.image_loader.IImageLoader
 import dagger.Module
 import dagger.Provides
 
@@ -10,5 +11,5 @@ import dagger.Provides
 @Module
 class ImageLoaderModule {
     @Provides
-    fun provideImageLoader():IImageLoader = GlideImp()
+    fun provideImageLoader(): IImageLoader = GlideImp()
 }

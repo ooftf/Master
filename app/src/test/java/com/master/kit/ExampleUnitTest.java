@@ -1,6 +1,6 @@
 package com.master.kit;
 
-import com.master.kit.testcase.banner.BannerBean;
+import com.ooftf.service.net.etd.bean.BannerBean;
 
 import org.junit.Test;
 

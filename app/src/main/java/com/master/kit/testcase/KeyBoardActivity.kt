@@ -7,8 +7,8 @@ import android.view.View
 import butterknife.ButterKnife
 import com.master.kit.R
 import com.master.kit.widget.keyboard.KeyBoard
+import com.ooftf.service.base.BaseActivity
 import kotlinx.android.synthetic.main.content_key_board.*
-import tf.ooftf.com.service.base.BaseActivity
 
 class KeyBoardActivity : BaseActivity() {
 

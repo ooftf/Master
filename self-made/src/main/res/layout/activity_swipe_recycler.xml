@@ -6,7 +6,8 @@
     android:background="@color/background"
     android:orientation="vertical"
     tools:context="ooftf.com.widget.activity.SwipeRecyclerActivity">
-    <tf.oof.com.service.base.TailoredToolbar
+
+    <com.ooftf.service.base.TailoredToolbar
         android:id="@+id/tailoredToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

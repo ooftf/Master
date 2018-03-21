@@ -1,17 +1,17 @@
 package ooftf.com.widget.activity
 import android.graphics.Color
-import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_tour_guide.*
-import tourguide.tourguide.Overlay
-import tourguide.tourguide.ToolTip
-import tourguide.tourguide.TourGuide
-import android.view.Gravity
 import android.graphics.Color.parseColor
+import android.os.Bundle
+import android.view.Gravity
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
+import com.ooftf.service.base.BaseSlidingActivity
+import kotlinx.android.synthetic.main.activity_tour_guide.*
 import ooftf.com.widget.R
-import tf.oof.com.service.base.BaseSlidingActivity
+import tourguide.tourguide.Overlay
 import tourguide.tourguide.Pointer
+import tourguide.tourguide.ToolTip
+import tourguide.tourguide.TourGuide
 
 
 class TourGuideActivity : BaseSlidingActivity() {

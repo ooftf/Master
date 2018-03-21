@@ -9,11 +9,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.master.kit.R;
+import com.ooftf.service.base.BaseSlidingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import tf.ooftf.com.service.base.BaseSlidingActivity;
 
 public class ListViewActivity extends BaseSlidingActivity {
     BaseAdapter adapter;

@@ -9,8 +9,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.*
+import com.ooftf.service.engine.LoopTimer
 import ooftf.com.widget.R
-import tf.oof.com.service.engine.LoopTimer
 
 /**
  * Created by 99474 on 2017/11/2 0002.

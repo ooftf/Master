@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import tf.oof.com.service.utils.CanvasUtil;
+import com.ooftf.service.utils.CanvasUtil;
 
 /**
  *

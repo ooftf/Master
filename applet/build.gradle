@@ -10,7 +10,11 @@ android {
         targetSdkVersion target_sdk
     }
 }
-
+kapt {
+    arguments {
+        arg("moduleName", project.getName())
+    }
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -18,4 +22,5 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     api project(':service')
+    kapt 'com.alibaba:arouter-compiler:1.1.4'
 }

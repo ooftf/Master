@@ -9,11 +9,11 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.ooftf.service.base.BaseSlidingActivity
 import kotlinx.android.synthetic.main.activity_pull_to_refresh.*
 import ooftf.com.widget.R
 import ooftf.com.widget.self.pulltoloading.PullToLoadingLayout
 import ooftf.com.widget.self.pulltoloading.PullToLoadingView
-import tf.oof.com.service.base.BaseSlidingActivity
 import java.util.*
 
 class PullToRefreshActivity : BaseSlidingActivity() {

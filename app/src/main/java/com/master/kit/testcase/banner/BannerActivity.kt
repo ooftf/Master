@@ -6,14 +6,16 @@ import android.widget.ImageView
 import com.master.kit.R
 import com.master.kit.activity.widget.GuideActivity
 import com.master.kit.dagger.DaggerBannerComponent
+import com.ooftf.service.base.BaseSlidingActivity
+import com.ooftf.service.engine.image_loader.IImageLoader
+import com.ooftf.service.net.ServiceHolder
+import com.ooftf.service.net.etd.PresenterObserver
+import com.ooftf.service.net.etd.ResponseView
+import com.ooftf.service.net.etd.bean.BannerBean
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import com.youth.banner.loader.ImageLoaderInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_banner.*
-import tf.ooftf.com.service.base.BaseSlidingActivity
-import tf.ooftf.com.service.net.ServiceHolder
-import tf.ooftf.com.service.net.etd.PresenterObserver
-import tf.ooftf.com.service.net.etd.ResponseView
 import javax.inject.Inject
 
 

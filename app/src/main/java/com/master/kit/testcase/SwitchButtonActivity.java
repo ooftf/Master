@@ -3,8 +3,7 @@ package com.master.kit.testcase;
 import android.os.Bundle;
 
 import com.master.kit.R;
-
-import tf.ooftf.com.service.base.BaseSlidingActivity;
+import com.ooftf.service.base.BaseSlidingActivity;
 
 public class SwitchButtonActivity extends BaseSlidingActivity {
 

@@ -8,6 +8,9 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.ooftf.service.engine.image_loader.IImageLoader
+import com.ooftf.service.engine.image_loader.ImageLoaderConfig
+import com.ooftf.service.engine.image_loader.ImageLoaderListener
 
 /**
  * Created by master on 2017/1/22.

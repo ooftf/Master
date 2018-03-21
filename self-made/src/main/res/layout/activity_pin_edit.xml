@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context="ooftf.com.widget.activity.PinEditTextActivity">
-    <tf.oof.com.service.base.TailoredToolbar
+
+    <com.ooftf.service.base.TailoredToolbar
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height"
         app:navigationIcon="@drawable/vector_arrow_left" />
     <ooftf.com.widget.self.PinEditText
+        android:layout_width="336dp"
+        android:layout_height="56dp"
         android:layout_marginTop="10dp"
         android:maxLength="6"
-        android:padding="0dp"
-        android:layout_width="336dp"
-        android:layout_height="56dp" />
+        android:padding="0dp" />
 </LinearLayout>

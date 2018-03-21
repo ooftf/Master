@@ -4,13 +4,15 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
+import com.ooftf.service.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_shared_elements.*
 import ooftf.com.widget.R
-import tf.oof.com.service.base.BaseActivity
 
 
 class SharedElementsActivity : BaseActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shared_elements)

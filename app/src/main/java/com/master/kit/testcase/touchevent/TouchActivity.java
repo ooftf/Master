@@ -12,8 +12,7 @@ import android.view.View;
 
 import com.master.kit.R;
 import com.master.kit.widget.switchbutton.SwitchButton;
-
-import tf.ooftf.com.service.base.BaseSlidingActivity;
+import com.ooftf.service.base.BaseSlidingActivity;
 
 public class TouchActivity extends BaseSlidingActivity {
 

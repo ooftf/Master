@@ -8,8 +8,8 @@ import android.support.v4.hardware.fingerprint.FingerprintManagerCompat
 import android.support.v4.os.CancellationSignal
 import android.widget.Toast
 import com.master.kit.R
+import com.ooftf.service.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_fingerprint.*
-import tf.ooftf.com.service.base.BaseActivity
 
 
 class FingerprintActivity : BaseActivity() {
