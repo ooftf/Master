@@ -7,14 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+
 import com.master.kit.R
 import com.master.kit.adapter.MainRecyclerAdapter
-import com.ooftf.service.base.BaseFragment
+
 import kotlinx.android.synthetic.main.fragment_widget.*
 import kotlinx.android.synthetic.main.layout_sticky_header.*
 import ooftf.com.widget.self.pulltoloading.PullToLoadingLayout
 import ooftf.com.widget.self.pulltoloading.PullToLoadingView
-import tf.ooftf.com.service.base.adapter.CategoryRecyclerAdapter
+import tf.oof.com.service.base.BaseFragment
+import tf.oof.com.service.base.adapter.CategoryRecyclerAdapter
 
 /**
  * Created by master on 2017/9/29 0029.
@@ -22,17 +24,15 @@ import tf.ooftf.com.service.base.adapter.CategoryRecyclerAdapter
 
 abstract class BaseHomeFragment : BaseFragment() {
     lateinit var adapter: MainRecyclerAdapter
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_widget, container, false)
+    override fun getContentLayoutId(): Int {
+        return R.layout.fragment_widget
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onLazyLoad() {
         setupRecyclerView()
         initData()
-        interceptor.tag = this.javaClass.simpleName
+        interceptor.setTag(this.javaClass.simpleName)
     }
-
     private fun setupRecyclerView() {
         adapter = MainRecyclerAdapter(getBaseActivity(),stickyView)
         recycler_view.adapter = adapter

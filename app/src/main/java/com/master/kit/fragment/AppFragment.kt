@@ -18,7 +18,6 @@ class AppFragment : BaseHomeFragment() {
         adapter.notifyDataSetChanged()
     }
     companion object {
-
         fun newInstance(): AppFragment {
             val args = Bundle()
             val fragment = AppFragment()

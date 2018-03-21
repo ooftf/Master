@@ -2,9 +2,8 @@ package com.master.kit.net
 
 import com.master.kit.net.etd.EtdService
 import com.master.kit.net.mob.MobService
-import com.ooftf.hi.engine.ParamInterceptor
-import com.ooftf.hi.engine.ServiceGenerator
-
+import com.ooftf.hihttp.engine.ParamInterceptor
+import com.ooftf.hihttp.engine.ServiceGenerator
 
 /**
  * Created by master on 2017/8/15 0015.
@@ -18,8 +17,8 @@ object ServiceHolder {
         generator.buildOkhttp = {
             it.addInterceptor(object : ParamInterceptor() {
                 override fun paramTransform(oldParams: MutableMap<String, String>): MutableMap<String, String> {
-                    oldParams.put("terminalType", "3")
-                    oldParams.put("appVersion", "3.0.0")
+                    oldParams["terminalType"] = "3"
+                    oldParams["appVersion"] = "3.0.0"
                     return oldParams
                 }
             })

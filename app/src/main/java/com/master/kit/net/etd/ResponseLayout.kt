@@ -6,7 +6,8 @@ import android.support.v7.app.AlertDialog
 import android.util.AttributeSet
 import com.master.kit.bean.BaseBean
 import com.master.kit.activity.MainActivity
-import com.ooftf.hi.view.HiResponseLayout
+import com.ooftf.hihttp.view.HiResponseLayout
+
 /**
  * Created by master on 2017/10/12 0012.
  */
