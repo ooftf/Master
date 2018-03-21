@@ -1,6 +1,7 @@
 package ooftf.com.widget.activity
 
 import android.os.Bundle
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_swipe.*
 import ooftf.com.widget.R
@@ -8,6 +9,7 @@ import ooftf.com.widget.adapter.SwipeAdapter
 import ooftf.com.widget.bean.SwipeBean
 import java.util.*
 
+@Route(path = "/widget/swipe")
 class SwipeActivity : BaseActivity() {
     lateinit var adapter: SwipeAdapter
     lateinit var timer: Timer

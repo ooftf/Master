@@ -1,8 +1,7 @@
-package com.master.kit.dagger
-
-import com.master.kit.testcase.banner.BannerActivity
+package ooftf.com.widget.dagger
 
 import dagger.Component
+import ooftf.com.widget.activity.BannerActivity
 
 /**
  * Created by master on 2017/1/22.

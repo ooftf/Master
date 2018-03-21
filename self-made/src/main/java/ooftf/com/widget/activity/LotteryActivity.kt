@@ -10,10 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.alibaba.android.arouter.facade.annotation.Route
 import kotlinx.android.synthetic.main.activity_lottery.*
 import ooftf.com.widget.R
 import ooftf.com.widget.engine.ScrollSpeedLinearLayoutManger
 
+@Route(path = "/widget/lottery")
 class LotteryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,7 +86,7 @@ class LotteryActivity : AppCompatActivity() {
 
     class ItemAdapter(var context: Context) : RecyclerView.Adapter<LotteryItemViewHolder>() {
         override fun getItemCount(): Int {
-            return 21;
+            return 21
         }
 
         override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): LotteryItemViewHolder {

@@ -1,4 +1,4 @@
-package com.master.kit.engine.imageloader
+package com.ooftf.service.engine
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -16,7 +16,7 @@ import com.ooftf.service.engine.image_loader.ImageLoaderListener
  * Created by master on 2017/1/22.
  */
 
-class GlideImp : IImageLoader {
+class GlideImageLoader : IImageLoader {
     override fun display(context: Context, url: String, view: ImageView) {
         GlideApp.with(context).load(url).into(view)
     }

@@ -8,15 +8,14 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.master.kit.R
 import com.ooftf.service.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_guide.*
 
+@Route(path = "/main/guide")
 class GuideActivity : BaseActivity() {
-
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guide)
@@ -36,6 +35,7 @@ class GuideActivity : BaseActivity() {
             }
             return ThirdFragment.newInstance()
         }
+
         override fun getPageTitle(position: Int): CharSequence? {
             when (position) {
                 0 -> return "SECTION 1"

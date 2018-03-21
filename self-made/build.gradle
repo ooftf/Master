@@ -29,5 +29,5 @@ dependencies {
     implementation 'com.github.ooftf:SpialeLayout:1.0.1'
     implementation 'com.github.ooftf:PatternLock:1.0.1'
     implementation 'com.github.ooftf:StraightLayout:1.0.0'
-    kapt 'com.alibaba:arouter-compiler:1.1.4'
+    kapt "com.alibaba:arouter-compiler:$arouter_compiler"
 }

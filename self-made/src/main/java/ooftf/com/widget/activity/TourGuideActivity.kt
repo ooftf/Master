@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseSlidingActivity
 import kotlinx.android.synthetic.main.activity_tour_guide.*
 import ooftf.com.widget.R
@@ -13,7 +14,7 @@ import tourguide.tourguide.Pointer
 import tourguide.tourguide.ToolTip
 import tourguide.tourguide.TourGuide
 
-
+@Route(path = "/widget/tourGuide")
 class TourGuideActivity : BaseSlidingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -54,7 +54,6 @@ dependencies {
     api project(':self-made')
     api project(':service')
     api project(':applet')
-    kapt 'com.github.bumptech.glide:compiler:4.2.0'
     kapt 'com.google.dagger:dagger-compiler:2.13'
     annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") {
         changing = true
@@ -68,6 +67,6 @@ dependencies {
         transitive = true
     }
     compile 'com.github.ooftf:VerticalPagerLayout:1.0.1'
-    kapt 'com.alibaba:arouter-compiler:1.1.4'
+    kapt "com.alibaba:arouter-compiler:$arouter_compiler"
 }
 apply from: 'tinkerpatch.gradle'

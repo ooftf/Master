@@ -1,11 +1,10 @@
-package com.master.kit.testcase.banner
+package ooftf.com.widget.activity
 
 import android.content.Context
 import android.os.Bundle
 import android.widget.ImageView
-import com.master.kit.R
-import com.master.kit.activity.widget.GuideActivity
-import com.master.kit.dagger.DaggerBannerComponent
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.service.engine.image_loader.IImageLoader
 import com.ooftf.service.net.ServiceHolder
@@ -16,9 +15,11 @@ import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import com.youth.banner.loader.ImageLoaderInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_banner.*
+import ooftf.com.widget.R
+import ooftf.com.widget.dagger.DaggerBannerComponent
 import javax.inject.Inject
 
-
+@Route(path = "/widget/banner")
 class BannerActivity : BaseSlidingActivity() {
 
     @Inject lateinit var imageLoader: IImageLoader
@@ -30,7 +31,7 @@ class BannerActivity : BaseSlidingActivity() {
         requestBanner()
         responseLayout.setOnRetryListener { requestBanner() }
         next.setOnClickListener {
-            startActivity(GuideActivity::class.java)
+            ARouter.getInstance().build("/widget/guide").navigation()
         }
     }
 

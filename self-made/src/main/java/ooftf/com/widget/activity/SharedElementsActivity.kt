@@ -5,11 +5,12 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_shared_elements.*
 import ooftf.com.widget.R
 
-
+@Route(path = "/widget/sharedElements")
 class SharedElementsActivity : BaseActivity() {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)

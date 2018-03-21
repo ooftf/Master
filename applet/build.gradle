@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion compile_sdk
     buildToolsVersion build_tools
@@ -22,5 +23,5 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     api project(':service')
-    kapt 'com.alibaba:arouter-compiler:1.1.4'
+    kapt "com.alibaba:arouter-compiler:$arouter_compiler"
 }
