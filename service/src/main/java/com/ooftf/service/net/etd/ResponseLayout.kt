@@ -5,7 +5,7 @@ import android.content.Context
 import android.support.v7.app.AlertDialog
 import android.util.AttributeSet
 import com.alibaba.android.arouter.launcher.ARouter
-import com.ooftf.hi.view.HiResponseLayout
+import com.ooftf.hihttp.view.HiResponseLayout
 import com.ooftf.service.net.etd.bean.BaseBean
 
 /**
@@ -20,11 +20,9 @@ class ResponseLayout : HiResponseLayout<BaseBean>, ResponseView<BaseBean> {
         }
 
     }
-
     override fun onResponseSuccess(bean: BaseBean) {
 
     }
-
     override fun onResponseFailOffSiteLogin(bean: BaseBean) {
         showToMainDialog(bean)
     }

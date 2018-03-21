@@ -1,15 +1,15 @@
 package com.ooftf.service.net.etd
 
+import android.app.Activity
 import android.support.v7.app.AlertDialog
 import com.alibaba.android.arouter.launcher.ARouter
-import com.ooftf.hi.view.HiResponseDialog
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.hihttp.view.HiResponseDialog
 import com.ooftf.service.net.etd.bean.BaseBean
 
 /**
  * Created by master on 2017/10/12 0012.
  */
-class ResponseDialog(activity: BaseActivity, text: String = "加载中") : HiResponseDialog<BaseBean>(activity, text), ResponseView<BaseBean> {
+class ResponseDialog(activity: Activity, text: String = "加载中") : HiResponseDialog<BaseBean>(activity, text), ResponseView<BaseBean> {
 
     override fun onResponseSuccess(bean: BaseBean) {
 

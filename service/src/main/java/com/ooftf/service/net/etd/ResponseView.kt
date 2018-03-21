@@ -1,6 +1,6 @@
 package com.ooftf.service.net.etd
 
-import com.ooftf.hi.view.HiResponseView
+import com.ooftf.hihttp.view.HiResponseView
 import com.ooftf.service.net.etd.bean.BaseBean
 
 /**

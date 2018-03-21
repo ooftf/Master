@@ -1,6 +1,6 @@
 package com.ooftf.service.net.etd
 
-import com.ooftf.hi.controller.HiPresenterObserver
+import com.ooftf.hihttp.controller.HiPresenterObserver
 import com.ooftf.service.net.etd.bean.BaseBean
 
 

@@ -1,22 +1,17 @@
 package com.master.kit.fragment
 
-import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
-
 import com.master.kit.R
 import com.master.kit.adapter.MainRecyclerAdapter
-
+import com.ooftf.service.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_widget.*
 import kotlinx.android.synthetic.main.layout_sticky_header.*
 import ooftf.com.widget.self.pulltoloading.PullToLoadingLayout
 import ooftf.com.widget.self.pulltoloading.PullToLoadingView
-import tf.oof.com.service.base.BaseFragment
-import tf.oof.com.service.base.adapter.CategoryRecyclerAdapter
+import tf.ooftf.com.service.base.adapter.CategoryRecyclerAdapter
 
 /**
  * Created by master on 2017/9/29 0029.
@@ -31,7 +26,7 @@ abstract class BaseHomeFragment : BaseFragment() {
     override fun onLazyLoad() {
         setupRecyclerView()
         initData()
-        interceptor.setTag(this.javaClass.simpleName)
+        interceptor.tag = this.javaClass.simpleName
     }
     private fun setupRecyclerView() {
         adapter = MainRecyclerAdapter(getBaseActivity(),stickyView)

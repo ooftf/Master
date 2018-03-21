@@ -1,20 +1,22 @@
-package com.master.kit.activity.app
+package com.ooftf.applet.activity
 
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.gson.Gson
-import com.master.kit.R
-import com.master.kit.net.ServiceHolder
+import com.ooftf.applet.R
 import com.ooftf.hihttp.controller.HiPresenterObserver
 import com.ooftf.hihttp.view.HiResponseDialog
 import com.ooftf.hihttp.view.HiResponseView
+import com.ooftf.service.net.ServiceHolder
 import com.ooftf.support.MaterialProgressDrawable
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_mob_api.*
 
+@Route(path = "/applet/mobApi")
 class MobApiActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
