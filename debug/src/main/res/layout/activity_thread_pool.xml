@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context="com.ooftf.master.debug.activity.ThreadPoolActivity">
+
+    <Button
+        android:id="@+id/threadPool1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_item_height"
+        android:gravity="center"
+        android:text="threadPool1" />
+
+    <Button
+        android:id="@+id/threadPool2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_item_height"
+        android:gravity="center"
+        android:text="threadPool2" />
+
+    <Button
+        android:id="@+id/thread1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_item_height"
+        android:gravity="center"
+        android:text="thread1" />
+
+    <Button
+        android:id="@+id/thread2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_item_height"
+        android:gravity="center"
+        android:text="thread2" />
+</LinearLayout>
