@@ -1,6 +1,7 @@
 package com.master.kit.testcase.retrofit
 import android.os.Bundle
 import android.widget.LinearLayout
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.master.kit.R
 import com.nineoldandroids.animation.ValueAnimator
 import com.ooftf.service.base.BaseSlidingActivity
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import tf.ooftf.com.service.engine.inputfilter.RegexInputFilter
 
+@Route(path = "/main/signIn")
 class SignInActivity : BaseSlidingActivity() {
     var height = 0
     override fun onCreate(savedInstanceState: Bundle?) {

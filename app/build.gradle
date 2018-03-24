@@ -63,10 +63,7 @@ dependencies {
         changing = true
     }
     implementation 'com.github.ooftf:JsBridge-TencentX5:1.1.0'
-    compile('com.alibaba.android:ultraviewpager:1.0.6.1@aar') {
-        transitive = true
-    }
-    compile 'com.github.ooftf:VerticalPagerLayout:1.0.1'
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"
+    implementation project(':debug')
 }
 apply from: 'tinkerpatch.gradle'

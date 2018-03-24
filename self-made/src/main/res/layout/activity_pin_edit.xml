@@ -7,13 +7,14 @@
     android:background="@color/background"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="ooftf.com.widget.activity.PinEditTextActivity">
+    tools:context="com.ooftf.widget.activity.PinEditTextActivity">
 
     <com.ooftf.service.base.TailoredToolbar
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height"
         app:navigationIcon="@drawable/vector_arrow_left" />
-    <ooftf.com.widget.self.PinEditText
+
+    <com.ooftf.widget.self.PinEditText
         android:layout_width="336dp"
         android:layout_height="56dp"
         android:layout_marginTop="10dp"

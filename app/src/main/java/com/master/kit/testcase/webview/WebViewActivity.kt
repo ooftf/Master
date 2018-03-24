@@ -5,12 +5,11 @@ import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.webkit.CookieManager
 import android.webkit.JavascriptInterface
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.master.kit.R
 import kotlinx.android.synthetic.main.activity_web_view.*
-import ooftf.com.widget.self.pulltorefresh.PullToRefreshRoot
 
+@Route(path = "/main/webView")
 class WebViewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,25 +20,25 @@ class WebViewActivity : AppCompatActivity() {
         webView.loadUrl("http://www.baidu.com")
         webView.settings.defaultTextEncodingName = "utf-8"
         webView.addJavascriptInterface(JSHandler(), "Objectaaa")
-       /* webView.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+        /* webView.webViewClient = object : WebViewClient() {
+             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
 
-                if (url.contains("/register/H5Register")) {
+                 if (url.contains("/register/H5Register")) {
 
-                } else if (url.contains("/redPacket/index")) {
+                 } else if (url.contains("/redPacket/index")) {
 
-                } else if (url.contains("/certification/realName")) {
+                 } else if (url.contains("/certification/realName")) {
 
-                } else if (url.contains("/invest/investlist")) {
-                    //投资列表
+                 } else if (url.contains("/invest/investlist")) {
+                     //投资列表
 
-                } else {
-                    //
-                    webView!!.loadUrl(url)
-                }
-                return true
-            }
-        }*/
+                 } else {
+                     //
+                     webView!!.loadUrl(url)
+                 }
+                 return true
+             }
+         }*/
         val cookieManager = CookieManager.getInstance()
         cookieManager.setAcceptCookie(true)
         pullToRefreshRoot.setOnRefreshListener { Handler().postDelayed({ pullToRefreshRoot.onRefreshComplete() }, 2000) }

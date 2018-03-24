@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context="com.ooftf.master.debug.activity.RegexActivity">
+    <com.ooftf.operation.OperationEditText
+        android:id="@+id/editTest"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="测试中文hint"
+        app:oet_delEnabled="true" />
+    <com.ooftf.operation.OperationEditText
+        android:id="@+id/editTest1"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="测试身份证输入"
+        app:oet_delEnabled="true" />
+    <com.ooftf.operation.OperationEditText
+        android:id="@+id/editTest2"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:inputType="phone"
+        app:oet_delEnabled="true" />
+    <com.ooftf.operation.OperationEditText
+        android:id="@+id/editTest3"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:inputType="textUri"
+        app:oet_delEnabled="true" />
+</LinearLayout>

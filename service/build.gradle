@@ -66,4 +66,5 @@ dependencies {
     compile 'com.github.ooftf:HiHttp:2.0.0'
     compile 'com.github.ooftf:OperationEditTextLayout:1.1.3'
     kapt "com.github.bumptech.glide:compiler:$glide"
+    compile 'com.github.ooftf:VerticalPagerLayout:1.0.3'
 }

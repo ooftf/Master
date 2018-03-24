@@ -17,4 +17,7 @@
     <color name="translucent_background">#88000000</color>
     <color name="divider_gray">#7E7E7E</color>
     <color name="blue_light">#2196F3</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
 </resources>

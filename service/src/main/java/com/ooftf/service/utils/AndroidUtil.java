@@ -13,7 +13,6 @@ import android.text.TextUtils;
 
 import java.util.Iterator;
 import java.util.List;
-
 public class AndroidUtil {
     public static String getVersionName(Context context) {
         try {
@@ -65,7 +64,6 @@ public class AndroidUtil {
                 return packageinfo;
             }
         }
-
         return null;
     }
 

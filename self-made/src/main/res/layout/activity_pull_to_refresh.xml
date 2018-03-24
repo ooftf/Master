@@ -3,20 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     android:background="@color/background"
-    tools:context="ooftf.com.widget.activity.PullToRefreshActivity">
-    <ooftf.com.widget.self.pulltorefresh.PullToRefreshRoot
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.ooftf.widget.activity.PullToRefreshActivity">
+
+    <com.ooftf.widget.self.pulltorefresh.PullToRefreshRoot
         android:id="@+id/pullToRefreshRoot"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1">
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-    </ooftf.com.widget.self.pulltorefresh.PullToRefreshRoot>
+    </com.ooftf.widget.self.pulltorefresh.PullToRefreshRoot>
 
     <Switch
         android:id="@+id/switchView"

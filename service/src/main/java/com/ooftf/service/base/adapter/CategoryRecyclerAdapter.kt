@@ -1,8 +1,9 @@
-package tf.ooftf.com.service.base.adapter
+package com.ooftf.service.base.adapter
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import tf.ooftf.com.service.base.adapter.HeaderFooterRecyclerAdapter
 
 /**
  * Created by master on 2017/10/16 0016.

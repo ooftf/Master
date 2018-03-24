@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.master.kit.R;
 import com.ooftf.service.base.BaseSlidingActivity;
 
+@Route(path = "/main/viewPager")
 public class ViewPagerActivity extends BaseSlidingActivity {
 
     private ViewPager viewPager;

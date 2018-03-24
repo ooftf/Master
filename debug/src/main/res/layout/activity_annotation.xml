@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_annotation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.ooftf.master.debug.activity.AnnotationActivity">
+
+    <com.ooftf.service.base.TailoredToolbar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_appbar_height"
+        app:navigationIcon="@drawable/vector_arrow_left" />
+
+    <TextView
+        android:id="@+id/annotation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

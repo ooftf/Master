@@ -3,11 +3,12 @@ package com.master.kit.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.Menu
 import android.view.MenuItem
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.master.kit.R
-import com.master.kit.fragment.*
 import com.mcxiaoke.packer.helper.PackerNg
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.engine.FragmentSwitchManager
@@ -42,12 +43,12 @@ class MainActivity : BaseActivity() {
                 onPreSwitch = null
         ) {
             when (it) {
-                R.id.tab_widget -> return@FragmentSwitchManager WidgetFragment.newInstance()
-                R.id.tab_logic -> return@FragmentSwitchManager LogicFragment.newInstance()
-                R.id.tab_debug -> return@FragmentSwitchManager DebugFragment.newInstance()
-                R.id.tab_other -> return@FragmentSwitchManager OtherFragment.newInstance()
-                R.id.tab_app -> return@FragmentSwitchManager AppFragment.newInstance()
-                else -> return@FragmentSwitchManager WidgetFragment.newInstance()
+                R.id.tab_widget -> return@FragmentSwitchManager ARouter.getInstance().build("/widget/widget").navigation() as Fragment
+                R.id.tab_logic -> return@FragmentSwitchManager ARouter.getInstance().build("/main/logic").navigation() as Fragment
+                R.id.tab_debug -> return@FragmentSwitchManager ARouter.getInstance().build("/debug/debug").navigation() as Fragment
+                R.id.tab_other -> return@FragmentSwitchManager ARouter.getInstance().build("/main/other").navigation() as Fragment
+                R.id.tab_app -> ARouter.getInstance().build("/applet/app").navigation() as Fragment
+                else -> return@FragmentSwitchManager ARouter.getInstance().build("/widget/widget").navigation() as Fragment
             }
 
         }

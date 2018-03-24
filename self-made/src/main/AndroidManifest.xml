@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ooftf.com.widget">
+    package="com.ooftf.widget">
 
     <application
         android:allowBackup="true"
@@ -20,7 +20,14 @@
         <activity android:name=".activity.PinEntryActivity" />
         <activity android:name=".activity.SwipeActivity" />
         <activity android:name=".activity.SwipeRecyclerActivity" />
-        <activity android:name=".activity.LotteryActivity"></activity>
+        <activity android:name=".activity.LotteryActivity" />
+        <activity android:name=".activity.PullToRefreshActivity" />
+        <activity
+            android:name=".activity.BannerActivity"
+            android:theme="@style/AppTheme.BackgroundTransparent.TranslucentStatus" />
+        <activity android:name=".activity.PinEditTextActivity" />
+        <activity android:name=".activity.CalendarActivity" />
+        <activity android:name=".activity.PatternLockActivity" />
     </application>
 
 </manifest>

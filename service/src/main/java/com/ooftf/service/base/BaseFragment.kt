@@ -45,7 +45,7 @@ abstract class BaseFragment : Fragment() {
     abstract fun getContentLayoutId(): Int
 
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        logLifeCycle("onCreateView")
+        logLifeCycle("onViewCreated")
         super.onViewCreated(view, savedInstanceState)
         loadJudgment()
     }
@@ -120,7 +120,7 @@ abstract class BaseFragment : Fragment() {
     abstract fun onLazyLoad()
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        logLifeCycle("setUserVisibleHint")
+        logLifeCycle("setUserVisibleHint   $isVisibleToUser")
         super.setUserVisibleHint(isVisibleToUser)
         loadJudgment()
     }

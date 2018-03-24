@@ -1,0 +1,18 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ooftf.master.debug">
+
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <application>
+        <activity android:name=".activity.NewInstanceActivity" />
+        <activity
+            android:name=".activity.KeyBoardActivity"
+            android:theme="@style/AppTheme.TranslucentStatus" />
+        <activity android:name="com.ooftf.master.debug.activity.DrawableActivity" />
+        <activity android:name="com.ooftf.master.debug.activity.FingerprintActivity" />
+        <activity android:name="com.ooftf.master.debug.activity.VerticalPagerActivity" />
+        <activity android:name="com.ooftf.master.debug.activity.TranslationActivity" />
+        <activity android:name="com.ooftf.master.debug.activity.RegexActivity" />
+        <activity android:name="com.ooftf.master.debug.activity.DialogActivity" />
+    </application>
+
+</manifest>
