@@ -128,9 +128,11 @@ open class BaseActivity : AppCompatActivity(), ILifecycle {
     }
 
     fun toast(content: String, duration: Int = Toast.LENGTH_SHORT) {
-        mToast?.cancel()
-        mToast = Toast.makeText(this, content, duration)
-        mToast?.show()
+        runOnUiThread {
+            mToast?.cancel()
+            mToast = Toast.makeText(this, content, duration)
+            mToast?.show()
+        }
     }
 
 }

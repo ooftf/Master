@@ -24,7 +24,7 @@ class DebugFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean("/debug/translation"))
         adapter.add(ScreenItemBean("/debug/regex"))
         adapter.add(ScreenItemBean("/debug/annotation"))
-        adapter.add(ScreenItemBean("/debug/threadPoll"))
+        adapter.add(ScreenItemBean("/debug/threadPool"))
         adapter.add(ScreenItemBean("/debug/hashMap"))
         adapter.notifyDataSetChanged()
     }

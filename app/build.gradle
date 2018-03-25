@@ -65,5 +65,6 @@ dependencies {
     implementation 'com.github.ooftf:JsBridge-TencentX5:1.1.0'
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"
     implementation project(':debug')
+    implementation project(':source')
 }
 apply from: 'tinkerpatch.gradle'

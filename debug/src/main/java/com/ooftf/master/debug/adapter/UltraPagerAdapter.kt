@@ -13,7 +13,7 @@ class UltraPagerAdapter(var supportFragmentManager: FragmentManager) : FragmentP
         return when (position) {
             0 -> ARouter.getInstance().build("/applet/app").navigation() as Fragment
             1 -> ARouter.getInstance().build("/debug/debug").navigation() as Fragment
-            2 -> ARouter.getInstance().build("/main/logic").navigation() as Fragment
+            2 -> ARouter.getInstance().build("/source/source").navigation() as Fragment
             3 -> ARouter.getInstance().build("/main/other").navigation() as Fragment
             4 -> ARouter.getInstance().build("/widget/widget").navigation() as Fragment
             else -> ARouter.getInstance().build("/widget/widget").navigation() as Fragment

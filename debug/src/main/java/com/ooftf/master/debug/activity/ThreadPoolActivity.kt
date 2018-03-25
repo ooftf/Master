@@ -1,7 +1,8 @@
 package com.ooftf.master.debug.activity
 
+import android.os.Build
 import android.os.Bundle
-import android.os.Looper
+import android.support.annotation.RequiresApi
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
 import com.ooftf.service.base.BaseActivity
@@ -11,9 +12,10 @@ import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
 
-@Route(path = "/debug/threadPoll")
+@Route(path = "/debug/threadPool")
 class ThreadPoolActivity : BaseActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_thread_pool)
@@ -22,32 +24,24 @@ class ThreadPoolActivity : BaseActivity() {
         var i = 0
         threadPool1.setOnClickListener {
             pool.execute {
-                Looper.prepare()
                 toast("ThreadPool    $i")
                 i++
-                Looper.loop()
             }
         }
         threadPool2.setOnClickListener {
             cachedThreadPool.execute {
-                Looper.prepare()
                 toast("cachedThreadPool2")
-                Looper.loop()
             }
         }
         thread1.setOnClickListener {
             Thread(Runnable {
-                Looper.prepare()
                 toast("thread")
-                Looper.loop()
             }).start()
         }
         thread2.setOnClickListener {
             Thread {
                 run {
-                    Looper.prepare()
                     toast("thread2")
-                    Looper.loop()
                 }
             }.start()
         }

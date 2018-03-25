@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tabs>
     <tab
-        id="@+id/tab_widget"
         icon="@drawable/ic_widget_24dp"
+        id="@+id/tab_widget"
         title="控件" />
     <tab
-        id="@+id/tab_logic"
         icon="@drawable/ic_logic_24dp"
-        title="逻辑" />
+        id="@+id/tab_logic"
+        title="Source" />
     <tab
-        id="@+id/tab_app"
         icon="@drawable/ic_app_24dp"
+        id="@+id/tab_app"
         title="APP" />
     <tab
-        id="@+id/tab_debug"
         icon="@drawable/ic_debug_24dp"
+        id="@+id/tab_debug"
         title="调试" />
     <tab
-        id="@+id/tab_other"
         icon="@drawable/ic_other_24dp"
+        id="@+id/tab_other"
         title="其他" />
 </tabs>
