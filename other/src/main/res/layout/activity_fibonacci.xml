@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context="com.ooftf.master.other.activity.FibonacciActivity">
+
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_item_height"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_item_height" />
+</LinearLayout>

@@ -51,7 +51,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api project(':self-made')
+    api project(':widget')
     api project(':service')
     api project(':applet')
     kapt 'com.google.dagger:dagger-compiler:2.13'
@@ -66,5 +66,6 @@ dependencies {
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"
     implementation project(':debug')
     implementation project(':source')
+    implementation project(':other')
 }
 apply from: 'tinkerpatch.gradle'

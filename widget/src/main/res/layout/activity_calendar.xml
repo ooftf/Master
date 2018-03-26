@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context="com.ooftf.widget.activity.CalendarActivity">
+
+    <com.ooftf.service.base.TailoredToolbar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_appbar_height"
+        app:navigationIcon="@drawable/vector_arrow_left"
+        app:title="日历" />
+
+    <com.ooftf.calendar.CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/White"
+        android:paddingBottom="40dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        app:auto_row="true"
+         />
+
+    <com.ooftf.calendar.CalendarView
+        android:id="@+id/calendarView2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/White"
+        android:paddingBottom="40dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp" />
+</LinearLayout>

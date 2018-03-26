@@ -1,2 +1,2 @@
-include ':app', ':service', ':applet', ':self-made', ':debug', ':source'
+include ':app', ':service', ':applet', ':widget', ':debug', ':source', ':other'
 

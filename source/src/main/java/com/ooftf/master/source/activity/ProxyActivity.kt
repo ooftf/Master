@@ -1,17 +1,17 @@
 package com.ooftf.master.source.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.source.R
+import com.ooftf.service.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_proxy.*
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
 import java.lang.reflect.Proxy
 
 @Route(path = "/source/proxy")
-class ProxyActivity : AppCompatActivity() {
+class ProxyActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

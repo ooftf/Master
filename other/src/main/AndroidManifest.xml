@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ooftf.master.other">
+
+    <application>
+        <activity android:name=".activity.FibonacciActivity" />
+        <activity android:name=".activity.StackGetMinActivity"></activity>
+    </application>
+
+</manifest>

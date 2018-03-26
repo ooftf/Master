@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context="com.ooftf.widget.activity.OperationEditTextActivity">
+
+    <com.ooftf.service.base.TailoredToolbar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_appbar_height"
+        app:navigationIcon="@drawable/vector_arrow_left"
+        app:title="OperationEditTextLayout" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:layout_marginTop="10dp"
+        android:background="@color/divider_gray" />
+    <com.ooftf.operation.OperationEditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_item_height"
+        android:background="@null"
+        android:hint="请输入账号"
+        android:paddingLeft="@dimen/layout_edge_spacing"
+        app:oet_delEnabled="true"
+        app:oet_maskEnabled="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:background="@color/divider_gray" />
+    <com.ooftf.operation.OperationEditTextLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:oetl_delEnabled="true"
+        app:oetl_editTextId="@+id/pwd"
+        app:oetl_maskEnabled="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/pwd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_item_height"
+                android:background="@null"
+                android:hint="请输入账号"
+                android:paddingLeft="@dimen/layout_edge_spacing" />
+        </LinearLayout>
+    </com.ooftf.operation.OperationEditTextLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:background="@color/divider_gray" />
+
+    <com.ooftf.operation.OperationEditTextLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:oetl_delEnabled="true"
+        app:oetl_maskEnabled="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_item_height"
+            android:background="@null"
+            android:hint="请输入密码"
+            android:paddingLeft="@dimen/layout_edge_spacing" />
+    </com.ooftf.operation.OperationEditTextLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:background="@color/divider_gray" />
+</LinearLayout>
