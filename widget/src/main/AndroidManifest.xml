@@ -2,10 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ooftf.widget">
 
-    <application
-        android:allowBackup="true"
-        android:label="@string/app_name"
-        android:supportsRtl="true">
+    <application>
         <activity android:name=".activity.TourGuideActivity" />
         <activity android:name=".activity.GravActivity" />
         <activity android:name=".activity.OperationEditTextActivity" />
@@ -29,5 +26,4 @@
         <activity android:name=".activity.CalendarActivity" />
         <activity android:name=".activity.PatternLockActivity" />
     </application>
-
 </manifest>

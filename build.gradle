@@ -1,14 +1,13 @@
 buildscript {
-    ext.kotlin_version = '1.2.30'
-    ext.compile_sdk = 26
+    ext.kotlin_version = '1.2.31'
+    ext.compile_sdk = 27
     ext.min_sdk = 14
     ext.target_sdk = 26
-    ext.build_tools = "27.0.0"
     ext.support = "27.0.2"
     ext.butterknife = "8.8.1"
     ext.tinker_version = "1.9.1"
     ext.tinkerpatch_version = "1.2.1"
-    ext.packer_ng_version = "2.0.0"
+    ext.packer_ng_version = "2.0.1"
     ext.arouter_compiler= "1.1.4"
     ext.glide = "4.6.1"
     repositories {
@@ -16,7 +15,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$tinkerpatch_version"
         classpath "com.mcxiaoke.packer-ng:plugin:$packer_ng_version"

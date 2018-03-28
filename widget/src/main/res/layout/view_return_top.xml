@@ -10,5 +10,4 @@
     android:layout_marginRight="16dp"
     android:orientation="vertical"
     android:src="@drawable/vector_return_top"
-    android:visibility="gone"
     app:fabSize="normal" />

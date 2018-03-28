@@ -1,6 +1,6 @@
 package com.ooftf.widget.fragment
 
-import android.os.Bundle
+import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseHomeFragment
 import com.ooftf.service.bean.ScreenItemBean
@@ -11,6 +11,7 @@ import com.ooftf.widget.R
  */
 @Route(path = "/widget/widget")
 class WidgetFragment : BaseHomeFragment() {
+    lateinit var image: ImageView
     override fun initData() {
         adapter.add(ScreenItemBean("/widget/calendar", "自定义日历", "可以改变单个日期的显示样式", R.drawable.vector_calendar, true, "自定义控件"))
         adapter.add(ScreenItemBean("/widget/patternLock", "手势密码", "手势密码控件", R.drawable.vector_gesture_cipher, false, "自定义控件"))
@@ -30,14 +31,6 @@ class WidgetFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean("/widget/swipeRecycler", "SwipeRecycler", "使用第三方库SwipeLayout", category = "非自定义"))
         adapter.add(ScreenItemBean("/widget/lottery", "LotteryActivity", "LotteryActivity", category = "非自定义"))
         adapter.notifyDataSetChanged()
-    }
 
-    companion object {
-        fun newInstance(): WidgetFragment {
-            val args = Bundle()
-            val fragment = WidgetFragment()
-            fragment.arguments = args
-            return fragment
-        }
     }
 }

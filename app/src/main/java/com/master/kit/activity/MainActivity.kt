@@ -1,7 +1,5 @@
 package com.master.kit.activity
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.Menu
@@ -16,12 +14,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 @Route(path = "/main/main")
 class MainActivity : BaseActivity() {
-    companion object {
-        fun getStartIntent(context: Context): Intent {
-            return Intent(context, MainActivity::class.java)
-        }
-    }
-
     private lateinit var switchManager: FragmentSwitchManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

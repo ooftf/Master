@@ -23,6 +23,19 @@ abstract class BaseHomeFragment : BaseFragment() {
         setupRecyclerView()
         initData()
         interceptor.tag = this.javaClass.simpleName
+        setupFloatButton()
+    }
+
+    private fun setupFloatButton() {
+        recycler_view.addOnScrollListener(object : android.support.v7.widget.RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView?, newState: kotlin.Int) {
+                android.util.Log.e("newState", "$newState")
+                when (newState) {
+                    android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING -> image.animate().translationX(image.width * 0.8.toFloat()).setDuration(400).start()
+                    android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE -> image.animate().translationX(0F).setDuration(400).start()
+                }
+            }
+        })
     }
     private fun setupRecyclerView() {
         adapter = MainRecyclerAdapter(getBaseActivity(),stickyView)
@@ -45,7 +58,6 @@ abstract class BaseHomeFragment : BaseFragment() {
                 (view as TextView).text = category
             }
         })
-
     }
 
     protected abstract fun initData()

@@ -5,8 +5,6 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'packer'
 android {
     compileSdkVersion compile_sdk
-    buildToolsVersion build_tools
-
     defaultConfig {
         applicationId "com.master.kit"
         minSdkVersion min_sdk
@@ -49,7 +47,7 @@ packer {
 }
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(':widget')
     api project(':service')

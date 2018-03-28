@@ -30,7 +30,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':service')
-    compile('com.alibaba.android:ultraviewpager:1.0.6.1@aar') {
+    implementation('com.alibaba.android:ultraviewpager:1.0.6.1@aar') {
         transitive = true
     }
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"

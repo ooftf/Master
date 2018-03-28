@@ -17,10 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.BackgroundTransparent"
         tools:replace="android:icon, android:theme">
-
-        <!-- @style/AppTheme.NoActionBar -->
         <activity android:name=".testcase.SwitchButtonActivity" />
-
         <activity
             android:name=".activity.MainActivity"
             android:launchMode="singleTask" />
@@ -48,12 +45,8 @@
         <activity android:name=".testcase.design.flexible.FlexibleActivity" />
         <activity android:name="com.ooftf.master.debug.activity.AnnotationActivity" />
         <activity android:name=".testcase.filedownload.DownloadActivity" />
-
         <service android:name=".testcase.filedownload.DownloadService" />
-
-
         <activity android:name=".testcase.retrofit.SignInActivity" />
-
         <activity
             android:name=".activity.widget.GuideActivity"
             android:theme="@style/AppTheme.TranslucentStatus" />

@@ -4,7 +4,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion compile_sdk
-
     defaultConfig {
         minSdkVersion min_sdk
         targetSdkVersion target_sdk

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.support.annotation.RequiresApi
+import android.support.v4.widget.NestedScrollView
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -52,18 +53,33 @@ class ReturnTopLayout : RelativeLayout {
         LayoutInflater.from(context).inflate(R.layout.view_return_top, this)
         returnTop = findViewById(R.id.returnTop)
         contentView = findViewById(resourceId)
+        hide()
         /* if(contentView instanceof PullToRefreshBase){
             PullToRefreshBase pullToRefreshBase = (PullToRefreshBase) contentView;
             contentView = pullToRefreshBase.getRefreshableView();
         }*/
-        if (contentView is RecyclerView) {
-            recyclerView()
-        } else if (contentView is ListView) {
-            listView()
-        } else if (contentView is GridLayout) {
+        when (contentView) {
+            is RecyclerView -> recyclerView()
+            is ListView -> listView()
+            is GridLayout -> {
 
-        } else if (contentView is ScrollView) {
-            scrollView()
+            }
+            is ScrollView -> scrollView()
+            is NestedScrollView -> caseNestedScrollView()
+        }
+    }
+
+    private fun caseNestedScrollView() {
+        val nestedScrollView = contentView as NestedScrollView
+        nestedScrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (scrollY > 0) {
+                smoothShow()
+            } else {
+                smoothHide()
+            }
+        })
+        returnTop.setOnClickListener {
+            nestedScrollView.smoothScrollTo(0, 0)
         }
     }
 
@@ -75,9 +91,9 @@ class ReturnTopLayout : RelativeLayout {
             internal var y = -10
             override fun onTrick() {
                 if (scrollView.scrollY > 0) {
-                    returnTop.visibility = View.VISIBLE
+                    smoothShow()
                 } else {
-                    returnTop.visibility = View.GONE
+                    smoothHide()
                 }
                 if (y == scrollView.scrollY) {
                     cancel()
@@ -88,9 +104,9 @@ class ReturnTopLayout : RelativeLayout {
         //用触摸事件代替滑动监听事件
         scrollView.setOnTouchListener { _, event ->
             if (scrollView.scrollY > 0) {
-                returnTop.visibility = View.VISIBLE
+                smoothShow()
             } else {
-                returnTop.visibility = View.GONE
+                smoothHide()
             }
             if (event.action == MotionEvent.ACTION_UP) {
                 loopTimer.start()
@@ -99,7 +115,7 @@ class ReturnTopLayout : RelativeLayout {
         }
         returnTop.setOnClickListener {
             scrollView.smoothScrollTo(0, 0)
-            returnTop.visibility = View.GONE
+            smoothHide()
         }
     }
 
@@ -114,14 +130,37 @@ class ReturnTopLayout : RelativeLayout {
             override fun onScroll(view: AbsListView, firstVisibleItem: Int, visibleItemCount: Int, totalItemCount: Int) {
                 val position = view.firstVisiblePosition
                 if (position > 0) {
-                    returnTop.visibility = View.VISIBLE
+                    smoothShow()
                 } else {
-                    returnTop.visibility = View.GONE
+                    smoothHide()
                 }
             }
         })
         returnTop.setOnClickListener { listView.setSelection(0) }
 
+    }
+
+    private var state = 1//smoothHide
+
+    private fun smoothHide() {
+        if (state == 1) {
+            returnTop.animate().scaleX(0f).scaleY(0f).setDuration(300).start()
+            state = 0
+        }
+    }
+
+    private fun hide() {
+        if (state == 1) {
+            returnTop.animate().scaleX(0f).scaleY(0f).setDuration(0).start()
+            state = 0
+        }
+    }
+
+    private fun smoothShow() {
+        if (state == 0) {
+            returnTop.animate().scaleX(1f).scaleY(1f).setDuration(300).start()
+            state = 1
+        }
     }
 
     private fun gridLayout() {
@@ -134,9 +173,9 @@ class ReturnTopLayout : RelativeLayout {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (recyclerView!!.computeVerticalScrollOffset() > 0) {
-                    returnTop.visibility = View.VISIBLE
+                    smoothShow()
                 } else {
-                    returnTop.visibility = View.GONE
+                    smoothHide()
                 }
             }
         })

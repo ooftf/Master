@@ -4,8 +4,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion compile_sdk
-    buildToolsVersion build_tools
-
     defaultConfig {
         minSdkVersion min_sdk
         targetSdkVersion target_sdk
@@ -19,10 +17,10 @@ kapt {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
     api project(':service')
     kapt 'com.google.dagger:dagger-compiler:2.13'
     implementation 'com.github.ooftf:CalendarView:1.0.3'

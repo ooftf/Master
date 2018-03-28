@@ -7,7 +7,7 @@
     android:background="@color/background"
     android:orientation="vertical"
     app:scrollId="@+id/recycler_view">
-
+    <!--    com.ooftf.widget.self.ReturnTopLayout-->
     <com.ooftf.widget.self.ReturnTopLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,5 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <include layout="@layout/layout_sticky_header" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/logo_legacy" />
     </com.ooftf.widget.self.ReturnTopLayout>
 </com.ooftf.vertical.ScrollEdgeLayout>

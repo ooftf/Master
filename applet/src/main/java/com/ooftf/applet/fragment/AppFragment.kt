@@ -14,7 +14,8 @@ class AppFragment : BaseHomeFragment() {
 
     override fun initData() {
         adapter.add(ScreenItemBean("/applet/breakfast", "早餐计算器", "计算预定早餐需要的时间", R.drawable.vector_breakfast_icon))
-        adapter.add(ScreenItemBean("/applet/mobApi"))
+        adapter.add(ScreenItemBean("/applet/mobApi", "MobApi"))
+        adapter.add(ScreenItemBean("/applet/JX3", "收益计算"))
         adapter.notifyDataSetChanged()
     }
     companion object {
@@ -24,7 +25,5 @@ class AppFragment : BaseHomeFragment() {
             fragment.arguments = args
             return fragment
         }
-
-
     }
 }
