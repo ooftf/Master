@@ -11,6 +11,7 @@ import com.ooftf.widget.R
  */
 @Route(path = "/widget/widget")
 class WidgetFragment : BaseHomeFragment() {
+    override fun getRecyclerViewTag() = "widget"
     lateinit var image: ImageView
     override fun initData() {
         adapter.add(ScreenItemBean("/widget/calendar", "自定义日历", "可以改变单个日期的显示样式", R.drawable.vector_calendar, true, "自定义控件"))
@@ -30,7 +31,7 @@ class WidgetFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean("/widget/swipe", "Swipe", "使用第三方库SwipeLayout修改后，再修改后", category = "非自定义"))
         adapter.add(ScreenItemBean("/widget/swipeRecycler", "SwipeRecycler", "使用第三方库SwipeLayout", category = "非自定义"))
         adapter.add(ScreenItemBean("/widget/lottery", "LotteryActivity", "LotteryActivity", category = "非自定义"))
+        adapter.add(ScreenItemBean("/widget/taobao", "仿淘宝商品页面", "LotteryActivity", category = "非自定义"))
         adapter.notifyDataSetChanged()
-
     }
 }

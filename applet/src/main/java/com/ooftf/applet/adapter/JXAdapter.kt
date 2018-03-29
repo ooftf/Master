@@ -10,7 +10,7 @@ import com.ooftf.applet.bean.JXBean
 import tf.ooftf.com.service.base.adapter.BaseRecyclerAdapter
 
 class JXAdapter(var inflate: LayoutInflater) : BaseRecyclerAdapter<JXBean, MyViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(inflate.inflate(R.layout.item_jx, parent, false))
     }
 

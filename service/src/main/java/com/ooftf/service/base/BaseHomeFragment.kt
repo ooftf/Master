@@ -1,5 +1,6 @@
 package com.ooftf.service.base
 
+import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.TextView
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.layout_sticky_header.*
 
 abstract class BaseHomeFragment : BaseFragment() {
     lateinit var adapter: MainRecyclerAdapter
+    val handler = Handler()
     override fun getContentLayoutId(): Int {
         return R.layout.fragment_widget
     }
@@ -22,7 +24,6 @@ abstract class BaseHomeFragment : BaseFragment() {
     override fun onLazyLoad() {
         setupRecyclerView()
         initData()
-        interceptor.tag = this.javaClass.simpleName
         setupFloatButton()
     }
 
@@ -31,14 +32,21 @@ abstract class BaseHomeFragment : BaseFragment() {
             override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView?, newState: kotlin.Int) {
                 android.util.Log.e("newState", "$newState")
                 when (newState) {
-                    android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING -> image.animate().translationX(image.width * 0.8.toFloat()).setDuration(400).start()
-                    android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE -> image.animate().translationX(0F).setDuration(400).start()
+                    android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING -> image.animate().translationX(image.width * 0.8.toFloat()).setDuration(300).startDelay = 0
+                    android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE -> {
+                        handler.removeCallbacksAndMessages(null)
+                        handler.postDelayed({
+                            image.animate().translationX(0F).duration = 300
+                        }, 800)
+                    }
                 }
             }
         })
     }
+
     private fun setupRecyclerView() {
-        adapter = MainRecyclerAdapter(getBaseActivity(),stickyView)
+        adapter = MainRecyclerAdapter(getBaseActivity(), stickyView)
+        recycler_view.tag = getRecyclerViewTag()
         recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(context)
         /* DividerItemDecoration divider = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
@@ -53,12 +61,17 @@ abstract class BaseHomeFragment : BaseFragment() {
             },2000)
         }
         adapter.addFooter(pullToLoadingLayout)*/
-        recycler_view.addOnScrollListener(object: CategoryRecyclerAdapter.StickyOnScrollListener(stickyView) {
+        recycler_view.addOnScrollListener(object : CategoryRecyclerAdapter.StickyOnScrollListener(stickyView) {
             override fun setCategory(view: View, category: String) {
                 (view as TextView).text = category
             }
         })
     }
 
+    override fun onDestroyView() {
+        handler.removeCallbacksAndMessages(null)
+        super.onDestroyView()
+    }
     protected abstract fun initData()
+    abstract fun getRecyclerViewTag(): String
 }

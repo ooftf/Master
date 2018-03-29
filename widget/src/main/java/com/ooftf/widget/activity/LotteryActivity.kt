@@ -33,7 +33,7 @@ class LotteryActivity : AppCompatActivity() {
                 return list.size
             }
 
-            override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): LotteryViewHolder {
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LotteryViewHolder {
                 var holder = LotteryViewHolder(LayoutInflater.from(this@LotteryActivity).inflate(R.layout.item_lottery, parent, false))
                 var layoutManager = com.ooftf.widget.engine.ScrollSpeedLinearLayoutManger(this@LotteryActivity, RecyclerView.VERTICAL, false)
                 layoutManager.setSpeedSlow()
@@ -88,7 +88,7 @@ class LotteryActivity : AppCompatActivity() {
             return 21
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): LotteryItemViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LotteryItemViewHolder {
             return LotteryItemViewHolder(LayoutInflater.from(context).inflate(R.layout.item_lottery_item, parent, false))
         }
 

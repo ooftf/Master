@@ -11,6 +11,7 @@ import com.ooftf.service.bean.ScreenItemBean
  */
 @Route(path = "/source/source")
 class SourceFragment : BaseHomeFragment() {
+    override fun getRecyclerViewTag() = "source"
     override fun initData() {
         adapter.add((ScreenItemBean("/source/rxJava", "RxJava源码分析")))
         adapter.add((ScreenItemBean("/source/okHttp", "OkHttp未完成")))

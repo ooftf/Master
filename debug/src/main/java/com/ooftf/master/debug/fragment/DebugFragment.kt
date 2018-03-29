@@ -11,7 +11,7 @@ import com.ooftf.service.bean.ScreenItemBean
  */
 @Route(path = "/debug/debug")
 class DebugFragment : BaseHomeFragment() {
-
+    override fun getRecyclerViewTag() = "debug"
     override fun initData() {
         adapter.add(ScreenItemBean("/debug/newInstance"))
         adapter.add(ScreenItemBean("/debug/dialog"))
