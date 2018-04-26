@@ -8,13 +8,6 @@
     android:orientation="vertical"
     tools:context="com.master.kit.activity.MainActivity">
 
-    <com.ooftf.service.base.TailoredToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:actionMenuTextColor="@color/white" />
-
     <FrameLayout
         android:id="@+id/frame_fragment"
         android:layout_width="match_parent"

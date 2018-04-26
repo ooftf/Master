@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="com.ooftf.widget.activity.SwipeRecyclerActivity">
 
-    <com.ooftf.service.base.TailoredToolbar
+    <com.ooftf.service.widget.toolbar.TailoredToolbar
         android:id="@+id/tailoredToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context="com.ooftf.widget.activity.PatternLockActivity">
 
-    <com.ooftf.service.base.TailoredToolbar
+    <com.ooftf.service.widget.toolbar.TailoredToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height"

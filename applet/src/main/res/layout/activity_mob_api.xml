@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="com.ooftf.applet.activity.MobApiActivity">
 
-    <com.ooftf.service.base.TailoredToolbar
+    <com.ooftf.service.widget.toolbar.TailoredToolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:title="MobApi" />

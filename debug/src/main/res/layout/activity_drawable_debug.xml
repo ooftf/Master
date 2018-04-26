@@ -101,7 +101,7 @@
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
-    <com.ooftf.service.base.TailoredToolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.ooftf.service.widget.toolbar.TailoredToolbar xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/tailoredToolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"

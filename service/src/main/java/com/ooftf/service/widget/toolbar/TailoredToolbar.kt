@@ -1,4 +1,4 @@
-package com.ooftf.service.base
+package com.ooftf.service.widget.toolbar
 
 import android.app.Activity
 import android.content.Context
@@ -9,7 +9,9 @@ import com.ooftf.service.R
 /**
  * Created by master on 2017/10/10 0010.
  */
-class TailoredToolbar : Toolbar {
+open class TailoredToolbar : Toolbar {
+
+
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
