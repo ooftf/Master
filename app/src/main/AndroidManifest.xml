@@ -26,10 +26,29 @@
             android:theme="@style/AppTheme.TranslucentStatus.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity-alias
+            android:name=".icon_1"
+            android:enabled="true"
+            android:icon="@drawable/s7"
+            android:targetActivity=".activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".icon_2"
+            android:enabled="false"
+            android:icon="@drawable/logo_orb"
+            android:targetActivity=".activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
 
         <activity
             android:name=".testcase.touchevent.TouchActivity"
