@@ -1,19 +1,93 @@
 package com.ooftf.widget.fragment
 
-import android.widget.ImageView
+import android.os.Handler
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.View
+import android.widget.TextView
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.service.base.BaseHomeFragment
+import com.ooftf.service.base.BaseFragment
+import com.ooftf.service.base.adapter.CategoryRecyclerAdapter
+import com.ooftf.service.base.adapter.MainRecyclerAdapter
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.widget.R
+import kotlinx.android.synthetic.main.fragment_widget.*
+import kotlinx.android.synthetic.main.layout_widget_sticky_header.*
 
 /**
  * Created by master on 2017/9/26 0026.
  */
 @Route(path = "/widget/widget")
-class WidgetFragment : BaseHomeFragment() {
-    override fun getRecyclerViewTag() = "widget"
-    lateinit var image: ImageView
-    override fun initData() {
+class WidgetFragment : BaseFragment() {
+    lateinit var adapter: MainRecyclerAdapter
+    val handler = Handler()
+    override fun getContentLayoutId(): Int {
+        return R.layout.fragment_widget
+    }
+
+    override fun onLazyLoad() {
+        setupToolbar()
+        setupRecyclerView()
+        initData()
+        setupFloatButton()
+    }
+
+    private fun setupFloatButton() {
+        recycler_view.addOnScrollListener(object : android.support.v7.widget.RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView?, newState: kotlin.Int) {
+                when (newState) {
+                    android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING -> image.animate().translationX(image.width * 0.8.toFloat()).setDuration(300).startDelay = 0
+                    android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE -> {
+                        handler.removeCallbacksAndMessages(null)
+                        handler.postDelayed({
+                            image.animate().translationX(0F).duration = 300
+                        }, 800)
+                    }
+                }
+            }
+        })
+    }
+
+    private fun setupRecyclerView() {
+        adapter = MainRecyclerAdapter(getBaseActivity(), stickyView)
+        recycler_view.tag = getRecyclerViewTag()
+        recycler_view.adapter = adapter
+        recycler_view.layoutManager = LinearLayoutManager(context)
+        /* DividerItemDecoration divider = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
+        //divider.setDrawable(new ColorDrawable(Color.GRAY));
+        recyclerView.addItemDecoration(divider);*/
+
+        //上拉加载更多
+        /*var pullToLoadingLayout = PullToLoadingLayout(activity!!, PullToLoadingView(activity!!), false)
+        pullToLoadingLayout.setLoadEvent {
+            Handler().postDelayed({
+                pullToLoadingLayout.loadOver()
+            },2000)
+        }
+        adapter.addFooter(pullToLoadingLayout)*/
+        recycler_view.addOnScrollListener(object : CategoryRecyclerAdapter.StickyOnScrollListener(stickyView) {
+            override fun setCategory(view: View, category: String) {
+                (view as TextView).text = category
+            }
+        })
+    }
+
+    override fun onDestroyView() {
+        handler.removeCallbacksAndMessages(null)
+        super.onDestroyView()
+    }
+
+    private fun setupToolbar() {
+        toolbar.inflateMenu(R.menu.activity_widget_toolbar_turn)
+        /* recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                 toolbar.setScrollProgress(recyclerView.scrollY,recyclerView.computeVerticalScrollRange()-recyclerView.computeVerticalScrollExtent())
+             }
+         })*/
+    }
+
+    private fun getRecyclerViewTag() = "widget"
+    private fun initData() {
         adapter.add(ScreenItemBean("/widget/calendar", "自定义日历", "可以改变单个日期的显示样式", R.drawable.vector_calendar, true, "自定义控件"))
         adapter.add(ScreenItemBean("/widget/patternLock", "手势密码", "手势密码控件", R.drawable.vector_gesture_cipher, false, "自定义控件"))
         adapter.add(ScreenItemBean("/widget/banner", "轮播图", "利用viewpager制作的轮播图", R.drawable.vector_banner, true, "自定义控件"))

@@ -18,7 +18,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+        //setSupportActionBar(toolbar)
         title = PackerNg.getChannel(this)
         setupBottomBar()
     }
@@ -38,7 +38,7 @@ class MainActivity : BaseActivity() {
                 R.id.tab_widget -> return@FragmentSwitchManager ARouter.getInstance().build("/widget/widget").navigation() as Fragment
                 R.id.tab_logic -> return@FragmentSwitchManager ARouter.getInstance().build("/source/source").navigation() as Fragment
                 R.id.tab_debug -> return@FragmentSwitchManager ARouter.getInstance().build("/debug/debug").navigation() as Fragment
-                R.id.tab_other -> return@FragmentSwitchManager ARouter.getInstance().build("/main/other").navigation() as Fragment
+                R.id.tab_other -> return@FragmentSwitchManager ARouter.getInstance().build("/other/other").navigation() as Fragment
                 R.id.tab_app -> ARouter.getInstance().build("/applet/app").navigation() as Fragment
                 else -> return@FragmentSwitchManager ARouter.getInstance().build("/widget/widget").navigation() as Fragment
             }

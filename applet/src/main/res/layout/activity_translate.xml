@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.ooftf.service.base.TailoredToolbar
+    <com.ooftf.service.widget.toolbar.TailoredToolbar
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height"
         app:navigationIcon="@drawable/vector_arrow_left"

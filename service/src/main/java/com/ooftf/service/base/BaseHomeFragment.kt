@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.ooftf.service.R
 import com.ooftf.service.base.adapter.CategoryRecyclerAdapter
 import com.ooftf.service.base.adapter.MainRecyclerAdapter
-import kotlinx.android.synthetic.main.fragment_widget.*
+import kotlinx.android.synthetic.main.fragment_home_base.*
 import kotlinx.android.synthetic.main.layout_sticky_header.*
 
 /**
@@ -18,19 +18,19 @@ abstract class BaseHomeFragment : BaseFragment() {
     lateinit var adapter: MainRecyclerAdapter
     val handler = Handler()
     override fun getContentLayoutId(): Int {
-        return R.layout.fragment_widget
+        return R.layout.fragment_home_base
     }
 
     override fun onLazyLoad() {
         setupRecyclerView()
         initData()
         setupFloatButton()
+
     }
 
     private fun setupFloatButton() {
         recycler_view.addOnScrollListener(object : android.support.v7.widget.RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView?, newState: kotlin.Int) {
-                android.util.Log.e("newState", "$newState")
                 when (newState) {
                     android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING -> image.animate().translationX(image.width * 0.8.toFloat()).setDuration(300).startDelay = 0
                     android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE -> {
@@ -72,6 +72,7 @@ abstract class BaseHomeFragment : BaseFragment() {
         handler.removeCallbacksAndMessages(null)
         super.onDestroyView()
     }
+
     protected abstract fun initData()
     abstract fun getRecyclerViewTag(): String
 }
