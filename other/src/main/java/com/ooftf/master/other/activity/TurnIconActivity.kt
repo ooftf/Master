@@ -14,17 +14,27 @@ class TurnIconActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_turn_icon)
-        AppIconEngine.getAllAlias().forEach { icon ->
+        AppIconEngine.getAllAlias().forEach { aliasName ->
             val radioButton = layoutInflater.inflate(R.layout.item_radio_item, radioGroup, false) as RadioButton
-            radioButton.text = icon
+            radioButton.tag = aliasName
+            radioButton.text = aliasName
             radioButton.setOnClickListener {
                 AppIconEngine.switchIcon(
-                        this, icon
+                        this, aliasName
                 )
+                val iconDrawable = AppIconEngine.getDrawableFromName(this, aliasName)
+                if (iconDrawable != null) {
+                    radioButton.setCompoundDrawablesWithIntrinsicBounds(null, null, iconDrawable, null)
+                }
             }
             radioGroup.addView(radioButton)
-            radioButton.setCompoundDrawablesWithIntrinsicBounds(null, null, AppIconEngine.getDrawableFromName(this, icon), null)
-            radioButton.isChecked = icon == AppIconEngine.getCurrentAlias(this)
+            val iconDrawable = AppIconEngine.getDrawableFromName(this, aliasName)
+            if (iconDrawable != null) {
+                radioButton.setCompoundDrawablesWithIntrinsicBounds(null, null, iconDrawable, null)
+            }
+            radioButton.isChecked = aliasName == AppIconEngine.getCurrentAlias(this)
         }
     }
+
+
 }
