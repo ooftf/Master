@@ -69,14 +69,6 @@ public class MasterPopupWindow extends PopupWindow {
 	 */
 	public void showAtLocation(View parent, int gravity, int x, int y) {
 			asDialog();
-			Activity activity = (Activity) getContentView().getContext();
-			View currentFocus = activity.getCurrentFocus();
-			if (currentFocus != null) {
-				IBinder applicationWindowToken = currentFocus.getApplicationWindowToken();
-				InputMethodManager im = (InputMethodManager) getContentView().getContext()
-						.getSystemService(Context.INPUT_METHOD_SERVICE);
-				im.hideSoftInputFromWindow(applicationWindowToken, InputMethodManager.HIDE_NOT_ALWAYS);
-			}
 		super.showAtLocation(parent, gravity, x, y);		
 	}
 
@@ -87,6 +79,15 @@ public class MasterPopupWindow extends PopupWindow {
 	private void asDialog() {
 		setFocusable(true);
 		setBackgroundDrawable(new BitmapDrawable());
+		//消除键盘
+		Activity activity = (Activity) getContentView().getContext();
+		View currentFocus = activity.getCurrentFocus();
+		if (currentFocus != null) {
+			IBinder applicationWindowToken = currentFocus.getApplicationWindowToken();
+			InputMethodManager im = (InputMethodManager) getContentView().getContext()
+					.getSystemService(Context.INPUT_METHOD_SERVICE);
+			im.hideSoftInputFromWindow(applicationWindowToken, InputMethodManager.HIDE_NOT_ALWAYS);
+		}
 	}
 	@Override
 	public void showAsDropDown(View anchor) {
