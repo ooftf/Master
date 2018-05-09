@@ -93,6 +93,7 @@ class WidgetFragment : BaseFragment() {
         adapter.add(ScreenItemBean("/widget/banner", "轮播图", "利用viewpager制作的轮播图", R.drawable.vector_banner, true, "自定义控件"))
         adapter.add(ScreenItemBean("/widget/operationEditText", "可操作输入框", "自定义OperationEditTextLayout", category = "自定义控件"))
         adapter.add(ScreenItemBean("/widget/verticalRunning", "自动竖向滚动控件", "自定义VerticalRunningLayout", category = "自定义控件"))
+        adapter.add(ScreenItemBean("/widget/bottomBar", "自定义BottomBar", "BottomBarActivity", category = "自定义控件"))
         adapter.add(ScreenItemBean("/widget/pinEditText", "方格输入控件", "类似密码输入控件，但是可以设置内容显示", R.drawable.vector_pin_edit_text, false, "自定义控件"))
         adapter.add(ScreenItemBean("/widget/pullToRefresh", "自定义下拉刷星控件", "自定义下拉刷新控件，可实现接口，编写不同header,上拉加载更多控件！", R.drawable.logo_orb, true, "自定义控件"))
         adapter.add(ScreenItemBean("/main/progressBar", "环形进度条", "仿Material进度条", R.drawable.vector_progress_bar, false, "非自定义"))
@@ -106,6 +107,8 @@ class WidgetFragment : BaseFragment() {
         adapter.add(ScreenItemBean("/widget/swipeRecycler", "SwipeRecycler", "使用第三方库SwipeLayout", category = "非自定义"))
         adapter.add(ScreenItemBean("/widget/lottery", "LotteryActivity", "LotteryActivity", category = "非自定义"))
         adapter.add(ScreenItemBean("/widget/taobao", "仿淘宝商品页面", "LotteryActivity", category = "非自定义"))
+
+
         adapter.notifyDataSetChanged()
     }
 }

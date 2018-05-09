@@ -25,7 +25,11 @@
         <activity android:name=".activity.PinEditTextActivity" />
         <activity android:name=".activity.CalendarActivity" />
         <activity android:name=".activity.PatternLockActivity" />
-        <activity android:name=".activity.TaobaoActivity"></activity>
+        <activity android:name=".activity.TaobaoActivity" />
+        <activity
+            android:name=".activity.BottomBarActivity"
+            android:label="@string/title_activity_bottom_bar"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
