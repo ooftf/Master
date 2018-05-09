@@ -1,40 +1,40 @@
 package com.ooftf.widget.self
 
 import android.content.Context
-import android.database.DataSetObserver
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.RecyclerView.INVALID_TYPE
 import android.util.AttributeSet
-import android.view.View
-import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.LinearLayout
 
 class BottomBar(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
     var observer = MyDataSetObserver()
     var interceptor:((Int,Int)->Boolean)? = null
     var onItemSelectedListener:((Int)->Unit)?=null
-    var adapter :Adapter? = null
+    var adapter :Adapter<RecyclerView.ViewHolder>? = null
     set(value) {
-        adapter?.unregisterDataSetObserver(observer)
+        adapter?.unregisterAdapterDataObserver(observer)
         adapter = value
-        adapter?.registerDataSetObserver(observer)
+        adapter?.registerAdapterDataObserver(observer)
         createItems()
     }
     var selectIndex:Int = 0;
     private fun createItems() {
         removeAllViews()
-        adapter?.let {
-            (0 until it.count).forEach{index->
-                val view = it.getView(index, null, this,selectIndex == index)
-                addView(view)
-                (view.layoutParams as LayoutParams).weight = 1f
-                (view.layoutParams as LayoutParams).height = LayoutParams.MATCH_PARENT
-                (view.layoutParams as LayoutParams).width = 0
-                view.setOnClickListener {
+        adapter?.let {adapterUnNull->
+            (0 until adapterUnNull.itemCount).forEach{index->
+                val viewHoler = adapterUnNull.createViewHolder(this,INVALID_TYPE)
+                viewHoler.itemView.setTag(viewHoler)
+                adapterUnNull.onBindViewHolder(viewHoler,index,index == selectIndex)
+                addView(viewHoler.itemView)
+                (viewHoler.itemView.layoutParams as LayoutParams).weight = 1f
+                (viewHoler.itemView.layoutParams as LayoutParams).height = LayoutParams.MATCH_PARENT
+                (viewHoler.itemView.layoutParams as LayoutParams).width = 0
+                viewHoler.itemView.setOnClickListener {
                     if(index == selectIndex) return@setOnClickListener
                     if(interceptor == null||!interceptor!!.invoke(selectIndex,index)){
                         selectIndex = index
                         onItemSelectedListener?.invoke(selectIndex)
-                        updateItems()
+                        adapterUnNull.notifyDataSetChanged()
                     }
                 }
             }
@@ -42,26 +42,24 @@ class BottomBar(context: Context?, attrs: AttributeSet?) : LinearLayout(context,
     }
     fun updateItems(){
         (0 until childCount).forEach {
-            adapter?.getView(it,getChildAt(it),this@BottomBar)
+            adapter?.onBindViewHolder(getChildAt(it).getTag() as RecyclerView.ViewHolder,it,it == selectIndex)
         }
     }
     /* fun setAdapter(adapter:BaseAdapter){
 
      }*/
-    inner class MyDataSetObserver: DataSetObserver() {
+    inner class MyDataSetObserver: RecyclerView.AdapterDataObserver() {
        override fun onChanged() {
            super.onChanged()
            updateItems()
        }
 
-       override fun onInvalidated() {
-           super.onInvalidated()
-       }
    }
-    abstract class Adapter:BaseAdapter(){
-        final override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
-            return null;
+    abstract class Adapter<VH:RecyclerView.ViewHolder>:RecyclerView.Adapter<VH>(){
+        final override fun onBindViewHolder(holder: VH, position: Int) {
+
         }
-        abstract fun getView(position: Int,convertView: View?,parent: ViewGroup?,isSelect:Boolean):View
+
+        abstract fun onBindViewHolder(holder: VH, position: Int,isSelect: Boolean);
     }
 }
