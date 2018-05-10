@@ -1,5 +1,6 @@
 package com.ooftf.service.base.adapter
 
+import android.support.graphics.drawable.VectorDrawableCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +39,7 @@ open class MainRecyclerAdapter(private var baseActivity: BaseActivity, internal 
         holder.describe.text = bean.describe
         holder.name.text = bean.name + "(" + bean.clz + ")"
         holder.icon.setImageResource(bean.icon)
+
         if (bean.isIssue) {
             holder.issue.visibility = View.VISIBLE
         } else {

@@ -9,5 +9,5 @@
     android:layout_marginBottom="16dp"
     android:layout_marginRight="16dp"
     android:orientation="vertical"
-    android:src="@drawable/vector_return_top"
+    app:srcCompat="@drawable/vector_return_top"
     app:fabSize="normal" />

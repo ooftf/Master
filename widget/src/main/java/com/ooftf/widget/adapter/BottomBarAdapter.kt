@@ -23,9 +23,9 @@ class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapte
         when (position) {
             0 -> {
                 if (isSelect) {
-                    holder.icon.setImageResource(R.drawable.ic_home_black_24dp)
+                    holder.icon.setImageResource(R.drawable.logo_full)
                 } else {
-                    holder.icon.setImageResource(R.drawable.ic_dashboard_black_24dp)
+                    holder.icon.setImageResource(R.drawable.logo_empty)
                 }
             }
             1 -> {
@@ -37,9 +37,9 @@ class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapte
             }
             2 -> {
                 if (isSelect) {
-                    holder.icon.setImageResource(R.drawable.ic_home_black_24dp)
+                    holder.icon.setImageResource(R.drawable.logo_legacy)
                 } else {
-                    holder.icon.setImageResource(R.drawable.ic_dashboard_black_24dp)
+                    holder.icon.setImageResource(R.drawable.logo_orb)
                 }
             }
             3 -> {
