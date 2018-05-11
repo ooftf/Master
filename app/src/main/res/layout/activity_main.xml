@@ -13,9 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
-    <com.roughike.bottombar.BottomBar
+    <com.ooftf.widget.self.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height"
-        app:bb_tabXmlResource="@xml/bottombar_tabs" />
+        />
 </LinearLayout>

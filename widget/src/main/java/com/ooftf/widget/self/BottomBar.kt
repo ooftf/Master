@@ -44,6 +44,11 @@ class BottomBar(context: Context?, attrs: AttributeSet?) : LinearLayout(context,
             }
         }
     }
+    fun setSelectedIndex(index:Int){
+        if(index<0)return
+        if(index>=childCount)return
+        getChildAt(index).performClick()
+    }
     fun updateItems(){
         (0 until childCount).forEach {
             (adapter as Adapter<RecyclerView.ViewHolder>)?.onBindViewHolder(getChildAt(it).getTag() as RecyclerView.ViewHolder,it,it == selectIndex)

@@ -7,6 +7,7 @@ import android.view.MenuItem
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.master.kit.R
+import com.master.kit.adapter.BottomBarAdapter
 import com.mcxiaoke.packer.helper.PackerNg
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.engine.FragmentSwitchManager
@@ -27,24 +28,26 @@ class MainActivity : BaseActivity() {
         switchManager = FragmentSwitchManager(
                 supportFragmentManager,
                 R.id.frame_fragment,
-                R.id.tab_widget,
-                R.id.tab_logic,
-                R.id.tab_debug,
-                R.id.tab_other,
-                R.id.tab_app,
+                "/widget/widget",
+                "/source/source",
+                "/debug/debug",
+                "/other/other",
+                "/applet/app",
                 onPreSwitch = null
         ) {
-            when (it) {
-                R.id.tab_widget -> return@FragmentSwitchManager ARouter.getInstance().build("/widget/widget").navigation() as Fragment
-                R.id.tab_logic -> return@FragmentSwitchManager ARouter.getInstance().build("/source/source").navigation() as Fragment
-                R.id.tab_debug -> return@FragmentSwitchManager ARouter.getInstance().build("/debug/debug").navigation() as Fragment
-                R.id.tab_other -> return@FragmentSwitchManager ARouter.getInstance().build("/other/other").navigation() as Fragment
-                R.id.tab_app -> ARouter.getInstance().build("/applet/app").navigation() as Fragment
-                else -> return@FragmentSwitchManager ARouter.getInstance().build("/widget/widget").navigation() as Fragment
-            }
-
+            ARouter.getInstance().build(it).navigation() as Fragment
         }
-        bottomBar.setOnTabSelectListener { tabId -> switchManager.switchFragment(tabId) }
+        bottomBar.onItemSelectedListener = {
+            when(it){
+                0 ->  switchManager.switchFragment("/widget/widget")
+                1 ->  switchManager.switchFragment("/source/source")
+                2 ->  switchManager.switchFragment("/debug/debug")
+                3 ->  switchManager.switchFragment("/other/other")
+                4 ->  switchManager.switchFragment("/applet/app")
+                else ->  switchManager.switchFragment("/applet/app")
+            }
+        }
+        bottomBar.adapter = BottomBarAdapter(this)
     }
 
 

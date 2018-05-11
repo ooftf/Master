@@ -12,17 +12,17 @@ import android.support.v4.app.FragmentTransaction
  *
  * @param manager
  * @param containerViewId
- * @param tagId   fragment的tag;建议以按钮的id作为tagId
+ * @param tagId   fragment的tag
  */
 class FragmentSwitchManager(
         private var manager: FragmentManager,
         private var containerViewId: Int,
-        vararg tagId: Int,
-        private val onPreSwitch: ((Int, Fragment) -> Unit)?,
-        private val createFragment: (Int) -> Fragment) {
-    private var tags: IntArray = tagId
+        vararg tagId: String,
+        private val onPreSwitch: ((String, Fragment) -> Unit)?,
+        private val createFragment: (String) -> Fragment) {
+    private var tags: Array<out String> = tagId
 
-    fun switchFragment(tagId: Int) {
+    fun switchFragment(tagId: String) {
         val fragmentTransaction = manager.beginTransaction()
         hideOther(fragmentTransaction, tagId)
         var fragment: Fragment = getFragment(fragmentTransaction, tagId)
@@ -30,18 +30,18 @@ class FragmentSwitchManager(
         fragmentTransaction.show(fragment).commitAllowingStateLoss()
     }
 
-    private fun hideOther(fragmentTransaction: FragmentTransaction, tagId: Int) {
+    private fun hideOther(fragmentTransaction: FragmentTransaction, tagId: String) {
         tags.filter { !it.equals(tagId) }
                 .map { manager.findFragmentByTag(it.toString()) }
                 .filter { it != null }
                 .forEach { fragmentTransaction.hide(it) }
     }
 
-    private fun getFragment(fragmentTransaction: FragmentTransaction, tagId: Int): Fragment {
+    private fun getFragment(fragmentTransaction: FragmentTransaction, tagId: String): Fragment {
         var fragment: Fragment? = manager.findFragmentByTag(tagId.toString())
         if (null == fragment) {
             fragment = createFragment(tagId)
-            fragmentTransaction.add(containerViewId, fragment, tagId.toString())
+            fragmentTransaction.add(containerViewId, fragment, tagId)
         }
         return fragment
     }
