@@ -9,15 +9,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.master.kit.R
 import com.ooftf.widget.self.BottomBar
-import kotlinx.android.synthetic.main.item_bottom_bar.view.*
 
 class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapter.ViewHolder>() {
-    var inflate: LayoutInflater = LayoutInflater.from(context)
+    private var inflate: LayoutInflater = LayoutInflater.from(context)
     override fun onBindViewHolder(holder: ViewHolder, position: Int, isSelect: Boolean) {
-        holder.title.setText("标题$position")
-        if (isSelect){
+        holder.title.text = "标题$position"
+        if (isSelect) {
             holder.title.setTextColor(getColor(R.color.blue_light))
-        }else{
+        } else {
             holder.title.setTextColor(getColor(R.color.black))
         }
         when (position) {
@@ -49,7 +48,7 @@ class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapte
                     holder.icon.setImageResource(R.drawable.ic_debug_24dp)
                 }
             }
-            4->{
+            4 -> {
                 if (isSelect) {
                     holder.icon.setImageResource(R.drawable.ic_other_selected_24dp)
                 } else {
@@ -57,19 +56,14 @@ class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapte
                 }
             }
         }
-
-
     }
-    fun getColor(id:Int):Int{
-        return context.resources.getColor(id)
-    }
+
+    private fun getColor(id: Int): Int = context.resources.getColor(id)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(inflate.inflate(R.layout.item_bottom_bar, parent, false))
     }
 
-    override fun getItemCount(): Int {
-        return 5;
-    }
+    override fun getItemCount(): Int = 5
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var icon: ImageView = itemView.findViewById(R.id.icon)
