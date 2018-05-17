@@ -9,49 +9,58 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.ooftf.widget.R
 import com.ooftf.widget.self.BottomBar
-import kotlinx.android.synthetic.main.item_bottom_bar.view.*
 
 class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapter.ViewHolder>() {
     var inflate: LayoutInflater = LayoutInflater.from(context)
-    override fun onBindViewHolder(holder: ViewHolder, position: Int, isSelect: Boolean) {
-        holder.title.setText("标题$position")
-        if (isSelect){
+    override fun onBindViewHolder(holder: ViewHolder, position: Int, selectedPositiong: Int) {
+        var isSelect = position == selectedPositiong
+        if (isSelect) {
             holder.title.setTextColor(getColor(R.color.blue_light))
-        }else{
+        } else {
             holder.title.setTextColor(getColor(R.color.black))
         }
         when (position) {
             0 -> {
+                holder.title.text = "widget"
                 if (isSelect) {
-                    holder.icon.setImageResource(R.drawable.logo_full)
+                    holder.icon.setImageResource(R.drawable.ic_widget_selected_24dp)
                 } else {
-                    holder.icon.setImageResource(R.drawable.logo_empty)
+                    holder.icon.setImageResource(R.drawable.ic_widget_24dp)
                 }
             }
             1 -> {
+                holder.title.text = "source"
                 if (isSelect) {
-                    holder.icon.setImageResource(R.drawable.ic_home_black_24dp)
+                    holder.icon.setImageResource(R.drawable.ic_logic_selected_24dp)
                 } else {
-                    holder.icon.setImageResource(R.drawable.ic_dashboard_black_24dp)
+                    holder.icon.setImageResource(R.drawable.ic_logic_24dp)
                 }
             }
             2 -> {
+                holder.title.text = "app"
                 if (isSelect) {
-                    holder.icon.setImageResource(R.drawable.logo_legacy)
+                    holder.icon.setImageResource(R.drawable.ic_app_selected_24dp)
                 } else {
-                    holder.icon.setImageResource(R.drawable.logo_orb)
+                    holder.icon.setImageResource(R.drawable.ic_app_24dp)
                 }
             }
             3 -> {
+                holder.title.text = "debug"
                 if (isSelect) {
-                    holder.icon.setImageResource(R.drawable.ic_home_black_24dp)
+                    holder.icon.setImageResource(R.drawable.ic_debug_selected_24dp)
                 } else {
-                    holder.icon.setImageResource(R.drawable.ic_dashboard_black_24dp)
+                    holder.icon.setImageResource(R.drawable.ic_debug_24dp)
+                }
+            }
+            4 -> {
+                holder.title.text = "other"
+                if (isSelect) {
+                    holder.icon.setImageResource(R.drawable.ic_other_selected_24dp)
+                } else {
+                    holder.icon.setImageResource(R.drawable.ic_other_24dp)
                 }
             }
         }
-
-
     }
     fun getColor(id:Int):Int{
         return context.resources.getColor(id)
@@ -61,7 +70,7 @@ class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapte
     }
 
     override fun getItemCount(): Int {
-        return 3;
+        return 5;
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

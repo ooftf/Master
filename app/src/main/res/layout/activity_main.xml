@@ -14,7 +14,7 @@
         android:layout_weight="1" />
     <com.ooftf.widget.self.BottomBar
         android:background="@color/background"
-        android:elevation="2dp"
+        android:elevation="20dp"
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height"

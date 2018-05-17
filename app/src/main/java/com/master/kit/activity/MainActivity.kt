@@ -37,8 +37,8 @@ class MainActivity : BaseActivity() {
         ) {
             ARouter.getInstance().build(it).navigation() as Fragment
         }
-        bottomBar.onItemSelectedListener = {
-            when(it){
+        bottomBar.onItemSelectChangedListener = { oldIndex, newIndex->
+            when(newIndex){
                 0 ->  switchManager.switchFragment("/widget/widget")
                 1 ->  switchManager.switchFragment("/source/source")
                 2 ->  switchManager.switchFragment("/debug/debug")
@@ -48,6 +48,7 @@ class MainActivity : BaseActivity() {
             }
         }
         bottomBar.adapter = BottomBarAdapter(this)
+        bottomBar.setSelectedIndex(0)
     }
 
 

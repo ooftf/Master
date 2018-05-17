@@ -7,25 +7,39 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import com.ooftf.service.widget.toolbar.ScrollToolbar
+import com.ooftf.widget.self.ReturnTopLayout
 
+/**
+ * I think : behavior 分为两种，一种是根据layout相互影响，一种是根据scroll相互影响
+ *
+ *
+ * SwipeDissmissBehavior
+ * BottomSheetBehavior
+ * BottomSheetDialog
+ */
 class ToolbarBehavior : CoordinatorLayout.Behavior<ScrollToolbar> {
     var distanceY = 0
 
     constructor() : super()
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
 
+    /**
+     * 此方法 的返回值只影响layout不影响scroll
+     */
     override fun layoutDependsOn(parent: CoordinatorLayout?, child: ScrollToolbar, dependency: View): Boolean {
         Log.e(Throwable().stackTrace[0].fileName, Throwable().stackTrace[0].methodName)
         setProgress(child)
-        return dependency is ScrollingView
+        return dependency is ReturnTopLayout
     }
-
-    override fun onDependentViewChanged(parent: CoordinatorLayout?, child: ScrollToolbar, dependency: View): Boolean {
+    override fun onDependentViewChanged(parent: CoordinatorLayout, child: ScrollToolbar, dependency: View): Boolean {
         Log.e(Throwable().stackTrace[0].fileName, Throwable().stackTrace[0].methodName)
+        //dependency.layout(dependency.left,child.bottom,dependency.right,dependency.bottom)
+        //return true
+        dependency.translationY = ( child.height).toFloat()
         return super.onDependentViewChanged(parent, child, dependency)
     }
 
-    override fun onLayoutChild(parent: CoordinatorLayout?, child: ScrollToolbar?, layoutDirection: Int): Boolean {
+    override fun onLayoutChild(parent: CoordinatorLayout, child: ScrollToolbar?, layoutDirection: Int): Boolean {
         Log.e(Throwable().stackTrace[0].fileName, Throwable().stackTrace[0].methodName)
         return super.onLayoutChild(parent, child, layoutDirection)
     }

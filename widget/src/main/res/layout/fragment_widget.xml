@@ -3,8 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <com.ooftf.widget.self.WidgetToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:actionMenuTextColor="@color/white"
+        />
     <!--com.ooftf.widget.self.behavior.ToolbarBehavior-->
     <com.ooftf.widget.self.ReturnTopLayout
+        app:layout_behavior="com.ooftf.service.widget.toolbar.TailoredToolbar$HeaderBehavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
@@ -26,11 +34,6 @@
             android:src="@drawable/logo_legacy" />
     </com.ooftf.widget.self.ReturnTopLayout>
 
-    <com.ooftf.widget.self.WidgetToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:actionMenuTextColor="@color/white"
-        app:layout_behavior="com.ooftf.widget.self.behavior.ToolbarBehavior" />
+
+    <!--app:layout_behavior="com.ooftf.widget.self.behavior.ToolbarBehavior"-->
 </android.support.design.widget.CoordinatorLayout>
