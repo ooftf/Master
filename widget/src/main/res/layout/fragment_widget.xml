@@ -12,7 +12,7 @@
         />
     <!--com.ooftf.widget.self.behavior.ToolbarBehavior-->
     <com.ooftf.widget.self.ReturnTopLayout
-        app:layout_behavior="com.ooftf.service.widget.toolbar.TailoredToolbar$HeaderBehavior"
+        app:layout_behavior="com.ooftf.service.widget.toolbar.TailoredToolbar$BelowBehavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
