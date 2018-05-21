@@ -7,9 +7,4 @@ interface IJsonParser  {
     fun <T>fromJson(json:String,clazz: Class<T>):T
     fun <T>fromJson(jsonString:String, type:Type):T
     fun <T>fromJsonToArray(jsonString: String,itemClazz:Class<T>):List<T>
-    class Builder(){
-        fun build():IJsonParser{
-            return GsonImpl()
-        }
-    }
 }

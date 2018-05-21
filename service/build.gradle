@@ -70,4 +70,5 @@ dependencies {
     // 仅在debug包启用BlockCanary进行卡顿监控和提示的话，可以这么用
     debugApi 'com.github.markzhai:blockcanary-android:1.5.0'
     releaseApi 'com.github.markzhai:blockcanary-no-op:1.5.0'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
 }

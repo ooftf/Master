@@ -1,13 +1,9 @@
 package com.ooftf.service.engine.json
 
 import com.alibaba.fastjson.JSON
-import com.alibaba.fastjson.JSONArray
-import com.alibaba.fastjson.JSONObject
-import com.alibaba.fastjson.TypeReference
-import com.google.gson.JsonArray
 import java.lang.reflect.Type
 
-class FastJsonImpl:IJsonParser{
+internal class ImplFastJson:IJsonParser{
     override fun <T> fromJsonToArray(jsonString: String, itemClazz: Class<T>): List<T> {
         val jsonArray = JSON.parseArray(jsonString, itemClazz)
         return jsonArray
