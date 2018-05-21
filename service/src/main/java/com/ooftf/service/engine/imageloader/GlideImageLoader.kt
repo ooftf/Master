@@ -1,5 +1,6 @@
-package com.ooftf.service.engine
+package com.ooftf.service.engine.imageloader
 
+import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Bitmap
 import android.widget.ImageView
@@ -8,9 +9,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.ooftf.service.engine.image_loader.IImageLoader
-import com.ooftf.service.engine.image_loader.ImageLoaderConfig
-import com.ooftf.service.engine.image_loader.ImageLoaderListener
+import com.ooftf.service.engine.GlideApp
 
 /**
  * Created by master on 2017/1/22.

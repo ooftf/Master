@@ -6,7 +6,7 @@ import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.service.base.BaseSlidingActivity
-import com.ooftf.service.engine.image_loader.IImageLoader
+import com.ooftf.service.engine.imageloader.IImageLoader
 import com.ooftf.service.net.ServiceHolder
 import com.ooftf.service.net.etd.PresenterObserver
 import com.ooftf.service.net.etd.ResponseView

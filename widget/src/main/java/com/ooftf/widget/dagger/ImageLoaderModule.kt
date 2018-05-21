@@ -1,7 +1,7 @@
 package com.ooftf.widget.dagger
 
-import com.ooftf.service.engine.GlideImageLoader
-import com.ooftf.service.engine.image_loader.IImageLoader
+import com.ooftf.service.engine.imageloader.GlideImageLoader
+import com.ooftf.service.engine.imageloader.IImageLoader
 import dagger.Module
 import dagger.Provides
 

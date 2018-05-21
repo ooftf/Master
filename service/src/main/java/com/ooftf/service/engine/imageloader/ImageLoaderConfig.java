@@ -1,4 +1,4 @@
-package com.ooftf.service.engine.image_loader;
+package com.ooftf.service.engine.imageloader;
 
 /**
  * Created by master on 2017/9/29 0029.
