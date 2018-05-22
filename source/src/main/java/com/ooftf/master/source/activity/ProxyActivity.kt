@@ -17,7 +17,9 @@ class ProxyActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_proxy)
         button.setOnClickListener {
-            val proxyImpl = OneImplDynamicProxy(OneImpl()).newProxyInstance() as OneInterface
+            var impl = OneImpl()
+            val proxyImpl = OneImplDynamicProxy(impl).newProxyInstance() as OneInterface
+            impl.doSomething()
             proxyImpl.doSomething()
         }
     }
