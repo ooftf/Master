@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DrawerDemoActivity">
+    <com.ooftf.widget.self.DrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="@string/long_article"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.ooftf.widget.self.DrawerLayout>
+    <Button
+        android:id="@+id/click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

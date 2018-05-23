@@ -29,7 +29,8 @@
         <activity
             android:name=".activity.BottomBarActivity"
             android:label="@string/title_activity_bottom_bar"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.DrawerDemoActivity"></activity>
     </application>
 
 </manifest>

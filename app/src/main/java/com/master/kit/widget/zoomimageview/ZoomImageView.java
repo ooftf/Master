@@ -53,7 +53,7 @@ public class ZoomImageView extends ImageView {
 			super.onDraw(canvas2);
 		}
 		// bitmap =
-		// Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
+		// Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getCloseHeight(),matrix,true);
 		// bitmap.crea
 		canvas.drawBitmap(bitmap, matrix, new Paint());
 	}

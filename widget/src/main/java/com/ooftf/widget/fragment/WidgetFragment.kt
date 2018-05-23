@@ -107,6 +107,7 @@ class WidgetFragment : BaseFragment() {
         adapter.add(ScreenItemBean("/widget/swipeRecycler", "SwipeRecycler", "使用第三方库SwipeLayout", category = "非自定义"))
         adapter.add(ScreenItemBean("/widget/lottery", "LotteryActivity", "LotteryActivity", category = "非自定义"))
         adapter.add(ScreenItemBean("/widget/taobao", "仿淘宝商品页面", "LotteryActivity", category = "非自定义"))
+        adapter.add(ScreenItemBean("/widget/drawerDemo", "折叠盒子", "LotteryActivity", category = "非自定义"))
 
 
         adapter.notifyDataSetChanged()
