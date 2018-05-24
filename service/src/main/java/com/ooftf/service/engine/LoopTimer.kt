@@ -5,7 +5,11 @@ import android.os.Handler
 import com.ooftf.service.empty.EmptyActivityLifecycleCallbacks
 
 /**
+ *
  * Created by master on 2017/10/18 0018.
+ * 循环调用器，需要调用停止
+ * delayed 延迟执行事件
+ * period 每次回掉间隔事件
  */
 abstract class LoopTimer(private var delayed: Long = 0, private var period: Long) {
     constructor(delayed: Long = 0, period: Long, bindActivity: Activity) : this(delayed, period) {

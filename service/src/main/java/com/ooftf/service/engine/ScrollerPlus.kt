@@ -5,6 +5,10 @@ import android.view.animation.Interpolator
 import android.widget.Scroller
 
 /**
+ * 系统类scroller的加强版
+ * 有依赖{@link com.ooftf.service.engine.LoopTimer}
+ * 间隔回掉方法onMoving
+ * 结束方法onFinish
  * Created by master on 2017/10/18 0018.
  */
 abstract class ScrollerPlus : Scroller {

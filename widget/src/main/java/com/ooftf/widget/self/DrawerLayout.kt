@@ -13,15 +13,43 @@ class DrawerLayout:FrameLayout {
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
-    init {
-
+    //用于展开动画
+    val openScroller:ScrollerPlus by lazy {
+        var scrollerPlus = object :ScrollerPlus(context){
+            override fun onMoving(currX: Int, currY: Int) {
+                animationHeight = currY
+                requestLayout()
+            }
+            override fun onFinish() {
+                state = STATE_OPEN
+                requestLayout()
+            }
+        }
+        scrollerPlus
     }
-    var openHeight = 0
-    var closeHeight = 0
-    var animationHeight = 0
+    //用于关闭动画
+    val closeScroller:ScrollerPlus by lazy {
+        var scroller = object :ScrollerPlus(context){
+            override fun onMoving(currX: Int, currY: Int) {
+                animationHeight = currY
+                requestLayout()
+            }
+
+            override fun onFinish() {
+                state = STATE_CLOSE
+                requestLayout()
+            }
+        }
+        scroller
+    }
+    var openHeight = 0//关闭时高度
+    var closeHeight = 0//打开时高度
+    var animationHeight = 0//动画时的高度
     var state = STATE_CLOSE
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        closeHeight = MeasureSpec.getSize(heightMeasureSpec)
+        if(closeHeight == 0){
+            closeHeight = MeasureSpec.getSize(heightMeasureSpec)
+        }
         var heightMeasureSpec = changeMode(heightMeasureSpec,MeasureSpec.UNSPECIFIED)
         (0 until childCount).forEach {
             var child = getChildAt(it)
@@ -41,18 +69,7 @@ class DrawerLayout:FrameLayout {
      */
     fun smoothClose(){
         state = STATE_ANIMATION
-        var scroller = object :ScrollerPlus(context){
-            override fun onMoving(currX: Int, currY: Int) {
-                animationHeight = currY
-                requestLayout()
-            }
-
-            override fun onFinish() {
-                state = STATE_CLOSE
-                requestLayout()
-            }
-        }
-        scroller.startScroll(0,openHeight,0,closeHeight - openHeight,600)
+        closeScroller.startScroll(0,openHeight,0,closeHeight - openHeight,600)
     }
 
     /**
@@ -60,24 +77,16 @@ class DrawerLayout:FrameLayout {
      */
     fun smoothOpen(){
         state = STATE_ANIMATION
-        var scroller = object :ScrollerPlus(context){
-            override fun onMoving(currX: Int, currY: Int) {
-                animationHeight = currY
-                requestLayout()
-            }
-            override fun onFinish() {
-                state = STATE_OPEN
-                requestLayout()
-            }
-        }
-        scroller.startScroll(0,closeHeight,0,openHeight-closeHeight,600)
+        openScroller.startScroll(0,closeHeight,0,openHeight-closeHeight,600)
     }
+    //展开和close相互切换
     fun smoothSwitch(){
         when(state){
             STATE_CLOSE->smoothOpen()
             STATE_OPEN->smoothClose()
         }
     }
+    fun isOpen() = state == STATE_OPEN
     private fun changeMode(measureSpec: Int, mode: Int):Int {
        return  MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(measureSpec),mode)
     }
