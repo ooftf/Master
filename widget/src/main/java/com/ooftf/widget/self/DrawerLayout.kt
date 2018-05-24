@@ -91,8 +91,8 @@ class DrawerLayout:FrameLayout {
        return  MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(measureSpec),mode)
     }
     companion object {
-        public val STATE_CLOSE = 0
-        public val STATE_ANIMATION = 1
-        public val STATE_OPEN = 2
+         val STATE_CLOSE = 0
+         val STATE_ANIMATION = 1
+         val STATE_OPEN = 2
     }
 }
