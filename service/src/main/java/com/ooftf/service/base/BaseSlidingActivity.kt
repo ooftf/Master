@@ -16,6 +16,5 @@ open class BaseSlidingActivity : BaseActivity() {
 
     fun setEnabled(enabled: Boolean) {
         slidingFrameLayout.isEnabled = enabled
-
     }
 }
