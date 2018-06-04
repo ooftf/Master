@@ -28,10 +28,10 @@ class WidgetToolbar : ScrollToolbar {
     var sort: MenuItem? = null
     var settings_black: MenuItem? = null
     var sort_black: MenuItem? = null*/
-    lateinit var settting: MenuItem
-    lateinit var sort: MenuItem
-    lateinit var settings_black: MenuItem
-    lateinit var sort_black: MenuItem
+    lateinit var settting: android.view.MenuItem
+    lateinit var sort: android.view.MenuItem
+    lateinit var settings_black: android.view.MenuItem
+    lateinit var sort_black: android.view.MenuItem
     override fun inflateMenu(resId: Int) {
         super.inflateMenu(resId)
         settting = menu.findItem(R.id.action_settings)

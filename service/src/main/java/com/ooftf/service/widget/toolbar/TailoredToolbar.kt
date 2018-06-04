@@ -2,9 +2,11 @@ package com.ooftf.service.widget.toolbar
 
 import android.app.Activity
 import android.content.Context
+import android.support.annotation.LayoutRes
 import android.support.design.widget.CoordinatorLayout
 import android.support.v7.widget.Toolbar
 import android.util.AttributeSet
+import android.util.Xml
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -30,24 +32,41 @@ open class TailoredToolbar : Toolbar {
     fun setMenuItem(item:MenuItem){
         addView(item.itemLayout)
     }
-    class MenuItem(context: Context,toolbar: TailoredToolbar){
-        var itemLayout:View = LayoutInflater.from(context).inflate(R.layout.item_menu_toolbar,toolbar,false)
+    class MenuItem(var context: Context){
+        var itemLayout:View = LayoutInflater.from(context).inflate(R.layout.item_menu_toolbar,null)
         var text = itemLayout.findViewById<TextView>(R.id.text)
         var image = itemLayout.findViewById<ImageView>(R.id.image)
-        fun layoutRight(){
-            (itemLayout.layoutParams as Toolbar.LayoutParams).gravity = Gravity.RIGHT
+
+        fun layoutRight():MenuItem{
+            getLayoutParams().gravity = Gravity.RIGHT
+            return this
         }
-        fun layoutLeft(){
-            (itemLayout.layoutParams as Toolbar.LayoutParams).gravity = Gravity.LEFT
+        fun layoutLeft():MenuItem{
+            getLayoutParams().gravity = Gravity.LEFT
+            return this
         }
-        fun setImage(id:Int){
+        fun setImage(id:Int):MenuItem{
             image.setImageResource(id)
+            return this
         }
-        fun setText(id:Int){
+        fun setText(id:Int):MenuItem{
             text.setText(id)
+            return this
         }
-        fun setText(text:String){
+        fun setText(text:String):MenuItem{
             this.text.setText(text)
+            return this
+        }
+
+        private fun getLayoutParams():Toolbar.LayoutParams{
+            if(itemLayout.layoutParams == null){
+                itemLayout.layoutParams = Toolbar.LayoutParams(context,getAttributeSet(context,R.layout.item_menu_toolbar))
+            }
+            return itemLayout.layoutParams as LayoutParams
+        }
+        private fun getAttributeSet(context: Context,@LayoutRes layoutId:Int): AttributeSet {
+            val parser = context.getResources().getLayout(layoutId)
+            return Xml.asAttributeSet(parser);
         }
 
     }

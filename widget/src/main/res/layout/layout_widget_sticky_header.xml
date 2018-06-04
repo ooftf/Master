@@ -3,7 +3,7 @@
     android:id="@+id/stickyView"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/red"
     android:gravity="center_vertical"
     android:paddingLeft="@dimen/layout_edge_spacing"
     android:paddingRight="@dimen/layout_edge_spacing"
