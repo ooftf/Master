@@ -19,6 +19,8 @@ class OtherFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean("/other/fibonacci", "斐波那契数列"))
         adapter.add(ScreenItemBean("/other/stackGetMin", "获取堆栈内的最小值"))
         adapter.add(ScreenItemBean("/other/turnIcon", "切换App图标"))
+        adapter.add(ScreenItemBean("/other/share", "分享示例"))
+
         adapter.notifyDataSetChanged()
     }
 }

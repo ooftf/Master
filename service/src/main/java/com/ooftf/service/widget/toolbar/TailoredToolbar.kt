@@ -6,6 +6,7 @@ import android.support.annotation.LayoutRes
 import android.support.design.widget.CoordinatorLayout
 import android.support.v7.widget.Toolbar
 import android.util.AttributeSet
+import android.util.Log
 import android.util.Xml
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -83,9 +84,7 @@ open class TailoredToolbar : Toolbar {
         }
         override fun onLayoutChild(parent: CoordinatorLayout, child: View, layoutDirection: Int): Boolean {
             parent.onLayoutChild(child,layoutDirection)
-            dependency?.post{
-                child.offsetTopAndBottom(dependency!!.bottom)
-            }
+            child.offsetTopAndBottom(dependency!!.bottom)
             return true
         }
 
@@ -93,10 +92,13 @@ open class TailoredToolbar : Toolbar {
             return true
         }
         override fun onMeasureChild(parent: CoordinatorLayout, child: View, parentWidthMeasureSpec: Int, widthUsed: Int, parentHeightMeasureSpec: Int, heightUsed: Int): Boolean {
-            dependency?.post {
-                val heightMeasureSpec = MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(parentHeightMeasureSpec) - dependency!!.bottom, MeasureSpec.getMode(parentHeightMeasureSpec))
-                child.measure(parentWidthMeasureSpec,heightMeasureSpec)
+            val heightMeasureSpec =
+            if(dependency!!.bottom==dependency!!.top){
+                MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(parentHeightMeasureSpec) - dependency!!.measuredHeight, MeasureSpec.getMode(parentHeightMeasureSpec))
+            }else{
+                MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(parentHeightMeasureSpec) - dependency!!.bottom, MeasureSpec.getMode(parentHeightMeasureSpec))
             }
+            child.measure(parentWidthMeasureSpec,heightMeasureSpec)
             return true
         }
     }

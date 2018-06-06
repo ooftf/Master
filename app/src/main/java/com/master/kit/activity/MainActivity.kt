@@ -41,9 +41,9 @@ class MainActivity : BaseActivity() {
             when(newIndex){
                 0 ->  switchManager.switchFragment("/widget/widget")
                 1 ->  switchManager.switchFragment("/source/source")
-                2 ->  switchManager.switchFragment("/debug/debug")
-                3 ->  switchManager.switchFragment("/other/other")
-                4 ->  switchManager.switchFragment("/applet/app")
+                2 ->  switchManager.switchFragment("/applet/app")
+                3 ->  switchManager.switchFragment("/debug/debug")
+                4 ->  switchManager.switchFragment("/other/other")
                 else ->  switchManager.switchFragment("/applet/app")
             }
         }

@@ -5,7 +5,8 @@
     <application>
         <activity android:name=".activity.FibonacciActivity" />
         <activity android:name=".activity.StackGetMinActivity" />
-        <activity android:name=".activity.TurnIconActivity"></activity>
+        <activity android:name=".activity.TurnIconActivity" />
+        <activity android:name=".activity.ShareActivity"></activity>
     </application>
 
 </manifest>

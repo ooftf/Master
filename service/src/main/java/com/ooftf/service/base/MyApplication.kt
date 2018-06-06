@@ -20,6 +20,7 @@ import com.tinkerpatch.sdk.loader.TinkerPatchApplicationLike
 class MyApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
+        instance = this
         setupThinker()
         setupLeakCanary()
         FileDownloader.init(applicationContext)
@@ -64,8 +65,10 @@ class MyApplication : MultiDexApplication() {
         // 每隔3个小时(通过setFetchPatchIntervalByHours设置)去访问后台时候有更新,通过handler实现轮训的效果
         TinkerPatch.with().fetchPatchUpdateAndPollWithInterval()
     }
-
     private fun setupLogger() {
         Logger.addLogAdapter(AndroidLogAdapter())
+    }
+    companion object {
+        lateinit var instance:MyApplication
     }
 }

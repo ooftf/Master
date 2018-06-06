@@ -32,6 +32,7 @@ allprojects {
         maven() {
             url "https://oss.sonatype.org/content/repositories/snapshots"
         }
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
     }
 }
 task clean(type: Delete) {

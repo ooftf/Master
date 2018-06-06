@@ -12,13 +12,19 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         app:actionMenuTextColor="@color/white" />
-    <android.support.v7.widget.RecyclerView
+    <FrameLayout
         android:layout_below="@+id/toolbar"
-        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    <include layout="@layout/layout_sticky_header" />
+        <include
+            layout="@layout/layout_sticky_header" />
+    </FrameLayout>
+
 
     <ImageView
         android:id="@+id/image"

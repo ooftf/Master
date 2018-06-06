@@ -1,8 +1,12 @@
 package com.ooftf.service.base
 
+import android.animation.Animator
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewPropertyAnimator
 import android.widget.TextView
 import com.ooftf.service.R
 import com.ooftf.service.base.adapter.CategoryRecyclerAdapter
@@ -29,19 +33,7 @@ abstract class BaseHomeFragment : BaseFragment() {
     }
 
     private fun setupFloatButton() {
-        recycler_view.addOnScrollListener(object : android.support.v7.widget.RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView?, newState: kotlin.Int) {
-                when (newState) {
-                    android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING -> image.animate().translationX(image.width * 0.8.toFloat()).setDuration(300).startDelay = 0
-                    android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE -> {
-                        handler.removeCallbacksAndMessages(null)
-                        handler.postDelayed({
-                            image.animate().translationX(0F).duration = 300
-                        }, 800)
-                    }
-                }
-            }
-        })
+        recycler_view.addOnScrollListener(ShyAnimateScrollListener(image))
     }
 
     private fun setupRecyclerView() {
@@ -75,4 +67,21 @@ abstract class BaseHomeFragment : BaseFragment() {
 
     protected abstract fun initData()
     abstract fun getRecyclerViewTag(): String
+    /**
+     * 一个RecyclerView的滚动监听，负责滚动时View的收缩动画
+     */
+    class ShyAnimateScrollListener(var view: View) : RecyclerView.OnScrollListener() {
+        var delayAnimate : ViewPropertyAnimator? = null;
+        override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView?, newState: kotlin.Int) {
+            when (newState) {
+                RecyclerView.SCROLL_STATE_DRAGGING -> {//滚动的时候
+                    view.animate().translationX(view.width * 0.8.toFloat()).setDuration(300).start()
+                }
+                RecyclerView.SCROLL_STATE_IDLE -> {//停止的时候
+                    delayAnimate?.cancel()
+                    delayAnimate = view.animate().translationX(0F).setDuration(300).setStartDelay(800)
+                }
+            }
+        }
+    }
 }
