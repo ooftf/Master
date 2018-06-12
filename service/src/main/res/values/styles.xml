@@ -11,21 +11,24 @@
         <item name="titleTextColor">@color/colorPrimaryContrast</item>
         <item name="android:textColor">@color/font_black</item>
     </style>
+
     <style name="AppTheme.Fullscreen">
         <item name="android:windowFullscreen">true</item>
     </style>
+
     <style name="AppTheme.BackgroundTransparent">
         <!--这两个属性必须都有-->
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
     </style>
+
     <style name="AppTheme.TranslucentStatus">
         <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
     </style>
+
     <style name="AppTheme.BackgroundTransparent.TranslucentStatus">
         <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
     </style>
-
 
 
     <style name="DialogTheme" parent="android:Theme.Dialog">
@@ -39,6 +42,7 @@
         <!-- 背景是否变暗 -->
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+
     <style name="DialogTheme.Master">
         <!-- 背景色 -->
         <item name="android:windowBackground">@drawable/shape_dialog_background</item>
@@ -48,6 +52,12 @@
         <!-- 背景色 -->
         <item name="android:windowBackground">@color/dialogBackground</item>
     </style>
+
+    <style name="DialogTranslateBottom">
+        <item name="@android:windowEnterAnimation">@anim/dialog_enter_bottom</item>
+        <item name="@android:windowExitAnimation">@anim/dialog_outer_bottom</item>
+    </style>
+
 
     <style name="DialogTheme.Transparent">
         <!-- 背景色 -->
