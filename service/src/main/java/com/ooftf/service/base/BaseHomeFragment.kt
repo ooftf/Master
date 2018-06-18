@@ -33,7 +33,7 @@ abstract class BaseHomeFragment : BaseFragment() {
     }
 
     private fun setupFloatButton() {
-        recycler_view.addOnScrollListener(ShyAnimateScrollListener(image))
+        recycler_view.addOnScrollListener(ShyAnimateScrollListener(image,handler))
     }
 
     private fun setupRecyclerView() {
@@ -70,16 +70,18 @@ abstract class BaseHomeFragment : BaseFragment() {
     /**
      * 一个RecyclerView的滚动监听，负责滚动时View的收缩动画
      */
-    class ShyAnimateScrollListener(var view: View) : RecyclerView.OnScrollListener() {
-        var delayAnimate : ViewPropertyAnimator? = null;
+    class ShyAnimateScrollListener(var view: View,var handler:Handler) : RecyclerView.OnScrollListener() {
         override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView?, newState: kotlin.Int) {
             when (newState) {
                 RecyclerView.SCROLL_STATE_DRAGGING -> {//滚动的时候
-                    view.animate().translationX(view.width * 0.8.toFloat()).setDuration(300).start()
+                    handler.removeCallbacksAndMessages(null)
+                    view.animate().translationX(view.width * 0.8.toFloat()).setDuration(300).startDelay = 0
                 }
                 RecyclerView.SCROLL_STATE_IDLE -> {//停止的时候
-                    delayAnimate?.cancel()
-                    delayAnimate = view.animate().translationX(0F).setDuration(300).setStartDelay(800)
+                    handler.removeCallbacksAndMessages(null)
+                    handler.postDelayed({
+                        view.animate().translationX(0F).duration = 300
+                    }, 800)
                 }
             }
         }

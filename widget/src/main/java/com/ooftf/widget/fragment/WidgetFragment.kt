@@ -36,7 +36,10 @@ class WidgetFragment : BaseFragment() {
         recycler_view.addOnScrollListener(object : android.support.v7.widget.RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView?, newState: kotlin.Int) {
                 when (newState) {
-                    android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING -> image.animate().translationX(image.width * 0.8.toFloat()).setDuration(300).startDelay = 0
+                    android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING -> {
+                        handler.removeCallbacksAndMessages(null)
+                        image.animate().translationX(image.width * 0.8.toFloat()).setDuration(300).startDelay = 0
+                    }
                     android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE -> {
                         handler.removeCallbacksAndMessages(null)
                         handler.postDelayed({

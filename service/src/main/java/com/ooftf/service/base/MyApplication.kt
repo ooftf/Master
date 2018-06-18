@@ -12,6 +12,7 @@ import com.orhanobut.logger.Logger
 import com.squareup.leakcanary.LeakCanary
 import com.tinkerpatch.sdk.TinkerPatch
 import com.tinkerpatch.sdk.loader.TinkerPatchApplicationLike
+import hugo.weaving.internal.Hugo
 
 /**
  * Created by master on 2016/12/26.
@@ -36,6 +37,7 @@ class MyApplication : MultiDexApplication() {
     }
 
     private fun setupBlockCanary() {
+
         BlockCanary.install(this, AppBlockCanaryContext()).start()
     }
 

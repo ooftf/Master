@@ -11,6 +11,7 @@ import com.master.kit.adapter.BottomBarAdapter
 import com.mcxiaoke.packer.helper.PackerNg
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.engine.FragmentSwitchManager
+import hugo.weaving.DebugLog
 import kotlinx.android.synthetic.main.activity_main.*
 
 @Route(path = "/main/main")
@@ -67,6 +68,7 @@ class MainActivity : BaseActivity() {
     }
 
     private var backPressedTime = 0L
+    @DebugLog
     override fun onBackPressed() {
         if(System.currentTimeMillis()-backPressedTime<2000){
             android.os.Process.killProcess( android.os.Process.myPid())

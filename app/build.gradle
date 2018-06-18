@@ -13,6 +13,7 @@ android {
         versionName "1.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
+
     }
     kapt {
         arguments {
@@ -40,6 +41,7 @@ android {
         }
     }
 }
+
 //packer-begin
 packer {
     archiveNameFormat = '${appPkg}-${buildType}-v${versionName}-${channel}'
@@ -47,12 +49,14 @@ packer {
     channelList = ['*Douban*', 'Google/', '中文/@#市场']
 }
 dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(':widget')
     api project(':service')
     api project(':applet')
+    api project(':debug')
+    api project(':source')
+    api project(':other')
     kapt 'com.google.dagger:dagger-compiler:2.13'
     annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") {
         changing = true
@@ -63,8 +67,6 @@ dependencies {
     }
     implementation 'com.github.ooftf:JsBridge-TencentX5:1.1.0'
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"
-    api project(':debug')
-    api project(':source')
-    api project(':other')
 }
+apply plugin: 'com.jakewharton.hugo'
 apply from: 'tinkerpatch.gradle'

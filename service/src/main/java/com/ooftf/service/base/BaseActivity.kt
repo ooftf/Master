@@ -7,11 +7,13 @@ import android.support.v7.widget.Toolbar
 import android.widget.Toast
 import com.facebook.stetho.common.LogUtil
 import com.ooftf.service.interfaces.ILifecycle
+import hugo.weaving.DebugLog
 import java.util.*
 
 /**
  * Created by master on 2017/10/10 0010.
  */
+@DebugLog
 open class BaseActivity : AppCompatActivity(), ILifecycle {
     override fun isAlive(): Boolean {
         return alive
@@ -43,7 +45,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycle {
             finish()
         }
     }
-
+    @DebugLog
     override fun onCreate(savedInstanceState: Bundle?) {
         LogUtil.e(this.javaClass.simpleName, "onCreate")
         super.onCreate(savedInstanceState)
