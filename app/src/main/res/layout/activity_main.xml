@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
-    <com.ooftf.widget.self.BottomBar
+    <com.ooftf.bottombar.BottomBar
         android:background="@color/background"
         android:elevation="20dp"
         android:id="@+id/bottomBar"

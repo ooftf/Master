@@ -31,4 +31,5 @@ dependencies {
     implementation 'com.github.ooftf:PatternLock:1.0.1'
     implementation 'com.github.ooftf:StraightLayout:1.0.0'
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"
+    api 'com.github.ooftf:BottomBar:1.3.0'
 }

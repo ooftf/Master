@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.master.kit.R
-import com.ooftf.widget.self.BottomBar
+import com.ooftf.bottombar.BottomBar
 
 class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapter.ViewHolder>() {
     private var inflate: LayoutInflater = LayoutInflater.from(context)

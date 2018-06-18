@@ -7,9 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.ooftf.bottombar.BottomBar
 import com.ooftf.widget.R
-import com.ooftf.widget.self.BottomBar
-
 class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapter.ViewHolder>() {
     var inflate: LayoutInflater = LayoutInflater.from(context)
     override fun onBindViewHolder(holder: ViewHolder, position: Int, selectedPositiong: Int) {
