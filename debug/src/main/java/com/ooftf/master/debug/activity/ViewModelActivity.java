@@ -1,0 +1,36 @@
+package com.ooftf.master.debug.activity;
+
+import android.app.Activity;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProvider;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.widget.TextView;
+
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.ooftf.master.debug.R;
+import com.ooftf.master.debug.bean.User;
+import com.ooftf.master.debug.viewmodel.MyViewModel;
+import com.ooftf.service.base.BaseActivity;
+@Route(path = "/debug/ViewModel")
+public class ViewModelActivity extends BaseActivity {
+    TextView textView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view_model);
+        textView  = findViewById(R.id.text);
+        MyViewModel myViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MyViewModel.class);
+        myViewModel. getScope().observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(@Nullable User user) {
+                textView.setText(user.getName());
+            }
+        });
+        //myViewModel.loadScope();
+       /* MyViewModel model = ViewModelProviders.of(this).get(MyViewModel.class);
+        model.getUsers().observe(this, users -> {
+            // update UI
+        });*/
+    }
+}

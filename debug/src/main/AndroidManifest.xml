@@ -16,7 +16,8 @@
         <activity android:name=".activity.RegexActivity" />
         <activity android:name=".activity.DialogActivity" />
         <activity android:name=".activity.ThreadPoolActivity" />
-        <activity android:name=".activity.HashMapActivity"></activity>
+        <activity android:name=".activity.HashMapActivity" />
+        <activity android:name=".activity.ViewModelActivity"></activity>
     </application>
 
 </manifest>
