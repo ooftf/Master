@@ -27,10 +27,5 @@ public class ViewModelActivity extends BaseActivity {
                 textView.setText(user.getName());
             }
         });
-        //myViewModel.loadScope();
-       /* MyViewModel model = ViewModelProviders.of(this).get(MyViewModel.class);
-        model.getUsers().observe(this, users -> {
-            // update UI
-        });*/
     }
 }
