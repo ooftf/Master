@@ -5,10 +5,13 @@
 * DrawerLayout需要增加功能，实现实际大小的变化
 * 吸顶效果代码需要封装
 * 如果只存才一种分辨率的图片，在不同分辨率下的渲染表现和内存表现
-* BottomBar 封装
 * DrawerLayout 封装
 * Jetpack实践
 * 内部集成RN
 * 内部集成flutter
 * maven 发布流程
-* 将周饭计算器合并到次工程
+* 将周饭计算器合并到此工程
+* LruCache
+* RxJava深度学习
+* Java内存整合
+* 约束布局
