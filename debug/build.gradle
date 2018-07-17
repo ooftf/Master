@@ -34,6 +34,8 @@ dependencies {
         transitive = true
     }
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"
+    //implementation 'org.aspectj:aspectjtools:1.9.1'
+    //compile 'org.aspectj:aspectjrt:1.9.1'
     //implementation "android.arch.lifecycle:viewmodel:$lifecycle_version"
     //implementation "android.arch.lifecycle:livedata:$lifecycle_version"
 }
