@@ -6,7 +6,14 @@
         <activity android:name=".activity.FibonacciActivity" />
         <activity android:name=".activity.StackGetMinActivity" />
         <activity android:name=".activity.TurnIconActivity" />
-        <activity android:name=".activity.ShareActivity"></activity>
+        <activity android:name=".activity.ShareActivity" />
+        <activity android:name=".activity.PhotoActivity"></activity>
+        <activity android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            />
+
+        <activity android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 
 </manifest>

@@ -20,7 +20,7 @@ class OtherFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean("/other/stackGetMin", "获取堆栈内的最小值"))
         adapter.add(ScreenItemBean("/other/turnIcon", "切换App图标"))
         adapter.add(ScreenItemBean("/other/share", "分享示例"))
-
+        adapter.add(ScreenItemBean("/other/takePhoto", "选择图片"))
         adapter.notifyDataSetChanged()
     }
 }

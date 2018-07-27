@@ -35,4 +35,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"
     implementation project(':service')
+    //implementation 'com.jph.takephoto:takephoto_library:4.1.0'
+    compile 'org.devio.takephoto:takephoto_library:4.1.0'
+    compile 'me.iwf.photopicker:PhotoPicker:0.9.12@aar'
 }
