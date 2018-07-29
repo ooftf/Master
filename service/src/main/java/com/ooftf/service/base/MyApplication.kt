@@ -2,6 +2,7 @@ package com.ooftf.service.base
 
 import android.support.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
+import com.blankj.utilcode.util.Utils
 import com.facebook.stetho.Stetho
 import com.github.moduth.blockcanary.BlockCanary
 import com.liulishuo.filedownloader.FileDownloader
@@ -21,6 +22,7 @@ import hugo.weaving.internal.Hugo
 class MyApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
+        Utils.init(this)
         instance = this
         setupThinker()
         setupLeakCanary()
