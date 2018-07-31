@@ -5,20 +5,35 @@
     <title>Title</title>
 </head>
 <body>
-<input id="input1" accept="image/*" type="file" onchange="getImageToShow()">
-<img id="img1">
+<input id="input1" name="Input标签的形式选择文件" accept="image/*" type="file" onchange="getImageToShow()"><br>
+<button onclick="pickImage()" style="width:50%;height:20%">JsBridge方式选择文件</button><br>
+<img id="img1" src="" style="width:50%;height:20%">
+<img id="img2" src="" style="width:50%;height:20%">
 </body>
 </html>
 <script>
+    function pickImage(){
+        AndroidJs.pickImage();
+    }
     function getImageToShow() {
         let img1 = document.getElementById("img1")
-        let file = document.getElementById("input1").files[0]
+         let img2 = document.getElementById("img2")
+        let files = document.getElementById("input1").files
         let reader  = new FileReader();
+        let reader1 = new FileReader();
         reader.addEventListener("load", function () {
             img1.src = reader.result;  // 存储在本地的图片的base64编码
         }, false);
-        if (file) {
-            reader.readAsDataURL(file);
+         reader1.addEventListener("load", function () {
+            img2.src = reader1.result;  // 存储在本地的图片的base64编码
+        }, false);
+        if (files) {
+            reader.readAsDataURL(files[0]);
+            reader1.readAsDataURL(files[1]);
         }
+    }
+    function setImage(url){
+      let img1 = document.getElementById("img1")
+      img1.src = url
     }
 </script>

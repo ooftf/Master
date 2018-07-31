@@ -8,12 +8,16 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.Keep;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
+import android.webkit.JavascriptInterface;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.UriUtils;
 import com.blankj.utilcode.util.Utils;
+import com.google.gson.Gson;
 import com.ooftf.master.other.R;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
@@ -21,11 +25,13 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
 import org.devio.takephoto.app.TakePhotoActivity;
+import org.devio.takephoto.model.TImage;
 import org.devio.takephoto.model.TResult;
 import org.devio.takephoto.uitl.TUriParse;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import cz.msebera.android.httpclient.client.utils.URIUtils;
 import me.iwf.photopicker.PhotoPicker;
@@ -34,25 +40,35 @@ import me.iwf.photopicker.PhotoPicker;
 public class PhotoActivity extends TakePhotoActivity {
     WebView webView;
     ValueCallback<Uri[]> mFilePathCallback;
+    int flag = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_photo);
         initWebView();
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        /*findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //startPhotoPicker();
                 startTakePhoto();
             }
-        });
+        });*/
+    }
+    @Keep
+    public class JsAndroid extends Object {
+        @JavascriptInterface
+        public void pickImage() {
+            flag = 1;
+            startTakePhoto();
+        }
     }
 
     private void initWebView() {
         webView = findViewById(R.id.webview);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setAllowFileAccess(true);
+        webView.addJavascriptInterface(new JsAndroid(), "AndroidJs");
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -63,19 +79,31 @@ public class PhotoActivity extends TakePhotoActivity {
         });
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
+            public void openFileChooser(ValueCallback<Uri> filePathCallback, String acceptType, String capture) {//>= 4.1
+
+            }
+
+            @Override
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {//5.0+
                 mFilePathCallback = filePathCallback;
-               // startActivityForResult(fileChooserParams.createIntent(),125);
-               startTakePhoto();
+                //startActivityForResult(fileChooserParams.createIntent(),125);
+                flag = 2;
+                startTakePhotoMultiple();
                 return true;
             }
         });
-        webView.loadUrl("file:///android_asset/takePhone.html");
+        //webView.loadUrl("file:///android_asset/takePhone.html");
+        webView.loadUrl("http://10.0.23.53:8080/takePhone.html");
+        //webView.loadUrl("http://htmlpreview.github.io/?https://raw.githubusercontent.com/ooftf/Material/master/takePhone.html");
     }
 
     private void startTakePhoto() {
         getTakePhoto().onPickFromGallery();
     }
+    private void startTakePhotoMultiple() {
+        getTakePhoto().onPickMultiple(2);
+    }
+
 
     private void startPhotoPicker() {
         PhotoPicker.builder()
@@ -88,7 +116,7 @@ public class PhotoActivity extends TakePhotoActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.e("getData",data.getData().toString());
+        //Log.e("getData", data.getData().toString());
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == PhotoPicker.REQUEST_CODE) {
             if (data != null) {
@@ -99,13 +127,32 @@ public class PhotoActivity extends TakePhotoActivity {
     }
 
     public void takeSuccess(TResult result) {
-        //Uri imageContentUri = TUriParse.convertFileUriToFileProviderUri(this, Uri.fromFile(new File(result.getImage().getOriginalPath())));
-        Uri imageContentUri = Uri.fromFile(new File(result.getImage().getOriginalPath()));
-        Log.e("takeSuccess",result.getImage().getOriginalPath());
-        Log.e("takeSuccess",imageContentUri.toString());
-        if (mFilePathCallback != null) {
-            mFilePathCallback.onReceiveValue(new Uri[]{imageContentUri});
+        for (TImage e:result.getImages()){
+            Log.e("takeSuccess",e.getOriginalPath());
         }
+
+        if (flag == 1) {
+            webView.evaluateJavascript("javascript:setImage(\"" + result.getImage().getOriginalPath() + "\")", new ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String s) {
+
+                }
+            });
+        } else if (flag == 2) {
+            List<Uri> uris = new ArrayList<>();
+            for (TImage e:result.getImages()){
+                uris.add(TUriParse.convertFileUriToFileProviderUri(this, Uri.fromFile(new File(e.getOriginalPath()))));
+            }
+
+            Uri imageContentUri = TUriParse.convertFileUriToFileProviderUri(this, Uri.fromFile(new File(result.getImage().getOriginalPath())));
+            //Uri imageContentUri = Uri.fromFile(new File(result.getImage().getOriginalPath()));
+            Log.e("takeSuccess", imageContentUri.toString());
+            if (mFilePathCallback != null) {
+                mFilePathCallback.onReceiveValue(uris.toArray(new Uri[0]));
+                mFilePathCallback = null;
+            }
+        }
+        flag = 0;
     }
 
     public void takeFail(TResult result, String msg) {

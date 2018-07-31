@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.layout_sticky_header.*
  * Created by master on 2017/9/29 0029.
  */
 
-abstract class BaseHomeFragment : BaseFragment() {
+abstract class BaseListFragment : BaseFragment() {
     lateinit var adapter: MainRecyclerAdapter
     val handler = Handler()
     override fun getContentLayoutId(): Int {
@@ -38,7 +38,6 @@ abstract class BaseHomeFragment : BaseFragment() {
 
     private fun setupRecyclerView() {
         adapter = MainRecyclerAdapter(getBaseActivity(), stickyView)
-        recycler_view.tag = getRecyclerViewTag()
         recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(context)
         /* DividerItemDecoration divider = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
@@ -66,7 +65,6 @@ abstract class BaseHomeFragment : BaseFragment() {
     }
 
     protected abstract fun initData()
-    abstract fun getRecyclerViewTag(): String
     /**
      * 一个RecyclerView的滚动监听，负责滚动时View的收缩动画
      */

@@ -1,17 +1,15 @@
 package com.ooftf.master.debug.fragment
 
-import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
-import com.ooftf.service.base.BaseHomeFragment
+import com.ooftf.service.base.BaseListFragment
 import com.ooftf.service.bean.ScreenItemBean
 
 /**
  * Created by master on 2017/9/26 0026.
  */
 @Route(path = "/debug/debug")
-class DebugFragment : BaseHomeFragment() {
-    override fun getRecyclerViewTag() = "debug"
+class DebugFragment : BaseListFragment() {
     override fun initData() {
         adapter.add(ScreenItemBean("/debug/newInstance"))
         adapter.add(ScreenItemBean("/debug/dialog"))
@@ -27,17 +25,6 @@ class DebugFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean("/debug/threadPool"))
         adapter.add(ScreenItemBean("/debug/hashMap"))
         adapter.add(ScreenItemBean("/debug/ViewModel"))
-
         adapter.notifyDataSetChanged()
-    }
-
-    companion object {
-
-        fun newInstance(): DebugFragment {
-            val args = Bundle()
-            val fragment = DebugFragment()
-            fragment.arguments = args
-            return fragment
-        }
     }
 }

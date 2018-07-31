@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_item_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/layout_edge_spacing"
+        android:paddingRight="@dimen/layout_edge_spacing">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/home_item_icon_size"
+            android:layout_height="@dimen/home_item_icon_size"
+            android:scaleType="fitCenter" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/home_item_height"
+            android:layout_marginLeft="@dimen/layout_edge_spacing"
+            android:layout_marginRight="@dimen/layout_edge_spacing"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="bottom"
+                android:lines="1"
+                android:text="name" />
+
+            <TextView
+                android:id="@+id/describe"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="top"
+                android:lines="2"
+                android:text="describe"
+                android:textColor="@color/font_gray"
+                android:textSize="@dimen/font_small" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/issue"
+            android:layout_width="@dimen/layout_icon"
+            android:layout_height="@dimen/layout_icon"
+            android:scaleType="fitCenter"
+            android:src="@drawable/vector_prompt" />
+    </LinearLayout>
+</LinearLayout>

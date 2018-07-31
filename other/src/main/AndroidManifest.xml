@@ -7,15 +7,16 @@
         <activity android:name=".activity.StackGetMinActivity" />
         <activity android:name=".activity.TurnIconActivity" />
         <activity android:name=".activity.ShareActivity" />
-        <activity android:name=".activity.PhotoActivity"></activity>
-        <activity android:name="me.iwf.photopicker.PhotoPickerActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            />
+        <activity android:name=".activity.PhotoActivity" />
+        <activity
+            android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
 
-        <activity android:name="me.iwf.photopicker.PhotoPagerActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <provider
-            android:name="com.ooftf.master.other.provider.MyFileProvider"
+            android:name=".provider.MyFileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -23,6 +24,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <activity android:name=".activity.PickPhotoListActivity" />
+        <activity android:name=".activity.MatisseActivity"></activity>
     </application>
 
 </manifest>

@@ -1,15 +1,14 @@
 package com.ooftf.master.other.fragment
 
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.service.base.BaseHomeFragment
+import com.ooftf.service.base.BaseListFragment
 import com.ooftf.service.bean.ScreenItemBean
 
 /**
  * Created by master on 2017/9/26 0026.
  */
 @Route(path = "/other/other")
-class OtherFragment : BaseHomeFragment() {
-    override fun getRecyclerViewTag() = "other"
+class OtherFragment : BaseListFragment() {
     override fun initData() {
         adapter.add(ScreenItemBean("/main/design"))
         adapter.add(ScreenItemBean("/main/viewPager"))
@@ -20,7 +19,7 @@ class OtherFragment : BaseHomeFragment() {
         adapter.add(ScreenItemBean("/other/stackGetMin", "获取堆栈内的最小值"))
         adapter.add(ScreenItemBean("/other/turnIcon", "切换App图标"))
         adapter.add(ScreenItemBean("/other/share", "分享示例"))
-        adapter.add(ScreenItemBean("/other/takePhoto", "选择图片"))
+        adapter.add(ScreenItemBean("/other/pickPhotoList", "选择图片"))
         adapter.notifyDataSetChanged()
     }
 }
