@@ -55,6 +55,7 @@ public class PhotoActivity extends TakePhotoActivity {
             }
         });*/
     }
+
     @Keep
     public class JsAndroid extends Object {
         @JavascriptInterface
@@ -100,6 +101,7 @@ public class PhotoActivity extends TakePhotoActivity {
     private void startTakePhoto() {
         getTakePhoto().onPickFromGallery();
     }
+
     private void startTakePhotoMultiple() {
         getTakePhoto().onPickMultiple(2);
     }
@@ -126,9 +128,10 @@ public class PhotoActivity extends TakePhotoActivity {
         }
     }
 
+    @Override
     public void takeSuccess(TResult result) {
-        for (TImage e:result.getImages()){
-            Log.e("takeSuccess",e.getOriginalPath());
+        for (TImage e : result.getImages()) {
+            Log.e("takeSuccess", e.getOriginalPath());
         }
 
         if (flag == 1) {
@@ -140,7 +143,7 @@ public class PhotoActivity extends TakePhotoActivity {
             });
         } else if (flag == 2) {
             List<Uri> uris = new ArrayList<>();
-            for (TImage e:result.getImages()){
+            for (TImage e : result.getImages()) {
                 uris.add(TUriParse.convertFileUriToFileProviderUri(this, Uri.fromFile(new File(e.getOriginalPath()))));
             }
 
@@ -155,16 +158,20 @@ public class PhotoActivity extends TakePhotoActivity {
         flag = 0;
     }
 
+    @Override
     public void takeFail(TResult result, String msg) {
 
     }
 
+    @Override
     public void takeCancel() {
 
     }
 
     public static Uri file2Uri(final File file) {
-        if (file == null) return null;
+        if (file == null) {
+            return null;
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             String authority = Utils.getApp().getPackageName() + ".provider";
             return FileProvider.getUriForFile(Utils.getApp(), authority, file);
