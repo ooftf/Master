@@ -38,5 +38,5 @@ dependencies {
     implementation project(':service')
     compile 'org.devio.takephoto:takephoto_library:4.1.0'
     compile 'me.iwf.photopicker:PhotoPicker:0.9.12@aar'
-    compile 'com.zhihu.android:matisse:0.5.1-beta1'
+    compile 'com.zhihu.android:matisse:0.5.1'
 }
