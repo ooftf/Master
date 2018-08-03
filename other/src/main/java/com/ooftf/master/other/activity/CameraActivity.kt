@@ -1,7 +1,9 @@
 package com.ooftf.master.other.activity
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -25,7 +27,7 @@ class CameraActivity : BaseActivity() {
 
     private fun checkPermissionsToCamera() {
         RxPermissions(this)
-                .request("")
+                .request(Manifest.permission.CAMERA)
                 .subscribe {
                     if (it) {
                         camera();
@@ -48,7 +50,7 @@ class CameraActivity : BaseActivity() {
         if (requestCode == REQUEST_CODE_CAMERA && resultCode == Activity.RESULT_OK) {
             //操作File对象
             Log.e("hiCamera", hiCamera?.resultFile!!.path)
-
+            imageView.setImageBitmap(BitmapFactory.decodeFile(hiCamera!!.resultFile!!.absolutePath))
         }
     }
 

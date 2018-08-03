@@ -16,6 +16,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".activity.PickPhotoListActivity" />
         <activity android:name=".activity.MatissePhotoActivity"/>
+        <activity android:name=".activity.CameraActivity"/>
     </application>
 
 </manifest>
