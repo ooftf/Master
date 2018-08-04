@@ -13,7 +13,7 @@ class PickPhotoListActivity : BaseListActivity() {
     override fun setListData(adapter: ActivityIntentListAdapter) {
         adapter.add(ActivityItemBean( "/other/takePhoto","TakePhoto库"))
         adapter.add(ActivityItemBean( "/other/matisseActivity","Matisse库"))
-
+        adapter.add(ActivityItemBean(  "/other/CameraActivity","拍照"))
     }
 
 }

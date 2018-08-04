@@ -75,4 +75,5 @@ dependencies {
     api 'com.github.ooftf:HiShare:1.2.5'
     api 'com.blankj:utilcode:1.17.3'
     api 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
+    api 'com.github.tbruyelle:rxpermissions:0.10.2'
 }

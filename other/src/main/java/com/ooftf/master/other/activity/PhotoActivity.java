@@ -19,6 +19,7 @@ import com.blankj.utilcode.util.UriUtils;
 import com.blankj.utilcode.util.Utils;
 import com.google.gson.Gson;
 import com.ooftf.master.other.R;
+import com.ooftf.service.constant.ProviderConstant;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebView;
@@ -47,13 +48,13 @@ public class PhotoActivity extends TakePhotoActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_photo);
         initWebView();
-        /*findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //startPhotoPicker();
                 startTakePhoto();
             }
-        });*/
+        });
     }
 
     @Keep
@@ -173,7 +174,7 @@ public class PhotoActivity extends TakePhotoActivity {
             return null;
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            String authority = Utils.getApp().getPackageName() + ".provider";
+            String authority = ProviderConstant.FILE_PROVIDER;
             return FileProvider.getUriForFile(Utils.getApp(), authority, file);
         } else {
             return Uri.fromFile(file);
