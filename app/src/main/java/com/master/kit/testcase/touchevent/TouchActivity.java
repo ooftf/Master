@@ -51,6 +51,7 @@ public class TouchActivity extends BaseSlidingActivity {
                 case R.id.sb_third_onTouchEvent:
                     third.onTouchEvent = !going;
                     break;
+                default:
             }
             return !going;
         }
@@ -60,8 +61,8 @@ public class TouchActivity extends BaseSlidingActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touch);
-        Toolbar toolbar =  findViewById(R.id.toolbar);
-        FloatingActionButton fab =  findViewById(R.id.fab);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,49 +71,43 @@ public class TouchActivity extends BaseSlidingActivity {
             }
         });
 
-        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView =  findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         initViewGroup();
         initClick();
     }
 
     private void initViewGroup() {
-        first =  findViewById(R.id.first);
-        second =  findViewById(R.id.second);
-        third =  findViewById(R.id.third);
-        /*third.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.e("onClick","over");
-            }
-        });*/
+        first = findViewById(R.id.first);
+        second = findViewById(R.id.second);
+        third = findViewById(R.id.third);
     }
 
     private void initClick() {
-        ((SwitchButton)findViewById(R.id.sb_first_dispatchTouchEvent)).setBeforeStateChangedListener(listener);
-        ((SwitchButton)findViewById(R.id.sb_first_onInterceptTouchEvent)).setBeforeStateChangedListener(listener);
-        ((SwitchButton)findViewById(R.id.sb_first_onTouchEvent)).setBeforeStateChangedListener(listener);
-        ((SwitchButton)findViewById(R.id.sb_second_dispatchTouchEvent)).setBeforeStateChangedListener(listener);
-        ((SwitchButton)findViewById(R.id.sb_second_onInterceptTouchEvent)).setBeforeStateChangedListener(listener);
-        ((SwitchButton)findViewById(R.id.sb_second_onTouchEvent)).setBeforeStateChangedListener(listener);
-        ((SwitchButton)findViewById(R.id.sb_third_dispatchTouchEvent)).setBeforeStateChangedListener(listener);
-        ((SwitchButton)findViewById(R.id.sb_third_onInterceptTouchEvent)).setBeforeStateChangedListener(listener);
-        ((SwitchButton)findViewById(R.id.sb_third_onTouchEvent)).setBeforeStateChangedListener(listener);
+        ((SwitchButton) findViewById(R.id.sb_first_dispatchTouchEvent)).setBeforeStateChangedListener(listener);
+        ((SwitchButton) findViewById(R.id.sb_first_onInterceptTouchEvent)).setBeforeStateChangedListener(listener);
+        ((SwitchButton) findViewById(R.id.sb_first_onTouchEvent)).setBeforeStateChangedListener(listener);
+        ((SwitchButton) findViewById(R.id.sb_second_dispatchTouchEvent)).setBeforeStateChangedListener(listener);
+        ((SwitchButton) findViewById(R.id.sb_second_onInterceptTouchEvent)).setBeforeStateChangedListener(listener);
+        ((SwitchButton) findViewById(R.id.sb_second_onTouchEvent)).setBeforeStateChangedListener(listener);
+        ((SwitchButton) findViewById(R.id.sb_third_dispatchTouchEvent)).setBeforeStateChangedListener(listener);
+        ((SwitchButton) findViewById(R.id.sb_third_onInterceptTouchEvent)).setBeforeStateChangedListener(listener);
+        ((SwitchButton) findViewById(R.id.sb_third_onTouchEvent)).setBeforeStateChangedListener(listener);
         //同步
-        ((SwitchButton)findViewById(R.id.sb_first_dispatchTouchEvent)).setOpen(false);
-        ((SwitchButton)findViewById(R.id.sb_first_onInterceptTouchEvent)).setOpen(false);
-        ((SwitchButton)findViewById(R.id.sb_first_onTouchEvent)).setOpen(false);
-        ((SwitchButton)findViewById(R.id.sb_second_dispatchTouchEvent)).setOpen(false);
-        ((SwitchButton)findViewById(R.id.sb_second_onInterceptTouchEvent)).setOpen(false);
-        ((SwitchButton)findViewById(R.id.sb_second_onTouchEvent)).setOpen(false);
-        ((SwitchButton)findViewById(R.id.sb_third_dispatchTouchEvent)).setOpen(false);
-        ((SwitchButton)findViewById(R.id.sb_third_onInterceptTouchEvent)).setOpen(false);
-        ((SwitchButton)findViewById(R.id.sb_third_onTouchEvent)).setOpen(false);
+        ((SwitchButton) findViewById(R.id.sb_first_dispatchTouchEvent)).setOpen(false);
+        ((SwitchButton) findViewById(R.id.sb_first_onInterceptTouchEvent)).setOpen(false);
+        ((SwitchButton) findViewById(R.id.sb_first_onTouchEvent)).setOpen(false);
+        ((SwitchButton) findViewById(R.id.sb_second_dispatchTouchEvent)).setOpen(false);
+        ((SwitchButton) findViewById(R.id.sb_second_onInterceptTouchEvent)).setOpen(false);
+        ((SwitchButton) findViewById(R.id.sb_second_onTouchEvent)).setOpen(false);
+        ((SwitchButton) findViewById(R.id.sb_third_dispatchTouchEvent)).setOpen(false);
+        ((SwitchButton) findViewById(R.id.sb_third_onInterceptTouchEvent)).setOpen(false);
+        ((SwitchButton) findViewById(R.id.sb_third_onTouchEvent)).setOpen(false);
 
     }
 

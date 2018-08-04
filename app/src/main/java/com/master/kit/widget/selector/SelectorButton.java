@@ -71,6 +71,7 @@ public class SelectorButton extends Button {
                     case MotionEvent.ACTION_UP:
                         setBackgroundResource(normal);
                         break;
+                    default:
                 }
                 return false;
             }

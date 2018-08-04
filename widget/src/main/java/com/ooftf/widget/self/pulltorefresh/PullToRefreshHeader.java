@@ -15,7 +15,7 @@ import com.ooftf.widget.R;
  *
  * Created by master on 2016/9/20.
  */
-public class PullToRefreshHeader extends APullToRefreshHeader {
+public class PullToRefreshHeader extends AbstractPullToRefreshHeader {
     TextView mTextDesc;
     public PullToRefreshHeader(Context context) {
         super(context);

@@ -39,10 +39,13 @@ public class DialogDemo extends Dialog {
         Log.e("isFinishing", activity.isFinishing() + ".............");
         LoopTimer loopTimer = new LoopTimer(1000, 1000) {
             int i = 0;
+
             @Override
             public void onTrick() {
                 i++;
-                if (i > 20) cancel();
+                if (i > 20) {
+                    cancel();
+                }
                 Log.e("isShowing", isShowing() + "");
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                     Log.e("isDestroyed", activity.isDestroyed() + "");

@@ -10,7 +10,7 @@ public class DateUtil {
     /**
      * "yyyy-MM-dd HH:mm:ss"
      */
-    public static final String sDefaultPattern = "yyyy-MM-dd HH:mm:ss";
+    public static final String DEFAULT_PATTERN = "yyyy-MM-dd HH:mm:ss";
     public static SimpleDateFormat sDefaultDateFormat;
     static int[] fields;
 
@@ -23,7 +23,7 @@ public class DateUtil {
 
     public static SimpleDateFormat getDefaultDateFormat() {
         if (sDefaultDateFormat == null) {
-            sDefaultDateFormat = new SimpleDateFormat(sDefaultPattern);
+            sDefaultDateFormat = new SimpleDateFormat(DEFAULT_PATTERN);
         }
         return sDefaultDateFormat;
     }
@@ -36,7 +36,7 @@ public class DateUtil {
     public static String getCurrentTime() {
         Date date = new Date();
         try {
-            return formatDateToString(date, sDefaultPattern);
+            return formatDateToString(date, DEFAULT_PATTERN);
         } catch (ParseException e) {
             e.printStackTrace();
         }

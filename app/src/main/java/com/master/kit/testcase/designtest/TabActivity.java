@@ -10,6 +10,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * @author 99474
+ */
 public class TabActivity extends BaseSlidingActivity {
 
     @BindView(R.id.main_appbar)

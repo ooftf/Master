@@ -23,12 +23,19 @@ public class StringUtil {
         }
     }
 
+    /**
+     * 将数字补4成两位字符串
+     * @param src
+     * @return
+     */
     public static String zeroPaddingToDouble(int src) {
         return zeroPaddingToDouble(String.valueOf(src));
     }
 
     public static String listToString(List list, String splitCharacter) {
-        if (list == null) return null;
+        if (list == null) {
+            return null;
+        }
         String result = "";
         for (int i = 0; i < list.size(); i++) {
             if (i == list.size() - 1) {

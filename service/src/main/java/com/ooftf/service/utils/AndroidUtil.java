@@ -7,12 +7,15 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
+import android.net.Network;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.text.TextUtils;
 
 import java.util.Iterator;
 import java.util.List;
+
 public class AndroidUtil {
     public static String getVersionName(Context context) {
         try {
@@ -95,8 +98,9 @@ public class AndroidUtil {
      * @return
      */
     public static String getSourceApkPath(Context context, String packageName) {
-        if (TextUtils.isEmpty(packageName))
+        if (TextUtils.isEmpty(packageName)) {
             return null;
+        }
 
         try {
             ApplicationInfo appInfo = context.getPackageManager().getApplicationInfo(packageName, 0);
@@ -122,16 +126,32 @@ public class AndroidUtil {
         context.startActivity(intent);
     }
 
+    /**
+     * 判断当前网络是否可用
+     * @param context 上下文
+     * @return
+     */
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager mgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo[] info = mgr.getAllNetworkInfo();
-        if (info != null) {
-            for (int i = 0; i < info.length; i++) {
-                if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Network[] allNetworks = mgr.getAllNetworks();
+            for (int i = 0; allNetworks != null && i < allNetworks.length; i++) {
+                NetworkInfo networkInfo = mgr.getNetworkInfo(allNetworks[i]);
+                if (networkInfo.getState() == NetworkInfo.State.CONNECTED) {
                     return true;
                 }
             }
+        } else {
+            NetworkInfo[] info = mgr.getAllNetworkInfo();
+            if (info != null) {
+                for (NetworkInfo anInfo : info) {
+                    if (anInfo.getState() == NetworkInfo.State.CONNECTED) {
+                        return true;
+                    }
+                }
+            }
         }
+
         return false;
     }
 
@@ -165,8 +185,8 @@ public class AndroidUtil {
     }
 
     /*
-    * 获取程序的签名
-    */
+     * 获取程序的签名
+     */
     public String getAppSignature(String packName, Context context) {
         try {
             PackageInfo packinfo = context.getPackageManager().getPackageInfo(packName, PackageManager.GET_SIGNATURES);
@@ -194,8 +214,8 @@ public class AndroidUtil {
     }
 
     /*
-    * 获取程序 图标
-    */
+     * 获取程序 图标
+     */
     public Drawable getAppIcon(String packName, Context context) {
         PackageManager pm = context.getPackageManager();
         try {

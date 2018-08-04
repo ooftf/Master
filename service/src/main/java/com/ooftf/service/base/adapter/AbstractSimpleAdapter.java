@@ -10,10 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by master on 2017/3/28.
+ *
+ * @author master
+ * @date 2017/3/28
  */
 
-public abstract class SimpleAdapter<T> extends BaseAdapter {
+public abstract class AbstractSimpleAdapter<T> extends BaseAdapter {
     List<T> list = new ArrayList<>();
 
     @Override

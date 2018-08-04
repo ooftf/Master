@@ -26,6 +26,7 @@ public class HongbaoAccessbilityService extends AccessibilityService {
             case AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED:
                 openPacket(event);
                 break;
+            default:
         }
 
     }

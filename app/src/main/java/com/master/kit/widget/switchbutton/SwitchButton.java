@@ -190,6 +190,7 @@ public class SwitchButton extends View {
                 }
 
                 break;
+            default:
         }
         currentX = event.getX();
         invalidate();

@@ -74,7 +74,7 @@ public class DownloadService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.e(getClass().getSimpleName(),"onStartCommand");
+        Log.e(getClass().getSimpleName(), "onStartCommand");
         registerBroadCast();
         download();
         return super.onStartCommand(intent, flags, startId);
@@ -115,7 +115,7 @@ public class DownloadService extends Service {
      */
     private void download() {
         final String url = "https://github.com/linglongxin24/DylanStepCount/raw/master/app-debug.apk";
-         downloadTask = FileDownloader.getImpl().create(url).setListener(new FileDownloadLargeFileListener() {
+        downloadTask = FileDownloader.getImpl().create(url).setListener(new FileDownloadLargeFileListener() {
             @Override
             protected void pending(BaseDownloadTask task, long soFarBytes, long totalBytes) {
 
@@ -128,44 +128,39 @@ public class DownloadService extends Service {
 
             @Override
             protected void paused(BaseDownloadTask task, long soFarBytes, long totalBytes) {
-                Log.e("paused","paused");
+                Log.e("paused", "paused");
             }
 
-             @Override
-             protected void started(BaseDownloadTask task) {
-                 Log.e("started","started");
-             }
+            @Override
+            protected void started(BaseDownloadTask task) {
+                Log.e("started", "started");
+            }
 
-             @Override
+            @Override
             protected void completed(BaseDownloadTask task) {
                 downloadSuccess();
             }
 
             @Override
             protected void error(BaseDownloadTask task, Throwable e) {
-                Log.e("error",e.toString());
+                Log.e("error", e.toString());
                 downloadFail();
             }
 
             @Override
             protected void warn(BaseDownloadTask task) {
-                Log.e("warn","warn");
+                Log.e("warn", "warn");
                 downloadFail();
             }
 
-             @Override
-             protected void connected(BaseDownloadTask task, String etag, boolean isContinue, long soFarBytes, long totalBytes) {
+            @Override
+            protected void connected(BaseDownloadTask task, String etag, boolean isContinue, long soFarBytes, long totalBytes) {
 
-             }
-         });
-        /*File file = new File(filePath);
-        if(file.exists()){
-            file.mkdirs();
-        }
-        downloadTask.setPath(filePath);*/
-        Log.e("path",downloadTask.getPath()+"");
+            }
+        });
+        Log.e("path", downloadTask.getPath() + "");
         showNotificationProgress(DownloadService.this);
-        String fileName = url.substring(url.lastIndexOf("/")+1,url.length());
+        String fileName = url.substring(url.lastIndexOf("/") + 1, url.length());
         showFileName(fileName);
         downloadTask.start();
     }
@@ -177,7 +172,7 @@ public class DownloadService extends Service {
      */
     public void showNotificationProgress(Context context) {
         /**进度条通知构建**/
-        NotificationCompat.Builder builderProgress = new NotificationCompat.Builder(context);
+        NotificationCompat.Builder builderProgress = new NotificationCompat.Builder(context, "progress");
         /**设置为一个正在进行的通知**/
         builderProgress.setOngoing(true);
         /**设置小图标**/
@@ -316,7 +311,14 @@ public class DownloadService extends Service {
      * 通知栏操作的四种状态
      */
     private enum Status {
-        DOWNLOADING, PAUSE, FAIL, SUCCESS
+        //下载中
+        DOWNLOADING,
+        //暂停
+        PAUSE,
+        //失败
+        FAIL,
+        //成功
+        SUCCESS
     }
 
     /**
@@ -349,6 +351,7 @@ public class DownloadService extends Service {
                     downloadTask.start();
                     startDownload();
                     break;
+                default:
             }
         }
     }

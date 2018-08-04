@@ -22,6 +22,7 @@ public class DesignDispatchActivity extends BaseSlidingActivity {
             case R.id.TabActivity:
                 startActivity(TabActivity.class);
                 break;
+            default:
         }
     }
 }

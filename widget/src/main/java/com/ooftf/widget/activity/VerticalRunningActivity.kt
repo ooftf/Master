@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseSlidingActivity
-import com.ooftf.service.base.adapter.SimpleAdapter
+import com.ooftf.service.base.adapter.AbstractSimpleAdapter
 import com.ooftf.widget.R
 import kotlinx.android.synthetic.main.activity_vertical_running.*
 
@@ -16,7 +16,7 @@ class VerticalRunningActivity : BaseSlidingActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vertical_running)
-        var adapter = object : SimpleAdapter<String>() {
+        var adapter = object : AbstractSimpleAdapter<String>() {
             override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
                 var view: TextView
                 var inflater = LayoutInflater.from(this@VerticalRunningActivity)

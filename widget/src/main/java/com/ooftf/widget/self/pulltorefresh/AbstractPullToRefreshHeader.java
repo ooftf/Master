@@ -17,34 +17,36 @@ import android.widget.Scroller;
  * 临时解决方案：去掉item的pressed状态
  * <p>
  * <p>
- * Created by master on 2016/9/20.
+ *
+ * @author master
+ * @date 2016/9/20
  */
-public abstract class APullToRefreshHeader extends LinearLayout {
+public abstract class AbstractPullToRefreshHeader extends LinearLayout {
     int heightPx;
     Scroller scroller;
     Handler handler;
 
-    public APullToRefreshHeader(Context context) {
+    public AbstractPullToRefreshHeader(Context context) {
         super(context);
         init();
 
     }
 
-    public APullToRefreshHeader(Context context, AttributeSet attrs) {
+    public AbstractPullToRefreshHeader(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
 
     }
 
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
-    public APullToRefreshHeader(Context context, AttributeSet attrs, int defStyleAttr) {
+    public AbstractPullToRefreshHeader(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
 
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public APullToRefreshHeader(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public AbstractPullToRefreshHeader(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
 

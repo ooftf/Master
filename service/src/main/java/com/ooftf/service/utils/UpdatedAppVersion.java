@@ -30,10 +30,10 @@ public class UpdatedAppVersion {
         final NotificationManager manager = (NotificationManager) application
                 .getSystemService(Context.NOTIFICATION_SERVICE);
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(
-                application).setSmallIcon(iconId).setContentTitle(fileName)
+                application,"updateAppVersion").setSmallIcon(iconId).setContentTitle(fileName)
                 .setContentText("即将开始下载");
         builder.setAutoCancel(true);
-        builder.setPriority(Notification.PRIORITY_HIGH);
+        builder.setPriority(NotificationManager.IMPORTANCE_HIGH);
         manager.notify(0, builder.build());
         new AsyncHttpClient().get(url, new BinaryHttpResponseHandler() {
             double progress = 0;

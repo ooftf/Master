@@ -19,7 +19,7 @@ public class PullToRefreshRoot extends LinearLayout {
     public static final int REFRESHING_STATE = 4; //正在刷新
     public static final int SCROLL_STATE = 5; //target滚动
     View target;
-    APullToRefreshHeader header;
+    AbstractPullToRefreshHeader header;
     float downY;
     float currentY;
     int state = SCROLL_STATE;//用来标识当前的状态
@@ -77,6 +77,7 @@ public class PullToRefreshRoot extends LinearLayout {
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
                 break;
+            default:
         }
         return false;
     }
@@ -127,6 +128,7 @@ public class PullToRefreshRoot extends LinearLayout {
                 }
                 break;
             case MotionEvent.ACTION_UP:
+            default:
         }
     }
 
@@ -150,6 +152,7 @@ public class PullToRefreshRoot extends LinearLayout {
             case MotionEvent.ACTION_UP:
                 onScrollState();
                 header.paddingAnimation(-header.getHeightPx());
+            default:
         }
     }
 
@@ -177,6 +180,7 @@ public class PullToRefreshRoot extends LinearLayout {
             case MotionEvent.ACTION_UP:
                 onRefreshingState();
                 header.paddingAnimation(0);
+            default:
         }
     }
 

@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.os.Build;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.ActionMode;
 import android.view.Menu;
@@ -44,7 +45,7 @@ public class PinEditText extends EditText {
     private void init(AttributeSet attrs) {
         maxLength = attrs.getAttributeIntValue(XML_NAMESPACE_ANDROID, "maxLength", 4);
         initStrokePaint();
-        setBackgroundDrawable(null);
+        ViewCompat.setBackground(this,null);
         setCursorVisible(false);
         setTextIsSelectable(false);
         setLongClickable(false);

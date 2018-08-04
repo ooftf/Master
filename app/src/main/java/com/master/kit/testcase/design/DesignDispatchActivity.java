@@ -27,6 +27,7 @@ public class DesignDispatchActivity extends BaseSlidingActivity {
             case R.id.FlexibleActivity:
                 startActivity(FlexibleActivity.class);
                 break;
+            default:
         }
     }
 }

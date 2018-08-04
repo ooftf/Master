@@ -37,8 +37,11 @@ public class NetworkUtil {
     }
 
     public enum NetworkType {
+        //wifi网络
         NETWORK_WIFI,
+        //移动网络
         NETWORK_MOBILE,
+        //没有网络
         NETWORK_NONE
     }
 }
