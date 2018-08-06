@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context="com.ooftf.master.source.activity.RxJavaActivity">
+    tools:context="com.ooftf.master.source.activity.RxJavaListActivity">
 
     <TextView
         android:id="@+id/text"

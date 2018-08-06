@@ -25,6 +25,7 @@ public class ViewModelActivity extends BaseActivity {
             @Override
             public void onChanged(@Nullable User user) {
                 textView.setText(user.getName());
+
             }
         });
     }
