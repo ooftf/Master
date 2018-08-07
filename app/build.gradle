@@ -57,7 +57,7 @@ dependencies {
     api project(':debug')
     api project(':source')
     api project(':other')
-    kapt 'com.google.dagger:dagger-compiler:2.13'
+    kapt "com.google.dagger:dagger-compiler:$dagger"
     annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") {
         changing = true
     }
@@ -65,7 +65,7 @@ dependencies {
     implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$tinkerpatch_version") {
         changing = true
     }
-    implementation 'com.github.ooftf:JsBridge-TencentX5:1.1.0'
+    implementation 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"
 }
 apply plugin: 'com.jakewharton.hugo'

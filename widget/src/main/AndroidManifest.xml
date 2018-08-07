@@ -27,7 +27,8 @@
         <activity android:name=".activity.PatternLockActivity" />
         <activity android:name=".activity.TaobaoActivity" />
         <activity android:name=".activity.BottomBarActivity" />
-        <activity android:name=".activity.DrawerDemoActivity"></activity>
+        <activity android:name=".activity.DrawerDemoActivity" />
+        <activity android:name=".activity.BarrageActivity"></activity>
     </application>
 
 </manifest>

@@ -30,13 +30,12 @@ kapt {
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"
     implementation project(':service')
-    compile 'org.devio.takephoto:takephoto_library:4.1.0'
-    compile 'me.iwf.photopicker:PhotoPicker:0.9.12@aar'
-    compile 'com.zhihu.android:matisse:0.5.1'
+    api 'org.devio.takephoto:takephoto_library:4.1.0'
+    api 'me.iwf.photopicker:PhotoPicker:0.9.12@aar'
+    api 'com.zhihu.android:matisse:0.5.1'
 }
