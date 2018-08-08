@@ -10,7 +10,7 @@ buildscript {
     ext.packer_ng_version = "2.0.1"
     ext.arouter_compiler= "1.1.4"
     ext.glide = "4.7.1"
-    ext.dagger = "2.14.1"
+    ext.dagger = "2.16"
     repositories {
         jcenter()
         google()
