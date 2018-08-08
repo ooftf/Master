@@ -14,7 +14,6 @@ import com.ooftf.service.engine.LoopTimer;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 
 
 /**
@@ -50,13 +49,15 @@ public class BarrageView extends RelativeLayout {
         loopTimer = new LoopTimer(100, 1000 / 100) {
             @Override
             public void onTrick() {
-                Iterator<Item> iterator = items.iterator();
-                while (iterator.hasNext()) {
-                    Item next = iterator.next();
-                    next.rectF.offset(-2, 0);
-                    if (next.rectF.right < 0) {
-                        removeView(next.view);
-                        iterator.remove();
+                for (List<Item> es : moving) {
+                    Iterator<Item> iterator = es.iterator();
+                    while (iterator.hasNext()) {
+                        Item next = iterator.next();
+                        next.rectF.offset(-2, 0);
+                        if (next.rectF.right < 0) {
+                            removeView(next.view);
+                            iterator.remove();
+                        }
                     }
                 }
                 requestLayout();
@@ -64,8 +65,9 @@ public class BarrageView extends RelativeLayout {
         };
     }
 
-    List<Item> items = new ArrayList<>();
+    List<List<Item>> moving = new ArrayList<>();
     ViewCreater viewCreater;
+    List<Item> waiting = new ArrayList<>();
 
     public void addItem(Object object) {
         if (viewCreater == null) {
@@ -73,7 +75,7 @@ public class BarrageView extends RelativeLayout {
         }
         Item item = createItem(object);
         addView(item.view, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        items.add(item);
+        waiting.add(item);
     }
 
     public void setViewCreater(ViewCreater viewCreater) {
@@ -90,7 +92,6 @@ public class BarrageView extends RelativeLayout {
         return viewCreater.create(this, object);
     }
 
-    Random random = new Random();
 
     /**
      * 创建item
@@ -101,76 +102,70 @@ public class BarrageView extends RelativeLayout {
     private Item createItem(Object object) {
         Item item = new Item();
         item.view = createView(object);
-        item.rectF = new RectF();
-        item.rectF.left = getWidth();
-        item.rectF.top = random.nextFloat() * getHeight();
-        item.rectF.right = item.rectF.left;
-        item.rectF.bottom = item.rectF.top;
         return item;
     }
 
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        for (Item e : items) {
-            if (e.rectF.width() == 0 || e.rectF.height() == 0) {
-                e.rectF.right = e.rectF.left + e.view.getMeasuredWidth();
-                e.rectF.bottom = e.rectF.top + e.view.getMeasuredHeight();
-                checkRectF(e);
+        /**
+         * 初始化moving
+         */
+        if (moving.size() == 0 && waiting.size() > 0) {
+            //计算有多少行
+            int lines = getHeight() / waiting.get(0).view.getMeasuredHeight();
+            for (int i = 0; i < lines; i++) {
+                moving.add(new ArrayList<Item>());
             }
-            e.view.layout((int) e.rectF.left, (int) e.rectF.top, (int) e.rectF.right, (int) e.rectF.bottom);
         }
-        //super.onLayout(changed, l, t, r, b);
-    }
-
-    /**
-     * 校验rect位置是否有问题，如果有问题进行纠正
-     *
-     * @param item
-     */
-    private void checkRectF(Item item) {
-        if (isRectError(item)) {
-            item.rectF.offsetTo(item.rectF.left, random.nextFloat() * getHeight());
-            checkRectF(item);
-        }
-    }
-
-    /**
-     * 校验rect位置是否有问题
-     *
-     * @param item
-     * @return
-     */
-    boolean isRectError(Item item) {
-        for (Item e : items) {
+        /**
+         * 将等待区的item转移到moving区
+         */
+        Iterator<Item> iterator = waiting.iterator();
+        while (iterator.hasNext()) {
+            Item next = iterator.next();
             /**
-             * 超出边界
+             * 计算应该加入第几行
              */
-            if (e.rectF.bottom > getHeight()) {
-                return true;
+            int line = calculateLine();
+            iterator.remove();
+            List<Item> es = moving.get(line);
+            float left;
+            if(es.size() == 0){
+                left = getWidth();
+            }else{
+                left = Math.max(getWidth(),es.get(es.size()-1).rectF.right);
             }
-            /**
-             * 重叠
-             */
-            if (e != item && isOverlap(e.rectF, item.rectF)) {
-                return true;
-            }
+            next.rectF = new RectF(left, line * next.view.getMeasuredHeight(), left +  next.view.getMeasuredWidth(), (line + 1) * next.view.getMeasuredHeight());
+            moving.get(line).add(next);
         }
-        return false;
+        for (List<Item> es : moving) {
+            for (Item e : es) {
+                e.view.layout((int) e.rectF.left, (int) e.rectF.top, (int) e.rectF.right, (int) e.rectF.bottom);
+            }
+
+        }
     }
 
-    /**
-     * 判断两个rect是否重叠，由于新弹幕肯定在最右边所有，只要的判断新弹幕的左边是否被包含就可以了
-     * @param old
-     * @param newRect
-     * @return
-     */
-    boolean isOverlap(RectF old, RectF newRect) {
-        if (old.contains(newRect.left, newRect.top) || old.contains(newRect.left, newRect.bottom)) {
-            return true;
+    private int calculateLine() {
+        int result = 0;
+        float minRight = Float.MAX_VALUE;
+        for (int i = 0; i < moving.size(); i++) {
+            List<Item> e = moving.get(i);
+            if (e.size() > 0) {
+                float right = e.get(e.size() - 1).rectF.right;
+                if (right < minRight) {
+                    result = i;
+                    minRight = right;
+                }
+            }else {
+                result = i;
+                return result;
+            }
         }
-        return false;
+        return result;
     }
+
 
     @Override
     protected void onAttachedToWindow() {
