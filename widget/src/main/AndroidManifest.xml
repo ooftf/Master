@@ -28,7 +28,9 @@
         <activity android:name=".activity.TaobaoActivity" />
         <activity android:name=".activity.BottomBarActivity" />
         <activity android:name=".activity.DrawerDemoActivity" />
-        <activity android:name=".activity.BarrageActivity"></activity>
+        <activity android:name=".activity.BarrageActivity" />
+        <activity android:name=".activity.DrawerListActivity" />
+        <activity android:name=".activity.DrawerRecycleViewActivity"></activity>
     </application>
 
 </manifest>

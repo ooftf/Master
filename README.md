@@ -15,3 +15,5 @@
 * RxJava深度学习
 * Java内存整合
 * 约束布局
+* 测试DrawerLayout 内部是否支持RecycleView
+* aspectj 深入学习
