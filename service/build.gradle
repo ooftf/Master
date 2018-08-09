@@ -76,4 +76,5 @@ dependencies {
     api 'com.blankj:utilcode:1.17.3'
     api 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
+    api 'com.github.ooftf:BarrageView:1.0.0'
 }

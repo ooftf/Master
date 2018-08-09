@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:id="@+id/root"
     tools:context=".activity.BarrageActivity">
-    <com.ooftf.widget.self.BarrageView
+    <com.ooftf.barrage.BarrageView
         android:id="@+id/barrage"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

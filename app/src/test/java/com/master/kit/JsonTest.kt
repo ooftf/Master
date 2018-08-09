@@ -28,7 +28,7 @@ class JsonTest {
 
         })
         /*  builder.registerTypeAdapterFactory(object :TypeAdapterFactory{
-              override fun <T : Any?> create(gson: Gson?, type: TypeToken<T>?): TypeAdapter<T> {
+              override fun <T : Any?> createView(gson: Gson?, type: TypeToken<T>?): TypeAdapter<T> {
 
                   return Gson().getAdapter(type)
               }
