@@ -50,7 +50,7 @@ class DrawerLayout:FrameLayout {
         if(closeHeight == 0){
             closeHeight = MeasureSpec.getSize(heightMeasureSpec)
         }
-        var heightMeasureSpec = changeMode(heightMeasureSpec,MeasureSpec.UNSPECIFIED)
+        var heightMeasureSpec = changeMode(0,MeasureSpec.UNSPECIFIED)
         (0 until childCount).forEach {
             var child = getChildAt(it)
             measureChildWithMargins(child,widthMeasureSpec,0,heightMeasureSpec,0)
@@ -90,6 +90,7 @@ class DrawerLayout:FrameLayout {
     private fun changeMode(measureSpec: Int, mode: Int):Int {
        return  MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(measureSpec),mode)
     }
+
     companion object {
          val STATE_CLOSE = 0
          val STATE_ANIMATION = 1
