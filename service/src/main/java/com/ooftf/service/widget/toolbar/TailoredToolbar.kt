@@ -33,7 +33,7 @@ open class TailoredToolbar : Toolbar {
     fun setMenuItem(item:MenuItem){
         addView(item.itemLayout)
     }
-    class MenuItem(var context: Context){
+    public class MenuItem(var context: Context){
         var itemLayout:View = LayoutInflater.from(context).inflate(R.layout.item_menu_toolbar,null)
         var text = itemLayout.findViewById<TextView>(R.id.text)
         var image = itemLayout.findViewById<ImageView>(R.id.image)

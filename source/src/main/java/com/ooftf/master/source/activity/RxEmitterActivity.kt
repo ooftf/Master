@@ -3,9 +3,7 @@ package com.ooftf.master.source.activity
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.source.R
-import com.ooftf.service.base.BaseActivity
-import com.ooftf.service.base.adapter.BaseBarrageActivity
-import com.tencent.mm.opensdk.utils.Log
+import com.ooftf.service.base.BaseBarrageActivity
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.disposables.Disposable

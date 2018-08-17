@@ -1,15 +1,12 @@
-package com.ooftf.service.base.adapter;
+package com.ooftf.service.base;
 
 import android.os.Bundle;
-import android.support.v4.view.ViewCompat;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.TextView;
 
 import com.ooftf.barrage.BarrageView;
-import com.ooftf.service.base.BaseActivity;
 
 import org.jetbrains.annotations.Nullable;
 
