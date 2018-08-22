@@ -14,10 +14,9 @@ import com.ooftf.widget.R;
  * @author ooftf
  * @date 2018/8/22
  **/
-public class DialogPos extends Dialog {
+public class OptDialog extends Dialog {
     Activity activity;
-
-    public DialogPos(Activity activity) {
+    public OptDialog(Activity activity) {
         super(activity, R.style.DialogTheme_Transparent);
         this.activity = activity;
         init();
@@ -30,7 +29,7 @@ public class DialogPos extends Dialog {
     private View line;
 
     private void init() {
-        View root = LayoutInflater.from(activity).inflate(R.layout.dialog_selector, (ViewGroup) getWindow().getDecorView());
+        View root = LayoutInflater.from(activity).inflate(R.layout.dialog_opt, (ViewGroup) getWindow().getDecorView());
         title = root.findViewById(R.id.title);
         content = root.findViewById(R.id.content);
         positive = root.findViewById(R.id.positive);
@@ -56,69 +55,64 @@ public class DialogPos extends Dialog {
         });
     }
 
-    public DialogPos setTitleText(CharSequence text)
-
-    {
+    public OptDialog setTitleText(CharSequence text) {
         title.setVisibility(View.VISIBLE);
         title.setText(text);
         return this;
     }
 
-    public DialogPos setContentText(CharSequence text)
-
-    {
+    public OptDialog setContentText(CharSequence text) {
         content.setVisibility(View.VISIBLE);
         content.setText(text);
         return this;
     }
 
-    public DialogPos setPositiveText(CharSequence text)
-
-    {
+    public OptDialog setPositiveText(CharSequence text) {
 
         setPositiveVisibility(View.VISIBLE);
         positive.setText(text);
         return this;
     }
 
-    public DialogPos setNegativeText(CharSequence text)
+    public OptDialog setPositiveColor(int color) {
+        positive.setTextColor(color);
+        return this;
+    }
 
-    {
+    public OptDialog setNegativeText(CharSequence text) {
         setNegativeVisibility(View.VISIBLE);
         negative.setText(text);
         return this;
     }
 
-    public DialogPos setPositiveListener(final OnDialogItemClickListener listener)
-
-    {
+    public OptDialog setPositiveListener(final OnDialogItemClickListener listener) {
         setPositiveVisibility(View.VISIBLE);
         positive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(v, DialogPos.this);
+                listener.onClick(v, OptDialog.this);
             }
         });
 
         return this;
     }
 
-    public DialogPos setNegativeListener(final OnDialogItemClickListener listener)
-
-    {
+    public OptDialog setNegativeListener(final OnDialogItemClickListener listener) {
         setNegativeVisibility(View.VISIBLE);
         negative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(v, DialogPos.this);
+                listener.onClick(v, OptDialog.this);
             }
         });
         return this;
     }
-    public DialogPos setNegativeColor(int color){
+
+    public OptDialog setNegativeColor(int color) {
         negative.setTextColor(color);
         return this;
     }
+
     private void setPositiveVisibility(int visibility) {
         positive.setVisibility(visibility);
     }
@@ -137,6 +131,12 @@ public class DialogPos extends Dialog {
     }
 
     public interface OnDialogItemClickListener {
-        void onClick(View view, DialogPos dialogPos);
+        /**
+         * 点击事件
+         *
+         * @param view
+         * @param dialogPos
+         */
+        void onClick(View view, OptDialog dialogPos);
     }
 }

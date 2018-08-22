@@ -3,9 +3,11 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_dialog_background"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:paddingTop="16dp">
     <TextView
+        tools:text="title"
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,6 +17,8 @@
         android:textSize="@dimen/font_huge" />
 
     <TextView
+        tools:text="内容"
+        android:minHeight="48dp"
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

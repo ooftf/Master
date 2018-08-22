@@ -25,7 +25,7 @@ class SelectorDialog(var activity: Activity) : Dialog(activity, R.style.DialogTh
         private set
 
     init {
-        val root = LayoutInflater.from(context).inflate(R.layout.dialog_selector, window.decorView as ViewGroup)
+        val root = LayoutInflater.from(context).inflate(R.layout.dialog_opt, window.decorView as ViewGroup)
         title = root.findViewById(R.id.title)
         content = root.findViewById(R.id.content)
         positive = root.findViewById(R.id.positive)
