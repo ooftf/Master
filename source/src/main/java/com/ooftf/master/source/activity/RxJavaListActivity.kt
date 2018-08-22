@@ -16,6 +16,8 @@ import kotlinx.android.synthetic.main.activity_rx_java.*
 class RxJavaListActivity : BaseListActivity() {
     override fun setListData(adapter: ActivityIntentListAdapter) {
         adapter.add(ActivityItemBean("/source/RxEmitterActivity","测试订阅和发射"))
+        adapter.add(ActivityItemBean("/source/RxFlatMapActivity","测试FlatMap"))
+
     }
 
    /* override fun onCreate(savedInstanceState: Bundle?) {

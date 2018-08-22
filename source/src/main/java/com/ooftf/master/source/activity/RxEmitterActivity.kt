@@ -20,6 +20,7 @@ class RxEmitterActivity : BaseBarrageActivity() {
             emitter = it
             addBarrage("绑定emitter")
         }
+
         onNext.setOnClickListener {
             if (emitter == null) {
                 addBarrage("emitter == null")

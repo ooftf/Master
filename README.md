@@ -18,3 +18,5 @@
 * 测试DrawerLayout 内部是否支持RecycleView
 * aspectj 深入学习
 * ScrollerPlus转换成Rxjava去实现
+
+* 兼容的水波纹效果 android:background="?android:attr/selectableItemBackground"

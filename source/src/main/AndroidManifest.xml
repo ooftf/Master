@@ -6,7 +6,8 @@
         <activity android:name=".activity.RxJavaListActivity" />
         <activity android:name=".activity.OkHttpActivity" />
         <activity android:name=".activity.ProxyActivity" />
-        <activity android:name=".activity.RxEmitterActivity"></activity>
+        <activity android:name=".activity.RxEmitterActivity" />
+        <activity android:name=".activity.RxFlatMapActivity"></activity>
     </application>
 
 </manifest>
