@@ -85,7 +85,7 @@ public class OptDialog extends Dialog {
         return this;
     }
 
-    public OptDialog setPositiveListener(final OnDialogItemClickListener listener) {
+    public OptDialog setPositiveListener(final OnOptClickListener listener) {
         setPositiveVisibility(View.VISIBLE);
         positive.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,7 @@ public class OptDialog extends Dialog {
         return this;
     }
 
-    public OptDialog setNegativeListener(final OnDialogItemClickListener listener) {
+    public OptDialog setNegativeListener(final OnOptClickListener listener) {
         setNegativeVisibility(View.VISIBLE);
         negative.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +130,7 @@ public class OptDialog extends Dialog {
         super.show();
     }
 
-    public interface OnDialogItemClickListener {
+    public interface OnOptClickListener {
         /**
          * 点击事件
          *

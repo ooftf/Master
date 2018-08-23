@@ -7,7 +7,8 @@
         <activity android:name=".activity.OkHttpActivity" />
         <activity android:name=".activity.ProxyActivity" />
         <activity android:name=".activity.RxEmitterActivity" />
-        <activity android:name=".activity.RxFlatMapActivity"></activity>
+        <activity android:name=".activity.RxFlatMapActivity" />
+        <activity android:name=".activity.RxIntervalRangeActivity"></activity>
     </application>
 
 </manifest>

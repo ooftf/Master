@@ -17,6 +17,7 @@ class RxJavaListActivity : BaseListActivity() {
     override fun setListData(adapter: ActivityIntentListAdapter) {
         adapter.add(ActivityItemBean("/source/RxEmitterActivity","测试订阅和发射"))
         adapter.add(ActivityItemBean("/source/RxFlatMapActivity","测试FlatMap"))
+        adapter.add(ActivityItemBean("/source/RxIntervalRangeActivity","测试IntervalRange"))
 
     }
 
