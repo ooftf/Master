@@ -1,9 +1,9 @@
 package com.ooftf.master.source.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.master.source.R;
@@ -18,12 +18,13 @@ import io.reactivex.functions.Function;
 @Route(path = "/source/RxFlatMapActivity")
 public class RxFlatMapActivity extends BaseBarrageActivity {
     Button flatMap;
-
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rx_flat_map);
         flatMap = findViewById(R.id.flatMap);
+        textView = findViewById(R.id.text);
         flatMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
