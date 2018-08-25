@@ -94,7 +94,7 @@ class WidgetFragment : BaseFragment() {
     private fun initData() {
         adapter.add(ScreenItemBean("/widget/calendar", "自定义日历", "可以改变单个日期的显示样式", R.drawable.vector_calendar, true, "自定义控件"))
         adapter.add(ScreenItemBean("/widget/patternLock", "手势密码", "手势密码控件", R.drawable.vector_gesture_cipher, false, "自定义控件"))
-        adapter.add(ScreenItemBean( "/widget/DrawerListActivity", "折叠盒子", "可以在视觉上改变空间大小的控件", category = "自定义控件"))
+        adapter.add(ScreenItemBean( "/widget/SlidingListActivity", "折叠盒子", "可以在视觉上改变空间大小的控件", category = "自定义控件"))
         adapter.add(ScreenItemBean("/widget/banner", "轮播图", "利用viewpager制作的轮播图", R.drawable.vector_banner, true, "自定义控件"))
         adapter.add(ScreenItemBean("/widget/operationEditText", "可操作输入框", "自定义OperationEditTextLayout", category = "自定义控件"))
         adapter.add(ScreenItemBean("/widget/verticalRunning", "自动竖向滚动控件", "自定义VerticalRunningLayout", category = "自定义控件"))

@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".activity.DrawerRecycleViewActivity">
+    tools:context=".activity.SlidingRecycleViewActivity">
 
-    <com.ooftf.widget.self.DrawerLayout
+    <com.ooftf.sliding.SlidingLayout
         android:id="@+id/drawer"
         android:layout_width="match_parent"
         android:layout_height="50dp">
@@ -16,7 +16,7 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </com.ooftf.widget.self.DrawerLayout>
+    </com.ooftf.sliding.SlidingLayout>
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"

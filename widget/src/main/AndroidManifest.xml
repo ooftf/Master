@@ -27,10 +27,10 @@
         <activity android:name=".activity.PatternLockActivity" />
         <activity android:name=".activity.TaobaoActivity" />
         <activity android:name=".activity.BottomBarActivity" />
-        <activity android:name=".activity.DrawerDemoActivity" />
+        <activity android:name=".activity.SlidingTextViewActivity" />
         <activity android:name=".activity.BarrageActivity" />
-        <activity android:name=".activity.DrawerListActivity" />
-        <activity android:name=".activity.DrawerRecycleViewActivity"></activity>
+        <activity android:name=".activity.SlidingListActivity" />
+        <activity android:name=".activity.SlidingRecycleViewActivity"/>
     </application>
 
 </manifest>

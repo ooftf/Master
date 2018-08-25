@@ -1,6 +1,5 @@
 package com.ooftf.widget.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -10,8 +9,11 @@ import com.ooftf.service.bean.ActivityItemBean;
 import com.ooftf.widget.R;
 
 import org.jetbrains.annotations.NotNull;
-@Route(path = "/widget/DrawerListActivity")
-public class DrawerListActivity extends BaseListActivity {
+/**
+ * @author ooftf
+ */
+@Route(path = "/widget/SlidingListActivity")
+public class SlidingListActivity extends BaseListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +22,7 @@ public class DrawerListActivity extends BaseListActivity {
 
     @Override
     public void setListData(@NotNull ActivityIntentListAdapter adapter) {
-        adapter.add(new ActivityItemBean("/widget/drawerDemo","折叠布局-TextView","用于查看Drawer在TextView下面的表现", R.drawable.logo_legacy,false));
-        adapter.add(new ActivityItemBean("/widget/DrawerRecycleViewActivity","折叠布局-RecycleView","用于查看Drawer在RecycleView下面的表现", R.drawable.logo_legacy,false));
+        adapter.add(new ActivityItemBean("/widget/SlidingTextViewActivity","折叠布局-TextView","用于查看SlidingLayout在TextView下面的表现", R.drawable.logo_legacy,false));
+        adapter.add(new ActivityItemBean("/widget/SlidingRecycleViewActivity","折叠布局-RecycleView","用于查看SlidingLayout在RecycleView下面的表现", R.drawable.logo_legacy,false));
     }
 }

@@ -9,16 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.ooftf.widget.R;
-import com.ooftf.widget.self.DrawerLayout;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
-@Route(path = "/widget/DrawerRecycleViewActivity")
-public class DrawerRecycleViewActivity extends AppCompatActivity {
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.ooftf.sliding.SlidingLayout;
+import com.ooftf.widget.R;
+
+@Route(path = "/widget/SlidingRecycleViewActivity")
+public class SlidingRecycleViewActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    DrawerLayout drawer;
+    SlidingLayout drawer;
     Button button;
 
     @Override
@@ -31,7 +30,7 @@ public class DrawerRecycleViewActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawer.smoothSwitch();
+                drawer.smoothTurn();
             }
         });
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
@@ -39,7 +38,7 @@ public class DrawerRecycleViewActivity extends AppCompatActivity {
             @NonNull
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                TextView textView = new TextView(DrawerRecycleViewActivity.this);
+                TextView textView = new TextView(SlidingRecycleViewActivity.this);
                 return new RecyclerView.ViewHolder(textView) {
                 };
             }
