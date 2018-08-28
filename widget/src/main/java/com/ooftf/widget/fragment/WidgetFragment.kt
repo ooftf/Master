@@ -113,6 +113,8 @@ class WidgetFragment : BaseFragment() {
         adapter.add(ScreenItemBean("/widget/lottery", "LotteryActivity", "LotteryActivity", category = "非自定义"))
         adapter.add(ScreenItemBean("/widget/taobao", "仿淘宝商品页面", "LotteryActivity", category = "非自定义"))
         adapter.add(ScreenItemBean( "/widget/BarrageActivity", "弹幕", "一个弹幕view的示例", category = "非自定义"))
+        adapter.add(ScreenItemBean(  "/widget/ToolbarDemoActivity", "标题栏", "标题栏方法示例", category = "非自定义"))
+
         adapter.notifyDataSetChanged()
     }
 }

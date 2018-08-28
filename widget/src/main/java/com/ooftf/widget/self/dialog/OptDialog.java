@@ -50,7 +50,7 @@ public class OptDialog extends Dialog {
         negative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                dismiss();
             }
         });
     }
