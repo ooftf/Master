@@ -17,7 +17,8 @@
         <activity android:name=".activity.DialogActivity" />
         <activity android:name=".activity.ThreadPoolActivity" />
         <activity android:name=".activity.HashMapActivity" />
-        <activity android:name=".activity.ViewModelActivity"></activity>
+        <activity android:name=".activity.ViewModelActivity" />
+        <activity android:name=".activity.AcrossRecyclerActivity"></activity>
     </application>
 
 </manifest>

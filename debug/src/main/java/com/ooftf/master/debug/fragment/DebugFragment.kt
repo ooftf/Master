@@ -25,6 +25,8 @@ class DebugFragment : BaseListFragment() {
         adapter.add(ScreenItemBean("/debug/threadPool"))
         adapter.add(ScreenItemBean("/debug/hashMap"))
         adapter.add(ScreenItemBean("/debug/ViewModel"))
+        adapter.add(ScreenItemBean( "/debug/AcrossRecyclerActivity"))
+
         adapter.notifyDataSetChanged()
     }
 }
