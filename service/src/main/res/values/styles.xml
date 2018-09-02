@@ -63,4 +63,7 @@
         <!-- 背景色 -->
         <item name="android:windowBackground">@color/transparent</item>
     </style>
+    <style name="selectableItemBackgroundBorderless">
+
+    </style>
 </resources>

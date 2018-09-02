@@ -86,12 +86,12 @@ public class TailoredToolbar extends Toolbar {
             super(context);
             this.context = context;
             LayoutInflater.from(context).inflate(R.layout.item_menu_toolbar, this);
-            text = findViewById(R.id.text);
+            textView = findViewById(R.id.text);
             image = findViewById(R.id.image);
             setToolbarLayoutParams();
         }
 
-        TextView text;
+        TextView textView;
         ImageView image;
         public MenuItem layoutRight(){
             getToolbarLayoutParams().gravity = Gravity.END;
@@ -102,17 +102,20 @@ public class TailoredToolbar extends Toolbar {
             return this;
         }
         public MenuItem setImage(int id) {
+            image.setVisibility(View.VISIBLE);
             image.setImageResource(id);
             return this;
         }
 
         public MenuItem setText(int id) {
-            text.setText(id);
+            textView.setVisibility(View.VISIBLE);
+            textView.setText(id);
             return this;
         }
 
         public MenuItem setText(String text) {
-            this.text.setText(text);
+            textView.setVisibility(View.VISIBLE);
+            textView.setText(text);
             return this;
         }
 

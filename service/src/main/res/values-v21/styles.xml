@@ -2,6 +2,7 @@
 <resources>
     <style name="selectableItemBackgroundBorderless">
         <!--.有界,向下兼容,API21以下也可以使用,点击会变色,但不会有水波纹效果-->
+        <!--ViewGroup好像不起作用，可以设置到内部View-->
         <!--android:background="?android:attr/selectableItemBackground"-->
         <!--无界,此效果API21以上才能用,21以下会报错. 所以最小版本要设置为21-->
         <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>

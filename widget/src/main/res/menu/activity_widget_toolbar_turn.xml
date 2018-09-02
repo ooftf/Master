@@ -5,7 +5,7 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:textColor="@color/black"
-        android:title="设置"
+        android:title="设置啊啊"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_sort"
@@ -17,7 +17,7 @@
         android:id="@+id/action_settings_black"
         android:orderInCategory="100"
         android:textColor="@color/black"
-        android:title="设置"
+        android:title="设置啊啊"
         android:visible="false"
         app:showAsAction="always" />
     <item

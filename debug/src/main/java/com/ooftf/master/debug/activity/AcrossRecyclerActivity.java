@@ -12,6 +12,9 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.master.debug.R;
 
+/**
+ * @author 99474
+ */
 @Route(path = "/debug/AcrossRecyclerActivity")
 public class AcrossRecyclerActivity extends AppCompatActivity {
     public RecyclerView recyclerView;
