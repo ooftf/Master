@@ -51,12 +51,14 @@ packer {
 dependencies {
     testImplementation 'junit:junit:4.12'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api project(':widget')
+    if(!debug){
+        api project(':widget')
+        api project(':applet')
+        api project(':debug')
+        api project(':source')
+        api project(':other')
+    }
     api project(':service')
-    api project(':applet')
-    api project(':debug')
-    api project(':source')
-    api project(':other')
     kapt "com.google.dagger:dagger-compiler:$dagger"
     annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") {
         changing = true

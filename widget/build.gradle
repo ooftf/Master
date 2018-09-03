@@ -1,5 +1,6 @@
 if (debug) {
     apply plugin: 'com.android.application'
+    apply from: '../app/tinkerpatch.gradle'
 } else {
     apply plugin: 'com.android.library'
 }
@@ -13,6 +14,10 @@ android {
         minSdkVersion min_sdk
         targetSdkVersion target_sdk
         vectorDrawables.useSupportLibrary = true
+        if(debug){
+            applicationId "com.ooftf.widget"
+            multiDexEnabled true
+        }
     }
     sourceSets {
         main {
@@ -45,6 +50,5 @@ dependencies {
     implementation 'com.github.ooftf:PatternLock:1.0.1'
     implementation 'com.github.ooftf:StraightLayout:1.0.0'
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"
-    api 'com.github.ooftf:BottomBar:1.3.0'
     implementation 'com.github.ooftf:SlidingLayout:1.0.0'
 }
