@@ -11,6 +11,7 @@ buildscript {
     ext.arouter_compiler= "1.1.4"
     ext.glide = "4.7.1"
     ext.dagger = "2.16"
+    ext.debug = false
     repositories {
         jcenter()
         google()

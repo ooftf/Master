@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ooftf.widget">
+
+    <application>
+        <activity android:name=".activity.TourGuideActivity" />
+        <activity android:name=".activity.GravActivity" />
+        <activity android:name=".activity.OperationEditTextActivity" />
+        <activity
+            android:name=".activity.SharedElementsActivity"
+            android:theme="@style/AppTheme.BackgroundTransparent.SharedElement" />
+        <activity
+            android:name=".activity.SharedElementsSecondaryActivity"
+            android:theme="@style/AppTheme.BackgroundTransparent.SharedElement" />
+        <activity android:name=".activity.VerticalRunningActivity" />
+        <activity android:name=".activity.PhotoViewActivity" />
+        <activity android:name=".activity.PinEntryActivity" />
+        <activity android:name=".activity.SwipeActivity" />
+        <activity android:name=".activity.SwipeRecyclerActivity" />
+        <activity android:name=".activity.LotteryActivity" />
+        <activity android:name=".activity.PullToRefreshActivity" />
+        <activity
+            android:name=".activity.BannerActivity"
+            android:theme="@style/AppTheme.BackgroundTransparent.TranslucentStatus" />
+        <activity android:name=".activity.PinEditTextActivity" />
+        <activity android:name=".activity.CalendarActivity" />
+        <activity android:name=".activity.PatternLockActivity" />
+        <activity android:name=".activity.TaobaoActivity" />
+        <activity android:name=".activity.BottomBarActivity" />
+        <activity android:name=".activity.SlidingTextViewActivity" />
+        <activity android:name=".activity.BarrageActivity" />
+        <activity android:name=".activity.SlidingListActivity" />
+        <activity android:name=".activity.SlidingRecycleViewActivity" />
+        <activity android:name=".activity.ToolbarDemoActivity" />
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
