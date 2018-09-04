@@ -14,9 +14,13 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.frameLayout, (Fragment) ARouter.getInstance().build("/widget/widget").navigation())
-                .commitAllowingStateLoss();
+        Object widget = ARouter.getInstance().build("/widget/widget").navigation();
+        if (widget instanceof Fragment) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frameLayout, (Fragment) widget)
+                    .commitAllowingStateLoss();
+        }
+
     }
 }
