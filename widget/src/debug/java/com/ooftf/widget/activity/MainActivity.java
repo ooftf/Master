@@ -6,7 +6,11 @@ import android.os.Bundle;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.service.base.BaseActivity;
+import com.ooftf.service.engine.pigeon.RxPigeon;
+import com.ooftf.service.engine.pigeon.Service;
 import com.ooftf.widget.R;
+
+import io.reactivex.Observable;
 
 public class MainActivity extends BaseActivity {
 
@@ -21,6 +25,13 @@ public class MainActivity extends BaseActivity {
                     .replace(R.id.frameLayout, (Fragment) widget)
                     .commitAllowingStateLoss();
         }
+        RxPigeon.getInstance().post("","").subscribe();
+        RxPigeon.getInstance().registerService("", new Service() {
+            @Override
+            public Observable<String> handleRequest(String params) {
+                return Observable.just(params);
+            }
+        });
 
     }
 }
