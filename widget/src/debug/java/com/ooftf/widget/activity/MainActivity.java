@@ -1,7 +1,6 @@
 package com.ooftf.widget.activity;
 
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -25,13 +24,15 @@ public class MainActivity extends BaseActivity {
                     .replace(R.id.frameLayout, (Fragment) widget)
                     .commitAllowingStateLoss();
         }
-        RxPigeon.getInstance().post("","").subscribe();
-        RxPigeon.getInstance().registerService("", new Service() {
+        RxPigeon.getInstance().registerService("RxPigeon://ooftf.service/MainActivity/action", new Service() {
             @Override
             public Observable<String> handleRequest(String params) {
                 return Observable.just(params);
             }
         });
+        RxPigeon.getInstance().post("RxPigeon://ooftf.service/MainActivity/action","").subscribe();
+
+        RxPigeon.getInstance().unregisterService("RxPigeon://ooftf.service/MainActivity/action");
 
     }
 }

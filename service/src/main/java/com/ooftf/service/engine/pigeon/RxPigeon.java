@@ -38,8 +38,8 @@ public class RxPigeon {
         serviceHolder.put(url, service);
     }
 
-    public void unRegisterService(Service service) {
-        serviceHolder.remove(service);
+    public void unregisterService(String url) {
+        serviceHolder.remove(url);
     }
 
 }
