@@ -14,6 +14,9 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.sliding.SlidingLayout;
 import com.ooftf.widget.R;
 
+/**
+ * @author ooftf
+ */
 @Route(path = "/widget/SlidingRecycleViewActivity")
 public class SlidingRecycleViewActivity extends AppCompatActivity {
     RecyclerView recyclerView;
