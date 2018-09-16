@@ -14,6 +14,7 @@ class SplashActivity : BaseActivity() {
             startNextActivity()
         }
         timer.start()
+        typerTextView.animateText("welcome to ooftf's world")
     }
 
     private var timer: CountDownTimer = MyTimer(this)
@@ -27,7 +28,7 @@ class SplashActivity : BaseActivity() {
         finish()
     }
 
-    class MyTimer(var activity: SplashActivity) : CountDownTimer(3000, 200) {
+    class MyTimer(var activity: SplashActivity) : CountDownTimer(4000, 200) {
         override fun onFinish() {
             if (activity.isShowing()) {
                 activity.startNextActivity()
