@@ -69,6 +69,9 @@ dependencies {
     }
     implementation 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
     kapt "com.alibaba:arouter-compiler:$arouter_compiler"
+    def htextview_version = '0.1.6'
+    implementation "com.hanks:htextview-base:$htextview_version"
+    compile "com.hanks:htextview-typer:$htextview_version"       // optional
 }
 apply plugin: 'com.jakewharton.hugo'
 apply from: 'tinkerpatch.gradle'
