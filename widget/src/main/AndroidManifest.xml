@@ -31,7 +31,8 @@
         <activity android:name=".activity.BarrageActivity" />
         <activity android:name=".activity.SlidingListActivity" />
         <activity android:name=".activity.SlidingRecycleViewActivity" />
-        <activity android:name=".activity.ToolbarDemoActivity"></activity>
+        <activity android:name=".activity.ToolbarDemoActivity"/>
+        <activity android:name=".activity.NotificationActivity"/>
     </application>
 
 </manifest>

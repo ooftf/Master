@@ -2,12 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ooftf.widget">
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:name="com.ooftf.service.base.MyApplication"
         android:allowBackup="false"
@@ -16,7 +19,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.BackgroundTransparent"
         tools:replace="android:allowBackup,android:icon, android:theme">
-
         <activity android:name=".activity.TourGuideActivity" />
         <activity android:name=".activity.GravActivity" />
         <activity android:name=".activity.OperationEditTextActivity" />
@@ -49,9 +51,11 @@
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.NotificationActivity"/>
     </application>
 
 </manifest>
