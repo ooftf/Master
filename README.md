@@ -17,5 +17,6 @@
 * 测试DrawerLayout 内部是否支持RecycleView（已抽取为https://github.com/ooftf/SlidingLayout 支持RecycleView）
 * aspectj 深入学习
 * ScrollerPlus转换成Rxjava去实现  （完成  SlidingLayout项目中用的就是）
-
+* LayoutManager
 * 兼容的水波纹效果 android:background="?android:attr/selectableItemBackground"
+* 通知还没搞定
