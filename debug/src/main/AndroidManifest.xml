@@ -20,7 +20,8 @@
         <activity android:name=".activity.ViewModelActivity" />
         <activity android:name=".activity.AcrossRecyclerActivity" />
         <activity android:name=".activity.AnnotationActivity" />
-        <activity android:name=".activity.ConstraintLayoutActivity"/>
+        <activity android:name=".activity.ConstraintLayoutActivity" />
+        <activity android:name=".activity.LayoutManagerActivity"></activity>
     </application>
 
 </manifest>

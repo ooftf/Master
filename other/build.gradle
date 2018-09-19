@@ -3,12 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.jakewharton.hugo'
+apply plugin: 'com.jakewharton.butterknife'
 android {
-    compileSdkVersion compile_sdk
+    compileSdkVersion versions.compileSdk
 
     defaultConfig {
-        minSdkVersion min_sdk
-        targetSdkVersion target_sdk
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -30,12 +31,12 @@ kapt {
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation deps.constraintLayout
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    kapt "com.alibaba:arouter-compiler:$arouter_compiler"
+    kapt "com.alibaba:arouter-compiler:$versions.arouter"
     implementation project(':service')
     api 'org.devio.takephoto:takephoto_library:4.1.0'
     api 'me.iwf.photopicker:PhotoPicker:0.9.12@aar'
     api 'com.zhihu.android:matisse:0.5.1'
+    kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
 }

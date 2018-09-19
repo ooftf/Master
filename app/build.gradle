@@ -3,12 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'packer'
+apply plugin: 'com.jakewharton.butterknife'
 android {
-    compileSdkVersion compile_sdk
+    compileSdkVersion versions.compileSdk
     defaultConfig {
         applicationId "com.master.kit"
-        minSdkVersion min_sdk
-        targetSdkVersion target_sdk
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -49,9 +50,10 @@ packer {
     channelList = ['*Douban*', 'Google/', '中文/@#市场']
 }
 dependencies {
-    testImplementation 'junit:junit:4.12'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    if(!debug){
+    implementation deps.constraintLayout
+    testImplementation 'junit:junit:4.12'
+    if (!debug) {
         api project(':widget')
         api project(':applet')
         api project(':debug')
@@ -59,19 +61,20 @@ dependencies {
         api project(':other')
     }
     api project(':service')
-    kapt "com.google.dagger:dagger-compiler:$dagger"
-    annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") {
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+    annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker") {
         changing = true
     }
-    compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") { changing = true }
-    implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$tinkerpatch_version") {
+    compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker") { changing = true }
+    implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$versions.tinkerpatch") {
         changing = true
     }
     implementation 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
-    kapt "com.alibaba:arouter-compiler:$arouter_compiler"
+    kapt "com.alibaba:arouter-compiler:$versions.arouter"
+    kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     def htextview_version = '0.1.6'
     implementation "com.hanks:htextview-base:$htextview_version"
-    implementation "com.hanks:htextview-typer:$htextview_version"       // optional
+    implementation "com.hanks:htextview-typer:$htextview_version"// optional
 }
 apply plugin: 'com.jakewharton.hugo'
 apply from: 'tinkerpatch.gradle'

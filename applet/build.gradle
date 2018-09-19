@@ -3,12 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.jakewharton.hugo'
+apply plugin: 'com.jakewharton.butterknife'
 android {
-    compileSdkVersion compile_sdk
+    compileSdkVersion versions.compileSdk
 
     defaultConfig {
-        minSdkVersion min_sdk
-        targetSdkVersion target_sdk
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
     }
 }
 kapt {
@@ -18,10 +19,12 @@ kapt {
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation deps.constraintLayout
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
     api project(':service')
-    kapt "com.alibaba:arouter-compiler:$arouter_compiler"
+    kapt "com.alibaba:arouter-compiler:$versions.arouter"
+    kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
 }

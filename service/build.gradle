@@ -4,41 +4,42 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.jakewharton.hugo'
 android {
-    compileSdkVersion compile_sdk
+    compileSdkVersion versions.compileSdk
     defaultConfig {
-        minSdkVersion min_sdk
-        targetSdkVersion target_sdk
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
     }
 }
 
 dependencies {
-    api 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation deps.constraintLayout
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api "com.android.support:support-vector-drawable:$support"
-    api "com.android.support:appcompat-v7:$support"
-    api "com.android.support:support-v4:$support"
-    api "com.android.support:cardview-v7:$support"
-    api "com.android.support:design:$support"
-    api "com.android.support:recyclerview-v7:$support"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+    api "com.android.support:support-vector-drawable:$versions.support"
+    api "com.android.support:appcompat-v7:$versions.support"
+    api "com.android.support:support-v4:$versions.support"
+    api "com.android.support:cardview-v7:$versions.support"
+    api "com.android.support:design:$versions.support"
+    api "com.android.support:recyclerview-v7:$versions.support"
     api 'com.loopj.android:android-async-http:1.4.9'
-    api "com.jakewharton:butterknife:$butterknife"
+    api "com.jakewharton:butterknife:$versions.butterknife"
     api 'com.alibaba:fastjson:1.2.7'
     api 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     api 'com.liulishuo.filedownloader:library:1.7.1'
     api 'com.roughike:bottom-bar:2.3.1'
-    api "com.github.bumptech.glide:glide:$glide"
+    api "com.github.bumptech.glide:glide:$versions.glide"
+    kapt "com.github.bumptech.glide:compiler:$versions.glide"
     api 'com.makeramen:roundedimageview:2.3.0'
     api 'com.android.support:multidex:1.0.3'
-    api "com.android.support:support-v13:$support"
+    api "com.android.support:support-v13:$versions.support"
     api 'com.youth.banner:banner:1.4.10'
     api 'com.romandanylyk:pageindicatorview:1.0.2'
     api 'com.orhanobut:logger:2.1.1'
-    api "com.google.dagger:dagger:$dagger"
+    api "com.google.dagger:dagger:$versions.dagger"
     api ('com.github.worker8:tourguide:1.0.19-SNAPSHOT@aar') {
         transitive=true
     }
@@ -46,17 +47,17 @@ dependencies {
     api 'com.github.chrisbanes:PhotoView:2.1.3'
     api 'com.alimuzaffar.lib:pinentryedittext:1.3.1'
     api 'com.daimajia.swipelayout:library:1.2.0@aar'
-    kapt "com.jakewharton:butterknife-compiler:$butterknife"
-    kapt "com.google.dagger:dagger-compiler:$dagger"
+    kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     api 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
-    api "com.mcxiaoke.packer-ng:helper:$packer_ng_version"
+    api "com.mcxiaoke.packer-ng:helper:$versions.packerNG"
     api 'com.facebook.stetho:stetho:1.5.0'
     api 'com.facebook.stetho:stetho-okhttp3:1.5.0'
-    annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") {
+    annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker") {
         changing = true
     }
-    compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$tinker_version") { changing = true }
-    api("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$tinkerpatch_version") { changing = true }
+    compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker") { changing = true }
+    api("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$versions.tinkerpatch") { changing = true }
     api 'com.google.code.gson:gson:2.8.5'
     api 'io.reactivex.rxjava2:rxandroid:2.1.0'
     api 'com.trello.rxlifecycle2:rxlifecycle-kotlin:2.2.1'
@@ -68,7 +69,6 @@ dependencies {
     api 'com.github.ooftf:HiHttp:2.0.0'
     api 'com.github.ooftf:OperationEditTextLayout:1.1.3'
     api 'com.github.ooftf:VerticalPagerLayout:1.2.1'
-    kapt "com.github.bumptech.glide:compiler:$glide"
     // 仅在debug包启用BlockCanary进行卡顿监控和提示的话，可以这么用
     debugApi 'com.github.markzhai:blockcanary-android:1.5.0'
     releaseApi 'com.github.markzhai:blockcanary-no-op:1.5.0'
