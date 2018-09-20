@@ -14,16 +14,17 @@
     <application
         android:name="com.ooftf.service.base.MyApplication"
         android:allowBackup="false"
-        android:icon="@drawable/logo_empty"
         android:label="@string/app_name"
+        android:icon="@drawable/logo_legacy"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.BackgroundTransparent"
         tools:replace="android:allowBackup,android:icon, android:theme">
         <activity
+            android:enabled="true"
             android:name=".activity.SplashActivity"
             android:theme="@style/AppTheme.TranslucentStatus.Splash">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

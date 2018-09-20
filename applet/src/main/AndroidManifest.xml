@@ -5,7 +5,7 @@
     <application>
         <activity android:name=".activity.BreakfastActivity" />
         <activity android:name=".activity.MobApiActivity" />
-        <activity android:name=".activity.JX3Activity"></activity>
+        <activity android:name=".activity.JX3Activity"/>
     </application>
 
 </manifest>

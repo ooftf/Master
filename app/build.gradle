@@ -16,6 +16,10 @@ android {
         vectorDrawables.useSupportLibrary = true
 
     }
+    compileOptions {
+        sourceCompatibility versions.java
+        targetCompatibility versions.java
+    }
     kapt {
         arguments {
             arg("moduleName", project.getName())
@@ -53,7 +57,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation deps.constraintLayout
     testImplementation 'junit:junit:4.12'
-    if (!debug) {
+    if (!MoudleDebug) {
         api project(':widget')
         api project(':applet')
         api project(':debug')

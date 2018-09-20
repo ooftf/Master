@@ -1,4 +1,4 @@
-if (debug) {
+if (MoudleDebug) {
     apply plugin: 'com.android.application'
     apply from: '../app/tinkerpatch.gradle'
 } else {
@@ -15,17 +15,25 @@ android {
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         vectorDrawables.useSupportLibrary = true
-        if (debug) {
+        if (MoudleDebug) {
             applicationId "com.ooftf.widget"
             multiDexEnabled true
         }
     }
+    compileOptions {
+        sourceCompatibility versions.java
+        targetCompatibility versions.java
+    }
     sourceSets {
         main {
-            if (debug) {
+            if (MoudleDebug) {
                 manifest.srcFile 'src/debug/AndroidManifest.xml'
                 java.srcDirs = ['src/debug/java', 'src/main/java']
                 res.srcDirs = ['src/debug/res', 'src/main/res']
+            }else{
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java.srcDirs = ['src/main/java']
+                res.srcDirs = ['src/main/res']
             }
         }
     }

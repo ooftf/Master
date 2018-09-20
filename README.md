@@ -21,3 +21,5 @@
 * 兼容的水波纹效果 android:background="?android:attr/selectableItemBackground"
 * 通知还没搞定
 * Java8新特性
+* Rxjava compose
+* 拦截器设计模式

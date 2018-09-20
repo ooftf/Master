@@ -2,6 +2,7 @@ package com.ooftf.master.debug.fragment
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
+import com.ooftf.master.debug.activity.LayoutManagerActivity
 import com.ooftf.service.base.BaseListFragment
 import com.ooftf.service.bean.ScreenItemBean
 
@@ -27,6 +28,8 @@ class DebugFragment : BaseListFragment() {
         adapter.add(ScreenItemBean("/debug/ViewModel"))
         adapter.add(ScreenItemBean("/debug/AcrossRecyclerActivity"))
         adapter.add(ScreenItemBean("/debug/ConstraintLayoutActivity"))
+        adapter.add(ScreenItemBean("/debug/LayoutManagerActivity"))
+
         adapter.notifyDataSetChanged()
     }
 }

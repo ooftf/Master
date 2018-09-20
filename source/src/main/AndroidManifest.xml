@@ -8,7 +8,7 @@
         <activity android:name=".activity.ProxyActivity" />
         <activity android:name=".activity.RxEmitterActivity" />
         <activity android:name=".activity.RxFlatMapActivity" />
-        <activity android:name=".activity.RxIntervalRangeActivity"></activity>
+        <activity android:name=".activity.RxIntervalRangeActivity"/>
     </application>
 
 </manifest>
