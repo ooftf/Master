@@ -11,18 +11,22 @@ import com.ooftf.service.net.ServiceHolder
 import com.ooftf.service.net.etd.PresenterObserver
 import com.ooftf.service.net.etd.ResponseView
 import com.ooftf.service.net.etd.bean.BannerBean
+import com.ooftf.service.net.etd.bean.DialogAction
 import com.ooftf.widget.R
 import com.ooftf.widget.dagger.DaggerBannerComponent
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import com.youth.banner.loader.ImageLoaderInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_banner.*
+import java.util.*
 import javax.inject.Inject
 
 @Route(path = "/widget/banner")
 class BannerActivity : BaseSlidingActivity() {
 
-    @Inject lateinit var imageLoader: IImageLoader
+    @Inject
+    lateinit var imageLoader: IImageLoader
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         DaggerBannerComponent.create().inject(this)
@@ -55,6 +59,7 @@ class BannerActivity : BaseSlidingActivity() {
                 .getBanner("1", "2")
                 .bindToLifecycle(banner)
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(DialogAction(this))
                 .subscribe(HomeObserver(responseLayout))
     }
 

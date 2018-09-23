@@ -12,8 +12,11 @@ import com.ooftf.service.base.BaseBarrageActivity;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
+import io.reactivex.ObservableTransformer;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
 @Route(path = "/source/RxFlatMapActivity")
@@ -37,27 +40,13 @@ public class RxFlatMapActivity extends BaseBarrageActivity {
 
     private void flatMap() {
         Observable.just(1, 2, 3, 4, 5, 6)
-                .concatMap(new Function<Integer, ObservableSource<String>>() {
-                    @Override
-                    public ObservableSource<String> apply(final Integer integer) throws Exception {
-                        return new ObservableSource<String>() {
-                            @Override
-                            public void subscribe(final Observer<? super String> observer) {
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        if (integer == 3) {
-                                            observer.onError(new Exception("异常啊啊"));
-                                        }
-                                        observer.onNext(integer.toString());
-                                        observer.onComplete();
-                                    }
-                                },5000);
-
-                            }
-                        };
+                .concatMap((Function<Integer, ObservableSource<String>>) integer -> (ObservableSource<String>) observer -> new Handler().postDelayed(() -> {
+                    if (integer == 3) {
+                        observer.onError(new Exception("异常啊啊"));
                     }
-                })
+                    observer.onNext(integer.toString());
+                    observer.onComplete();
+                }, 5000))
                 .subscribe(new Observer<String>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -71,7 +60,7 @@ public class RxFlatMapActivity extends BaseBarrageActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        addBarrage("onError：："+e.toString());
+                        addBarrage("onError：：" + e.toString());
                     }
 
                     @Override
