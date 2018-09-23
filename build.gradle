@@ -6,7 +6,7 @@ buildscript {
             'compileSdk' : 27,
             'minSdk'     : 19,
             'targetSdk'  : 26,
-            'support'    : "27.1.1",
+            'support'    : "28.0.0",
             'butterknife': "9.0.0-SNAPSHOT",
             'tinker'     : "1.9.1",
             'tinkerpatch': "1.2.1",
