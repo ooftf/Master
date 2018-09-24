@@ -67,7 +67,7 @@ class LotteryActivity : AppCompatActivity() {
         }, 2000)
     }
 
-    class LotteryViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    class LotteryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var recyclerView: RecyclerView
 
         init {
@@ -75,7 +75,7 @@ class LotteryActivity : AppCompatActivity() {
         }
     }
 
-    class LotteryItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    class LotteryItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textView: TextView
 
         init {

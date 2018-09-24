@@ -35,7 +35,7 @@ class WidgetFragment : BaseFragment() {
 
     private fun setupFloatButton() {
         recycler_view.addOnScrollListener(object : android.support.v7.widget.RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView?, newState: kotlin.Int) {
+            override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView, newState: kotlin.Int) {
                 when (newState) {
                     android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING -> {
                         handler.removeCallbacksAndMessages(null)

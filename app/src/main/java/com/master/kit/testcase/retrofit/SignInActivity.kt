@@ -1,4 +1,5 @@
 package com.master.kit.testcase.retrofit
+import android.app.Dialog
 import android.os.Bundle
 import android.widget.LinearLayout
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -9,6 +10,9 @@ import com.ooftf.service.net.ServiceHolder.service
 import com.ooftf.service.net.etd.PresenterObserver
 import com.ooftf.service.net.etd.ResponseDialog
 import com.ooftf.service.net.etd.ResponseView
+import com.ooftf.service.net.etd.SuccessResponse
+import com.ooftf.service.net.etd.action.DialogAction
+import com.ooftf.service.net.etd.action.ErrorAction
 import com.ooftf.service.net.etd.bean.BaseBean
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -62,14 +66,14 @@ class SignInActivity : BaseSlidingActivity() {
                 .signIn(name.text.toString(), PWD.text.toString(), pin.text.toString(), picCaptcha.uuid!!)
                 .bindToLifecycle(window.decorView)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(SignInObserver(ResponseDialog(this)))
-    }
+                .compose(DialogAction(this))
+                .compose(ErrorAction<BaseBean>(this))
+                .subscribe(object : SuccessResponse<BaseBean>() {
+                    override fun onSuccess(t: BaseBean?) {
+                        toast("登录成功")
+                    }
 
-    inner class SignInObserver(viewResponse: ResponseView<BaseBean>) : PresenterObserver<BaseBean>(viewResponse) {
-        override fun onResponseSuccess(bean: BaseBean) {
-            super.onResponseSuccess(bean)
-            toast("登录成功")
-        }
+                })
     }
 
 }

@@ -11,14 +11,13 @@ import com.ooftf.service.net.ServiceHolder
 import com.ooftf.service.net.etd.PresenterObserver
 import com.ooftf.service.net.etd.ResponseView
 import com.ooftf.service.net.etd.bean.BannerBean
-import com.ooftf.service.net.etd.bean.DialogAction
+import com.ooftf.service.net.etd.action.DialogAction
 import com.ooftf.widget.R
 import com.ooftf.widget.dagger.DaggerBannerComponent
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import com.youth.banner.loader.ImageLoaderInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_banner.*
-import java.util.*
 import javax.inject.Inject
 
 @Route(path = "/widget/banner")

@@ -38,9 +38,9 @@ abstract class HeaderFooterRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : Ba
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when {
-            isHeaderByType(viewType) -> object : RecyclerView.ViewHolder(getHeaderViewByType(viewType)) {
+            isHeaderByType(viewType) -> object : RecyclerView.ViewHolder(getHeaderViewByType(viewType)!!) {
             }
-            isFooterByType(viewType) -> object : RecyclerView.ViewHolder(getFooterViewByType(viewType)) {
+            isFooterByType(viewType) -> object : RecyclerView.ViewHolder(getFooterViewByType(viewType)!!) {
             }
             else -> onCreateViewHolderSecondary(parent, viewType)
         }

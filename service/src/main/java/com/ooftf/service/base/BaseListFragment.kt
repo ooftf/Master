@@ -69,7 +69,7 @@ abstract class BaseListFragment : BaseFragment() {
      * 一个RecyclerView的滚动监听，负责滚动时View的收缩动画
      */
     class ShyAnimateScrollListener(var view: View,var handler:Handler) : RecyclerView.OnScrollListener() {
-        override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView?, newState: kotlin.Int) {
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             when (newState) {
                 RecyclerView.SCROLL_STATE_DRAGGING -> {//滚动的时候
                     handler.removeCallbacksAndMessages(null)

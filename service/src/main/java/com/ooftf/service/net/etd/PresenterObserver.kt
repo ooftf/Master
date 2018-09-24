@@ -1,6 +1,8 @@
 package com.ooftf.service.net.etd
 
 import com.ooftf.hihttp.controller.HiPresenterObserver
+import com.ooftf.service.net.etd.Constant.CODE_OFF_SITE_LOGIN
+import com.ooftf.service.net.etd.Constant.CODE_SESSION_OVERDUE
 import com.ooftf.service.net.etd.bean.BaseBean
 
 
@@ -56,10 +58,7 @@ open class PresenterObserver<T : BaseBean>(vararg view: ResponseView<T>) : HiPre
         }
     }
 
-    companion object {
-        val CODE_OFF_SITE_LOGIN = "800001"
-        val CODE_SESSION_OVERDUE = "800000"
-    }
+
 
 
 }

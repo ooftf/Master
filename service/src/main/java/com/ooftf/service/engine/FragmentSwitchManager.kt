@@ -31,14 +31,14 @@ class FragmentSwitchManager(
     }
 
     private fun hideOther(fragmentTransaction: FragmentTransaction, tagId: String) {
-        tags.filter { !it.equals(tagId) }
-                .map { manager.findFragmentByTag(it.toString()) }
-                .filter { it != null }
+        tags.filter { it != tagId }
+                .map { manager.findFragmentByTag(it) }
+                .filterNotNull()
                 .forEach { fragmentTransaction.hide(it) }
     }
 
     private fun getFragment(fragmentTransaction: FragmentTransaction, tagId: String): Fragment {
-        var fragment: Fragment? = manager.findFragmentByTag(tagId.toString())
+        var fragment: Fragment? = manager.findFragmentByTag(tagId)
         if (null == fragment) {
             fragment = createFragment(tagId)
             fragmentTransaction.add(containerViewId, fragment, tagId)

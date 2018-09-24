@@ -26,7 +26,7 @@ class ToolbarBehavior : CoordinatorLayout.Behavior<ScrollToolbar> {
     /**
      * 此方法 的返回值只影响layout不影响scroll
      */
-    override fun layoutDependsOn(parent: CoordinatorLayout?, child: ScrollToolbar, dependency: View): Boolean {
+    override fun layoutDependsOn(parent: CoordinatorLayout, child: ScrollToolbar, dependency: View): Boolean {
         Log.e(Throwable().stackTrace[0].fileName, Throwable().stackTrace[0].methodName)
         setProgress(child)
         return dependency is ReturnTopLayout
@@ -39,12 +39,12 @@ class ToolbarBehavior : CoordinatorLayout.Behavior<ScrollToolbar> {
         return super.onDependentViewChanged(parent, child, dependency)
     }
 
-    override fun onLayoutChild(parent: CoordinatorLayout, child: ScrollToolbar?, layoutDirection: Int): Boolean {
+    override fun onLayoutChild(parent: CoordinatorLayout, child: ScrollToolbar, layoutDirection: Int): Boolean {
         Log.e(Throwable().stackTrace[0].fileName, Throwable().stackTrace[0].methodName)
         return super.onLayoutChild(parent, child, layoutDirection)
     }
 
-    override fun onMeasureChild(parent: CoordinatorLayout?, child: ScrollToolbar?, parentWidthMeasureSpec: Int, widthUsed: Int, parentHeightMeasureSpec: Int, heightUsed: Int): Boolean {
+    override fun onMeasureChild(parent: CoordinatorLayout, child: ScrollToolbar, parentWidthMeasureSpec: Int, widthUsed: Int, parentHeightMeasureSpec: Int, heightUsed: Int): Boolean {
         Log.e(Throwable().stackTrace[0].fileName, Throwable().stackTrace[0].methodName)
         return super.onMeasureChild(parent, child, parentWidthMeasureSpec, widthUsed, parentHeightMeasureSpec, heightUsed)
     }

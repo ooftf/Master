@@ -44,7 +44,7 @@ class TestLayoutManager : RecyclerView.LayoutManager() {
         return true
     }
 
-    override fun scrollVerticallyBy(dy: Int, recycler: RecyclerView.Recycler?, state: RecyclerView.State?): Int {
+    override fun scrollVerticallyBy(dy: Int, recycler: RecyclerView.Recycler, state: RecyclerView.State): Int {
         //列表向下滚动dy为正，列表向上滚动dy为负，这点与Android坐标系保持一致。
         //实际要滑动的距离
         var travel = dy

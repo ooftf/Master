@@ -61,11 +61,11 @@ abstract class CategoryRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : Header
                 //转换为body位置并，
                 val firstCompleteView = linearLayoutManager.findViewByPosition(firstComplete - adapter.getHeaderCount())
                 //获取到对应的itemView
-                var view = firstCompleteView.findViewById<View>(stickyView.id)
+                val view = firstCompleteView!!.findViewById<View>(stickyView.id)
                 //查看这个itemView的stickyView有没有显示
                 if (view.visibility == View.VISIBLE && firstCompleteView.top <= stickyView.height) { //在"Item stickyView"显示,并且firstCompleteView.top <= stickyView.height 的时候开始 “悬浮stickyView”开始移动，
                     //计算移动位置
-                    var dx = stickyView.height - firstCompleteView.top
+                    val dx = stickyView.height - firstCompleteView.top
                     stickyView.translationY = -dx.toFloat()
                 } else {//其余情况 “悬浮stickyView”回到原位
                     stickyView.translationY = 0f
