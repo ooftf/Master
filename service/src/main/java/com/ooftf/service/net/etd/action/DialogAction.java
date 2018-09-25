@@ -35,18 +35,20 @@ public class DialogAction<T> implements ObservableTransformer<T, T> {
 
     @Override
     public ObservableSource<T> apply(Observable<T> upstream) {
-        return upstream.doOnSubscribe(disposable -> {
-            if (progressDialog == null) {
-                progressDialog = new ProgressDialog(activity);
-                progressDialog.setMessage(message);
+        return upstream
+                .doOnSubscribe(disposable -> {
+                    if (progressDialog == null) {
+                        progressDialog = new ProgressDialog(activity);
+                        progressDialog.setMessage(message);
 
-            }
-            progressDialog.show();
-        }).doOnTerminate(() -> {
-            if (progressDialog != null) {
-                progressDialog.dismiss();
+                    }
+                    progressDialog.show();
+                })
+                .doOnTerminate(() -> {
+                    if (progressDialog != null) {
+                        progressDialog.dismiss();
 
-            }
-        });
+                    }
+                });
     }
 }

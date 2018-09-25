@@ -4,14 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.service.engine.imageloader.IImageLoader
 import com.ooftf.service.net.ServiceHolder
-import com.ooftf.service.net.etd.PresenterObserver
-import com.ooftf.service.net.etd.ResponseView
+import com.ooftf.service.net.etd.SuccessResponse
 import com.ooftf.service.net.etd.bean.BannerBean
-import com.ooftf.service.net.etd.action.DialogAction
 import com.ooftf.widget.R
 import com.ooftf.widget.dagger.DaggerBannerComponent
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
@@ -34,8 +31,21 @@ class BannerActivity : BaseSlidingActivity() {
         requestBanner()
         responseLayout.setOnRetryListener { requestBanner() }
         next.setOnClickListener {
-            ARouter.getInstance().build("/widget/guide").navigation()
+            ServiceHolder
+                    .service
+                    .getBanner("1", "2")
+                    .bindToLifecycle(banner)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .compose(next.getAction("正在获取Banner"))
+                    .subscribe(object : SuccessResponse<BannerBean>() {
+                        override fun onSuccess(bean: BannerBean) {
+                            banner.setImages(bean.body.picList)
+                            banner.start()
+                        }
+
+                    })
         }
+
     }
 
     private fun setupBanner() {
@@ -58,15 +68,14 @@ class BannerActivity : BaseSlidingActivity() {
                 .getBanner("1", "2")
                 .bindToLifecycle(banner)
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose(DialogAction(this))
-                .subscribe(HomeObserver(responseLayout))
+                .compose(responseLayout.getAction())
+                .subscribe(object : SuccessResponse<BannerBean>() {
+                    override fun onSuccess(bean: BannerBean) {
+                        banner.setImages(bean.body.picList)
+                        banner.start()
+                    }
+
+                })
     }
 
-    inner class HomeObserver(responseView: ResponseView<BannerBean>) : PresenterObserver<BannerBean>(responseView) {
-        override fun onResponseSuccess(bean: BannerBean) {
-            super.onResponseSuccess(bean)
-            banner.setImages(bean.body.picList)
-            banner.start()
-        }
-    }
 }
