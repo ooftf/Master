@@ -26,11 +26,11 @@
             android:hint="银行卡查询"
             android:inputType="number"
             app:oet_delEnabled="true" />
-        <ImageView
+        <com.ooftf.hihttp.action.ActionButton
             android:id="@+id/bankCardQuery"
             android:layout_width="80dp"
             android:layout_height="56dp"
-            android:src="@drawable/ic_menu_send" />
+            android:background="@drawable/ic_menu_send" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

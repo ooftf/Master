@@ -2,24 +2,12 @@ package com.ooftf.master.debug.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.master.debug.R;
 import com.ooftf.service.base.BaseBarrageActivity;
-import com.ooftf.service.empty.EmptyObserver;
-import com.ooftf.service.net.ServiceHolder;
-import com.ooftf.service.net.etd.action.DialogAction;
-import com.ooftf.service.net.etd.action.ErrorAction;
-import com.ooftf.service.net.etd.bean.BaseBean;
 
 import org.jetbrains.annotations.Nullable;
-
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
 
 @Route(path = "/debug/ConstraintLayoutActivity")
 public class ConstraintLayoutActivity extends BaseBarrageActivity{

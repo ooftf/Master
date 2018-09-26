@@ -23,15 +23,7 @@ import io.reactivex.disposables.Disposable
 /**
  * Created by master on 2017/10/20 0020.
  */
-class PicCaptchaLayout : RelativeLayout, ResponseView<PicCaptchaBean> {
-    override fun onRequest(d: Disposable) {
-        pic.visibility = View.INVISIBLE
-        progressBar.visibility = View.VISIBLE
-    }
-
-    override fun onComplete() {
-
-    }
+class PicCaptchaLayout : RelativeLayout {
 
     override fun onAttachedToWindow() {
         Log.e("onAttachedToWindow", "onAttachedToWindow")
@@ -49,55 +41,48 @@ class PicCaptchaLayout : RelativeLayout, ResponseView<PicCaptchaBean> {
             Log.e("post", "post")
         }
     }
-
-    private val dialog: ResponseDialog by lazy {
-        ResponseDialog(activity)
-    }
-
     private fun picCaptchaRequest() {
         ServiceHolder.service
                 .picCaptcha()
                 .bindToLifecycle(this)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(PicCaptchaObserver(this))
+                .subscribe(object : BaseResponse<PicCaptchaBean>() {
+                    override fun onSubscribe(d: Disposable) {
+                        pic.visibility = View.INVISIBLE
+                        progressBar.visibility = View.VISIBLE
+                    }
+                    override fun onSuccess(bean: PicCaptchaBean) {
+                        pic.visibility = View.VISIBLE
+                        progressBar.visibility = View.INVISIBLE
+                        uuid = bean.body?.uuid
+                        bean.body?.let {
+                            val bytes = Base64.decode(
+                                    it.indentify, Base64.DEFAULT)
+                            val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+                            pic.setImageBitmap(bitmap)
+                        }
+                    }
+
+                    override fun onFail(t: PicCaptchaBean?) {
+                        Log.e("onError", "onError")
+                        pic.visibility = View.VISIBLE
+                        progressBar.visibility = View.INVISIBLE
+                        pic.setImageResource(R.drawable.vector_net_error)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.e("onError", "onError")
+                        pic.visibility = View.VISIBLE
+                        progressBar.visibility = View.INVISIBLE
+                        pic.setImageResource(R.drawable.vector_net_error)
+                    }
+
+
+                })
     }
 
-    override fun onError(t: Throwable) {
-        Log.e("onError", "onError")
-        pic.visibility = View.VISIBLE
-        progressBar.visibility = View.INVISIBLE
-        pic.setImageResource(R.drawable.vector_net_error)
-    }
 
-    override fun onResponse(bean: PicCaptchaBean) {
-        pic.visibility = View.VISIBLE
-        progressBar.visibility = View.INVISIBLE
-    }
 
-    override fun onResponseSuccess(bean: PicCaptchaBean) {
-        bean.body?.let {
-            val bytes = Base64.decode(
-                    it.indentify, Base64.DEFAULT)
-            val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-            pic.setImageBitmap(bitmap)
-        }
-    }
-
-    override fun onResponseFailOffSiteLogin(bean: PicCaptchaBean) {
-        pic.setImageResource(R.drawable.vector_net_error)
-        dialog.onResponseFailOffSiteLogin(bean)
-    }
-
-    override fun onResponseFailSessionOverdue(bean: PicCaptchaBean) {
-        pic.setImageResource(R.drawable.vector_net_error)
-        dialog.onResponseFailSessionOverdue(bean)
-    }
-
-    override fun onResponseFailMessage(bean: PicCaptchaBean) {
-        Log.e("onResponseFailMessage", "onResponseFailMessage")
-        pic.setImageResource(R.drawable.vector_net_error)
-        //dialog.onResponseFailMessage(bean)
-    }
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -118,11 +103,4 @@ class PicCaptchaLayout : RelativeLayout, ResponseView<PicCaptchaBean> {
     }
 
     var uuid: String? = null
-
-    inner class PicCaptchaObserver(viewResponse: ResponseView<PicCaptchaBean>) : PresenterObserver<PicCaptchaBean>(viewResponse) {
-        override fun onResponseSuccess(bean: PicCaptchaBean) {
-            super.onResponseSuccess(bean)
-            uuid = bean.body?.uuid
-        }
-    }
 }

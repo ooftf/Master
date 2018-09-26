@@ -7,9 +7,8 @@ import android.support.v7.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.gson.Gson
 import com.ooftf.applet.R
-import com.ooftf.hihttp.controller.HiPresenterObserver
-import com.ooftf.hihttp.view.HiResponseDialog
-import com.ooftf.hihttp.view.HiResponseView
+import com.ooftf.hihttp.action.DialogAction
+import com.ooftf.service.empty.EmptyObserver
 import com.ooftf.service.net.ServiceHolder
 import com.ooftf.support.MaterialProgressDrawable
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
@@ -22,16 +21,13 @@ class MobApiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mob_api)
         bankCardQuery.setOnClickListener {
-            val materialProgressDrawable = MaterialProgressDrawable(this, bankCardQuery)
-            materialProgressDrawable.setColorSchemeColors(Color.parseColor("#00FF00"))
-            bankCardQuery.setImageDrawable(materialProgressDrawable)
-            materialProgressDrawable.start()
             ServiceHolder
                     .mobService
                     .bankQuery(bankCard.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(BankCardObserve(HiResponseDialog(this)))
+                    .compose(bankCardQuery.getAction())
+                    .subscribe(BankCardObserve())
         }
         phoneQuery.setOnClickListener {
             ServiceHolder
@@ -39,7 +35,8 @@ class MobApiActivity : AppCompatActivity() {
                     .phoneQuery(phone.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(BankCardObserve(HiResponseDialog(this)))
+                    .compose(DialogAction(this))
+                    .subscribe(BankCardObserve())
         }
         idCardQuery.setOnClickListener {
             ServiceHolder
@@ -47,7 +44,8 @@ class MobApiActivity : AppCompatActivity() {
                     .idCardQuery(idCard.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(BankCardObserve(HiResponseDialog(this)))
+                    .compose(DialogAction(this))
+                    .subscribe(BankCardObserve())
         }
         postcodeQuery.setOnClickListener {
             ServiceHolder
@@ -55,7 +53,8 @@ class MobApiActivity : AppCompatActivity() {
                     .postcodeQuery(postcode.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(BankCardObserve(HiResponseDialog(this)))
+                    .compose(DialogAction(this))
+                    .subscribe(BankCardObserve())
         }
         ipQuery.setOnClickListener {
             ServiceHolder
@@ -63,11 +62,12 @@ class MobApiActivity : AppCompatActivity() {
                     .ipQuery(ip.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(BankCardObserve(HiResponseDialog(this)))
+                    .compose(DialogAction(this))
+                    .subscribe(BankCardObserve())
         }
     }
 
-    inner class BankCardObserve<T>(view: HiResponseView<T>) : HiPresenterObserver<T>(view) {
+    inner class BankCardObserve<T> : EmptyObserver<T>() {
         override fun onNext(value: T) {
             super.onNext(value)
             AlertDialog

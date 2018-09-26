@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.service.engine.imageloader.IImageLoader
 import com.ooftf.service.net.ServiceHolder
-import com.ooftf.service.net.etd.SuccessResponse
+import com.ooftf.service.net.etd.BaseResponse
 import com.ooftf.service.net.etd.bean.BannerBean
 import com.ooftf.widget.R
 import com.ooftf.widget.dagger.DaggerBannerComponent
@@ -37,7 +37,7 @@ class BannerActivity : BaseSlidingActivity() {
                     .bindToLifecycle(banner)
                     .observeOn(AndroidSchedulers.mainThread())
                     .compose(next.getAction("正在获取Banner"))
-                    .subscribe(object : SuccessResponse<BannerBean>() {
+                    .subscribe(object : BaseResponse<BannerBean>() {
                         override fun onSuccess(bean: BannerBean) {
                             banner.setImages(bean.body.picList)
                             banner.start()
@@ -69,7 +69,7 @@ class BannerActivity : BaseSlidingActivity() {
                 .bindToLifecycle(banner)
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(responseLayout.getAction())
-                .subscribe(object : SuccessResponse<BannerBean>() {
+                .subscribe(object : BaseResponse<BannerBean>() {
                     override fun onSuccess(bean: BannerBean) {
                         banner.setImages(bean.body.picList)
                         banner.start()

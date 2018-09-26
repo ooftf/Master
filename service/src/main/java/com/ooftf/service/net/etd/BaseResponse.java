@@ -10,7 +10,7 @@ import io.reactivex.disposables.Disposable;
  * @author ooftf
  * @date 2018/9/24 0024
  **/
-public abstract class SuccessResponse<T extends BaseBean> implements Observer<T> {
+public abstract class BaseResponse<T extends BaseBean> implements Observer<T> {
     @Override
     public void onSubscribe(Disposable d) {
 
@@ -20,7 +20,16 @@ public abstract class SuccessResponse<T extends BaseBean> implements Observer<T>
     public void onNext(T t) {
         if (t.getSuccess()) {
             onSuccess(t);
+        }else{
+            onFail(t);
         }
+    }
+
+    /**
+     *
+     * @param t
+     */
+    public void onFail(T t) {
     }
 
     @Override
@@ -33,5 +42,9 @@ public abstract class SuccessResponse<T extends BaseBean> implements Observer<T>
 
     }
 
+    /**
+     *
+     * @param t
+     */
     public abstract void onSuccess(T t);
 }

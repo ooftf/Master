@@ -1,17 +1,13 @@
 package com.master.kit.testcase.retrofit
-import android.app.Dialog
 import android.os.Bundle
 import android.widget.LinearLayout
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.master.kit.R
 import com.nineoldandroids.animation.ValueAnimator
+import com.ooftf.hihttp.action.DialogAction
 import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.service.net.ServiceHolder.service
-import com.ooftf.service.net.etd.PresenterObserver
-import com.ooftf.service.net.etd.ResponseDialog
-import com.ooftf.service.net.etd.ResponseView
-import com.ooftf.service.net.etd.SuccessResponse
-import com.ooftf.service.net.etd.action.DialogAction
+import com.ooftf.service.net.etd.BaseResponse
 import com.ooftf.service.net.etd.action.ErrorAction
 import com.ooftf.service.net.etd.bean.BaseBean
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
@@ -68,7 +64,7 @@ class SignInActivity : BaseSlidingActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(DialogAction(this))
                 .compose(ErrorAction<BaseBean>(this))
-                .subscribe(object : SuccessResponse<BaseBean>() {
+                .subscribe(object : BaseResponse<BaseBean>() {
                     override fun onSuccess(t: BaseBean?) {
                         toast("登录成功")
                     }
