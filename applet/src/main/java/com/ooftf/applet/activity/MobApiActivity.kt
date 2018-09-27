@@ -1,6 +1,4 @@
 package com.ooftf.applet.activity
-
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -10,7 +8,6 @@ import com.ooftf.applet.R
 import com.ooftf.hihttp.action.DialogAction
 import com.ooftf.service.empty.EmptyObserver
 import com.ooftf.service.net.ServiceHolder
-import com.ooftf.support.MaterialProgressDrawable
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_mob_api.*
