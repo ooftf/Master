@@ -3,41 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/background"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <View
-        android:elevation="100dp"
-        android:background="#ff0000"
         android:id="@+id/button0"
         android:layout_width="120dp"
         android:layout_height="60dp"
+        android:background="#ff0000"
+        android:elevation="100dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:background="#00FF00"
         android:id="@+id/button1"
         android:layout_width="120dp"
         android:layout_height="60dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        android:background="#00FF00"
+        app:layout_constraintTop_toBottomOf="@+id/button0" />
 
     <View
         android:id="@+id/button2"
         android:layout_width="120dp"
         android:layout_height="60dp"
         android:background="#00FFff"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/button1" />
 
     <FrameLayout
-        android:background="#00FFff"
         android:id="@+id/button3"
         android:layout_width="120dp"
         android:layout_height="60dp"
-
-        />
+        android:background="#00FFff"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 </android.support.constraint.ConstraintLayout>
