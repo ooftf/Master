@@ -40,7 +40,7 @@ public class HorizontalProgressDrawable extends Drawable implements Animatable {
             invalidateSelf();
         });
         animator.setRepeatCount(-1);
-        animator.setRepeatMode(1);
+        animator.setRepeatMode(ValueAnimator.RESTART);
         animator.setInterpolator(LINEAR_INTERPOLATOR);
         animator.addListener(new Animator.AnimatorListener() {
             @Override
