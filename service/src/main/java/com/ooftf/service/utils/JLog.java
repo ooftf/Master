@@ -1,5 +1,6 @@
 package com.ooftf.service.utils;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 /**
@@ -33,59 +34,59 @@ public class JLog {
      */
     public static final int ERROR = 6;
 
-    public static void v(String info) {
+    public static void v(Object info) {
         v(null, info);
     }
 
-    public static void v(Object tag, String info) {
-        if (intercept(ERROR)) {
+    public static void v(Object tag, Object info) {
+        if (intercept(VERBOSE)) {
             return;
         }
-        Log.v(parseTag(tag), info);
+        Log.v(parseTag(tag), String.valueOf(info));
     }
 
-    public static void d(String info) {
+    public static void d(Object info) {
         d(null, info);
     }
 
-    public static void d(Object tag, String info) {
-        if (intercept(ERROR)) {
+    public static void d(Object tag, Object info) {
+        if (intercept(DEBUG)) {
             return;
         }
-        Log.d(parseTag(tag), info);
+        Log.d(parseTag(tag), String.valueOf(info));
     }
 
-    public static void i(String info) {
+    public static void i(Object info) {
         i(null, info);
     }
 
-    public static void i(Object tag, String info) {
-        if (intercept(ERROR)) {
+    public static void i(Object tag, Object info) {
+        if (intercept(INFO)) {
             return;
         }
-        Log.i(parseTag(tag), info);
+        Log.i(parseTag(tag), String.valueOf(info));
     }
 
-    public static void w(String info) {
+    public static void w(Object info) {
         w(null, info);
     }
 
-    public static void w(Object tag, String info) {
-        if (intercept(ERROR)) {
+    public static void w(Object tag, Object info) {
+        if (intercept(WARN)) {
             return;
         }
-        Log.w(parseTag(tag), info);
+        Log.w(parseTag(tag), String.valueOf(info));
     }
 
-    public static void e(String info) {
+    public static void e(Object info) {
         e(null, info);
     }
 
-    public static void e(Object tag, String info) {
+    public static void e(Object tag, Object info) {
         if (intercept(ERROR)) {
             return;
         }
-        Log.e(parseTag(tag), info);
+        Log.e(parseTag(tag), String.valueOf(info));
     }
 
     private static boolean intercept(int level) {
@@ -96,6 +97,9 @@ public class JLog {
         if (tag == null) {
             return "JLog";
         } else if (tag instanceof String) {
+            if (((String) tag).length() == 0) {
+                return "JLog";
+            }
             return (String) tag;
         } else {
             return tag.getClass().getSimpleName();

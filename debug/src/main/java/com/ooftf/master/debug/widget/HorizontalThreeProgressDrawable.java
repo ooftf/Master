@@ -19,7 +19,9 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.Transformation;
 
 import com.ooftf.master.debug.R;
+import com.ooftf.service.empty.EmptyAnimationListener;
 import com.ooftf.service.utils.JLog;
+import com.ooftf.support.MaterialProgressDrawable;
 
 import hugo.weaving.DebugLog;
 
@@ -29,14 +31,14 @@ import hugo.weaving.DebugLog;
  * @date 2018/9/29 0029
  */
 
-public class HorizontalProgressDrawable extends Drawable implements Animatable {
+public class HorizontalThreeProgressDrawable extends Drawable implements Animatable {
     public static final int DURATION_MILLIS = 500;
     Line mLine;
     Context mContext;
     private Animation mAnimation;
     private View mParent;
 
-    public HorizontalProgressDrawable(Context context, View parent) {
+    public HorizontalThreeProgressDrawable(Context context, View parent) {
         mContext = context;
         mParent = parent;
         intrinsicHeight = mContext.getResources().getDimensionPixelSize(R.dimen.HorizontalProgressDrawable_height_default);
@@ -54,11 +56,20 @@ public class HorizontalProgressDrawable extends Drawable implements Animatable {
                 mLine.setProgress(interpolatedTime);
                 invalidateSelf();
             }
+
+
         };
         animation.setDuration(DURATION_MILLIS);
         animation.setRepeatCount(ValueAnimator.INFINITE);
         animation.setRepeatMode(ValueAnimator.RESTART);
         animation.setInterpolator(new LinearInterpolator());
+        animation.setAnimationListener(new EmptyAnimationListener() {
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                mLine.nextColor();
+            }
+        });
         mAnimation = animation;
     }
 
@@ -133,7 +144,7 @@ public class HorizontalProgressDrawable extends Drawable implements Animatable {
     }
 
     public static class Line {
-
+        int current = 0;
         float progress;
         final int[] colors = {Color.RED, Color.GREEN, Color.CYAN, Color.YELLOW};
         final Paint mPaint = new Paint();
@@ -142,29 +153,33 @@ public class HorizontalProgressDrawable extends Drawable implements Animatable {
             this.mPaint.setStrokeCap(Paint.Cap.SQUARE);
             this.mPaint.setAntiAlias(true);
             this.mPaint.setStyle(Paint.Style.STROKE);
+            mPaint.setStyle(Paint.Style.FILL);
+        }
+
+        int getBackgroundColor() {
+            return colors[(current) % colors.length];
+        }
+
+        int getAnimationColor() {
+            return colors[(current + 1) % colors.length];
+        }
+
+        void nextColor() {
+            current = (current + 1) % colors.length;
         }
 
         void draw(Canvas c, Rect bounds) {
-            mPaint.setStyle(Paint.Style.FILL);
-            float perWidth = c.getWidth() / colors.length;
-            float radius = Math.min(perWidth, bounds.height()) / 2;
-            for (int i = 0; i < colors.length; i++) {
-                mPaint.setColor(colors[i]);
-                float left = progress * bounds.width() + bounds.left + i * perWidth;
-                float right = left + perWidth;
-                if (left < bounds.right && right > bounds.right) {
-                    /**
-                     * 这条线被分为两半
-                     */
-                    c.drawRoundRect(new RectF(left, bounds.top, bounds.right, bounds.bottom), radius, radius, mPaint);
-                    right = right % bounds.width();
-                    c.drawRoundRect(new RectF(bounds.left, bounds.top, right, bounds.bottom), radius, radius, mPaint);
-                } else {
-                    left = left % bounds.width();
-                    right = right % bounds.width();
-                    c.drawRoundRect(new RectF(left, bounds.top, right, bounds.bottom), radius, radius, mPaint);
-                }
-            }
+
+            float radius = Math.min(bounds.width(), bounds.height()) / 2;
+            mPaint.setColor(getBackgroundColor());
+
+            //绘画背景线
+            c.drawRoundRect(new RectF(bounds.left, bounds.top, bounds.right, bounds.bottom), radius, radius, mPaint);
+            //绘制上层线
+            mPaint.setColor(getAnimationColor());
+            float width = bounds.width() * progress;
+            float mid = (bounds.left + bounds.right) / 2;
+            c.drawRoundRect(new RectF(mid - width / 2, bounds.top, mid + width / 2, bounds.bottom), radius, radius, mPaint);
         }
 
 

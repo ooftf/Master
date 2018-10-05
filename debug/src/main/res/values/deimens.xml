@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="HorizontalProgressDrawable_height_default">2dp</dimen>
+    <dimen name="HorizontalProgressDrawable_with_default">64dp</dimen>
+</resources>

@@ -29,14 +29,14 @@ import hugo.weaving.DebugLog;
  * @date 2018/9/29 0029
  */
 
-public class HorizontalProgressDrawable extends Drawable implements Animatable {
+public class HorizontalTwoProgressDrawable extends Drawable implements Animatable {
     public static final int DURATION_MILLIS = 500;
     Line mLine;
     Context mContext;
     private Animation mAnimation;
     private View mParent;
 
-    public HorizontalProgressDrawable(Context context, View parent) {
+    public HorizontalTwoProgressDrawable(Context context, View parent) {
         mContext = context;
         mParent = parent;
         intrinsicHeight = mContext.getResources().getDimensionPixelSize(R.dimen.HorizontalProgressDrawable_height_default);
@@ -146,24 +146,25 @@ public class HorizontalProgressDrawable extends Drawable implements Animatable {
 
         void draw(Canvas c, Rect bounds) {
             mPaint.setStyle(Paint.Style.FILL);
-            float perWidth = c.getWidth() / colors.length;
+
+            float perWidth = bounds.width() / 2f / (colors.length - 1f);
+            float totalOffset = perWidth * colors.length;
             float radius = Math.min(perWidth, bounds.height()) / 2;
+            float mid = (bounds.left + bounds.right) / 2f;
             for (int i = 0; i < colors.length; i++) {
                 mPaint.setColor(colors[i]);
-                float left = progress * bounds.width() + bounds.left + i * perWidth;
-                float right = left + perWidth;
-                if (left < bounds.right && right > bounds.right) {
-                    /**
-                     * 这条线被分为两半
-                     */
-                    c.drawRoundRect(new RectF(left, bounds.top, bounds.right, bounds.bottom), radius, radius, mPaint);
-                    right = right % bounds.width();
-                    c.drawRoundRect(new RectF(bounds.left, bounds.top, right, bounds.bottom), radius, radius, mPaint);
-                } else {
-                    left = left % bounds.width();
-                    right = right % bounds.width();
-                    c.drawRoundRect(new RectF(left, bounds.top, right, bounds.bottom), radius, radius, mPaint);
-                }
+                float currentProgress = (progress + (float) i / colors.length) % 1;
+                JLog.e(currentProgress);
+                float offset = totalOffset * currentProgress;
+
+                float leftEnd = mid - offset;
+                float rightEnd = mid + offset;
+                float leftStart = leftEnd + perWidth;
+                float rightStart = rightEnd - perWidth;
+                leftStart = Math.min(leftStart, mid);
+                rightStart = Math.max(rightStart, mid);
+                c.drawRoundRect(new RectF(leftEnd, bounds.top, leftStart, bounds.bottom), radius, radius, mPaint);
+                c.drawRoundRect(new RectF(rightStart, bounds.top, rightEnd, bounds.bottom), radius, radius, mPaint);
             }
         }
 
