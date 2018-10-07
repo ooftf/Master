@@ -39,6 +39,7 @@ dependencies {
     }
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
+    implementation deps.progressDrawable
     //implementation 'org.aspectj:aspectjtools:1.9.1'
     //compile 'org.aspectj:aspectjrt:1.9.1'
     //implementation "android.arch.lifecycle:viewmodel:$lifecycle_version"

@@ -8,9 +8,11 @@ import com.github.moduth.blockcanary.BlockCanary
 import com.liulishuo.filedownloader.FileDownloader
 import com.ooftf.service.BuildConfig
 import com.ooftf.service.engine.ActivityManager
+import com.ooftf.service.engine.typer.TyperFactory
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.squareup.leakcanary.LeakCanary
+import com.tencent.mmkv.MMKV
 import com.tinkerpatch.sdk.TinkerPatch
 import com.tinkerpatch.sdk.loader.TinkerPatchApplicationLike
 /**
@@ -34,6 +36,7 @@ class MyApplication : MultiDexApplication() {
             ARouter.openDebug()  // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(this)
+        TyperFactory.init(this)
     }
 
     private fun setupBlockCanary() {

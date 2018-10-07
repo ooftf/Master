@@ -1,16 +1,16 @@
 package com.ooftf.master.debug.activity;
 
 import android.os.Bundle;
-import android.support.v4.widget.CircularProgressDrawable;
 import android.view.View;
 import android.widget.Button;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.master.debug.R;
 import com.ooftf.master.debug.R2;
-import com.ooftf.master.debug.widget.HorizontalProgressDrawable;
-import com.ooftf.master.debug.widget.HorizontalThreeProgressDrawable;
-import com.ooftf.master.debug.widget.HorizontalTwoProgressDrawable;
+import com.ooftf.progress.EnlargeHorizontalProgressDrawable;
+import com.ooftf.progress.FlowHorizontalProgressDrawable;
+import com.ooftf.progress.GradualHorizontalProgressDrawable;
+import com.ooftf.progress.ShuntHorizontalProgressDrawable;
 import com.ooftf.service.base.BaseBarrageActivity;
 
 import org.jetbrains.annotations.Nullable;
@@ -30,7 +30,7 @@ public class ConstraintLayoutActivity extends BaseBarrageActivity {
     @BindView(R2.id.button2)
     Button button2;
     @BindView(R2.id.button3)
-    View button3;
+    Button button3;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,27 +62,30 @@ public class ConstraintLayoutActivity extends BaseBarrageActivity {
             }
         });
         button0.post(() -> {
-
-            HorizontalTwoProgressDrawable circularProgressDrawable = new HorizontalTwoProgressDrawable(this, button0);
+            FlowHorizontalProgressDrawable circularProgressDrawable = new FlowHorizontalProgressDrawable(this, button0);
             circularProgressDrawable.setIntrinsicWidth(button0.getMeasuredWidth());
             circularProgressDrawable.start();
-            button0.setCompoundDrawablesWithIntrinsicBounds(null, circularProgressDrawable, null, null);
+            button0.setCompoundDrawablesWithIntrinsicBounds(null, null, null, circularProgressDrawable);
         });
 
         button1.post(() -> {
-            HorizontalProgressDrawable horizontalProgressDrawable = new HorizontalProgressDrawable(this, button1);
+            EnlargeHorizontalProgressDrawable horizontalProgressDrawable = new EnlargeHorizontalProgressDrawable(this, button1);
             horizontalProgressDrawable.setIntrinsicWidth(button1.getMeasuredWidth());
             horizontalProgressDrawable.start();
-            HorizontalThreeProgressDrawable drawable = new HorizontalThreeProgressDrawable(this, button1);
-            drawable.setIntrinsicWidth(button1.getMeasuredWidth());
-            drawable.start();
-            button1.setCompoundDrawablesWithIntrinsicBounds(null, horizontalProgressDrawable, null, drawable);
+            button1.setCompoundDrawablesWithIntrinsicBounds(null, null, null, horizontalProgressDrawable);
         });
         button2.post(() -> {
-            HorizontalProgressDrawable horizontalProgressDrawable = new HorizontalProgressDrawable(this, button2);
+            GradualHorizontalProgressDrawable horizontalProgressDrawable = new GradualHorizontalProgressDrawable(this, button2);
             horizontalProgressDrawable.setIntrinsicWidth(button2.getMeasuredWidth());
             horizontalProgressDrawable.start();
-            button2.setCompoundDrawablesWithIntrinsicBounds(null, horizontalProgressDrawable, null, null);
+            button2.setCompoundDrawablesWithIntrinsicBounds(null, null, null, horizontalProgressDrawable);
+        });
+        button3.post(() -> {
+            ShuntHorizontalProgressDrawable drawable = new ShuntHorizontalProgressDrawable(this, button3);
+            drawable.setIntrinsicWidth(button3.getMeasuredWidth());
+            drawable.start();
+            drawable.setDuration(1000);
+            button3.setCompoundDrawablesWithIntrinsicBounds(null, null, null, drawable);
         });
 
 
