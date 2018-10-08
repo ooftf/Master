@@ -6,6 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.gson.Gson
 import com.ooftf.applet.R
 import com.ooftf.hihttp.action.DialogAction
+import com.ooftf.hihttp.action.ImageViewAction
 import com.ooftf.service.empty.EmptyObserver
 import com.ooftf.service.net.ServiceHolder
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
@@ -23,7 +24,7 @@ class MobApiActivity : AppCompatActivity() {
                     .bankQuery(bankCard.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .compose(bankCardQuery.getAction())
+                    .compose(ImageViewAction(bankCardQuery))
                     .subscribe(BankCardObserve())
         }
         phoneQuery.setOnClickListener {

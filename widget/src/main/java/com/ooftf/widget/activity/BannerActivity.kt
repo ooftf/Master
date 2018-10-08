@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.ooftf.hihttp.action.ButtonAction
 import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.service.engine.imageloader.IImageLoader
 import com.ooftf.service.net.ServiceHolder
@@ -36,7 +37,7 @@ class BannerActivity : BaseSlidingActivity() {
                     .getBanner("1", "2")
                     .bindToLifecycle(banner)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .compose(next.getAction("正在获取Banner"))
+                    .compose(ButtonAction(next,"正在获取Banner"))
                     .subscribe(object : BaseResponse<BannerBean>() {
                         override fun onSuccess(bean: BannerBean) {
                             banner.setImages(bean.body.picList)

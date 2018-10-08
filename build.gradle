@@ -20,7 +20,7 @@ buildscript {
     ext.deps = [
             'constraintLayout': 'com.android.support.constraint:constraint-layout:1.1.3',
             'fastjson':'com.alibaba:fastjson:1.1.70.android',
-            'HiHttp':'com.github.ooftf:HiHttp:3.1.0',
+            'HiHttp':'com.github.ooftf:HiHttp:07fbce3f93',
             'MMKV' : 'com.tencent:mmkv:1.0.10',
             'progressDrawable':'com.github.ooftf:progress-drawable:1.2.0'
     ]
