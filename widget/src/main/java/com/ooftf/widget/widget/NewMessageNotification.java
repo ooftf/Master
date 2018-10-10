@@ -14,6 +14,7 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 
 import com.ooftf.widget.R;
+import com.ooftf.widget.notification.NotificationChannelManager;
 
 /**
  * Helper class for showing and canceling new message
@@ -58,7 +59,7 @@ public class NewMessageNotification {
         final String text = res.getString(
                 R.string.new_message_notification_placeholder_text_template, exampleString);
 
-        final NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+        final NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NotificationChannelManager.getOneChannel(context))
 
                 // Set appropriate defaults for the notification light, sound,
                 // and vibration.
