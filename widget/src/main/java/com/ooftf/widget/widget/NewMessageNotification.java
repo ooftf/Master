@@ -11,7 +11,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
+import android.widget.RemoteViews;
+import android.widget.TextView;
 
 import com.ooftf.widget.R;
 import com.ooftf.widget.notification.NotificationChannelManager;
@@ -74,7 +77,7 @@ public class NewMessageNotification {
 
                 // Use a default priority (recognized on devices running Android
                 // 4.1 or later)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setPriority(NotificationManager.IMPORTANCE_DEFAULT)
 
                 // Provide a large icon, shown with the notification in the
                 // notification drawer on devices running Android 3.0 or later.
@@ -86,7 +89,8 @@ public class NewMessageNotification {
                 // Show a number. This is useful when stacking notifications of
                 // a single type.
                 .setNumber(number)
-
+                .setFullScreenIntent(PendingIntent.getActivity(context, 0, new Intent(Settings.ACTION_SETTINGS), PendingIntent.FLAG_UPDATE_CURRENT), true)
+                .setCustomHeadsUpContentView(getCustomHeadsUpContentView(context))
                 // If this notification relates to a past or upcoming event, you
                 // should set the relevant time information using the setWhen
                 // method below. If this call is omitted, the notification's
@@ -155,5 +159,11 @@ public class NewMessageNotification {
         } else {
             nm.cancel(NOTIFICATION_TAG.hashCode());
         }
+    }
+
+    private static RemoteViews getCustomHeadsUpContentView(Context context){
+        RemoteViews remoteViews = new RemoteViews(context. getPackageName(),R.layout.item_share);
+        remoteViews.setTextViewText(R.id.name,"name");
+        return remoteViews;
     }
 }
