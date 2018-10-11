@@ -74,7 +74,7 @@ public class NewMessageNotification {
 
                 // Use a default priority (recognized on devices running Android
                 // 4.1 or later)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
 
                 // Provide a large icon, shown with the notification in the
                 // notification drawer on devices running Android 3.0 or later.
@@ -86,7 +86,11 @@ public class NewMessageNotification {
                 // Show a number. This is useful when stacking notifications of
                 // a single type.
                 .setNumber(number)
-
+                .setFullScreenIntent( PendingIntent.getActivity(
+                        context,
+                        0,
+                        new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com")),
+                        PendingIntent.FLAG_UPDATE_CURRENT),true)
                 // If this notification relates to a past or upcoming event, you
                 // should set the relevant time information using the setWhen
                 // method below. If this call is omitted, the notification's
@@ -95,7 +99,6 @@ public class NewMessageNotification {
                 // upcoming event. The sole argument to this method should be
                 // the notification timestamp in milliseconds.
                 //.setWhen(...)
-
                 // Set the pending intent to be initiated when the user touches
                 // the notification.
                 .setContentIntent(
