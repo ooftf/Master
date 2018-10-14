@@ -22,7 +22,8 @@ buildscript {
             'fastjson':'com.alibaba:fastjson:1.1.70.android',
             'HiHttp':'com.github.ooftf:HiHttp:07fbce3f93',
             'MMKV' : 'com.tencent:mmkv:1.0.10',
-            'progressDrawable':'com.github.ooftf:progress-drawable:1.2.0'
+            'progressDrawable':'com.github.ooftf:progress-drawable:1.2.0',
+            'disklrucache':'com.jakewharton:disklrucache:2.0.2'
     ]
     repositories {
         jcenter()
@@ -31,7 +32,7 @@ buildscript {
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
         classpath "com.mcxiaoke.packer-ng:plugin:$versions.packerNG"

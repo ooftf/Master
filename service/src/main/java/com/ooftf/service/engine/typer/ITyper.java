@@ -122,6 +122,7 @@ public interface ITyper {
     /**
      * 获取 boolean 值
      * @param key
+     * @param defaultValue
      * @return
      */
     boolean getBoolean(String key,boolean defaultValue);
@@ -129,6 +130,7 @@ public interface ITyper {
     /**
      * 获取 int 值
      * @param key
+     * @param defaultValue
      * @return
      */
     int getInt(String key,int defaultValue);
@@ -136,6 +138,7 @@ public interface ITyper {
     /**
      * 获取 long 值
      * @param key
+     * @param defaultValue
      * @return
      */
     long getLong(String key,long defaultValue);
@@ -143,6 +146,7 @@ public interface ITyper {
     /**
      * 获取 float 值
      * @param key
+     * @param defaultValue
      * @return
      */
     float getFloat(String key,float defaultValue);
@@ -150,6 +154,7 @@ public interface ITyper {
     /**
      * 获取 double 值
      * @param key
+     * @param defaultValue
      * @return
      */
     double getDouble(String key,double defaultValue);
@@ -157,6 +162,7 @@ public interface ITyper {
     /**
      * 获取 byte 值
      * @param key
+     * @param defaultValue
      * @return
      */
     byte[] getBytes(String key,byte[] defaultValue);
@@ -164,6 +170,7 @@ public interface ITyper {
     /**
      * 获取 String 值
      * @param key
+     * @param defaultValue
      * @return
      */
     String getString(String key,String defaultValue);
