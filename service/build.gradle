@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.jakewharton.hugo'
+apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {

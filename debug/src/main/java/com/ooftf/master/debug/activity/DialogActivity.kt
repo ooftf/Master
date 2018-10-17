@@ -7,6 +7,7 @@ import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
 import com.ooftf.master.debug.widget.DialogDemo
+import com.ooftf.service.widget.dialog.ListSelectorDialog
 import kotlinx.android.synthetic.main.activity_dialog_debug.*
 
 @Route(path = "/debug/dialog")
@@ -24,6 +25,15 @@ class DialogActivity : AppCompatActivity() {
         finishButton.setOnClickListener {
             dialog.logLeak()
             finish()
+        }
+        ListSelector.setOnClickListener {
+            var data = ArrayList<String>()
+            data.add("first")
+            data.add("second")
+            data.add("third")
+            var dialog = ListSelectorDialog(this)
+            dialog.setList(data)
+            dialog.show()
         }
     }
 }

@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.ooftf.hishare.HiShare
 import com.ooftf.service.R
+import com.ooftf.service.utils.JLog
 import com.ooftf.service.utils.ShareUtil
 
 class ShareDialog(activity: Activity) : BottomDialog(activity, R.style.DialogTheme_Blank) {
@@ -15,11 +16,11 @@ class ShareDialog(activity: Activity) : BottomDialog(activity, R.style.DialogThe
     var recycler_view:RecyclerView;
     init {
         setContentView(R.layout.dialog_share)
+        setWidthPercent(1f)
         recycler_view = findViewById(R.id.recycler_view)
         recycler_view.layoutManager = GridLayoutManager(context,4)
     }
     fun setData(shareData: ShareData){
-        window.attributes.width = context.resources.displayMetrics.widthPixels
         recycler_view.adapter = MyAdapter(activity, shareData)
     }
     class MyAdapter(var activity: Activity,var shareData: ShareData) : RecyclerView.Adapter<ViewHolder>() {

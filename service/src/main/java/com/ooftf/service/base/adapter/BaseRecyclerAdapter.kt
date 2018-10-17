@@ -8,6 +8,7 @@ import java.util.*
  */
 
 abstract class BaseRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : RecyclerView.Adapter<WH>() {
+    private var onItemClickListener: BaseRecyclerAdapter.OnItemClickListener<T>? = null
     internal var list: MutableList<T> = ArrayList()
 
     fun setList(list: List<T>) {
@@ -37,5 +38,25 @@ abstract class BaseRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : RecyclerVi
 
     fun getItem(position: Int): T {
         return list[position]
+    }
+
+    final override fun onBindViewHolder(viewHolder: WH, position: Int) {
+        viewHolder.itemView.setOnClickListener {
+            if (onItemClickListener != null) {
+                onItemClickListener!!.onItemClick(getItem(position), position)
+            }
+        }
+        onBindViewHolder_(viewHolder, position)
+    }
+
+    abstract fun onBindViewHolder_(viewHolder: WH, position: Int);
+
+
+    fun setOnItemClickListener(onItemClickListener: OnItemClickListener<T>) {
+        this.onItemClickListener = onItemClickListener
+    }
+
+    interface OnItemClickListener<T> {
+        fun onItemClick(data: T, position: Int)
     }
 }

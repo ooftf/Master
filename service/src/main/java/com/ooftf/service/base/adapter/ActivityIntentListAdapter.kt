@@ -10,7 +10,6 @@ import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.service.R
 import com.ooftf.service.bean.ActivityItemBean
-import com.ooftf.service.bean.ScreenItemBean
 import tf.ooftf.com.service.base.adapter.BaseRecyclerAdapter
 
 class ActivityIntentListAdapter(var context:Context) : BaseRecyclerAdapter<ActivityItemBean, ActivityIntentListAdapter.RecyclerHolder>() {
@@ -20,7 +19,7 @@ class ActivityIntentListAdapter(var context:Context) : BaseRecyclerAdapter<Activ
         return RecyclerHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerHolder, position: Int) {
+    override fun onBindViewHolder_(holder: RecyclerHolder, position: Int) {
         val bean = getItem(position)
         holder.describe.text = bean.describe
         holder.name.text = bean.name + "(" + bean.clz + ")"

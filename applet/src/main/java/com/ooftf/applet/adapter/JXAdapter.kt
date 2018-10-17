@@ -14,7 +14,7 @@ class JXAdapter(var inflate: LayoutInflater) : BaseRecyclerAdapter<JXBean, MyVie
         return MyViewHolder(inflate.inflate(R.layout.item_jx, parent, false))
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder_(holder: MyViewHolder, position: Int) {
         var item = getItem(position)
         holder.textView1.text = "${item.basic}:${item.getBasicIncome()}"
         holder.textView2.text = "${item.damage}:${item.getDamageIncome()}"

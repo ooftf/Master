@@ -83,7 +83,7 @@ abstract class HeaderFooterRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : Ba
 
     abstract fun onCreateViewHolderSecondary(parent: ViewGroup, viewType: Int): WH
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder_(holder: RecyclerView.ViewHolder, position: Int) {
         when {
             isHeader(position) -> onBindViewHolderHeader(holder, position)
             isFooter(position) -> onBindViewHolderFooter(holder, getFooterPosition(position))
