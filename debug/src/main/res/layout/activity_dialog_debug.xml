@@ -11,7 +11,7 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="显示dialog" />
+        android:text="5秒后显示Dialog，测试BadTokenException" />
 
     <Button
         android:id="@+id/finishButton"

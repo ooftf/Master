@@ -30,6 +30,9 @@ public class DialogDemo extends Dialog {
         Log.e("isFinishing", activity.isFinishing() + "------------");
     }
 
+    /**
+     * 用定时器打印 activity 在finish之后  的生命周期方法
+     */
     public void logLeak() {
         Log.e("isShowing", isShowing() + "");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {

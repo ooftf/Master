@@ -12,8 +12,8 @@ import com.ooftf.service.bean.ScreenItemBean
 @Route(path = "/debug/debug")
 class DebugFragment : BaseListFragment() {
     override fun initData() {
-        adapter.add(ScreenItemBean("/debug/newInstance"))
-        adapter.add(ScreenItemBean("/debug/dialog"))
+        adapter.add(ScreenItemBean("/debug/newInstance","生命周期newInstance调试界面"))
+        adapter.add(ScreenItemBean("/debug/dialog","Dialog调试界面"))
         adapter.add(ScreenItemBean("/debug/keyBoard"))
         adapter.add(ScreenItemBean("/debug/listView"))
         adapter.add(ScreenItemBean("/debug/touch"))

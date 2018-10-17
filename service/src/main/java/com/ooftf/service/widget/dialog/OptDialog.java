@@ -1,4 +1,4 @@
-package com.ooftf.widget.self.dialog;
+package com.ooftf.service.widget.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -7,10 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ooftf.widget.R;
+import com.ooftf.service.R;
 
 
 /**
+ * 底部有两个按钮的Dialog
  * @author ooftf
  * @date 2018/8/22
  **/
@@ -39,20 +40,8 @@ public class OptDialog extends Dialog {
         content.setVisibility(View.GONE);
         negative.setVisibility(View.GONE);
         line.setVisibility(View.GONE);
-
-        positive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-
-        negative.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        positive.setOnClickListener(v -> dismiss());
+        negative.setOnClickListener(v -> dismiss());
     }
 
     public OptDialog setTitleText(CharSequence text) {

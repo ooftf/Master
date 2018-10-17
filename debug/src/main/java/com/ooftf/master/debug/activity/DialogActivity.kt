@@ -16,13 +16,10 @@ class DialogActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dialog_debug)
         button.setOnClickListener {
-            dialog = DialogDemo(this)
-            dialog.show()
-            Log.e("show", "................")
             Handler().postDelayed({
-                dialog.logLeak()
-                finish()
-            }, 2000)
+                dialog = DialogDemo(this)
+                dialog.show()
+            }, 5000)
         }
         finishButton.setOnClickListener {
             dialog.logLeak()
