@@ -1,4 +1,5 @@
 package com.master.kit.testcase.retrofit
+
 import android.os.Bundle
 import android.widget.LinearLayout
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -23,12 +24,12 @@ class SignInActivity : BaseSlidingActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
         KeyboardVisibilityEvent.setEventListener(this) { isOpen ->
-            if(height == 0){
-                height  = imageView.height
+            if (height == 0) {
+                height = imageView.height
             }
             if (isOpen) {
-                var animator = ValueAnimator.ofInt(0,-height)
-                animator.addUpdateListener {animation->
+                var animator = ValueAnimator.ofInt(0, -height)
+                animator.addUpdateListener { animation ->
                     var lp = imageView.layoutParams as LinearLayout.LayoutParams
                     lp.topMargin = animation.animatedValue as Int
                     imageView.requestLayout()
@@ -36,8 +37,8 @@ class SignInActivity : BaseSlidingActivity() {
                 animator.duration = 360
                 animator.start()
             } else {
-                var animator = ValueAnimator.ofInt(-height,0)
-                animator.addUpdateListener {animation->
+                var animator = ValueAnimator.ofInt(-height, 0)
+                animator.addUpdateListener { animation ->
                     var lp = imageView.layoutParams as LinearLayout.LayoutParams
                     lp.topMargin = animation.animatedValue as Int
                     imageView.requestLayout()
@@ -54,7 +55,7 @@ class SignInActivity : BaseSlidingActivity() {
 
 
     private fun signInRequest() {
-        if(picCaptcha.uuid == null){
+        if (picCaptcha.uuid == null) {
             toast("获取验证码失败")
             return
         }

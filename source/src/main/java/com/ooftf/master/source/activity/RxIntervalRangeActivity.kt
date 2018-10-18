@@ -1,6 +1,5 @@
 package com.ooftf.master.source.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.source.R
@@ -19,9 +18,9 @@ class RxIntervalRangeActivity : BaseBarrageActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rx_interval_range)
         button.setOnClickListener {
-            Observable.intervalRange(10,12,0,1, TimeUnit.SECONDS)
+            Observable.intervalRange(10, 12, 0, 1, TimeUnit.SECONDS)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(object :Observer<Long>{
+                    .subscribe(object : Observer<Long> {
                         override fun onComplete() {
                             addBarrage("onComplete")
 
@@ -32,7 +31,7 @@ class RxIntervalRangeActivity : BaseBarrageActivity() {
                         }
 
                         override fun onNext(t: Long) {
-                             addBarrage("onNext::$t")
+                            addBarrage("onNext::$t")
                         }
 
                         override fun onError(e: Throwable) {

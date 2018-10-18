@@ -22,6 +22,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="behind"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
         <provider
             android:name=".provider.FileProvider"
             android:authorities="${applicationId}.FileProvider"

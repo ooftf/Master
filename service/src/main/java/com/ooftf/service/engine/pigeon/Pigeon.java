@@ -3,10 +3,6 @@ package com.ooftf.service.engine.pigeon;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-
 /**
  * @author ooftf
  * @date 2018/9/9 0009

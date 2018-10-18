@@ -4,10 +4,10 @@
     android:id="@+id/returnTop"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
     android:layout_alignParentRight="true"
-    android:layout_marginBottom="16dp"
+    android:layout_alignParentBottom="true"
     android:layout_marginRight="16dp"
+    android:layout_marginBottom="16dp"
     android:orientation="vertical"
-    app:srcCompat="@drawable/vector_return_top"
-    app:fabSize="normal" />
+    app:fabSize="normal"
+    app:srcCompat="@drawable/vector_return_top" />

@@ -10,11 +10,11 @@ import com.tencent.mmkv.MMKV;
  * @date 2018/10/5 0005
  */
 public class TyperFactory {
+    private static ITyper typer;
+
     public static void init(Context context) {
         MMKV.initialize(context);
     }
-
-    private static ITyper typer;
 
     public static synchronized ITyper getDefault() {
         if (typer == null) {

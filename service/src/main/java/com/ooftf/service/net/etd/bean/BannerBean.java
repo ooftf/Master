@@ -6,7 +6,7 @@ import java.util.List;
  * Created by master on 2017/1/22.
  */
 
-public class BannerBean extends BaseBean{
+public class BannerBean extends BaseBean {
 
     /**
      * time : 1485074355812
@@ -17,6 +17,7 @@ public class BannerBean extends BaseBean{
      */
 
     private BodyEntity body;
+
     public BodyEntity getBody() {
         return body;
     }

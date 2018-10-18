@@ -16,7 +16,7 @@ import io.reactivex.functions.Function;
 public class AnnotationInject {
     private static final String TGA = "AnnotationInject";
 
-    public static void bindView(final Activity activity){
+    public static void bindView(final Activity activity) {
         Observable.just(activity).flatMap(new Function<Activity, ObservableSource<Field>>() {
             @Override
             public ObservableSource<Field> apply(Activity activity) throws Exception {
@@ -33,7 +33,7 @@ public class AnnotationInject {
     }
 
     private static void handleField(Field field, Activity activity) {
-        if(field.isAnnotationPresent(Myannotation.class)){
+        if (field.isAnnotationPresent(Myannotation.class)) {
             Myannotation annotation = field.getAnnotation(Myannotation.class);
             try {
                 field.set(activity, activity.findViewById(annotation.id()));

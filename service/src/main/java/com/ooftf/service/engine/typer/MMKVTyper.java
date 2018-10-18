@@ -1,8 +1,6 @@
 package com.ooftf.service.engine.typer;
 
 
-import com.jakewharton.disklrucache.DiskLruCache;
-import com.ooftf.service.base.MyApplication;
 import com.ooftf.service.engine.json.JsonFactory;
 import com.tencent.mmkv.MMKV;
 
@@ -15,7 +13,8 @@ class MMKVTyper implements ITyper {
 
 
     private MMKV mmkv = MMKV.defaultMMKV();
-    protected MMKVTyper(){
+
+    protected MMKVTyper() {
 
     }
 

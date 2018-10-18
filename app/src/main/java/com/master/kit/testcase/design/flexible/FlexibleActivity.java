@@ -60,8 +60,8 @@ public class FlexibleActivity extends AppCompatActivity {
     }
 
     private void initToolbar() {
-      //  toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-       // toolbar.setTitle("臣服吧，你们这些小标题");
+        //  toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        // toolbar.setTitle("臣服吧，你们这些小标题");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

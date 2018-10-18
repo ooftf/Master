@@ -2,7 +2,6 @@ package com.ooftf.service.net.etd;
 
 import com.ooftf.service.net.etd.bean.BaseBean;
 
-import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -20,13 +19,12 @@ public abstract class BaseResponse<T extends BaseBean> implements Observer<T> {
     public void onNext(T t) {
         if (t.getSuccess()) {
             onSuccess(t);
-        }else{
+        } else {
             onFail(t);
         }
     }
 
     /**
-     *
      * @param t
      */
     public void onFail(T t) {
@@ -43,7 +41,6 @@ public abstract class BaseResponse<T extends BaseBean> implements Observer<T> {
     }
 
     /**
-     *
      * @param t
      */
     public abstract void onSuccess(T t);

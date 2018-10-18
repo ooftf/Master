@@ -2,7 +2,6 @@ package com.ooftf.widget.self
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.MenuItem
 import com.ooftf.service.widget.toolbar.ScrollToolbar
 import com.ooftf.widget.R
 

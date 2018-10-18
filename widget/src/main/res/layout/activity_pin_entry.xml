@@ -14,6 +14,7 @@
         android:layout_height="@dimen/layout_appbar_height"
         app:navigationIcon="@drawable/vector_arrow_left"
         app:title="PinEntryEditText" />
+
     <com.alimuzaffar.lib.pin.PinEntryEditText
         android:id="@+id/txt_pin_entry"
         android:layout_width="368dp"

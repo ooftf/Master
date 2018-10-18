@@ -16,12 +16,12 @@
 
     <com.hanks.htextview.typer.TyperTextView
         android:id="@+id/typerTextView"
-        android:textColor="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
+        android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         app:charIncrease="1"
         app:typerSpeed="80" />
@@ -30,8 +30,8 @@
         android:id="@+id/skip"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/layout_edge_spacing"
         android:background="@drawable/shape_circular_translucent"
         android:gravity="center"

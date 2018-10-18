@@ -14,7 +14,6 @@ import android.os.Build;
 import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
-import android.widget.TextView;
 
 import com.ooftf.widget.R;
 import com.ooftf.widget.notification.NotificationChannelManager;
@@ -91,11 +90,11 @@ public class NewMessageNotification {
                 .setNumber(number)
                 .setFullScreenIntent(PendingIntent.getActivity(context, 0, new Intent(Settings.ACTION_SETTINGS), PendingIntent.FLAG_UPDATE_CURRENT), true)
                 .setCustomHeadsUpContentView(getCustomHeadsUpContentView(context))
-                .setFullScreenIntent( PendingIntent.getActivity(
+                .setFullScreenIntent(PendingIntent.getActivity(
                         context,
                         0,
                         new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com")),
-                        PendingIntent.FLAG_UPDATE_CURRENT),true)
+                        PendingIntent.FLAG_UPDATE_CURRENT), true)
                 // If this notification relates to a past or upcoming event, you
                 // should set the relevant time information using the setWhen
                 // method below. If this call is omitted, the notification's
@@ -165,9 +164,9 @@ public class NewMessageNotification {
         }
     }
 
-    private static RemoteViews getCustomHeadsUpContentView(Context context){
-        RemoteViews remoteViews = new RemoteViews(context. getPackageName(),R.layout.item_share);
-        remoteViews.setTextViewText(R.id.name,"name");
+    private static RemoteViews getCustomHeadsUpContentView(Context context) {
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.item_share);
+        remoteViews.setTextViewText(R.id.name, "name");
         return remoteViews;
     }
 }

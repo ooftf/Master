@@ -11,16 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <com.youth.banner.Banner
             android:id="@+id/banner"
             android:layout_width="match_parent"
             android:layout_height="260dp" />
 
         <Button
-            android:text="refresh"
             android:id="@+id/next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp" />
+            android:layout_marginTop="150dp"
+            android:text="refresh" />
     </LinearLayout>
 </com.ooftf.hihttp.action.ActionLayout>

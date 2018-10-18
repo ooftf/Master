@@ -26,11 +26,11 @@ public class SquareRelativeLayout extends RelativeLayout {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int withdMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightdMode = MeasureSpec.getMode(heightMeasureSpec);
-        if(withdMode == MeasureSpec.EXACTLY||withdMode == MeasureSpec.AT_MOST){
+        if (withdMode == MeasureSpec.EXACTLY || withdMode == MeasureSpec.AT_MOST) {
             super.onMeasure(widthMeasureSpec, widthMeasureSpec);
-        }else if(heightdMode == MeasureSpec.EXACTLY||heightdMode == MeasureSpec.AT_MOST){
+        } else if (heightdMode == MeasureSpec.EXACTLY || heightdMode == MeasureSpec.AT_MOST) {
             super.onMeasure(heightMeasureSpec, heightMeasureSpec);
-        }else{
+        } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
     }

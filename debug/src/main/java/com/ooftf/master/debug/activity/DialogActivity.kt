@@ -3,7 +3,6 @@ package com.ooftf.master.debug.activity
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
 import com.ooftf.master.debug.widget.DialogDemo

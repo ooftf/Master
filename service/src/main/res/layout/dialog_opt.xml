@@ -1,41 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_dialog_background"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:paddingTop="16dp">
+
     <TextView
-        tools:text="title"
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:gravity="center"
         android:textColor="@color/font_black"
-        android:textSize="@dimen/font_huge" />
+        android:textSize="@dimen/font_huge"
+        tools:text="title" />
 
     <TextView
-        tools:text="内容"
-        android:minHeight="48dp"
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:gravity="center_vertical"
+        android:minHeight="48dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:textColor="@color/font_black"
-        android:textSize="@dimen/font_large" />
+        android:textSize="@dimen/font_large"
+        tools:text="内容" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/line_height"
         android:background="@color/divider_gray" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/negative"
             android:layout_width="0dp"
@@ -45,11 +49,13 @@
             android:text="取消"
             android:textColor="@color/blue_light"
             android:textSize="@dimen/font_large" />
+
         <View
             android:id="@+id/line"
             android:layout_width="@dimen/line_height"
             android:layout_height="match_parent"
             android:background="@color/divider_gray" />
+
         <TextView
             android:id="@+id/positive"
             android:layout_width="0dp"

@@ -14,6 +14,8 @@ import com.ooftf.widget.R;
  * 内部只支持一种view
  */
 public class StraightListView extends LinearLayout {
+    RecyclerView.Adapter adapter;
+    int ViewType = 0;
     RecyclerView.AdapterDataObserver adapterDataObserver = new RecyclerView.AdapterDataObserver() {
         @Override
         public void onChanged() {
@@ -38,8 +40,6 @@ public class StraightListView extends LinearLayout {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    RecyclerView.Adapter adapter;
-
     void setAdapter(RecyclerView.Adapter adapter) {
         if (this.adapter != null && this.adapter.hasObservers()) {
             this.adapter.unregisterAdapterDataObserver(adapterDataObserver);
@@ -63,8 +63,6 @@ public class StraightListView extends LinearLayout {
             adapter.onBindViewHolder((RecyclerView.ViewHolder) getChildAt(i).getTag(R.id.tag_key_straight_holder), i);
         }
     }
-
-    int ViewType = 0;
 
     @Override
     protected void onDetachedFromWindow() {

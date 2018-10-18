@@ -1,10 +1,7 @@
 package com.ooftf.service.engine.chain;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * 用来熟悉责任链设计模式

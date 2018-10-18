@@ -25,8 +25,8 @@ public class ListViewActivity extends BaseSlidingActivity {
         setContentView(R.layout.activity_list_view);
         listView = findViewById(R.id.lv_main);
         list = new ArrayList<>();
-        for(int i=0;i<100;i++){
-            list.add("第"+i+"个");
+        for (int i = 0; i < 100; i++) {
+            list.add("第" + i + "个");
         }
         adapter = new BaseAdapter() {
             @Override
@@ -47,9 +47,9 @@ public class ListViewActivity extends BaseSlidingActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 TextView textView = (TextView) convertView;
-                if(textView == null){
+                if (textView == null) {
                     textView = new TextView(ListViewActivity.this);
-                    ListView.LayoutParams params = new ListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,200);
+                    ListView.LayoutParams params = new ListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200);
 
                     textView.setLayoutParams(params);
                     textView.setGravity(Gravity.CENTER);
@@ -62,16 +62,16 @@ public class ListViewActivity extends BaseSlidingActivity {
         findViewById(R.id.btn_main).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // int i = listView.getFirstVisiblePosition();
+                // int i = listView.getFirstVisiblePosition();
               /*  list.add("5");
                 list.remove(1);*/
                 list = new ArrayList<>();
-                for(int i=0;i<90;i++){
-                    list.add("第"+(i+1)+"个");
+                for (int i = 0; i < 90; i++) {
+                    list.add("第" + (i + 1) + "个");
                 }
                 adapter.notifyDataSetChanged();
                 //adapter.notifyDataSetInvalidated();
-              //  listView.setVerticalScrollbarPosition(i);
+                //  listView.setVerticalScrollbarPosition(i);
             }
         });
     }

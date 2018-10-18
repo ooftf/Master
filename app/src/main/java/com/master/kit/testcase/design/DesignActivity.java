@@ -18,22 +18,23 @@ public class DesignActivity extends BaseSlidingActivity {
     CoordinatorLayout coordinatorLayout;
     FloatingActionButton floatingActionButton;
     CollapsingToolbarLayout collapsingToolbarLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_design);
         initViews();
         toolbar.setTitle("我只是个熊啊");
-       // setSupportActionBar(toolbar);
-       // toolbar.inflateMenu();
+        // setSupportActionBar(toolbar);
+        // toolbar.inflateMenu();
         //collapsingToolbarLayout.setTitle("我们都是熊啊");
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(coordinatorLayout,"不要啊",Snackbar.LENGTH_LONG).show();
+                Snackbar.make(coordinatorLayout, "不要啊", Snackbar.LENGTH_LONG).show();
             }
         });
-       // collapsingToolbarLayout.setContentScrimColor(Color.parseColor("#ff0000"));
+        // collapsingToolbarLayout.setContentScrimColor(Color.parseColor("#ff0000"));
        /* toolbar.setBackgroundColor(Color.parseColor("#00ff00"));
         toolbar.setDrawingCacheBackgroundColor(Color.parseColor("#00ff00"));*/
     }

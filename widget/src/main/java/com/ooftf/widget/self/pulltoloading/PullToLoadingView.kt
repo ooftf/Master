@@ -17,6 +17,7 @@ class PullToLoadingView(context: Context) : FrameLayout(context), PullToLoading 
 
     var progressBar: ProgressBar
     var mTextDesc: TextView
+
     init {
         LayoutInflater.from(context).inflate(R.layout.widget_pull_to_load_more_footer, this, true)
         mTextDesc = findViewById(R.id.text_desc)
@@ -51,7 +52,6 @@ class PullToLoadingView(context: Context) : FrameLayout(context), PullToLoading 
         mTextDesc.visibility = View.VISIBLE
         mTextDesc.text = "点击加载更多"
     }
-
 
 
 }

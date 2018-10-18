@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_rx_emitter.*
 @Route(path = "/source/RxEmitterActivity")
 class RxEmitterActivity : BaseBarrageActivity() {
     var emitter: ObservableEmitter<String>? = null
-    var disposable :Disposable? = null
+    var disposable: Disposable? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rx_emitter)
@@ -42,9 +42,9 @@ class RxEmitterActivity : BaseBarrageActivity() {
             }
         }
         disposableButton.setOnClickListener {
-            if(disposable == null){
+            if (disposable == null) {
                 addBarrage("disposable == null")
-            }else{
+            } else {
                 disposable!!.dispose();
                 addBarrage("dispose()")
             }

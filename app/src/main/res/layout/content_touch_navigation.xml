@@ -1,175 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:src="@mipmap/ic_launcher"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:src="@mipmap/ic_launcher" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
-        android:text="第一个"/>
+        android:layout_margin="10dp"
+        android:text="第一个" />
+
     <LinearLayout
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="dispatchTouchEvent"/>
+            android:layout_weight="1"
+            android:text="dispatchTouchEvent" />
+
         <com.master.kit.widget.switchbutton.SwitchButton
             android:id="@+id/sb_first_dispatchTouchEvent"
             android:layout_width="70dp"
-            android:layout_height="40dp"
-            />
+            android:layout_height="40dp" />
     </LinearLayout>
+
     <LinearLayout
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="onInterceptTouchEvent"/>
+            android:layout_weight="1"
+            android:text="onInterceptTouchEvent" />
+
         <com.master.kit.widget.switchbutton.SwitchButton
             android:id="@+id/sb_first_onInterceptTouchEvent"
             android:layout_width="70dp"
-            android:layout_height="40dp"
-            />
+            android:layout_height="40dp" />
     </LinearLayout>
+
     <LinearLayout
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="onTouchEvent"/>
+            android:layout_weight="1"
+            android:text="onTouchEvent" />
+
         <com.master.kit.widget.switchbutton.SwitchButton
             android:id="@+id/sb_first_onTouchEvent"
             android:layout_width="70dp"
-            android:layout_height="40dp"
-            />
+            android:layout_height="40dp" />
     </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
-        android:text="第二个"/>
+        android:layout_margin="10dp"
+        android:text="第二个" />
+
     <LinearLayout
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="dispatchTouchEvent"/>
+            android:layout_weight="1"
+            android:text="dispatchTouchEvent" />
+
         <com.master.kit.widget.switchbutton.SwitchButton
             android:id="@+id/sb_second_dispatchTouchEvent"
             android:layout_width="70dp"
-            android:layout_height="40dp"
-            />
+            android:layout_height="40dp" />
     </LinearLayout>
+
     <LinearLayout
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="onInterceptTouchEvent"/>
+            android:layout_weight="1"
+            android:text="onInterceptTouchEvent" />
+
         <com.master.kit.widget.switchbutton.SwitchButton
             android:id="@+id/sb_second_onInterceptTouchEvent"
             android:layout_width="70dp"
-            android:layout_height="40dp"
-            />
+            android:layout_height="40dp" />
     </LinearLayout>
+
     <LinearLayout
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="onTouchEvent"/>
+            android:layout_weight="1"
+            android:text="onTouchEvent" />
+
         <com.master.kit.widget.switchbutton.SwitchButton
             android:id="@+id/sb_second_onTouchEvent"
             android:layout_width="70dp"
-            android:layout_height="40dp"
-            />
+            android:layout_height="40dp" />
     </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
-        android:text="第三个"/>
+        android:layout_margin="10dp"
+        android:text="第三个" />
+
     <LinearLayout
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="dispatchTouchEvent"/>
+            android:layout_weight="1"
+            android:text="dispatchTouchEvent" />
+
         <com.master.kit.widget.switchbutton.SwitchButton
             android:id="@+id/sb_third_dispatchTouchEvent"
             android:layout_width="70dp"
-            android:layout_height="40dp"
-            />
+            android:layout_height="40dp" />
     </LinearLayout>
+
     <LinearLayout
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="onInterceptTouchEvent"/>
+            android:layout_weight="1"
+            android:text="onInterceptTouchEvent" />
+
         <com.master.kit.widget.switchbutton.SwitchButton
             android:id="@+id/sb_third_onInterceptTouchEvent"
             android:layout_width="70dp"
-            android:layout_height="40dp"
-            />
+            android:layout_height="40dp" />
     </LinearLayout>
+
     <LinearLayout
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="onTouchEvent"/>
+            android:layout_weight="1"
+            android:text="onTouchEvent" />
+
         <com.master.kit.widget.switchbutton.SwitchButton
             android:id="@+id/sb_third_onTouchEvent"
             android:layout_width="70dp"
-            android:layout_height="40dp"
-            />
+            android:layout_height="40dp" />
     </LinearLayout>
 </LinearLayout>

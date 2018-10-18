@@ -1,8 +1,8 @@
 package com.ooftf.master.debug.activity;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -43,7 +43,7 @@ public class AcrossRecyclerActivity extends AppCompatActivity {
 
                         @Override
                         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-                            Log.e("onBindViewHolder", "ChildeenRecyclerView"+position);
+                            Log.e("onBindViewHolder", "ChildeenRecyclerView" + position);
                             ((TextView) holder.itemView).setText(position + "");
                         }
 
@@ -75,7 +75,7 @@ public class AcrossRecyclerActivity extends AppCompatActivity {
                     holder.itemView.post(new Runnable() {
                         @Override
                         public void run() {
-                            ((RecyclerView)holder.itemView).getAdapter().notifyDataSetChanged();
+                            ((RecyclerView) holder.itemView).getAdapter().notifyDataSetChanged();
                         }
                     });
 

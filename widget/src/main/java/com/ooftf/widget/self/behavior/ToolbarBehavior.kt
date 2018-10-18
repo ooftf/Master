@@ -2,7 +2,6 @@ package com.ooftf.widget.self.behavior
 
 import android.content.Context
 import android.support.design.widget.CoordinatorLayout
-import android.support.v4.view.ScrollingView
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
@@ -31,11 +30,12 @@ class ToolbarBehavior : CoordinatorLayout.Behavior<ScrollToolbar> {
         setProgress(child)
         return dependency is ReturnTopLayout
     }
+
     override fun onDependentViewChanged(parent: CoordinatorLayout, child: ScrollToolbar, dependency: View): Boolean {
         Log.e(Throwable().stackTrace[0].fileName, Throwable().stackTrace[0].methodName)
         //dependency.layout(dependency.left,child.bottom,dependency.right,dependency.bottom)
         //return true
-        dependency.translationY = ( child.height).toFloat()
+        dependency.translationY = (child.height).toFloat()
         return super.onDependentViewChanged(parent, child, dependency)
     }
 

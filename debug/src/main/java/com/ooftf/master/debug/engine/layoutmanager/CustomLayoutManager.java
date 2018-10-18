@@ -1,7 +1,6 @@
 package com.ooftf.master.debug.engine.layoutmanager;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.ViewGroup;
 
 import hugo.weaving.DebugLog;
 
@@ -11,7 +10,7 @@ import hugo.weaving.DebugLog;
  * @desc
  **/
 @DebugLog
-public class CustomLayoutManager extends RecyclerView.LayoutManager{
+public class CustomLayoutManager extends RecyclerView.LayoutManager {
     @Override
     public RecyclerView.LayoutParams generateDefaultLayoutParams() {
         return null;

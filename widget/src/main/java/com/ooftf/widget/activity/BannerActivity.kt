@@ -37,7 +37,7 @@ class BannerActivity : BaseSlidingActivity() {
                     .getBanner("1", "2")
                     .bindToLifecycle(banner)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .compose(ButtonAction(next,"正在获取Banner"))
+                    .compose(ButtonAction(next, "正在获取Banner"))
                     .subscribe(object : BaseResponse<BannerBean>() {
                         override fun onSuccess(bean: BannerBean) {
                             banner.setImages(bean.body.picList)

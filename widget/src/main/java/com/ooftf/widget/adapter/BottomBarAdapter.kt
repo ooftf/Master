@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.ooftf.bottombar.BottomBar
 import com.ooftf.widget.R
+
 class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapter.ViewHolder>() {
     var inflate: LayoutInflater = LayoutInflater.from(context)
     override fun onBindViewHolder(holder: ViewHolder, position: Int, selectedPositiong: Int) {
@@ -61,9 +62,11 @@ class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapte
             }
         }
     }
-    fun getColor(id:Int):Int{
+
+    fun getColor(id: Int): Int {
         return context.resources.getColor(id)
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(inflate.inflate(R.layout.item_bottom_bar, parent, false))
     }

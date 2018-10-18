@@ -35,7 +35,7 @@ class MatissePhotoActivity : BaseActivity() {
         RxPermissions(this)
                 .request(Manifest.permission.CAMERA)
                 .subscribe {
-                    if(it){
+                    if (it) {
                         Matisse.from(this)
                                 .choose(MimeType.ofAll())
                                 .countable(true)
@@ -50,7 +50,7 @@ class MatissePhotoActivity : BaseActivity() {
                                 .thumbnailScale(0.85f)
                                 .imageEngine(GlideEngineV471())
                                 .forResult(REQUEST_CODE_CHOOSE)
-                    }else{
+                    } else {
                         toast("权限被拒绝")
                     }
                 }

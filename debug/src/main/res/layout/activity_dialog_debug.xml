@@ -18,9 +18,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="结束" />
+
     <Button
         android:id="@+id/ListSelector"
-        android:text="ListSelectorDialog"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="ListSelectorDialog" />
 </LinearLayout>

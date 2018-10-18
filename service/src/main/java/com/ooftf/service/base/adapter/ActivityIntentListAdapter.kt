@@ -12,7 +12,7 @@ import com.ooftf.service.R
 import com.ooftf.service.bean.ActivityItemBean
 import tf.ooftf.com.service.base.adapter.BaseRecyclerAdapter
 
-class ActivityIntentListAdapter(var context:Context) : BaseRecyclerAdapter<ActivityItemBean, ActivityIntentListAdapter.RecyclerHolder>() {
+class ActivityIntentListAdapter(var context: Context) : BaseRecyclerAdapter<ActivityItemBean, ActivityIntentListAdapter.RecyclerHolder>() {
     var inflater = LayoutInflater.from(context);
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerHolder {
         val view = inflater.inflate(R.layout.item_recyclerview_activity_list, parent, false)

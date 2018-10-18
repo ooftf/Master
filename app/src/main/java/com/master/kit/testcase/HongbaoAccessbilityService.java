@@ -70,7 +70,7 @@ public class HongbaoAccessbilityService extends AccessibilityService {
      */
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void click(AccessibilityNodeInfo nodeInfo) {
-        if (nodeInfo == null){
+        if (nodeInfo == null) {
             return;
         }
         boolean isClick = nodeInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);

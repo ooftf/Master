@@ -18,9 +18,7 @@ import android.widget.EditText;
 import com.ooftf.service.utils.CanvasUtil;
 
 /**
- *
  * Created by master on 2017/6/22 0022.
- *
  */
 
 @SuppressLint("AppCompatCustomView")
@@ -32,6 +30,7 @@ public class PinEditText extends EditText {
     PointF[] point;
     float contentW;
     int maxLength;
+
     public PinEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
@@ -45,7 +44,7 @@ public class PinEditText extends EditText {
     private void init(AttributeSet attrs) {
         maxLength = attrs.getAttributeIntValue(XML_NAMESPACE_ANDROID, "maxLength", 4);
         initStrokePaint();
-        ViewCompat.setBackground(this,null);
+        ViewCompat.setBackground(this, null);
         setCursorVisible(false);
         setTextIsSelectable(false);
         setLongClickable(false);
@@ -55,7 +54,7 @@ public class PinEditText extends EditText {
         setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
+                if (hasFocus) {
                     setSelection(length());
                 }
             }
@@ -95,10 +94,12 @@ public class PinEditText extends EditText {
         }
 
     }
+
     @Override
     public void setCustomSelectionActionModeCallback(ActionMode.Callback actionModeCallback) {
         throw new RuntimeException("setCustomSelectionActionModeCallback() not supported.");
     }
+
     private void initStrokePaint() {
         getPaint().setColor(getCurrentTextColor());
         strokePaint = new Paint();

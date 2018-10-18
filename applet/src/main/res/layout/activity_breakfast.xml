@@ -15,6 +15,7 @@
         android:background="@color/colorPrimary"
         app:navigationIcon="@drawable/vector_arrow_left"
         app:title="早餐时间" />
+
     <TextView
 
         android:id="@+id/result"
@@ -29,6 +30,7 @@
         android:text="预计需要时间："
         android:textColor="@color/colorPrimaryContrast"
         android:textSize="@dimen/font_large" />
+
     <TimePicker
         android:id="@+id/timePicker"
         android:layout_width="match_parent"

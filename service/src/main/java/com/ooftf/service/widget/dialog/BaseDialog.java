@@ -41,6 +41,7 @@ public class BaseDialog extends Dialog {
      * <item name="@android:windowEnterAnimation">@anim/dialog_enter_bottom</item>
      * <item name="@android:windowExitAnimation">@anim/dialog_outer_bottom</item>
      * </style>
+     *
      * @param resId
      */
     public void setInOutAnimations(@StyleRes int resId) {

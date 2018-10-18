@@ -30,7 +30,7 @@ android {
                 manifest.srcFile 'src/debug/AndroidManifest.xml'
                 java.srcDirs = ['src/debug/java', 'src/main/java']
                 res.srcDirs = ['src/debug/res', 'src/main/res']
-            }else{
+            } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 java.srcDirs = ['src/main/java']
                 res.srcDirs = ['src/main/res']

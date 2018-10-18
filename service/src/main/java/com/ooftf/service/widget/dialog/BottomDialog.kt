@@ -7,7 +7,7 @@ import com.ooftf.service.R
 /**
  * 底部显示的Dialog
  */
-abstract class BottomDialog(var activity: Activity , themeResId: Int) : BaseDialog(activity, themeResId) {
+abstract class BottomDialog(var activity: Activity, themeResId: Int) : BaseDialog(activity, themeResId) {
 
     init {
         setGravity(Gravity.BOTTOM)

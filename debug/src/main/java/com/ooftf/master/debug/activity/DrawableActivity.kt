@@ -12,7 +12,7 @@ class DrawableActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drawable_debug)
-        PerspectiveCompact.bindView(nestedScrollView,tailoredToolbar)
+        PerspectiveCompact.bindView(nestedScrollView, tailoredToolbar)
     }
 
 }

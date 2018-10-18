@@ -6,8 +6,6 @@ import android.graphics.Bitmap;
 import com.ooftf.hishare.DefaultShareCallback;
 import com.ooftf.hishare.HiShare;
 import com.ooftf.service.base.MyApplication;
-import com.sina.weibo.sdk.WbSdk;
-import com.sina.weibo.sdk.auth.AuthInfo;
 
 public class ShareUtil {
     static {

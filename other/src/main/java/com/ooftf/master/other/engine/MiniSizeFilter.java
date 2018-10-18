@@ -17,6 +17,7 @@ public class MiniSizeFilter extends Filter {
     private int mMinWidth;
     private int mMinHeight;
     private int mMaxSize;
+
     public MiniSizeFilter(int minWidth, int minHeight, int maxSizeInBytes) {
         mMinWidth = minWidth;
         mMinHeight = minHeight;
@@ -25,6 +26,7 @@ public class MiniSizeFilter extends Filter {
 
     /**
      * 约束的图片类型
+     *
      * @return
      */
     @Override
@@ -34,7 +36,7 @@ public class MiniSizeFilter extends Filter {
 
     @Override
     public IncapableCause filter(Context context, Item item) {
-        if (!needFiltering(context, item)){
+        if (!needFiltering(context, item)) {
             return null;
         }
 

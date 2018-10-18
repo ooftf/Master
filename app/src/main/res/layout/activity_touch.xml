@@ -4,8 +4,8 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="@color/background"
+    android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
     <include
@@ -19,6 +19,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true">
+
         <include layout="@layout/content_touch_navigation" />
     </android.support.design.widget.NavigationView>
 

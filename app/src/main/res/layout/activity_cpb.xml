@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:paddingBottom="@dimen/layout_vertical_margin"
     android:paddingLeft="@dimen/layout_horizontal_margin"
-    android:paddingRight="@dimen/layout_horizontal_margin"
     android:paddingTop="@dimen/layout_vertical_margin"
+    android:paddingRight="@dimen/layout_horizontal_margin"
+    android:paddingBottom="@dimen/layout_vertical_margin"
     tools:context="com.master.kit.activity.widget.ProgressBarActivity">
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
@@ -16,6 +16,7 @@
         android:layout_height="@dimen/layout_appbar_height"
         android:title="进度条"
         app:navigationIcon="@drawable/vector_arrow_left" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
@@ -27,26 +28,26 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/progressBar"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/progressBar" />
+        android:layout_alignParentLeft="true" />
 
     <ProgressBar
         android:id="@+id/progressBar3"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/progressBar2"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/progressBar2" />
+        android:layout_alignParentLeft="true" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/progressBar3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="14dp"
         android:ems="10"
         android:inputType="time" />
@@ -54,8 +55,8 @@
     <SearchView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/editText"
         android:layout_alignEnd="@+id/progressBar3"
         android:layout_alignRight="@+id/progressBar3"
-        android:layout_below="@+id/editText"
         android:layout_marginTop="18dp" />
 </RelativeLayout>

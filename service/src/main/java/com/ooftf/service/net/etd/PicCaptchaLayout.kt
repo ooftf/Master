@@ -41,6 +41,7 @@ class PicCaptchaLayout : RelativeLayout {
             Log.e("post", "post")
         }
     }
+
     private fun picCaptchaRequest() {
         ServiceHolder.service
                 .picCaptcha()
@@ -51,6 +52,7 @@ class PicCaptchaLayout : RelativeLayout {
                         pic.visibility = View.INVISIBLE
                         progressBar.visibility = View.VISIBLE
                     }
+
                     override fun onSuccess(bean: PicCaptchaBean) {
                         pic.visibility = View.VISIBLE
                         progressBar.visibility = View.INVISIBLE
@@ -80,8 +82,6 @@ class PicCaptchaLayout : RelativeLayout {
 
                 })
     }
-
-
 
 
     constructor(context: Context?) : super(context)

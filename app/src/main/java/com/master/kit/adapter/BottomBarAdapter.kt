@@ -62,6 +62,7 @@ class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapte
             }
         }
     }
+
     private fun getColor(id: Int): Int = context.resources.getColor(id)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(inflate.inflate(R.layout.item_bottom_bar, parent, false))

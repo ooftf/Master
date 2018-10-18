@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ooftf.widget">
-    <uses-permission
-        android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission
-        android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+
     <application>
         <activity android:name=".activity.TourGuideActivity" />
         <activity android:name=".activity.GravActivity" />
@@ -34,8 +34,8 @@
         <activity android:name=".activity.BarrageActivity" />
         <activity android:name=".activity.SlidingListActivity" />
         <activity android:name=".activity.SlidingRecycleViewActivity" />
-        <activity android:name=".activity.ToolbarDemoActivity"/>
-        <activity android:name=".activity.NotificationActivity"/>
+        <activity android:name=".activity.ToolbarDemoActivity" />
+        <activity android:name=".activity.NotificationActivity" />
     </application>
 
 </manifest>

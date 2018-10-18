@@ -19,20 +19,19 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@color/White"
-        android:paddingBottom="40dp"
         android:paddingLeft="20dp"
-        android:paddingRight="10dp"
         android:paddingTop="20dp"
-        app:auto_row="true"
-         />
+        android:paddingRight="10dp"
+        android:paddingBottom="40dp"
+        app:auto_row="true" />
 
     <com.ooftf.calendar.CalendarView
         android:id="@+id/calendarView2"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@color/White"
-        android:paddingBottom="40dp"
         android:paddingLeft="20dp"
+        android:paddingTop="20dp"
         android:paddingRight="10dp"
-        android:paddingTop="20dp" />
+        android:paddingBottom="40dp" />
 </LinearLayout>

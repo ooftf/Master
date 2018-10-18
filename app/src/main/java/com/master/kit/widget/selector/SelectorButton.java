@@ -15,6 +15,9 @@ import com.master.kit.R;
  * Created by master on 2016/2/26.
  */
 public class SelectorButton extends Button {
+    int normal;
+    int selected;
+
     public SelectorButton(Context context) {
         super(context);
         init();
@@ -32,15 +35,11 @@ public class SelectorButton extends Button {
         handleTypedArray(context, attrs);
         init();
     }
-
     public SelectorButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         handleTypedArray(context, attrs);
         init();
     }
-
-    int normal;
-    int selected;
 
     private void handleTypedArray(Context context, AttributeSet attrs) {
         if (attrs == null) {

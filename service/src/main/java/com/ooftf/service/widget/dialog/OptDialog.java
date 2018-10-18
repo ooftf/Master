@@ -12,22 +12,22 @@ import com.ooftf.service.R;
 
 /**
  * 底部有两个按钮的Dialog
+ *
  * @author ooftf
  * @date 2018/8/22
  **/
 public class OptDialog extends Dialog {
     Activity activity;
-    public OptDialog(Activity activity) {
-        super(activity, R.style.DialogTheme_Transparent);
-        this.activity = activity;
-        init();
-    }
-
     private TextView title;
     private TextView content;
     private TextView positive;
     private TextView negative;
     private View line;
+    public OptDialog(Activity activity) {
+        super(activity, R.style.DialogTheme_Transparent);
+        this.activity = activity;
+        init();
+    }
 
     private void init() {
         View root = LayoutInflater.from(activity).inflate(R.layout.dialog_opt, (ViewGroup) getWindow().getDecorView());

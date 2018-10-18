@@ -1,10 +1,8 @@
 package com.ooftf.service.engine.imageloader
 
-import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Bitmap
 import android.widget.ImageView
-
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
@@ -26,6 +24,7 @@ class GlideImageLoader : IImageLoader {
                 listener.onError()
                 return true
             }
+
             override fun onResourceReady(resource: Bitmap, model: Any, target: Target<Bitmap>, dataSource: DataSource, isFirstResource: Boolean): Boolean {
                 listener.onLoadComplete(resource)
                 return true

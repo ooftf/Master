@@ -12,6 +12,7 @@ import com.ooftf.master.debug.aspectj.Log;
 @Log
 public class AnnotationActivity extends AppCompatActivity {
     TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

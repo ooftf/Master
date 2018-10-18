@@ -24,80 +24,81 @@ public class ProgressTextView extends TextView {
     Paint paint;
     float underlineWidth;
 
-	public ProgressTextView(Context context) {
-		super(context);
-		init();
-	}
+    public ProgressTextView(Context context) {
+        super(context);
+        init();
+    }
 
-	public ProgressTextView(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		init();
-	}
-	public ProgressTextView(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		init();
-	}
+    public ProgressTextView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
 
-	private void init() {
+    public ProgressTextView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init();
+    }
+
+    private void init() {
         underlineWidth = DensityUtil.INSTANCE.dip2px(getContext(), 2);
         paint = new Paint();
-		progress = 0;
-	}
-	// private Handler handler;
+        progress = 0;
+    }
+    // private Handler handler;
 
-	/**
-	 * Create the shader draw the wave with current color for a background
-	 * repeat the bitmap horizontally, and clamp colors vertically
-	 */
-	private void createShader() {
-		Bitmap createBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Config.ARGB_8888);
-		Canvas canvas = new Canvas(createBitmap);
-		if (progress <= 100) {
-			paint.setColor(Color.RED);
-			canvas.drawRect(0, 0, getWidth() * progress / 100, getHeight(), paint);
-			paint.setColor(getCurrentTextColor());
-			canvas.drawRect(getWidth() * progress / 100, 0, getWidth(), getHeight(), paint);
-		} else {
-			float tem = progress - 100f;
-			paint.setColor(getCurrentTextColor());
-			canvas.drawRect(0, 0, getWidth() * tem / 100, getHeight(), paint);
-			paint.setColor(Color.RED);
-			canvas.drawRect(getWidth() * tem / 100, 0, getWidth(), getHeight(), paint);
-		}
-		getPaint().setShader(new BitmapShader(createBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
-	}
+    /**
+     * Create the shader draw the wave with current color for a background
+     * repeat the bitmap horizontally, and clamp colors vertically
+     */
+    private void createShader() {
+        Bitmap createBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Config.ARGB_8888);
+        Canvas canvas = new Canvas(createBitmap);
+        if (progress <= 100) {
+            paint.setColor(Color.RED);
+            canvas.drawRect(0, 0, getWidth() * progress / 100, getHeight(), paint);
+            paint.setColor(getCurrentTextColor());
+            canvas.drawRect(getWidth() * progress / 100, 0, getWidth(), getHeight(), paint);
+        } else {
+            float tem = progress - 100f;
+            paint.setColor(getCurrentTextColor());
+            canvas.drawRect(0, 0, getWidth() * tem / 100, getHeight(), paint);
+            paint.setColor(Color.RED);
+            canvas.drawRect(getWidth() * tem / 100, 0, getWidth(), getHeight(), paint);
+        }
+        getPaint().setShader(new BitmapShader(createBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
+    }
 
-	public float getProgress() {
-		return progress;
-	}
+    public float getProgress() {
+        return progress;
+    }
 
-	public void setProgress(float progress) {
-		this.progress = progress;
-		invalidate();
-	}
+    public void setProgress(float progress) {
+        this.progress = progress;
+        invalidate();
+    }
 
-	public float getUnderlineWidth() {
+    public float getUnderlineWidth() {
         return DensityUtil.INSTANCE.px2dip(getContext(), underlineWidth);
     }
 
-	public void setUnderlineWidth(float underlineWidthDP) {
+    public void setUnderlineWidth(float underlineWidthDP) {
         this.underlineWidth = DensityUtil.INSTANCE.dip2px(getContext(), underlineWidthDP);
     }
 
-	@Override
-	protected void onDraw(Canvas canvas) {
+    @Override
+    protected void onDraw(Canvas canvas) {
 
-		createShader();
+        createShader();
 
-		super.onDraw(canvas);
-		paint.setColor(Color.RED);
-		if (progress <= 100) {
-			canvas.drawRect(0, getHeight() - underlineWidth, getWidth() * progress / 100, getHeight(), paint);
-		} else {
-			float tem = progress - 100f;
-			canvas.drawRect(getWidth() * tem / 100, getHeight() - underlineWidth, getWidth(), getHeight(), paint);
-		}
+        super.onDraw(canvas);
+        paint.setColor(Color.RED);
+        if (progress <= 100) {
+            canvas.drawRect(0, getHeight() - underlineWidth, getWidth() * progress / 100, getHeight(), paint);
+        } else {
+            float tem = progress - 100f;
+            canvas.drawRect(getWidth() * tem / 100, getHeight() - underlineWidth, getWidth(), getHeight(), paint);
+        }
 
-		// invalidate();
-	}
+        // invalidate();
+    }
 }

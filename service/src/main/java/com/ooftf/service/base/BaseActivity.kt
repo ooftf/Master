@@ -45,6 +45,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
             finish()
         }
     }
+
     @DebugLog
     override fun onCreate(savedInstanceState: Bundle?) {
         LogUtil.e(this.javaClass.simpleName, "onCreate")

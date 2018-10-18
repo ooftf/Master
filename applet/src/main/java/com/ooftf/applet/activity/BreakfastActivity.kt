@@ -31,38 +31,38 @@ class BreakfastActivity : BaseSlidingActivity() {
         }
     }
 
-    fun computingTime(){
+    fun computingTime() {
         var difference = getTargetTime().timeInMillis - Calendar.getInstance().timeInMillis
-        result.text ="预计需要时间："+difference/1000/60/60+"时"+difference/1000/60%60+"分"
+        result.text = "预计需要时间：" + difference / 1000 / 60 / 60 + "时" + difference / 1000 / 60 % 60 + "分"
     }
 
-    fun getTargetTime():Calendar{
+    fun getTargetTime(): Calendar {
 
         val instance = Calendar.getInstance()
         var hour = getHour()
-        instance.set(Calendar.MINUTE,getMinute())
-        return if(hour>instance.get(Calendar.HOUR_OF_DAY)){
-            instance.set(Calendar.HOUR_OF_DAY,hour)
+        instance.set(Calendar.MINUTE, getMinute())
+        return if (hour > instance.get(Calendar.HOUR_OF_DAY)) {
+            instance.set(Calendar.HOUR_OF_DAY, hour)
             instance
-        }else{
-            instance.add(Calendar.DAY_OF_MONTH,1)
-            instance.set(Calendar.HOUR_OF_DAY,hour)
-            Log.e("targetTime",CalendarToString(instance))
+        } else {
+            instance.add(Calendar.DAY_OF_MONTH, 1)
+            instance.set(Calendar.HOUR_OF_DAY, hour)
+            Log.e("targetTime", CalendarToString(instance))
             instance
         }
     }
 
-    private fun CalendarToString(c:Calendar):String{
+    private fun CalendarToString(c: Calendar): String {
         return SimpleDateFormat("dd-HH-mm").format(c.time)
     }
 
     @Suppress("DEPRECATION")
-    private fun getHour():Int{
+    private fun getHour(): Int {
         return timePicker.currentHour
     }
 
     @Suppress("DEPRECATION")
-    private fun getMinute():Int{
+    private fun getMinute(): Int {
         return timePicker.currentMinute
     }
 

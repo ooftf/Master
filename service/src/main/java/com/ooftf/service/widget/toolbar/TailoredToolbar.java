@@ -25,11 +25,13 @@ import com.ooftf.support.ViewOffsetHelper;
 public class TailoredToolbar extends Toolbar {
 
 
+    TextView titleText;
+
+
     public TailoredToolbar(Context context) {
         super(context);
         init();
     }
-
 
     public TailoredToolbar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -44,16 +46,14 @@ public class TailoredToolbar extends Toolbar {
 
     @Override
     public void setTitle(CharSequence title) {
-        if(titleText == null){
+        if (titleText == null) {
             setTitleView();
         }
         titleText.setText(title);
         super.setTitle("");
     }
 
-    TextView titleText;
-
-    private void  setTitleView(){
+    private void setTitleView() {
         titleText = new TextView(getContext());
         titleText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
         titleText.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
@@ -81,7 +81,8 @@ public class TailoredToolbar extends Toolbar {
 
     public static class MenuItem extends RelativeLayout {
         Context context;
-
+        TextView textView;
+        ImageView image;
         public MenuItem(Context context) {
             super(context);
             this.context = context;
@@ -91,16 +92,16 @@ public class TailoredToolbar extends Toolbar {
             setToolbarLayoutParams();
         }
 
-        TextView textView;
-        ImageView image;
-        public MenuItem layoutRight(){
+        public MenuItem layoutRight() {
             getToolbarLayoutParams().gravity = Gravity.END;
             return this;
         }
-        public MenuItem layoutLeft(){
+
+        public MenuItem layoutLeft() {
             getToolbarLayoutParams().gravity = Gravity.START;
             return this;
         }
+
         public MenuItem setImage(int id) {
             image.setVisibility(View.VISIBLE);
             image.setImageResource(id);
@@ -123,9 +124,11 @@ public class TailoredToolbar extends Toolbar {
             setOnClickListener(listener);
             return this;
         }
-        Toolbar.LayoutParams getToolbarLayoutParams(){
+
+        Toolbar.LayoutParams getToolbarLayoutParams() {
             return (Toolbar.LayoutParams) getLayoutParams();
         }
+
         private void setToolbarLayoutParams() {
             if (getLayoutParams() == null || !(getLayoutParams() instanceof Toolbar.LayoutParams)) {
                 Toolbar.LayoutParams layoutParams = new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.MATCH_PARENT, Gravity.END);
@@ -134,8 +137,10 @@ public class TailoredToolbar extends Toolbar {
             }
         }
     }
+
     public static class BelowBehavior extends CoordinatorLayout.Behavior<View> {
         ViewOffsetHelper mViewOffsetHelper;
+        View dependency;
 
         public BelowBehavior() {
             super();
@@ -144,11 +149,10 @@ public class TailoredToolbar extends Toolbar {
         public BelowBehavior(Context context, AttributeSet attrs) {
             super(context, attrs);
         }
-        View dependency;
 
         @Override
         public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
-            if(dependency instanceof TailoredToolbar){
+            if (dependency instanceof TailoredToolbar) {
                 this.dependency = dependency;
             }
             return dependency instanceof TailoredToolbar;
@@ -156,7 +160,7 @@ public class TailoredToolbar extends Toolbar {
 
         @Override
         public boolean onLayoutChild(CoordinatorLayout parent, View child, int layoutDirection) {
-            parent.onLayoutChild(child,layoutDirection);
+            parent.onLayoutChild(child, layoutDirection);
             child.offsetTopAndBottom(dependency.getBottom());
             return true;
         }
@@ -169,12 +173,12 @@ public class TailoredToolbar extends Toolbar {
         @Override
         public boolean onMeasureChild(CoordinatorLayout parent, View child, int parentWidthMeasureSpec, int widthUsed, int parentHeightMeasureSpec, int heightUsed) {
             int heightMeasureSpec;
-            if(dependency.getBottom()==dependency.getTop()){
+            if (dependency.getBottom() == dependency.getTop()) {
                 heightMeasureSpec = MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(parentHeightMeasureSpec) - dependency.getMeasuredHeight(), MeasureSpec.getMode(parentHeightMeasureSpec));
-            }else{
+            } else {
                 heightMeasureSpec = MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(parentHeightMeasureSpec) - dependency.getBottom(), MeasureSpec.getMode(parentHeightMeasureSpec));
             }
-            child.measure(parentWidthMeasureSpec,heightMeasureSpec);
+            child.measure(parentWidthMeasureSpec, heightMeasureSpec);
             return true;
         }
     }

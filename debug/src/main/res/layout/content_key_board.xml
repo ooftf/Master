@@ -6,15 +6,17 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/layout_vertical_margin"
     android:paddingLeft="@dimen/layout_horizontal_margin"
-    android:paddingRight="@dimen/layout_horizontal_margin"
     android:paddingTop="@dimen/layout_vertical_margin"
+    android:paddingRight="@dimen/layout_horizontal_margin"
+    android:paddingBottom="@dimen/layout_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
     <EditText
         android:id="@+id/editTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <EditText
         android:id="@+id/edit_test2"
         android:layout_width="match_parent"

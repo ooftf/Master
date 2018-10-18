@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:paddingBottom="@dimen/layout_vertical_margin"
     android:paddingLeft="@dimen/layout_horizontal_margin"
-    android:paddingRight="@dimen/layout_horizontal_margin"
     android:paddingTop="@dimen/layout_vertical_margin"
+    android:paddingRight="@dimen/layout_horizontal_margin"
+    android:paddingBottom="@dimen/layout_vertical_margin"
     tools:context="com.master.kit.testcase.viewpager.ViewPagerActivity">
+
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_main"
         android:layout_width="match_parent"

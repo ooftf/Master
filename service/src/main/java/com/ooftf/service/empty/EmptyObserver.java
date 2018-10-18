@@ -10,7 +10,7 @@ import io.reactivex.disposables.Disposable;
 public class EmptyObserver<T> implements Observer<T> {
     @Override
     public void onSubscribe(Disposable d) {
-        
+
     }
 
     @Override

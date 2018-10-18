@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical">
+
     <GridView
         android:id="@+id/gridKey"
         android:layout_width="match_parent"

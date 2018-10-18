@@ -1,4 +1,5 @@
 package com.ooftf.widget.activity
+
 import android.graphics.Color
 import android.graphics.Color.parseColor
 import android.os.Bundle
@@ -56,7 +57,8 @@ class TourGuideActivity : BaseSlidingActivity() {
             mTourGuideHandler3.cleanUp()
         }
     }
-    private fun getToolTip():ToolTip{
+
+    private fun getToolTip(): ToolTip {
         val animation = TranslateAnimation(0f, 0f, -200f, 0f)
         animation.duration = 1000
         animation.fillAfter = true

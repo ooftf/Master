@@ -21,7 +21,8 @@ import javax.inject.Inject
 @Route(path = "/widget/swipeRecycler")
 class SwipeRecyclerActivity : AppCompatActivity() {
 
-    @Inject lateinit var adapter: SwipeRecyclerAdapter
+    @Inject
+    lateinit var adapter: SwipeRecyclerAdapter
     lateinit var timer: Timer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

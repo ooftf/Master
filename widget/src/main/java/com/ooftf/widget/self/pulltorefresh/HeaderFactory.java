@@ -7,7 +7,7 @@ import android.content.Context;
  */
 
 public class HeaderFactory {
-   public static AbstractPullToRefreshHeader createHeader(Context context){
+    public static AbstractPullToRefreshHeader createHeader(Context context) {
         return new PullToRefreshHeader(context);
-   }
+    }
 }

@@ -1,6 +1,5 @@
 package com.ooftf.widget.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
@@ -9,17 +8,14 @@ import com.ooftf.service.base.BaseBarrageActivity;
 import com.ooftf.service.widget.toolbar.TailoredToolbar;
 import com.ooftf.widget.R;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
- *
  * @author lihang9
  * @date 2018-8-27 15:19:49
  */
 @Route(path = "/widget/ToolbarDemoActivity")
 public class ToolbarDemoActivity extends BaseBarrageActivity {
     TailoredToolbar tailoredToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -28,4 +28,4 @@
         app:shake_variance="500dp"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp" />-->
-</RelativeLayout >
+</RelativeLayout>

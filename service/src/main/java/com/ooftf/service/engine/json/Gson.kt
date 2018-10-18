@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonArray
 import java.lang.reflect.Type
 
-private  class Gson : IJson {
+private class Gson : IJson {
     override fun <T> fromJsonToArray(jsonString: String, itemClazz: Class<T>): List<T> {
         val jsonArray = gson.fromJson(jsonString, JsonArray::class.java)
         val arrayList = ArrayList<T>()

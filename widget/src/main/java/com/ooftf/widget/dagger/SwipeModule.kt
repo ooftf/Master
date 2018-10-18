@@ -8,9 +8,9 @@ import dagger.Provides
  * Created by 99474 on 2017/11/17 0017.
  */
 @Module
-class SwipeModule(var context:Context){
+class SwipeModule(var context: Context) {
     @Provides
-    fun providesContext ():Context{
+    fun providesContext(): Context {
         return context
     }
 }

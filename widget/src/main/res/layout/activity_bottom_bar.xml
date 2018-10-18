@@ -13,9 +13,9 @@
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:elevation="20dp"
         android:layout_marginTop="@dimen/layout_appbar_height"
-        android:background="?android:attr/windowBackground" />
+        android:background="?android:attr/windowBackground"
+        android:elevation="20dp" />
 
     <com.roughike.bottombar.BottomBar
         android:layout_width="match_parent"

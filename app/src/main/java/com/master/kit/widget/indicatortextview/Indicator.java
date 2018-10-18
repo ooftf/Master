@@ -1,7 +1,5 @@
 package com.master.kit.widget.indicatortextview;
 
-import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -12,9 +10,13 @@ import android.widget.LinearLayout;
 
 import com.master.kit.R;
 
+import java.util.List;
+
 public class Indicator extends FrameLayout {
 
+    float progress = 0;
     private LinearLayout llMain;
+    private HorizontalScrollView hsvMain;
 
     @SuppressLint("NewApi")
     public Indicator(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -53,9 +55,6 @@ public class Indicator extends FrameLayout {
         }
         setProgress(1f);
     }
-
-    float progress = 0;
-    private HorizontalScrollView hsvMain;
 
     public void setProgress(float progress) {
         if (progress < 1) {

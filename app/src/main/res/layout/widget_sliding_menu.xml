@@ -3,11 +3,9 @@
     android:id="@+id/btn_menu"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:layout_alignParentRight="true"
+    android:background="#ff0000"
     android:minWidth="100dp"
     android:text="删除"
-    android:textSize="15sp"
     android:textColor="@android:color/white"
-    android:background="#ff0000"
-    android:layout_alignParentRight="true"
-   	>
-</Button>
+    android:textSize="15sp"></Button>

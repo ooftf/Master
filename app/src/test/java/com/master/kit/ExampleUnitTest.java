@@ -47,8 +47,9 @@ public class ExampleUnitTest {
         System.out.println("-----------------");
         new KotlinInitSuper(5, "456", new A());
     }
+
     @Test
-    public void re(){
+    public void re() {
         Regex regex = new Regex("^[^\\u4e00-\\u9fa5]+$");
     }
 }

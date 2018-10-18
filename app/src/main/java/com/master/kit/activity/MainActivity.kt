@@ -38,17 +38,17 @@ class MainActivity : BaseActivity() {
         ) {
             ARouter.getInstance().build(it).navigation() as Fragment
         }
-        bottomBar.setOnItemSelectChangedListener { oldIndex, newIndex->
-            when(newIndex){
-                0 ->  switchManager.switchFragment("/widget/widget")
-                1 ->  switchManager.switchFragment("/source/source")
-                2 ->  switchManager.switchFragment("/applet/app")
-                3 ->  switchManager.switchFragment("/debug/debug")
-                4 ->  switchManager.switchFragment("/other/other")
-                else ->  switchManager.switchFragment("/applet/app")
+        bottomBar.setOnItemSelectChangedListener { oldIndex, newIndex ->
+            when (newIndex) {
+                0 -> switchManager.switchFragment("/widget/widget")
+                1 -> switchManager.switchFragment("/source/source")
+                2 -> switchManager.switchFragment("/applet/app")
+                3 -> switchManager.switchFragment("/debug/debug")
+                4 -> switchManager.switchFragment("/other/other")
+                else -> switchManager.switchFragment("/applet/app")
             }
         }
-        bottomBar.setAdapter( BottomBarAdapter(this))
+        bottomBar.setAdapter(BottomBarAdapter(this))
         bottomBar.setSelectedIndex(0)
     }
 
@@ -70,9 +70,9 @@ class MainActivity : BaseActivity() {
     private var backPressedTime = 0L
     @DebugLog
     override fun onBackPressed() {
-        if(System.currentTimeMillis()-backPressedTime<2000){
-            android.os.Process.killProcess( android.os.Process.myPid())
-        }else{
+        if (System.currentTimeMillis() - backPressedTime < 2000) {
+            android.os.Process.killProcess(android.os.Process.myPid())
+        } else {
             backPressedTime = System.currentTimeMillis()
             toast("再按一次退出应用")
         }

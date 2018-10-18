@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView
  */
 class TestLayoutManager : RecyclerView.LayoutManager() {
     override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
-        return RecyclerView.LayoutParams(RecyclerView.LayoutParams.WRAP_CONTENT,RecyclerView.LayoutParams.WRAP_CONTENT)
+        return RecyclerView.LayoutParams(RecyclerView.LayoutParams.WRAP_CONTENT, RecyclerView.LayoutParams.WRAP_CONTENT)
     }
 
     override fun onLayoutChildren(recycler: RecyclerView.Recycler, state: RecyclerView.State?) {
@@ -17,6 +17,7 @@ class TestLayoutManager : RecyclerView.LayoutManager() {
         detachAndScrapAttachedViews(recycler)
         calculateChildrenSite(recycler)
     }
+
     var totalHeight = 0
     private fun calculateChildrenSite(recycler: RecyclerView.Recycler) {
         totalHeight = 0

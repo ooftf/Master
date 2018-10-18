@@ -4,16 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:paddingBottom="@dimen/layout_vertical_margin"
     android:paddingLeft="@dimen/layout_horizontal_margin"
-    android:paddingRight="@dimen/layout_horizontal_margin"
     android:paddingTop="@dimen/layout_vertical_margin"
+    android:paddingRight="@dimen/layout_horizontal_margin"
+    android:paddingBottom="@dimen/layout_vertical_margin"
     tools:context="com.master.kit.testcase.webview.WebViewActivity">
 
     <com.ooftf.widget.self.pulltorefresh.PullToRefreshRoot
         android:id="@+id/pullToRefreshRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.github.lzyzsd.jsbridge.BridgeWebView
             android:id="@+id/webView"
             android:layout_width="match_parent"

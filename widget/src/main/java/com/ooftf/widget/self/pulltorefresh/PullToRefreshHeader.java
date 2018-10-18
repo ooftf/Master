@@ -11,12 +11,11 @@ import android.widget.TextView;
 import com.ooftf.widget.R;
 
 /**
- *
- *
  * Created by master on 2016/9/20.
  */
 public class PullToRefreshHeader extends AbstractPullToRefreshHeader {
     TextView mTextDesc;
+
     public PullToRefreshHeader(Context context) {
         super(context);
 
@@ -35,6 +34,7 @@ public class PullToRefreshHeader extends AbstractPullToRefreshHeader {
 
 
     }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public PullToRefreshHeader(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -44,7 +44,7 @@ public class PullToRefreshHeader extends AbstractPullToRefreshHeader {
 
     @Override
     void setContentView() {
-        LayoutInflater.from(getContext()).inflate(R.layout.widget_pull_to_refresh_header,this);
+        LayoutInflater.from(getContext()).inflate(R.layout.widget_pull_to_refresh_header, this);
         mTextDesc = findViewById(R.id.text_desc);
     }
 

@@ -47,9 +47,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_marginTop="-48dp"
-            app:theme="@style/ThemeOverlay.AppCompat.Light"
+            android:navigationIcon="@drawable/ic_menu_send"
             app:layout_scrollFlags="scroll|enterAlways|snap"
-            android:navigationIcon="@drawable/ic_menu_send">
+            app:theme="@style/ThemeOverlay.AppCompat.Light">
 
         </android.support.v7.widget.Toolbar>
 
@@ -103,17 +103,16 @@
     </android.support.v4.widget.NestedScrollView>-->
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v4.view.ViewPager>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"></android.support.v4.view.ViewPager>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/main_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        android:layout_margin="10dp"
         android:layout_gravity="bottom|right|end"
-        />
+        android:layout_margin="10dp"
+        android:src="@mipmap/ic_launcher" />
 
 </android.support.design.widget.CoordinatorLayout>

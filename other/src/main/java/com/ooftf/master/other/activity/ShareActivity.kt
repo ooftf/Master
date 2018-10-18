@@ -9,6 +9,7 @@ import com.ooftf.master.other.R
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.widget.dialog.ShareDialog
 import kotlinx.android.synthetic.main.activity_share.*
+
 @Route(path = "/other/share")
 class ShareActivity : BaseActivity() {
 
@@ -22,11 +23,11 @@ class ShareActivity : BaseActivity() {
 
     private fun share() {
         var dialog = ShareDialog(this);
-        var shareData =   ShareDialog.ShareData()
-        shareData.params = HiShare.ShareParams("http://www.baidu.com","标题","这是个内容",null,BitmapFactory.decodeResource(resources,R.drawable.logo_legacy))
-        shareData.channelShare.add(ShareDialog.ShareItem("QQ好友",R.mipmap.ic_qq,HiShare.ShareType.QQ_FRIEND))
-        shareData.channelShare.add(ShareDialog.ShareItem("微信好友",R.mipmap.ic_wx_freind,HiShare.ShareType.WX_FRIEND))
-        shareData.channelShare.add(ShareDialog.ShareItem("微信朋友圈",R.mipmap.ic_wx_moment,HiShare.ShareType.WX_MOMENT))
+        var shareData = ShareDialog.ShareData()
+        shareData.params = HiShare.ShareParams("http://www.baidu.com", "标题", "这是个内容", null, BitmapFactory.decodeResource(resources, R.drawable.logo_legacy))
+        shareData.channelShare.add(ShareDialog.ShareItem("QQ好友", R.mipmap.ic_qq, HiShare.ShareType.QQ_FRIEND))
+        shareData.channelShare.add(ShareDialog.ShareItem("微信好友", R.mipmap.ic_wx_freind, HiShare.ShareType.WX_FRIEND))
+        shareData.channelShare.add(ShareDialog.ShareItem("微信朋友圈", R.mipmap.ic_wx_moment, HiShare.ShareType.WX_MOMENT))
         dialog.setData(shareData);
         dialog.show()
     }

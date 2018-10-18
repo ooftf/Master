@@ -4,15 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:paddingBottom="@dimen/layout_vertical_margin"
     android:paddingLeft="@dimen/layout_horizontal_margin"
-    android:paddingRight="@dimen/layout_horizontal_margin"
     android:paddingTop="@dimen/layout_vertical_margin"
+    android:paddingRight="@dimen/layout_horizontal_margin"
+    android:paddingBottom="@dimen/layout_vertical_margin"
     tools:context="com.master.kit.testcase.design.DesignDispatchActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <Button
             android:id="@+id/DesignActivity"
             android:layout_width="match_parent"
@@ -20,6 +22,7 @@
             android:onClick="onClick"
             android:text="DesignActivity"
             android:textAllCaps="false" />
+
         <Button
             android:id="@+id/TabActivity"
             android:layout_width="match_parent"
@@ -27,6 +30,7 @@
             android:onClick="onClick"
             android:text="TabActivity"
             android:textAllCaps="false" />
+
         <Button
             android:id="@+id/FlexibleActivity"
             android:layout_width="match_parent"

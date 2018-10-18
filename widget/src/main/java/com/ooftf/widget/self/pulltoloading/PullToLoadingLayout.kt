@@ -18,6 +18,7 @@ class PullToLoadingLayout(context: Context, var pullToLoading: PullToLoading, va
 
     var state: Int = STATE_NORMAL
     internal lateinit var listView: ListView
+
     init {
         addView(pullToLoading as View)
         setOnClickListener {
@@ -39,6 +40,7 @@ class PullToLoadingLayout(context: Context, var pullToLoading: PullToLoading, va
         layoutParams.width = LayoutParams.MATCH_PARENT
         layoutParams.height = LayoutParams.WRAP_CONTENT
     }
+
     /**
      * 在setAdapter 之前调用
      *
@@ -46,7 +48,7 @@ class PullToLoadingLayout(context: Context, var pullToLoading: PullToLoading, va
      */
     fun setListView(listView: ListView) {
         this.listView = listView
-        if(autoLoading){
+        if (autoLoading) {
             listView.setOnScrollListener(InnerOnScrollListener())
         }
         listView.addFooterView(this)
@@ -54,18 +56,21 @@ class PullToLoadingLayout(context: Context, var pullToLoading: PullToLoading, va
         pullToLoading.normal()
     }
 
-    fun normal(){
+    fun normal() {
         state = STATE_NORMAL
         pullToLoading.normal()
     }
-    fun loadOver(){
+
+    fun loadOver() {
         state = STATE_LOAD_OVER
         pullToLoading.loadOver()
     }
+
     fun error() {
         state = STATE_ERROR
         pullToLoading.error()
     }
+
     companion object {
         val STATE_LOAD_OVER = 0
         val STATE_LOADING = 1
@@ -81,12 +86,12 @@ class PullToLoadingLayout(context: Context, var pullToLoading: PullToLoading, va
     /**
      * 用来监听滑动事件，当下滑到底部的时候触发“加载更多”
      */
-    inner class  InnerOnScrollListener:AbsListView.OnScrollListener {
+    inner class InnerOnScrollListener : AbsListView.OnScrollListener {
         override fun onScrollStateChanged(view: AbsListView, scrollState: Int) {
         }
 
         override fun onScroll(view: AbsListView, firstVisibleItem: Int, visibleItemCount: Int, totalItemCount: Int) {
-            if (firstVisibleItem + visibleItemCount == totalItemCount && (state == STATE_NORMAL ||state== STATE_ERROR)) {
+            if (firstVisibleItem + visibleItemCount == totalItemCount && (state == STATE_NORMAL || state == STATE_ERROR)) {
                 state = STATE_LOADING
                 pullToLoading.loading()
                 load?.invoke()

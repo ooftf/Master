@@ -17,8 +17,8 @@ public class DesignDispatchActivity extends BaseSlidingActivity {
         setContentView(R.layout.activity_design_dispatch);
     }
 
-    public void onClick(View v){
-        switch (v.getId()){
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.DesignActivity:
                 startActivity(DesignActivity.class);
                 break;

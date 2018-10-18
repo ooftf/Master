@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <com.ooftf.widget.self.WidgetToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        app:actionMenuTextColor="@color/white"
-        />
+        app:actionMenuTextColor="@color/white" />
     <!--com.ooftf.widget.self.behavior.ToolbarBehavior-->
     <com.ooftf.widget.self.ReturnTopLayout
-        app:layout_behavior="com.ooftf.service.widget.toolbar.TailoredToolbar$BelowBehavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
+        app:layout_behavior="com.ooftf.service.widget.toolbar.TailoredToolbar$BelowBehavior"
         app:scrollId="@+id/recycler_view">
 
         <android.support.v7.widget.RecyclerView

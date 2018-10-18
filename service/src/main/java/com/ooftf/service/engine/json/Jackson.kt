@@ -26,11 +26,11 @@ private class Jackson : IJson {
     }
 
     override fun <T> fromJson(jsonString: String, type: Type): T {
-        return mapper.readValue(jsonString,mapper.typeFactory.constructType(type))
+        return mapper.readValue(jsonString, mapper.typeFactory.constructType(type))
     }
 
     override fun <T> fromJsonToArray(jsonString: String, itemClazz: Class<T>): List<T> {
-        return mapper.readValue(jsonString,mapper.typeFactory.constructArrayType(itemClazz))
+        return mapper.readValue(jsonString, mapper.typeFactory.constructArrayType(itemClazz))
     }
 
 }

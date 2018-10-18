@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
 
 /**
  * @author ooftf
@@ -14,16 +12,15 @@ import io.reactivex.ObservableOnSubscribe;
  **/
 public class RxPigeon {
     private static RxPigeon instance = new RxPigeon();
-
-    public static RxPigeon getInstance() {
-        return instance;
-    }
+    private Map<String, Service> serviceHolder = new HashMap<>();
 
     private RxPigeon() {
 
     }
 
-    private Map<String, Service> serviceHolder = new HashMap<>();
+    public static RxPigeon getInstance() {
+        return instance;
+    }
 
     public Observable<String> post(final String address, final String param) {
         Service service = serviceHolder.get(address);

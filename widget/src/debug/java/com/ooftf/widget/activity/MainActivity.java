@@ -1,7 +1,7 @@
 package com.ooftf.widget.activity;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.service.base.BaseActivity;
@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity {
                 return Observable.just(params);
             }
         });
-        RxPigeon.getInstance().post("RxPigeon://ooftf.service/MainActivity/action","").subscribe();
+        RxPigeon.getInstance().post("RxPigeon://ooftf.service/MainActivity/action", "").subscribe();
 
         RxPigeon.getInstance().unregisterService("RxPigeon://ooftf.service/MainActivity/action");
 

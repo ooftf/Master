@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+
 import java.io.File;
 
 /**
@@ -16,6 +17,7 @@ import java.io.File;
 public class HiCamera {
     private Activity activity;
     private String authority;
+    private File file;
 
     private HiCamera(Activity activity) {
         this.activity = activity;
@@ -46,8 +48,6 @@ public class HiCamera {
     public File getResultFile() {
         return file;
     }
-
-    private File file;
 
     //ProviderConstant.FILE_PROVIDER
     private Uri createSavePhotoUri() {

@@ -5,8 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-<input id="input1" name="Input标签的形式选择文件" accept="image/*" type="file" onchange="getImageToShow()"><br>
-<button onclick="pickImage()" style="width:50%;height:20%">JsBridge方式选择文件</button><br>
+<input id="input1" name="Input标签的形式选择文件" accept="image/*" type="file"
+       onchange="getImageToShow()"><br>
+<button onclick="pickImage()" style="width:50%;height:20%">JsBridge方式选择文件</button>
+<br>
 <img id="img1" src="" style="width:50%;height:20%">
 <img id="img2" src="" style="width:50%;height:20%">
 </body>
@@ -36,4 +38,5 @@
       let img1 = document.getElementById("img1")
       img1.src = url
     }
+
 </script>

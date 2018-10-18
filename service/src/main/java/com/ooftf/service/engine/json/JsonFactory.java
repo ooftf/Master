@@ -6,6 +6,12 @@ package com.ooftf.service.engine.json;
  * @date 2018/10/6 0006
  */
 public class JsonFactory {
+    private static IJson json = new Builder().build();
+
+    public static IJson getDefault() {
+        return json;
+    }
+
     /**
      * 引入 builder 为了方便后续添加参数
      */
@@ -13,11 +19,5 @@ public class JsonFactory {
         IJson build() {
             return new Gson();
         }
-    }
-
-    private static IJson json = new Builder().build();
-
-    public static IJson getDefault() {
-        return json;
     }
 }

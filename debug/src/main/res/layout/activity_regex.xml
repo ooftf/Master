@@ -7,24 +7,28 @@
     android:background="@color/background"
     android:orientation="vertical"
     tools:context="com.ooftf.master.debug.activity.RegexActivity">
+
     <com.ooftf.operation.OperationEditText
         android:id="@+id/editTest"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:hint="测试中文hint"
         app:oet_delEnabled="true" />
+
     <com.ooftf.operation.OperationEditText
         android:id="@+id/editTest1"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:hint="测试身份证输入"
         app:oet_delEnabled="true" />
+
     <com.ooftf.operation.OperationEditText
         android:id="@+id/editTest2"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:inputType="phone"
         app:oet_delEnabled="true" />
+
     <com.ooftf.operation.OperationEditText
         android:id="@+id/editTest3"
         android:layout_width="match_parent"

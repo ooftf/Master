@@ -73,6 +73,7 @@ public interface ITyper {
 
     /**
      * 获取 boolean 值
+     *
      * @param key
      * @return
      */
@@ -80,6 +81,7 @@ public interface ITyper {
 
     /**
      * 获取 int 值
+     *
      * @param key
      * @return
      */
@@ -87,6 +89,7 @@ public interface ITyper {
 
     /**
      * 获取 long 值
+     *
      * @param key
      * @return
      */
@@ -94,6 +97,7 @@ public interface ITyper {
 
     /**
      * 获取 float 值
+     *
      * @param key
      * @return
      */
@@ -101,6 +105,7 @@ public interface ITyper {
 
     /**
      * 获取 double 值
+     *
      * @param key
      * @return
      */
@@ -108,6 +113,7 @@ public interface ITyper {
 
     /**
      * 获取 byte 值
+     *
      * @param key
      * @return
      */
@@ -115,68 +121,78 @@ public interface ITyper {
 
     /**
      * 获取 String 值
+     *
      * @param key
      * @return
      */
     String getString(String key);
+
     /**
      * 获取 boolean 值
+     *
      * @param key
      * @param defaultValue
      * @return
      */
-    boolean getBoolean(String key,boolean defaultValue);
+    boolean getBoolean(String key, boolean defaultValue);
 
     /**
      * 获取 int 值
+     *
      * @param key
      * @param defaultValue
      * @return
      */
-    int getInt(String key,int defaultValue);
+    int getInt(String key, int defaultValue);
 
     /**
      * 获取 long 值
+     *
      * @param key
      * @param defaultValue
      * @return
      */
-    long getLong(String key,long defaultValue);
+    long getLong(String key, long defaultValue);
 
     /**
      * 获取 float 值
+     *
      * @param key
      * @param defaultValue
      * @return
      */
-    float getFloat(String key,float defaultValue);
+    float getFloat(String key, float defaultValue);
 
     /**
      * 获取 double 值
+     *
      * @param key
      * @param defaultValue
      * @return
      */
-    double getDouble(String key,double defaultValue);
+    double getDouble(String key, double defaultValue);
 
     /**
      * 获取 byte 值
+     *
      * @param key
      * @param defaultValue
      * @return
      */
-    byte[] getBytes(String key,byte[] defaultValue);
+    byte[] getBytes(String key, byte[] defaultValue);
 
     /**
      * 获取 String 值
+     *
      * @param key
      * @param defaultValue
      * @return
      */
-    String getString(String key,String defaultValue);
+    String getString(String key, String defaultValue);
 
     /**
      * 获取指定类，如果没有则返回null
+     *
      * @param key
      * @param cla
      * @param <T>

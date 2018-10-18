@@ -1,6 +1,5 @@
 package com.ooftf.service.base.adapter
 
-import android.support.graphics.drawable.VectorDrawableCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -18,10 +17,11 @@ import com.ooftf.service.bean.ScreenItemBean
  */
 
 open class MainRecyclerAdapter(private var baseActivity: BaseActivity, internal var stickyView: TextView) : CategoryRecyclerAdapter<ScreenItemBean, MainRecyclerAdapter.RecyclerHolder>() {
-    override fun getCategory(position: Int)=getItem(position).category
+    override fun getCategory(position: Int) = getItem(position).category
 
     //LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
     var inflater: LayoutInflater = LayoutInflater.from(baseActivity)
+
     override fun onCreateViewHolderSecondary(parent: ViewGroup, viewType: Int): RecyclerHolder {
         val view = inflater.inflate(R.layout.item_recyclerview_main, parent, false)
         return RecyclerHolder(view)
@@ -53,6 +53,7 @@ open class MainRecyclerAdapter(private var baseActivity: BaseActivity, internal 
             ARouter.getInstance().build(bean.clz).navigation()
         }
     }
+
     class RecyclerHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var name: TextView = itemView.findViewById(R.id.name)
         var describe: TextView = itemView.findViewById(R.id.describe)

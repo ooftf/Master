@@ -1,13 +1,9 @@
 package com.ooftf.master.other.activity;
 
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.Keep;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
@@ -15,9 +11,7 @@ import android.view.View;
 import android.webkit.JavascriptInterface;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.blankj.utilcode.util.UriUtils;
 import com.blankj.utilcode.util.Utils;
-import com.google.gson.Gson;
 import com.ooftf.master.other.R;
 import com.ooftf.service.constant.ProviderConstant;
 import com.tencent.smtt.sdk.ValueCallback;
@@ -34,7 +28,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import cz.msebera.android.httpclient.client.utils.URIUtils;
 import me.iwf.photopicker.PhotoPicker;
 
 @Route(path = "/other/takePhoto")
@@ -42,6 +35,18 @@ public class PhotoActivity extends TakePhotoActivity {
     WebView webView;
     ValueCallback<Uri[]> mFilePathCallback;
     int flag = 0;
+
+    public static Uri file2Uri(final File file) {
+        if (file == null) {
+            return null;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            String authority = ProviderConstant.FILE_PROVIDER;
+            return FileProvider.getUriForFile(Utils.getApp(), authority, file);
+        } else {
+            return Uri.fromFile(file);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +60,6 @@ public class PhotoActivity extends TakePhotoActivity {
                 startTakePhoto();
             }
         });
-    }
-
-    @Keep
-    public class JsAndroid extends Object {
-        @JavascriptInterface
-        public void pickImage() {
-            flag = 1;
-            startTakePhoto();
-        }
     }
 
     private void initWebView() {
@@ -169,15 +165,12 @@ public class PhotoActivity extends TakePhotoActivity {
 
     }
 
-    public static Uri file2Uri(final File file) {
-        if (file == null) {
-            return null;
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            String authority = ProviderConstant.FILE_PROVIDER;
-            return FileProvider.getUriForFile(Utils.getApp(), authority, file);
-        } else {
-            return Uri.fromFile(file);
+    @Keep
+    public class JsAndroid extends Object {
+        @JavascriptInterface
+        public void pickImage() {
+            flag = 1;
+            startTakePhoto();
         }
     }
 }

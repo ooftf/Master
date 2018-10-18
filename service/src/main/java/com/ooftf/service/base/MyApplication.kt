@@ -12,9 +12,10 @@ import com.ooftf.service.engine.typer.TyperFactory
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.squareup.leakcanary.LeakCanary
-import com.tencent.mmkv.MMKV
+import com.tencent.bugly.crashreport.CrashReport
 import com.tinkerpatch.sdk.TinkerPatch
 import com.tinkerpatch.sdk.loader.TinkerPatchApplicationLike
+
 /**
  * Created by master on 2016/12/26.
  */
@@ -22,6 +23,7 @@ import com.tinkerpatch.sdk.loader.TinkerPatchApplicationLike
 class MyApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
+        CrashReport.initCrashReport(getApplicationContext(), "26a5e838af", false);
         Utils.init(this)
         instance = this
         setupThinker()
@@ -37,6 +39,7 @@ class MyApplication : MultiDexApplication() {
         }
         ARouter.init(this)
         TyperFactory.init(this)
+
     }
 
     private fun setupBlockCanary() {
@@ -70,10 +73,12 @@ class MyApplication : MultiDexApplication() {
         // 每隔3个小时(通过setFetchPatchIntervalByHours设置)去访问后台时候有更新,通过handler实现轮训的效果
         TinkerPatch.with().fetchPatchUpdateAndPollWithInterval()
     }
+
     private fun setupLogger() {
         Logger.addLogAdapter(AndroidLogAdapter())
     }
+
     companion object {
-        lateinit var instance:MyApplication
+        lateinit var instance: MyApplication
     }
 }

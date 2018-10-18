@@ -1,6 +1,5 @@
 package com.ooftf.service.constant;
 
-import com.blankj.utilcode.util.Utils;
 import com.ooftf.service.base.MyApplication;
 
 /**

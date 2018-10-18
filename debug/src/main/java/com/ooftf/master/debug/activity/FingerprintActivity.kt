@@ -14,18 +14,18 @@ import kotlinx.android.synthetic.main.activity_fingerprint.*
 
 @Route(path = "/debug/fingerprint")
 class FingerprintActivity : BaseActivity() {
-    lateinit var fingerprintManager:FingerprintManagerCompat
-    lateinit var cancellationSignal:CancellationSignal
-    lateinit var callback:FingerprintManagerCompat.AuthenticationCallback
+    lateinit var fingerprintManager: FingerprintManagerCompat
+    lateinit var cancellationSignal: CancellationSignal
+    lateinit var callback: FingerprintManagerCompat.AuthenticationCallback
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fingerprint)
         fingerprintManager = FingerprintManagerCompat.from(this)
-        if(!fingerprintManager.isHardwareDetected){
+        if (!fingerprintManager.isHardwareDetected) {
             describe.text = "你的手机暂不支持指纹识别"
-        }else if (!fingerprintManager.hasEnrolledFingerprints()){
+        } else if (!fingerprintManager.hasEnrolledFingerprints()) {
             describe.text = "你的手机还没有录入指纹"
-        }else{
+        } else {
             describe.text = "可以指纹识别"
         }
         cancellationSignal = CancellationSignal()
@@ -71,6 +71,7 @@ class FingerprintActivity : BaseActivity() {
         super.onStop()
         cancellationSignal.cancel()
     }
+
     private fun startFingerprint() {
         fingerprintManager.authenticate(null, 0, cancellationSignal, callback, Handler())
     }

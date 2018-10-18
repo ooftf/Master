@@ -1,19 +1,16 @@
 package com.ooftf.service.net.etd.action;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.service.net.etd.bean.BaseBean;
-import com.sina.weibo.sdk.constant.WBConstants;
 
 import java.util.Objects;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
-import io.reactivex.functions.Consumer;
 
 import static com.ooftf.service.net.etd.Constant.CODE_OFF_SITE_LOGIN;
 import static com.ooftf.service.net.etd.Constant.CODE_SESSION_OVERDUE;

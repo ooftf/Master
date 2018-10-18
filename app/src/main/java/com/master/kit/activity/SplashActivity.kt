@@ -23,7 +23,8 @@ class SplashActivity : BaseActivity() {
         timer.cancel()
         super.onDestroy()
     }
-    private fun startNextActivity(){
+
+    private fun startNextActivity() {
         startActivity(MainActivity::class.java)
         finish()
     }

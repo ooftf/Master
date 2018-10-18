@@ -5,7 +5,8 @@ package com.ooftf.service.net.etd.bean
  */
 class PicCaptchaBean : BaseBean() {
     var body: Body? = null
-    class Body{
+
+    class Body {
         var indentify: String? = null
         var uuid: String? = null
     }

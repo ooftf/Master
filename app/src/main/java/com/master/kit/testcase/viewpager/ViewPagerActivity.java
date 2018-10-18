@@ -42,7 +42,7 @@ public class ViewPagerActivity extends BaseSlidingActivity {
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
                 TextView tv = new TextView(ViewPagerActivity.this);
-                tv.setText("第"+position+"个");
+                tv.setText("第" + position + "个");
                 container.addView(tv);
                 return tv;
             }

@@ -36,7 +36,7 @@ public class SlidingRecycleViewActivity extends AppCompatActivity {
                 drawer.smoothTurn();
             }
         });
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView.setAdapter(new RecyclerView.Adapter() {
             @NonNull
             @Override
@@ -48,7 +48,7 @@ public class SlidingRecycleViewActivity extends AppCompatActivity {
 
             @Override
             public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-                ((TextView)holder.itemView).setText(String.valueOf(position));
+                ((TextView) holder.itemView).setText(String.valueOf(position));
             }
 
             @Override
