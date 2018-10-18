@@ -17,6 +17,7 @@ import com.ooftf.service.BuildConfig;
  */
 public class BaseDialog extends Dialog {
     public BaseDialog(@NonNull Context context) {
+
         super(context);
     }
 
