@@ -11,7 +11,7 @@ buildscript {
             'tinker'     : "1.9.1",
             'tinkerpatch': "1.2.1",
             'packerNG'   : "2.0.1",
-            'arouter'    : "1.1.4",
+            'arouter'    : "1.2.1",
             'glide'      : "4.8.0",
             'dagger'     : "2.16",
             'java'       : JavaVersion.VERSION_1_8
@@ -38,7 +38,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
         classpath "com.mcxiaoke.packer-ng:plugin:$versions.packerNG"
-        classpath "com.alibaba:arouter-register:1.0.0"
+        classpath "com.alibaba:arouter-register:1.0.2"
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
         classpath "com.jakewharton:butterknife-gradle-plugin:$versions.butterknife"
     }

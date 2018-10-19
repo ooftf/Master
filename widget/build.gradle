@@ -1,48 +1,4 @@
-if (MoudleDebug) {
-    apply plugin: 'com.android.application'
-    apply from: '../app/tinkerpatch.gradle'
-} else {
-    apply plugin: 'com.android.library'
-}
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'com.jakewharton.hugo'
-apply plugin: 'com.jakewharton.butterknife'
-android {
-    compileSdkVersion versions.compileSdk
-    defaultConfig {
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
-        vectorDrawables.useSupportLibrary = true
-        if (MoudleDebug) {
-            applicationId "com.ooftf.widget"
-            multiDexEnabled true
-        }
-    }
-    compileOptions {
-        sourceCompatibility versions.java
-        targetCompatibility versions.java
-    }
-    sourceSets {
-        main {
-            if (MoudleDebug) {
-                manifest.srcFile 'src/debug/AndroidManifest.xml'
-                java.srcDirs = ['src/debug/java', 'src/main/java']
-                res.srcDirs = ['src/debug/res', 'src/main/res']
-            } else {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-                java.srcDirs = ['src/main/java']
-                res.srcDirs = ['src/main/res']
-            }
-        }
-    }
-}
-kapt {
-    arguments {
-        arg("moduleName", project.getName())
-    }
-}
+apply from: '../module.gradle'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
