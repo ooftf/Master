@@ -15,7 +15,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_camera.*
 
 
-@Route(path = "/other/CameraActivity")
+@Route(path = "/other/activity/camera")
 class CameraActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

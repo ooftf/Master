@@ -15,7 +15,7 @@ import tourguide.tourguide.Pointer
 import tourguide.tourguide.ToolTip
 import tourguide.tourguide.TourGuide
 
-@Route(path = "/widget/tourGuide")
+@Route(path = "/widget/activity/tourGuide")
 class TourGuideActivity : BaseSlidingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

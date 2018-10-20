@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
 import java.lang.reflect.Proxy
 
-@Route(path = "/source/proxy")
+@Route(path = "/source/activity/proxy")
 class ProxyActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

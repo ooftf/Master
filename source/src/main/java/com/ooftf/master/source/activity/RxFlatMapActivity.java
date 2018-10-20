@@ -16,7 +16,7 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 
-@Route(path = "/source/RxFlatMapActivity")
+@Route(path = "/source/activity/RxFlatMap")
 public class RxFlatMapActivity extends BaseBarrageActivity {
     Button flatMap;
     TextView textView;

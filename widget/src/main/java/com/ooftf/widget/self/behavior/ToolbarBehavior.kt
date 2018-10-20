@@ -5,8 +5,8 @@ import android.support.design.widget.CoordinatorLayout
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import com.ooftf.service.widget.ReturnTopLayout
 import com.ooftf.service.widget.toolbar.ScrollToolbar
-import com.ooftf.widget.self.ReturnTopLayout
 
 /**
  * I think : behavior 分为两种，一种是根据layout相互影响，一种是根据scroll相互影响

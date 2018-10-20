@@ -7,7 +7,7 @@ import com.ooftf.widget.R
 import com.ooftf.widget.adapter.BottomBarAdapter
 import kotlinx.android.synthetic.main.activity_bottom_bar.*
 
-@Route(path = "/widget/bottomBar")
+@Route(path = "/widget/activity/bottomBar")
 class BottomBarActivity : BaseSlidingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

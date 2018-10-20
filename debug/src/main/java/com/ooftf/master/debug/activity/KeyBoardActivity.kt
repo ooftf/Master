@@ -11,7 +11,7 @@ import com.ooftf.master.debug.widget.KeyBoard
 import com.ooftf.service.base.BaseActivity
 import kotlinx.android.synthetic.main.content_key_board.*
 
-@Route(path = "/debug/keyBoard")
+@Route(path = "/debug/activity/keyBoard")
 class KeyBoardActivity : BaseActivity() {
 
     lateinit var keyBoard: KeyBoard

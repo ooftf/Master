@@ -9,7 +9,7 @@ import com.ooftf.widget.bean.SwipeBean
 import kotlinx.android.synthetic.main.activity_swipe.*
 import java.util.*
 
-@Route(path = "/widget/swipe")
+@Route(path = "/widget/activity/swipe")
 class SwipeActivity : BaseActivity() {
     lateinit var adapter: SwipeAdapter
     lateinit var timer: Timer

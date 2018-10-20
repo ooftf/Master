@@ -17,7 +17,7 @@ import com.ooftf.widget.R;
 /**
  * @author ooftf
  */
-@Route(path = "/widget/SlidingRecycleViewActivity")
+@Route(path = "/widget/activity/slidingRecycleView")
 public class SlidingRecycleViewActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     SlidingLayout drawer;

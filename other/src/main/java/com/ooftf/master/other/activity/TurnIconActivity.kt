@@ -8,7 +8,7 @@ import com.ooftf.master.other.R
 import com.ooftf.service.engine.AppIconEngine
 import kotlinx.android.synthetic.main.activity_turn_icon.*
 
-@Route(path = "/other/turnIcon")
+@Route(path = "/other/activity/turnIcon")
 class TurnIconActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

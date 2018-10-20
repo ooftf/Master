@@ -29,23 +29,23 @@ class MainActivity : BaseActivity() {
         switchManager = FragmentSwitchManager(
                 supportFragmentManager,
                 R.id.frame_fragment,
-                "/widget/widget",
-                "/source/source",
-                "/debug/debug",
-                "/other/other",
-                "/applet/app",
+                "/widget/fragment/widget",
+                "/source/fragment/source",
+                "/debug/fragment/debug",
+                "/other/fragment/other",
+                "/applet/fragment/app",
                 onPreSwitch = null
         ) {
             ARouter.getInstance().build(it).navigation() as Fragment
         }
         bottomBar.setOnItemSelectChangedListener { oldIndex, newIndex ->
             when (newIndex) {
-                0 -> switchManager.switchFragment("/widget/widget")
-                1 -> switchManager.switchFragment("/source/source")
-                2 -> switchManager.switchFragment("/applet/app")
-                3 -> switchManager.switchFragment("/debug/debug")
-                4 -> switchManager.switchFragment("/other/other")
-                else -> switchManager.switchFragment("/applet/app")
+                0 -> switchManager.switchFragment("/widget/fragment/widget")
+                1 -> switchManager.switchFragment("/source/fragment/source")
+                2 -> switchManager.switchFragment("/applet/fragment/app")
+                3 -> switchManager.switchFragment("/debug/fragment/debug")
+                4 -> switchManager.switchFragment("/other/fragment/other")
+                else -> switchManager.switchFragment("/applet/fragment/app")
             }
         }
         bottomBar.setAdapter(BottomBarAdapter(this))

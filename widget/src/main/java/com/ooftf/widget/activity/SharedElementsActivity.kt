@@ -10,7 +10,7 @@ import com.ooftf.service.base.BaseActivity
 import com.ooftf.widget.R
 import kotlinx.android.synthetic.main.activity_shared_elements.*
 
-@Route(path = "/widget/sharedElements")
+@Route(path = "/widget/activity/sharedElements")
 class SharedElementsActivity : BaseActivity() {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)

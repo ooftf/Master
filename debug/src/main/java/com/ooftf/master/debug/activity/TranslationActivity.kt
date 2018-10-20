@@ -6,8 +6,14 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
 import com.ooftf.service.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_translation_debug.*
-
-@Route(path = "/debug/translation")
+/**
+ * 调试控件的移动
+ *
+ * @author ooftf
+ * @email 994749769@qq.com
+ * @date 2018/10/21 0021
+ */
+@Route(path = "/debug/activity/translation")
 class TranslationActivity : BaseActivity() {
     var y = 0f
     override fun onCreate(savedInstanceState: Bundle?) {

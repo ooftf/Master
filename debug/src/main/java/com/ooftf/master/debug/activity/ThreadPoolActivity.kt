@@ -12,7 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
 
-@Route(path = "/debug/threadPool")
+@Route(path = "/debug/activity/threadPool")
 class ThreadPoolActivity : BaseActivity() {
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)

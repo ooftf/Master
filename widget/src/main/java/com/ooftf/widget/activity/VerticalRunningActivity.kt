@@ -11,7 +11,7 @@ import com.ooftf.service.base.adapter.AbstractSimpleAdapter
 import com.ooftf.widget.R
 import kotlinx.android.synthetic.main.activity_vertical_running.*
 
-@Route(path = "/widget/verticalRunning")
+@Route(path = "/widget/activity/verticalRunning")
 class VerticalRunningActivity : BaseSlidingActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

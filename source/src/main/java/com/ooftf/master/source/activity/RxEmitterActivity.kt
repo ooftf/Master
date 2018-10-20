@@ -9,7 +9,7 @@ import io.reactivex.ObservableEmitter
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_rx_emitter.*
 
-@Route(path = "/source/RxEmitterActivity")
+@Route(path = "/source/activity/RxEmitter")
 class RxEmitterActivity : BaseBarrageActivity() {
     var emitter: ObservableEmitter<String>? = null
     var disposable: Disposable? = null

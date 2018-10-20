@@ -8,7 +8,7 @@ import com.ooftf.service.base.BaseActivity
 import com.ooftf.vertical.ScrollEdgeEngine
 import kotlinx.android.synthetic.main.activity_ultra_view_pager.*
 
-@Route(path = "/debug/verticalPager")
+@Route(path = "/debug/activity/verticalPager")
 class VerticalPagerActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

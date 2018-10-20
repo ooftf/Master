@@ -9,7 +9,7 @@ import com.ooftf.master.debug.widget.DialogDemo
 import com.ooftf.service.widget.dialog.ListSelectorDialog
 import kotlinx.android.synthetic.main.activity_dialog_debug.*
 
-@Route(path = "/debug/dialog")
+@Route(path = "/debug/activity/dialog")
 class DialogActivity : AppCompatActivity() {
     lateinit var dialog: DialogDemo
     override fun onCreate(savedInstanceState: Bundle?) {

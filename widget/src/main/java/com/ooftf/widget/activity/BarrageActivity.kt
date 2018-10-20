@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_barrage.*
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-@Route(path = "/widget/BarrageActivity")
+@Route(path = "/widget/activity/Barrage")
 class BarrageActivity : BaseActivity() {
     lateinit var disposable: Disposable
     var random = Random()

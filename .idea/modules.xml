@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/debug/debug.iml" filepath="$PROJECT_DIR$/debug/debug.iml" />
       <module fileurl="file://$PROJECT_DIR$/other/other.iml" filepath="$PROJECT_DIR$/other/other.iml" />
       <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sign/sign.iml" filepath="$PROJECT_DIR$/sign/sign.iml" />
       <module fileurl="file://$PROJECT_DIR$/source/source.iml" filepath="$PROJECT_DIR$/source/source.iml" />
       <module fileurl="file://$PROJECT_DIR$/widget/widget.iml" filepath="$PROJECT_DIR$/widget/widget.iml" />
     </modules>

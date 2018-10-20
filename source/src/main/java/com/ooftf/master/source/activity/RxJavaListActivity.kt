@@ -5,12 +5,12 @@ import com.ooftf.service.base.BaseListActivity
 import com.ooftf.service.base.adapter.ActivityIntentListAdapter
 import com.ooftf.service.bean.ActivityItemBean
 
-@Route(path = "/source/rxJava")
+@Route(path = "/source/activity/rxJava")
 class RxJavaListActivity : BaseListActivity() {
     override fun setListData(adapter: ActivityIntentListAdapter) {
-        adapter.add(ActivityItemBean("/source/RxEmitterActivity", "测试订阅和发射"))
-        adapter.add(ActivityItemBean("/source/RxFlatMapActivity", "测试FlatMap"))
-        adapter.add(ActivityItemBean("/source/RxIntervalRangeActivity", "测试IntervalRange"))
+        adapter.add(ActivityItemBean("/source/activity/RxEmitter", "测试订阅和发射"))
+        adapter.add(ActivityItemBean("/source/activity/RxFlatMap", "测试FlatMap"))
+        adapter.add(ActivityItemBean("/source/activity/RxIntervalRange", "测试IntervalRange"))
 
     }
 

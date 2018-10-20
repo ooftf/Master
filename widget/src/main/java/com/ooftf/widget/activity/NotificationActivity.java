@@ -17,7 +17,7 @@ import com.ooftf.service.base.BaseActivity;
 import com.ooftf.widget.R;
 import com.ooftf.widget.widget.NewMessageNotification;
 
-@Route(path = "/widget/NotificationActivity")
+@Route(path = "/widget/activity/notification")
 public class NotificationActivity extends BaseActivity {
     Button show;
 

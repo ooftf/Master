@@ -14,7 +14,7 @@ import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_mob_api.*
 
-@Route(path = "/applet/mobApi")
+@Route(path = "/applet/activity/mobApi")
 class MobApiActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

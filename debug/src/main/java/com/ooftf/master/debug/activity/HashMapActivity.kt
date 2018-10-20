@@ -6,7 +6,7 @@ import com.ooftf.master.debug.R
 import com.ooftf.service.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_hash_map.*
 
-@Route(path = "/debug/hashMap")
+@Route(path = "/debug/activity/hashMap")
 class HashMapActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

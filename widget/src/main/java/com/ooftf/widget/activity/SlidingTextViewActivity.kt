@@ -6,7 +6,7 @@ import com.ooftf.service.base.BaseActivity
 import com.ooftf.widget.R
 import kotlinx.android.synthetic.main.activity_drawer_demo.*
 
-@Route(path = "/widget/SlidingTextViewActivity")
+@Route(path = "/widget/activity/slidingTextView")
 class SlidingTextViewActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

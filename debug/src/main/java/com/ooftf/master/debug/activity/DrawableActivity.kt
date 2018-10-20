@@ -7,7 +7,7 @@ import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.engine.PerspectiveCompact
 import kotlinx.android.synthetic.main.activity_drawable_debug.*
 
-@Route(path = "/debug/drawable")
+@Route(path = "/debug/activity/drawable")
 class DrawableActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

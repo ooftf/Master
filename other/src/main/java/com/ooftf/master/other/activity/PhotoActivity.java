@@ -30,7 +30,7 @@ import java.util.List;
 
 import me.iwf.photopicker.PhotoPicker;
 
-@Route(path = "/other/takePhoto")
+@Route(path = "/other/activity/takePhoto")
 public class PhotoActivity extends TakePhotoActivity {
     WebView webView;
     ValueCallback<Uri[]> mFilePathCallback;

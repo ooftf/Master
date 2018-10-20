@@ -12,7 +12,7 @@ import com.ooftf.master.debug.bean.User;
 import com.ooftf.master.debug.viewmodel.MyViewModel;
 import com.ooftf.service.base.BaseActivity;
 
-@Route(path = "/debug/ViewModel")
+@Route(path = "/debug/activity/ViewModel")
 public class ViewModelActivity extends BaseActivity {
     TextView textView;
 

@@ -14,7 +14,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.widget.R
 import kotlinx.android.synthetic.main.activity_lottery.*
 
-@Route(path = "/widget/lottery")
+@Route(path = "/widget/activity/lottery")
 class LotteryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

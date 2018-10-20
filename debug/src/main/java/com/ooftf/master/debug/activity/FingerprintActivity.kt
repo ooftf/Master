@@ -12,7 +12,7 @@ import com.ooftf.master.debug.R
 import com.ooftf.service.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_fingerprint.*
 
-@Route(path = "/debug/fingerprint")
+@Route(path = "/debug/activity/fingerprint")
 class FingerprintActivity : BaseActivity() {
     lateinit var fingerprintManager: FingerprintManagerCompat
     lateinit var cancellationSignal: CancellationSignal

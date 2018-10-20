@@ -33,9 +33,9 @@ android {
     sourceSets {
         main {
             if (MoudleDebug) {
-                manifest.srcFile 'src/debug/AndroidManifest.xml'
-                java.srcDirs = ['src/debug/java', 'src/main/java']
-                res.srcDirs = ['src/debug/res', 'src/main/res']
+                manifest.srcFile 'src/app/AndroidManifest.xml'
+                java.srcDirs = ['src/app/java', 'src/main/java']
+                res.srcDirs = ['src/app/res', 'src/main/res']
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 java.srcDirs = ['src/main/java']

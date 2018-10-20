@@ -11,12 +11,12 @@ import com.alibaba.android.arouter.launcher.ARouter
 class UltraPagerAdapter(supportFragmentManager: FragmentManager) : FragmentPagerAdapter(supportFragmentManager) {
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            0 -> ARouter.getInstance().build("/applet/app").navigation() as Fragment
-            1 -> ARouter.getInstance().build("/debug/debug").navigation() as Fragment
-            2 -> ARouter.getInstance().build("/source/source").navigation() as Fragment
-            3 -> ARouter.getInstance().build("/other/other").navigation() as Fragment
-            4 -> ARouter.getInstance().build("/widget/widget").navigation() as Fragment
-            else -> ARouter.getInstance().build("/widget/widget").navigation() as Fragment
+            0 -> ARouter.getInstance().build("/applet/fragment/app").navigation() as Fragment
+            1 -> ARouter.getInstance().build("/debug/fragment/debug").navigation() as Fragment
+            2 -> ARouter.getInstance().build("/source/fragment/source").navigation() as Fragment
+            3 -> ARouter.getInstance().build("/other/fragment/other").navigation() as Fragment
+            4 -> ARouter.getInstance().build("/widget/fragment/widget").navigation() as Fragment
+            else -> ARouter.getInstance().build("/widget/fragment/widget").navigation() as Fragment
         }
     }
 

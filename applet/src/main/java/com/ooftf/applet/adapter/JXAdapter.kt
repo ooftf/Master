@@ -9,6 +9,10 @@ import com.ooftf.applet.R
 import com.ooftf.applet.bean.JXBean
 import tf.ooftf.com.service.base.adapter.BaseRecyclerAdapter
 
+/**
+ * 剑网三 adapter
+ * @author ooftf
+ */
 class JXAdapter(var inflate: LayoutInflater) : BaseRecyclerAdapter<JXBean, MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(inflate.inflate(R.layout.item_jx, parent, false))

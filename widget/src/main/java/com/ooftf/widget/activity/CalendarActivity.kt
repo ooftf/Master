@@ -6,7 +6,7 @@ import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.widget.R
 import kotlinx.android.synthetic.main.activity_calendar.*
 
-@Route(path = "/widget/calendar")
+@Route(path = "/widget/activity/calendar")
 class CalendarActivity : BaseSlidingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

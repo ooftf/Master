@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_fibonacci.*
 /**
  * 一个小狮子，第三年开始每年产下两只狮子，假如狮子可以一直存活，N年后有多少狮子
  */
-@Route(path = "/other/fibonacci")
+@Route(path = "/other/activity/fibonacci")
 class FibonacciActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

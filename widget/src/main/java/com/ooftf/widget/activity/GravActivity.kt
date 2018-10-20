@@ -6,7 +6,7 @@ import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.widget.R
 
 
-@Route(path = "/widget/grav")
+@Route(path = "/widget/activity/grav")
 class GravActivity : BaseSlidingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

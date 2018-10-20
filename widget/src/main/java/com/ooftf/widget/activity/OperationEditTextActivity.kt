@@ -5,7 +5,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.widget.R
 
-@Route(path = "/widget/operationEditText")
+@Route(path = "/widget/activity/operationEditText")
 class OperationEditTextActivity : BaseSlidingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

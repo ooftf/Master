@@ -15,7 +15,7 @@ import com.ooftf.master.debug.R;
 /**
  * @author 99474
  */
-@Route(path = "/debug/AcrossRecyclerActivity")
+@Route(path = "/debug/activity/AcrossRecycler")
 public class AcrossRecyclerActivity extends AppCompatActivity {
     public RecyclerView recyclerView;
 

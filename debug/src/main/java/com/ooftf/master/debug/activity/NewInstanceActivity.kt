@@ -8,7 +8,7 @@ import com.ooftf.master.debug.R
 import com.ooftf.service.base.BaseSlidingActivity
 import kotlinx.android.synthetic.main.activity_new_instance.*
 
-@Route(path = "/debug/newInstance")
+@Route(path = "/debug/activity/newInstance")
 class NewInstanceActivity : BaseSlidingActivity() {
 
 

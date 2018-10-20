@@ -18,7 +18,7 @@ import javax.inject.Inject
  *
  * 结论：菜单栏回缩有可能是SwipeLayout的onLayout监听里面
  */
-@Route(path = "/widget/swipeRecycler")
+@Route(path = "/widget/activity/swipeRecycler")
 class SwipeRecyclerActivity : AppCompatActivity() {
 
     @Inject

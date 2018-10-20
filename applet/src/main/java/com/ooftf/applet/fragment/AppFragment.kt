@@ -8,12 +8,12 @@ import com.ooftf.service.bean.ScreenItemBean
 /**
  * Created by master on 2017/9/26 0026.
  */
-@Route(path = "/applet/app")
+@Route(path = "/applet/fragment/app")
 class AppFragment : BaseListFragment() {
     override fun initData() {
-        adapter.add(ScreenItemBean("/applet/breakfast", "早餐计算器", "计算预定早餐需要的时间", R.drawable.vector_breakfast_icon))
-        adapter.add(ScreenItemBean("/applet/mobApi", "MobApi"))
-        adapter.add(ScreenItemBean("/applet/JX3", "收益计算"))
+        adapter.add(ScreenItemBean("/applet/activity/breakfast", "早餐计算器", "计算预定早餐需要的时间", R.drawable.vector_breakfast_icon))
+        adapter.add(ScreenItemBean("/applet/activity/mobApi", "MobApi"))
+        adapter.add(ScreenItemBean("/applet/activity/JX3", "收益计算"))
         adapter.notifyDataSetChanged()
     }
 }

@@ -18,7 +18,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_banner.*
 import javax.inject.Inject
 
-@Route(path = "/widget/banner")
+@Route(path = "/widget/activity/banner")
 class BannerActivity : BaseSlidingActivity() {
 
     @Inject

@@ -6,7 +6,7 @@ import com.ooftf.widget.R
 import com.ooftf.widget.adapter.UltraPagerAdapter
 import kotlinx.android.synthetic.main.fragment_tab_layout.*
 
-@Route(path = "/widget/tabLayout")
+@Route(path = "/widget/fragment/tabLayout")
 class TabLayoutFragment : BaseFragment() {
     override fun getContentLayoutId(): Int = R.layout.fragment_tab_layout
     override fun onLazyLoad() {

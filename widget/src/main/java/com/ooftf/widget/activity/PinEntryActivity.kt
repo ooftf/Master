@@ -5,7 +5,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.widget.R
 
-@Route(path = "/widget/pinEntry")
+@Route(path = "/widget/activity/pinEntry")
 class PinEntryActivity : BaseSlidingActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

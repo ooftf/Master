@@ -17,7 +17,7 @@ import com.ooftf.widget.self.pulltoloading.PullToLoadingView
 import kotlinx.android.synthetic.main.activity_pull_to_refresh.*
 import java.util.*
 
-@Route(path = "/widget/pullToRefresh")
+@Route(path = "/widget/activity/pullToRefresh")
 class PullToRefreshActivity : BaseSlidingActivity() {
 
     private var handler = Handler()

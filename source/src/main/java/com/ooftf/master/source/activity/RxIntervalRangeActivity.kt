@@ -11,7 +11,7 @@ import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_rx_interval_range.*
 import java.util.concurrent.TimeUnit
 
-@Route(path = "/source/RxIntervalRangeActivity")
+@Route(path = "/source/activity/RxIntervalRange")
 class RxIntervalRangeActivity : BaseBarrageActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

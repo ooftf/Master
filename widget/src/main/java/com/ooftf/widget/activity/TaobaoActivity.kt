@@ -10,7 +10,7 @@ import com.ooftf.widget.R
 import com.ooftf.widget.adapter.TaobaoPagerAdapter
 import kotlinx.android.synthetic.main.activity_taobao.*
 
-@Route(path = "/widget/taobao")
+@Route(path = "/widget/activity/taobao")
 class TaobaoActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

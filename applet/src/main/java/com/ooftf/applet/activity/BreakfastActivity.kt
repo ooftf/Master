@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_breakfast.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-@Route(path = "/applet/breakfast")
+@Route(path = "/applet/activity/breakfast")
 class BreakfastActivity : BaseSlidingActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

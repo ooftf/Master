@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 /**
  * @author 99474
  */
-@Route(path = "/debug/LayoutManagerActivity")
+@Route(path = "/debug/activity/LayoutManager")
 public class LayoutManagerActivity extends Activity {
     @BindView(R2.id.recycler_view)
     RecyclerView recyclerView;

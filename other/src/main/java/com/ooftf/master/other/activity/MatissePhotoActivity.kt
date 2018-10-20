@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_matisse_photo.*
 /**
  * https://github.com/zhihu/Matisse
  */
-@Route(path = "/other/matisseActivity")
+@Route(path = "/other/activity/matisse")
 class MatissePhotoActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

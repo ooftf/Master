@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_regex.*
 import tf.ooftf.com.service.engine.inputfilter.IdCardNumInputFilter
 import tf.ooftf.com.service.engine.inputfilter.RegexInputFilter
 
-@Route(path = "/debug/regex")
+@Route(path = "/debug/activity/regex")
 class RegexActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

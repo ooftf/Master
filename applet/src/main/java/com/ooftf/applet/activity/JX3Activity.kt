@@ -4,17 +4,26 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.applet.R
 import com.ooftf.applet.adapter.JXAdapter
 import com.ooftf.applet.bean.JXBean
 import com.ooftf.service.base.BaseActivity
+import com.ooftf.service.utils.JLog
 import kotlinx.android.synthetic.main.activity_jx3.*
 
-@Route(path = "/applet/JX3")
+/**
+ * 剑网三收益计算器
+ * @author ooftf
+ * @email 994749769@qq.com
+ * @date 2018/10/20 0020
+ */
+@Route(path = "/applet/activity/JX3")
 class JX3Activity : BaseActivity() {
     lateinit var adapter: JXAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        JLog.e(getIntent().getStringExtra(ARouter.RAW_URI))
         setContentView(R.layout.activity_jx3)
         result.setOnClickListener {
             adapter.add(JXBean(getBasic(), getDamage(), getOther()))

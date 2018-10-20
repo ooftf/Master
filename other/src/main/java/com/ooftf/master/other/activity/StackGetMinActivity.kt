@@ -10,7 +10,7 @@ import java.util.*
 /**
  * 获取到栈的最小值
  */
-@Route(path = "/other/stackGetMin")
+@Route(path = "/other/activity/stackGetMin")
 class StackGetMinActivity : BaseActivity() {
     private val stack = Stack<Int>()
     private var stackMin = Stack<Int>()

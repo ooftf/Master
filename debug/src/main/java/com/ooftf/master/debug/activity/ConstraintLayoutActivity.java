@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 /**
  * @author 99474
  */
-@Route(path = "/debug/ConstraintLayoutActivity")
+@Route(path = "/debug/activity/ConstraintLayout")
 public class ConstraintLayoutActivity extends BaseBarrageActivity {
     @BindView(R2.id.button0)
     Button button0;

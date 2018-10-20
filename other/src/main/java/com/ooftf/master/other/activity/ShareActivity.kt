@@ -10,7 +10,7 @@ import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.widget.dialog.ShareDialog
 import kotlinx.android.synthetic.main.activity_share.*
 
-@Route(path = "/other/share")
+@Route(path = "/other/activity/share")
 class ShareActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

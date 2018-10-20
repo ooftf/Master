@@ -10,7 +10,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 
-@Route(path = "/source/okHttp")
+@Route(path = "/source/activity/okHttp")
 class OkHttpActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

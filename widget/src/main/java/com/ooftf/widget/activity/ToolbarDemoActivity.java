@@ -12,7 +12,7 @@ import com.ooftf.widget.R;
  * @author lihang9
  * @date 2018-8-27 15:19:49
  */
-@Route(path = "/widget/ToolbarDemoActivity")
+@Route(path = "/widget/activity/toolbarDemo")
 public class ToolbarDemoActivity extends BaseBarrageActivity {
     TailoredToolbar tailoredToolbar;
 
