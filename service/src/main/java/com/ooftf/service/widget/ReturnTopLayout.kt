@@ -1,4 +1,4 @@
-package com.ooftf.widget.self
+package com.ooftf.service.widget
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,8 +11,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.*
+import com.ooftf.service.R
 import com.ooftf.service.engine.LoopTimer
-import com.ooftf.widget.R
 
 /**
  * Created by 99474 on 2017/11/2 0002.

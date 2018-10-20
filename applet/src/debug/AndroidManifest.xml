@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ooftf.applet">
+
+    <application
+        android:name="com.ooftf.service.base.MyApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.BackgroundTransparent"
+        tools:replace="android:allowBackup,android:icon, android:theme">
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.BreakfastActivity" />
+        <activity android:name=".activity.MobApiActivity" />
+        <activity android:name=".activity.JX3Activity" />
+    </application>
+
+</manifest>

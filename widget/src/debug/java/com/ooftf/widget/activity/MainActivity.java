@@ -11,6 +11,10 @@ import com.ooftf.widget.R;
 
 import io.reactivex.Observable;
 
+/**
+ * 调试类入口
+ * @author ooftf
+ */
 public class MainActivity extends BaseActivity {
 
     @Override
