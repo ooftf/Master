@@ -9,8 +9,18 @@ import com.ooftf.service.bean.SignInfo;
  * @date 2018/10/21 0021
  */
 public interface SignService extends IProvider {
+    String EVENT_LOGIN_SUCCESS = "event_login_success";
+    String EVENT_LOGIN_FAIL = "event_login_fail";
+
     boolean isSignIn();
+
     void signOut();
+
     void updateSignInfo(SignInfo info);
+
     SignInfo getSignInfo();
+
+   /* void publish(@SignEvent String event);
+
+    Observable<String> getSignObserver();*/
 }

@@ -7,6 +7,12 @@ import com.ooftf.service.bean.SignInfo;
 import com.ooftf.service.engine.typer.TyperFactory;
 import com.ooftf.service.interfaces.SignService;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+
 /**
  * @author ooftf
  * @email 994749769@qq.com
@@ -14,7 +20,8 @@ import com.ooftf.service.interfaces.SignService;
  */
 @Route(path = "/sign/service/sign", name = "测试服务")
 public class SignServiceImpl implements SignService {
-    static final String KEY_ACCOUNT_INFO = "AccountInfo";
+    private static final String KEY_ACCOUNT_INFO = "AccountInfo";
+
     @Override
     public void init(Context context) {
 
