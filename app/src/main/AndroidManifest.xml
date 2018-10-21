@@ -92,7 +92,7 @@
 
         <service android:name=".testcase.filedownload.DownloadService" />
 
-        <activity android:name=".testcase.retrofit.SignInActivity" />
+        <activity android:name=".testcase.retrofit.EtdSignInActivity" />
         <activity
             android:name=".activity.widget.GuideActivity"
             android:theme="@style/AppTheme.TranslucentStatus" />

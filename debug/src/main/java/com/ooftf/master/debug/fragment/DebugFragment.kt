@@ -4,6 +4,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
 import com.ooftf.service.base.BaseListFragment
 import com.ooftf.service.bean.ScreenItemBean
+import com.ooftf.service.constant.RouterPath
 
 /**
  * Created by master on 2017/9/26 0026.
@@ -28,6 +29,7 @@ class DebugFragment : BaseListFragment() {
         adapter.add(ScreenItemBean("/debug/activity/AcrossRecycler", "交叉listView"))
         adapter.add(ScreenItemBean("/debug/activity/ConstraintLayout"))
         adapter.add(ScreenItemBean("/debug/activity/LayoutManager"))
+        adapter.add(ScreenItemBean(RouterPath.SIGN_ACTIVITY_SIGN_IN))
 
         adapter.notifyDataSetChanged()
     }

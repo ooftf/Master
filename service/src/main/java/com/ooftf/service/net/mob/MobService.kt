@@ -1,5 +1,6 @@
 package com.ooftf.service.net.mob
 
+import com.ooftf.service.net.mob.bean.*
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -23,6 +24,12 @@ interface MobService {
 
     @GET("ip/query")
     fun ipQuery(@Query("ip") ip: String): Observable<IpQueryBean>
+
+    @GET("user/rigister")
+    fun register(@Query("username") username: String, @Query("password") password: String): Observable<MobBaseBean>
+
+    @GET("user/login")
+    fun signIn(@Query("username") username: String, @Query("password") password: String): Observable<SignInBean>
 
 
 }

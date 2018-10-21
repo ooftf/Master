@@ -13,16 +13,16 @@ import com.ooftf.service.net.etd.action.ErrorAction
 import com.ooftf.service.net.etd.bean.BaseBean
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
-import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.activity_etd_sign_in.*
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import tf.ooftf.com.service.engine.inputfilter.RegexInputFilter
 
 @Route(path = "/main/signIn")
-class SignInActivity : BaseSlidingActivity() {
+class EtdSignInActivity : BaseSlidingActivity() {
     var height = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        setContentView(R.layout.activity_etd_sign_in)
         KeyboardVisibilityEvent.setEventListener(this) { isOpen ->
             if (height == 0) {
                 height = imageView.height

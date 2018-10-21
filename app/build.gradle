@@ -64,6 +64,7 @@ dependencies {
         api project(':debug')
         api project(':source')
         api project(':other')
+        api project(':sign')
     }
     api project(':service')
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"

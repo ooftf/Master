@@ -10,11 +10,13 @@ import com.master.kit.R
 import com.master.kit.adapter.BottomBarAdapter
 import com.mcxiaoke.packer.helper.PackerNg
 import com.ooftf.service.base.BaseActivity
+import com.ooftf.service.constant.RouterExtra
+import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.FragmentSwitchManager
 import hugo.weaving.DebugLog
 import kotlinx.android.synthetic.main.activity_main.*
 
-@Route(path = "/main/main")
+@Route(path = RouterPath.MAIN_ACTIVITY_MAIN, extras = RouterExtra.Extras.NEED_SIGN)
 class MainActivity : BaseActivity() {
     private lateinit var switchManager: FragmentSwitchManager
     override fun onCreate(savedInstanceState: Bundle?) {

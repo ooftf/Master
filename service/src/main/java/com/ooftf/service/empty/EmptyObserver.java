@@ -1,5 +1,7 @@
 package com.ooftf.service.empty;
 
+import com.ooftf.service.utils.JLog;
+
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -20,7 +22,7 @@ public class EmptyObserver<T> implements Observer<T> {
 
     @Override
     public void onError(Throwable e) {
-
+        JLog.e("onError",e.toString());
     }
 
     @Override

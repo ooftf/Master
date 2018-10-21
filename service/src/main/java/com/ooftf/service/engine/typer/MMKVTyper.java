@@ -142,4 +142,9 @@ class MMKVTyper implements ITyper {
         return JsonFactory.getDefault().fromJson(string, cla);
     }
 
+    @Override
+    public void remove(String key) {
+        mmkv.remove(key);
+    }
+
 }

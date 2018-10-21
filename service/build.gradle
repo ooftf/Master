@@ -10,6 +10,12 @@ android {
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         vectorDrawables.useSupportLibrary = true
+        //生成ARouter文档
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+            }
+        }
     }
     compileOptions {
         sourceCompatibility versions.java

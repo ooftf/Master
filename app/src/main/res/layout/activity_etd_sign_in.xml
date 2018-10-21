@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    tools:context="com.master.kit.testcase.retrofit.SignInActivity">
+    tools:context="com.master.kit.testcase.retrofit.EtdSignInActivity">
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
         android:id="@+id/toolbar"

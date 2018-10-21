@@ -15,6 +15,7 @@ import java.util.*
  */
 @DebugLog
 open class BaseActivity : AppCompatActivity(), ILifecycleState {
+    val defaultRequestCode = 837
     override fun isAlive(): Boolean {
         return alive
     }
@@ -137,5 +138,25 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
             mToast?.show()
         }
     }
+    fun toast(content: String) {
+        toast(content,Toast.LENGTH_SHORT)
+    }
 
+    private var mCallback: Callback? = null
+    fun startActivityForResult(intent: Intent?, callback: Callback) {
+        mCallback = callback
+        super.startActivityForResult(intent, defaultRequestCode)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == defaultRequestCode && mCallback != null) {
+            mCallback?.callback(resultCode, data)
+            mCallback = null
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    interface Callback {
+        fun callback(resultCode: Int, data: Intent?)
+    }
 }

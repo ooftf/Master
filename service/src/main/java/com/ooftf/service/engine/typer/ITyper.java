@@ -200,5 +200,9 @@ public interface ITyper {
      */
     <T> T getObject(String key, Class<T> cla);
 
-
+    /**
+     *
+     * @param key
+     */
+    void remove(String key);
 }

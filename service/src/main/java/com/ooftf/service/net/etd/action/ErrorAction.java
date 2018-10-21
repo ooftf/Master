@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.v7.app.AlertDialog;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.net.etd.bean.BaseBean;
 
 import java.util.Objects;
@@ -59,7 +60,7 @@ public class ErrorAction<T extends BaseBean> implements ObservableTransformer<T,
         new AlertDialog
                 .Builder(activity)
                 .setMessage(message)
-                .setNeutralButton("返回首页", (dialogInterface, i) -> ARouter.getInstance().build("/main/main").navigation())
+                .setNeutralButton("返回首页", (dialogInterface, i) -> ARouter.getInstance().build(RouterPath.MAIN_ACTIVITY_MAIN).navigation())
                 .setCancelable(false)
                 .show();
     }

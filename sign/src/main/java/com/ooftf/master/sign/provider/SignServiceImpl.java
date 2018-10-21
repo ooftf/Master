@@ -1,0 +1,47 @@
+package com.ooftf.master.sign.provider;
+
+import android.content.Context;
+
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.ooftf.service.bean.SignInfo;
+import com.ooftf.service.engine.typer.TyperFactory;
+import com.ooftf.service.interfaces.SignService;
+
+/**
+ * @author ooftf
+ * @email 994749769@qq.com
+ * @date 2018/10/21 0021
+ */
+@Route(path = "/sign/service/sign", name = "测试服务")
+public class SignServiceImpl implements SignService {
+    static final String KEY_ACCOUNT_INFO = "AccountInfo";
+    @Override
+    public void init(Context context) {
+
+    }
+
+    @Override
+    public boolean isSignIn() {
+        SignInfo userInfo = getSignInfo();
+        if (userInfo == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    public void signOut() {
+        TyperFactory.getDefault().remove(KEY_ACCOUNT_INFO);
+    }
+
+    @Override
+    public void updateSignInfo(SignInfo info) {
+        TyperFactory.getDefault().put(KEY_ACCOUNT_INFO, info);
+    }
+
+    @Override
+    public SignInfo getSignInfo() {
+        return TyperFactory.getDefault().getObject(KEY_ACCOUNT_INFO, SignInfo.class);
+    }
+}

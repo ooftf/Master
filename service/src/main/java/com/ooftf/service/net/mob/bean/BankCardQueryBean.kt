@@ -1,10 +1,10 @@
-package com.ooftf.service.net.mob
+package com.ooftf.service.net.mob.bean
 
 /**
  * Created by 99474 on 2018/1/23 0023.
  */
 
-class BankCardQueryBean {
+class BankCardQueryBean : MobBaseBean() {
 
     /**
      * msg : success
@@ -12,9 +12,7 @@ class BankCardQueryBean {
      * retCode : 200
      */
 
-    var msg: String? = null
     var result: ResultBean? = null
-    var retCode: String? = null
 
     class ResultBean {
         /**

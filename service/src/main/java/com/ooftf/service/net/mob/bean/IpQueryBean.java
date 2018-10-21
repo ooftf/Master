@@ -1,10 +1,10 @@
-package com.ooftf.service.net.mob;
+package com.ooftf.service.net.mob.bean;
 
 /**
  * Created by 99474 on 2018/1/23 0023.
  */
 
-public class IpQueryBean {
+public class IpQueryBean extends MobBaseBean{
 
     /**
      * msg : success
@@ -12,17 +12,8 @@ public class IpQueryBean {
      * retCode : 200
      */
 
-    private String msg;
     private ResultBean result;
-    private String retCode;
 
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
 
     public ResultBean getResult() {
         return result;
@@ -30,14 +21,6 @@ public class IpQueryBean {
 
     public void setResult(ResultBean result) {
         this.result = result;
-    }
-
-    public String getRetCode() {
-        return retCode;
-    }
-
-    public void setRetCode(String retCode) {
-        this.retCode = retCode;
     }
 
     public static class ResultBean {
