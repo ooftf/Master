@@ -17,7 +17,7 @@ public class JsonFactory {
      */
     static class Builder {
         IJson build() {
-            return new Gson();
+            return new Jackson();
         }
     }
 }

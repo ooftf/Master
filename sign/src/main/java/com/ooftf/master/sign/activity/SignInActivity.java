@@ -7,25 +7,19 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.hwangjr.rxbus.RxBus;
-import com.hwangjr.rxbus.annotation.Produce;
-import com.hwangjr.rxbus.annotation.Tag;
-import com.hwangjr.rxbus.thread.EventThread;
 import com.ooftf.hihttp.action.ButtonAction;
 import com.ooftf.master.sign.R;
 import com.ooftf.master.sign.R2;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.bean.SignInfo;
-import com.ooftf.service.constant.BusAction;
 import com.ooftf.service.constant.RouterPath;
+import com.ooftf.service.engine.router.PostcardSerializable;
 import com.ooftf.service.interfaces.SignService;
 import com.ooftf.service.net.ServiceHolder;
 import com.ooftf.service.net.mob.action.ErrorAction;
 import com.ooftf.service.net.mob.action.MobObserver;
 import com.ooftf.service.net.mob.bean.SignInBean;
 import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,7 +42,8 @@ public class SignInActivity extends BaseActivity {
     TextView register;
     @Autowired
     SignService signService;
-
+    @Autowired
+    public Bundle successIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +57,7 @@ public class SignInActivity extends BaseActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 //.compose(new DialogAction<>(this))
                 .compose(new ErrorAction<>(this))
-                .compose(new ButtonAction<>(signIn,"正在登录..."))
+                .compose(new ButtonAction<>(signIn, "正在登录..."))
                 .compose(RxLifecycleAndroid.bindView(signIn))
                 .subscribe(new MobObserver<SignInBean>() {
                     @Override
@@ -72,20 +67,13 @@ public class SignInActivity extends BaseActivity {
                         info.setToken(bean.getResult().getToken());
                         signService.updateSignInfo(info);
                         toast("登录成功");
+                        PostcardSerializable.toPostcard(successIntent).navigation();
                         finish();
-                        RxBus.get().post(this);
                     }
                 }));
         register.setOnClickListener(v ->
                 ARouter.getInstance().build(RouterPath.SIGN_ACTIVITY_REGISTER).navigation()
         );
     }
-    @Produce(
-            tags = {
-                    @Tag(BusAction.SIGN_IN_SUCCESS)
-            }
-    )
-    public String signInSuccess() {
-        return "";
-    }
+
 }

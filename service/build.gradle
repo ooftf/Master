@@ -30,6 +30,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
+    kapt "com.alibaba:arouter-compiler:$versions.arouter"
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
     api "com.android.support:support-vector-drawable:$versions.support"
     api "com.android.support:appcompat-v7:$versions.support"

@@ -3,6 +3,7 @@
     package="com.ooftf.master.source">
 
     <application>
+        <activity android:name=".activity.RxSubjectActivity"></activity>
         <activity android:name=".activity.RxJavaListActivity" />
         <activity android:name=".activity.OkHttpActivity" />
         <activity android:name=".activity.ProxyActivity" />
