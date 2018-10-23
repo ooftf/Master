@@ -14,11 +14,13 @@ import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.bean.SignInfo;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.engine.router.PostcardSerializable;
+import com.ooftf.service.engine.router.FinishCallback;
 import com.ooftf.service.interfaces.SignService;
 import com.ooftf.service.net.ServiceHolder;
 import com.ooftf.service.net.mob.action.ErrorAction;
 import com.ooftf.service.net.mob.action.MobObserver;
 import com.ooftf.service.net.mob.bean.SignInBean;
+import com.ooftf.service.utils.JLog;
 import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
 
 import butterknife.BindView;
@@ -44,10 +46,12 @@ public class SignInActivity extends BaseActivity {
     SignService signService;
     @Autowired
     public Bundle successIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ARouter.getInstance().inject(this);
+        JLog.e(signService,signService.toString());
         setContentView(R.layout.activity_sign_in);
         ButterKnife.bind(this);
         signIn.setOnClickListener(v -> ServiceHolder
@@ -67,8 +71,8 @@ public class SignInActivity extends BaseActivity {
                         info.setToken(bean.getResult().getToken());
                         signService.updateSignInfo(info);
                         toast("登录成功");
-                        PostcardSerializable.toPostcard(successIntent).navigation();
-                        finish();
+                        PostcardSerializable.toPostcard(successIntent).navigation(SignInActivity.this, new FinishCallback(SignInActivity.this));
+
                     }
                 }));
         register.setOnClickListener(v ->

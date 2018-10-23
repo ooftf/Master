@@ -4,14 +4,13 @@ import android.content.Context;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.service.bean.SignInfo;
+import com.ooftf.service.empty.EmptyObserver;
 import com.ooftf.service.engine.typer.TyperFactory;
 import com.ooftf.service.interfaces.SignService;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
+import io.reactivex.Observer;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * @author ooftf
@@ -26,6 +25,9 @@ public class SignServiceImpl implements SignService {
     public void init(Context context) {
 
     }
+
+    public static PublishSubject<SignInfo> signInSubject = PublishSubject.create();
+    public static PublishSubject<SignInfo> signOutSubject = PublishSubject.create();
 
     @Override
     public boolean isSignIn() {
@@ -50,5 +52,15 @@ public class SignServiceImpl implements SignService {
     @Override
     public SignInfo getSignInfo() {
         return TyperFactory.getDefault().getObject(KEY_ACCOUNT_INFO, SignInfo.class);
+    }
+
+    @Override
+    public void subscribeSignIn(Observer<SignInfo> observer) {
+        signInSubject.subscribe(observer);
+    }
+
+    @Override
+    public void subscribeSignOut(Observer<SignInfo> observer) {
+        signOutSubject.subscribe(observer);
     }
 }

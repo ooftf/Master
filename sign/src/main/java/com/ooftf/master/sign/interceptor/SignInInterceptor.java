@@ -21,9 +21,8 @@ import com.ooftf.service.utils.JLog;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-@Interceptor(priority = 8)
+@Interceptor(priority = 1)
 public class SignInInterceptor implements IInterceptor {
-    Context mContext;
     @Autowired
     SignService signService;
 
@@ -33,8 +32,8 @@ public class SignInInterceptor implements IInterceptor {
         int extra = postcard.getExtra();
         if (RouterExtra.isNeedSign(extra) && !signService.isSignIn()) {
             JLog.e("interceptor",postcard.getPath());
-            callback.onInterrupt(null);
             ARouter.getInstance().build(RouterPath.SIGN_ACTIVITY_SIGN_IN).withBundle("successIntent", PostcardSerializable.toBundle(postcard)).navigation();
+            callback.onInterrupt(null);
         } else {
             JLog.e("onContinue",postcard.getPath());
             callback.onContinue(postcard);
@@ -44,7 +43,7 @@ public class SignInInterceptor implements IInterceptor {
 
     @Override
     public void init(Context context) {
-        mContext = context;
         ARouter.getInstance().inject(this);
+        JLog.e(signService,signService.toString());
     }
 }
