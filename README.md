@@ -1,6 +1,6 @@
 # Master
 自己的开发工具集
-## TODO List
+## TODO LIST
 * 5个fragment的布局需要调整
 * 吸顶效果代码需要封装
 * 如果只存才一种分辨率的图片，在不同分辨率下的渲染表现和内存表现
@@ -12,16 +12,20 @@
 * LruCache
 * RxJava深度学习
 * Java内存整合
-* 约束布局
 * DrawerLayout需要增加功能，实现实际大小的变化
-* 测试DrawerLayout 内部是否支持RecycleView（已抽取为https://github.com/ooftf/SlidingLayout 支持RecycleView）
 * aspectj 深入学习
-* ScrollerPlus转换成Rxjava去实现  （完成  SlidingLayout项目中用的就是）
 * LayoutManager
-* 兼容的水波纹效果 android:background="?android:attr/selectableItemBackground"
-* 通知还没搞定
 * Java8新特性
-* Rxjava compose
 * 拦截器设计模式
-* 为什么会有两个启动图标
 * 实现依赖反转
+* 悬浮通知
+* 视频播放器
+* 动态化构建页面 Tangram-Android vlayout
+## DONE LIST
+* 为什么会有两个启动图标: 是因为APP独立调试模式，包名起的为debug和debug模式重名，导致debug模式下编译将debug包名下的文件也编译进去了
+* Rxjava compose :已经抽离网络请求；好处：将逻辑部分和界面部分分离，将不用界面处理分离做成更小的可以，使用更灵活
+* 通知还没搞定: 通知已经能过够显示出来，但是悬浮通知还不知怎么做
+* 兼容的水波纹效果 android:background="?android:attr/selectableItemBackground"
+* ScrollerPlus转换成Rxjava去实现  （完成  SlidingLayout项目中用的就是）
+* 测试DrawerLayout 内部是否支持RecycleView（已抽取为https://github.com/ooftf/SlidingLayout 支持RecycleView）
+* 约束布局
