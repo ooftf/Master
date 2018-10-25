@@ -2,4 +2,5 @@
 <resources>
     <dimen name="breakfast_item_height">56sp</dimen>
     <dimen name="translate_item_height">56sp</dimen>
+    <dimen name="activity_main_item">50dp</dimen>
 </resources>

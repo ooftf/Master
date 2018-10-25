@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context=".activity.WeeklyConsumptionActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_first"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_main_item">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="一" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="二" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="三" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="四" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="五" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorAccent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="100dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorAccent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_main_item"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1" />
+        <View
+            android:background="@color/colorAccent"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:textSize="10dp"
+            android:background="@null"
+            android:id="@+id/monday"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:maxLength="5" />
+        <View
+            android:background="@color/colorAccent"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:textSize="10dp"
+            android:background="@null"
+            android:id="@+id/tuesday"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:maxLength="5" />
+        <View
+            android:background="@color/colorAccent"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:textSize="10dp"
+            android:background="@null"
+            android:id="@+id/wednesday"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:maxLength="5" />
+        <View
+            android:background="@color/colorAccent"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:textSize="10dp"
+            android:background="@null"
+            android:id="@+id/thursday"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:maxLength="5" />
+        <View
+            android:background="@color/colorAccent"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:textSize="10dp"
+            android:background="@null"
+            android:id="@+id/friday"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:maxLength="5" />
+        <View
+            android:background="@color/colorAccent"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/activity_main_item"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorAccent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_main_item"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:background="@null"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/remove"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="删除" />
+        <View
+            android:background="@color/colorAccent"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"/>
+
+        <EditText
+            android:gravity="center"
+            android:background="@null"
+            android:id="@+id/add_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5" />
+        <View
+            android:background="#00FFFFFF"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"/>
+        <View
+            android:background="@color/colorAccent"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"/>
+        <Button
+            android:background="@null"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/add"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="添加" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorAccent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_main_item"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+        <Button
+            android:background="@null"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/all"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="全选" />
+        <View
+            android:background="@color/colorAccent"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"/>
+        <Button
+            android:background="@null"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/clear"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="清除" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorAccent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_main_item">
+        <Button
+            android:background="@null"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/save_to_server"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="保存到服务器" />
+        <View
+            android:background="@color/colorAccent"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"/>
+        <View
+            android:background="@color/colorAccent"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:gravity="center"
+            android:inputType="number"
+            android:id="@+id/weeks"
+            android:hint="默认本周"
+            android:background="@null"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <View
+            android:background="@color/colorAccent"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"/>
+        <Button
+            android:background="@null"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/query_from_server"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="从服务器获取" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorAccent" />
+</LinearLayout>

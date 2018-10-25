@@ -11,4 +11,5 @@ public  interface RouterPath {
     String SIGN_ACTIVITY_REGISTER = "/sign/activity/register";
     String SOURCE_ACTIVITY_RX_SUBJECT = "/source/activity/rxSubject";
     String APPLET_ACTIVITY_TEXT_TO_VOICE = "/applet/activity/textToVoice";
+    String APPLET_ACTIVITY_WEEKLY_CONSUMPTION = "/applet/activity/weeklyConsumption";
 }

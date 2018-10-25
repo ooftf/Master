@@ -24,6 +24,13 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+/**
+ * 文字转声音
+ *
+ * @author ooftf
+ * @email 994749769@qq.com
+ * @date 2018/10/25 0025
+ */
 @Route(path = RouterPath.APPLET_ACTIVITY_TEXT_TO_VOICE)
 public class TextToVoiceActivity extends BaseActivity {
     @BindView(R2.id.text)

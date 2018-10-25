@@ -14,6 +14,7 @@
         <activity android:name=".activity.BreakfastActivity" />
         <activity android:name=".activity.MobApiActivity" />
         <activity android:name=".activity.JX3Activity" />
+        <activity android:name=".activity.WeeklyConsumptionActivity" />
     </application>
 
 </manifest>

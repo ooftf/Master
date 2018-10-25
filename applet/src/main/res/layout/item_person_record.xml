@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/activity_main_item">
+    <TextView
+        android:background="@color/white"
+        android:gravity="center"
+        android:id="@+id/name"
+        android:textSize="12dp"
+        android:textColor="@color/black"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/activity_main_item" />
+    <CheckBox
+        android:maxLength="5"
+        android:gravity="center"
+        android:button="@null"
+        android:background="@drawable/selector_check_box"
+        android:textSize="12dp"
+        android:id="@+id/monday"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/activity_main_item" />
+    <CheckBox
+        android:maxLength="5"
+        android:gravity="center"
+        android:button="@null"
+        android:background="@drawable/selector_check_box"
+        android:textSize="12dp"
+        android:id="@+id/tuesday"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/activity_main_item" />
+    <CheckBox
+        android:maxLength="5"
+        android:gravity="center"
+        android:button="@null"
+        android:background="@drawable/selector_check_box"
+        android:textSize="12dp"
+        android:id="@+id/wednesday"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/activity_main_item" />
+    <CheckBox
+        android:maxLength="5"
+        android:gravity="center"
+        android:button="@null"
+        android:background="@drawable/selector_check_box"
+        android:textSize="12dp"
+        android:id="@+id/thursday"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/activity_main_item" />
+    <CheckBox
+        android:maxLength="5"
+        android:gravity="center"
+        android:button="@null"
+        android:background="@drawable/selector_check_box"
+        android:textSize="12dp"
+        android:id="@+id/friday"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/activity_main_item" />
+    <TextView
+        android:maxLength="5"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:gravity="center"
+        android:textSize="10dp"
+        android:id="@+id/person_total"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/activity_main_item" />
+</LinearLayout>
