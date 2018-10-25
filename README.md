@@ -4,7 +4,7 @@
 * 5个fragment的布局需要调整
 * 吸顶效果代码需要封装
 * 如果只存才一种分辨率的图片，在不同分辨率下的渲染表现和内存表现
-* Jetpack实践
+* Jetpack实践#############
 * 内部集成RN
 * 内部集成flutter
 * maven 发布流程
@@ -17,10 +17,13 @@
 * LayoutManager
 * Java8新特性
 * 拦截器设计模式
-* 实现依赖反转
+* 依赖注入
 * 悬浮通知
 * 视频播放器
 * 动态化构建页面 Tangram-Android vlayout
+* MVVM Data Binding
+* Androidx
+* 线程池
 ## DONE LIST
 * 为什么会有两个启动图标: 是因为APP独立调试模式，包名起的为debug和debug模式重名，导致debug模式下编译将debug包名下的文件也编译进去了
 * Rxjava compose :已经抽离网络请求；好处：将逻辑部分和界面部分分离，将不用界面处理分离做成更小的可以，使用更灵活

@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
  * App主要负责软件层级
  */
 public class ThreadUtil {
-    //static ExecutorService threadPool = Executors.newCachedThreadPool();
     static ThreadPoolExecutor threadPool = createThreadPool();
+    static Handler mainHandler = new Handler(Looper.getMainLooper());
 
     public static boolean isMainThread() {
         return Thread.currentThread() == Looper.getMainLooper().getThread();
@@ -25,8 +25,7 @@ public class ThreadUtil {
         if (isMainThread()) {
             runnable.run();
         } else {
-            Handler handler = new Handler(Looper.getMainLooper());
-            handler.post(runnable);
+            mainHandler.post(runnable);
         }
     }
 
