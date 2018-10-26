@@ -8,7 +8,6 @@
 * 内部集成RN
 * 内部集成flutter
 * maven 发布流程
-* 将周饭计算器合并到此工程
 * LruCache
 * RxJava深度学习
 * Java内存整合
@@ -32,3 +31,4 @@
 * ScrollerPlus转换成Rxjava去实现  （完成  SlidingLayout项目中用的就是）
 * 测试DrawerLayout 内部是否支持RecycleView（已抽取为https://github.com/ooftf/SlidingLayout 支持RecycleView）
 * 约束布局
+* 将周饭计算器合并到此工程

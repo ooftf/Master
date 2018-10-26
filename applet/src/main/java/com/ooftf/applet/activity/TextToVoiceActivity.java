@@ -5,20 +5,16 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.baidu.tts.client.SpeechError;
 import com.baidu.tts.client.SpeechSynthesizer;
-import com.baidu.tts.client.SpeechSynthesizerListener;
 import com.baidu.tts.client.TtsMode;
 import com.ooftf.applet.R;
 import com.ooftf.applet.R2;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
-import com.ooftf.service.utils.JLog;
 
 import java.util.ArrayList;
 
@@ -45,7 +41,6 @@ public class TextToVoiceActivity extends BaseActivity {
         initPermission();
         initVoice();
         button.setOnClickListener(v -> instance.speak(textView.getText().toString()));
-
     }
 
     SpeechSynthesizer instance;
@@ -58,7 +53,6 @@ public class TextToVoiceActivity extends BaseActivity {
         instance.auth(TtsMode.ONLINE);
         instance.setParam(SpeechSynthesizer.PARAM_SPEAKER, "0");
         instance.initTts(TtsMode.ONLINE);
-
     }
     /**
      * android 6.0 以上需要动态申请权限
