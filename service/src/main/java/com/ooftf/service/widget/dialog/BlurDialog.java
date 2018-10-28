@@ -28,6 +28,7 @@ public class BlurDialog extends BaseDialog {
     public BlurDialog(@NonNull Context context) {
         super(context, R.style.DialogTheme_Blur);
         rootView = new LinearLayout(context);
+        rootView.setBackgroundColor(getContext().getResources().getColor(R.color.translucent));
         super.setContentView(rootView);
         setGravity(Gravity.CENTER);
         super.setWidth(getWindowWidth());
@@ -108,6 +109,7 @@ public class BlurDialog extends BaseDialog {
     }
 
     void setBlurBackground() {
-        setBackground(new BitmapDrawable(getContext().getResources(), BitmapUtils.rsBlur(getContext(), ScreenUtils.screenShot(getActivity(), BarUtils.isStatusBarVisible(getActivity())), 22)));
+        BitmapDrawable bitmapDrawable = new BitmapDrawable(getContext().getResources(), BitmapUtils.rsBlur(getContext(), ScreenUtils.screenShot(getActivity(), BarUtils.isStatusBarVisible(getActivity())), 25));
+        setBackground(bitmapDrawable);
     }
 }
