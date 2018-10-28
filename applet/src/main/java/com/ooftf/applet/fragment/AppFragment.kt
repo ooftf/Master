@@ -5,7 +5,7 @@ import com.ooftf.applet.R
 import com.ooftf.service.base.BaseListFragment
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.service.constant.RouterPath
-
+import com.ooftf.service.widget.toolbar.TailoredToolbar
 /**
  * Created by master on 2017/9/26 0026.
  */
@@ -18,5 +18,9 @@ class AppFragment : BaseListFragment() {
         adapter.add(ScreenItemBean(RouterPath.APPLET_ACTIVITY_TEXT_TO_VOICE, "文字转语音"))
         adapter.add(ScreenItemBean(RouterPath.APPLET_ACTIVITY_WEEKLY_CONSUMPTION, "周饭计算器"))
         adapter.notifyDataSetChanged()
+    }
+
+    override fun initToolbar(toolbar: TailoredToolbar) {
+        toolbar.title = "App"
     }
 }

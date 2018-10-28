@@ -10,6 +10,7 @@
         <item name="actionMenuTextColor">@color/colorPrimaryContrast</item>
         <item name="titleTextColor">@color/colorPrimaryContrast</item>
         <item name="android:textColor">@color/font_black</item>
+        <item name="android:textSize">@dimen/font_default</item>
     </style>
 
     <style name="AppTheme.Fullscreen">
@@ -29,41 +30,6 @@
     <style name="AppTheme.BackgroundTransparent.TranslucentStatus">
         <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
     </style>
-
-
-    <style name="DialogTheme" parent="android:Theme.Dialog">
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <!-- 除去title -->
-        <item name="android:windowNoTitle">true</item>
-
-        <item name="android:windowContentOverlay">@null</item>
-        <!-- 背景是否变暗 -->
-        <item name="android:backgroundDimEnabled">true</item>
-    </style>
-
-    <style name="DialogTheme.Master">
-        <!-- 背景色 -->
-        <item name="android:windowBackground">@drawable/shape_dialog_background</item>
-    </style>
-
-    <style name="DialogTheme.Blank">
-        <!-- 背景色 -->
-        <item name="android:windowBackground">@color/dialogBackground</item>
-    </style>
-
-    <style name="DialogTranslateBottom">
-        <item name="@android:windowEnterAnimation">@anim/dialog_enter_bottom</item>
-        <item name="@android:windowExitAnimation">@anim/dialog_outer_bottom</item>
-    </style>
-
-
-    <style name="DialogTheme.Transparent">
-        <!-- 背景色 -->
-        <item name="android:windowBackground">@color/transparent</item>
-    </style>
-
     <style name="selectableItemBackgroundBorderless">
 
     </style>

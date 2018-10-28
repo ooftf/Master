@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.ooftf.service.R
 import com.ooftf.service.base.adapter.CategoryRecyclerAdapter
 import com.ooftf.service.base.adapter.MainRecyclerAdapter
+import com.ooftf.service.widget.toolbar.TailoredToolbar
 import kotlinx.android.synthetic.main.fragment_home_base.*
 import kotlinx.android.synthetic.main.layout_sticky_header.*
 
@@ -26,6 +27,11 @@ abstract class BaseListFragment : BaseFragment() {
         setupRecyclerView()
         initData()
         setupFloatButton()
+        initToolbar(toolbar)
+
+    }
+
+    protected open fun initToolbar(toolbar: TailoredToolbar) {
 
     }
 

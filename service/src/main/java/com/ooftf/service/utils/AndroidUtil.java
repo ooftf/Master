@@ -128,6 +128,7 @@ public class AndroidUtil {
 
     /**
      * 判断当前网络是否可用
+     *
      * @param context 上下文
      * @return
      */
@@ -155,7 +156,13 @@ public class AndroidUtil {
         return false;
     }
 
-    //版本比较
+    /**
+     * 版本比较
+     *
+     * @param local
+     * @param server
+     * @return
+     */
     public static boolean isNewVersion(String local, String server) {
         if (TextUtils.isEmpty(server)) {
             return false;
@@ -163,7 +170,8 @@ public class AndroidUtil {
         server = server.replaceAll("v", "");
         String[] splitLocal = local.split("\\.");
         String[] splitServer = server.split("\\.");
-        if (splitLocal.length != splitServer.length) {//如果版本号不相同代表有新版本
+        //如果版本号不相同代表有新版本
+        if (splitLocal.length != splitServer.length) {
             return true;
         }
         for (int i = 0; i < splitLocal.length; i++) {
@@ -184,8 +192,12 @@ public class AndroidUtil {
         return false;
     }
 
-    /*
+    /**
      * 获取程序的签名
+     *
+     * @param packName
+     * @param context
+     * @return
      */
     public String getAppSignature(String packName, Context context) {
         try {
@@ -199,8 +211,12 @@ public class AndroidUtil {
         }
     }
 
-    /*
+    /**
      * 获取程序的名字
+     *
+     * @param packName
+     * @param context
+     * @return
      */
     public String getAppName(String packName, Context context) {
         PackageManager pm = context.getPackageManager();
@@ -213,8 +229,12 @@ public class AndroidUtil {
         }
     }
 
-    /*
+    /**
      * 获取程序 图标
+     *
+     * @param packName
+     * @param context
+     * @return
      */
     public Drawable getAppIcon(String packName, Context context) {
         PackageManager pm = context.getPackageManager();

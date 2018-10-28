@@ -22,6 +22,7 @@ class DialogActivity : AppCompatActivity() {
             }, 5000)
         }
         finishButton.setOnClickListener {
+            dialog = DialogDemo(this)
             dialog.logLeak()
             finish()
         }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/background_blue"
     android:orientation="vertical"
     tools:context="com.ooftf.master.debug.activity.DialogActivity">
 
@@ -23,5 +23,5 @@
         android:id="@+id/ListSelector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ListSelectorDialog" />
+        android:text="List Selector Dialog" />
 </LinearLayout>

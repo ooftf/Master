@@ -28,7 +28,7 @@
     <dimen name="layout_screen_spacing">16dp</dimen>
     <dimen name="layout_drawer_spacing">56dp</dimen>
 
-    <dimen name="layout_appbar_height">56dp</dimen>
+    <dimen name="layout_appbar_height">52dp</dimen>
     <dimen name="layout_item_height">56dp</dimen>
     <dimen name="layout_item_height_large">64dp</dimen>
     <dimen name="layout_icon">24dp</dimen>
