@@ -1,9 +1,10 @@
-package com.jd.jmworkstation.jmview.jsbridge;
+package com.master.kit;
 
+
+import com.alibaba.fastjson.JSONObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +16,10 @@ import java.util.List;
  * @date 2018-10-15 20:49:12
  */
 public class JsMessage {
-    /**
+  /*  *//**
      * nativeId
-     */
-    private String nativeId;
+     *//*
+    private String nativeId;*/
     /**
      * command
      */
@@ -31,25 +32,28 @@ public class JsMessage {
      * callbackId
      */
     private String callbackId;
-    /**
+ /*   *//**
      * name
-     */
+     *//*
     private String name;
-    /**
+    *//**
      * info
-     */
+     *//*
     private JSONObject info;
-    /**
+    *//**
      * responseData
-     */
-    private JSONObject responseData;
+     *//*
+    private JSONObject responseData;*/
 
-    /**
+/*
+    */
+/**
      * 解析JsMessage 数组
      *
      * @param message
      * @return
-     */
+     *//*
+
     public static List<JsMessage> parseArray(String message) {
         List<JsMessage> list = new ArrayList<>();
         try {
@@ -63,13 +67,14 @@ public class JsMessage {
         }
         return list;
     }
+*/
 
-    /**
+   /* *//**
      * 解析JsMessage
      *
      * @param
      * @return
-     */
+     *//*
     public static JsMessage parse(String message) {
         JsMessage result = new JsMessage();
         try {
@@ -99,21 +104,21 @@ public class JsMessage {
             e.printStackTrace();
         }
         return result;
-    }
+    }*/
 
-    public String getNativeId() {
+  /*  public String getNativeId() {
         return nativeId;
     }
 
     public void setNativeId(String nativeId) {
         this.nativeId = nativeId;
-    }
+    }*/
 
     public String getCommand() {
         return command;
     }
 
-    private void setCommand(String command) {
+    public void setCommand(String command) {
         this.command = command;
     }
 
@@ -121,7 +126,7 @@ public class JsMessage {
         return param;
     }
 
-    private void setParam(JSONObject param) {
+    public void setParam(JSONObject param) {
         this.param = param;
     }
 
@@ -133,7 +138,7 @@ public class JsMessage {
         this.callbackId = callbackId;
     }
 
-    public String getName() {
+  /*  public String getName() {
         return name;
     }
 
@@ -156,4 +161,5 @@ public class JsMessage {
     public void setResponseData(JSONObject responseData) {
         this.responseData = responseData;
     }
+    */
 }
