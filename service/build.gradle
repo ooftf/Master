@@ -16,10 +16,15 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
             }
         }
+        renderscriptTargetApi 22
+        renderscriptSupportModeEnabled true
     }
     compileOptions {
         sourceCompatibility versions.java
         targetCompatibility versions.java
+    }
+    lintOptions {
+        abortOnError false
     }
 }
 
@@ -85,7 +90,7 @@ dependencies {
     releaseApi 'com.github.markzhai:blockcanary-no-op:1.5.0'
     api 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
     api 'com.github.ooftf:HiShare:1.2.5'
-    api 'com.blankj:utilcode:1.17.3'
+    api 'com.blankj:utilcode:1.21.2'
     api 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
     api 'com.github.ooftf:BarrageView:1.1.0'

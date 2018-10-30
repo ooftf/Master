@@ -3,6 +3,7 @@ package com.ooftf.master.other.fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseListFragment
 import com.ooftf.service.bean.ScreenItemBean
+import com.ooftf.service.widget.toolbar.TailoredToolbar
 
 /**
  * Created by master on 2017/9/26 0026.
@@ -21,5 +22,8 @@ class OtherFragment : BaseListFragment() {
         adapter.add(ScreenItemBean("/other/activity/share", "分享示例"))
         adapter.add(ScreenItemBean("/other/activity/pickPhotoList", "选择图片"))
         adapter.notifyDataSetChanged()
+    }
+    override fun initToolbar(toolbar: TailoredToolbar) {
+        toolbar.title = "Other"
     }
 }

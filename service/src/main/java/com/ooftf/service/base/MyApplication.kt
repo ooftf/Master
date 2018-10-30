@@ -23,7 +23,7 @@ import com.tinkerpatch.sdk.loader.TinkerPatchApplicationLike
 class MyApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
-        CrashReport.initCrashReport(getApplicationContext(), "26a5e838af", false);
+        CrashReport.initCrashReport(applicationContext, "26a5e838af", false)
         Utils.init(this)
         instance = this
         setupThinker()

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -25,7 +26,7 @@ import tf.ooftf.com.service.base.adapter.BaseRecyclerAdapter;
  * @email 994749769@qq.com
  * @date 2018/10/17 0017
  */
-public class ListSelectorDialog extends BottomDialog {
+public class ListSelectorDialog extends BlurDialog {
     @BindView(R2.id.cancel)
     TextView cancel;
     @BindView(R2.id.recycler_view)
@@ -33,11 +34,11 @@ public class ListSelectorDialog extends BottomDialog {
     InnerAdapter adapter;
 
     public ListSelectorDialog(@NotNull Activity activity) {
-        super(activity, R.style.DialogTheme_Transparent);
+        super(activity);
         JLog.e("ListSelectorDialog", "ListSelectorDialog");
         setContentView(R.layout.dialog_list_selector);
-        setWidthPercent(1f);
         ButterKnife.bind(this);
+        setGravity(Gravity.BOTTOM);
         cancel.setOnClickListener(v -> dismiss());
         adapter = new InnerAdapter();
         recyclerView.setAdapter(adapter);

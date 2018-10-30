@@ -22,11 +22,15 @@ import com.ooftf.service.net.mob.action.ErrorAction
 import com.ooftf.service.net.mob.action.MobObserver
 import com.ooftf.service.net.mob.bean.ItemDataBean
 import com.ooftf.service.net.mob.bean.MobBaseBean
+import com.ooftf.service.widget.dialog.ListSelectorDialog
+import com.ooftf.service.widget.toolbar.TailoredToolbar
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_weekly_consumption.*
+import tf.ooftf.com.service.base.adapter.BaseRecyclerAdapter
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * 周饭计算器
@@ -38,9 +42,13 @@ import java.util.*
 class WeeklyConsumptionActivity : BaseActivity() {
     lateinit var adapter: PersonRecordAdapter
     lateinit var orderRecord: OrderRecordBean
+    lateinit var operationPanel: ListSelectorDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weekly_consumption)
+        initToolbar()
+        initOperationPanel()
+
         //获取到本地数据
         orderRecord = getData()
         //将本地数据赋值到View上
@@ -57,61 +65,95 @@ class WeeklyConsumptionActivity : BaseActivity() {
 
         //添加人员功能
         changePerson()
-        //全选
-        all.setOnClickListener {
-            selectAll()
-        }
-        clear.setOnClickListener {
-            AlertDialog.Builder(this)
-                    .setMessage("确定清空？")
-                    .setNegativeButton("取消") { p0, p1 -> p0.dismiss() }
-                    .setPositiveButton("确定") { p0, p1 -> clearData() }
-                    .show()
-        }
-        save_to_server.setOnClickListener {
+    }
 
-            ServiceHolder
-                    .mobService
-                    .put(getItemName(), Base64.encodeToString(Gson().toJson(orderRecord).toByteArray(),Base64.DEFAULT))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .compose(DialogAction<MobBaseBean>(this))
-                    .compose(ErrorAction<MobBaseBean>(this))
-                    .bindToLifecycle(save_to_server)
-                    .subscribe(object : MobObserver<MobBaseBean>() {
-                        override fun onSuccess(bean: MobBaseBean?) {
-                            Toast.makeText(this@WeeklyConsumptionActivity, bean?.msg, Toast.LENGTH_LONG).show()
+    fun requestSaveToServer() {
+        ServiceHolder
+                .mobService
+                .put(getItemName(), Base64.encodeToString(Gson().toJson(orderRecord).toByteArray(), Base64.DEFAULT))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(DialogAction<MobBaseBean>(this))
+                .compose(ErrorAction<MobBaseBean>(this))
+                .bindToLifecycle(window.decorView)
+                .subscribe(object : MobObserver<MobBaseBean>() {
+                    override fun onSuccess(bean: MobBaseBean?) {
+                        Toast.makeText(this@WeeklyConsumptionActivity, bean?.msg, Toast.LENGTH_LONG).show()
+                    }
+                })
+    }
+
+    fun requestFromServer() {
+        ServiceHolder
+                .mobService
+                .query(getItemName())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .bindToLifecycle(window.decorView)
+                .compose(DialogAction<ItemDataBean>(this))
+                .compose(ErrorAction<ItemDataBean>(this))
+                .subscribe(object : MobObserver<ItemDataBean>() {
+                    override fun onSuccess(bean: ItemDataBean) {
+                        Log.e("onNext", "。。。。。。。。。。。" + System.currentTimeMillis())
+                        bean.result.let {
+                            orderRecord = Gson().fromJson(String(Base64.decode(it, Base64.DEFAULT)), OrderRecordBean::class.java)
+                            adapter.data = orderRecord
+                            monday.setText(orderRecord.monday.toString())
+                            tuesday.setText(orderRecord.tuesday.toString())
+                            wednesday.setText(orderRecord.wednesday.toString())
+                            thursday.setText(orderRecord.thursday.toString())
+                            friday.setText(orderRecord.friday.toString())
+                            adapter.notifyDataSetChanged()
                         }
-                    })
+                    }
+                })
+    }
 
-        }
-        query_from_server.setOnClickListener {
-            ServiceHolder
-                    .mobService
-                    .query(getItemName())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .bindToLifecycle(query_from_server)
-                    .compose(DialogAction<ItemDataBean>(this))
-                    .compose(ErrorAction<ItemDataBean>(this))
-                    .subscribe(object : MobObserver<ItemDataBean>() {
-                        override fun onSuccess(bean: ItemDataBean) {
-                            Log.e("onNext", "。。。。。。。。。。。" + System.currentTimeMillis())
-                            bean.result.let {
-                                orderRecord = Gson().fromJson(String(Base64.decode(it,Base64.DEFAULT)), OrderRecordBean::class.java)
-                                adapter.data = orderRecord
-                                monday.setText(orderRecord.monday.toString())
-                                tuesday.setText(orderRecord.tuesday.toString())
-                                wednesday.setText(orderRecord.wednesday.toString())
-                                thursday.setText(orderRecord.thursday.toString())
-                                friday.setText(orderRecord.friday.toString())
-                                adapter.notifyDataSetChanged()
-                            }
-                        }
-                    })
+    private fun initOperationPanel() {
+        operationPanel = ListSelectorDialog(this)
+        var data = ArrayList<String>()
+        data.add("从服务器拉取数据")
+        data.add("保存数据到服务器")
+        data.add("全选")
+        data.add("清空")
+        operationPanel.setOnItemClickListener(object : BaseRecyclerAdapter.OnItemClickListener<String> {
+            override fun onItemClick(data: String, position: Int) {
+                when (position) {
+                    0 -> {
+                        requestFromServer()
+                        operationPanel.dismiss()
+                    }
+                    1 -> {
+                        requestSaveToServer()
+                        operationPanel.dismiss()
+                    }
+                    2 -> {
+                        selectAll()
+                        operationPanel.dismiss()
+                    }
+                    3 -> {
+                        operationPanel.dismiss()
+                        AlertDialog.Builder(this@WeeklyConsumptionActivity)
+                                .setMessage("确定清空？")
+                                .setNegativeButton("取消") { dialog, _ -> dialog.dismiss() }
+                                .setPositiveButton("确定") { _, _ -> clearData() }
+                                .show()
+                    }
 
+                }
+            }
 
-        }
+        })
+        operationPanel.setList(data)
+    }
+
+    private fun initToolbar() {
+        toolbar.title = "周饭计算器"
+        toolbar.addMenuItem(TailoredToolbar
+                .MenuItem(this)
+                .layoutRight()
+                .setImage(R.drawable.ic_more_horiz)
+                .setOnClickListenerChain { operationPanel.show() })
     }
 
     private fun getItemName(): String {

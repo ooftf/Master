@@ -2,6 +2,7 @@ package com.ooftf.service.widget.toolbar;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.Keep;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.ContextCompat;
@@ -17,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ooftf.service.R;
+import com.ooftf.service.utils.JLog;
 import com.ooftf.support.ViewOffsetHelper;
 
 /**
@@ -72,7 +74,9 @@ public class TailoredToolbar extends Toolbar {
                 }
             });
         }
-        setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        if(getBackground() == null){
+            setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        }
     }
 
     public void addMenuItem(MenuItem item) {
@@ -89,7 +93,7 @@ public class TailoredToolbar extends Toolbar {
             LayoutInflater.from(context).inflate(R.layout.item_menu_toolbar, this);
             textView = findViewById(R.id.text);
             image = findViewById(R.id.image);
-            setToolbarLayoutParams();
+            initToolbarLayoutParams();
         }
 
         public MenuItem layoutRight() {
@@ -129,7 +133,7 @@ public class TailoredToolbar extends Toolbar {
             return (Toolbar.LayoutParams) getLayoutParams();
         }
 
-        private void setToolbarLayoutParams() {
+        private void initToolbarLayoutParams() {
             if (getLayoutParams() == null || !(getLayoutParams() instanceof Toolbar.LayoutParams)) {
                 Toolbar.LayoutParams layoutParams = new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.MATCH_PARENT, Gravity.END);
                 Log.e("layoutParams", layoutParams.toString());
@@ -138,6 +142,7 @@ public class TailoredToolbar extends Toolbar {
         }
     }
 
+    @Keep
     public static class BelowBehavior extends CoordinatorLayout.Behavior<View> {
         ViewOffsetHelper mViewOffsetHelper;
         View dependency;

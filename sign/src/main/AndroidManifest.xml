@@ -3,7 +3,8 @@
     package="com.ooftf.master.sign">
 
     <application>
-        <activity android:name=".activity.SignInActivity"/>
+        <activity android:name=".activity.SignInActivity"
+            android:theme="@style/AppTheme.TranslucentStatus"/>
         <activity android:name=".activity.RegisterActivity"/>
     </application>
 

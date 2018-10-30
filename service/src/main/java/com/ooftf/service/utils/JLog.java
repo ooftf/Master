@@ -88,6 +88,18 @@ public class JLog {
         Log.e(parseTag(tag), String.valueOf(info));
     }
 
+    public static void e(String tag, int i, Object... message) {
+        StringBuffer result = new StringBuffer();
+        for (Object s : message) {
+            StringBuffer per = new StringBuffer(s.toString());
+            while (per.length() < i) {
+                per.append("-");
+            }
+            result.append(per);
+        }
+        e(tag, result.toString());
+    }
+
     private static boolean intercept(int level) {
         return false;
     }

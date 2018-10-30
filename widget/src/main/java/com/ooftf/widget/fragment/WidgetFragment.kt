@@ -84,6 +84,7 @@ class WidgetFragment : BaseFragment() {
 
     private fun setupToolbar() {
         toolbar.inflateMenu(R.menu.activity_widget_toolbar_turn)
+        toolbar.title = "Widget"
         /* recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
              override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                  toolbar.setScrollProgress(recyclerView.scrollY,recyclerView.computeVerticalScrollRange()-recyclerView.computeVerticalScrollExtent())

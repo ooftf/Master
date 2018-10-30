@@ -3,6 +3,7 @@ package com.ooftf.master.source.fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseListFragment
 import com.ooftf.service.bean.ScreenItemBean
+import com.ooftf.service.widget.toolbar.TailoredToolbar
 
 /**
  *
@@ -15,5 +16,8 @@ class SourceFragment : BaseListFragment() {
         adapter.add((ScreenItemBean("/source/activity/okHttp", "OkHttp未完成")))
         adapter.add((ScreenItemBean("/source/activity/proxy", "动态代理")))
         adapter.notifyDataSetChanged()
+    }
+    override fun initToolbar(toolbar: TailoredToolbar) {
+        toolbar.title = "Source"
     }
 }

@@ -5,6 +5,7 @@ import com.ooftf.master.debug.R
 import com.ooftf.service.base.BaseListFragment
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.service.constant.RouterPath
+import com.ooftf.service.widget.toolbar.TailoredToolbar
 
 /**
  * Created by master on 2017/9/26 0026.
@@ -32,5 +33,9 @@ class DebugFragment : BaseListFragment() {
         adapter.add(ScreenItemBean(RouterPath.SIGN_ACTIVITY_SIGN_IN))
 
         adapter.notifyDataSetChanged()
+    }
+
+    override fun initToolbar(toolbar: TailoredToolbar) {
+        toolbar.title = "Debug"
     }
 }

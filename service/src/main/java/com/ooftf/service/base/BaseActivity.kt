@@ -4,9 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.view.View
 import android.widget.Toast
-import com.facebook.stetho.common.LogUtil
 import com.ooftf.service.interfaces.ILifecycleState
+import com.ooftf.service.utils.JLog
 import hugo.weaving.DebugLog
 import java.util.*
 
@@ -49,50 +50,51 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
 
     @DebugLog
     override fun onCreate(savedInstanceState: Bundle?) {
-        LogUtil.e(this.javaClass.simpleName, "onCreate")
+        JLog.e(this.javaClass.simpleName, "onCreate")
         super.onCreate(savedInstanceState)
         alive = true
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
-        LogUtil.e(this.javaClass.simpleName, "onPostCreate")
+        JLog.e(this.javaClass.simpleName, "onPostCreate")
     }
 
     override fun onStart() {
         showing = true
-        LogUtil.e(this.javaClass.simpleName, "onStart")
+        JLog.e(this.javaClass.simpleName, "onStart")
         super.onStart()
     }
 
+
     override fun onRestart() {
-        LogUtil.e(this.javaClass.simpleName, "onRestart")
+        JLog.e(this.javaClass.simpleName, "onRestart")
         super.onRestart()
     }
 
     override fun onResume() {
         touchable = true
-        LogUtil.e(this.javaClass.simpleName, "onResume")
+        JLog.e(this.javaClass.simpleName, "onResume")
         super.onResume()
         doOnResume()
     }
 
     override fun onPause() {
         touchable = false
-        LogUtil.e(this.javaClass.simpleName, "onPause")
+        JLog.e(this.javaClass.simpleName, "onPause")
         super.onPause()
     }
 
     override fun onStop() {
         showing = false
-        LogUtil.e(this.javaClass.simpleName, "onStop")
+        JLog.e(this.javaClass.simpleName, "onStop")
         super.onStop()
     }
 
     override fun onDestroy() {
         alive = false
         doOnDestroy()
-        LogUtil.e(this.javaClass.simpleName, "onDestroy")
+        JLog.e(this.javaClass.simpleName, "onDestroy")
         super.onDestroy()
     }
 
@@ -127,7 +129,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
     }
 
     override fun onNewIntent(intent: Intent) {
-        LogUtil.e(this.javaClass.simpleName, "onNewIntent")
+        JLog.e(this.javaClass.simpleName, "onNewIntent")
         super.onNewIntent(intent)
     }
 
