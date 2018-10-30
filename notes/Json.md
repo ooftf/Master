@@ -5,4 +5,4 @@
 同理Gson等也要使用对应包下的JSONObject才可以（Gson未确认，处于猜想阶段）
 * 如果json解析过程中出错，fastjson和gson都会立即中断解析，后面字段将不会解析
 但是jackjson会跳过出错字段继续解析，最终结果只会缺少出错的字段
-* JsonBean set 和 get 方法都要设置为public
+* JavaBean set 和 get 方法都要设置为public
