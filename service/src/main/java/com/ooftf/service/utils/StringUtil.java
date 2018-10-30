@@ -2,6 +2,11 @@ package com.ooftf.service.utils;
 
 import android.text.TextUtils;
 
+import com.blankj.utilcode.util.StringUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 /**
@@ -9,11 +14,22 @@ import java.util.List;
  */
 
 public class StringUtil {
+
     public static boolean isEmpty(String str) {
         return TextUtils.isEmpty(str);
     }
 
+    public static boolean isJson(String string) {
+        try {
+            new JSONObject(string);
+            return true;
+        } catch (JSONException e) {
+            return false;
+        }
+    }
+
     public static String zeroPaddingToDouble(String src) {
+
         if (src.length() > 1) {
             return src;
         } else if (src.length() == 1) {
@@ -24,7 +40,8 @@ public class StringUtil {
     }
 
     /**
-     * 将数字补4成两位字符串
+     * 将数字补成两位字符串
+     *
      * @param src
      * @return
      */

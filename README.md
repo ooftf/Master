@@ -23,6 +23,8 @@
 * MVVM Data Binding
 * Androidx
 * 线程池
+* 策略设计模式
+* 曲边控件
 ## DONE LIST
 * 为什么会有两个启动图标: 是因为APP独立调试模式，包名起的为debug和debug模式重名，导致debug模式下编译将debug包名下的文件也编译进去了
 * Rxjava compose :已经抽离网络请求；好处：将逻辑部分和界面部分分离，将不用界面处理分离做成更小的可以，使用更灵活
