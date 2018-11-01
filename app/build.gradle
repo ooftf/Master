@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'packer'
 apply plugin: 'com.jakewharton.butterknife'
+//Firebase
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'io.fabric'
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
@@ -28,7 +31,7 @@ android {
     }
     signingConfigs {
         config {
-            storeFile file('lihang.jks')
+            storeFile file('master.jks')
             keyAlias 'master'
             keyPassword 'master965661686'
             storePassword '965661686'
@@ -81,6 +84,10 @@ dependencies {
     def htextview_version = '0.1.6'
     implementation "com.hanks:htextview-base:$htextview_version"
     implementation "com.hanks:htextview-typer:$htextview_version"// optional
+    //Firebase
+    implementation 'com.google.firebase:firebase-core:16.0.4'
+
+
 }
 apply plugin: 'com.jakewharton.hugo'
 apply from: 'tinkerpatch.gradle'
