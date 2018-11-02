@@ -3,9 +3,13 @@ package com.ooftf.master.sign.provider;
 import android.content.Context;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.ooftf.master.sign.dagger.component.DaggerFireSignServiceComponent;
 import com.ooftf.service.bean.SignInfo;
-import com.ooftf.service.engine.typer.TyperFactory;
-import com.ooftf.service.engine.router.service.SignService;
+import com.ooftf.service.engine.router.service.FireSignService;
+
+import javax.inject.Inject;
 
 import io.reactivex.Observer;
 import io.reactivex.subjects.PublishSubject;
@@ -15,13 +19,14 @@ import io.reactivex.subjects.PublishSubject;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-@Route(path = "/sign/service/sign", name = "测试服务")
-public class SignServiceImpl implements SignService {
-    private static final String KEY_ACCOUNT_INFO = "AccountInfo";
+@Route(path = "/sign/service/fireSign", name = "测试服务")
+public class FireSignServiceImpl implements FireSignService {
+    @Inject
+    FirebaseAuth mAuth;
 
     @Override
     public void init(Context context) {
-
+        DaggerFireSignServiceComponent.create().inject(this);
     }
 
     public static PublishSubject<SignInfo> signInSubject = PublishSubject.create();
@@ -38,17 +43,17 @@ public class SignServiceImpl implements SignService {
 
     @Override
     public void signOut() {
-        TyperFactory.getDefault().remove(KEY_ACCOUNT_INFO);
+        mAuth.signOut();
     }
 
     @Override
-    public void updateSignInfo(SignInfo info) {
-        TyperFactory.getDefault().put(KEY_ACCOUNT_INFO, info);
+    public void updateSignInfo(FirebaseUser info) {
+        mAuth.updateCurrentUser(info);
     }
 
     @Override
-    public SignInfo getSignInfo() {
-        return TyperFactory.getDefault().getObject(KEY_ACCOUNT_INFO, SignInfo.class);
+    public FirebaseUser getSignInfo() {
+        return mAuth.getCurrentUser();
     }
 
     @Override

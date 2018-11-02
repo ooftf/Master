@@ -8,7 +8,7 @@ dependencies {
     })
     testImplementation 'junit:junit:4.12'
     api project(':service')
-    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+    kapt deps.dagger2_compiler
     implementation 'com.github.ooftf:CalendarView:1.0.3'
     implementation 'com.github.ooftf:SpialeLayout:1.0.1'
     implementation 'com.github.ooftf:PatternLock:1.0.1'

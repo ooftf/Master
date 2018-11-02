@@ -11,7 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.service.constant.RouterExtra;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.engine.router.PostcardSerializable;
-import com.ooftf.service.engine.router.service.SignService;
+import com.ooftf.service.engine.router.service.FireSignService;
 import com.ooftf.service.utils.JLog;
 
 /**
@@ -24,7 +24,7 @@ import com.ooftf.service.utils.JLog;
 @Interceptor(priority = 1)
 public class SignInInterceptor implements IInterceptor {
     @Autowired
-    SignService signService;
+    FireSignService signService;
 
     @Override
     public void process(Postcard postcard, InterceptorCallback callback) {

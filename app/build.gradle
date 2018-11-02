@@ -4,8 +4,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'packer'
 apply plugin: 'com.jakewharton.butterknife'
-//Firebase
-apply plugin: 'com.google.gms.google-services'
 apply plugin: 'io.fabric'
 android {
     compileSdkVersion versions.compileSdk
@@ -84,10 +82,14 @@ dependencies {
     def htextview_version = '0.1.6'
     implementation "com.hanks:htextview-base:$htextview_version"
     implementation "com.hanks:htextview-typer:$htextview_version"// optional
+    kapt deps.dagger2_compiler
     //Firebase
-    implementation 'com.google.firebase:firebase-core:16.0.4'
+    api 'com.google.firebase:firebase-core:16.0.4'
+
 
 
 }
 apply plugin: 'com.jakewharton.hugo'
 apply from: 'tinkerpatch.gradle'
+//Firebase
+apply plugin: 'com.google.gms.google-services'

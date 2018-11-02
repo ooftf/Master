@@ -55,7 +55,10 @@ public class OptDialog extends Dialog {
         content.setText(text);
         return this;
     }
-
+    public OptDialog  setCancelableChain(boolean cancelable){
+        super.setCancelable(cancelable);
+        return this;
+    }
     public OptDialog setPositiveText(CharSequence text) {
 
         setPositiveVisibility(View.VISIBLE);
