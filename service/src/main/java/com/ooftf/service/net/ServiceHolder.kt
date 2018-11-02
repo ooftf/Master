@@ -3,7 +3,7 @@ package com.ooftf.service.net
 import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.hihttp.engine.ParamInterceptor
 import com.ooftf.hihttp.engine.ServiceGenerator
-import com.ooftf.service.interfaces.SignService
+import com.ooftf.service.engine.router.service.SignService
 import com.ooftf.service.net.etd.EtdService
 import com.ooftf.service.net.mob.MobService
 

@@ -11,7 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.service.constant.RouterExtra;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.engine.router.PostcardSerializable;
-import com.ooftf.service.interfaces.SignService;
+import com.ooftf.service.engine.router.service.SignService;
 import com.ooftf.service.utils.JLog;
 
 /**

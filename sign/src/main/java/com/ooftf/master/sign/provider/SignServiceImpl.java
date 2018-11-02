@@ -4,11 +4,9 @@ import android.content.Context;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.service.bean.SignInfo;
-import com.ooftf.service.empty.EmptyObserver;
 import com.ooftf.service.engine.typer.TyperFactory;
-import com.ooftf.service.interfaces.SignService;
+import com.ooftf.service.engine.router.service.SignService;
 
-import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.subjects.PublishSubject;
 

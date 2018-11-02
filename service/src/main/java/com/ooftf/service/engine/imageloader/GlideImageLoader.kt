@@ -8,12 +8,17 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.ooftf.service.engine.GlideApp
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by master on 2017/1/22.
  */
 
 class GlideImageLoader : IImageLoader {
+    @Inject
+    constructor()
+
     override fun display(context: Context, url: String, view: ImageView) {
         GlideApp.with(context).load(url).into(view)
     }

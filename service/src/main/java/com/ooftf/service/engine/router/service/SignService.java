@@ -1,4 +1,4 @@
-package com.ooftf.service.interfaces;
+package com.ooftf.service.engine.router.service;
 
 import com.alibaba.android.arouter.facade.template.IProvider;
 import com.ooftf.service.bean.SignInfo;

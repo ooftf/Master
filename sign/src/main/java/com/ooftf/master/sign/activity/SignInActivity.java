@@ -15,7 +15,7 @@ import com.ooftf.service.bean.SignInfo;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.engine.router.PostcardSerializable;
 import com.ooftf.service.engine.router.FinishCallback;
-import com.ooftf.service.interfaces.SignService;
+import com.ooftf.service.engine.router.service.SignService;
 import com.ooftf.service.net.ServiceHolder;
 import com.ooftf.service.net.mob.action.ErrorAction;
 import com.ooftf.service.net.mob.action.MobObserver;
