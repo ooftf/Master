@@ -27,6 +27,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dagger.Module;
 import io.reactivex.Observable;
 import io.reactivex.ObservableOnSubscribe;
 
@@ -57,7 +58,6 @@ public class RegisterActivity extends BaseActivity {
                 register());
 
     }
-
     private void register() {
         Observable
                 .create((ObservableOnSubscribe<Boolean>) emitter -> mAuth.createUserWithEmailAndPassword(account.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

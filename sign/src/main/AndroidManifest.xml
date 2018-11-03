@@ -4,8 +4,11 @@
 
     <application>
         <activity android:name=".activity.SignInActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.TranslucentStatus"/>
-        <activity android:name=".activity.RegisterActivity"/>
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".activity.RegisterActivity"/>
     </application>
 
 </manifest>

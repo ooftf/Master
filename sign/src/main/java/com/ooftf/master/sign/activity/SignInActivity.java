@@ -7,25 +7,21 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.ooftf.hihttp.action.ButtonAction;
 import com.ooftf.master.sign.R;
 import com.ooftf.master.sign.R2;
+import com.ooftf.master.sign.dagger.component.DaggerSigInComponent;
+import com.ooftf.master.sign.dagger.module.SignInModule;
+import com.ooftf.master.sign.mvp.contract.SignInContract;
+import com.ooftf.master.sign.mvp.presenter.SignInPresenter;
 import com.ooftf.service.base.BaseActivity;
-import com.ooftf.service.bean.SignInfo;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.engine.router.PostcardSerializable;
 import com.ooftf.service.engine.router.FinishCallback;
-import com.ooftf.service.engine.router.service.SignService;
-import com.ooftf.service.net.ServiceHolder;
-import com.ooftf.service.net.mob.action.ErrorAction;
-import com.ooftf.service.net.mob.action.MobObserver;
-import com.ooftf.service.net.mob.bean.SignInBean;
-import com.ooftf.service.utils.JLog;
-import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * @author ooftf
@@ -33,7 +29,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
  * @date 2018/10/21 0021
  */
 @Route(path = "/sign/activity/signIn")
-public class SignInActivity extends BaseActivity {
+public class SignInActivity extends BaseActivity implements SignInContract.IView {
     @BindView(R2.id.account)
     TextView account;
     @BindView(R2.id.password)
@@ -43,41 +39,45 @@ public class SignInActivity extends BaseActivity {
     @BindView(R2.id.register)
     TextView register;
     @Autowired
-    SignService signService;
-    @Autowired
     public Bundle successIntent;
+    @Inject
+    SignInContract.IPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ARouter.getInstance().inject(this);
-        JLog.e(signService,signService.toString());
         setContentView(R.layout.activity_sign_in);
         ButterKnife.bind(this);
-        signIn.setOnClickListener(v -> ServiceHolder
-                .INSTANCE
-                .getMobService()
-                .signIn(account.getText().toString(), password.getText().toString())
-                .observeOn(AndroidSchedulers.mainThread())
-                //.compose(new DialogAction<>(this))
-                .compose(new ErrorAction<>(this))
-                .compose(new ButtonAction<>(signIn, "正在登录..."))
-                .compose(RxLifecycleAndroid.bindView(signIn))
-                .subscribe(new MobObserver<SignInBean>() {
-                    @Override
-                    public void onSuccess(SignInBean bean) {
-                        SignInfo info = new SignInfo();
-                        info.setUid(bean.getResult().getUid());
-                        info.setToken(bean.getResult().getToken());
-                        signService.updateSignInfo(info);
-                        toast("登录成功");
-                        PostcardSerializable.toPostcard(successIntent).navigation(SignInActivity.this, new FinishCallback(SignInActivity.this));
-
-                    }
-                }));
+        DaggerSigInComponent
+                .builder()
+                .signInModule(new SignInModule(this))
+                .build()
+                .inject(this);
+        signIn.setOnClickListener(v ->
+                presenter.signIn()
+        );
         register.setOnClickListener(v ->
                 ARouter.getInstance().build(RouterPath.SIGN_ACTIVITY_REGISTER).navigation()
         );
     }
 
+    @Override
+    public String getUsername() {
+        return account.getText().toString();
+    }
+
+    @Override
+    public String getPassword() {
+        return password.getText().toString();
+    }
+
+    @Override
+    public Button getSinInLoadingButton() {
+        return signIn;
+    }
+
+    @Override
+    public void nextActivity() {
+        PostcardSerializable.toPostcard(successIntent).navigation(SignInActivity.this, new FinishCallback(SignInActivity.this));
+    }
 }

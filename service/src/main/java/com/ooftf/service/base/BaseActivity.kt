@@ -1,7 +1,9 @@
 package com.ooftf.service.base
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
@@ -140,8 +142,25 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
             mToast?.show()
         }
     }
+
     fun toast(content: String) {
-        toast(content,Toast.LENGTH_SHORT)
+        toast(content, Toast.LENGTH_SHORT)
+    }
+
+    fun showDialogMessage(message: CharSequence) {
+        showDialogMessage(message)
+    }
+
+    fun showDialogMessage(message: CharSequence, positiveText: CharSequence = "确定", positiveListener: DialogInterface.OnClickListener = object : DialogInterface.OnClickListener {
+        override fun onClick(dialog: DialogInterface?, which: Int) {
+            dialog?.dismiss()
+        }
+    }) {
+        AlertDialog
+                .Builder(this)
+                .setMessage(message)
+                .setPositiveButton(positiveText, positiveListener)
+                .show()
     }
 
     private var mCallback: Callback? = null
