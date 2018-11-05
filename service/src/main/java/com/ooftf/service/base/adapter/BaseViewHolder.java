@@ -17,6 +17,10 @@ public class BaseViewHolder<V extends View> extends RecyclerView.ViewHolder {
         super(LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false));
     }
 
+    public BaseViewHolder(V view) {
+        super(view);
+    }
+
     public V getItemView() {
         return (V) itemView;
     }

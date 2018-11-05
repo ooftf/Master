@@ -62,4 +62,5 @@ open class MainRecyclerAdapter(private var baseActivity: BaseActivity, internal 
         var title: TextView = itemView.findViewById(R.id.stickyView)
 
     }
+
 }
