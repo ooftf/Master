@@ -78,6 +78,11 @@ public class SignInActivity extends BaseActivity implements SignInContract.IView
 
     @Override
     public void nextActivity() {
-        PostcardSerializable.toPostcard(successIntent).navigation(SignInActivity.this, new FinishCallback(SignInActivity.this));
+        if (successIntent != null) {
+            PostcardSerializable.toPostcard(successIntent).navigation(SignInActivity.this, new FinishCallback(SignInActivity.this));
+        } else {
+            finish();
+        }
+
     }
 }

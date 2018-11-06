@@ -10,7 +10,7 @@ dependencies {
     api project(':service')
     kapt deps.dagger2_compiler
     implementation 'com.github.ooftf:CalendarView:1.0.3'
-    implementation 'com.github.ooftf:SpialeLayout:1.0.1'
+    implementation 'com.github.ooftf:SpialeLayout:1.1.0'
     implementation 'com.github.ooftf:PatternLock:1.0.1'
     implementation 'com.github.ooftf:StraightLayout:1.0.0'
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
