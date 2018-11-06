@@ -17,7 +17,6 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.service.R
 import com.ooftf.service.base.adapter.BaseViewHolder
 import com.ooftf.service.bean.ScreenItemBean
-import com.ooftf.service.utils.DensityUtil
 import com.ooftf.spiale.SpialeLayout
 
 
@@ -30,10 +29,9 @@ open class WidgetAdapter : RecyclerView.Adapter<BaseViewHolder<View>>() {
     var spialeList = ArrayList<String>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<View> {
         if (viewType == SPIALE_TYPE) {
-            val spialeLayout = SpialeLayout(parent.context)
-            spialeLayout.adapter = WidgetSpialeAdapter()
-            spialeLayout.layoutParams = RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, DensityUtil.dip2px(parent.context, 48f))
-            return SpialeHoler(spialeLayout) as BaseViewHolder<View>
+            val spialeHolder = SpialeHolder(com.ooftf.widget.R.layout.item_widget_todo,parent)
+            spialeHolder.spialeLayout.adapter = WidgetSpialeAdapter()
+            return spialeHolder
         }
         return BodyHolder(R.layout.item_recyclerview_main, parent)
     }
@@ -53,7 +51,7 @@ open class WidgetAdapter : RecyclerView.Adapter<BaseViewHolder<View>>() {
 
     override fun onBindViewHolder(holder: BaseViewHolder<View>, position: Int) {
         if (getItemViewType(position) == SPIALE_TYPE) {
-            bindSpialeHolder(holder as SpialeHoler, position)
+            bindSpialeHolder(holder as SpialeHolder, position)
         } else {
             bindBodyHolder(holder as BodyHolder, position)
         }
@@ -82,11 +80,12 @@ open class WidgetAdapter : RecyclerView.Adapter<BaseViewHolder<View>>() {
         }
     }
 
-    private fun bindSpialeHolder(holder: SpialeHoler, position: Int) {
-        val adapter = holder.getItemView().adapter as WidgetSpialeAdapter
+    private fun bindSpialeHolder(holder: SpialeHolder, position: Int) {
+        val adapter = holder.spialeLayout.adapter as WidgetSpialeAdapter
         adapter.list = getSpialeList()
         adapter.notifyDataSetChanged()
     }
+
     fun getSpialeList(): List<String> {
         if (spialeList.isEmpty()) {
             spialeList.add("如果只存才一种分辨率的图片，在不同分辨率下的渲染表现和内存表现")
@@ -130,7 +129,9 @@ open class WidgetAdapter : RecyclerView.Adapter<BaseViewHolder<View>>() {
         var title: TextView = itemView.findViewById(R.id.stickyView)
     }
 
-    class SpialeHoler(view: SpialeLayout) : BaseViewHolder<SpialeLayout>(view)
+    class SpialeHolder(@LayoutRes layoutId: Int, parent: ViewGroup) : BaseViewHolder<View>(layoutId, parent) {
+        var spialeLayout: SpialeLayout = itemView.findViewById(R.id.stickyView)
+    }
 
 
 }
