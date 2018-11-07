@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.layout_sticky_header.*
  * Created by master on 2017/9/29 0029.
  */
 
-abstract class BaseListFragment : BaseFragment() {
+abstract class BaseListFragment : BaseLazyFragment() {
     lateinit var adapter: MainRecyclerAdapter
     val handler = Handler()
     override fun getContentLayoutId(): Int {

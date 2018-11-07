@@ -2,18 +2,12 @@ package com.ooftf.widget.fragment
 
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.View
-import android.widget.TextView
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.service.base.BaseFragment
-import com.ooftf.service.base.adapter.CategoryRecyclerAdapter
-import com.ooftf.service.base.adapter.MainRecyclerAdapter
+import com.ooftf.service.base.BaseLazyFragment
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.WidgetAdapter
 import kotlinx.android.synthetic.main.fragment_widget.*
-import kotlinx.android.synthetic.main.layout_widget_sticky_header.*
 
 /**
  *
@@ -21,7 +15,7 @@ import kotlinx.android.synthetic.main.layout_widget_sticky_header.*
  *
  */
 @Route(path = "/widget/fragment/widget")
-class WidgetFragment : BaseFragment() {
+class WidgetFragment : BaseLazyFragment() {
     lateinit var adapter: WidgetAdapter
     val handler = Handler()
     override fun getContentLayoutId(): Int {
@@ -56,6 +50,7 @@ class WidgetFragment : BaseFragment() {
 
     private fun setupRecyclerView() {
         adapter = WidgetAdapter()
+        initSpialeList()
         recycler_view.tag = getRecyclerViewTag()
         recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(context)
@@ -98,5 +93,31 @@ class WidgetFragment : BaseFragment() {
         adapter.body.add(ScreenItemBean("/widget/activity/notification", "通知栏", "通知栏示例", category = "非自定义"))
 
         adapter.notifyDataSetChanged()
+    }
+
+    fun initSpialeList() {
+        adapter.spialeList.add("如果只存才一种分辨率的图片，在不同分辨率下的渲染表现和内存表现")
+        adapter.spialeList.add("Jetpack实践#############")
+        adapter.spialeList.add("内部集成RN")
+        adapter.spialeList.add("吸顶效果代码需要封装")
+        adapter.spialeList.add("内部集成flutter")
+        adapter.spialeList.add("maven 发布流程")
+        adapter.spialeList.add("RxJava深度学习")
+        adapter.spialeList.add("Java内存整合")
+        adapter.spialeList.add("DrawerLayout需要增加功能，实现实际大小的变化")
+        adapter.spialeList.add("aspectj 深入学习")
+        adapter.spialeList.add("LayoutManager")
+        adapter.spialeList.add("依赖注入")
+        adapter.spialeList.add("悬浮通知")
+        adapter.spialeList.add("视频播放器")
+        adapter.spialeList.add("动态化构建页面 Tangram-Android vlayout")
+        adapter.spialeList.add("MVVM Data Binding")
+        adapter.spialeList.add("Androidx")
+        adapter.spialeList.add("线程池")
+        adapter.spialeList.add("曲边控件")
+        adapter.spialeList.add("DialogFragment")
+        adapter.spialeList.add("贝塞尔曲线")
+        adapter.spialeList.add("注解处理器")
+        adapter.spialeList.add("插件")
     }
 }

@@ -13,6 +13,18 @@
         android:layout_height="wrap_content" />
     <Button
         app:layout_constraintTop_toBottomOf="@+id/show"
+        android:id="@+id/show2"
+        android:text="Show 2 Notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        app:layout_constraintTop_toBottomOf="@+id/show2"
+        android:id="@+id/show3"
+        android:text="Show 3 Notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        app:layout_constraintTop_toBottomOf="@+id/show3"
         android:id="@+id/cancel"
         android:text="Cancel Notification"
         android:layout_width="match_parent"

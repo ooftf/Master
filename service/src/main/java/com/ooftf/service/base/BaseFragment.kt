@@ -15,7 +15,6 @@ import java.util.*
  * Created by master on 2016/4/12.
  */
 abstract class BaseFragment : Fragment() {
-    private var isLoaded: Boolean = false
     private var mToast: Toast? = null
     private var touchable = false
     private var alive = false
@@ -32,25 +31,16 @@ abstract class BaseFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-    private var contentView: View? = null
-    final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         logLifeCycle("onCreateView")
-        if (contentView == null) {
-            contentView = inflater.inflate(getContentLayoutId(), container, false)
-            isLoaded = false
-        }
-        return contentView
+        return super.onCreateView(inflater,container,savedInstanceState)
     }
-
-    abstract fun getContentLayoutId(): Int
-
-    final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         logLifeCycle("onViewCreated")
         super.onViewCreated(view, savedInstanceState)
-        loadJudgment()
     }
 
-    final override fun onActivityCreated(savedInstanceState: Bundle?) {
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
         logLifeCycle("onActivityCreated")
         super.onActivityCreated(savedInstanceState)
     }
@@ -110,19 +100,11 @@ abstract class BaseFragment : Fragment() {
         super.onConfigurationChanged(newConfig)
     }
 
-    private fun loadJudgment() {
-        if (view != null && userVisibleHint && !isLoaded) {
-            isLoaded = true
-            onLazyLoad()
-        }
-    }
 
-    abstract fun onLazyLoad()
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         logLifeCycle("setUserVisibleHint   $isVisibleToUser")
         super.setUserVisibleHint(isVisibleToUser)
-        loadJudgment()
     }
 
     fun postOnResume(doResume: () -> Unit) {

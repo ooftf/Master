@@ -82,38 +82,11 @@ open class WidgetAdapter : RecyclerView.Adapter<BaseViewHolder<View>>() {
 
     private fun bindSpialeHolder(holder: SpialeHolder, position: Int) {
         val adapter = holder.spialeLayout.adapter as WidgetSpialeAdapter
-        adapter.list = getSpialeList()
+        adapter.list = spialeList
         adapter.notifyDataSetChanged()
     }
 
-    fun getSpialeList(): List<String> {
-        if (spialeList.isEmpty()) {
-            spialeList.add("如果只存才一种分辨率的图片，在不同分辨率下的渲染表现和内存表现")
-            spialeList.add("Jetpack实践#############")
-            spialeList.add("内部集成RN")
-            spialeList.add("吸顶效果代码需要封装")
-            spialeList.add("内部集成flutter")
-            spialeList.add("maven 发布流程")
-            spialeList.add("RxJava深度学习")
-            spialeList.add("Java内存整合")
-            spialeList.add("DrawerLayout需要增加功能，实现实际大小的变化")
-            spialeList.add("aspectj 深入学习")
-            spialeList.add("LayoutManager")
-            spialeList.add("依赖注入")
-            spialeList.add("悬浮通知")
-            spialeList.add("视频播放器")
-            spialeList.add("动态化构建页面 Tangram-Android vlayout")
-            spialeList.add("MVVM Data Binding")
-            spialeList.add("Androidx")
-            spialeList.add("线程池")
-            spialeList.add("曲边控件")
-            spialeList.add("DialogFragment")
-            spialeList.add("贝塞尔曲线")
-            spialeList.add("懒加载Fragment抽离")
-            spialeList.add("SpialeLayout有点问题,重写布局")
-        }
-        return spialeList
-    }
+
 
     companion object {
         val SPIALE_TYPE = 1

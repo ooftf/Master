@@ -7,34 +7,68 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
+import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.widget.Button;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.service.base.BaseActivity;
+import com.ooftf.service.utils.JLog;
 import com.ooftf.widget.R;
+import com.ooftf.widget.R2;
+import com.ooftf.widget.notification.NotificationChannelManager;
 import com.ooftf.widget.widget.NewMessageNotification;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+import static android.os.Build.VERSION.SDK_INT;
+import static android.os.Build.VERSION_CODES.JELLY_BEAN;
+import static android.os.Build.VERSION_CODES.O;
 
 @Route(path = "/widget/activity/notification")
 public class NotificationActivity extends BaseActivity {
+    private static final String NOTIFICATION_CHANNEL_ID = "leakcanary";
+    @BindView(R2.id.show)
     Button show;
-
+    @BindView(R2.id.show2)
+    Button show2;
+    @BindView(R2.id.show3)
+    Button show3;
+    NotificationManager notificationManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
-        show = findViewById(R.id.show);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            show.setOnClickListener(v -> {
-                        //showNotification();
-                        //showNotificationCompat()
-                        NewMessageNotification.notify(NotificationActivity.this, "这是什么啊", 15);
+        ButterKnife.bind(this);
+        notificationManager =  ((NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE));
+        show.setOnClickListener(v -> {
+            showNotification();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-                    }
-            );
-        }
+                notificationManager.createNotificationChannel(new NotificationChannel("One", "name", NotificationManager.IMPORTANCE_DEFAULT));
+            }
+        });
+        show2.setOnClickListener(v -> {
+            NewMessageNotification.notify(NotificationActivity.this, "这是什么啊", 15);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationChannel one = NotificationChannelManager.getChannel(this, "One");
+                one.setImportance(NotificationManager.IMPORTANCE_DEFAULT);
+                one.setShowBadge(false);
+                one.setDescription("SSSSSSSSSSSS");
+                one.setName("OneOne");
+                one.setBypassDnd(true);
+                notificationManager.createNotificationChannel(one);
+            }
+        });
+        show3.setOnClickListener(v -> {
+            leakCannay();
+            JLog.e(NotificationChannelManager.getChannel(this, "One"));
+        });
+
+
     }
 
     private void showNotificationCompat() {
@@ -48,22 +82,55 @@ public class NotificationActivity extends BaseActivity {
         NotificationManagerCompat.from(this).notify(55, notification);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void showNotification() {
         NotificationManager notificationManager = ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE));
-        NotificationChannel mChannel = new NotificationChannel("One", "name", NotificationManager.IMPORTANCE_LOW);
-        notificationManager.createNotificationChannel(mChannel);
-        Notification.Builder builder;
-        builder = new Notification.Builder(this, mChannel.getId());
-        Notification notification = builder
-                .setContentText("setContentText")
-                .setContentTitle("setContentTitle")
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.example_picture))
+        NotificationCompat.Builder builder;
+        builder = new NotificationCompat.Builder(this, NotificationChannelManager.getOneChannel(this));
+        builder.setContentTitle("setContentTitle")
                 .setSmallIcon(R.mipmap.ic_stat_new_message)
-                .setTicker("您有新短消息，请注意查收！")
-                //.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.example_picture))
+                .setWhen(System.currentTimeMillis())
+                .setOnlyAlertOnce(true);
+        Notification notification = builder
                 .build();
-        ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).notify(55, notification);
+        notificationManager.notify(55, notification);
 
+    }
+
+    private void leakCannay() {
+        Context context = this;
+        Notification.Builder builder = new Notification.Builder(context)
+                .setContentTitle(context.getString(com.squareup.leakcanary.R.string.leak_canary_notification_dumping));
+        Notification notification = buildNotification(context, builder);
+        NotificationManager notificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        int notificationId = (int) SystemClock.uptimeMillis();
+        notificationManager.notify(notificationId, notification);
+    }
+
+    public static Notification buildNotification(Context context,
+                                                 Notification.Builder builder) {
+        builder.setSmallIcon(com.squareup.leakcanary.R.drawable.leak_canary_notification)
+                .setWhen(System.currentTimeMillis())
+                .setOnlyAlertOnce(true);
+
+        if (SDK_INT >= O) {
+            NotificationManager notificationManager =
+                    (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationChannel notificationChannel =
+                    notificationManager.getNotificationChannel(NOTIFICATION_CHANNEL_ID);
+            if (notificationChannel == null) {
+                String channelName = context.getString(com.squareup.leakcanary.R.string.leak_canary_notification_channel);
+                notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName,
+                        NotificationManager.IMPORTANCE_DEFAULT);
+                notificationManager.createNotificationChannel(notificationChannel);
+            }
+            builder.setChannelId(NOTIFICATION_CHANNEL_ID);
+        }
+
+        if (SDK_INT < JELLY_BEAN) {
+            return builder.getNotification();
+        } else {
+            return builder.build();
+        }
     }
 }

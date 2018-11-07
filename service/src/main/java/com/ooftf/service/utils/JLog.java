@@ -106,10 +106,10 @@ public class JLog {
 
     private static String parseTag(Object tag) {
         if (tag == null) {
-            return "JLog";
+            return "JLog-Null";
         } else if (tag instanceof String) {
             if (((String) tag).length() == 0) {
-                return "JLog";
+                return "JLog-Empty";
             }
             return (String) tag;
         } else {
