@@ -21,6 +21,5 @@
     <color name="black">#000000</color>
     <color name="red">#FF0000</color>
 
-
-    <color name="line_gray">#757575</color>
+    <color name="line_gray">#EAEAEA</color>
 </resources>

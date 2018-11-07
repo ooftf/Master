@@ -130,7 +130,7 @@ open class WidgetAdapter : RecyclerView.Adapter<BaseViewHolder<View>>() {
     }
 
     class SpialeHolder(@LayoutRes layoutId: Int, parent: ViewGroup) : BaseViewHolder<View>(layoutId, parent) {
-        var spialeLayout: SpialeLayout = itemView.findViewById(R.id.stickyView)
+        var spialeLayout: SpialeLayout = itemView.findViewById(com.ooftf.widget.R.id.spialeLayout)
     }
 
 
