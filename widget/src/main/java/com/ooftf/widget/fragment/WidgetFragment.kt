@@ -108,7 +108,6 @@ class WidgetFragment : BaseLazyFragment() {
         adapter.spialeList.add("aspectj 深入学习")
         adapter.spialeList.add("LayoutManager")
         adapter.spialeList.add("依赖注入")
-        adapter.spialeList.add("悬浮通知")
         adapter.spialeList.add("视频播放器")
         adapter.spialeList.add("动态化构建页面 Tangram-Android vlayout")
         adapter.spialeList.add("MVVM Data Binding")
@@ -119,5 +118,6 @@ class WidgetFragment : BaseLazyFragment() {
         adapter.spialeList.add("贝塞尔曲线")
         adapter.spialeList.add("注解处理器")
         adapter.spialeList.add("插件")
+        adapter.spialeList.add("app bundles")
     }
 }

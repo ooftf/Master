@@ -27,6 +27,9 @@ import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static android.os.Build.VERSION_CODES.O;
 
+/**
+ * @author ooftf
+ */
 @Route(path = "/widget/activity/notification")
 public class NotificationActivity extends BaseActivity {
     private static final String NOTIFICATION_CHANNEL_ID = "leakcanary";
@@ -45,29 +48,14 @@ public class NotificationActivity extends BaseActivity {
         notificationManager =  ((NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE));
         show.setOnClickListener(v -> {
             showNotification();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
-                notificationManager.createNotificationChannel(new NotificationChannel("One", "name", NotificationManager.IMPORTANCE_DEFAULT));
-            }
         });
         show2.setOnClickListener(v -> {
             NewMessageNotification.notify(NotificationActivity.this, "这是什么啊", 15);
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                NotificationChannel one = NotificationChannelManager.getChannel(this, "One");
-                one.setImportance(NotificationManager.IMPORTANCE_DEFAULT);
-                one.setShowBadge(false);
-                one.setDescription("SSSSSSSSSSSS");
-                one.setName("OneOne");
-                one.setBypassDnd(true);
-                notificationManager.createNotificationChannel(one);
-            }
         });
         show3.setOnClickListener(v -> {
             leakCannay();
             JLog.e(NotificationChannelManager.getChannel(this, "One"));
         });
-
 
     }
 
@@ -87,9 +75,14 @@ public class NotificationActivity extends BaseActivity {
         NotificationCompat.Builder builder;
         builder = new NotificationCompat.Builder(this, NotificationChannelManager.getOneChannel(this));
         builder.setContentTitle("setContentTitle")
-                .setSmallIcon(R.mipmap.ic_stat_new_message)
+                .setContentText("setContentText")
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.example_picture))
+                .setTicker("this is ticker")
                 .setWhen(System.currentTimeMillis())
-                .setOnlyAlertOnce(true);
+                .setOnlyAlertOnce(true)
+                .setSmallIcon(R.mipmap.ic_stat_new_message);
+
+
         Notification notification = builder
                 .build();
         notificationManager.notify(55, notification);

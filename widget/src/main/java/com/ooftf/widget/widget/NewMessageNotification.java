@@ -82,19 +82,18 @@ public class NewMessageNotification {
                 // notification drawer on devices running Android 3.0 or later.
                 .setLargeIcon(picture)
 
-                // Set ticker text (preview) information for this notification.
-                .setTicker(ticker)
+
 
                 // Show a number. This is useful when stacking notifications of
                 // a single type.
                 .setNumber(number)
-                .setFullScreenIntent(PendingIntent.getActivity(context, 0, new Intent(Settings.ACTION_SETTINGS), PendingIntent.FLAG_UPDATE_CURRENT), true)
+                //.setFullScreenIntent(PendingIntent.getActivity(context, 0, new Intent(Settings.ACTION_SETTINGS), PendingIntent.FLAG_UPDATE_CURRENT), true)
                 .setCustomHeadsUpContentView(getCustomHeadsUpContentView(context))
-                .setFullScreenIntent(PendingIntent.getActivity(
+                /*.setFullScreenIntent(PendingIntent.getActivity(
                         context,
                         0,
                         new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com")),
-                        PendingIntent.FLAG_UPDATE_CURRENT), true)
+                        PendingIntent.FLAG_UPDATE_CURRENT), true)*/
                 // If this notification relates to a past or upcoming event, you
                 // should set the relevant time information using the setWhen
                 // method below. If this call is omitted, the notification's
@@ -111,7 +110,6 @@ public class NewMessageNotification {
                                 0,
                                 new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com")),
                                 PendingIntent.FLAG_UPDATE_CURRENT))
-
                 // Example additional actions for this notification. These will
                 // only show on devices running Android 4.1 or later, so you
                 // should ensure that the activity in this notification's
@@ -133,8 +131,9 @@ public class NewMessageNotification {
                         null)
 
                 // Automatically dismiss the notification when it is touched.
-                .setAutoCancel(true);
-
+                .setAutoCancel(true)
+                // Set ticker text (preview) information for this notification.
+                .setTicker(ticker);
         notify(context, builder.build());
     }
 

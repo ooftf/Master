@@ -5,10 +5,13 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:padding="8dp"
         android:id="@+id/icon"
-        android:layout_width="48dp"
+        android:layout_width="64dp"
         android:layout_height="48dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:src="@drawable/ic_todo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -17,6 +20,7 @@
         android:id="@+id/spialeLayout"
         android:layout_width="0dp"
         android:layout_height="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon"
         app:layout_constraintTop_toTopOf="parent" />
 

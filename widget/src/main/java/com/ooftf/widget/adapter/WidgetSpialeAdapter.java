@@ -40,8 +40,9 @@ public class WidgetSpialeAdapter extends android.widget.BaseAdapter {
         if(textView == null){
             textView = new TextView(parent.getContext());
             int padding = DensityUtil.INSTANCE.dip2px(parent.getContext(), 16f);
-            textView.setPadding(padding,0,padding,0);
+            textView.setPadding(0,0,padding,0);
             textView.setGravity(Gravity.CENTER_VERTICAL);
+            textView.setMaxLines(2);
         }
         textView.setText(getItem(position));
         return textView;

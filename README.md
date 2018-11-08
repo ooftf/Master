@@ -40,3 +40,4 @@
 * 高斯模糊
 * SpialeLayout有点问题,重写布局
 * 懒加载Fragment抽离
+* 悬浮通知
