@@ -1,6 +1,7 @@
 package com.ooftf.service.widget.dialog;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -109,7 +110,11 @@ public class BlurDialog extends BaseDialog {
     }
 
     void setBlurBackground() {
-        BitmapDrawable bitmapDrawable = new BitmapDrawable(getContext().getResources(), BitmapUtils.rsBlur(getContext(), ScreenUtils.screenShot(getActivity(), BarUtils.isStatusBarVisible(getActivity())), 25));
+        Bitmap screen = ScreenUtils.screenShot(getActivity(), BarUtils.isStatusBarVisible(getActivity()));
+        for (int i = 0; i < 3; i++) {
+            screen = BitmapUtils.rsBlur(getContext(), screen, 25);
+        }
+        BitmapDrawable bitmapDrawable = new BitmapDrawable(getContext().getResources(), screen);
         setBackground(bitmapDrawable);
     }
 }

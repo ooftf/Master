@@ -1,12 +1,15 @@
 package com.ooftf.service.base
 
+import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
+import android.view.Window
 import android.widget.Toast
 import com.ooftf.service.interfaces.ILifecycleState
 import com.ooftf.service.utils.JLog
@@ -52,10 +55,18 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
 
     @DebugLog
     override fun onCreate(savedInstanceState: Bundle?) {
+        if(isScreenForcePortrait()){
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
         JLog.e(this.javaClass.simpleName, "onCreate")
         super.onCreate(savedInstanceState)
         alive = true
     }
+
+    /**
+     * 是否强制竖屏
+     */
+    fun isScreenForcePortrait() = true
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)

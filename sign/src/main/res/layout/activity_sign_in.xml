@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".activity.SignInActivity">
-    <ImageView
+    <com.ooftf.service.widget.CurveImageView
         android:id="@+id/banner"
         app:layout_constraintTop_toTopOf="parent"
         android:adjustViewBounds="true"
