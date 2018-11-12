@@ -1,6 +1,7 @@
 package com.ooftf.master.source.activity
 
 import android.os.Bundle
+import android.os.Handler
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.source.R
 import com.ooftf.service.base.BaseBarrageActivity
@@ -42,12 +43,20 @@ class RxEmitterActivity : BaseBarrageActivity() {
             }
         }
         disposableButton.setOnClickListener {
-            if (disposable == null) {
-                addBarrage("disposable == null")
-            } else {
-                disposable!!.dispose();
-                addBarrage("dispose()")
-            }
+            Observable
+                    .create<String> {
+                        addBarrage(Thread.currentThread().name)
+                        it.onNext("")
+                    }
+                    .flatMap {
+                        addBarrage(Thread.currentThread().name)
+                        Observable.just(it);
+                    }
+                    .flatMap {
+                        addBarrage(Thread.currentThread().name)
+                        Observable.just(it);
+                    }.subscribe()
+
         }
     }
 }
