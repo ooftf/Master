@@ -2,23 +2,45 @@ package com.ooftf.service.utils;
 
 import android.text.TextUtils;
 
-import com.blankj.utilcode.util.StringUtils;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by master on 2017/6/12 0012.
+ * @author master
+ * @date 2017/6/12 0012
  */
 
 public class StringUtil {
 
+    public static List<String> split(String src, int perLength) {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i <= src.length(); ) {
+            int end = Math.min(src.length(), i + perLength);
+            list.add(src.substring(i, end));
+            i = end;
+        }
+        return list;
+    }
+
+    /**
+     * 判断是否为空
+     *
+     * @param str
+     * @return
+     */
     public static boolean isEmpty(String str) {
         return TextUtils.isEmpty(str);
     }
 
+    /**
+     * 判断是否是json格式
+     *
+     * @param string
+     * @return
+     */
     public static boolean isJson(String string) {
         try {
             new JSONObject(string);
@@ -28,6 +50,12 @@ public class StringUtil {
         }
     }
 
+    /**
+     * 将数字 填充为两位字符串
+     *
+     * @param src
+     * @return
+     */
     public static String zeroPaddingToDouble(String src) {
 
         if (src.length() > 1) {
