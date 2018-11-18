@@ -100,6 +100,9 @@
         <activity
             android:name=".activity.widget.GuideActivity"
             android:theme="@style/AppTheme.TranslucentStatus" />
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:theme="@android:style/Theme.Translucent" />
     </application>
 
 </manifest>

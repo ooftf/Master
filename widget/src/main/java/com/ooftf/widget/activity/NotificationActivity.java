@@ -53,10 +53,8 @@ public class NotificationActivity extends BaseActivity {
             NewMessageNotification.notify(NotificationActivity.this, "这是什么啊", 15);
         });
         show3.setOnClickListener(v -> {
-            leakCannay();
             JLog.e(NotificationChannelManager.getChannel(this, "One"));
         });
-
     }
 
     private void showNotificationCompat() {
@@ -89,41 +87,5 @@ public class NotificationActivity extends BaseActivity {
 
     }
 
-    private void leakCannay() {
-        Context context = this;
-        Notification.Builder builder = new Notification.Builder(context)
-                .setContentTitle(context.getString(com.squareup.leakcanary.R.string.leak_canary_notification_dumping));
-        Notification notification = buildNotification(context, builder);
-        NotificationManager notificationManager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        int notificationId = (int) SystemClock.uptimeMillis();
-        notificationManager.notify(notificationId, notification);
-    }
 
-    public static Notification buildNotification(Context context,
-                                                 Notification.Builder builder) {
-        builder.setSmallIcon(com.squareup.leakcanary.R.drawable.leak_canary_notification)
-                .setWhen(System.currentTimeMillis())
-                .setOnlyAlertOnce(true);
-
-        if (SDK_INT >= O) {
-            NotificationManager notificationManager =
-                    (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            NotificationChannel notificationChannel =
-                    notificationManager.getNotificationChannel(NOTIFICATION_CHANNEL_ID);
-            if (notificationChannel == null) {
-                String channelName = context.getString(com.squareup.leakcanary.R.string.leak_canary_notification_channel);
-                notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName,
-                        NotificationManager.IMPORTANCE_DEFAULT);
-                notificationManager.createNotificationChannel(notificationChannel);
-            }
-            builder.setChannelId(NOTIFICATION_CHANNEL_ID);
-        }
-
-        if (SDK_INT < JELLY_BEAN) {
-            return builder.getNotification();
-        } else {
-            return builder.build();
-        }
-    }
 }
