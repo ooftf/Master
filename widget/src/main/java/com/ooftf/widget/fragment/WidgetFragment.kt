@@ -119,5 +119,7 @@ class WidgetFragment : BaseLazyFragment() {
         adapter.spialeList.add("注解处理器")
         adapter.spialeList.add("插件")
         adapter.spialeList.add("app bundles")
+        adapter.spialeList.add("Ktor")
+
     }
 }

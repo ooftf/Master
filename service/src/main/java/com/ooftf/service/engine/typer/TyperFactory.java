@@ -16,9 +16,13 @@ public class TyperFactory {
         MMKV.initialize(context);
     }
 
-    public static synchronized ITyper getDefault() {
+    public static ITyper getDefault() {
         if (typer == null) {
-            typer = new MMKVTyper();
+            synchronized (TyperFactory.class) {
+                if (typer == null) {
+                    typer = new MMKVTyper();
+                }
+            }
         }
         return typer;
     }

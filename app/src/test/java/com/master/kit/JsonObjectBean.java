@@ -1,8 +1,6 @@
 package com.master.kit;
 
 
-import org.json.JSONObject;
-
 /**
  * @author ooftf
  * @email 994749769@qq.com
@@ -10,7 +8,7 @@ import org.json.JSONObject;
  */
 public class JsonObjectBean {
     private String command;
-    private JSONObject param;
+    private JsonObject param;
     private String callbackId;
 
     public String getCommand() {
@@ -21,11 +19,11 @@ public class JsonObjectBean {
         this.command = command;
     }
 
-    public JSONObject getParam() {
+    public JsonObject getParam() {
         return param;
     }
 
-    public void setParam(JSONObject param) {
+    public void setParam(JsonObject param) {
         this.param = param;
     }
 

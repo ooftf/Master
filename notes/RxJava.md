@@ -33,7 +33,7 @@
             * timer 延迟执行
    ### 操作 Observable
            * map 一个数据转为另一个数据
-           * flatMap 一个 数据 转换成一个 Observable :需要第一个数据源得到后异步获取
+           * flatMap 一个onNext数据 转换成一个 Observable :需要第一个数据源得到后异步获取
            * concatMap 和flatMap 类似，只不过只有当 上一个执行完onComplete 才会执行下一个
            * compose 一个Observable 转换成另一个Observable ;可以将一些“操作步骤”进行封装
            * toList:将多个onNext 生成一个 Single
