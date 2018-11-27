@@ -13,6 +13,7 @@ import android.view.Window
 import android.widget.Toast
 import com.ooftf.service.interfaces.ILifecycleState
 import com.ooftf.service.utils.JLog
+import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle
 import hugo.weaving.DebugLog
 import java.util.*
 
@@ -25,7 +26,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
 
     val provider = AndroidLifecycle.createLifecycleProvider(this)
     fun bindDestory(){
-        //provider.
+        provider.bindToLifecycle<T>()
     }
     override fun isAlive(): Boolean {
         return alive
