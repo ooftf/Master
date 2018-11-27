@@ -22,6 +22,11 @@ import java.util.*
 @DebugLog
 open class BaseActivity : AppCompatActivity(), ILifecycleState {
     val defaultRequestCode = 837
+
+    val provider = AndroidLifecycle.createLifecycleProvider(this)
+    fun bindDestory(){
+        //provider.
+    }
     override fun isAlive(): Boolean {
         return alive
     }
