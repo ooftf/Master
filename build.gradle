@@ -14,7 +14,8 @@ buildscript {
             'arouter'    : "1.2.1",
             'glide'      : "4.8.0",
             'dagger'     : "2.16",
-            'java'       : JavaVersion.VERSION_1_8
+            'java'       : JavaVersion.VERSION_1_8,
+            'rxlifecycle': "2.2.2"
     ]
 
     ext.deps = [
@@ -25,7 +26,7 @@ buildscript {
             'progressDrawable': 'com.github.ooftf:progress-drawable:1.2.0',
             'disklrucache'    : 'com.jakewharton:disklrucache:2.0.2',
             'bugly'           : 'com.tencent.bugly:crashreport_upgrade:latest.release',
-            'dagger2_compiler'  : "com.google.dagger:dagger-compiler:$versions.dagger"
+            'dagger2_compiler': "com.google.dagger:dagger-compiler:$versions.dagger"
     ]
     repositories {
         jcenter()

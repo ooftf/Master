@@ -1,6 +1,6 @@
 package com.ooftf.service.base
 
-import android.app.Activity
+import android.arch.lifecycle.Lifecycle
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -8,12 +8,12 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.view.View
-import android.view.Window
 import android.widget.Toast
 import com.ooftf.service.interfaces.ILifecycleState
 import com.ooftf.service.utils.JLog
 import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle
+import com.trello.rxlifecycle2.LifecycleProvider
+import com.trello.rxlifecycle2.LifecycleTransformer
 import hugo.weaving.DebugLog
 import java.util.*
 
@@ -24,10 +24,14 @@ import java.util.*
 open class BaseActivity : AppCompatActivity(), ILifecycleState {
     val defaultRequestCode = 837
 
-    val provider = AndroidLifecycle.createLifecycleProvider(this)
-    fun bindDestory(){
-        provider.bindToLifecycle<T>()
+    val provider: LifecycleProvider<Lifecycle.Event> by lazy {
+        AndroidLifecycle.createLifecycleProvider(this)
     }
+
+    fun <T> bindDestroy(): LifecycleTransformer<T> {
+        return provider.bindToLifecycle<T>()
+    }
+
     override fun isAlive(): Boolean {
         return alive
     }
@@ -61,7 +65,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
 
     @DebugLog
     override fun onCreate(savedInstanceState: Bundle?) {
-        if(isScreenForcePortrait()){
+        if (isScreenForcePortrait()) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
         JLog.e(this.javaClass.simpleName, "onCreate")
@@ -168,11 +172,9 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         showDialogMessage(message)
     }
 
-    fun showDialogMessage(message: CharSequence, positiveText: CharSequence = "确定", positiveListener: DialogInterface.OnClickListener = object : DialogInterface.OnClickListener {
-        override fun onClick(dialog: DialogInterface?, which: Int) {
-            dialog?.dismiss()
-        }
-    }) {
+    fun showDialogMessage(message: CharSequence,
+                          positiveText: CharSequence = "确定",
+                          positiveListener: DialogInterface.OnClickListener = DialogInterface.OnClickListener { dialog, which -> dialog?.dismiss() }) {
         AlertDialog
                 .Builder(this)
                 .setMessage(message)
@@ -180,16 +182,16 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
                 .show()
     }
 
-    private var mCallback: Callback? = null
+    private var mActivityResultCallback: Callback? = null
     fun startActivityForResult(intent: Intent?, callback: Callback) {
-        mCallback = callback
+        mActivityResultCallback = callback
         super.startActivityForResult(intent, defaultRequestCode)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == defaultRequestCode && mCallback != null) {
-            mCallback?.callback(resultCode, data)
-            mCallback = null
+        if (requestCode == defaultRequestCode && mActivityResultCallback != null) {
+            mActivityResultCallback?.callback(resultCode, data)
+            mActivityResultCallback = null
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
