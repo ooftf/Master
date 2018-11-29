@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.widget.Toast
 import com.ooftf.service.interfaces.ILifecycleState
 import com.ooftf.service.utils.JLog
@@ -96,6 +97,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
     }
 
     override fun onResume() {
+        JLog.e(this.javaClass.simpleName, "activeCount::" + Thread.activeCount())
         touchable = true
         JLog.e(this.javaClass.simpleName, "onResume")
         super.onResume()

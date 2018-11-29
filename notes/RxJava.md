@@ -84,6 +84,7 @@
     结论：
     * doOnNext 作用的是当前Observable,doOnSubscribe作用于整个流程的最开始（最初的Observable）
     * observeOn 作用于observeOn之后的部分
+### 问题在 observeOn subscribeOn 后 doOnNext doOnSubscribe doOnError 是在哪个线程
 ### RxJava 和传统观察者模式有什么不同
     RxJava 是数据流操作 定义的是数据之间的变换关系
     观察者模式，通常是基于事件

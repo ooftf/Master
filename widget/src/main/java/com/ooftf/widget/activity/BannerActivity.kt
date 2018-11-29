@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.hihttp.action.ButtonAction
 import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.service.engine.imageloader.GlideImageLoader
@@ -47,7 +48,6 @@ class BannerActivity : BaseSlidingActivity() {
 
                     })
         }
-
     }
 
     private fun setupBanner() {
