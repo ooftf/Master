@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application>
+        <activity android:name=".activity.ImageLoaderActivity"></activity>
         <activity android:name=".activity.NewInstanceActivity" />
         <activity
             android:name=".activity.KeyBoardActivity"
@@ -14,7 +15,7 @@
         <activity android:name=".activity.VerticalPagerActivity" />
         <activity android:name=".activity.TranslationActivity" />
         <activity android:name=".activity.RegexActivity" />
-        <activity android:name=".activity.DialogActivity"/>
+        <activity android:name=".activity.DialogActivity" />
         <activity android:name=".activity.ThreadPoolActivity" />
         <activity android:name=".activity.HashMapActivity" />
         <activity android:name=".activity.ViewModelActivity" />

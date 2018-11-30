@@ -30,6 +30,7 @@ class DebugFragment : BaseListFragment() {
         adapter.add(ScreenItemBean("/debug/activity/AcrossRecycler", "交叉listView"))
         adapter.add(ScreenItemBean("/debug/activity/ConstraintLayout"))
         adapter.add(ScreenItemBean("/debug/activity/LayoutManager"))
+        adapter.add(ScreenItemBean("/debug/activity/imageLoader"))
         adapter.add(ScreenItemBean(RouterPath.SIGN_ACTIVITY_SIGN_IN))
 
         adapter.notifyDataSetChanged()

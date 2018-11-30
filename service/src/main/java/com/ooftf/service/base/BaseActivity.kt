@@ -30,7 +30,11 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
     }
 
     fun <T> bindDestroy(): LifecycleTransformer<T> {
-        return provider.bindToLifecycle<T>()
+        return provider.bindUntilEvent(Lifecycle.Event.ON_DESTROY)
+    }
+
+    fun <T> bindAuto(): LifecycleTransformer<T> {
+        return provider.bindToLifecycle()
     }
 
     override fun isAlive(): Boolean {
