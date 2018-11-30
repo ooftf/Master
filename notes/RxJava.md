@@ -102,6 +102,7 @@
              }
      }
 * 如果 disposable.dispose 之后 还执行了emitter.onError()就会因为异常没有捕获而导致应用崩溃，所以emitter使用之前需要判断一下emitter.isDisposed
+* doOnError 不能防止异常外抛
 # RxJava资料链接
     https://github.com/ReactiveX/RxJava
     https://github.com/ReactiveX/RxAndroid        切换主线程

@@ -87,6 +87,15 @@ class RxEmitterActivity : BaseBarrageActivity() {
                     }
 
         }
+        error.setOnClickListener {
+            Observable.create<String> {
+                throw Exception("sssss")
+            }
+                    .doOnError {
+                        addBarrage(it.message)
+                    }
+                    .subscribe()
+        }
 
     }
 

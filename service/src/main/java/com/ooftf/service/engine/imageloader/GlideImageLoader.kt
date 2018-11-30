@@ -2,16 +2,11 @@ package com.ooftf.service.engine.imageloader
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.widget.ImageView
-import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.BaseTarget
-import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.target.Target
-import com.bumptech.glide.request.transition.Transition
 import com.ooftf.service.engine.GlideApp
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -29,20 +24,17 @@ class GlideImageLoader : IImageLoader {
     }
 
     override fun display(context: Context, url: String, listener: ImageLoaderListener) {
-        GlideApp
-                .with(context)
-                .asBitmap()
-                .load(url)
-                .into(object : SimpleTarget<Bitmap>() {
-                    override fun onLoadFailed(errorDrawable: Drawable?) {
-                        listener.onError()
-                    }
+        GlideApp.with(context).asBitmap().load(url).listener(object : RequestListener<Bitmap> {
+            override fun onLoadFailed(e: GlideException?, model: Any, target: Target<Bitmap>, isFirstResource: Boolean): Boolean {
+                listener.onError()
+                return true
+            }
 
-                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                        listener.onLoadComplete(resource)
-                    }
-
-                })
+            override fun onResourceReady(resource: Bitmap, model: Any, target: Target<Bitmap>, dataSource: DataSource, isFirstResource: Boolean): Boolean {
+                listener.onLoadComplete(resource)
+                return true
+            }
+        })
     }
 
     override fun display(context: Context, url: String, view: ImageView, config: ImageLoaderConfig) {
