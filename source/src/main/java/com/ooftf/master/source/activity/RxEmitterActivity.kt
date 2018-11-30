@@ -88,13 +88,22 @@ class RxEmitterActivity : BaseBarrageActivity() {
 
         }
         error.setOnClickListener {
-            Observable.create<String> {
+            /*Observable.create<String> {
                 throw Exception("sssss")
             }
                     .doOnError {
                         addBarrage(it.message)
                     }
-                    .subscribe()
+                    .subscribe()*/
+            Observable.just("sss","sssss")
+                    .doOnNext { addBarrage("doOnNext") }
+                    .flatMap {
+                        addBarrage("flatMap")
+                        Observable.just(it)
+                    }
+                    .subscribe {
+                        addBarrage(it)
+                    }
         }
 
     }
