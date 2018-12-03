@@ -2,6 +2,7 @@ package com.ooftf.master.sign.provider;
 
 import android.content.Context;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.service.bean.SignInfo;
 import com.ooftf.service.engine.typer.TyperFactory;
