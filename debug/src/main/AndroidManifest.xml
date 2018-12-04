@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application>
-        <activity android:name=".activity.ImageLoaderActivity"></activity>
+        <activity android:name=".activity.ImageLoaderActivity" />
         <activity android:name=".activity.NewInstanceActivity" />
         <activity
             android:name=".activity.KeyBoardActivity"
@@ -23,6 +23,7 @@
         <activity android:name=".activity.AnnotationActivity" />
         <activity android:name=".activity.ConstraintLayoutActivity" />
         <activity android:name=".activity.LayoutManagerActivity" />
+        <activity android:name=".activity.TypeDebugActivity"></activity>
     </application>
 
 </manifest>
