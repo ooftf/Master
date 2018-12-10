@@ -11,7 +11,7 @@ import java.lang.reflect.Type;
 /**
  * @author 99474
  * @question getGenericInterfaces的到的是什么
- *           ParameterizedType代表的是什么
+ * ParameterizedType代表的是什么
  */
 public class TypeDebugActivity extends BaseActivity {
 
@@ -24,8 +24,15 @@ public class TypeDebugActivity extends BaseActivity {
     }
 
     public static void main(String[] args) {
-        Type[] genericInterfaces = TypeDebugActivity.class.getGenericInterfaces();
+        Test test = (Test<String>) () -> {
+
+        };
+        Type[] genericInterfaces = test.getClass().getGenericInterfaces();
 
 
+    }
+
+    interface Test<T> {
+        void test();
     }
 }

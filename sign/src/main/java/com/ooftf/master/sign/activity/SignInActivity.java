@@ -59,8 +59,8 @@ public class SignInActivity extends BaseActivity implements SignInContract.IView
         register.setOnClickListener(v ->
                 ARouter.getInstance().build(RouterPath.SIGN_ACTIVITY_REGISTER).navigation()
         );
-    }
 
+    }
     @Override
     public String getUsername() {
         return account.getText().toString();

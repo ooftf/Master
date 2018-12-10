@@ -54,6 +54,7 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenLocal()
         jcenter()
         google()
         maven { url 'https://jitpack.io' }
@@ -63,9 +64,14 @@ allprojects {
         }
         maven { url "https://dl.bintray.com/thelasterstar/maven/" }
         maven {
+            url  "https://dl.bintray.com/ooftf/maven"
+        }
+        maven {
             url 'https://maven.google.com/'
         }
+
     }
+
 }
 task clean(type: Delete) {
     delete rootProject.buildDir

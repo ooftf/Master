@@ -1,4 +1,4 @@
-HTTP/1.1 404 Not Found [message:Repo ‘maven’ was not found]
+#### HTTP/1.1 404 Not Found [message:Repo ‘maven’ was not found]
 publish {
     repoName = 'maven' // 默认是maven，如果不是maven需要指定
     userOrg = 'ooftf'      // bintray注册的用户名
@@ -7,7 +7,7 @@ publish {
     publishVersion = '1.0.0'
     desc = 'nothing'
 }
-HTTP/1.1 400 Bad Request [message:Please enter a valid VCS URL for your OSS package.]
+#### HTTP/1.1 400 Bad Request [message:Please enter a valid VCS URL for your OSS package.]
 allprojects {
     tasks.withType(Javadoc) {
         options{
@@ -17,7 +17,7 @@ allprojects {
         }
     }
 }
-报错Javadoc乱码问题
+#### 报错Javadoc乱码问题
 在module gradle中添加
 tasks.withType(Javadoc) {
     options.addStringOption('Xdoclint:none', '-quiet')
@@ -25,5 +25,5 @@ tasks.withType(Javadoc) {
     options.addStringOption('charSet', 'UTF-8')
 }
 
-报错 jvm heap相关
+#### 报错 jvm heap相关
 删除 org.gradle.jvmargs=-Xmx1536m

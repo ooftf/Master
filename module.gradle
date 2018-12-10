@@ -22,7 +22,7 @@ android {
         //生成ARouter文档
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable", DOCKING_MODULE_NAME: project.getName()]
             }
         }
     }

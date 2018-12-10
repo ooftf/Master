@@ -44,6 +44,10 @@ public class ThreadUtil {
         }
     }
 
+    public static ThreadPoolExecutor getDefaultThreadPool() {
+        return threadPool;
+    }
+
     static ThreadPoolExecutor createThreadPool() {
         return new ThreadPoolExecutor(
                 INIT_THREAD_COUNT,

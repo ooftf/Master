@@ -1,14 +1,17 @@
 package com.ooftf.service.base
 
+import android.content.Context
 import android.support.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.Utils
 import com.facebook.stetho.Stetho
 import com.github.moduth.blockcanary.BlockCanary
 import com.liulishuo.filedownloader.FileDownloader
+import com.ooftf.docking.api.Docking
 import com.ooftf.service.BuildConfig
 import com.ooftf.service.engine.ActivityManager
 import com.ooftf.service.engine.typer.TyperFactory
+import com.ooftf.service.utils.ThreadUtil
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.squareup.leakcanary.LeakCanary
@@ -39,7 +42,23 @@ class MyApplication : MultiDexApplication() {
         }
         ARouter.init(this)
         TyperFactory.init(this)
+        Docking.init(this, true, ThreadUtil.getDefaultThreadPool())
 
+    }
+
+    override fun onLowMemory() {
+        Docking.notifyOnLowMemory()
+        super.onLowMemory()
+    }
+
+    override fun onTerminate() {
+        Docking.notifyOnTerminate()
+        super.onTerminate()
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        Docking.notifyAttachBaseContext(base)
+        super.attachBaseContext(base)
     }
 
     private fun setupBlockCanary() {

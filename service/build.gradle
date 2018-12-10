@@ -71,7 +71,7 @@ dependencies {
     api "com.mcxiaoke.packer-ng:helper:$versions.packerNG"
     api 'com.facebook.stetho:stetho:1.5.0'
     api 'com.facebook.stetho:stetho-okhttp3:1.5.0'
-    annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker")
+    kapt ("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker")
     compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker")
     api("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$versions.tinkerpatch")
     api 'com.google.code.gson:gson:2.8.5'
@@ -105,4 +105,5 @@ dependencies {
     api 'com.google.firebase:firebase-auth:16.0.4'
     api "com.trello.rxlifecycle2:rxlifecycle-kotlin:$versions.rxlifecycle"
     api "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
+    compile 'com.ooftf:docking-api:1.0.0'
 }

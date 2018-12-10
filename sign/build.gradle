@@ -8,4 +8,5 @@ dependencies {
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     implementation project(':service')
     kapt deps.dagger2_compiler
+    kapt 'com.ooftf:docking-compiler:1.0.0'
 }
