@@ -4,14 +4,13 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
-import com.ooftf.docking.annotation.AppShip;
 import com.ooftf.docking.api.IApplication;
 
-@AppShip
+@com.ooftf.docking.annotation.Application
 public class SignApp implements IApplication {
     @Override
     public void onCreate(Application application) {
-        Log.e("SignApp","onCreate");
+        Log.e("SignApp", "onCreate");
     }
 
     @Override

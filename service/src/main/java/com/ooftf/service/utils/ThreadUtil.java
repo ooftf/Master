@@ -48,7 +48,7 @@ public class ThreadUtil {
         return threadPool;
     }
 
-    static ThreadPoolExecutor createThreadPool() {
+    private static ThreadPoolExecutor createThreadPool() {
         return new ThreadPoolExecutor(
                 INIT_THREAD_COUNT,
                 MAX_THREAD_COUNT,

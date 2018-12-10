@@ -71,7 +71,7 @@ dependencies {
     api "com.mcxiaoke.packer-ng:helper:$versions.packerNG"
     api 'com.facebook.stetho:stetho:1.5.0'
     api 'com.facebook.stetho:stetho-okhttp3:1.5.0'
-    kapt ("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker")
+    annotationProcessor ("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker")
     compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker")
     api("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$versions.tinkerpatch")
     api 'com.google.code.gson:gson:2.8.5'

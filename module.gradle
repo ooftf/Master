@@ -19,7 +19,6 @@ android {
             applicationId "com.ooftf.${project.getName()}"
             multiDexEnabled true
         }
-        //生成ARouter文档
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable", DOCKING_MODULE_NAME: project.getName()]
@@ -47,3 +46,4 @@ android {
         abortOnError false
     }
 }
+
