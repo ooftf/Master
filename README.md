@@ -1,30 +1,35 @@
 # Master
 自己的开发工具集
-## TODO LIST
-* 吸顶效果代码需要封装
+## Task
+### TODO LIST
 * 如果只存才一种分辨率的图片，在不同分辨率下的渲染表现和内存表现
 * Jetpack实践#############
 * 内部集成RN
 * 内部集成flutter
-* maven 发布流程
-* RxJava深度学习
 * Java内存整合
 * DrawerLayout需要增加功能，实现实际大小的变化
 * aspectj 深入学习
 * LayoutManager
 * 依赖注入
-* 悬浮通知
 * 视频播放器
 * 动态化构建页面 Tangram-Android vlayout
 * MVVM Data Binding
 * Androidx
-* 线程池
-* 曲边控件
 * DialogFragment
 * 贝塞尔曲线 bezier https://github.com/MrAllRight/BezierView
  https://github.com/leeowenowen/beauty-of-math
-* 懒加载Fragment抽离
-## DONE LIST
+* app bundles
+* gradle插件
+* sonar 代码质量检测
+* travis
+* 网关概念
+* nio
+* xmind
+* node.js概念
+* 吸顶效果代码需要封装
+### DELAY LIST
+* Ktor
+### DONE LIST
 * 为什么会有两个启动图标: 是因为APP独立调试模式，包名起的为debug和debug模式重名，导致debug模式下编译将debug包名下的文件也编译进去了
 * Rxjava compose :已经抽离网络请求；好处：将逻辑部分和界面部分分离，将不用界面处理分离做成更小的可以，使用更灵活
 * 通知还没搞定: 通知已经能过够显示出来，但是悬浮通知还不知怎么做
@@ -41,3 +46,8 @@
 * SpialeLayout有点问题,重写布局
 * 懒加载Fragment抽离
 * 悬浮通知
+* 曲边控件:已经用贝塞尔曲线实现
+* 线程池
+* 注解处理器：docking
+* RxJava深度学习
+* maven 发布流程：Bintray
