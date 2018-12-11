@@ -23,6 +23,9 @@
 * gradle插件
 * sonar 代码质量检测
 * travis
+* 网关概念
+* nio
+* xmind
 
 ## DONE LIST
 * 为什么会有两个启动图标: 是因为APP独立调试模式，包名起的为debug和debug模式重名，导致debug模式下编译将debug包名下的文件也编译进去了
