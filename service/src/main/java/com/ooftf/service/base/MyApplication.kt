@@ -12,6 +12,7 @@ import com.ooftf.service.BuildConfig
 import com.ooftf.service.engine.ActivityManager
 import com.ooftf.service.engine.typer.TyperFactory
 import com.ooftf.service.utils.ThreadUtil
+import com.ooftf.service.utils.TimeRuler
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.squareup.leakcanary.LeakCanary
@@ -25,6 +26,7 @@ import com.tinkerpatch.sdk.loader.TinkerPatchApplicationLike
 
 class MyApplication : MultiDexApplication() {
     override fun onCreate() {
+        TimeRuler.start("MyApplication","onCreate start")
         super.onCreate()
         CrashReport.initCrashReport(applicationContext, "26a5e838af", false)
         Utils.init(this)
@@ -40,9 +42,13 @@ class MyApplication : MultiDexApplication() {
             ARouter.openLog()    // 打印日志
             ARouter.openDebug()  // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
+        TimeRuler.marker("MyApplication","ARouter start")
         ARouter.init(this)
+        TimeRuler.marker("MyApplication","TyperFactory start")
         TyperFactory.init(this)
+        TimeRuler.marker("MyApplication","Docking start")
         Docking.init(this, true, ThreadUtil.getDefaultThreadPool())
+        TimeRuler.end("MyApplication","onCreate end")
 
     }
 
