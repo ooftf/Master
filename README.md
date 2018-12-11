@@ -1,6 +1,7 @@
 # Master
 自己的开发工具集
-## TODO LIST
+## Task
+### TODO LIST
 * 吸顶效果代码需要封装
 * 如果只存才一种分辨率的图片，在不同分辨率下的渲染表现和内存表现
 * Jetpack实践#############
@@ -27,9 +28,9 @@
 * xmind
 * node.js概念
 
-## DELAY LIST
+### DELAY LIST
 * Ktor
-## DONE LIST
+### DONE LIST
 * 为什么会有两个启动图标: 是因为APP独立调试模式，包名起的为debug和debug模式重名，导致debug模式下编译将debug包名下的文件也编译进去了
 * Rxjava compose :已经抽离网络请求；好处：将逻辑部分和界面部分分离，将不用界面处理分离做成更小的可以，使用更灵活
 * 通知还没搞定: 通知已经能过够显示出来，但是悬浮通知还不知怎么做
