@@ -15,10 +15,10 @@ import java.io.OutputStream;
  * Created by master on 2016/2/1.
  */
 public class IoUtils {
+
     /**
-     * {@value}
+     * 32 KB
      */
-    // 32 KB
     public static final int DEFAULT_BUFFER_SIZE = 32 * 1024;
 
     /**
