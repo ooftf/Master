@@ -20,11 +20,6 @@ public class IoUtils {
      */
     // 32 KB
     public static final int DEFAULT_BUFFER_SIZE = 32 * 1024;
-    /**
-     * {@value}
-     */
-    // 500 Kb
-    public static final int DEFAULT_IMAGE_TOTAL_SIZE = 500 * 1024;
 
     /**
      * 将字节数据存储到制定文件夹中
