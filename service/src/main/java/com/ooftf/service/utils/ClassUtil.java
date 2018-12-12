@@ -27,6 +27,8 @@ import java.util.regex.Pattern;
 import dalvik.system.DexFile;
 
 /**
+ * 拷贝自ARouter
+ *
  * @author ooftf
  * @email 994749769@qq.com
  * @date 2018/11/17 0017
@@ -99,6 +101,7 @@ public class ClassUtil {
         Log.d(Consts.TAG, "Filter " + classNames.size() + " classes by packageName <" + packageName + ">");
         return classNames;
     }
+
     /**
      * get all the dex path
      *
@@ -113,10 +116,10 @@ public class ClassUtil {
 
         List<String> sourcePaths = new ArrayList<>();
         sourcePaths.add(applicationInfo.sourceDir); //add the default apk path
-        JLog.e("applicationInfo.sourceDir",applicationInfo.sourceDir);
+        JLog.e("applicationInfo.sourceDir", applicationInfo.sourceDir);
         //the prefix of extracted file, ie: test.classes
         String extractedFilePrefix = sourceApk.getName() + EXTRACTED_NAME_EXT;
-        JLog.e("extractedFilePrefix",extractedFilePrefix);
+        JLog.e("extractedFilePrefix", extractedFilePrefix);
 //        如果VM已经支持了MultiDex，就不要去Secondary Folder加载 Classesx.zip了，那里已经么有了
 //        通过是否存在sp中的multidex.version是不准确的，因为从低版本升级上来的用户，是包含这个sp配置的
         if (!isVMMultidexCapable()) {
@@ -182,6 +185,7 @@ public class ClassUtil {
         Log.i(Consts.TAG, "VM with name " + vmName + (isMultidexCapable ? " has multidex support" : " does not have multidex support"));
         return isMultidexCapable;
     }
+
     /**
      * 判断系统是否为YunOS系统
      */

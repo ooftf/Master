@@ -41,7 +41,7 @@ public class UpdatedAppVersion {
             public void onSuccess(int statusCode, Header[] headers, byte[] binaryData) {
                 builder.setContentText("下载完成");
                 try {
-                    IOUtil.saveBinary(application, AppPath, fileName, binaryData);
+                    IoUtils.saveBinary(application, AppPath, fileName, binaryData);
                     //WriteToSdcard.writeToSdcard(context, AppPath, fileName, binaryData);
                 } catch (Exception e) {
                     e.printStackTrace();

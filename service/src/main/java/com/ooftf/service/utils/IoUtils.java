@@ -4,14 +4,28 @@ import android.content.Context;
 import android.os.Environment;
 import android.widget.Toast;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * Created by master on 2016/2/1.
  */
-public class IOUtil {
+public class IoUtils {
+    /**
+     * {@value}
+     */
+    // 32 KB
+    public static final int DEFAULT_BUFFER_SIZE = 32 * 1024;
+    /**
+     * {@value}
+     */
+    // 500 Kb
+    public static final int DEFAULT_IMAGE_TOTAL_SIZE = 500 * 1024;
+
     /**
      * 将字节数据存储到制定文件夹中
      *
@@ -44,12 +58,34 @@ public class IOUtil {
                 Toast.makeText(context, "没有sdcard", Toast.LENGTH_LONG).show();
             }
         } catch (Exception e) {
-            // TODO: handle exception
+            e.printStackTrace();
         } finally {
-            if (fileOutputStream != null) {
-                fileOutputStream.close();
-            }
+            closeSilently(fileOutputStream);
         }
 
+    }
+
+    public static void closeSilently(Closeable closeable) {
+        if (closeable != null) {
+            try {
+                closeable.close();
+            } catch (Exception ignored) {
+            }
+        }
+    }
+
+    public static boolean copyStream(InputStream is, OutputStream os) throws IOException {
+        return copyStream(is, os, DEFAULT_BUFFER_SIZE);
+    }
+
+    public static boolean copyStream(InputStream is, OutputStream os, int bufferSize)
+            throws IOException {
+        final byte[] bytes = new byte[bufferSize];
+        int count;
+        while ((count = is.read(bytes, 0, bufferSize)) != -1) {
+            os.write(bytes, 0, count);
+        }
+        os.flush();
+        return true;
     }
 }
