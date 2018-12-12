@@ -61,11 +61,10 @@ public class TimeRuler {
             long lastTime = 0;
             for (int i = 0; i < markers.size(); i++) {
                 Marker m = markers.get(i);
-                if (i == 0) {
-                    ss.append(m.message);
-                } else {
-                    ss.append(" === ").append((m.time - lastTime) / 1000f).append(" ===》 ").append(m.message);
+                if (i != 0) {
+                    ss.append(" === ").append((m.time - lastTime) / 1000f).append(" ===》 ");
                 }
+                ss.append("[").append(m.message).append("]");
                 lastTime = m.time;
             }
             if (markers.size() > 1) {
