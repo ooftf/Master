@@ -12,7 +12,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * Created by master on 2016/2/1.
+ * @author ooftf
+ * @date 2016/2/1
  */
 public class IoUtils {
 
