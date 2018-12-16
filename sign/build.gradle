@@ -1,9 +1,7 @@
 apply from: '../module.gradle'
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation deps.constraintLayout
-    testImplementation 'junit:junit:4.12'
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     implementation project(':service')

@@ -1,0 +1,6 @@
+apply from: '../module.gradle'
+
+dependencies {
+    implementation project(':service')
+    implementation "com.facebook.react:react-native:+"
+}
