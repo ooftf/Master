@@ -52,4 +52,10 @@ public class ExampleUnitTest {
     public void re() {
         Regex regex = new Regex("^[^\\u4e00-\\u9fa5]+$");
     }
+
+    @Test
+    public void sss() {
+
+        Testa test = new Testa();
+    }
 }

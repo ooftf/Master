@@ -1,4 +1,4 @@
-package com.ooftf.hihttp.sample;
+package com.master.kit;
 
 /**
  * 这是一个测试类，用于测试类的各个部分调用顺序
