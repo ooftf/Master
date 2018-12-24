@@ -28,4 +28,5 @@
 
 
 # Node 模块概念 (个人理解类似第三方库概念)
-## npm(Node Package Manager)  用于管理Node的模块（个人理解类似于Android中的gradle）
+## npm(Node Package Manager)  用于管理Node的模块（个人理解类似于Android中的gradle）npm是安装node本身就带的不需要额外安装
+* yarn是facebook开发和npm功能相同的工具，可以加速 node 模块的下载，需要额外安装。
