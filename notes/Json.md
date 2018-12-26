@@ -1,4 +1,5 @@
 ## Problems
+---
 * 如果json中有某个对象不想解析，但是想找个对象去接收，不要使用org.json.JSONObject，
 如果使用org.json.JSONObject;在解析的过程中会被忽略掉，不会得到对应的结果。
 如果你使用的是fastjson可以使用com.alibaba.fastjson.JSONObject 可以得到想要的结果但是不推荐（FastJson已确认可以）
