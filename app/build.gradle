@@ -31,6 +31,11 @@ android {
         sourceCompatibility versions.java
         targetCompatibility versions.java
     }
+    packagingOptions {
+        // More than one file was found with OS independent path 'lib/armeabi-v7a/libgnustl_shared.so'
+        pickFirst 'lib/armeabi-v7a/libgnustl_shared.so'
+        pickFirst 'lib/x86/libgnustl_shared.so'
+    }
     signingConfigs {
         config {
             storeFile file('master.jks')
@@ -96,8 +101,6 @@ dependencies {
     kapt deps.dagger2_compiler
     //Firebase
     api 'com.google.firebase:firebase-core:16.0.4'
-
-
 }
 apply plugin: 'com.jakewharton.hugo'
 apply from: 'tinkerpatch.gradle'
