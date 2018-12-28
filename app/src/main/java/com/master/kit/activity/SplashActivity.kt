@@ -1,15 +1,14 @@
 package com.master.kit.activity
 
+import android.Manifest
 import android.os.Bundle
 import android.os.CountDownTimer
-import com.alibaba.android.arouter.facade.Postcard
-import com.alibaba.android.arouter.facade.callback.NavCallback
 import com.alibaba.android.arouter.launcher.ARouter
 import com.master.kit.R
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.router.FinishCallback
-import com.ooftf.service.utils.JLog
+import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : BaseActivity() {
@@ -21,6 +20,7 @@ class SplashActivity : BaseActivity() {
         }
         timer.start()
         typerTextView.animateText("welcome to ooftf's world")
+        RxPermissions(this).requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE).subscribe()
     }
 
     private var timer: CountDownTimer = MyTimer(this)
@@ -40,7 +40,7 @@ class SplashActivity : BaseActivity() {
             if (activity.isShowing()) {
                 activity.startNextActivity()
             } else {
-                activity.postOnResume({ activity.startNextActivity() })
+                activity.postOnResume { activity.startNextActivity() }
             }
         }
 

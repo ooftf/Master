@@ -36,4 +36,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="测试onError 能否防止异常外抛" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试doAfterTerminate是否存在内存泄漏问题" />
 </LinearLayout>

@@ -1,10 +1,13 @@
 package com.ooftf.master.source.activity
 
+import android.arch.lifecycle.Lifecycle
 import android.os.Bundle
+import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.source.R
 import com.ooftf.service.base.BaseBarrageActivity
 import com.ooftf.service.utils.JLog
+import com.trello.rxlifecycle2.android.lifecycle.kotlin.bindUntilEvent
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.Observer
@@ -95,7 +98,7 @@ class RxEmitterActivity : BaseBarrageActivity() {
                         addBarrage(it.message)
                     }
                     .subscribe()*/
-            Observable.just("sss","sssss")
+            Observable.just("sss", "sssss")
                     .doOnNext { addBarrage("doOnNext") }
                     .flatMap {
                         addBarrage("flatMap")
@@ -105,7 +108,40 @@ class RxEmitterActivity : BaseBarrageActivity() {
                         addBarrage(it)
                     }
         }
+        button5.setOnClickListener {
+            Observable
+                    .create<String> { it ->
+                        Thread {
+                            Thread.sleep(20000)
+                            it.onNext("10000")
+                            it.onNext("20000")
+                            it.onComplete()
+                        }.start()
+                    }
+                    .bindUntilEvent(this, Lifecycle.Event.ON_DESTROY)
+                    .doOnSubscribe {  }
+                    .doOnEach(object :Observer<String>{
+                        override fun onNext(t: String) {
+                            JLog.e("onNext", t)
+                        }
 
+                        override fun onSubscribe(d: Disposable) {
+                            JLog.e("onSubscribe")
+                        }
+
+                        override fun onError(e: Throwable) {
+                            JLog.e("onError")
+                        }
+
+                        override fun onComplete() {
+                            JLog.e("onComplete")
+                        }
+                    })
+                    .doAfterTerminate {
+                        JLog.e("内存泄漏了啊")
+                        }
+                    .subscribe()
+        }
 
     }
 

@@ -35,6 +35,7 @@ android {
         // More than one file was found with OS independent path 'lib/armeabi-v7a/libgnustl_shared.so'
         pickFirst 'lib/armeabi-v7a/libgnustl_shared.so'
         pickFirst 'lib/x86/libgnustl_shared.so'
+
     }
     signingConfigs {
         config {
