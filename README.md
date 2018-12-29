@@ -22,10 +22,9 @@
 * gradle插件
 * sonar 代码质量检测
 * travis
-* 网关概念
+* 网关（Gateway）概念：又称网间连接器，网络协议转换器，适配器
 * nio
 * xmind
-* node.js概念
 ### DELAY LIST
 * Ktor
 * 吸顶效果代码需要封装
@@ -51,3 +50,4 @@
 * 注解处理器：docking
 * RxJava深度学习
 * maven 发布流程：Bintray
+* node.js概念

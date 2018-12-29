@@ -1,6 +1,8 @@
 package com.ooftf.master.source.activity
 
 import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.OnLifecycleEvent
 import android.os.Bundle
 import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -13,6 +15,8 @@ import io.reactivex.ObservableEmitter
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Action
+import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_rx_emitter.*
 
@@ -109,37 +113,18 @@ class RxEmitterActivity : BaseBarrageActivity() {
                     }
         }
         button5.setOnClickListener {
-            Observable
-                    .create<String> { it ->
-                        Thread {
-                            Thread.sleep(20000)
-                            it.onNext("10000")
-                            it.onNext("20000")
-                            it.onComplete()
-                        }.start()
+            getStaticDelayObservable()
+                    //.bindUntilEvent(this, Lifecycle.Event.ON_DESTROY)
+                    .doOnSubscribe {
+                        JLog.e("Lifecycle  subscribe")
+                        lifecycle.addObserver(object : LifecycleObserver {
+                            @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+                            fun destroy() {
+                                it.dispose()
+                                JLog.e("Lifecycle  destroy")
+                            }
+                        })
                     }
-                    .bindUntilEvent(this, Lifecycle.Event.ON_DESTROY)
-                    .doOnSubscribe {  }
-                    .doOnEach(object :Observer<String>{
-                        override fun onNext(t: String) {
-                            JLog.e("onNext", t)
-                        }
-
-                        override fun onSubscribe(d: Disposable) {
-                            JLog.e("onSubscribe")
-                        }
-
-                        override fun onError(e: Throwable) {
-                            JLog.e("onError")
-                        }
-
-                        override fun onComplete() {
-                            JLog.e("onComplete")
-                        }
-                    })
-                    .doAfterTerminate {
-                        JLog.e("内存泄漏了啊")
-                        }
                     .subscribe()
         }
 
@@ -152,5 +137,17 @@ class RxEmitterActivity : BaseBarrageActivity() {
                 emitter.onNext(int + 1)
             }
 
+    companion object {
+        fun getStaticDelayObservable() =
+                Observable
+                        .create<String> { it ->
+                            Thread {
+                                Thread.sleep(50000)
+                                it.onNext("10000")
+                                it.onNext("20000")
+                                it.onComplete()
+                            }.start()
+                        }
 
+    }
 }
