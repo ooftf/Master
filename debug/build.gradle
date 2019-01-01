@@ -1,16 +1,9 @@
 apply from: '../module.gradle'
 
 dependencies {
-
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation deps.constraintLayout
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    implementation project(':service')
     implementation('com.alibaba.android:ultraviewpager:1.0.6.1@aar') {
         transitive = true
     }
-    kapt "com.alibaba:arouter-compiler:$versions.arouter"
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     implementation deps.progressDrawable
     kapt deps.dagger2_compiler

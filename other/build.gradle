@@ -1,10 +1,5 @@
 apply from: '../module.gradle'
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation deps.constraintLayout
-    testImplementation 'junit:junit:4.12'
-    kapt "com.alibaba:arouter-compiler:$versions.arouter"
-    implementation project(':service')
     api 'org.devio.takephoto:takephoto_library:4.1.0'
     api 'me.iwf.photopicker:PhotoPicker:0.9.12@aar'
     api 'com.zhihu.android:matisse:0.5.1'
