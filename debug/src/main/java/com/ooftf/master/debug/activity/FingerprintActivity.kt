@@ -33,7 +33,7 @@ class FingerprintActivity : BaseActivity() {
             override fun onAuthenticationSucceeded(result: FingerprintManagerCompat.AuthenticationResult?) {
                 super.onAuthenticationSucceeded(result)
                 Toast.makeText(this@FingerprintActivity, "onAuthenticationSucceeded", Toast.LENGTH_SHORT).show()
-                onSuceeded()
+                onSucceeded()
             }
 
             override fun onAuthenticationFailed() {
@@ -58,7 +58,7 @@ class FingerprintActivity : BaseActivity() {
         }
     }
 
-    private fun onSuceeded() {
+    private fun onSucceeded() {
         finish()
     }
 
@@ -84,6 +84,7 @@ class FingerprintActivity : BaseActivity() {
         try {
             context.startActivity(intent)
         } catch (e: Exception) {
+            e.printStackTrace()
         }
 
     }

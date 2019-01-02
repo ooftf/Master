@@ -10,7 +10,6 @@
 * DrawerLayout需要增加功能，实现实际大小的变化
 * aspectj 深入学习
 * LayoutManager
-* 依赖注入
 * 视频播放器
 * 动态化构建页面 Tangram-Android vlayout
 * MVVM Data Binding
@@ -25,6 +24,7 @@
 * 网关（Gateway）概念：又称网间连接器，网络协议转换器，适配器
 * nio
 * xmind
+* 解决Rn so 包没有导入的问题
 ### DELAY LIST
 * Ktor
 * 吸顶效果代码需要封装
@@ -51,3 +51,4 @@
 * RxJava深度学习
 * maven 发布流程：Bintray
 * node.js概念
+* 依赖注入

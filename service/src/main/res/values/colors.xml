@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryDark">#1E88E5</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorPrimaryLight">#BBDEFB</color>
     <color name="colorPrimaryContrast">#FFFFFF</color>
     <!--  <color name="colorPrimaryDark">#66666666</color>-->
     <color name="colorAccent">#2196F3</color>
@@ -15,11 +16,34 @@
     <color name="font_gray">#757575</color>
     <color name="gray">#808080</color>
     <color name="translucent_background">#88000000</color>
-    <color name="divider_gray">#7E7E7E</color>
-    <color name="blue_light">#2196F3</color>
+    <color name="divider_gray">#BDBDBD</color>
+    <color name="blue_light">#03A9F4</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="red">#FF0000</color>
 
     <color name="line_gray">#EAEAEA</color>
+
+    <!-- 标准颜色 切勿修改 来自https://www.materialpalette.com-->
+    <color name="std_red">#F44336</color>
+    <color name="std_pink">#E91E63</color>
+    <color name="std_purple">#9C27B0</color>
+    <color name="std_deep_purple">#673AB7</color>
+    <color name="std_indigo">#3F51B5</color>
+    <color name="std_blue">#2196F3</color>
+    <color name="std_light_blue">#03A9F4</color>
+    <color name="std_cyan">#00BCD3</color>
+    <color name="std_teal">#009688</color>
+    <color name="std_green">#4CAF50</color>
+    <color name="std_light_green">#8BC34A</color>
+    <color name="std_lime">#CDDC39</color>
+    <color name="std_yellow">#FFEB3B</color>
+    <color name="std_amber">#FFC107</color>
+    <color name="std_orange">#FF9800</color>
+    <color name="std_deep_orange">#FF5722</color>
+    <color name="std_brown">#795548</color>
+    <color name="std_grey">#9E9E9E</color>
+    <color name="std_blue_grey">#607D8B</color>
+
+
+
 </resources>
