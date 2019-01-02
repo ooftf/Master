@@ -4,7 +4,7 @@
     package="com.ooftf.applet">
 
     <application
-        android:name="com.ooftf.service.base.MyApplication"
+        android:name="com.ooftf.service.base.BaseApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

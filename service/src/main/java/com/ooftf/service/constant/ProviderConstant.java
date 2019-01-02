@@ -1,6 +1,6 @@
 package com.ooftf.service.constant;
 
-import com.ooftf.service.base.MyApplication;
+import com.ooftf.service.base.BaseApplication;
 
 /**
  * @author ooftf
@@ -8,5 +8,5 @@ import com.ooftf.service.base.MyApplication;
  * @desc
  **/
 public class ProviderConstant {
-    public static String FILE_PROVIDER = MyApplication.instance.getPackageName() + ".FileProvider";
+    public static String FILE_PROVIDER = BaseApplication.instance.getPackageName() + ".FileProvider";
 }

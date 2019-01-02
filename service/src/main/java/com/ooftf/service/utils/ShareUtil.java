@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 
 import com.ooftf.hishare.DefaultShareCallback;
 import com.ooftf.hishare.HiShare;
-import com.ooftf.service.base.MyApplication;
+import com.ooftf.service.base.BaseApplication;
 
 public class ShareUtil {
     static {
-        HiShare.init(MyApplication.instance);
+        HiShare.init(BaseApplication.instance);
         HiShare.initWbShare("755399387");
         HiShare.initTencentShare("755399387");
         HiShare.initWXShare("755399387");

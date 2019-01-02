@@ -5,6 +5,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'packer'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'io.fabric'
+//apply from: 'matrix.gradle'
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
@@ -76,23 +77,16 @@ dependencies {
     implementation deps.constraintLayout
     testImplementation 'junit:junit:4.12'
     if (!MoudleDebug) {
-        api project(':widget')
-        api project(':applet')
-        api project(':debug')
-        api project(':source')
-        api project(':other')
-        api project(':sign')
-        api project(':rn')
+        implementation project(':widget')
+        implementation project(':applet')
+        implementation project(':debug')
+        implementation project(':source')
+        implementation project(':other')
+        implementation project(':sign')
+        implementation project(':rn')
     }
     api project(':service')
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
-    annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker") {
-        changing = true
-    }
-    compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker") { changing = true }
-    implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$versions.tinkerpatch") {
-        changing = true
-    }
     implementation 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
@@ -103,6 +97,7 @@ dependencies {
     //Firebase
     api 'com.google.firebase:firebase-core:16.0.4'
 }
+
 apply plugin: 'com.jakewharton.hugo'
 apply from: 'tinkerpatch.gradle'
 //Firebase

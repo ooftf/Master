@@ -72,3 +72,12 @@ tinkerPatch {
         keepDexApply = false
     }
 }
+dependencies {
+    annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker") {
+        changing = true
+    }
+    compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker") { changing = true }
+    implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$versions.tinkerpatch") {
+        changing = true
+    }
+}

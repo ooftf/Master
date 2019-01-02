@@ -24,7 +24,7 @@ import com.tinkerpatch.sdk.loader.TinkerPatchApplicationLike
  * Created by master on 2016/12/26.
  */
 
-class MyApplication : MultiDexApplication() {
+open class BaseApplication : MultiDexApplication() {
     override fun onCreate() {
         TimeRuler.start("MyApplication","onCreate start")
         super.onCreate()
@@ -68,7 +68,6 @@ class MyApplication : MultiDexApplication() {
     }
 
     private fun setupBlockCanary() {
-
         BlockCanary.install(this, AppBlockCanaryContext()).start()
     }
 
@@ -104,6 +103,6 @@ class MyApplication : MultiDexApplication() {
     }
 
     companion object {
-        lateinit var instance: MyApplication
+        lateinit var instance: BaseApplication
     }
 }

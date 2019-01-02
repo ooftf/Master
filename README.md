@@ -15,8 +15,6 @@
 * MVVM Data Binding
 * Androidx
 * DialogFragment
-* 贝塞尔曲线 bezier https://github.com/MrAllRight/BezierView
- https://github.com/leeowenowen/beauty-of-math
 * app bundles
 * gradle插件
 * sonar 代码质量检测
@@ -25,6 +23,7 @@
 * nio
 * xmind
 * 解决Rn so 包没有导入的问题
+* 为progress-drawable添加文档
 ### DELAY LIST
 * Ktor
 * 吸顶效果代码需要封装
@@ -52,3 +51,4 @@
 * maven 发布流程：Bintray
 * node.js概念
 * 依赖注入
+* 贝塞尔曲线 bezier https://github.com/MrAllRight/BezierView  https://github.com/leeowenowen/beauty-of-math
