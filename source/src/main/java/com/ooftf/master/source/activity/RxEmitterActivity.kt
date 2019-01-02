@@ -1,11 +1,10 @@
 package com.ooftf.master.source.activity
 
 import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.OnLifecycleEvent
 import android.os.Bundle
-import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.ooftf.hihttp.action.weak.LifeAction
+import com.ooftf.hihttp.action.weak.LifeConsumer
 import com.ooftf.master.source.R
 import com.ooftf.service.base.BaseBarrageActivity
 import com.ooftf.service.utils.JLog
@@ -114,17 +113,12 @@ class RxEmitterActivity : BaseBarrageActivity() {
         }
         button5.setOnClickListener {
             getStaticDelayObservable()
-                    //.bindUntilEvent(this, Lifecycle.Event.ON_DESTROY)
-                    .doOnSubscribe {
-                        JLog.e("Lifecycle  subscribe")
-                        lifecycle.addObserver(object : LifecycleObserver {
-                            @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-                            fun destroy() {
-                                it.dispose()
-                                JLog.e("Lifecycle  destroy")
-                            }
-                        })
-                    }
+                    .bindUntilEvent(this, Lifecycle.Event.ON_DESTROY)
+                    .doOnSubscribe(LifeConsumer<Disposable>(Consumer<Disposable> { JLog.e("Lifecycle  doOnSubscribe") }, this))
+                    .doOnTerminate(LifeAction(Action {
+                        addBarrage("Lifecycle  doOnTerminate:如果打印则发生了内存泄漏")
+                        JLog.e("Lifecycle  doOnTerminate:如果打印则发生了内存泄漏")
+                    }, this))
                     .subscribe()
         }
 
@@ -142,7 +136,7 @@ class RxEmitterActivity : BaseBarrageActivity() {
                 Observable
                         .create<String> { it ->
                             Thread {
-                                Thread.sleep(50000)
+                                Thread.sleep(30000)
                                 it.onNext("10000")
                                 it.onNext("20000")
                                 it.onComplete()
