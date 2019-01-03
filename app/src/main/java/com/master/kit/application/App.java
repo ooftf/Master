@@ -1,6 +1,10 @@
 package com.master.kit.application;
 
 import com.ooftf.service.base.BaseApplication;
+import com.tencent.matrix.Matrix;
+import com.tencent.matrix.iocanary.IOCanaryPlugin;
+import com.tencent.matrix.iocanary.config.IOConfig;
+import com.tencent.mrs.plugin.IDynamicConfig;
 
 /**
  * @author ooftf
@@ -20,17 +24,17 @@ public class App extends BaseApplication {
         //initMatrix();
     }
 
-    /*private void initMatrix() {
+    private void initMatrix() {
         // build matrix
         Matrix.Builder builder = new Matrix.Builder(this);
-        // add general pluginListener
+       /* // add general pluginListener
         builder.patchListener(new MasterPluginListener(this));
         // dynamic config
-        IDynamicConfig dynamicConfig = new MasterDynamicConfig();
+        IDynamicConfig dynamicConfig = new MasterDynamicConfig();*/
 
         // init plugin
         IOCanaryPlugin ioCanaryPlugin = new IOCanaryPlugin(new IOConfig.Builder()
-                .dynamicConfig(dynamicConfig)
+               // .dynamicConfig(dynamicConfig)
                 .build());
         //add to matrix
         builder.plugin(ioCanaryPlugin);
@@ -40,7 +44,7 @@ public class App extends BaseApplication {
 
         // start plugin
         ioCanaryPlugin.start();
-    }*/
+    }
 
     public static App getInstance() {
         return instance;

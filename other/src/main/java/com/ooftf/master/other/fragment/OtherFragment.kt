@@ -10,6 +10,9 @@ import com.ooftf.service.widget.toolbar.TailoredToolbar
  */
 @Route(path = "/other/fragment/other")
 class OtherFragment : BaseListFragment() {
+    override fun getScrollViewTag(): String {
+        return "other"
+    }
     override fun initData() {
         adapter.add(ScreenItemBean("/main/design"))
         adapter.add(ScreenItemBean("/main/viewPager"))

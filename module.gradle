@@ -1,6 +1,5 @@
 if (MoudleDebug) {
     apply plugin: 'com.android.application'
-    apply from: '../app/tinkerpatch.gradle'
 } else {
     apply plugin: 'com.android.library'
 }

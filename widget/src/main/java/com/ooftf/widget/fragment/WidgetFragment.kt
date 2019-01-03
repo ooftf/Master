@@ -30,6 +30,8 @@ class WidgetFragment : BaseLazyFragment() {
     }
 
     private fun setupFloatButton() {
+        // {@link com.ooftf.widget.fragment.TabLayoutFragment}
+        recycler_view.tag = "widget"
         recycler_view.addOnScrollListener(object : android.support.v7.widget.RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView, newState: kotlin.Int) {
                 when (newState) {

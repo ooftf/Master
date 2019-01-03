@@ -8,8 +8,8 @@ buildscript {
             'targetSdk'  : 26,
             'support'    : "28.0.0",
             'butterknife': "9.0.0-rc1",
-            'tinker'     : "1.9.1",
-            'tinkerpatch': "1.2.1",
+            'tinker'     : "1.9.9",
+            'tinkerpatch': "1.2.9",
             'packerNG'   : "2.0.1",
             'arouter'    : "1.2.1",
             'glide'      : "4.8.0",
@@ -40,7 +40,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-        classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
+        // classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
         classpath "com.mcxiaoke.packer-ng:plugin:$versions.packerNG"
         classpath "com.alibaba:arouter-register:1.0.2"
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'

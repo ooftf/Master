@@ -3,6 +3,7 @@ package com.ooftf.widget.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.view.View
 import com.alibaba.android.arouter.launcher.ARouter
 
 /**
@@ -29,6 +30,10 @@ class UltraPagerAdapter(supportFragmentManager: FragmentManager) : FragmentPager
             4 -> "widget"
             else -> "widget"
         }
+    }
+
+    fun getScrollView(parent: View, index: Int): View {
+        return parent.findViewWithTag<View>(getPageTitle(index))
     }
 
     override fun getCount(): Int {

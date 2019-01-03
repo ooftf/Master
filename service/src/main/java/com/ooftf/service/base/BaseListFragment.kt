@@ -36,7 +36,7 @@ abstract class BaseListFragment : BaseLazyFragment() {
     }
 
     private fun setupFloatButton() {
-        recycler_view.addOnScrollListener(ShyAnimateScrollListener(image,handler))
+        recycler_view.addOnScrollListener(ShyAnimateScrollListener(image, handler))
     }
 
     private fun setupRecyclerView() {
@@ -55,12 +55,15 @@ abstract class BaseListFragment : BaseLazyFragment() {
             },2000)
         }
         adapter.addFooter(pullToLoadingLayout)*/
+        recycler_view.setTag(getScrollViewTag())
         recycler_view.addOnScrollListener(object : CategoryRecyclerAdapter.StickyOnScrollListener(stickyView) {
             override fun setCategory(view: View, category: String) {
                 (view as TextView).text = category
             }
         })
     }
+    // {@link com.ooftf.widget.fragment.TabLayoutFragment}
+    abstract fun getScrollViewTag(): String
 
     override fun onDestroyView() {
         handler.removeCallbacksAndMessages(null)
@@ -71,7 +74,7 @@ abstract class BaseListFragment : BaseLazyFragment() {
     /**
      * 一个RecyclerView的滚动监听，负责滚动时View的收缩动画
      */
-    class ShyAnimateScrollListener(var view: View,var handler:Handler) : RecyclerView.OnScrollListener() {
+    class ShyAnimateScrollListener(var view: View, var handler: Handler) : RecyclerView.OnScrollListener() {
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             when (newState) {
                 RecyclerView.SCROLL_STATE_DRAGGING -> {//滚动的时候
