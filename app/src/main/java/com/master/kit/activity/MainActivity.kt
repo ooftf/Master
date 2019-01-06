@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 @Route(path = RouterPath.MAIN_ACTIVITY_MAIN, extras = RouterExtra.Extras.NEED_SIGN)
 class MainActivity : BaseActivity() {
     private lateinit var switchManager: FragmentSwitchManager
+    private lateinit var adapter: BottomBarAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -49,10 +50,15 @@ class MainActivity : BaseActivity() {
                 else -> switchManager.switchFragment("/applet/fragment/app")
             }
         }
-        bottomBar.setAdapter(BottomBarAdapter(this))
+        adapter = BottomBarAdapter(this)
+        adapter.add(BottomBarItemBean("widget", R.drawable.ic_widget_selected_24dp, R.drawable.ic_widget_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarItemBean("source", R.drawable.ic_logic_selected_24dp, R.drawable.ic_logic_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarItemBean("app", R.drawable.ic_app_selected_24dp, R.drawable.ic_app_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarItemBean("debug", R.drawable.ic_debug_selected_24dp, R.drawable.ic_debug_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarItemBean("other", R.drawable.ic_other_selected_24dp, R.drawable.ic_other_24dp, R.color.blue_light, R.color.black))
+        bottomBar.setAdapter(adapter)
         bottomBar.setSelectedIndex(0)
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         super.onCreateOptionsMenu(menu)
@@ -78,4 +84,6 @@ class MainActivity : BaseActivity() {
             toast("再按一次退出应用")
         }
     }
+
+    class BottomBarItemBean(var text: String, var selectedImageId: Int, var unSelectedImageId: Int, var selectedColorId: Int, var unSelectedColorId: Int)
 }

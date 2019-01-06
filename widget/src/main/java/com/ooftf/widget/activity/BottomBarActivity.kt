@@ -13,6 +13,12 @@ class BottomBarActivity : BaseSlidingActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_bar)
+        val adapter = BottomBarAdapter(context = this)
+        adapter.add(BottomBarAdapter.BottomBarItemBean("widget", R.drawable.ic_widget_selected_24dp, R.drawable.ic_widget_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarAdapter.BottomBarItemBean("source", R.drawable.ic_logic_selected_24dp, R.drawable.ic_logic_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarAdapter.BottomBarItemBean("app", R.drawable.ic_app_selected_24dp, R.drawable.ic_app_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarAdapter.BottomBarItemBean("debug", R.drawable.ic_debug_selected_24dp, R.drawable.ic_debug_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarAdapter.BottomBarItemBean("other", R.drawable.ic_other_selected_24dp, R.drawable.ic_other_24dp, R.color.blue_light, R.color.black))
         navigation.setAdapter(BottomBarAdapter(context = this))
     }
 }
