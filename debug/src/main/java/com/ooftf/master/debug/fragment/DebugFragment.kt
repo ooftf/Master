@@ -12,6 +12,10 @@ import com.ooftf.service.widget.toolbar.TailoredToolbar
  */
 @Route(path = "/debug/fragment/debug")
 class DebugFragment : BaseListFragment() {
+    override fun getScrollViewTag(): String {
+        return "debug"
+    }
+
     override fun initData() {
         adapter.add(ScreenItemBean("/debug/activity/newInstance", "生命周期newInstance调试界面"))
         adapter.add(ScreenItemBean("/debug/activity/dialog", "Dialog调试界面"))

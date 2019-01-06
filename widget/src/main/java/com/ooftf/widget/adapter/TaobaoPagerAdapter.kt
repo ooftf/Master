@@ -3,6 +3,7 @@ package com.ooftf.widget.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.view.View
 import com.alibaba.android.arouter.launcher.ARouter
 
 class TaobaoPagerAdapter(supportFragmentManager: FragmentManager) : FragmentPagerAdapter(supportFragmentManager) {

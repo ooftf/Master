@@ -6,11 +6,16 @@ import com.ooftf.service.base.BaseListFragment
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.widget.toolbar.TailoredToolbar
+
 /**
  * Created by master on 2017/9/26 0026.
  */
 @Route(path = "/applet/fragment/app")
 class AppFragment : BaseListFragment() {
+    override fun getScrollViewTag(): String {
+        return "app"
+    }
+
     override fun initData() {
         adapter.add(ScreenItemBean("/applet/activity/breakfast", "早餐计算器", "计算预定早餐需要的时间", R.drawable.vector_breakfast_icon))
         adapter.add(ScreenItemBean("/applet/activity/mobApi", "MobApi"))

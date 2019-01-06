@@ -5,7 +5,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'packer'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'io.fabric'
-//apply from: 'matrix.gradle'
+apply from: 'matrix.gradle'
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
@@ -99,6 +99,6 @@ dependencies {
 }
 
 apply plugin: 'com.jakewharton.hugo'
-apply from: 'tinkerpatch.gradle'
+//apply from: 'tinkerpatch.gradle'
 //Firebase
 apply plugin: 'com.google.gms.google-services'

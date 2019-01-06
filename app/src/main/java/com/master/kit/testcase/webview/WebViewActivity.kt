@@ -2,6 +2,7 @@ package com.master.kit.testcase.webview
 
 import android.os.Bundle
 import android.os.Handler
+import android.support.annotation.Keep
 import android.support.v7.app.AppCompatActivity
 import android.webkit.CookieManager
 import android.webkit.JavascriptInterface
@@ -44,6 +45,7 @@ class WebViewActivity : AppCompatActivity() {
         pullToRefreshRoot.setOnRefreshListener { Handler().postDelayed({ pullToRefreshRoot.onRefreshComplete() }, 2000) }
     }
 
+    @Keep
     internal inner class JSHandler {
         @JavascriptInterface
         fun startInvestment() {
@@ -53,7 +55,6 @@ class WebViewActivity : AppCompatActivity() {
         @JavascriptInterface
         fun inviteFriends() {
             //邀请好友
-
         }
     }
 }
