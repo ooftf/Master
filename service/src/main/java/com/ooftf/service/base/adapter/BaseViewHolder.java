@@ -12,7 +12,6 @@ import android.view.ViewGroup;
  * @date 2018/10/18 0018
  */
 public class BaseViewHolder<V extends View> extends RecyclerView.ViewHolder {
-
     public BaseViewHolder(@LayoutRes int layoutId, ViewGroup parent) {
         super(LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false));
     }

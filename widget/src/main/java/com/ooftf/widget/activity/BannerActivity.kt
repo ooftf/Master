@@ -4,14 +4,13 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.hihttp.action.ButtonAction
 import com.ooftf.service.base.BaseSlidingActivity
-import com.ooftf.service.engine.imageloader.GlideImageLoader
 import com.ooftf.service.engine.imageloader.IImageLoader
 import com.ooftf.service.net.ServiceHolder
 import com.ooftf.service.net.etd.BaseResponse
 import com.ooftf.service.net.etd.bean.BannerBean
+import com.ooftf.service.utils.DensityUtil
 import com.ooftf.widget.R
 import com.ooftf.widget.dagger.DaggerBannerComponent
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
@@ -51,6 +50,10 @@ class BannerActivity : BaseSlidingActivity() {
     }
 
     private fun setupBanner() {
+        var height = DensityUtil.getScreenWidthPixels(this) * 400f / 700f
+        banner.post {
+            banner.layoutParams.height = height.toInt()
+        }
         banner.setImageLoader(object : ImageLoaderInterface<ImageView> {
             override fun createImageView(context: Context): ImageView? {
                 return null

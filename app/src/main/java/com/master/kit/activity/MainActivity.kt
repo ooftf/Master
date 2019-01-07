@@ -9,16 +9,16 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.master.kit.R
 import com.master.kit.adapter.BottomBarAdapter
 import com.mcxiaoke.packer.helper.PackerNg
+import com.ooftf.bottombar.java.FragmentSwitchManager
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.constant.RouterExtra
 import com.ooftf.service.constant.RouterPath
-import com.ooftf.service.engine.FragmentSwitchManager
 import hugo.weaving.DebugLog
 import kotlinx.android.synthetic.main.activity_main.*
 
 @Route(path = RouterPath.MAIN_ACTIVITY_MAIN, extras = RouterExtra.Extras.NEED_SIGN)
 class MainActivity : BaseActivity() {
-    private lateinit var switchManager: FragmentSwitchManager
+    private lateinit var switchManager: FragmentSwitchManager<String>
     private lateinit var adapter: BottomBarAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,34 +28,38 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupBottomBar() {
+
+        adapter = BottomBarAdapter(this)
+        adapter.add(BottomBarItemBean(TAB_WIDGET, R.drawable.ic_widget_selected_24dp, R.drawable.ic_widget_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarItemBean(TAB_SOURCE, R.drawable.ic_logic_selected_24dp, R.drawable.ic_logic_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarItemBean(TAB_APP, R.drawable.ic_app_selected_24dp, R.drawable.ic_app_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarItemBean(TAB_DEBUG, R.drawable.ic_debug_selected_24dp, R.drawable.ic_debug_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarItemBean(TAB_OTHER, R.drawable.ic_other_selected_24dp, R.drawable.ic_other_24dp, R.color.blue_light, R.color.black))
         switchManager = FragmentSwitchManager(
                 supportFragmentManager,
                 R.id.frame_fragment,
-                "/widget/fragment/widget",
-                "/source/fragment/source",
-                "/debug/fragment/debug",
-                "/other/fragment/other",
-                "/applet/fragment/app",
-                onPreSwitch = null
-        ) {
-            ARouter.getInstance().build(it).navigation() as Fragment
+                adapter.data.map { it.text }.toSet())
+        {
+            when (it) {
+                TAB_WIDGET -> ARouter.getInstance().build("/widget/fragment/widget").navigation() as Fragment
+                TAB_SOURCE -> ARouter.getInstance().build("/source/fragment/source").navigation() as Fragment
+                TAB_APP -> ARouter.getInstance().build("/applet/fragment/app").navigation() as Fragment
+                TAB_DEBUG -> ARouter.getInstance().build("/debug/fragment/debug").navigation() as Fragment
+                TAB_OTHER -> ARouter.getInstance().build("/other/fragment/other").navigation() as Fragment
+                else -> ARouter.getInstance().build("/applet/fragment/app").navigation() as Fragment
+            }
+
         }
         bottomBar.setOnItemSelectChangedListener { oldIndex, newIndex ->
             when (newIndex) {
-                0 -> switchManager.switchFragment("/widget/fragment/widget")
-                1 -> switchManager.switchFragment("/source/fragment/source")
-                2 -> switchManager.switchFragment("/applet/fragment/app")
-                3 -> switchManager.switchFragment("/debug/fragment/debug")
-                4 -> switchManager.switchFragment("/other/fragment/other")
-                else -> switchManager.switchFragment("/applet/fragment/app")
+                0 -> switchManager.switchFragment(TAB_WIDGET)
+                1 -> switchManager.switchFragment(TAB_SOURCE)
+                2 -> switchManager.switchFragment(TAB_APP)
+                3 -> switchManager.switchFragment(TAB_DEBUG)
+                4 -> switchManager.switchFragment(TAB_OTHER)
+                else -> switchManager.switchFragment(TAB_APP)
             }
         }
-        adapter = BottomBarAdapter(this)
-        adapter.add(BottomBarItemBean("widget", R.drawable.ic_widget_selected_24dp, R.drawable.ic_widget_24dp, R.color.blue_light, R.color.black))
-        adapter.add(BottomBarItemBean("source", R.drawable.ic_logic_selected_24dp, R.drawable.ic_logic_24dp, R.color.blue_light, R.color.black))
-        adapter.add(BottomBarItemBean("app", R.drawable.ic_app_selected_24dp, R.drawable.ic_app_24dp, R.color.blue_light, R.color.black))
-        adapter.add(BottomBarItemBean("debug", R.drawable.ic_debug_selected_24dp, R.drawable.ic_debug_24dp, R.color.blue_light, R.color.black))
-        adapter.add(BottomBarItemBean("other", R.drawable.ic_other_selected_24dp, R.drawable.ic_other_24dp, R.color.blue_light, R.color.black))
         bottomBar.setAdapter(adapter)
         bottomBar.setSelectedIndex(0)
     }
@@ -86,4 +90,11 @@ class MainActivity : BaseActivity() {
     }
 
     class BottomBarItemBean(var text: String, var selectedImageId: Int, var unSelectedImageId: Int, var selectedColorId: Int, var unSelectedColorId: Int)
+    companion object MainTab {
+        const val TAB_WIDGET = "widget"
+        const val TAB_SOURCE = "source"
+        const val TAB_APP = "app"
+        const val TAB_DEBUG = "debug"
+        const val TAB_OTHER = "other"
+    }
 }

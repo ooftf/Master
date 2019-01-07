@@ -1,12 +1,16 @@
 package com.ooftf.widget.fragment
 
+import android.content.Context
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
+import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseLazyFragment
 import com.ooftf.service.bean.ScreenItemBean
+import com.ooftf.service.utils.DensityUtil
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.WidgetAdapter
+import com.youth.banner.loader.ImageLoaderInterface
 import kotlinx.android.synthetic.main.fragment_widget.*
 
 /**
@@ -28,6 +32,7 @@ class WidgetFragment : BaseLazyFragment() {
         initData()
         setupFloatButton()
     }
+
 
     private fun setupFloatButton() {
         // {@link com.ooftf.widget.fragment.TabLayoutFragment}
