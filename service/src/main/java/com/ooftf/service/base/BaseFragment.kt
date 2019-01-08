@@ -165,4 +165,5 @@ abstract class BaseFragment : Fragment() {
     fun isShowing(): Boolean = userVisibleHint
 
     fun isTouchable(): Boolean = touchable
+
 }
