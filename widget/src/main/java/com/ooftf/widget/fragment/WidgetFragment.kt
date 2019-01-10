@@ -7,9 +7,9 @@ import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseLazyFragment
 import com.ooftf.service.bean.ScreenItemBean
-import com.ooftf.service.utils.DensityUtil
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.WidgetAdapter
+import com.youth.banner.BannerConfig
 import com.youth.banner.loader.ImageLoaderInterface
 import kotlinx.android.synthetic.main.fragment_widget.*
 
@@ -31,6 +31,39 @@ class WidgetFragment : BaseLazyFragment() {
         setupRecyclerView()
         initData()
         setupFloatButton()
+        initToolbarBanner()
+    }
+
+    private fun initToolbarBanner() {
+        toolbarBanner.setBannerStyle(BannerConfig.NOT_INDICATOR)
+        toolbarBanner.setImageLoader(object : ImageLoaderInterface<ImageView> {
+            override fun createImageView(context: Context): ImageView? {
+                return null
+            }
+
+            override fun displayImage(context: Context, path: Any, imageView: ImageView) {
+                imageView.setImageResource(path as Int)
+            }
+
+        })
+        var bannerList = object : ArrayList<Int>() {
+            init {
+                add(R.drawable.tiaotiao1)
+                add(R.drawable.tiaotiao2)
+                add(R.drawable.tiaotiao3)
+                add(R.drawable.tiaotiao4)
+                add(R.drawable.tiaotiao5)
+                add(R.drawable.tiaotiao6)
+                add(R.drawable.tiaotiao7)
+                add(R.drawable.tiaotiao8)
+                add(R.drawable.tiaotiao9)
+                add(R.drawable.tiaotiao10)
+                add(R.drawable.tiaotiao11)
+                add(R.drawable.tiaotiao12)
+                add(R.drawable.tiaotiao13)
+            }
+        }
+        toolbarBanner.isAutoPlay(true).update(bannerList)
     }
 
 

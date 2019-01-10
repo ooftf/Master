@@ -11,6 +11,7 @@
         <item name="titleTextColor">@color/colorPrimaryContrast</item>
         <item name="android:textColor">@color/font_black</item>
         <item name="android:textSize">@dimen/font_default</item>
+        <item name="actionBarSize">@dimen/layout_appbar_height</item>
     </style>
 
     <style name="AppTheme.Fullscreen">

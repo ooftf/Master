@@ -18,11 +18,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ooftf.service.R;
-import com.ooftf.service.utils.JLog;
 import com.ooftf.support.ViewOffsetHelper;
 
 /**
- * Created by master on 2017/10/10 0010.
+ * @author master
+ * @date 2017/10/10 0010
  */
 public class TailoredToolbar extends Toolbar {
 
@@ -67,14 +67,9 @@ public class TailoredToolbar extends Toolbar {
 
     private void init() {
         if (getContext() instanceof Activity) {
-            setNavigationOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ((Activity) getContext()).finish();
-                }
-            });
+            setNavigationOnClickListener(v -> ((Activity) getContext()).finish());
         }
-        if(getBackground() == null){
+        if (getBackground() == null) {
             setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
         }
     }
@@ -87,6 +82,7 @@ public class TailoredToolbar extends Toolbar {
         Context context;
         TextView textView;
         ImageView image;
+
         public MenuItem(Context context) {
             super(context);
             this.context = context;
