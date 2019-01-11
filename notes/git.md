@@ -12,11 +12,16 @@
     git push -u origin master
 
 ### 已存在文件和git建立连接（Existing folder）
-1.
+
+
+    第一步
+
     cd existing_folder
     git init
     git remote add origin git@git.jd.com:lihang36/demo.git
-2.
+
+    第二步
+
     git add .
     git commit -m "Initial commit"
     git push -u origin master
