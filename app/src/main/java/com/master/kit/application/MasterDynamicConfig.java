@@ -1,15 +1,14 @@
 package com.master.kit.application;
 
 
+import com.tencent.mrs.plugin.IDynamicConfig;
+
 /**
  * @author ooftf
  * @email 994749769@qq.com
  * @date 2019/1/3 0003
  */
-public class MasterDynamicConfig{
-
-}
-/*public class MasterDynamicConfig implements IDynamicConfig {
+public class MasterDynamicConfig implements IDynamicConfig {
     public MasterDynamicConfig() {
     }
 
@@ -54,4 +53,4 @@ public class MasterDynamicConfig{
         return defFloat;
     }
 
-}*/
+}
