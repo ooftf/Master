@@ -8,7 +8,6 @@ import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseLazyFragment
 import com.ooftf.service.bean.ScreenItemBean
-import com.ooftf.service.widget.toolbar.TailoredToolbar
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.WidgetAdapter
 import com.youth.banner.BannerConfig
@@ -112,7 +111,8 @@ class WidgetFragment : BaseLazyFragment() {
 
     private fun setupToolbar() {
         //toolbar.inflateMenu(R.menu.activity_widget_toolbar_turn)
-        toolbar.menu.add("shuaxin").setIcon(R.drawable.vector_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        toolbar.menu.add("外显").setIcon(R.drawable.vector_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        toolbar.menu.add("内藏").setIcon(R.drawable.vector_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         toolbar.title = "Widget"
     }
 

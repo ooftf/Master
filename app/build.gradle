@@ -19,7 +19,7 @@ android {
         //生成ARouter文档
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]//, AROUTER_GENERATE_DOC: "enable"
             }
         }
         ndk {
@@ -77,15 +77,15 @@ dependencies {
     implementation deps.constraintLayout
     testImplementation 'junit:junit:4.12'
     if (!MoudleDebug) {
-        implementation project(':widget')
-        implementation project(':applet')
-        implementation project(':debug')
-        implementation project(':source')
-        implementation project(':other')
-        implementation project(':sign')
-        implementation project(':rn')
+        implementation 'com.ooftf:master-widget:1.0.0-SNAPSHOT'
+        implementation 'com.ooftf:master-applet:1.0.0-SNAPSHOT'
+        implementation 'com.ooftf:master-debug:1.0.0-SNAPSHOT'
+        implementation 'com.ooftf:master-source:1.0.0-SNAPSHOT'
+        implementation 'com.ooftf:master-other:1.0.0-SNAPSHOT'
+        implementation 'com.ooftf:master-sign:1.0.0-SNAPSHOT'
+        implementation 'com.ooftf:master-rn:1.0.0-SNAPSHOT'
     }
-    api project(':service')
+    implementation 'com.ooftf:master-service:1.0.0-SNAPSHOT'
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     implementation 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
     kapt "com.alibaba:arouter-compiler:$versions.arouter"

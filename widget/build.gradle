@@ -7,7 +7,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
-    api project(':service')
     kapt deps.dagger2_compiler
     implementation 'com.github.ooftf:CalendarView:1.0.5'
     implementation 'com.github.ooftf:SpialeLayout:1.1.1'

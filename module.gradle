@@ -2,6 +2,7 @@ if (MoudleDebug) {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
+    apply plugin: 'com.novoda.bintray-release'
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -20,7 +21,7 @@ android {
         }
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable", DOCKING_MODULE_NAME: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName(), DOCKING_MODULE_NAME: project.getName()] //AROUTER_GENERATE_DOC: "enable",
             }
         }
         ndk {
@@ -49,6 +50,25 @@ android {
         abortOnError false
     }
 }
+sourceCompatibility = "7"
+targetCompatibility = "7"
+publish {
+    repoName = 'maven'
+    userOrg = 'ooftf'      // bintray注册的用户名
+    groupId = 'com.ooftf'
+    artifactId = "master-${project.getName()}"// bintray创建的package
+    publishVersion = '1.0.0-SNAPSHOT'
+    desc = 'nothing'
+    bintrayUser = 'ooftf'
+    bintrayKey = bintray_key
+    dryRun = false
+}
+tasks.withType(Javadoc) {
+    enabled = false
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
@@ -56,7 +76,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation deps.constraintLayout
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
-    api project(':service')
+    implementation 'com.ooftf:master-service:1.0.0-SNAPSHOT'
 
 }
 

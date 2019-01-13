@@ -12,3 +12,11 @@ configurations.all {
         force "com.android.support:support-annotations:${supportVersion}"
     }
 }
+implementation('...'){
+      exclude group: 'com.google.android', module: 'support-v4'
+}
+exclude 在pom文件中不会起作用，只是在本项目中起作用，如果打包成maven依赖，exclude不起作用
+
+transitive = false
+
+publishToMavenLocal即不用debugImplementation也不用releaseImplementation
