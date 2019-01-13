@@ -2,11 +2,11 @@ package com.ooftf.master.sign.provider;
 
 import android.content.Context;
 
-import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.service.bean.SignInfo;
-import com.ooftf.service.engine.typer.TyperFactory;
+import com.ooftf.service.engine.router.ServiceMap;
 import com.ooftf.service.engine.router.service.SignService;
+import com.ooftf.service.engine.typer.TyperFactory;
 
 import io.reactivex.Observer;
 import io.reactivex.subjects.PublishSubject;
@@ -16,7 +16,7 @@ import io.reactivex.subjects.PublishSubject;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-@Route(path = "/sign/service/sign", name = "测试服务")
+@Route(path = ServiceMap.SIGN, name = "测试服务")
 public class SignServiceImpl implements SignService {
     private static final String KEY_ACCOUNT_INFO = "AccountInfo";
 

@@ -4,14 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.Keep;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -25,7 +28,7 @@ import com.ooftf.support.ViewOffsetHelper;
  * @date 2017/10/10 0010
  */
 public class TailoredToolbar extends Toolbar {
-
+    boolean isTitleCenter = false;
 
     TextView titleText;
 
@@ -48,11 +51,16 @@ public class TailoredToolbar extends Toolbar {
 
     @Override
     public void setTitle(CharSequence title) {
-        if (titleText == null) {
-            setTitleView();
+        if (isTitleCenter) {
+            if (titleText == null) {
+                setTitleView();
+            }
+            titleText.setText(title);
+            super.setTitle("");
+        } else {
+            super.setTitle(title);
         }
-        titleText.setText(title);
-        super.setTitle("");
+
     }
 
     private void setTitleView() {
@@ -61,6 +69,7 @@ public class TailoredToolbar extends Toolbar {
         titleText.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
         LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         layoutParams.gravity = Gravity.CENTER;
+        titleText.setGravity(Gravity.CENTER);
         titleText.setLayoutParams(layoutParams);
         addView(titleText);
     }
@@ -69,8 +78,18 @@ public class TailoredToolbar extends Toolbar {
         if (getContext() instanceof Activity) {
             setNavigationOnClickListener(v -> ((Activity) getContext()).finish());
         }
-        if (getBackground() == null) {
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        /**
+         * CollapsingToolbarLayout 模式下 是不支持toolbar剧中的，位置会偏离,也不要设置默认背景色
+         */
+        if (getBackground() == null && !(getParent() instanceof CollapsingToolbarLayout)) {
             setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+            isTitleCenter = true;
+            setTitle(getTitle());
         }
     }
 

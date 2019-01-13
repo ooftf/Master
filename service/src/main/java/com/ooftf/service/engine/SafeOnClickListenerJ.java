@@ -1,8 +1,8 @@
-package com.ooftf.service.java;
+package com.ooftf.service.engine;
 
 import android.view.View;
 
-public abstract class SafeOnClickListener implements View.OnClickListener {
+public abstract class SafeOnClickListenerJ implements View.OnClickListener {
 
     long last = 0L;
 
@@ -15,6 +15,11 @@ public abstract class SafeOnClickListener implements View.OnClickListener {
         }
     }
 
+    /**
+     * 代替 onClick
+     *
+     * @param view
+     */
     public abstract void safeOnClick(View view);
 
     public long safeMillis() {

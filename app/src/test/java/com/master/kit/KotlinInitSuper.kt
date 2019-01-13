@@ -13,6 +13,6 @@ class KotlinInitSuper constructor(i: Int, s: String, a: A) {
     }
 
     init {
-        println("KotlinInitSuper init")
+        println("KotlinInitSuper onCreate")
     }
 }

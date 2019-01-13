@@ -27,7 +27,6 @@ class SwipeRecyclerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_swipe_recycler)
-        setSupportActionBar(tailoredToolbar)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         DaggerSwipeRecyclerComponent.builder().swipeModule(SwipeModule(this)).build().inject(this)
         recyclerView.adapter = adapter

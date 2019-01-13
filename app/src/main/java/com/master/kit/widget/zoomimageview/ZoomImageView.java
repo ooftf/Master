@@ -16,7 +16,7 @@ import android.widget.ImageView;
 public class ZoomImageView extends ImageView {
 
     /*
-     * private void init() { setOnTouchListener(new OnTouchListener() {
+     * private void onCreate() { setOnTouchListener(new OnTouchListener() {
      *
      * @Override public boolean onTouch(View v, MotionEvent event) { // TODO
      * Auto-generated method stub return false; } }); }

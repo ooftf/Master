@@ -1,15 +1,22 @@
 package com.ooftf.service.base
 
 import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.OnLifecycleEvent
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
+import com.gyf.barlibrary.ImmersionBar
+import com.gyf.barlibrary.OSUtils
+import com.ooftf.service.R
 import com.ooftf.service.interfaces.ILifecycleState
 import com.ooftf.service.utils.JLog
 import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle
@@ -50,6 +57,24 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
     }
 
 
+    init {
+        lifecycle.addObserver(object : LifecycleObserver {
+            @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+            fun create() {
+                JLog.e(this@BaseActivity.javaClass.simpleName, "LifecycleObserver onCreate")
+                ImmersionBar.with(this@BaseActivity).init()
+                var view = findViewById<View>(getToolbarId())
+                if (view != null) {
+                    ImmersionBar.setTitleBar(this@BaseActivity, view)
+                }
+            }
+        })
+    }
+
+    private fun getToolbarId(): Int {
+        return R.id.toolbar
+    }
+
     private val onResumeList: MutableList<() -> Unit> by lazy { ArrayList<() -> Unit>() }
     private val onDestroyList: MutableList<() -> Unit> by lazy { ArrayList<() -> Unit>() }
     private var showing = false
@@ -61,12 +86,6 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         startActivity(Intent(this, cla))
     }
 
-    override fun setSupportActionBar(toolbar: Toolbar?) {
-        super.setSupportActionBar(toolbar)
-        toolbar?.setNavigationOnClickListener {
-            finish()
-        }
-    }
 
     @DebugLog
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,6 +97,21 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         alive = true
     }
 
+    override fun setContentView(view: View?) {
+        super.setContentView(view)
+        JLog.e(this.javaClass.simpleName, "setContentView view")
+    }
+
+    override fun setContentView(layoutResID: Int) {
+        super.setContentView(layoutResID)
+        JLog.e(this.javaClass.simpleName, "setContentView layoutResID")
+    }
+
+    override fun setContentView(view: View?, params: ViewGroup.LayoutParams?) {
+        super.setContentView(view, params)
+        JLog.e(this.javaClass.simpleName, "setContentView view LayoutParams")
+    }
+
     /**
      * 是否强制竖屏
      */
@@ -86,6 +120,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         JLog.e(this.javaClass.simpleName, "onPostCreate")
+
     }
 
     override fun onStart() {
@@ -105,7 +140,15 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         touchable = true
         JLog.e(this.javaClass.simpleName, "onResume")
         super.onResume()
+        if (OSUtils.isEMUI3_x()) {
+            ImmersionBar.with(this).init();
+        }
         doOnResume()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
+        ImmersionBar.with(this).init();
     }
 
     override fun onPause() {
@@ -125,6 +168,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         doOnDestroy()
         JLog.e(this.javaClass.simpleName, "onDestroy")
         super.onDestroy()
+        ImmersionBar.with(this).destroy()
     }
 
     private fun doOnDestroy() {

@@ -33,8 +33,6 @@ class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapte
         return ViewHolder(inflate.inflate(R.layout.item_bottom_bar, parent, false))
     }
 
-    override fun getItemCount(): Int = 5
-
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var icon: ImageView = itemView.findViewById(R.id.icon)
         var title: TextView = itemView.findViewById(R.id.title)

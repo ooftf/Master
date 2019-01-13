@@ -1,9 +1,17 @@
 package com.ooftf.service.base
 
+import android.content.res.Configuration
 import android.os.Bundle
+import android.support.annotation.CallSuper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.gyf.barlibrary.ImmersionBar
+import com.gyf.barlibrary.SimpleImmersionOwner
+import com.gyf.barlibrary.SimpleImmersionProxy
+import com.ooftf.service.R
+import com.ooftf.service.engine.LazyFragmentProxy
+
 
 /**
  *
@@ -11,34 +19,77 @@ import android.view.ViewGroup
  * @email 994749769@qq.com
  * @date 2018/11/8 0008
  */
-abstract class BaseLazyFragment : BaseFragment() {
-    private var isLoaded: Boolean = false
-    private var contentView: View? = null
+abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragmentOwner, SimpleImmersionOwner {
+    private val mSimpleImmersionProxy = SimpleImmersionProxy(this)
+    private val lazyFragmentProxy = LazyFragmentProxy<BaseLazyFragment>(this)
+
     final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        if (contentView == null) {
-            contentView = inflater.inflate(getContentLayoutId(), container, false)
-            isLoaded = false
-        }
-        return contentView
+        return lazyFragmentProxy.onCreateView(inflater, container, savedInstanceState)
     }
 
+    @CallSuper
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadJudgment()
-    }
-
-    private fun loadJudgment() {
-        if (view != null && userVisibleHint && !isLoaded) {
-            isLoaded = true
-            onLazyLoad()
+        lazyFragmentProxy.onViewCreated(view, savedInstanceState)
+        val toolbar = view.findViewById<View>(getToolbarId())
+        if (toolbar != null) {
+            ImmersionBar.setTitleBar(activity, toolbar)
         }
     }
-    abstract fun onLazyLoad()
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
-        loadJudgment()
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        mSimpleImmersionProxy.onActivityCreated(savedInstanceState)
     }
 
-    abstract fun getContentLayoutId(): Int
+    override fun onDestroy() {
+        super.onDestroy()
+        mSimpleImmersionProxy.onDestroy()
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        mSimpleImmersionProxy.onHiddenChanged(hidden)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        mSimpleImmersionProxy.onConfigurationChanged(newConfig)
+    }
+
+    /**
+     * 这个时候view已经创建
+     */
+    abstract override fun onLoad()
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        lazyFragmentProxy.setUserVisibleHint(isVisibleToUser)
+        mSimpleImmersionProxy.isUserVisibleHint = isVisibleToUser
+    }
+
+    abstract override fun getLayoutId(): Int
+
+    override fun lazyEnabled(): Boolean {
+        return true
+    }
+
+    /**
+     * 是否可以实现沉浸式，当为true的时候才可以执行initImmersionBar方法
+     * Immersion bar enabled boolean.
+     *
+     * @return the boolean
+     */
+    override fun immersionBarEnabled(): Boolean {
+        return true
+    }
+
+    override fun initImmersionBar() {
+        ImmersionBar.with(this).keyboardEnable(true).init()
+    }
+
+    open fun getToolbarId(): Int {
+        return R.id.toolbar
+    }
 }

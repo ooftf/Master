@@ -9,6 +9,7 @@
     tools:context="com.ooftf.widget.activity.OperationEditTextActivity">
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_appbar_height"
         app:navigationIcon="@drawable/vector_arrow_left"
@@ -19,6 +20,7 @@
         android:layout_height="@dimen/line_height"
         android:layout_marginTop="10dp"
         android:background="@color/divider_gray" />
+
     <com.ooftf.operation.OperationEditText
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_item_height"
@@ -32,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/line_height"
         android:background="@color/divider_gray" />
+
     <com.ooftf.operation.OperationEditTextLayout
 
         android:layout_width="match_parent"

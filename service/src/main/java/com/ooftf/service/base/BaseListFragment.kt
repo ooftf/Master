@@ -19,11 +19,11 @@ import kotlinx.android.synthetic.main.layout_sticky_header.*
 abstract class BaseListFragment : BaseLazyFragment() {
     lateinit var adapter: MainRecyclerAdapter
     val handler = Handler()
-    override fun getContentLayoutId(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_home_base
     }
 
-    override fun onLazyLoad() {
+    override fun onLoad() {
         setupRecyclerView()
         initData()
         setupFloatButton()
@@ -32,7 +32,9 @@ abstract class BaseListFragment : BaseLazyFragment() {
     }
 
     protected open fun initToolbar(toolbar: TailoredToolbar) {
-
+        toolbar.addMenuItem(TailoredToolbar.MenuItem(activity).layoutRight().setText("MenuItem").setOnClickListenerChain {
+            toast("MenuItem")
+        })
     }
 
     private fun setupFloatButton() {

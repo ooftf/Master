@@ -32,14 +32,14 @@ public class App extends BaseApplication {
         // dynamic config
         IDynamicConfig dynamicConfig = new MasterDynamicConfig();
 
-        // init plugin
+        // onCreate plugin
         IOCanaryPlugin ioCanaryPlugin = new IOCanaryPlugin(new IOConfig.Builder()
                 .dynamicConfig(dynamicConfig)
                 .build());
         //add to matrix
         builder.plugin(ioCanaryPlugin);
 
-        //init matrix
+        //onCreate matrix
         Matrix.init(builder.build());
 
         // start plugin

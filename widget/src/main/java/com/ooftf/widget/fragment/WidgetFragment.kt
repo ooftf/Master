@@ -3,10 +3,12 @@ package com.ooftf.widget.fragment
 import android.content.Context
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
+import android.view.MenuItem
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseLazyFragment
 import com.ooftf.service.bean.ScreenItemBean
+import com.ooftf.service.widget.toolbar.TailoredToolbar
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.WidgetAdapter
 import com.youth.banner.BannerConfig
@@ -22,16 +24,23 @@ import kotlinx.android.synthetic.main.fragment_widget.*
 class WidgetFragment : BaseLazyFragment() {
     lateinit var adapter: WidgetAdapter
     val handler = Handler()
-    override fun getContentLayoutId(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_widget
     }
 
-    override fun onLazyLoad() {
+    override fun onLoad() {
         setupToolbar()
         setupRecyclerView()
         initData()
         setupFloatButton()
         initToolbarBanner()
+    }
+
+    /**
+     * 返回toolbar的id， 可以在透明状态栏状态下，调整toolbar的高度
+     */
+    override fun getToolbarId(): Int {
+        return R.id.toolbar
     }
 
     private fun initToolbarBanner() {
@@ -102,7 +111,8 @@ class WidgetFragment : BaseLazyFragment() {
     }
 
     private fun setupToolbar() {
-        toolbar.inflateMenu(R.menu.activity_widget_toolbar_turn)
+        //toolbar.inflateMenu(R.menu.activity_widget_toolbar_turn)
+        toolbar.menu.add("shuaxin").setIcon(R.drawable.vector_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
         toolbar.title = "Widget"
     }
 

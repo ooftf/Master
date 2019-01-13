@@ -26,6 +26,8 @@ class AppFragment : BaseListFragment() {
     }
 
     override fun initToolbar(toolbar: TailoredToolbar) {
+        super.initToolbar(toolbar)
         toolbar.title = "App"
     }
+
 }

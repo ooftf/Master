@@ -21,8 +21,7 @@ public class ToolbarDemoActivity extends BaseBarrageActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolbar_demo);
         tailoredToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(tailoredToolbar);
-        setTitle("标题");
+        tailoredToolbar.setTitle("标题");
         tailoredToolbar.addMenuItem(new TailoredToolbar.MenuItem(this).layoutRight().setImage(R.drawable.vector_refresh).setOnClickListenerChain(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

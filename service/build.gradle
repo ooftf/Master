@@ -106,4 +106,5 @@ dependencies {
     api "com.trello.rxlifecycle2:rxlifecycle-kotlin:$versions.rxlifecycle"
     api "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
     api 'com.ooftf:docking-api:1.0.0'
+    api 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
 }

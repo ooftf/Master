@@ -2,8 +2,6 @@ package com.master.kit.activity
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.Menu
-import android.view.MenuItem
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.master.kit.R
@@ -22,6 +20,7 @@ class MainActivity : BaseActivity() {
     private lateinit var adapter: BottomBarAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ARouter.getInstance().inject(this)
         setContentView(R.layout.activity_main)
         title = PackerNg.getChannel(this)
         setupBottomBar()
@@ -30,11 +29,11 @@ class MainActivity : BaseActivity() {
     private fun setupBottomBar() {
 
         adapter = BottomBarAdapter(this)
-        adapter.add(BottomBarItemBean(TAB_WIDGET, R.drawable.ic_widget_selected_24dp, R.drawable.ic_widget_24dp, R.color.blue_light, R.color.black))
-        adapter.add(BottomBarItemBean(TAB_SOURCE, R.drawable.ic_logic_selected_24dp, R.drawable.ic_logic_24dp, R.color.blue_light, R.color.black))
-        adapter.add(BottomBarItemBean(TAB_APP, R.drawable.ic_app_selected_24dp, R.drawable.ic_app_24dp, R.color.blue_light, R.color.black))
-        adapter.add(BottomBarItemBean(TAB_DEBUG, R.drawable.ic_debug_selected_24dp, R.drawable.ic_debug_24dp, R.color.blue_light, R.color.black))
-        adapter.add(BottomBarItemBean(TAB_OTHER, R.drawable.ic_other_selected_24dp, R.drawable.ic_other_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarAdapter.BottomBarItemBean(TAB_WIDGET, R.drawable.ic_widget_selected_24dp, R.drawable.ic_widget_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarAdapter.BottomBarItemBean(TAB_SOURCE, R.drawable.ic_logic_selected_24dp, R.drawable.ic_logic_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarAdapter.BottomBarItemBean(TAB_APP, R.drawable.ic_app_selected_24dp, R.drawable.ic_app_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarAdapter.BottomBarItemBean(TAB_DEBUG, R.drawable.ic_debug_selected_24dp, R.drawable.ic_debug_24dp, R.color.blue_light, R.color.black))
+        adapter.add(BottomBarAdapter.BottomBarItemBean(TAB_OTHER, R.drawable.ic_other_selected_24dp, R.drawable.ic_other_24dp, R.color.blue_light, R.color.black))
         switchManager = FragmentSwitchManager(
                 supportFragmentManager,
                 R.id.frame_fragment,
@@ -63,21 +62,6 @@ class MainActivity : BaseActivity() {
         bottomBar.setAdapter(adapter)
         bottomBar.setSelectedIndex(0)
     }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.activity_main_toolbar, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        super.onOptionsItemSelected(item)
-        when (item.itemId) {
-            R.id.action_settings -> toast(System.currentTimeMillis().toString() + "")
-        }
-        return true
-    }
-
     private var backPressedTime = 0L
     @DebugLog
     override fun onBackPressed() {
@@ -88,13 +72,9 @@ class MainActivity : BaseActivity() {
             toast("再按一次退出应用")
         }
     }
-
-    class BottomBarItemBean(var text: String, var selectedImageId: Int, var unSelectedImageId: Int, var selectedColorId: Int, var unSelectedColorId: Int)
-    companion object MainTab {
-        const val TAB_WIDGET = "widget"
-        const val TAB_SOURCE = "source"
-        const val TAB_APP = "app"
-        const val TAB_DEBUG = "debug"
-        const val TAB_OTHER = "other"
-    }
+    val TAB_WIDGET = "widget"
+    val TAB_SOURCE = "source"
+    val TAB_APP = "app"
+    val TAB_DEBUG = "debug"
+    val TAB_OTHER = "other"
 }

@@ -72,7 +72,7 @@ open class BaseApplication : MultiDexApplication() {
     private fun setupLeakCanary() {
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
+            // You should not onCreate your app in this process.
             return
         }
         LeakCanary.install(this)
@@ -87,7 +87,7 @@ open class BaseApplication : MultiDexApplication() {
         /*var tinkerApplicationLike = TinkerPatchApplicationLike.getTinkerPatchApplicationLike()
 
         // 初始化TinkerPatch SDK, 更多配置可参照API章节中的,初始化SDK
-        TinkerPatch.init(tinkerApplicationLike)
+        TinkerPatch.onCreate(tinkerApplicationLike)
                 .reflectPatchLibrary()
                 .setPatchRollbackOnScreenOff(true)
                 .setPatchRestartOnSrceenOff(true)

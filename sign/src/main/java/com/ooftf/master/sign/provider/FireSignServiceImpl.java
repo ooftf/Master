@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.ooftf.master.sign.dagger.component.DaggerFireSignServiceComponent;
 import com.ooftf.service.bean.SignInfo;
+import com.ooftf.service.engine.router.ServiceMap;
 import com.ooftf.service.engine.router.service.FireSignService;
 
 import javax.inject.Inject;
@@ -19,7 +20,7 @@ import io.reactivex.subjects.PublishSubject;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-@Route(path = "/sign/service/fireSign", name = "测试服务")
+@Route(path = ServiceMap.FIRE_SIGN, name = "测试服务")
 public class FireSignServiceImpl implements FireSignService {
     @Inject
     FirebaseAuth mAuth;

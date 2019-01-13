@@ -25,8 +25,6 @@ public class DesignActivity extends BaseSlidingActivity {
         setContentView(R.layout.activity_design);
         initViews();
         toolbar.setTitle("我只是个熊啊");
-        // setSupportActionBar(toolbar);
-        // toolbar.inflateMenu();
         //collapsingToolbarLayout.setTitle("我们都是熊啊");
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

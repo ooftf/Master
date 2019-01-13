@@ -11,6 +11,6 @@ class A {
     }
 
     init {
-        println("A init")
+        println("A onCreate")
     }
 }

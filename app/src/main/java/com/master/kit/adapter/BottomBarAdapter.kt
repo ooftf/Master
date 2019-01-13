@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.master.kit.R
-import com.master.kit.activity.MainActivity
 import com.ooftf.bottombar.java.BottomBar
 
-class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapter.ViewHolder, MainActivity.BottomBarItemBean>() {
+class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapter.ViewHolder, BottomBarAdapter.BottomBarItemBean>() {
     private var inflate: LayoutInflater = LayoutInflater.from(context)
     override fun onBindViewHolder(holder: ViewHolder, position: Int, selectedPositiong: Int) {
         var isSelect = position == selectedPositiong
@@ -34,10 +33,9 @@ class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapte
         return ViewHolder(inflate.inflate(R.layout.item_bottom_bar, parent, false))
     }
 
-    override fun getItemCount(): Int = 5
-
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var icon: ImageView = itemView.findViewById(R.id.icon)
         var title: TextView = itemView.findViewById(R.id.title)
     }
+    class BottomBarItemBean(var text: String, var selectedImageId: Int, var unSelectedImageId: Int, var selectedColorId: Int, var unSelectedColorId: Int)
 }
