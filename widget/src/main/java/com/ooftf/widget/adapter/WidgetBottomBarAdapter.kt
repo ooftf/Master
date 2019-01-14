@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.ooftf.bottombar.java.BottomBar
 import com.ooftf.widget.R
 
-class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapter.ViewHolder, BottomBarAdapter.BottomBarItemBean>() {
+class WidgetBottomBarAdapter(var context: Context) : BottomBar.Adapter<WidgetBottomBarAdapter.ViewHolder, WidgetBottomBarAdapter.BottomBarItemBean>() {
     private var inflate: LayoutInflater = LayoutInflater.from(context)
     override fun onBindViewHolder(holder: ViewHolder, position: Int, selectedPositiong: Int) {
         var isSelect = position == selectedPositiong
