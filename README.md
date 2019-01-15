@@ -26,7 +26,7 @@
 * 为progress-drawable添加文档
 * 人工智能（TensorFlow）
 * AutoRegister
-
+* 语言切换
 ### DELAY LIST
 * Ktor
 * 吸顶效果代码需要封装
