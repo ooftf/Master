@@ -94,8 +94,7 @@ dependencies {
     implementation "com.hanks:htextview-base:$htextview_version"
     implementation "com.hanks:htextview-typer:$htextview_version"// optional
     kapt deps.dagger2_compiler
-    //Firebase
-    api 'com.google.firebase:firebase-core:16.0.4'
+
 }
 
 apply plugin: 'com.jakewharton.hugo'

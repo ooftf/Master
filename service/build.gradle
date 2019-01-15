@@ -125,10 +125,12 @@ dependencies {
     implementation deps.MMKV
     implementation deps.disklrucache
     // Firebase Crashlytics
-    api 'com.crashlytics.sdk.android:crashlytics:2.9.5'
-    api 'com.google.firebase:firebase-auth:16.0.4'
     api "com.trello.rxlifecycle2:rxlifecycle-kotlin:$versions.rxlifecycle"
     api "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
     api 'com.ooftf:docking-api:1.0.0'
     api 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
+    //Firebase
+    api 'com.google.firebase:firebase-core:16.0.6'
+    api 'com.crashlytics.sdk.android:crashlytics:2.9.8'
+    api 'com.google.firebase:firebase-auth:16.1.0'
 }
