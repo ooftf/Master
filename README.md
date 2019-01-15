@@ -24,6 +24,9 @@
 * xmind
 * 解决Rn so 包没有导入的问题
 * 为progress-drawable添加文档
+* 人工智能（TensorFlow）
+* AutoRegister
+
 ### DELAY LIST
 * Ktor
 * 吸顶效果代码需要封装
