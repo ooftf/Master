@@ -49,7 +49,7 @@ class MainActivity : BaseActivity() {
             }
 
         }
-        bottomBar.setOnItemSelectChangedListener { oldIndex, newIndex ->
+        bottomBar.setOnItemSelectChangedListener { _, newIndex ->
             when (newIndex) {
                 0 -> switchManager.switchFragment(TAB_WIDGET)
                 1 -> switchManager.switchFragment(TAB_SOURCE)
@@ -62,6 +62,7 @@ class MainActivity : BaseActivity() {
         bottomBar.setAdapter(adapter)
         bottomBar.setSelectedIndex(0)
     }
+
     private var backPressedTime = 0L
     @DebugLog
     override fun onBackPressed() {
@@ -72,6 +73,7 @@ class MainActivity : BaseActivity() {
             toast("再按一次退出应用")
         }
     }
+
     val TAB_WIDGET = "widget"
     val TAB_SOURCE = "source"
     val TAB_APP = "app"

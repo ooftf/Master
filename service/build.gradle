@@ -54,7 +54,7 @@ tasks.withType(Javadoc) {
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation deps.constraintLayout
+    api deps.constraintLayout
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -102,24 +102,23 @@ dependencies {
     api 'io.reactivex.rxjava2:rxandroid:2.1.0'
     api "io.reactivex.rxjava2:rxjava:2.2.3"
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.2'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
+    api 'com.squareup.leakcanary:leakcanary-android:1.6.2'
+    //releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
     api deps.fastjson
     api 'com.github.ooftf:Support:1.1.1'
     api 'com.alibaba:arouter-api:1.4.0'
     api deps.HiHttp
     api 'com.github.ooftf:OperationEditTextLayout:1.1.3'
-    api 'com.github.ooftf:VerticalPagerLayout:1.2.1'
-    // 仅在debug包启用BlockCanary进行卡顿监控和提示的话，可以这么用
-    debugApi 'com.github.markzhai:blockcanary-android:1.5.0'
-    releaseApi 'com.github.markzhai:blockcanary-no-op:1.5.0'
+    api 'com.github.ooftf:VerticalPagerLayout:1.2.2'
+    api 'com.github.markzhai:blockcanary-android:1.5.0'
+    //releaseApi 'com.github.markzhai:blockcanary-no-op:1.5.0'
     api 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
     api 'com.github.ooftf:HiShare:1.2.5'
     api 'com.blankj:utilcode:1.21.2'
     api 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
     api 'com.github.ooftf:BarrageView:1.1.0'
-    api 'com.ooftf:bottombar-java:1.2.1'
+    api 'com.ooftf:bottombar-java:1.2.3'
     api 'com.hwangjr.rxbus:rxbus:1.0.6'
     implementation deps.bugly
     implementation deps.MMKV

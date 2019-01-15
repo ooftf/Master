@@ -19,7 +19,8 @@ android {
         //生成ARouter文档
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]//, AROUTER_GENERATE_DOC: "enable"
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+//, AROUTER_GENERATE_DOC: "enable"
             }
         }
         ndk {
@@ -85,7 +86,7 @@ dependencies {
         implementation 'com.ooftf:master-sign:1.0.0-SNAPSHOT'
         implementation 'com.ooftf:master-rn:1.0.0-SNAPSHOT'
     }
-    implementation 'com.ooftf:master-service:1.0.0-SNAPSHOT'
+    api 'com.ooftf:master-service:1.0.0-SNAPSHOT'
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     implementation 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
