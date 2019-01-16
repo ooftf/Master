@@ -10,7 +10,7 @@ buildscript {
             'minSdk'     : 19,
             'targetSdk'  : 26,
             'support'    : "28.0.0",
-            'butterknife': "10.0.0",
+            'butterknife': "9.0.0",
             'tinker'     : "1.9.9",
             'tinkerpatch': "1.2.9",
             'packerNG'   : "2.0.1",
