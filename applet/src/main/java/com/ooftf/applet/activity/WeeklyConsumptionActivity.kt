@@ -1,8 +1,8 @@
 package com.ooftf.applet.activity
 
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Base64
 import android.util.Log
 import android.widget.Toast
@@ -53,7 +53,7 @@ class WeeklyConsumptionActivity : BaseActivity() {
         orderRecord = getData()
         //将本地数据赋值到View上
         adapter = PersonRecordAdapter(this, orderRecord)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerView.adapter = adapter
         monday.setText(orderRecord.monday.toString())
         tuesday.setText(orderRecord.tuesday.toString())

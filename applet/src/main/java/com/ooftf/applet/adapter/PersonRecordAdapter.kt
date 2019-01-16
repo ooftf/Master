@@ -2,7 +2,7 @@ package com.ooftf.applet.adapter
 
 import android.app.AlertDialog
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.ooftf.applet.R
@@ -11,7 +11,7 @@ import com.ooftf.applet.bean.OrderRecordBean
 /**
  * Created by master on 2017/8/11 0011.
  */
-class PersonRecordAdapter(context:Context,data: OrderRecordBean) : RecyclerView.Adapter<PersonRecordViewHolder>() {
+class PersonRecordAdapter(context:Context,data: OrderRecordBean) : androidx.recyclerview.widget.RecyclerView.Adapter<PersonRecordViewHolder>() {
     var context = context
     var data = data
 

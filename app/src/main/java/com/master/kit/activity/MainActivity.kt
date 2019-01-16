@@ -1,7 +1,7 @@
 package com.master.kit.activity
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.master.kit.R
@@ -40,12 +40,12 @@ class MainActivity : BaseActivity() {
                 adapter.data.map { it.text }.toSet())
         {
             when (it) {
-                TAB_WIDGET -> ARouter.getInstance().build("/widget/fragment/widget").navigation() as Fragment
-                TAB_SOURCE -> ARouter.getInstance().build("/source/fragment/source").navigation() as Fragment
-                TAB_APP -> ARouter.getInstance().build("/applet/fragment/app").navigation() as Fragment
-                TAB_DEBUG -> ARouter.getInstance().build("/debug/fragment/debug").navigation() as Fragment
-                TAB_OTHER -> ARouter.getInstance().build("/other/fragment/other").navigation() as Fragment
-                else -> ARouter.getInstance().build("/applet/fragment/app").navigation() as Fragment
+                TAB_WIDGET -> ARouter.getInstance().build("/widget/fragment/widget").navigation() as androidx.fragment.app.Fragment
+                TAB_SOURCE -> ARouter.getInstance().build("/source/fragment/source").navigation() as androidx.fragment.app.Fragment
+                TAB_APP -> ARouter.getInstance().build("/applet/fragment/app").navigation() as androidx.fragment.app.Fragment
+                TAB_DEBUG -> ARouter.getInstance().build("/debug/fragment/debug").navigation() as androidx.fragment.app.Fragment
+                TAB_OTHER -> ARouter.getInstance().build("/other/fragment/other").navigation() as androidx.fragment.app.Fragment
+                else -> ARouter.getInstance().build("/applet/fragment/app").navigation() as androidx.fragment.app.Fragment
             }
 
         }

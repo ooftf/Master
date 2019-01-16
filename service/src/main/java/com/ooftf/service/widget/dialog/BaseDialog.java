@@ -5,10 +5,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StyleRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StyleRes;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.WindowManager;
@@ -16,7 +16,6 @@ import android.view.WindowManager;
 import com.blankj.utilcode.util.BarUtils;
 import com.ooftf.service.BuildConfig;
 import com.ooftf.service.utils.ContextUtils;
-import com.ooftf.service.utils.JLog;
 
 /**
  * @author lihang9

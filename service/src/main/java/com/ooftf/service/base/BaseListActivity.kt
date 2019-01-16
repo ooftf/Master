@@ -1,7 +1,7 @@
 package com.ooftf.service.base
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ooftf.service.R
 import com.ooftf.service.base.adapter.ActivityIntentListAdapter
 import kotlinx.android.synthetic.main.activity_list.*
@@ -20,6 +20,6 @@ abstract class BaseListActivity : BaseActivity() {
     private fun setupRecyclerView() {
         adapter = ActivityIntentListAdapter(this)
         recycler_view.adapter = adapter
-        recycler_view.layoutManager = LinearLayoutManager(this)
+        recycler_view.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
     }
 }

@@ -2,7 +2,7 @@ package com.ooftf.widget.fragment
 
 import android.content.Context
 import android.os.Handler
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -78,14 +78,14 @@ class WidgetFragment : BaseLazyFragment() {
     private fun setupFloatButton() {
         // {@link com.ooftf.widget.fragment.TabLayoutFragment}
         recycler_view.tag = "widget"
-        recycler_view.addOnScrollListener(object : android.support.v7.widget.RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView, newState: kotlin.Int) {
+        recycler_view.addOnScrollListener(object : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: androidx.recyclerview.widget.RecyclerView, newState: kotlin.Int) {
                 when (newState) {
-                    android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING -> {
+                    androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_DRAGGING -> {
                         handler.removeCallbacksAndMessages(null)
                         image.animate().translationX(image.width * 0.8.toFloat()).setDuration(300).startDelay = 0
                     }
-                    android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE -> {
+                    androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE -> {
                         handler.removeCallbacksAndMessages(null)
                         handler.postDelayed({
                             image.animate().translationX(0F).duration = 300
@@ -101,7 +101,7 @@ class WidgetFragment : BaseLazyFragment() {
         initSpialeList()
         recycler_view.tag = getRecyclerViewTag()
         recycler_view.adapter = adapter
-        recycler_view.layoutManager = LinearLayoutManager(context)
+        recycler_view.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
     }
 
     override fun onDestroyView() {

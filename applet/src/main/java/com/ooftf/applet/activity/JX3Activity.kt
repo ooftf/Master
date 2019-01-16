@@ -1,7 +1,7 @@
 package com.ooftf.applet.activity
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -29,7 +29,7 @@ class JX3Activity : BaseActivity() {
             adapter.add(JXBean(getBasic(), getDamage(), getOther()))
             adapter.notifyDataSetChanged()
         }
-        recycler_view.layoutManager = LinearLayoutManager(this)
+        recycler_view.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         adapter = JXAdapter(LayoutInflater.from(this))
         recycler_view.adapter = adapter
     }

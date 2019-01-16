@@ -1,8 +1,8 @@
 package com.ooftf.applet.activity
 
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.gson.Gson
 import com.ooftf.applet.R

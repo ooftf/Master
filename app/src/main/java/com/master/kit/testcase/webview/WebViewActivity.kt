@@ -2,8 +2,8 @@ package com.master.kit.testcase.webview
 
 import android.os.Bundle
 import android.os.Handler
-import android.support.annotation.Keep
-import android.support.v7.app.AppCompatActivity
+import androidx.annotation.Keep
+import androidx.appcompat.app.AppCompatActivity
 import android.webkit.CookieManager
 import android.webkit.JavascriptInterface
 import com.alibaba.android.arouter.facade.annotation.Route

@@ -1,6 +1,6 @@
 package com.ooftf.master.debug.engine.layoutmanager;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import hugo.weaving.DebugLog;
 

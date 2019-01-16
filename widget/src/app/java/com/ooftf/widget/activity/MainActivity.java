@@ -1,7 +1,7 @@
 package com.ooftf.widget.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.service.base.BaseActivity;

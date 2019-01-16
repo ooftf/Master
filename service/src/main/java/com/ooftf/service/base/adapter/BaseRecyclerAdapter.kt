@@ -1,13 +1,13 @@
 package tf.ooftf.com.service.base.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
 /**
  * Created by master on 2017/9/25 0025.
  */
 
-abstract class BaseRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : RecyclerView.Adapter<WH>() {
+abstract class BaseRecyclerAdapter<T, WH : androidx.recyclerview.widget.RecyclerView.ViewHolder> : androidx.recyclerview.widget.RecyclerView.Adapter<WH>() {
     private var onItemClickListener: BaseRecyclerAdapter.OnItemClickListener<T>? = null
     internal var list: MutableList<T> = ArrayList()
 

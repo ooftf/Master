@@ -3,7 +3,7 @@ package com.ooftf.master.debug.widget;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Build;
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.WindowManager;

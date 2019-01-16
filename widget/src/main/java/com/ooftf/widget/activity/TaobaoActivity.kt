@@ -1,7 +1,7 @@
 package com.ooftf.widget.activity
 
 import android.os.Bundle
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseActivity
@@ -20,7 +20,7 @@ class TaobaoActivity : BaseActivity() {
         viewPager.setScrollEdgeAnalyzer { i, viewGroup ->
             when (i) {
                 1 -> {
-                    var pager = viewGroup.findViewById(R.id.viewPager) as ViewPager
+                    var pager = viewGroup.findViewById(R.id.viewPager) as androidx.viewpager.widget.ViewPager
                     var scrollView = viewGroup.findViewWithTag<View>(pager.adapter!!.getPageTitle(pager.currentItem))
                     ScrollEdgeEngine(scrollView)
                 }

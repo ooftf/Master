@@ -3,9 +3,9 @@ package com.ooftf.service.widget
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
-import android.support.annotation.RequiresApi
-import android.support.v4.widget.NestedScrollView
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.RequiresApi
+import androidx.core.widget.NestedScrollView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -59,7 +59,7 @@ class ReturnTopLayout : RelativeLayout {
             contentView = pullToRefreshBase.getRefreshableView();
         }*/
         when (contentView) {
-            is RecyclerView -> recyclerView()
+            is androidx.recyclerview.widget.RecyclerView -> recyclerView()
             is ListView -> listView()
             is GridLayout -> {
 
@@ -168,9 +168,9 @@ class ReturnTopLayout : RelativeLayout {
     }
 
     private fun recyclerView() {
-        val recyclerView = contentView as RecyclerView
-        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+        val recyclerView = contentView as androidx.recyclerview.widget.RecyclerView
+        recyclerView.addOnScrollListener(object : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: androidx.recyclerview.widget.RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (recyclerView!!.computeVerticalScrollOffset() > 0) {
                     smoothShow()

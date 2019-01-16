@@ -1,8 +1,8 @@
 package com.ooftf.service.widget.dialog
 
 import android.app.Activity
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,20 +14,20 @@ import com.ooftf.service.utils.ShareUtil
 
 class ShareDialog(activity: Activity) : BottomDialog(activity, R.style.DialogTheme_Blank) {
 
-    var recycler_view: RecyclerView;
+    var recycler_view: androidx.recyclerview.widget.RecyclerView;
 
     init {
         setContentView(R.layout.dialog_share)
         setWidthPercent(1f)
         recycler_view = findViewById(R.id.recycler_view)
-        recycler_view.layoutManager = GridLayoutManager(context, 4)
+        recycler_view.layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 4)
     }
 
     fun setData(shareData: ShareData) {
         recycler_view.adapter = MyAdapter(activity, shareData)
     }
 
-    class MyAdapter(var activity: Activity, var shareData: ShareData) : RecyclerView.Adapter<ViewHolder>() {
+    class MyAdapter(var activity: Activity, var shareData: ShareData) : androidx.recyclerview.widget.RecyclerView.Adapter<ViewHolder>() {
         var inflater = LayoutInflater.from(activity)
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             return ViewHolder(inflater.inflate(R.layout.item_share, parent, false))
@@ -49,7 +49,7 @@ class ShareDialog(activity: Activity) : BottomDialog(activity, R.style.DialogThe
 
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         var name: TextView = itemView.findViewById(R.id.name)
         var image: ImageView = itemView.findViewById(R.id.image)
     }

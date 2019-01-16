@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context="com.ooftf.master.debug.activity.DrawableActivity">
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -99,7 +99,7 @@
                 android:gravity="center"
                 android:text="Hello ConstarintLayout" />
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/toolbar"

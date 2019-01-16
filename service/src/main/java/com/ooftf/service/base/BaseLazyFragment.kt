@@ -2,7 +2,7 @@ package com.ooftf.service.base
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.support.annotation.CallSuper
+import androidx.annotation.CallSuper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

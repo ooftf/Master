@@ -1,7 +1,7 @@
 package com.ooftf.widget.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +33,7 @@ class WidgetBottomBarAdapter(var context: Context) : BottomBar.Adapter<WidgetBot
         return ViewHolder(inflate.inflate(R.layout.item_bottom_bar, parent, false))
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         var icon: ImageView = itemView.findViewById(R.id.icon)
         var title: TextView = itemView.findViewById(R.id.title)
     }

@@ -3,8 +3,6 @@ package com.ooftf.service.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
 
@@ -15,7 +13,7 @@ import com.ooftf.service.utils.DensityUtil;
  * @email 994749769@qq.com
  * @date 2018/10/30 0030
  */
-public class CurveImageView extends android.support.v7.widget.AppCompatImageView {
+public class CurveImageView extends androidx.appcompat.widget.AppCompatImageView {
 
 
     Path path;

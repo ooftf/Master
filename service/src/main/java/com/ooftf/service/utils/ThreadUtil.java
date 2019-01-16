@@ -2,7 +2,7 @@ package com.ooftf.service.utils;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import java.util.concurrent.ArrayBlockingQueue;

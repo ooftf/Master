@@ -1,6 +1,6 @@
 package com.ooftf.applet.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +27,7 @@ class JXAdapter(var inflate: LayoutInflater) : BaseRecyclerAdapter<JXBean, MyVie
     }
 }
 
-class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class MyViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
     var textView1: TextView = itemView.findViewById(R.id.textView1)
     var textView2: TextView = itemView.findViewById(R.id.textView2)
     var textView3: TextView = itemView.findViewById(R.id.textView3)

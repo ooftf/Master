@@ -1,8 +1,8 @@
 package com.ooftf.service.base
 
 import android.os.Handler
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import com.ooftf.service.R
@@ -44,7 +44,7 @@ abstract class BaseListFragment : BaseLazyFragment() {
     private fun setupRecyclerView() {
         adapter = MainRecyclerAdapter(getBaseActivity(), stickyView)
         recycler_view.adapter = adapter
-        recycler_view.layoutManager = LinearLayoutManager(context)
+        recycler_view.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         /* DividerItemDecoration divider = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
         //divider.setDrawable(new ColorDrawable(Color.GRAY));
         recyclerView.addItemDecoration(divider);*/
@@ -76,14 +76,14 @@ abstract class BaseListFragment : BaseLazyFragment() {
     /**
      * 一个RecyclerView的滚动监听，负责滚动时View的收缩动画
      */
-    class ShyAnimateScrollListener(var view: View, var handler: Handler) : RecyclerView.OnScrollListener() {
-        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+    class ShyAnimateScrollListener(var view: View, var handler: Handler) : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
+        override fun onScrollStateChanged(recyclerView: androidx.recyclerview.widget.RecyclerView, newState: Int) {
             when (newState) {
-                RecyclerView.SCROLL_STATE_DRAGGING -> {//滚动的时候
+                androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_DRAGGING -> {//滚动的时候
                     handler.removeCallbacksAndMessages(null)
                     view.animate().translationX(view.width * 0.8.toFloat()).setDuration(300).startDelay = 0
                 }
-                RecyclerView.SCROLL_STATE_IDLE -> {//停止的时候
+                androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE -> {//停止的时候
                     handler.removeCallbacksAndMessages(null)
                     handler.postDelayed({
                         view.animate().translationX(0F).duration = 300

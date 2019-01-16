@@ -21,8 +21,8 @@ public class ContextUtils {
             return (Activity) context;
         } else if (context instanceof ContextThemeWrapper) {
             return toActivity(((ContextThemeWrapper) context).getBaseContext());
-        } else if (context instanceof android.support.v7.view.ContextThemeWrapper) {
-            return toActivity(((android.support.v7.view.ContextThemeWrapper) context).getBaseContext());
+        } else if (context instanceof androidx.appcompat.view.ContextThemeWrapper) {
+            return toActivity(((androidx.appcompat.view.ContextThemeWrapper) context).getBaseContext());
         }
         return null;
     }

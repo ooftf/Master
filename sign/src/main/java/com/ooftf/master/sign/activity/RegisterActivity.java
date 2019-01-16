@@ -1,7 +1,7 @@
 package com.ooftf.master.sign.activity;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,7 +27,6 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import dagger.Module;
 import io.reactivex.Observable;
 import io.reactivex.ObservableOnSubscribe;
 

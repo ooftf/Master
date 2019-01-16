@@ -1,8 +1,8 @@
 package com.ooftf.master.debug.activity
 
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import android.view.View
 import butterknife.ButterKnife
 import com.alibaba.android.arouter.facade.annotation.Route

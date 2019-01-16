@@ -1,7 +1,7 @@
 package com.ooftf.service.base
 
 import android.content.Context
-import android.support.multidex.MultiDexApplication
+import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.Utils
 import com.facebook.stetho.Stetho

@@ -1,6 +1,6 @@
 package com.ooftf.master.source.activity
 
-import android.arch.lifecycle.Lifecycle
+import androidx.lifecycle.Lifecycle
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.hihttp.action.weak.LifeAction
