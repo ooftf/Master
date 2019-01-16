@@ -9,7 +9,7 @@ buildscript {
             'compileSdk' : 28,
             'minSdk'     : 19,
             'targetSdk'  : 26,
-            'support'    : '1.0.0-beta01',
+            'support'    : '1.0.0',
             'butterknife': "10.0.0",
             'tinker'     : "1.9.9",
             'tinkerpatch': "1.2.9",
@@ -18,7 +18,8 @@ buildscript {
             'glide'      : "4.8.0",
             'dagger'     : "2.16",
             'java'       : JavaVersion.VERSION_1_8,
-            'rxlifecycle': "2.2.2"
+            'rxlifecycle': "3.0.0",
+            'master'     : "1.0.0-SNAPSHOT"
     ]
 
     ext.deps = [
@@ -55,6 +56,7 @@ buildscript {
         classpath("com.tencent.matrix:matrix-gradle-plugin:${MATRIX_VERSION}") { changing = true }
         classpath 'com.novoda:bintray-release:0.9'
     }
+
 }
 
 allprojects {

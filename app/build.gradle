@@ -78,15 +78,15 @@ dependencies {
     implementation deps.constraintLayout
     testImplementation 'junit:junit:4.12'
     if (!MoudleDebug) {
-        implementation 'com.ooftf:master-widget:1.0.0-SNAPSHOT'
-        implementation 'com.ooftf:master-applet:1.0.0-SNAPSHOT'
-        implementation 'com.ooftf:master-debug:1.0.0-SNAPSHOT'
-        implementation 'com.ooftf:master-source:1.0.0-SNAPSHOT'
-        implementation 'com.ooftf:master-other:1.0.0-SNAPSHOT'
-        implementation 'com.ooftf:master-sign:1.0.0-SNAPSHOT'
-        implementation 'com.ooftf:master-rn:1.0.0-SNAPSHOT'
+        implementation "com.ooftf:master-widget:$versions.master"
+        implementation "com.ooftf:master-applet:$versions.master"
+        implementation "com.ooftf:master-debug:$versions.master"
+        implementation "com.ooftf:master-source:$versions.master"
+        implementation "com.ooftf:master-other:$versions.master"
+        implementation "com.ooftf:master-sign:$versions.master"
+        implementation "com.ooftf:master-rn:$versions.master"
     }
-    api 'com.ooftf:master-service:1.0.0-SNAPSHOT'
+    api "com.ooftf:master-service:$versions.master"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     implementation 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
     kapt "com.alibaba:arouter-compiler:$versions.arouter"

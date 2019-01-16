@@ -57,7 +57,7 @@ publish {
     userOrg = 'ooftf'      // bintray注册的用户名
     groupId = 'com.ooftf'
     artifactId = "master-${project.getName()}"// bintray创建的package
-    publishVersion = '1.0.0-SNAPSHOT'
+    publishVersion = versions.master
     desc = 'nothing'
     bintrayUser = 'ooftf'
     bintrayKey = bintray_key
@@ -73,10 +73,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation deps.constraintLayout
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
-    implementation 'com.ooftf:master-service:1.0.0-SNAPSHOT'
+    implementation "com.ooftf:master-service:$versions.master"
 
 }
 

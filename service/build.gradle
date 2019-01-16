@@ -14,7 +14,8 @@ android {
         //生成ARouter文档
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]//, AROUTER_GENERATE_DOC: "enable"
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+//, AROUTER_GENERATE_DOC: "enable"
             }
         }
         renderscriptTargetApi 22
@@ -40,7 +41,7 @@ publish {
     userOrg = 'ooftf'      // bintray注册的用户名
     groupId = 'com.ooftf'
     artifactId = "master-${project.getName()}"// bintray创建的package
-    publishVersion = '1.0.0-SNAPSHOT'
+    publishVersion = versions.master
     desc = 'nothing'
     bintrayUser = 'ooftf'
     bintrayKey = bintray_key
@@ -124,8 +125,8 @@ dependencies {
     implementation deps.MMKV
     implementation deps.disklrucache
     // Firebase Crashlytics
-    api "com.trello.rxlifecycle2:rxlifecycle-kotlin:$versions.rxlifecycle"
-    api "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
+    api "com.trello.rxlifecycle3:rxlifecycle-kotlin:$versions.rxlifecycle"
+    api "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
     api 'com.ooftf:docking-api:1.0.0'
     api 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
     //Firebase

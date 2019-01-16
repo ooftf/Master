@@ -3,7 +3,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     kapt deps.dagger2_compiler
     implementation deps.constraintLayout
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
