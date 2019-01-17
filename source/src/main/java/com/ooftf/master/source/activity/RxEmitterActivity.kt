@@ -8,7 +8,7 @@ import com.ooftf.hihttp.action.weak.LifeConsumer
 import com.ooftf.master.source.R
 import com.ooftf.service.base.BaseBarrageActivity
 import com.ooftf.service.utils.JLog
-import com.trello.rxlifecycle2.android.lifecycle.kotlin.bindUntilEvent
+import com.trello.rxlifecycle3.android.lifecycle.kotlin.bindUntilEvent
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.Observer

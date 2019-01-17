@@ -28,6 +28,11 @@ object ServiceHolder {
         generator.createService(EtdService::class.java)
     }
     val mobService: MobService by lazy {
+        val generator = mobServiceGenerator()
+        generator.createService(MobService::class.java)
+    }
+
+    public fun mobServiceGenerator(): ServiceGenerator {
         val signService = ARouter.getInstance().navigation(SignService::class.java)
         val generator = ServiceGenerator()
         generator.baseUrl = "http://apicloud.mob.com/"
@@ -38,13 +43,13 @@ object ServiceHolder {
                 override fun paramTransform(oldParams: MutableMap<String, String>): MutableMap<String, String> {
                     oldParams["key"] = "3ab0f1586b2"
                     if (signService.isSignIn) {
-                        oldParams["token"] = signService.signInfo.token
-                        oldParams["uid"] = signService.signInfo.uid
+                        oldParams["token"] = signService.getToken()
+                        oldParams["uid"] = signService.getUserId()
                     }
                     return oldParams
                 }
             })
         }
-        generator.createService(MobService::class.java)
+        return generator
     }
 }

@@ -2,9 +2,7 @@ package com.ooftf.master.sign.dagger.module;
 
 import com.ooftf.master.sign.activity.SignInActivity;
 import com.ooftf.master.sign.mvp.contract.SignInContract;
-import com.ooftf.master.sign.mvp.model.FireSignInModel;
-import com.ooftf.master.sign.mvp.model.MobSignInModel;
-import com.ooftf.master.sign.mvp.presenter.FireSignInPresenter;
+import com.ooftf.master.sign.mvp.model.SignInModel;
 import com.ooftf.master.sign.mvp.presenter.SignInPresenter;
 
 import dagger.Module;
@@ -32,17 +30,14 @@ public class SignInModule {
     }
 
     @Provides
-    public SignInContract.IPresenter provideSignInPresenter(SignInContract.IView view, SignInContract.IFireModel model) {
-        return new FireSignInPresenter(view, model);
-    }
-
-    @Provides
     public SignInContract.IModel provideSignInModel() {
-        return new MobSignInModel();
+        return new SignInModel();
     }
 
     @Provides
-    public SignInContract.IFireModel provideFireSignInModel() {
-        return new FireSignInModel();
+    public SignInContract.IPresenter provideSignInPresenter(SignInContract.IView view, SignInContract.IModel model) {
+        return new SignInPresenter(view, model);
     }
+
+
 }

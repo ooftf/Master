@@ -24,7 +24,7 @@ import com.ooftf.service.net.mob.bean.ItemDataBean
 import com.ooftf.service.net.mob.bean.MobBaseBean
 import com.ooftf.service.widget.dialog.ListSelectorDialog
 import com.ooftf.service.widget.toolbar.TailoredToolbar
-import com.trello.rxlifecycle2.kotlin.bindToLifecycle
+import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_weekly_consumption.*

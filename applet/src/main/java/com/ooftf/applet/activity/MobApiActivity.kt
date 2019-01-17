@@ -10,7 +10,7 @@ import com.ooftf.hihttp.action.DialogAction
 import com.ooftf.hihttp.action.ImageViewAction
 import com.ooftf.service.empty.EmptyObserver
 import com.ooftf.service.net.ServiceHolder
-import com.trello.rxlifecycle2.kotlin.bindToLifecycle
+import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_mob_api.*
 

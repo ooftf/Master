@@ -104,6 +104,7 @@
 * 如果 disposable.dispose 之后 还执行了emitter.onError()就会因为异常没有捕获而导致应用崩溃，所以emitter使用之前需要判断一下emitter.isDisposed
 * doOnError 不能防止异常外抛
 * doOn... 等事件中要做防内存泄漏问题，RxLifecycle disposable 并不能防止这种形式的内存泄漏，具体操作可以参照 hi-http
+* 如果doOn事件中需要在主线中操作，要在doOn之前调用线程切换
 # RxJava资料链接
     https://github.com/ReactiveX/RxJava
     https://github.com/ReactiveX/RxAndroid        切换主线程

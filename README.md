@@ -13,7 +13,6 @@
 * 视频播放器
 * 动态化构建页面 Tangram-Android vlayout
 * MVVM Data Binding
-* Androidx
 * DialogFragment
 * app bundles
 * gradle插件
@@ -55,3 +54,4 @@
 * node.js概念
 * 依赖注入
 * 贝塞尔曲线 bezier https://github.com/MrAllRight/BezierView  https://github.com/leeowenowen/beauty-of-math
+* Androidx(升级master项目非常方便，无痛升级，google dad)

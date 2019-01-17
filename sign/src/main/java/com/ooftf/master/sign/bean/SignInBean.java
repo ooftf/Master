@@ -1,4 +1,6 @@
-package com.ooftf.service.net.mob.bean;
+package com.ooftf.master.sign.bean;
+
+import com.ooftf.service.net.mob.bean.MobBaseBean;
 
 /**
  * @author ooftf

@@ -3,12 +3,14 @@ package com.ooftf.master.sign.provider;
 import android.content.Context;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.ooftf.service.bean.SignInfo;
+import com.ooftf.master.sign.bean.SignInBean;
+import com.ooftf.master.sign.net.SignMobServiceHolder;
 import com.ooftf.service.engine.router.ServiceMap;
 import com.ooftf.service.engine.router.service.SignService;
 import com.ooftf.service.engine.typer.TyperFactory;
+import com.ooftf.service.net.mob.bean.MobBaseBean;
 
-import io.reactivex.Observer;
+import io.reactivex.Single;
 import io.reactivex.subjects.PublishSubject;
 
 /**
@@ -25,8 +27,32 @@ public class SignServiceImpl implements SignService {
 
     }
 
-    public static PublishSubject<SignInfo> signInSubject = PublishSubject.create();
-    public static PublishSubject<SignInfo> signOutSubject = PublishSubject.create();
+    public static PublishSubject<String> signInSubject = PublishSubject.create();
+    public static PublishSubject<String> signOutSubject = PublishSubject.create();
+
+    @Override
+    public Single<Boolean> register(String username, String password) {
+        return SignMobServiceHolder
+                .signMobService
+                .register(username, password)
+                .singleOrError()
+                .map(mobBaseBean -> MobBaseBean.success.equals(mobBaseBean.getRetCode()));
+    }
+
+    @Override
+    public Single<Boolean> signIn(String username, String password) {
+        return SignMobServiceHolder
+                .signMobService
+                .signIn(username, password)
+                .singleOrError()
+                .map(signInBean -> {
+                    boolean success = MobBaseBean.success.equals(signInBean.getRetCode());
+                    if (success) {
+                        TyperFactory.getDefault().put(KEY_ACCOUNT_INFO, signInBean.getResult());
+                    }
+                    return success;
+                });
+    }
 
     @Override
     public boolean isSignIn() {
@@ -42,23 +68,36 @@ public class SignServiceImpl implements SignService {
         TyperFactory.getDefault().remove(KEY_ACCOUNT_INFO);
     }
 
-    @Override
-    public void updateSignInfo(SignInfo info) {
-        TyperFactory.getDefault().put(KEY_ACCOUNT_INFO, info);
+
+    public SignInBean.ResultBean getSignInfo() {
+        return TyperFactory.getDefault().getObject(KEY_ACCOUNT_INFO, SignInBean.ResultBean.class);
     }
 
     @Override
-    public SignInfo getSignInfo() {
-        return TyperFactory.getDefault().getObject(KEY_ACCOUNT_INFO, SignInfo.class);
+    public PublishSubject<String> subscribeSignIn() {
+        return signInSubject;
     }
 
     @Override
-    public void subscribeSignIn(Observer<SignInfo> observer) {
-        signInSubject.subscribe(observer);
+    public PublishSubject<String> subscribeSignOut() {
+        return signOutSubject;
     }
 
     @Override
-    public void subscribeSignOut(Observer<SignInfo> observer) {
-        signOutSubject.subscribe(observer);
+    public String getToken() {
+        if (getSignInfo() != null) {
+            return getSignInfo().getToken();
+        }
+
+        return null;
+    }
+
+    @Override
+    public String getUserId() {
+        if (getSignInfo() != null) {
+            return getSignInfo().getUid();
+        }
+
+        return null;
     }
 }

@@ -20,8 +20,8 @@ import com.ooftf.service.R
 import com.ooftf.service.interfaces.ILifecycleState
 import com.ooftf.service.utils.JLog
 import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle
-import com.trello.rxlifecycle2.LifecycleProvider
-import com.trello.rxlifecycle2.LifecycleTransformer
+import com.trello.rxlifecycle3.LifecycleProvider
+import com.trello.rxlifecycle3.LifecycleTransformer
 import hugo.weaving.DebugLog
 import java.util.*
 
@@ -219,7 +219,8 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
     }
 
     fun showDialogMessage(message: CharSequence) {
-        showDialogMessage(message)
+        showDialogMessage(message, "确定",
+                DialogInterface.OnClickListener { dialog, which -> dialog?.dismiss() })
     }
 
     fun showDialogMessage(message: CharSequence,

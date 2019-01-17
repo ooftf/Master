@@ -4,11 +4,11 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.hihttp.action.ButtonAction;
 import com.ooftf.master.sign.mvp.contract.SignInContract;
-import com.ooftf.service.bean.SignInfo;
+import com.ooftf.service.empty.EmptyObserver;
 import com.ooftf.service.engine.router.service.SignService;
-import com.ooftf.service.net.mob.action.MobObserver;
-import com.ooftf.service.net.mob.bean.SignInBean;
-import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
+import com.trello.rxlifecycle3.android.RxLifecycleAndroid;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class SignInPresenter extends BasePresenter<SignInContract.IView, SignInContract.IModel> implements SignInContract.IPresenter {
     @Autowired
@@ -24,16 +24,17 @@ public class SignInPresenter extends BasePresenter<SignInContract.IView, SignInC
     public void signIn() {
         getModule()
                 .signIn(getView().getUsername(), getView().getPassword())
+                .observeOn(AndroidSchedulers.mainThread())
                 .compose(new ButtonAction<>(getView().getSinInLoadingButton(), "正在登录..."))
                 .compose(RxLifecycleAndroid.bindView(getView().getSinInLoadingButton()))
-                .subscribe(new MobObserver<SignInBean>() {
+                .subscribe(new EmptyObserver<Boolean>() {
                     @Override
-                    public void onSuccess(SignInBean bean) {
-                        SignInfo info = new SignInfo();
-                        info.setUid(bean.getResult().getUid());
-                        info.setToken(bean.getResult().getToken());
-                        signService.updateSignInfo(info);
-                        getView().nextActivity();
+                    public void onNext(Boolean aBoolean) {
+                        if (aBoolean) {
+                            getView().nextActivity();
+                        } else {
+                            getView().showDialogMessage("登录失败");
+                        }
                     }
                 });
     }

@@ -11,7 +11,7 @@ import com.ooftf.service.net.ServiceHolder.service
 import com.ooftf.service.net.etd.BaseResponse
 import com.ooftf.service.net.etd.action.ErrorAction
 import com.ooftf.service.net.etd.bean.BaseBean
-import com.trello.rxlifecycle2.kotlin.bindToLifecycle
+import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_etd_sign_in.*
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent

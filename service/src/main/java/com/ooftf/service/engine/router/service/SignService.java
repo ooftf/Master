@@ -1,10 +1,9 @@
 package com.ooftf.service.engine.router.service;
 
 import com.alibaba.android.arouter.facade.template.IProvider;
-import com.ooftf.service.bean.SignInfo;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
+import io.reactivex.Single;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * @author ooftf
@@ -12,16 +11,23 @@ import io.reactivex.Observer;
  * @date 2018/10/21 0021
  */
 public interface SignService extends IProvider {
+    Single<Boolean> register(String username, String password);
 
+    Single<Boolean> signIn(String username, String password);
 
     boolean isSignIn();
 
     void signOut();
 
-    void updateSignInfo(SignInfo info);
+    /**
+     * @param
+     * @return
+     */
+    PublishSubject<String> subscribeSignIn();
 
-    SignInfo getSignInfo();
+    PublishSubject<String> subscribeSignOut();
 
-    void subscribeSignIn(Observer<SignInfo> observer);
-    void subscribeSignOut(Observer<SignInfo> observer);
+    String getToken();
+
+    String getUserId();
 }

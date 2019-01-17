@@ -19,7 +19,7 @@ buildscript {
             'dagger'     : "2.16",
             'java'       : JavaVersion.VERSION_1_8,
             'rxlifecycle': "3.0.0",
-            'master'     : "1.0.0-SNAPSHOT"
+            'master'     : "1.0.1-SNAPSHOT"
     ]
 
     ext.deps = [
