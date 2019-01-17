@@ -3,14 +3,11 @@ package com.ooftf.master.sign.provider;
 import android.content.Context;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ooftf.service.engine.router.ServiceMap;
+import com.ooftf.service.engine.router.assist.SignAssistBean;
 import com.ooftf.service.engine.router.service.SignService;
 
-import androidx.annotation.NonNull;
 import io.reactivex.Single;
 import io.reactivex.subjects.PublishSubject;
 
@@ -22,6 +19,7 @@ import io.reactivex.subjects.PublishSubject;
 @Route(path = ServiceMap.FIRE_SIGN, name = "测试服务")
 public class FireSignServiceImpl implements SignService {
     FirebaseAuth mAuth;
+
     @Override
     public void init(Context context) {
         mAuth = FirebaseAuth.getInstance();
@@ -31,21 +29,24 @@ public class FireSignServiceImpl implements SignService {
     public static PublishSubject<String> signOutSubject = PublishSubject.create();
 
     @Override
-    public Single<Boolean> register(String username, String password) {
-        return Single.create(emitter -> mAuth.createUserWithEmailAndPassword(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (emitter.isDisposed()) {
-                    return;
-                }
-                emitter.onSuccess(task.isSuccessful());
+    public Single<SignAssistBean> register(String username, String password) {
+        return Single.create(emitter -> mAuth.createUserWithEmailAndPassword(username, password).addOnCompleteListener(task -> {
+            if (emitter.isDisposed()) {
+                return;
             }
+            SignAssistBean result = new SignAssistBean();
+            result.setResult(task.isSuccessful());
+            if (task.isSuccessful()) {
+                result.setMsg("ok");
+            } else {
+                result.setMsg(task.getException().getMessage());
+            }
+            emitter.onSuccess(result);
         }));
     }
 
     @Override
-    public Single<Boolean> signIn(String username, String password) {
+    public Single<SignAssistBean> signIn(String username, String password) {
         return Single.create(emitter -> FirebaseAuth
                 .getInstance()
                 .signInWithEmailAndPassword(username, password)
@@ -53,7 +54,14 @@ public class FireSignServiceImpl implements SignService {
                     if (emitter.isDisposed()) {
                         return;
                     }
-                    emitter.onSuccess(task.isSuccessful());
+                    SignAssistBean result = new SignAssistBean();
+                    result.setResult(task.isSuccessful());
+                    if (task.isSuccessful()) {
+                        result.setMsg("ok");
+                    } else {
+                        result.setMsg(task.getException().getMessage());
+                    }
+                    emitter.onSuccess(result);
                 }));
     }
 

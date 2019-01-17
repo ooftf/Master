@@ -1,6 +1,7 @@
 package com.ooftf.service.engine.router.service;
 
 import com.alibaba.android.arouter.facade.template.IProvider;
+import com.ooftf.service.engine.router.assist.SignAssistBean;
 
 import io.reactivex.Single;
 import io.reactivex.subjects.PublishSubject;
@@ -11,12 +12,21 @@ import io.reactivex.subjects.PublishSubject;
  * @date 2018/10/21 0021
  */
 public interface SignService extends IProvider {
-    Single<Boolean> register(String username, String password);
 
-    Single<Boolean> signIn(String username, String password);
+    Single<SignAssistBean> register(String username, String password);
 
+    Single<SignAssistBean> signIn(String username, String password);
+
+    /**
+     * 是否已经登陆
+     *
+     * @return
+     */
     boolean isSignIn();
 
+    /**
+     * 登出
+     */
     void signOut();
 
     /**

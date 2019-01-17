@@ -1,7 +1,10 @@
 package com.ooftf.master.sign.activity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
@@ -12,14 +15,14 @@ import com.ooftf.master.sign.R2;
 import com.ooftf.master.sign.dagger.component.DaggerSigInComponent;
 import com.ooftf.master.sign.dagger.module.SignInModule;
 import com.ooftf.master.sign.mvp.contract.SignInContract;
-import com.ooftf.master.sign.mvp.presenter.SignInPresenter;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
-import com.ooftf.service.engine.router.PostcardSerializable;
 import com.ooftf.service.engine.router.FinishCallback;
+import com.ooftf.service.engine.router.PostcardSerializable;
 
 import javax.inject.Inject;
 
+import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -38,6 +41,10 @@ public class SignInActivity extends BaseActivity implements SignInContract.IView
     Button signIn;
     @BindView(R2.id.register)
     TextView register;
+    @BindView(R2.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R2.id.spinner)
+    Spinner spinner;
     @Autowired
     public Bundle successIntent;
     @Inject
@@ -48,6 +55,7 @@ public class SignInActivity extends BaseActivity implements SignInContract.IView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         ButterKnife.bind(this);
+        initToolbar();
         DaggerSigInComponent
                 .builder()
                 .signInModule(new SignInModule(this))
@@ -59,8 +67,24 @@ public class SignInActivity extends BaseActivity implements SignInContract.IView
         register.setOnClickListener(v ->
                 ARouter.getInstance().build(RouterPath.SIGN_ACTIVITY_REGISTER).navigation()
         );
-
+        spinner.setAdapter(new ArrayAdapter<>(this, R.layout.item_spinner_text, new String[]{"Google", "Mob"}));
     }
+
+    private void initToolbar() {
+        toolbar.getMenu().add("Google").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                return false;
+            }
+        }).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        toolbar.getMenu().add("Mob").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                return false;
+            }
+        }).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+    }
+
     @Override
     public String getUsername() {
         return account.getText().toString();

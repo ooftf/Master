@@ -5,6 +5,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.hihttp.action.ButtonAction;
 import com.ooftf.master.sign.mvp.contract.SignInContract;
 import com.ooftf.service.empty.EmptyObserver;
+import com.ooftf.service.engine.router.assist.SignAssistBean;
 import com.ooftf.service.engine.router.service.SignService;
 import com.trello.rxlifecycle3.android.RxLifecycleAndroid;
 
@@ -27,13 +28,13 @@ public class SignInPresenter extends BasePresenter<SignInContract.IView, SignInC
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(new ButtonAction<>(getView().getSinInLoadingButton(), "正在登录..."))
                 .compose(RxLifecycleAndroid.bindView(getView().getSinInLoadingButton()))
-                .subscribe(new EmptyObserver<Boolean>() {
+                .subscribe(new EmptyObserver<SignAssistBean>() {
                     @Override
-                    public void onNext(Boolean aBoolean) {
-                        if (aBoolean) {
+                    public void onNext(SignAssistBean bean) {
+                        if (bean.isResult()) {
                             getView().nextActivity();
                         } else {
-                            getView().showDialogMessage("登录失败");
+                            getView().showDialogMessage(bean.getMsg());
                         }
                     }
                 });

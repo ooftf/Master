@@ -2,12 +2,6 @@ package com.ooftf.service.widget.toolbar;
 
 import android.app.Activity;
 import android.content.Context;
-import androidx.annotation.Keep;
-import androidx.annotation.Nullable;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.widget.Toolbar;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -18,8 +12,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.ooftf.service.R;
 import com.ooftf.support.ViewOffsetHelper;
+
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.content.ContextCompat;
 
 /**
  * @author master
@@ -85,8 +86,10 @@ public class TailoredToolbar extends Toolbar {
         /**
          * CollapsingToolbarLayout 模式下 是不支持toolbar剧中的，位置会偏离,也不要设置默认背景色
          */
-        if (getBackground() == null && !(getParent() instanceof CollapsingToolbarLayout)) {
-            setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        if (!(getParent() instanceof CollapsingToolbarLayout)) {
+            if (getBackground() == null) {
+                setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+            }
             isTitleCenter = true;
             setTitle(getTitle());
         }

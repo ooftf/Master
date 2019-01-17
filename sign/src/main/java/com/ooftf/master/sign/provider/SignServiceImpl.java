@@ -6,6 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.master.sign.bean.SignInBean;
 import com.ooftf.master.sign.net.SignMobServiceHolder;
 import com.ooftf.service.engine.router.ServiceMap;
+import com.ooftf.service.engine.router.assist.SignAssistBean;
 import com.ooftf.service.engine.router.service.SignService;
 import com.ooftf.service.engine.typer.TyperFactory;
 import com.ooftf.service.net.mob.bean.MobBaseBean;
@@ -31,26 +32,40 @@ public class SignServiceImpl implements SignService {
     public static PublishSubject<String> signOutSubject = PublishSubject.create();
 
     @Override
-    public Single<Boolean> register(String username, String password) {
+    public Single<SignAssistBean> register(String username, String password) {
         return SignMobServiceHolder
                 .signMobService
                 .register(username, password)
                 .singleOrError()
-                .map(mobBaseBean -> MobBaseBean.success.equals(mobBaseBean.getRetCode()));
+                .map(mobBaseBean -> {
+                    SignAssistBean bean = new SignAssistBean();
+                    boolean success = MobBaseBean.success.equals(mobBaseBean.getRetCode());
+                    bean.setResult(success);
+                    if (success) {
+                        bean.setMsg("ok");
+                    } else {
+                        bean.setMsg(mobBaseBean.getMsg());
+                    }
+                    return bean;
+                });
     }
 
     @Override
-    public Single<Boolean> signIn(String username, String password) {
+    public Single<SignAssistBean> signIn(String username, String password) {
         return SignMobServiceHolder
                 .signMobService
                 .signIn(username, password)
                 .singleOrError()
-                .map(signInBean -> {
-                    boolean success = MobBaseBean.success.equals(signInBean.getRetCode());
+                .map(mobBaseBean -> {
+                    SignAssistBean bean = new SignAssistBean();
+                    boolean success = MobBaseBean.success.equals(mobBaseBean.getRetCode());
+                    bean.setResult(success);
                     if (success) {
-                        TyperFactory.getDefault().put(KEY_ACCOUNT_INFO, signInBean.getResult());
+                        bean.setMsg("ok");
+                    } else {
+                        bean.setMsg(mobBaseBean.getMsg());
                     }
-                    return success;
+                    return bean;
                 });
     }
 

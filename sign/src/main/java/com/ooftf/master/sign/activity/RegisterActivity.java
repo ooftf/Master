@@ -12,12 +12,14 @@ import com.ooftf.master.sign.R2;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.empty.EmptyObserver;
+import com.ooftf.service.engine.router.assist.SignAssistBean;
 import com.ooftf.service.engine.router.service.SignService;
 import com.ooftf.service.widget.dialog.OptDialog;
 import com.trello.rxlifecycle3.android.RxLifecycleAndroid;
 
 import org.jetbrains.annotations.Nullable;
 
+import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -42,7 +44,6 @@ public class RegisterActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
-
         register.setOnClickListener(v ->
                 register());
 
@@ -54,17 +55,17 @@ public class RegisterActivity extends BaseActivity {
                 .toObservable()
                 .compose(RxLifecycleAndroid.bindView(register))
                 .compose(new ButtonAction<>(register, "正在注册..."))
-                .subscribe(new EmptyObserver<Boolean>() {
+                .subscribe(new EmptyObserver<SignAssistBean>() {
                     @Override
-                    public void onNext(Boolean aBoolean) {
-                        if (aBoolean) {
+                    public void onNext(SignAssistBean bean) {
+                        if (bean.isResult()) {
                             new OptDialog(RegisterActivity.this)
                                     .setContentText(signService.getUserId() + "注册成功")
                                     .setCancelableChain(false).setPositiveText("确定")
                                     .setPositiveListener((view, dialogPos) -> finish())
                                     .show();
                         } else {
-                            toast("注册失败");
+                            toast(bean.getMsg());
                         }
                     }
                 });
