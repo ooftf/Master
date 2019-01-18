@@ -13,13 +13,12 @@ import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.empty.EmptyObserver;
 import com.ooftf.service.engine.router.assist.SignAssistBean;
-import com.ooftf.service.engine.router.service.SignService;
+import com.ooftf.service.engine.router.service.IMultiSignService;
 import com.ooftf.service.widget.dialog.OptDialog;
 import com.trello.rxlifecycle3.android.RxLifecycleAndroid;
 
 import org.jetbrains.annotations.Nullable;
 
-import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -37,7 +36,7 @@ public class RegisterActivity extends BaseActivity {
     @BindView(R2.id.register)
     Button register;
     @Autowired
-    SignService signService;
+    IMultiSignService multiAccountService;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class RegisterActivity extends BaseActivity {
     }
 
     private void register() {
-        signService
+        multiAccountService.getCurrentService()
                 .register(account.getText().toString(), password.getText().toString())
                 .toObservable()
                 .compose(RxLifecycleAndroid.bindView(register))
@@ -60,7 +59,7 @@ public class RegisterActivity extends BaseActivity {
                     public void onNext(SignAssistBean bean) {
                         if (bean.isResult()) {
                             new OptDialog(RegisterActivity.this)
-                                    .setContentText(signService.getUserId() + "注册成功")
+                                    .setContentText(multiAccountService.getCurrentService() + "注册成功")
                                     .setCancelableChain(false).setPositiveText("确定")
                                     .setPositiveListener((view, dialogPos) -> finish())
                                     .show();

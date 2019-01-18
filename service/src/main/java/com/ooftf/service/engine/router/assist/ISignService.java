@@ -1,4 +1,4 @@
-package com.ooftf.service.engine.router.service;
+package com.ooftf.service.engine.router.assist;
 
 import com.alibaba.android.arouter.facade.template.IProvider;
 import com.ooftf.service.engine.router.assist.SignAssistBean;
@@ -11,7 +11,7 @@ import io.reactivex.subjects.PublishSubject;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-public interface SignService extends IProvider {
+public interface ISignService{
 
     Single<SignAssistBean> register(String username, String password);
 

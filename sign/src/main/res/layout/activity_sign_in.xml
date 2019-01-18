@@ -49,11 +49,18 @@
         app:layout_constraintRight_toLeftOf="@+id/guide_right"
         app:layout_constraintTop_toBottomOf="@id/banner" />
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/line_height"
+        android:background="@color/gray"
+        app:layout_constraintLeft_toRightOf="@+id/guide_left"
+        app:layout_constraintRight_toLeftOf="@+id/guide_right"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
     <com.ooftf.operation.OperationEditText
         android:id="@+id/account"
         android:layout_width="0dp"
         android:layout_height="48dp"
-
         android:background="@null"
         android:drawableLeft="@drawable/ic_tip_account"
         android:drawablePadding="8dp"

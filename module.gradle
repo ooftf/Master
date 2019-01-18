@@ -21,7 +21,8 @@ android {
         }
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName(), DOCKING_MODULE_NAME: project.getName()] //AROUTER_GENERATE_DOC: "enable",
+                arguments = [AROUTER_MODULE_NAME: project.getName(), DOCKING_MODULE_NAME: project.getName()]
+                //AROUTER_GENERATE_DOC: "enable",
             }
         }
         ndk {
@@ -76,7 +77,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation deps.constraintLayout
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
-    implementation "com.ooftf:master-service:$versions.master"
+    if (maven) {
+        implementation "com.ooftf:master-service:$versions.master"
+    } else {
+        implementation project(':service')
+    }
+
 
 }
 

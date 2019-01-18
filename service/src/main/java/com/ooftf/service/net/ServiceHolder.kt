@@ -3,7 +3,7 @@ package com.ooftf.service.net
 import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.hihttp.engine.ParamInterceptor
 import com.ooftf.hihttp.engine.ServiceGenerator
-import com.ooftf.service.engine.router.service.SignService
+import com.ooftf.service.engine.router.assist.ISignService
 import com.ooftf.service.net.etd.EtdService
 import com.ooftf.service.net.mob.MobService
 
@@ -33,7 +33,7 @@ object ServiceHolder {
     }
 
     public fun mobServiceGenerator(): ServiceGenerator {
-        val signService = ARouter.getInstance().navigation(SignService::class.java)
+        val signService = ARouter.getInstance().navigation(ISignService::class.java)
         val generator = ServiceGenerator()
         generator.baseUrl = "http://apicloud.mob.com/"
         generator.loggable = true

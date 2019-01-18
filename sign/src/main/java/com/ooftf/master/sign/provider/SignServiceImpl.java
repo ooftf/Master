@@ -1,13 +1,11 @@
 package com.ooftf.master.sign.provider;
 
-import android.content.Context;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.master.sign.bean.SignInBean;
 import com.ooftf.master.sign.net.SignMobServiceHolder;
 import com.ooftf.service.engine.router.ServiceMap;
+import com.ooftf.service.engine.router.assist.ISignService;
 import com.ooftf.service.engine.router.assist.SignAssistBean;
-import com.ooftf.service.engine.router.service.SignService;
 import com.ooftf.service.engine.typer.TyperFactory;
 import com.ooftf.service.net.mob.bean.MobBaseBean;
 
@@ -19,13 +17,15 @@ import io.reactivex.subjects.PublishSubject;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-@Route(path = ServiceMap.SIGN, name = "测试服务")
-public class SignServiceImpl implements SignService {
+public class SignServiceImpl implements ISignService {
     private static final String KEY_ACCOUNT_INFO = "AccountInfo";
+    private final static SignServiceImpl INSTANCE = new SignServiceImpl();
+    private SignServiceImpl() {
 
-    @Override
-    public void init(Context context) {
+    }
 
+    public static SignServiceImpl getInstance() {
+        return INSTANCE;
     }
 
     public static PublishSubject<String> signInSubject = PublishSubject.create();

@@ -78,15 +78,29 @@ dependencies {
     implementation deps.constraintLayout
     testImplementation 'junit:junit:4.12'
     if (!MoudleDebug) {
-        implementation "com.ooftf:master-widget:$versions.master"
-        implementation "com.ooftf:master-applet:$versions.master"
-        implementation "com.ooftf:master-debug:$versions.master"
-        implementation "com.ooftf:master-source:$versions.master"
-        implementation "com.ooftf:master-other:$versions.master"
-        implementation "com.ooftf:master-sign:$versions.master"
-        implementation "com.ooftf:master-rn:$versions.master"
+        if (maven) {
+            implementation "com.ooftf:master-widget:$versions.master"
+            implementation "com.ooftf:master-applet:$versions.master"
+            implementation "com.ooftf:master-debug:$versions.master"
+            implementation "com.ooftf:master-source:$versions.master"
+            implementation "com.ooftf:master-other:$versions.master"
+            implementation "com.ooftf:master-sign:$versions.master"
+            implementation "com.ooftf:master-rn:$versions.master"
+        } else {
+            implementation project(':widget')
+            implementation project(':applet')
+            implementation project(':debug')
+            implementation project(':source')
+            implementation project(':other')
+            implementation project(':sign')
+            implementation project(':rn')
+        }
     }
-    api "com.ooftf:master-service:$versions.master"
+    if (maven) {
+        implementation "com.ooftf:master-service:$versions.master"
+    } else {
+        implementation project(':service')
+    }
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     implementation 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
