@@ -1,9 +1,7 @@
 package com.ooftf.master.sign.provider;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.master.sign.bean.SignInBean;
 import com.ooftf.master.sign.net.SignMobServiceHolder;
-import com.ooftf.service.engine.router.ServiceMap;
 import com.ooftf.service.engine.router.assist.ISignService;
 import com.ooftf.service.engine.router.assist.SignAssistBean;
 import com.ooftf.service.engine.typer.TyperFactory;
@@ -13,6 +11,8 @@ import io.reactivex.Single;
 import io.reactivex.subjects.PublishSubject;
 
 /**
+ * 994749769   965661686
+ *
  * @author ooftf
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
@@ -20,6 +20,7 @@ import io.reactivex.subjects.PublishSubject;
 public class SignServiceImpl implements ISignService {
     private static final String KEY_ACCOUNT_INFO = "AccountInfo";
     private final static SignServiceImpl INSTANCE = new SignServiceImpl();
+
     private SignServiceImpl() {
 
     }
@@ -61,6 +62,7 @@ public class SignServiceImpl implements ISignService {
                     boolean success = MobBaseBean.success.equals(mobBaseBean.getRetCode());
                     bean.setResult(success);
                     if (success) {
+                        TyperFactory.getDefault().put(KEY_ACCOUNT_INFO, mobBaseBean.getResult());
                         bean.setMsg("ok");
                     } else {
                         bean.setMsg(mobBaseBean.getMsg());

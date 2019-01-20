@@ -3,7 +3,7 @@ package com.ooftf.service.net
 import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.hihttp.engine.ParamInterceptor
 import com.ooftf.hihttp.engine.ServiceGenerator
-import com.ooftf.service.engine.router.assist.ISignService
+import com.ooftf.service.engine.router.service.IMultiSignService
 import com.ooftf.service.net.etd.EtdService
 import com.ooftf.service.net.mob.MobService
 
@@ -33,7 +33,7 @@ object ServiceHolder {
     }
 
     public fun mobServiceGenerator(): ServiceGenerator {
-        val signService = ARouter.getInstance().navigation(ISignService::class.java)
+        val signService = ARouter.getInstance().navigation(IMultiSignService::class.java)
         val generator = ServiceGenerator()
         generator.baseUrl = "http://apicloud.mob.com/"
         generator.loggable = true
@@ -42,9 +42,9 @@ object ServiceHolder {
             it.addInterceptor(object : ParamInterceptor() {
                 override fun paramTransform(oldParams: MutableMap<String, String>): MutableMap<String, String> {
                     oldParams["key"] = "3ab0f1586b2"
-                    if (signService.isSignIn) {
-                        oldParams["token"] = signService.getToken()
-                        oldParams["uid"] = signService.getUserId()
+                    if (signService.currentService.isSignIn) {
+                        oldParams["token"] = signService.currentService.token
+                        oldParams["uid"] = signService.currentService.userId
                     }
                     return oldParams
                 }

@@ -49,22 +49,23 @@ public class FireSignServiceImpl implements ISignService {
 
     @Override
     public Single<SignAssistBean> signIn(String username, String password) {
-        return Single.create(emitter -> FirebaseAuth
-                .getInstance()
-                .signInWithEmailAndPassword(username, password)
-                .addOnCompleteListener(task -> {
-                    if (emitter.isDisposed()) {
-                        return;
-                    }
-                    SignAssistBean result = new SignAssistBean();
-                    result.setResult(task.isSuccessful());
-                    if (task.isSuccessful()) {
-                        result.setMsg("ok");
-                    } else {
-                        result.setMsg(task.getException().getMessage());
-                    }
-                    emitter.onSuccess(result);
-                }));
+        return Single.create(emitter ->
+                FirebaseAuth
+                        .getInstance()
+                        .signInWithEmailAndPassword(username, password)
+                        .addOnCompleteListener(task -> {
+                            if (emitter.isDisposed()) {
+                                return;
+                            }
+                            SignAssistBean result = new SignAssistBean();
+                            result.setResult(task.isSuccessful());
+                            if (task.isSuccessful()) {
+                                result.setMsg("ok");
+                            } else {
+                                result.setMsg(task.getException().getMessage());
+                            }
+                            emitter.onSuccess(result);
+                        }));
     }
 
     @Override
