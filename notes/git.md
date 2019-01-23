@@ -39,13 +39,13 @@ https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git
 ### 将所有 submodule切换到master分支
     git submodule foreach "git cheackout master"
 ### 从remote拉取某个submodule
-1. 第一种方式
-    cd submodule_name
-    git submodule init 初始化子模块
-    git submodule update 更新子模块
-2. 第二种方式
-    在父module中
-    git submodule update --init --recursive
+    1. 第一种方式
+        cd submodule_name
+        git submodule init 初始化子模块
+        git submodule update 更新子模块
+    2. 第二种方式
+        在父module中
+        git submodule update --init --recursive
 
 ### 删除submodule（暂定）
     git rm submodule_name
