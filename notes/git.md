@@ -36,7 +36,8 @@ https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git
 ## submodule 相关
 ### 添加 submodule
     git submodule add http://git.jd.com/JmClient/JmShareModule.git
-
+### 将所有 submodule切换到master分支
+    git submodule foreach "git cheackout master"
 ### 从remote拉取某个submodule
 1. 第一种方式
     cd submodule_name
