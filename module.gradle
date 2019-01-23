@@ -61,7 +61,7 @@ publish {
     publishVersion = versions.master
     desc = 'nothing'
     bintrayUser = 'ooftf'
-    bintrayKey = bintray_key
+    bintrayKey = bintrayKey()
     dryRun = false
 }
 tasks.withType(Javadoc) {
