@@ -41,9 +41,9 @@
            * doOnSubscribe 在 onSubscribe 之前做一些动作
            * doOnNext: 再onNext 之前做一些动作
            * doOnComplete 在 onComplete之前做一些动作
-           * doAfteSubscribe
+           * doAfterSubscribe
            * doAfterNext 类似
-           * doAfteComplete
+           * doAfterComplete
 
 
            线程切换
