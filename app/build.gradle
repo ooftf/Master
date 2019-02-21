@@ -6,6 +6,7 @@ apply plugin: 'packer'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'io.fabric'
 apply from: 'matrix.gradle'
+apply from: 'autoregister.gradle'
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
