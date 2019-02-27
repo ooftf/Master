@@ -24,8 +24,9 @@
 * 解决Rn so 包没有导入的问题
 * 为progress-drawable添加文档
 * 人工智能（TensorFlow）
-* AutoRegister
 * 语言切换
+* 非入侵式埋点
+* protobuf转换项目 传统protobuf和pojo
 ### DELAY LIST
 * Ktor
 * 吸顶效果代码需要封装
@@ -55,3 +56,4 @@
 * 依赖注入
 * 贝塞尔曲线 bezier https://github.com/MrAllRight/BezierView  https://github.com/leeowenowen/beauty-of-math
 * Androidx(升级master项目非常方便，无痛升级，google dad)
+* AutoRegister （很强）
