@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.ooftf.service.R;
+import com.ooftf.service.utils.JLog;
 import com.ooftf.support.ViewOffsetHelper;
 
 import androidx.annotation.Keep;
@@ -78,6 +79,13 @@ public class TailoredToolbar extends Toolbar {
             setNavigationOnClickListener(v -> ((Activity) getContext()).finish());
         }
         setPopupTheme(R.style.ThemeOverlay_Toolbar_PopupMenu);
+        if (getId() == NO_ID) {
+            JLog.e("NO_ID");
+            setId(R.id.toolbar);
+        } else {
+            JLog.e("HAS_ID");
+        }
+
     }
 
     @Override

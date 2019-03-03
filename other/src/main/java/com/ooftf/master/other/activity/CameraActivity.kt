@@ -30,7 +30,7 @@ class CameraActivity : BaseActivity() {
                 .request(Manifest.permission.CAMERA)
                 .subscribe {
                     if (it) {
-                        camera();
+                        camera()
                     } else {
                         toast("获取相机权限失败")
                     }

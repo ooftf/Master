@@ -12,4 +12,6 @@ public  interface RouterPath {
     String SOURCE_ACTIVITY_RX_SUBJECT = "/source/activity/rxSubject";
     String APPLET_ACTIVITY_TEXT_TO_VOICE = "/applet/activity/textToVoice";
     String APPLET_ACTIVITY_WEEKLY_CONSUMPTION = "/applet/activity/weeklyConsumption";
+    String OTHER_ACTIVITY_REFLECT_PERFORMANCE_TEST =  "/other/activity/reflectPerformanceTest";
+
 }
