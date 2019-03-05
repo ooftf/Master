@@ -26,16 +26,15 @@ import tf.ooftf.com.service.base.adapter.BaseRecyclerAdapter;
  * @email 994749769@qq.com
  * @date 2018/10/17 0017
  */
-public class ListSelectorDialog extends BlurDialog {
+public class ListBlurDialog extends BlurDialog {
     @BindView(R2.id.cancel)
     TextView cancel;
     @BindView(R2.id.recycler_view)
     RecyclerView recyclerView;
     InnerAdapter adapter;
 
-    public ListSelectorDialog(@NotNull Activity activity) {
+    public ListBlurDialog(@NotNull Activity activity) {
         super(activity);
-        JLog.e("ListSelectorDialog", "ListSelectorDialog");
         setContentView(R.layout.dialog_list_selector);
         ButterKnife.bind(this);
         setGravity(Gravity.BOTTOM);

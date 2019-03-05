@@ -26,7 +26,7 @@
 * 人工智能（TensorFlow）
 * 语言切换
 * 非入侵式埋点
-* protobuf转换项目 传统protobuf和pojo
+* Hihttp addObserver没有强制主线程
 ### DELAY LIST
 * Ktor
 * 吸顶效果代码需要封装
@@ -57,3 +57,5 @@
 * 贝塞尔曲线 bezier https://github.com/MrAllRight/BezierView  https://github.com/leeowenowen/beauty-of-math
 * Androidx(升级master项目非常方便，无痛升级，google dad)
 * AutoRegister （很强）
+* protobuf转换项目 传统protobuf和pojo  （pojo  暂时没有找到方法自动生成）
+* （难题） 方法中的一个参数，如何用两个接口定义 ,解决方式：可用<T extends Callback & ILifecycleState>泛型的这个特性，解决部分需求，不能完全解决

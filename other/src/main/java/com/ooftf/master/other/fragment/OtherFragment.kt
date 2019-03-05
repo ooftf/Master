@@ -27,6 +27,7 @@ class OtherFragment : BaseListFragment() {
         adapter.add(ScreenItemBean("/other/activity/share", "分享示例"))
         adapter.add(ScreenItemBean("/other/activity/pickPhotoList", "选择图片"))
         adapter.add(ScreenItemBean(RouterPath.OTHER_ACTIVITY_REFLECT_PERFORMANCE_TEST, "反射性能测试"))
+        adapter.add(ScreenItemBean(RouterPath.WEBVIEW_ACTIVITY_WEBVIEW, "内部浏览器"))
         adapter.notifyDataSetChanged()
     }
 

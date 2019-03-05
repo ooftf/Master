@@ -24,7 +24,7 @@ import com.tencent.bugly.crashreport.CrashReport
 
 open class BaseApplication : MultiDexApplication() {
     override fun onCreate() {
-        TimeRuler.start("MyApplication","onCreate start")
+        TimeRuler.start("MyApplication", "onCreate start")
         super.onCreate()
         CrashReport.initCrashReport(applicationContext, "26a5e838af", false)
         Utils.init(this)
@@ -40,13 +40,13 @@ open class BaseApplication : MultiDexApplication() {
             ARouter.openLog()    // 打印日志
             ARouter.openDebug()  // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
-        TimeRuler.marker("MyApplication","ARouter start")
+        TimeRuler.marker("MyApplication", "ARouter start")
         ARouter.init(this)
-        TimeRuler.marker("MyApplication","TyperFactory start")
+        TimeRuler.marker("MyApplication", "TyperFactory start")
         TyperFactory.init(this)
-        TimeRuler.marker("MyApplication","Docking start")
+        TimeRuler.marker("MyApplication", "Docking start")
         Docking.init(this, true, ThreadUtil.getDefaultThreadPool())
-        TimeRuler.end("MyApplication","onCreate end")
+        TimeRuler.end("MyApplication", "onCreate end")
 
     }
 
@@ -99,6 +99,7 @@ open class BaseApplication : MultiDexApplication() {
     private fun setupLogger() {
         Logger.addLogAdapter(AndroidLogAdapter())
     }
+
 
     companion object {
         lateinit var instance: BaseApplication

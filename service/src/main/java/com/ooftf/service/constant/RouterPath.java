@@ -14,4 +14,6 @@ public  interface RouterPath {
     String APPLET_ACTIVITY_WEEKLY_CONSUMPTION = "/applet/activity/weeklyConsumption";
     String OTHER_ACTIVITY_REFLECT_PERFORMANCE_TEST =  "/other/activity/reflectPerformanceTest";
 
+    String WEBVIEW_ACTIVITY_WEBVIEW = "/webview/activity/webview";
+
 }

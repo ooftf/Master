@@ -12,13 +12,12 @@ import com.ooftf.hishare.HiShare
 import com.ooftf.service.R
 import com.ooftf.service.utils.ShareUtil
 
-class ShareDialog(activity: Activity) : BottomDialog(activity, R.style.DialogTheme_Blank) {
+class ShareDialog(activity: Activity) : BottomDialog(activity) {
 
     var recycler_view: androidx.recyclerview.widget.RecyclerView;
 
     init {
         setContentView(R.layout.dialog_share)
-        setWidthPercent(1f)
         recycler_view = findViewById(R.id.recycler_view)
         recycler_view.layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 4)
     }

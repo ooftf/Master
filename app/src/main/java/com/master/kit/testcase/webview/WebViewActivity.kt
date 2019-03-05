@@ -8,6 +8,8 @@ import android.webkit.CookieManager
 import android.webkit.JavascriptInterface
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.master.kit.R
+import com.tencent.smtt.sdk.WebView
+import com.tencent.smtt.sdk.WebViewClient
 import kotlinx.android.synthetic.main.activity_web_view.*
 
 @Route(path = "/main/webView")
@@ -21,7 +23,7 @@ class WebViewActivity : AppCompatActivity() {
         webView.loadUrl("http://www.baidu.com")
         webView.settings.defaultTextEncodingName = "utf-8"
         webView.addJavascriptInterface(JSHandler(), "Objectaaa")
-        /* webView.webViewClient = object : WebViewClient() {
+        webView.webViewClient = object : WebViewClient() {
              override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
 
                  if (url.contains("/register/H5Register")) {
@@ -39,7 +41,7 @@ class WebViewActivity : AppCompatActivity() {
                  }
                  return true
              }
-         }*/
+         }
         val cookieManager = CookieManager.getInstance()
         cookieManager.setAcceptCookie(true)
         pullToRefreshRoot.setOnRefreshListener { Handler().postDelayed({ pullToRefreshRoot.onRefreshComplete() }, 2000) }

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.util.Log
+import io.reactivex.Completable
 
 /**
  * 从非alias切换到alias图标会导致APP杀死进程，解决方法：全部设置为alias

@@ -3,8 +3,10 @@ package com.ooftf.service.widget.dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import com.ooftf.service.utils.BitmapUtils;
 
 /**
  * 高斯模糊背景的dialog
+ * 对于状态栏的处理有瑕疵
  *
  * @author ooftf
  * @email 994749769@qq.com
