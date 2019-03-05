@@ -27,6 +27,9 @@
 * 语言切换
 * 非入侵式埋点
 * Hihttp addObserver没有强制主线程
+* 编写脚本
+* 悬浮求
+* 全局dialog
 ### DELAY LIST
 * Ktor
 * 吸顶效果代码需要封装
