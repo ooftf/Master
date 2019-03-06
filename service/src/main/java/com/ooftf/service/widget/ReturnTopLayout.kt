@@ -3,16 +3,19 @@ package com.ooftf.service.widget
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
-import androidx.annotation.RequiresApi
-import androidx.core.widget.NestedScrollView
-import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
+import androidx.core.widget.NestedScrollView
 import com.ooftf.service.R
-import com.ooftf.service.engine.LoopTimer
+import com.ooftf.service.empty.EmptyObserver
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by 99474 on 2017/11/2 0002.
@@ -83,20 +86,27 @@ class ReturnTopLayout : RelativeLayout {
         }
     }
 
+    var disposable: Disposable? = null
     @SuppressLint("ClickableViewAccessibility")
     private fun scrollView() {
         val scrollView = contentView as ScrollView
         //定时器，取 MotionEvent.ACTION_UP 之后的值
-        val loopTimer = object : LoopTimer(0, 100) {
-            internal var y = -10
-            override fun onTrick() {
+        val observer = object : EmptyObserver<Long>() {
+            var y = -10
+
+            override fun onSubscribe(d: Disposable) {
+                disposable?.dispose()
+                disposable = d
+            }
+
+            override fun onNext(t: Long) {
                 if (scrollView.scrollY > 0) {
                     smoothShow()
                 } else {
                     smoothHide()
                 }
                 if (y == scrollView.scrollY) {
-                    cancel()
+                    disposable?.dispose()
                 }
                 y = scrollView.scrollY
             }
@@ -109,7 +119,10 @@ class ReturnTopLayout : RelativeLayout {
                 smoothHide()
             }
             if (event.action == MotionEvent.ACTION_UP) {
-                loopTimer.start()
+                Observable
+                        .interval(10, TimeUnit.MILLISECONDS)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(observer)
             }
             false
         }
@@ -117,6 +130,11 @@ class ReturnTopLayout : RelativeLayout {
             scrollView.smoothScrollTo(0, 0)
             smoothHide()
         }
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        disposable?.dispose()
     }
 
     private fun listView() {

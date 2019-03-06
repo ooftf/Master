@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.ooftf.service.base.BaseApplication;
+import com.ooftf.service.engine.ActivityManager;
 import com.ooftf.widget.R;
 
 /**
@@ -22,7 +23,7 @@ public class SuspendWindow {
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             layoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
-        }else{
+        } else {
             layoutParams.type = WindowManager.LayoutParams.TYPE_PHONE;
         }
         //FLAG_NOT_FOCUSABLE只有控件部分有焦点，FLAG_FORCE_NOT_FULLSCREEN，FLAG_FULLSCREEN整个屏幕的焦点
@@ -35,12 +36,21 @@ public class SuspendWindow {
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         layoutParams.format = PixelFormat.TRANSPARENT;
         LayoutInflater layoutInflater = LayoutInflater.from(BaseApplication.instance);
-        View view = (View) layoutInflater.inflate(R.layout.window_suspend, null);
+        View view = layoutInflater.inflate(R.layout.window_suspend, null);
         WindowManager windowManager = (WindowManager) BaseApplication.instance.getSystemService(Context.WINDOW_SERVICE);
-        try{
+        try {
             windowManager.addView(view, layoutParams);
-        }catch (RuntimeException e){
+            ActivityManager.INSTANCE.registerBackgroundObserver(() -> {
+                view.setVisibility(View.GONE);
+                return null;
+            });
+            ActivityManager.INSTANCE.registerForegroundObserver(() -> {
+                view.setVisibility(View.VISIBLE);
+                return null;
+            });
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
+
     }
 }

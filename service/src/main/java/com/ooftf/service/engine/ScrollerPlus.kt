@@ -3,6 +3,10 @@ package com.ooftf.service.engine
 import android.content.Context
 import android.view.animation.Interpolator
 import android.widget.Scroller
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import java.util.concurrent.TimeUnit
 
 /**
  * 系统类scroller的加强版
@@ -16,18 +20,7 @@ abstract class ScrollerPlus : Scroller {
     constructor(context: Context?, interpolator: Interpolator?) : super(context, interpolator)
     constructor(context: Context?, interpolator: Interpolator?, flywheel: Boolean) : super(context, interpolator, flywheel)
 
-    private val loopTimer: LoopTimer by lazy {
-        object : LoopTimer(period = 1000 / 100.toLong()) {
-            override fun onTrick() {
-                if (computeScrollOffset()) {
-                    onMoving(currX, currY)
-                } else {
-                    loopTimer.cancel()
-                    onFinish()
-                }
-            }
-        }
-    }
+    var disposable: Disposable? = null
 
     abstract fun onMoving(currX: Int, currY: Int)
 
@@ -42,10 +35,20 @@ abstract class ScrollerPlus : Scroller {
      */
     override fun startScroll(startX: Int, startY: Int, dx: Int, dy: Int, duration: Int) {
         super.startScroll(startX, startY, dx, dy, duration)
-        loopTimer.start()
+        disposable?.dispose()
+        disposable = Observable.interval(1000 / 100, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    if (computeScrollOffset()) {
+                        onMoving(currX, currY)
+                    } else {
+                        disposable?.dispose()
+                        onFinish()
+                    }
+                }
     }
 
     fun cancel() {
-        loopTimer.cancel()
+        disposable?.dispose()
     }
 }
