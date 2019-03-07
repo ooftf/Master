@@ -88,6 +88,7 @@ dependencies {
             implementation "com.ooftf:master-sign:$versions.master"
             implementation "com.ooftf:master-rn:$versions.master"
             implementation "com.ooftf:master-webview:$versions.master"
+            implementation "com.ooftf:master-qrcode:$versions.master"
         } else {
             implementation project(':widget')
             implementation project(':applet')
@@ -96,7 +97,7 @@ dependencies {
             implementation project(':other')
             implementation project(':sign')
             implementation project(':rn')
-            implementation project(':webview')
+            implementation project(':qrcode')
         }
     }
     if (maven) {

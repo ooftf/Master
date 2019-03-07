@@ -1,2 +1,2 @@
-include ':app', ':service', ':applet', ':widget', ':debug', ':source', ':other', ':sign', ':rn', ':webview'
+include ':app', ':service', ':applet', ':widget', ':debug', ':source', ':other', ':sign', ':rn', ':webview', ':qrcode'
 

@@ -1,6 +1,7 @@
 package com.ooftf.master.webview.activity;
 
 import android.annotation.SuppressLint;
+import android.hardware.camera2.CameraManager;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -45,6 +46,4 @@ public class MasterWebViewActivity extends BaseActivity {
         });
         webView.loadUrl("https://mtt.m.jd.com/article/articleView/0b800dcf-1d28-4be8-86d3-3f70535318cb.action");
     }
-
-
 }
