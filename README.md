@@ -31,6 +31,7 @@
 * 悬浮求
 * 全局dialog
 * 扫一扫
+* codecov
 ### DELAY LIST
 * Ktor
 * 吸顶效果代码需要封装

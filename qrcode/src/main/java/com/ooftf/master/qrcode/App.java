@@ -4,7 +4,10 @@ import android.app.Application;
 import android.content.Context;
 
 import com.ooftf.docking.api.IApplication;
-
+/**
+ * @author 99474
+ */
+@com.ooftf.docking.annotation.Application
 public class App implements IApplication {
     private static Application INSTANCE;
     @Override

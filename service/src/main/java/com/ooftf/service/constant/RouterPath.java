@@ -15,5 +15,6 @@ public  interface RouterPath {
     String OTHER_ACTIVITY_REFLECT_PERFORMANCE_TEST =  "/other/activity/reflectPerformanceTest";
 
     String WEBVIEW_ACTIVITY_WEBVIEW = "/webview/activity/webview";
+    String QRCODE_ACTIVITY_QRCODE = "/qrcode/activity/qrcode";
 
 }

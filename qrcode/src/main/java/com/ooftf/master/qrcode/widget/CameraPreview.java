@@ -2,15 +2,14 @@ package com.ooftf.master.qrcode.widget;
 
 import android.content.Context;
 import android.hardware.Camera;
-import android.hardware.camera2.CameraDevice;
-import android.hardware.camera2.CameraManager;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.TextureView;
+
+import com.ooftf.master.qrcode.engine.CompactCamera;
 
 import java.io.IOException;
-
-import androidx.annotation.NonNull;
 
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
     private static final String TAG = "CameraPreview";
