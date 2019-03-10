@@ -1,8 +1,7 @@
 package com.ooftf.master.qrcode.engine;
 
-import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.graphics.ImageFormat;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
@@ -16,94 +15,36 @@ import android.view.Surface;
 import android.view.TextureView;
 
 import com.ooftf.master.qrcode.App;
+import com.ooftf.service.utils.JLog;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.functions.Function;
+
 
 /**
  * @author 99474
+ * <p>
+ * https://blog.csdn.net/zhangbijun1230/article/details/80556903
  */
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-public class CompactCamera {
-    TextureView mTextureView;
+public class CompactCamera implements ICamera {
+    private TextureView mTextureView;
+    private CameraDevice cameraDevice;
+    private CameraCaptureSession cameraCaptureSession;
+    Surface surface;
+    ImageReader mImageReader;
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     public CompactCamera(TextureView textureView) {
         this.mTextureView = textureView;
-        init();
-    }
-
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    void init() {
-        CameraManager manager = (CameraManager) App.getInstance().getSystemService(Context.CAMERA_SERVICE);
-        String[] cameraIdList = new String[0];
-        try {
-            cameraIdList = manager.getCameraIdList();
-        } catch (CameraAccessException e) {
-            e.printStackTrace();
-        }
-        if (mTextureView.getContext().checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    Activity#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for Activity#requestPermissions for more details.
-            return;
-        }
-        try {
-            manager.openCamera(cameraIdList[0], new CameraDevice.StateCallback() {
-                @Override
-                public void onOpened(@NonNull CameraDevice camera) {
-                    Surface surface = new Surface(mTextureView.getSurfaceTexture());
-
-                    try {
-                        CaptureRequest.Builder captureRequestBuilder = camera.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
-                        captureRequestBuilder.addTarget(surface);
-                        camera.createCaptureSession(Arrays.asList(surface), new CameraCaptureSession.StateCallback() {
-                            @Override
-                            public void onConfigured(@NonNull CameraCaptureSession session) {
-                                CaptureRequest request = captureRequestBuilder.build();
-                                try {
-                                    session.setRepeatingRequest(request, null, null);
-                                } catch (CameraAccessException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-
-                            @Override
-                            public void onConfigureFailed(@NonNull CameraCaptureSession session) {
-
-                            }
-                        }, null);
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                @Override
-                public void onDisconnected(@NonNull CameraDevice camera) {
-
-                }
-
-                @Override
-                public void onError(@NonNull CameraDevice camera, int error) {
-
-                }
-            }, null);
-        } catch (CameraAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void ss() {
-        //前三个参数分别是需要的尺寸和格式，最后一个参数代表每次最多获取几帧数据，本例的2代表ImageReader中最多可以获取两帧图像流
-        ImageReader mImageReader = ImageReader.newInstance(mTextureView.getWidth(), mTextureView.getHeight(),
+        surface = new Surface(mTextureView.getSurfaceTexture());
+        //获取预览数据
+        mImageReader = ImageReader.newInstance(mTextureView.getWidth(), mTextureView.getHeight(),
                 ImageFormat.JPEG, 2);
         //监听ImageReader的事件，当有图像流数据可用时会回调onImageAvailable方法，它的参数就是预览帧数据，可以对这帧数据进行处理
         mImageReader.setOnImageAvailableListener(new ImageReader.OnImageAvailableListener() {
@@ -114,8 +55,112 @@ public class CompactCamera {
                 ByteBuffer buffer = image.getPlanes()[0].getBuffer();
                 byte[] data = new byte[buffer.remaining()];
                 buffer.get(data);
+                if (previewCallback != null) {
+                    previewCallback.onPreview(data);
+                }
                 image.close();
             }
         }, null);
+    }
+
+    @Override
+    public void startPreview() {
+        JLog.e("startPreview");
+        getRequest().subscribe(captureRequest -> cameraCaptureSession.setRepeatingRequest(captureRequest, null, null));
+    }
+
+    @Override
+    public void stopPreview() {
+        if (cameraCaptureSession != null) {
+            try {
+                cameraCaptureSession.stopRepeating();
+            } catch (CameraAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    IPreviewCallback previewCallback;
+
+    @Override
+    public void setImageCallback(IPreviewCallback callback) {
+        previewCallback = callback;
+    }
+
+
+    @SuppressLint("MissingPermission")
+    private Observable<CameraDevice> openCamera() {
+        return Observable
+                .fromCallable(() -> cameraDevice)
+                .onErrorResumeNext(Observable.create(emitter -> {
+                    CameraManager manager = (CameraManager) App.getInstance().getSystemService(Context.CAMERA_SERVICE);
+                    String[] cameraIdList = manager.getCameraIdList();
+                    manager.openCamera(cameraIdList[0], new CameraDevice.StateCallback() {
+                        @Override
+                        public void onOpened(@NonNull CameraDevice camera) {
+                            cameraDevice = camera;
+                            emitter.onNext(camera);
+                            emitter.onComplete();
+                        }
+
+                        @Override
+                        public void onDisconnected(@NonNull CameraDevice camera) {
+                            cameraDevice = null;
+                        }
+
+
+                        @Override
+                        public void onClosed(@NonNull CameraDevice camera) {
+                            cameraDevice = null;
+
+                        }
+
+                        @Override
+                        public void onError(@NonNull CameraDevice camera, int error) {
+                            cameraDevice = null;
+                            emitter.onError(new Exception("onError::" + error));
+                        }
+                    }, null);
+                }));
+    }
+
+
+    Observable<CameraCaptureSession> createSession() {
+        return Observable
+                .fromCallable(() -> cameraCaptureSession)
+                .onErrorResumeNext(openCamera()
+                        .flatMap((Function<CameraDevice, ObservableSource<CameraCaptureSession>>) camera -> Observable.create(emitter -> {
+                            camera.createCaptureSession(Arrays.asList(surface, mImageReader.getSurface()), new CameraCaptureSession.StateCallback() {
+                                @Override
+                                public void onConfigured(@NonNull CameraCaptureSession session) {
+                                    cameraCaptureSession = session;
+                                    emitter.onNext(session);
+                                    emitter.onComplete();
+
+                                }
+
+                                @Override
+                                public void onConfigureFailed(@NonNull CameraCaptureSession session) {
+                                    emitter.onError(new Exception("onConfigureFailed"));
+                                }
+                            }, null);
+                        })));
+
+
+    }
+
+    CaptureRequest mRequest;
+
+    Observable<CaptureRequest> getRequest() {
+        return Observable.fromCallable(() -> mRequest).onErrorResumeNext(throwable -> {
+            return createSession().map(session -> {
+                CaptureRequest.Builder captureRequestBuilder = cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
+                captureRequestBuilder.addTarget(surface);
+                captureRequestBuilder.addTarget(mImageReader.getSurface());
+                mRequest = captureRequestBuilder.build();
+                return mRequest;
+            });
+        });
+
     }
 }

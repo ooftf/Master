@@ -31,6 +31,9 @@
             * interval 定时器
             * intervalRange 定时器 固定次数
             * timer 延迟执行
+           高级
+                defer  将获取数据流的操作延迟到订阅时刻
+                fromCallback 将获取数据流的操作延迟到订阅时刻和defer的区别在于这个只能是一次事件
    ### 操作 Observable
            * map 一个数据转为另一个数据
            * flatMap 一个onNext数据 转换成一个 Observable :需要第一个数据源得到后异步获取
@@ -115,6 +118,10 @@
     https://github.com/JakeWharton/RxRelay        RxJava 在发射 onError或者onComplete数据后将不能在发射后续数据，RxRelay就是为了解决这个问题而产生的
 # RxJava问题讨论
     再合并多个Observer的时候线程切换是什么结果
+# TODO
+* blocking
+* retry
+* repeat
 
 
 
