@@ -122,6 +122,10 @@
 * blocking
 * retry
 * repeat
+* throttle 节流
+* debounce 去抖
+* throttleFirst
+* sample
 
 
 

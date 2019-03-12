@@ -41,11 +41,15 @@ public class SuspendWindow {
         try {
             windowManager.addView(view, layoutParams);
             ActivityManager.INSTANCE.registerBackgroundObserver(() -> {
-                view.setVisibility(View.GONE);
+                if (view.getParent() != null) {
+                    windowManager.removeView(view);
+                }
                 return null;
             });
             ActivityManager.INSTANCE.registerForegroundObserver(() -> {
-                view.setVisibility(View.VISIBLE);
+                if (view.getParent() == null) {
+                    windowManager.addView(view, layoutParams);
+                }
                 return null;
             });
         } catch (RuntimeException e) {

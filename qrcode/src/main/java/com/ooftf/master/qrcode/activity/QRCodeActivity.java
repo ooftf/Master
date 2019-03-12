@@ -6,12 +6,16 @@ import android.widget.Button;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.master.qrcode.R;
-import com.ooftf.master.qrcode.widget.CameraPreview21;
+import com.ooftf.master.qrcode.widget.CameraPreview;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.utils.JLog;
 
 import org.jetbrains.annotations.Nullable;
+
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
 
 /**
  * 二维码扫描
@@ -20,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
  */
 @Route(path = RouterPath.QRCODE_ACTIVITY_QRCODE)
 public class QRCodeActivity extends BaseActivity {
-    CameraPreview21 cameraPreview;
+    CameraPreview cameraPreview;
     Button stop;
     Button start;
 
@@ -38,7 +42,6 @@ public class QRCodeActivity extends BaseActivity {
             stop.setOnClickListener(view -> cameraPreview.stopPreview());
         }
         cameraPreview.setImageCallback(bytes -> JLog.e("onPreview", bytes.length));
-
     }
 
     @Override

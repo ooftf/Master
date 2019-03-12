@@ -1,5 +1,7 @@
 package com.ooftf.master.qrcode.engine;
 
+import android.view.View;
+
 /**
  * @author ooftf
  * @email 994749769@qq.com
@@ -12,4 +14,6 @@ public interface ICamera {
     void stopPreview();
 
     void setImageCallback(IPreviewCallback callback);
+
+    View getTargetView();
 }

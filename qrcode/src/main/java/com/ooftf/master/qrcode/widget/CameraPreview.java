@@ -1,75 +1,72 @@
 package com.ooftf.master.qrcode.widget;
 
 import android.content.Context;
-import android.hardware.Camera;
-import android.util.Log;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.view.TextureView;
+import android.os.Build;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.FrameLayout;
 
-import com.ooftf.master.qrcode.engine.CompactCamera;
+import com.ooftf.master.qrcode.engine.ICamera;
+import com.ooftf.master.qrcode.engine.IPreviewCallback;
 
-import java.io.IOException;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import io.reactivex.Flowable;
 
-public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
-    private static final String TAG = "CameraPreview";
-    private SurfaceHolder mHolder;
-    private Camera mCamera;
+/**
+ * @author ooftf
+ * @email 994749769@qq.com
+ * @date 2019/3/11 0011
+ */
+public class CameraPreview extends FrameLayout implements ICamera {
+    ICamera camera;
 
-    public CameraPreview(Context context, Camera camera) {
+    public CameraPreview(@NonNull Context context) {
+
         super(context);
-        mCamera = camera;
-        // Install a SurfaceHolder.Callback so we get notified when the
-        // underlying surface is created and destroyed.
-        mHolder = getHolder();
-        mHolder.addCallback(this);
-        // deprecated setting, but required on Android versions prior to 3.0
-        mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+    }
+
+    public CameraPreview(@NonNull Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public CameraPreview(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public CameraPreview(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            camera = new CameraPreview21(getContext());
+        } else {
+            camera = new CameraPreviewLow(getContext());
+        }*/
+        camera = new CameraPreviewLow(getContext());
+        addView(camera.getTargetView());
     }
 
     @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-        // The Surface has been created, now tell the camera where to draw the preview.
-        try {
-            mCamera.setPreviewDisplay(holder);
-            mCamera.startPreview();
-        } catch (IOException e) {
-            Log.d(TAG, "Error setting camera preview: " + e.getMessage());
-        }
+    public void startPreview() {
+        camera.startPreview();
     }
 
     @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
-        // empty. Take care of releasing the Camera preview in your activity.
+    public void stopPreview() {
+        camera.stopPreview();
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
-        // If your preview can change or rotate, take care of those events here.
-        // Make sure to stop the preview before resizing or reformatting it.
+    public void setImageCallback(IPreviewCallback callback) {
+        camera.setImageCallback(callback);
+    }
 
-        if (mHolder.getSurface() == null){
-            // preview surface does not exist
-            return;
-        }
-
-        // stop preview before making changes
-        try {
-            mCamera.stopPreview();
-        } catch (Exception e){
-            // ignore: tried to stop a non-existent preview
-        }
-
-        // set preview size and make any resize, rotate or
-        // reformatting changes here
-
-        // start preview with new settings
-        try {
-            mCamera.setPreviewDisplay(mHolder);
-            mCamera.startPreview();
-
-        } catch (Exception e){
-            Log.d(TAG, "Error starting camera preview: " + e.getMessage());
-        }
+    @Override
+    public View getTargetView() {
+        return camera.getTargetView();
     }
 }

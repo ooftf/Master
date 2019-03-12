@@ -6,6 +6,7 @@ import android.graphics.SurfaceTexture;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.TextureView;
+import android.view.View;
 
 import com.ooftf.master.qrcode.engine.CompactCamera;
 import com.ooftf.master.qrcode.engine.ICamera;
@@ -24,7 +25,8 @@ import io.reactivex.subjects.PublishSubject;
  * @email 994749769@qq.com
  * @date 2019/3/8 0008
  */
-public class CameraPreview21 extends TextureView implements ICamera {
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+class CameraPreview21 extends TextureView implements ICamera {
     CompactCamera camera;
     PublishSubject<CompactCamera> subject = PublishSubject.create();
 
@@ -37,6 +39,7 @@ public class CameraPreview21 extends TextureView implements ICamera {
     }
 
     {
+        setKeepScreenOn(true);
         setSurfaceTextureListener(new SurfaceTextureListener() {
             @Override
             public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
@@ -55,6 +58,7 @@ public class CameraPreview21 extends TextureView implements ICamera {
 
             @Override
             public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
+
                 return false;
             }
 
@@ -64,6 +68,12 @@ public class CameraPreview21 extends TextureView implements ICamera {
             }
         });
 
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        camera.destroy();
+        super.onDetachedFromWindow();
     }
 
     @RequiresPermission(Manifest.permission.CAMERA)
@@ -76,6 +86,7 @@ public class CameraPreview21 extends TextureView implements ICamera {
                 , Throwable::printStackTrace);
 
     }
+
     @Override
     public void stopPreview() {
         getCamera().subscribe(
@@ -90,6 +101,11 @@ public class CameraPreview21 extends TextureView implements ICamera {
 
     }
 
+    @Override
+    public View getTargetView() {
+        return this;
+    }
+
     public Observable<CompactCamera> getCamera() {
         JLog.e("getCamera///");
         return Observable
@@ -100,8 +116,8 @@ public class CameraPreview21 extends TextureView implements ICamera {
                 .retryWhen(throwableObservable -> {
                     JLog.e("throwableObservable");
                     return throwableObservable.flatMap((Function<Throwable, ObservableSource<?>>) throwable -> {
-                        JLog.e("throwableObservable"+throwable.toString());
-                        if(subject.hasComplete()){
+                        JLog.e("throwableObservable" + throwable.toString());
+                        if (subject.hasComplete()) {
                             return Observable.error(throwable);
                         }
                         return subject;

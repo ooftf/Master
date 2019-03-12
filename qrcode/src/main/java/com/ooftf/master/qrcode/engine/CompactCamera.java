@@ -13,18 +13,22 @@ import android.media.ImageReader;
 import android.os.Build;
 import android.view.Surface;
 import android.view.TextureView;
+import android.view.View;
 
 import com.ooftf.master.qrcode.App;
 import com.ooftf.service.utils.JLog;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.subjects.PublishSubject;
 
 
 /**
@@ -37,6 +41,7 @@ public class CompactCamera implements ICamera {
     private TextureView mTextureView;
     private CameraDevice cameraDevice;
     private CameraCaptureSession cameraCaptureSession;
+    PublishSubject<ImageReader> previewData = PublishSubject.create();
     Surface surface;
     ImageReader mImageReader;
 
@@ -47,20 +52,20 @@ public class CompactCamera implements ICamera {
         mImageReader = ImageReader.newInstance(mTextureView.getWidth(), mTextureView.getHeight(),
                 ImageFormat.JPEG, 2);
         //监听ImageReader的事件，当有图像流数据可用时会回调onImageAvailable方法，它的参数就是预览帧数据，可以对这帧数据进行处理
-        mImageReader.setOnImageAvailableListener(new ImageReader.OnImageAvailableListener() {
-            @Override
-            public void onImageAvailable(ImageReader reader) {
-                Image image = reader.acquireLatestImage();
-                //我们可以将这帧数据转成字节数组，类似于Camera1的PreviewCallback回调的预览帧数据
-                ByteBuffer buffer = image.getPlanes()[0].getBuffer();
-                byte[] data = new byte[buffer.remaining()];
-                buffer.get(data);
-                if (previewCallback != null) {
-                    previewCallback.onPreview(data);
-                }
-                image.close();
-            }
-        }, null);
+        mImageReader.setOnImageAvailableListener(reader -> previewData.onNext(reader), null);
+        previewData
+                .throttleFirst(100, TimeUnit.MILLISECONDS)
+                .subscribe(imageReader -> {
+                    Image image = imageReader.acquireLatestImage();
+                    //我们可以将这帧数据转成字节数组，类似于Camera1的PreviewCallback回调的预览帧数据
+                    ByteBuffer buffer = image.getPlanes()[0].getBuffer();
+                    byte[] data = new byte[buffer.remaining()];
+                    buffer.get(data);
+                    if (previewCallback != null) {
+                        previewCallback.onPreview(data);
+                    }
+                    image.close();
+                });
     }
 
     @Override
@@ -85,6 +90,19 @@ public class CompactCamera implements ICamera {
     @Override
     public void setImageCallback(IPreviewCallback callback) {
         previewCallback = callback;
+    }
+
+    @Override
+    public View getTargetView() {
+        return mTextureView;
+    }
+
+
+    public void destroy() {
+        if (cameraDevice != null) {
+            cameraDevice.close();
+        }
+        previewData.onComplete();
     }
 
 

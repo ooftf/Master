@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/background"
     android:layout_height="match_parent">
-    <com.ooftf.master.qrcode.widget.CameraPreview21
+    <com.ooftf.master.qrcode.widget.CameraPreview
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
