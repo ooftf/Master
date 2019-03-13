@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.ooftf.master.qrcode.engine.ICamera;
 import com.ooftf.master.qrcode.engine.IPreviewCallback;
-import com.ooftf.service.utils.JLog;
+import com.ooftf.master.qrcode.utils.CameraConfigurationUtils;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -23,10 +23,9 @@ import io.reactivex.subjects.PublishSubject;
 class CameraPreviewLow extends SurfaceView implements SurfaceHolder.Callback, ICamera {
     private static final String TAG = "CameraPreview";
 
-    PublishSubject<byte[]> preCallback = PublishSubject.create();
+    PublishSubject<IPreviewCallback.ImageInfo> preCallback = PublishSubject.create();
     Camera.PreviewCallback callback = (data, camera1) -> {
-        JLog.e("setPreviewCallback", "" + data.length);
-        preCallback.onNext(data);
+        preCallback.onNext(new IPreviewCallback.ImageInfo(camera1.getParameters().getPreviewFormat(), data, camera1.getParameters().getPreviewSize().width, camera1.getParameters().getPreviewSize().height));
     };
     private SurfaceHolder mHolder;
     private Camera mCamera;
@@ -40,26 +39,25 @@ class CameraPreviewLow extends SurfaceView implements SurfaceHolder.Callback, IC
         } else {
             mCamera.setDisplayOrientation(0);
         }
+        Camera.Parameters parameters = mCamera.getParameters();
+        CameraConfigurationUtils.setBestPreviewFPS(parameters);
+        CameraConfigurationUtils.setFocusArea(parameters);
+        mCamera.setParameters(parameters);
         // Install a SurfaceHolder.Callback so we get notified when the
         // underlying surface is created and destroyed.
         mHolder = getHolder();
         mHolder.addCallback(this);
         // deprecated setting, but required on Android versions prior to 3.0
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-
-        mCamera.addCallbackBuffer(bytess);
         preCallback
-                .delay(100, TimeUnit.MILLISECONDS)
+                .throttleFirst(100, TimeUnit.MILLISECONDS)
                 .subscribe(bytes -> {
-                    //mCamera.addCallbackBuffer(bytess);
                     if (previewCallback != null) {
                         previewCallback.onPreview(bytes);
                     }
                 });
 
     }
-
-    byte[] bytess = new byte[1024 * 1024 * 5];
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
@@ -119,7 +117,7 @@ class CameraPreviewLow extends SurfaceView implements SurfaceHolder.Callback, IC
     public void startPreview() {
         try {
             // 必须设置在startPreview旁边，stopPreview会清除这个回调
-            mCamera.setOneShotPreviewCallback(callback);
+            mCamera.setPreviewCallback(callback);
             mCamera.startPreview();
         } catch (Exception e) {
             Log.d(TAG, "Error starting camera preview: " + e.getMessage());
@@ -146,5 +144,15 @@ class CameraPreviewLow extends SurfaceView implements SurfaceHolder.Callback, IC
     @Override
     public View getTargetView() {
         return this;
+    }
+
+    @Override
+    public int getPreviewWidth() {
+        return mCamera.getParameters().getPreviewSize().width;
+    }
+
+    @Override
+    public int getPreviewHeight() {
+        return mCamera.getParameters().getPreviewSize().height;
     }
 }

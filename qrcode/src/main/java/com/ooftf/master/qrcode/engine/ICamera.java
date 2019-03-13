@@ -16,4 +16,8 @@ public interface ICamera {
     void setImageCallback(IPreviewCallback callback);
 
     View getTargetView();
+
+    int getPreviewWidth();
+
+    int getPreviewHeight();
 }

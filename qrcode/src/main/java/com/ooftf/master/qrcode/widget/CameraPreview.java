@@ -12,7 +12,6 @@ import com.ooftf.master.qrcode.engine.IPreviewCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import io.reactivex.Flowable;
 
 /**
  * @author ooftf
@@ -41,12 +40,11 @@ public class CameraPreview extends FrameLayout implements ICamera {
     }
 
     {
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             camera = new CameraPreview21(getContext());
         } else {
             camera = new CameraPreviewLow(getContext());
-        }*/
-        camera = new CameraPreviewLow(getContext());
+        }
         addView(camera.getTargetView());
     }
 
@@ -69,4 +67,16 @@ public class CameraPreview extends FrameLayout implements ICamera {
     public View getTargetView() {
         return camera.getTargetView();
     }
+
+    @Override
+    public int getPreviewWidth() {
+        return camera.getPreviewWidth();
+    }
+
+    @Override
+    public int getPreviewHeight() {
+        return camera.getPreviewHeight();
+    }
+
+
 }

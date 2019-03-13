@@ -106,6 +106,16 @@ class CameraPreview21 extends TextureView implements ICamera {
         return this;
     }
 
+    @Override
+    public int getPreviewWidth() {
+        return camera.getPreviewWidth();
+    }
+
+    @Override
+    public int getPreviewHeight() {
+        return camera.getPreviewHeight();
+    }
+
     public Observable<CompactCamera> getCamera() {
         JLog.e("getCamera///");
         return Observable

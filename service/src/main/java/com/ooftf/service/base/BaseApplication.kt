@@ -11,12 +11,15 @@ import com.ooftf.docking.api.Docking
 import com.ooftf.service.BuildConfig
 import com.ooftf.service.engine.ActivityManager
 import com.ooftf.service.engine.typer.TyperFactory
+import com.ooftf.service.utils.JLog
 import com.ooftf.service.utils.ThreadUtil
 import com.ooftf.service.utils.TimeRuler
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.squareup.leakcanary.LeakCanary
 import com.tencent.bugly.crashreport.CrashReport
+import io.reactivex.android.plugins.RxAndroidPlugins
+import io.reactivex.plugins.RxJavaPlugins
 
 /**
  * Created by master on 2016/12/26.
@@ -47,7 +50,9 @@ open class BaseApplication : MultiDexApplication() {
         TimeRuler.marker("MyApplication", "Docking start")
         Docking.init(this, true, ThreadUtil.getDefaultThreadPool())
         TimeRuler.end("MyApplication", "onCreate end")
-
+        RxJavaPlugins.setErrorHandler {
+            JLog.e(it.toString())
+        }
     }
 
     override fun onLowMemory() {
