@@ -5,4 +5,5 @@ dependencies {
     kapt deps.dagger2_compiler
     kapt 'com.ooftf:docking-compiler:1.0.0'
     implementation 'com.google.zxing:core:3.3.3'
+    implementation 'com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.3'
 }

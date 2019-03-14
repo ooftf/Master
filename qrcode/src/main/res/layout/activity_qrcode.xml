@@ -1,31 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/background"
-    android:layout_height="match_parent">
-    <com.ooftf.master.qrcode.widget.CameraPreview
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="parent"
+    android:orientation="vertical">
+
+
+
+    <com.dlazaro66.qrcodereaderview.QRCodeReaderView
         android:id="@+id/cameraPreview"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp" />
-    <Button
-        app:layout_constraintLeft_toLeftOf="@+id/stop"
-        app:layout_constraintBottom_toTopOf="@+id/stop"
-        android:id="@+id/start"
-        android:text="start"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/stop"
-        android:text="stop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <com.ooftf.service.widget.toolbar.TailoredToolbar
+        app:navigationIcon="@drawable/vector_arrow_left"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:layout_height="@dimen/layout_appbar_height"
+        android:background="@color/transparent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="扫一扫" />
+    <Button
+        android:id="@+id/start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="start"
+        app:layout_constraintBottom_toTopOf="@+id/stop"
+        app:layout_constraintLeft_toLeftOf="@+id/stop" />
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
