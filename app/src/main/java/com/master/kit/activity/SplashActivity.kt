@@ -20,7 +20,7 @@ class SplashActivity : BaseActivity() {
         }
         timer.start()
         typerTextView.animateText("welcome to ooftf's world")
-        RxPermissions(this).requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE).subscribe()
+        RxPermissions(this).requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.READ_PHONE_STATE,Manifest.permission.CAMERA).subscribe()
     }
 
     private var timer: CountDownTimer = MyTimer(this)

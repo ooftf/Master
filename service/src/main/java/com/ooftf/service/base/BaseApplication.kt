@@ -1,6 +1,8 @@
 package com.ooftf.service.base
 
 import android.content.Context
+import android.os.Build
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.Utils
@@ -18,7 +20,6 @@ import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.squareup.leakcanary.LeakCanary
 import com.tencent.bugly.crashreport.CrashReport
-import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins
 
 /**
@@ -53,6 +54,11 @@ open class BaseApplication : MultiDexApplication() {
         RxJavaPlugins.setErrorHandler {
             JLog.e(it.toString())
         }
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+        }
+
     }
 
     override fun onLowMemory() {

@@ -2,13 +2,14 @@ package com.ooftf.master.qrcode.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
 import com.ooftf.master.qrcode.R;
-import com.ooftf.master.qrcode.utils.QrDecoder;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.utils.JLog;
@@ -24,33 +25,39 @@ import org.jetbrains.annotations.Nullable;
 @Route(path = RouterPath.QRCODE_ACTIVITY_QRCODE)
 public class QRCodeActivity extends BaseActivity {
     QRCodeReaderView cameraPreview;
-    Button stop;
-    Button start;
-    QrDecoder qrDecoder = new QrDecoder();
     TailoredToolbar toolbar;
+    View scanLine;
+    TranslateAnimation translateAnimation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode);
-        start = findViewById(R.id.start);
-        stop = findViewById(R.id.stop);
         toolbar = findViewById(R.id.toolbar);
         cameraPreview = findViewById(R.id.cameraPreview);
+        scanLine = findViewById(R.id.scan_line);
         setupCameraPreview();
         setupToolbar();
+        setupAnimation();
+    }
+
+    private void setupAnimation() {
+        translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, 0, Animation.RELATIVE_TO_PARENT, 0, Animation.RELATIVE_TO_PARENT, -0.98f, Animation.RELATIVE_TO_PARENT, 0f);
+        translateAnimation.setRepeatMode(Animation.REVERSE);
+        translateAnimation.setDuration(2000);
+        translateAnimation.setRepeatCount(Animation.INFINITE);
     }
 
     private void setupToolbar() {
-        MenuItem light = toolbar.getMenu().add("");
-        light.setIcon(R.drawable.light_close).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        MenuItem light = toolbar.getMenu().add("灯光");
+        light.setIcon(R.drawable.ic_flash_off_black_24dp).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         light.setChecked(false);
         light.setOnMenuItemClickListener(item -> {
             item.setChecked(!item.isChecked());
             if (item.isChecked()) {
-                item.setIcon(R.drawable.light_open);
+                item.setIcon(R.drawable.ic_flash_on_black_24dp);
             } else {
-                item.setIcon(R.drawable.light_close);
+                item.setIcon(R.drawable.ic_flash_off_black_24dp);
             }
             cameraPreview.setTorchEnabled(item.isChecked());
             return true;
@@ -61,7 +68,7 @@ public class QRCodeActivity extends BaseActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         cameraPreview.setOnQRCodeReadListener((text, points) -> {
             JLog.e(text, points);
-            cameraPreview.stopCamera();
+            stopPreview();
         });
 
         // Use this function to enable/disable decoding
@@ -74,16 +81,31 @@ public class QRCodeActivity extends BaseActivity {
         cameraPreview.setBackCamera();
     }
 
+    void startPreview() {
+        scanLine.setVisibility(View.VISIBLE);
+        //ValueAnimator valueAnimator = new ValueAnimator();
+        //scanLine.animate().translationY(ScreenUtils.getScreenHeight()).setDuration(2000).setInterpolator().start();
+        cameraPreview.startCamera();
+        scanLine.setAnimation(translateAnimation);
+        translateAnimation.start();
+
+    }
+
+    void stopPreview() {
+        scanLine.setVisibility(View.GONE);
+        translateAnimation.cancel();
+        cameraPreview.stopCamera();
+    }
 
     @Override
     protected void onResume() {
-        cameraPreview.startCamera();
+        startPreview();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        cameraPreview.stopCamera();
+        stopPreview();
         super.onPause();
     }
 

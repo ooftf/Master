@@ -2,12 +2,13 @@ package com.ooftf.widget.fragment
 
 import android.content.Context
 import android.os.Handler
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.service.base.BaseLazyFragment
 import com.ooftf.service.bean.ScreenItemBean
+import com.ooftf.service.constant.RouterPath
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.WidgetAdapter
 import com.ooftf.widget.widget.SuspendWindow
@@ -114,7 +115,12 @@ class WidgetFragment : BaseLazyFragment() {
     private fun setupToolbar() {
         //toolbar.inflateMenu(R.menu.activity_widget_toolbar_turn)
         toolbar.menu.add("外显").setIcon(R.drawable.vector_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
-        toolbar.menu.add("内藏").setIcon(R.drawable.vector_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+        var scan = toolbar.menu.add("扫描")
+        scan.setIcon(R.drawable.ic_scan_qr).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        scan.setOnMenuItemClickListener {
+            ARouter.getInstance().build(RouterPath.QRCODE_ACTIVITY_QRCODE).navigation()
+            true
+        }
         toolbar.title = "Widget"
     }
 

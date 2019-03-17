@@ -7,6 +7,7 @@ import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.ooftf.service.base.BaseApplication;
@@ -29,7 +30,7 @@ public class SuspendWindow {
         //FLAG_NOT_FOCUSABLE只有控件部分有焦点，FLAG_FORCE_NOT_FULLSCREEN，FLAG_FULLSCREEN整个屏幕的焦点
         layoutParams.flags = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
         layoutParams.screenOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-        layoutParams.gravity = Gravity.CENTER;
+        layoutParams.gravity = Gravity.RIGHT | Gravity.BOTTOM;
         layoutParams.x = 0;
         layoutParams.y = 0;
         layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;

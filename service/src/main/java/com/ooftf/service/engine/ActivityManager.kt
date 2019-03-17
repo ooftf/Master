@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.os.Process
+import java.lang.ref.WeakReference
 
 /**
  * Created by master on 2016/3/3.
@@ -15,9 +16,13 @@ object ActivityManager {
     private val activities = ArrayList<Activity>()
     private var touchCounter = 0
     private var showCounter = 0
+    private var top: WeakReference<Activity>? = null
     fun init(application: Application) {
         application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
             override fun onActivityPaused(activity: Activity?) {
+                if (top?.get() == activity) {
+                    top = null
+                }
                 touchCounter--
                 if (touchCounter == 0) {
                     backgroundObservers.forEach { it.invoke() }
@@ -25,6 +30,7 @@ object ActivityManager {
             }
 
             override fun onActivityResumed(activity: Activity) {
+                top = WeakReference(activity)
                 if (touchCounter == 0) {
                     foregroundObservers.forEach { it.invoke() }
                 }
