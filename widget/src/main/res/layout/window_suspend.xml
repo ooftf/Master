@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-   <!-- <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/returnTop"
         style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:layout_width="wrap_content"
@@ -15,8 +15,9 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:orientation="vertical"
+        android:theme="@style/AppTheme"
         app:fabSize="normal"
-        app:srcCompat="@drawable/vector_return_top" />-->
+        app:srcCompat="@drawable/vector_return_top" />
     <!-- <TextView
          android:textSize="36sp"
          android:layout_width="wrap_content"

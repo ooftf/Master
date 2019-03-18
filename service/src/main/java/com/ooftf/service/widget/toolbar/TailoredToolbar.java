@@ -7,6 +7,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -14,8 +15,11 @@ import android.widget.TextView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.ooftf.service.R;
+import com.ooftf.service.utils.ContextUtils;
 import com.ooftf.service.utils.JLog;
 import com.ooftf.support.ViewOffsetHelper;
+
+import java.lang.reflect.Method;
 
 import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
@@ -35,18 +39,14 @@ public class TailoredToolbar extends Toolbar {
 
     public TailoredToolbar(Context context) {
         super(context);
-        init();
     }
 
     public TailoredToolbar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
-
     }
 
     public TailoredToolbar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
     }
 
     @Override
@@ -74,9 +74,10 @@ public class TailoredToolbar extends Toolbar {
         addView(titleText);
     }
 
-    private void init() {
-        if (getContext() instanceof Activity) {
-            setNavigationOnClickListener(v -> ((Activity) getContext()).finish());
+    {
+        Activity activity = ContextUtils.toActivity(getContext());
+        if (activity != null) {
+            setNavigationOnClickListener(v -> activity.finish());
         }
         setPopupTheme(R.style.ThemeOverlay_Toolbar_PopupMenu);
         if (getId() == NO_ID) {
@@ -85,7 +86,7 @@ public class TailoredToolbar extends Toolbar {
         } else {
             JLog.e("HAS_ID");
         }
-
+        showOptionMenuIcon(getMenu());
     }
 
     @Override
@@ -212,4 +213,18 @@ public class TailoredToolbar extends Toolbar {
             return true;
         }
     }
+
+    public static void showOptionMenuIcon(Menu menu) {
+        if (menu != null && menu.getClass().getSimpleName().equals("MenuBuilder")) {
+            try {
+                Method m = menu.getClass().getDeclaredMethod(
+                        "setOptionalIconsVisible", Boolean.TYPE);
+                m.setAccessible(true);
+                m.invoke(menu, true);
+            } catch (NoSuchMethodException e) {
+            } catch (Exception e) {
+            }
+        }
+    }
+
 }
