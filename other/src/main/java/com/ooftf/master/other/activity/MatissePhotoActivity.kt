@@ -66,6 +66,6 @@ class MatissePhotoActivity : BaseActivity() {
     }
 
     companion object {
-        val REQUEST_CODE_CHOOSE = 256;
+        val REQUEST_CODE_CHOOSE = 256
     }
 }

@@ -31,15 +31,15 @@ public class SuspendWindow {
         layoutParams.flags = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
         layoutParams.screenOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
         layoutParams.gravity = Gravity.RIGHT | Gravity.BOTTOM;
-        layoutParams.x = 0;
-        layoutParams.y = 0;
+        layoutParams.x = 50;
+        layoutParams.y = 50;
         layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         layoutParams.format = PixelFormat.TRANSPARENT;
         LayoutInflater layoutInflater = LayoutInflater.from(BaseApplication.instance);
         View view = layoutInflater.inflate(R.layout.window_suspend, null);
         WindowManager windowManager = (WindowManager) BaseApplication.instance.getSystemService(Context.WINDOW_SERVICE);
-        try {
+        /*try {
             windowManager.addView(view, layoutParams);
             ActivityManager.INSTANCE.registerBackgroundObserver(() -> {
                 if (view.getParent() != null) {
@@ -55,7 +55,7 @@ public class SuspendWindow {
             });
         } catch (RuntimeException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 }

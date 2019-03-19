@@ -24,22 +24,21 @@ object ActivityManager {
                     top = null
                 }
                 touchCounter--
-                if (touchCounter == 0) {
-                    backgroundObservers.forEach { it.invoke() }
-                }
+
             }
 
             override fun onActivityResumed(activity: Activity) {
                 top = WeakReference(activity)
-                if (touchCounter == 0) {
-                    foregroundObservers.forEach { it.invoke() }
-                }
                 touchCounter++
 
             }
 
             override fun onActivityStarted(activity: Activity?) {
+                if (showCounter == 0) {
+                    foregroundObservers.forEach { it.invoke() }
+                }
                 showCounter++
+
             }
 
             override fun onActivityDestroyed(activity: Activity) {
@@ -55,6 +54,9 @@ object ActivityManager {
 
             override fun onActivityStopped(activity: Activity?) {
                 showCounter--
+                if (showCounter == 0) {
+                    backgroundObservers.forEach { it.invoke() }
+                }
             }
 
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {

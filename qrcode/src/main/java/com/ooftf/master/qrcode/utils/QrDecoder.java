@@ -21,12 +21,12 @@ import io.reactivex.Observable;
  * @date 2019/3/13 0013
  */
 public class QrDecoder {
-    QRCodeReader multiFormatReader;
+    MultiFormatReader multiFormatReader;
 
     QRCodeMultiReader qrCodeMultiReader;
 
     public QrDecoder() {
-        multiFormatReader = new QRCodeReader ();
+
     }
 
     public Observable<String> decodePreviewByte(byte[] data, int width, int height) {
@@ -83,9 +83,9 @@ public class QrDecoder {
 
     }
 
-    public QRCodeReader  getMultiFormatReader() {
+    public MultiFormatReader  getMultiFormatReader() {
         if (multiFormatReader == null) {
-            multiFormatReader = new QRCodeReader ();
+            multiFormatReader = new MultiFormatReader ();
         }
         return multiFormatReader;
     }
