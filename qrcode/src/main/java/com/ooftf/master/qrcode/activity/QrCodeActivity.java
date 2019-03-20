@@ -74,8 +74,7 @@ public class QrCodeActivity extends BaseActivity {
     }
 
     private void initViews() {
-
-        qrCode.setOnClickListener(v -> Snackbar.make(cameraPreview, "懒蛋", Snackbar.LENGTH_SHORT).show());
+        qrCode.setOnClickListener(v -> Snackbar.make(cameraPreview, "懒蛋sssssssssssssssssssssssssssssssssssss", Snackbar.LENGTH_SHORT).setText("fesefdfsdfss").show());
         album.setOnClickListener(v -> Matisse
                 .from(QrCodeActivity.this)
                 .choose(MimeType.ofImage())

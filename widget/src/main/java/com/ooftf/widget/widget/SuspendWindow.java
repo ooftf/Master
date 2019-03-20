@@ -7,7 +7,6 @@ import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.ooftf.service.base.BaseApplication;
@@ -30,16 +29,22 @@ public class SuspendWindow {
         //FLAG_NOT_FOCUSABLE只有控件部分有焦点，FLAG_FORCE_NOT_FULLSCREEN，FLAG_FULLSCREEN整个屏幕的焦点
         layoutParams.flags = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
         layoutParams.screenOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-        layoutParams.gravity = Gravity.RIGHT | Gravity.BOTTOM;
+        layoutParams.gravity = Gravity.LEFT | Gravity.TOP;
         layoutParams.x = 50;
         layoutParams.y = 50;
         layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        layoutParams.format = PixelFormat.TRANSPARENT;
+        layoutParams.format = PixelFormat.RGBA_8888;
         LayoutInflater layoutInflater = LayoutInflater.from(BaseApplication.instance);
         View view = layoutInflater.inflate(R.layout.window_suspend, null);
         WindowManager windowManager = (WindowManager) BaseApplication.instance.getSystemService(Context.WINDOW_SERVICE);
-        /*try {
+        view.setOnTouchListener((v, event) -> {
+            layoutParams.x = (int) event.getX();
+            layoutParams.y = (int) event.getY();
+            v.setLayoutParams(layoutParams);
+            return false;
+        });
+        try {
             windowManager.addView(view, layoutParams);
             ActivityManager.INSTANCE.registerBackgroundObserver(() -> {
                 if (view.getParent() != null) {
@@ -55,7 +60,7 @@ public class SuspendWindow {
             });
         } catch (RuntimeException e) {
             e.printStackTrace();
-        }*/
+        }
 
     }
 }
