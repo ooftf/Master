@@ -9,8 +9,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="actionMenuTextColor">@color/colorPrimaryContrast</item>
         <item name="titleTextColor">@color/colorPrimaryContrast</item>
-        <item name="android:textColor">@color/font_black</item>
-        <item name="android:textSize">@dimen/font_default</item>
+        <!--不要轻易设置这种代码，会导致一些控件出问题  <item name="android:textColor">@color/font_black</item>
+        <item name="android:textSize">@dimen/font_default</item>-->
         <item name="actionBarSize">@dimen/layout_appbar_height</item>
     </style>
 

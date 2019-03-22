@@ -116,8 +116,6 @@ class WidgetFragment : BaseLazyFragment() {
     private fun setupToolbar() {
         //toolbar.inflateMenu(R.menu.activity_widget_toolbar_turn)
         toolbar.title = "Widget"
-        toolbar.menu.add("测试").setIcon(R.drawable.vector_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
-        toolbar.menu.add("测试").setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
         var scan = toolbar.menu.add("扫一扫")
         scan.setIcon(R.drawable.ic_scan_qr).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         scan.setOnMenuItemClickListener {

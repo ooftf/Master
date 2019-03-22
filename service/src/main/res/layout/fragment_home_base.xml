@@ -27,6 +27,7 @@
 
 
     <ImageView
+        android:visibility="gone"
         android:id="@+id/image"
         android:layout_width="72dp"
         android:layout_height="72dp"

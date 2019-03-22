@@ -17,6 +17,7 @@ object ActivityManager {
     private var touchCounter = 0
     private var showCounter = 0
     private var top: WeakReference<Activity>? = null
+
     fun init(application: Application) {
         application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
             override fun onActivityPaused(activity: Activity?) {
@@ -65,6 +66,8 @@ object ActivityManager {
 
         })
     }
+
+    fun getTopActivity(): Activity? = top?.get()
 
     private var foregroundObservers = LinkedHashSet<() -> Unit>()
 
