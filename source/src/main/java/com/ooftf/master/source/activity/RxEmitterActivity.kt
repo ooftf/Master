@@ -41,7 +41,6 @@ class RxEmitterActivity : BaseBarrageActivity() {
         }
         onComplete.setOnClickListener {
             if (emitter == null) {
-
                 addBarrage("emitter == null")
             } else {
                 emitter?.onComplete()

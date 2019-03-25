@@ -28,12 +28,14 @@
 * 非入侵式埋点
 * Hihttp addObserver没有强制主线程
 * 编写脚本
-* 悬浮求
 * 全局dialog
-* 扫一扫
 * codecov
 * 游戏引擎
 * Material Button
+* aop : transform api
+* 全链路协议（Dialog activity fragment）
+* RxJava中 flatmap 和doOn... 会不会导致内存泄漏
+* ASM
 ### DELAY LIST
 * Ktor
 * 吸顶效果代码需要封装
@@ -66,3 +68,5 @@
 * AutoRegister （很强）
 * protobuf转换项目 传统protobuf和pojo  （pojo  暂时没有找到方法自动生成）
 * （难题） 方法中的一个参数，如何用两个接口定义 ,解决方式：可用<T extends Callback & ILifecycleState>泛型的这个特性，解决部分需求，不能完全解决
+* 扫一扫
+* 悬浮求
