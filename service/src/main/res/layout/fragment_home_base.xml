@@ -9,7 +9,7 @@
     <com.ooftf.service.widget.toolbar.TailoredToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_appbar_height"
+        android:layout_height="?attr/actionBarSize"
         app:actionMenuTextColor="@color/white" />
 
     <FrameLayout

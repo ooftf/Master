@@ -1,7 +1,6 @@
 package com.ooftf.service.base
 
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.ooftf.service.R
 import com.ooftf.service.base.adapter.ActivityIntentListAdapter
 import kotlinx.android.synthetic.main.activity_list.*
@@ -13,6 +12,7 @@ abstract class BaseListActivity : BaseActivity() {
         setContentView(R.layout.activity_list)
         setupRecyclerView()
         setListData(adapter)
+        toolbar.title = this.javaClass.simpleName
     }
 
     abstract fun setListData(adapter: ActivityIntentListAdapter)

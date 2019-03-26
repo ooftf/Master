@@ -1,7 +1,7 @@
 package com.ooftf.master.source.activity
 
-import androidx.lifecycle.Lifecycle
 import android.os.Bundle
+import androidx.lifecycle.Lifecycle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.hihttp.action.weak.LifeAction
 import com.ooftf.hihttp.action.weak.LifeConsumer
@@ -112,12 +112,17 @@ class RxEmitterActivity : BaseBarrageActivity() {
         }
         button5.setOnClickListener {
             getStaticDelayObservable()
-                    .bindUntilEvent(this, Lifecycle.Event.ON_DESTROY)
-                    .doOnSubscribe(LifeConsumer<Disposable>(Consumer<Disposable> { JLog.e("Lifecycle  doOnSubscribe") }, this))
-                    .doOnTerminate(LifeAction(Action {
+                    .flatMap {
+                        JLog.e("Lifecycle  flatMap:如果打印则发生了内存泄漏")
+                        addBarrage("Lifecycle  flatMap:如果打印则发生了内存泄漏")
+                        Observable.just(it)
+                    }
+                    .doOnSubscribe(Consumer<Disposable> { JLog.e("Lifecycle  doOnSubscribe") })
+                    .doOnTerminate(Action {
                         addBarrage("Lifecycle  doOnTerminate:如果打印则发生了内存泄漏")
                         JLog.e("Lifecycle  doOnTerminate:如果打印则发生了内存泄漏")
-                    }, this))
+                    })
+                    .bindUntilEvent(this, Lifecycle.Event.ON_DESTROY)
                     .subscribe()
         }
 

@@ -77,7 +77,7 @@ dependencies {
     api "com.github.bumptech.glide:glide:$versions.glide"
     kapt "com.github.bumptech.glide:compiler:$versions.glide"
     api 'com.makeramen:roundedimageview:2.3.0'
-    api 'androidx.multidex:multidex:2.0.0'
+    api 'androidx.multidex:multidex:2.0.1'
     api "androidx.legacy:legacy-support-v13:$versions.support"
     api 'com.youth.banner:banner:1.4.10'
     api 'com.romandanylyk:pageindicatorview:1.0.2'
@@ -102,8 +102,10 @@ dependencies {
     api 'com.google.code.gson:gson:2.8.5'
     api 'io.reactivex.rxjava2:rxandroid:2.1.0'
     api "io.reactivex.rxjava2:rxjava:2.2.3"
-
-    api 'com.squareup.leakcanary:leakcanary-android:1.6.2'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+    // Optional, if you use support library fragments:
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
     //releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
     api deps.fastjson
     api 'com.github.ooftf:Support:1.1.1'

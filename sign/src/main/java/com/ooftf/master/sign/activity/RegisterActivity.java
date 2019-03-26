@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.hihttp.action.ButtonAction;
 import com.ooftf.master.sign.R;
 import com.ooftf.master.sign.R2;
@@ -43,6 +44,7 @@ public class RegisterActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
+        ARouter.getInstance().inject(this);
         register.setOnClickListener(v ->
                 register());
 
