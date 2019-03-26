@@ -21,7 +21,6 @@ class DebugFragment : BaseListFragment() {
         adapter.add(ScreenItemBean("/debug/activity/dialog", "Dialog调试界面"))
         adapter.add(ScreenItemBean("/debug/activity/keyBoard"))
         adapter.add(ScreenItemBean("/debug/listView"))
-        adapter.add(ScreenItemBean("/debug/touch"))
         adapter.add(ScreenItemBean("/debug/activity/drawable", "透视视图"))
         adapter.add(ScreenItemBean("/debug/activity/fingerprint", "指纹调试", icon = R.drawable.vector_fingerprint))
         adapter.add(ScreenItemBean("/debug/activity/verticalPager"))

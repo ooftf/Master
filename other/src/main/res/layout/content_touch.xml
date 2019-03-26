@@ -9,24 +9,23 @@
     android:paddingRight="@dimen/layout_horizontal_margin"
     android:paddingBottom="@dimen/layout_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.master.kit.testcase.touchevent.TouchActivity"
     tools:showIn="@layout/app_bar_touch">
 
-    <com.master.kit.testcase.touchevent.FirstViewGroup
+    <com.ooftf.master.other.widget.FirstViewGroup
         android:id="@+id/first"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.master.kit.testcase.touchevent.SecondViewGroup
+        <com.ooftf.master.other.widget.SecondViewGroup
             android:id="@+id/second"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.master.kit.testcase.touchevent.ThirdViewGroup
+            <com.ooftf.master.other.widget.ThirdViewGroup
                 android:id="@+id/third"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></com.master.kit.testcase.touchevent.ThirdViewGroup>
-        </com.master.kit.testcase.touchevent.SecondViewGroup>
-    </com.master.kit.testcase.touchevent.FirstViewGroup>
+                android:layout_height="match_parent"></com.ooftf.master.other.widget.ThirdViewGroup>
+        </com.ooftf.master.other.widget.SecondViewGroup>
+    </com.ooftf.master.other.widget.FirstViewGroup>
 
 </RelativeLayout>

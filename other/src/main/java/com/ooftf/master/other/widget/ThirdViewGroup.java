@@ -1,4 +1,4 @@
-package com.master.kit.testcase.touchevent;
+package com.ooftf.master.other.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">other</string>
     <string name="image_size_to_small">图片最小为%1$s,最大值为%2$sM</string>
-
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

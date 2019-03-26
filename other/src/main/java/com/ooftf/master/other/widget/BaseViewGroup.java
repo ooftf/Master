@@ -1,4 +1,4 @@
-package com.master.kit.testcase.touchevent;
+package com.ooftf.master.other.widget;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -37,27 +37,26 @@ public class BaseViewGroup extends FrameLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        JLog.e(null, 25, this.getClass().getSimpleName(), "start", "dispatchTouchEvent", dispatchTouchEvent);
+        JLog.e(null, 20, this.getClass().getSimpleName(), "start", "dispatchTouchEvent", dispatchTouchEvent);
         boolean result = super.dispatchTouchEvent(ev);
-
-        JLog.e(null, 25, this.getClass().getSimpleName(), "end", "dispatchTouchEvent", dispatchTouchEvent, "super", result);
-        JLog.e("-----------------------------一次循环结束--------------------------------------");
+        JLog.e(null, 20, this.getClass().getSimpleName(), "end", "dispatchTouchEvent", dispatchTouchEvent, "super", result);
+        JLog.e("-----------------------------" + this.getClass().getSimpleName() + "：：一次事件结束--------------------------------------");
         return dispatchTouchEvent;
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        JLog.e(null, 25, this.getClass().getSimpleName(), "start", "onInterceptTouchEvent", onInterceptTouchEvent);
+        JLog.e(null, 20, this.getClass().getSimpleName(), "start", "onInterceptTouchEvent", onInterceptTouchEvent);
         boolean result = super.onInterceptTouchEvent(ev);
-        JLog.e(null, 25, this.getClass().getSimpleName(), "end", "onInterceptTouchEvent", onInterceptTouchEvent, "super", result);
+        JLog.e(null, 20, this.getClass().getSimpleName(), "end", "onInterceptTouchEvent", onInterceptTouchEvent, "super", result);
         return onInterceptTouchEvent;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        JLog.e(null, 25, this.getClass().getSimpleName(), "start", "onTouchEvent", onTouchEvent);
+        JLog.e(null, 20, this.getClass().getSimpleName(), "start", "onTouchEvent", onTouchEvent);
         boolean result = super.onTouchEvent(event);
-        JLog.e(null, 25, this.getClass().getSimpleName(), "end", "onTouchEvent", onTouchEvent, "super", result);
+        JLog.e(null, 20, this.getClass().getSimpleName(), "end", "onTouchEvent", onTouchEvent, "super", result);
         return onTouchEvent;
     }
 

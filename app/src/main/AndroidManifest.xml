@@ -81,9 +81,6 @@
         <activity
             android:name=".activity.MainActivity"
             android:launchMode="singleTask" />
-        <activity
-            android:name=".testcase.touchevent.TouchActivity"
-            android:label="@string/title_activity_touch" />
         <activity android:name=".testcase.viewpager.ViewPagerActivity" />
         <activity
             android:name=".testcase.design.DesignActivity"

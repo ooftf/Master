@@ -16,5 +16,6 @@ public  interface RouterPath {
 
     String WEBVIEW_ACTIVITY_WEBVIEW = "/webview/activity/webview";
     String QRCODE_ACTIVITY_QRCODE = "/qrcode/activity/qrcode";
+    String OTHER_ACTIVITY_TOUCH = "/other/activity/touch";
 
 }
