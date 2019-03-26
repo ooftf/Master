@@ -112,6 +112,7 @@ class RxEmitterActivity : BaseBarrageActivity() {
         }
         button5.setOnClickListener {
             getStaticDelayObservable()
+                    .bindUntilEvent(this, Lifecycle.Event.ON_DESTROY)
                     .flatMap {
                         JLog.e("Lifecycle  flatMap:如果打印则发生了内存泄漏")
                         addBarrage("Lifecycle  flatMap:如果打印则发生了内存泄漏")
@@ -122,7 +123,6 @@ class RxEmitterActivity : BaseBarrageActivity() {
                         addBarrage("Lifecycle  doOnTerminate:如果打印则发生了内存泄漏")
                         JLog.e("Lifecycle  doOnTerminate:如果打印则发生了内存泄漏")
                     })
-                    .bindUntilEvent(this, Lifecycle.Event.ON_DESTROY)
                     .subscribe()
         }
 
