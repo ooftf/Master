@@ -3,7 +3,7 @@
     git config --global user.name "lihang36"
     git config --global user.email "lihang9@jd.com"
 ## SSH
-https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5
+    https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5
 ## 一般git操作
 #### 从服务端拉取代码（Create a new repository）
     git clone http://git.jd.com/lihang36/ShareModule.git
@@ -13,7 +13,8 @@ https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git
     git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
     git fetch --all
     git pull --all
-
+    push到新的git地址
+    git push --mirror https://github.com/ooftf/Jdm.git
 ### 提交代码
     git add README.md
     git commit -m "add README"
@@ -38,7 +39,10 @@ https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git
     git remote add origin git@git.jd.com:lihang36/demo.git
     git push -u origin --all
     git push -u origin --tags
-
+### 通过命令行修改远程地址
+    git remote set-url origin https://gitee.com/jouypub/json.git
+### 从一个git仓库迁移到另外一个git仓库
+    https://blog.csdn.net/nathan1987_/article/details/78529357
 ## submodule 相关
 ### 添加 submodule
     git submodule add http://git.jd.com/JmClient/JmShareModule.git
