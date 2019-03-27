@@ -1,10 +1,9 @@
 package com.ooftf.service.base
 
 import android.os.Handler
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.ooftf.service.R
 import com.ooftf.service.base.adapter.CategoryRecyclerAdapter
 import com.ooftf.service.base.adapter.MainRecyclerAdapter

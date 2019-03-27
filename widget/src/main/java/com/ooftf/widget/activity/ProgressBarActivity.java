@@ -1,15 +1,16 @@
-package com.master.kit.activity.widget;
+package com.ooftf.widget.activity;
 
 import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.master.kit.R;
 import com.ooftf.service.base.BaseSlidingActivity;
+import com.ooftf.service.constant.RouterPath;
+import com.ooftf.widget.R;
 
-import hugo.weaving.DebugLog;
-
-@Route(path = "/main/progressBar")
-@DebugLog
+/**
+ * @author ooftf
+ */
+@Route(path = RouterPath.WIDGET_PROGRESS_BAR)
 public class ProgressBarActivity extends BaseSlidingActivity {
 
     @Override

@@ -3,4 +3,7 @@
     <declare-styleable name="ReturnTopLayout">
         <attr name="scrollId" format="reference" />
     </declare-styleable>
+    <declare-styleable name="StateButton">
+        <attr name="pressed" format="reference" />
+    </declare-styleable>
 </resources>

@@ -41,7 +41,7 @@ public class ListBlurDialog extends BlurDialog {
         cancel.setOnClickListener(v -> dismiss());
         adapter = new InnerAdapter();
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
     }
 
     public void setList(List<String> data) {

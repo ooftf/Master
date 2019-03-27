@@ -17,11 +17,9 @@ class OtherFragment : BaseListFragment() {
 
     override fun initData() {
         adapter.add(ScreenItemBean("/main/design"))
-        adapter.add(ScreenItemBean("/main/viewPager"))
         adapter.add(ScreenItemBean("/main/signIn"))
-        adapter.add(ScreenItemBean("/main/webView"))
         adapter.add(ScreenItemBean("/main/download"))
-        adapter.add(ScreenItemBean(RouterPath.OTHER_ACTIVITY_TOUCH, "触摸调试"))
+        adapter.add(ScreenItemBean(RouterPath.OTHER_ACTIVITY_TOUCH, "触摸事件分发调试"))
         adapter.add(ScreenItemBean("/other/activity/fibonacci", "斐波那契数列"))
         adapter.add(ScreenItemBean("/other/activity/stackGetMin", "获取堆栈内的最小值"))
         adapter.add(ScreenItemBean("/other/activity/turnIcon", "切换App图标"))

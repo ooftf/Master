@@ -60,7 +60,6 @@ public class TailoredToolbar extends Toolbar {
         } else {
             super.setTitle(title);
         }
-
     }
 
     private void setTitleView() {

@@ -12,6 +12,9 @@ import android.view.View;
 import com.master.kit.R;
 import com.ooftf.service.base.BaseSlidingActivity;
 
+/**
+ * @author 99474
+ */
 public class DesignActivity extends BaseSlidingActivity {
     AppBarLayout appBarLayout;
     Toolbar toolbar;
@@ -40,7 +43,7 @@ public class DesignActivity extends BaseSlidingActivity {
     private void initViews() {
         appBarLayout = findViewById(R.id.main_appbar);
         coordinatorLayout = findViewById(R.id.main_CoordinatorLayout);
-        toolbar = findViewById(R.id.main_toolbar);
+        toolbar = findViewById(R.id.toolbar);
         collapsingToolbarLayout = findViewById(R.id.main_collapsing);
         floatingActionButton = findViewById(R.id.main_fab);
     }

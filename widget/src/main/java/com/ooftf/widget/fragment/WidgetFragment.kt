@@ -144,7 +144,7 @@ class WidgetFragment : BaseLazyFragment() {
         adapter.body.add(ScreenItemBean("/widget/activity/bottomBar", "自定义BottomBar", "BottomBarActivity", category = "自定义控件"))
         adapter.body.add(ScreenItemBean("/widget/activity/pinEditText", "方格输入控件", "类似密码输入控件，但是可以设置内容显示", R.drawable.vector_pin_edit_text, false, "自定义控件"))
         adapter.body.add(ScreenItemBean("/widget/activity/pullToRefresh", "自定义下拉刷星控件", "自定义下拉刷新控件，可实现接口，编写不同header,上拉加载更多控件！", R.drawable.logo_orb, true, "自定义控件"))
-        adapter.body.add(ScreenItemBean("/main/progressBar", "环形进度条", "仿Material进度条", R.drawable.vector_progress_bar, false, "非自定义"))
+        adapter.body.add(ScreenItemBean(RouterPath.WIDGET_PROGRESS_BAR, "环形进度条", "仿Material进度条", R.drawable.vector_progress_bar, false, "非自定义"))
         adapter.body.add(ScreenItemBean("/main/guide", "引导页面", "采用第三方库pageindicatorview制作的指示器", category = "非自定义"))
         adapter.body.add(ScreenItemBean("/widget/activity/tourGuide", "教学页面", "采用第三方库TourGuide制作的教学页面", category = "非自定义"))
         adapter.body.add(ScreenItemBean("/widget/activity/grav", "背景动画", "采用第三方库Grav制作的教学页面", category = "非自定义"))
@@ -158,6 +158,7 @@ class WidgetFragment : BaseLazyFragment() {
         adapter.body.add(ScreenItemBean("/widget/activity/Barrage", "弹幕", "一个弹幕view的示例", category = "非自定义"))
         adapter.body.add(ScreenItemBean("/widget/activity/toolbarDemo", "标题栏", "标题栏方法示例", category = "非自定义"))
         adapter.body.add(ScreenItemBean("/widget/activity/notification", "通知栏", "通知栏示例", category = "非自定义"))
+        adapter.body.add(ScreenItemBean(RouterPath.WIDGET_VIEWPAGER, "ViewPager展示"))
 
         adapter.notifyDataSetChanged()
     }

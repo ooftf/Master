@@ -102,8 +102,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/ToolbarStyle.Back"
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
         app:title="透视试图" />
 </RelativeLayout>

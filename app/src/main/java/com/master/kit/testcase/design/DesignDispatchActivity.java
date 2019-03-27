@@ -8,6 +8,9 @@ import com.master.kit.R;
 import com.master.kit.testcase.design.flexible.FlexibleActivity;
 import com.ooftf.service.base.BaseSlidingActivity;
 
+/**
+ * @author 99474
+ */
 @Route(path = "/main/design")
 public class DesignDispatchActivity extends BaseSlidingActivity {
 

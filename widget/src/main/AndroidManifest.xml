@@ -7,8 +7,8 @@
 
     <application>
         <activity
-            android:screenOrientation="portrait"
-            android:name=".activity.TourGuideActivity" />
+            android:name=".activity.TourGuideActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".activity.GravActivity" />
         <activity android:name=".activity.OperationEditTextActivity" />
         <activity
@@ -38,6 +38,8 @@
         <activity android:name=".activity.SlidingRecycleViewActivity" />
         <activity android:name=".activity.ToolbarDemoActivity" />
         <activity android:name=".activity.NotificationActivity" />
+        <activity android:name=".activity.ViewPagerActivity" />
+        <activity android:name=".activity.ProgressBarActivity" />
     </application>
 
 </manifest>

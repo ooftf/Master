@@ -6,9 +6,7 @@
     android:orientation="vertical">
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_appbar_height"
-        app:navigationIcon="@drawable/vector_arrow_left"
+        style="@style/ToolbarStyle.Back"
         app:title="翻译" />
 
     <com.google.android.material.textfield.TextInputEditText

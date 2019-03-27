@@ -98,6 +98,7 @@ dependencies {
             implementation project(':sign')
             implementation project(':rn')
             implementation project(':qrcode')
+            implementation project(':webview')
         }
     }
     if (maven) {

@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:paddingLeft="@dimen/layout_horizontal_margin"
-    android:paddingTop="@dimen/layout_vertical_margin"
-    android:paddingRight="@dimen/layout_horizontal_margin"
-    android:paddingBottom="@dimen/layout_vertical_margin"
-    tools:context="com.master.kit.activity.widget.ProgressBarActivity">
+    android:orientation="vertical"
+    tools:context="com.ooftf.widget.activity.ProgressBarActivity">
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_appbar_height"
-        android:title="进度条"
-        app:navigationIcon="@drawable/vector_arrow_left" />
+        style="@style/ToolbarStyle.Back"
+        app:title="ProcessBar" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -59,4 +54,4 @@
         android:layout_alignEnd="@+id/progressBar3"
         android:layout_alignRight="@+id/progressBar3"
         android:layout_marginTop="18dp" />
-</RelativeLayout>
+</LinearLayout>

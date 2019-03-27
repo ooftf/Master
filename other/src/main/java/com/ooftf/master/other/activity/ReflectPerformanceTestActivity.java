@@ -34,7 +34,7 @@ public class ReflectPerformanceTestActivity extends BaseActivity {
     @BindView(R2.id.new_button)
     Button newButton;
     @BindView(R2.id.reflect_text)
-    Button reflectText;
+    TextView reflectText;
     @BindView(R2.id.new_text)
     TextView newText;
 

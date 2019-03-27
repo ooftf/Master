@@ -1,4 +1,4 @@
-package com.master.kit.widget.indicatortextview;
+package com.ooftf.widget.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,9 +14,13 @@ import android.widget.TextView;
 
 import com.ooftf.service.utils.DensityUtil;
 
+/**
+ * @author 99474
+ */
 @SuppressLint("AppCompatCustomView")
 public class ProgressTextView extends TextView {
 
+    public static final int MAX = 100;
     /**
      * 当前进度  取值0-100  有可能超过100
      */
@@ -44,7 +48,6 @@ public class ProgressTextView extends TextView {
         paint = new Paint();
         progress = 0;
     }
-    // private Handler handler;
 
     /**
      * Create the shader draw the wave with current color for a background
@@ -53,13 +56,13 @@ public class ProgressTextView extends TextView {
     private void createShader() {
         Bitmap createBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Config.ARGB_8888);
         Canvas canvas = new Canvas(createBitmap);
-        if (progress <= 100) {
+        if (progress <= MAX) {
             paint.setColor(Color.RED);
             canvas.drawRect(0, 0, getWidth() * progress / 100, getHeight(), paint);
             paint.setColor(getCurrentTextColor());
             canvas.drawRect(getWidth() * progress / 100, 0, getWidth(), getHeight(), paint);
         } else {
-            float tem = progress - 100f;
+            float tem = progress - MAX;
             paint.setColor(getCurrentTextColor());
             canvas.drawRect(0, 0, getWidth() * tem / 100, getHeight(), paint);
             paint.setColor(Color.RED);
@@ -89,13 +92,12 @@ public class ProgressTextView extends TextView {
     protected void onDraw(Canvas canvas) {
 
         createShader();
-
         super.onDraw(canvas);
         paint.setColor(Color.RED);
-        if (progress <= 100) {
+        if (progress <= MAX) {
             canvas.drawRect(0, getHeight() - underlineWidth, getWidth() * progress / 100, getHeight(), paint);
         } else {
-            float tem = progress - 100f;
+            float tem = progress - MAX;
             canvas.drawRect(getWidth() * tem / 100, getHeight() - underlineWidth, getWidth(), getHeight(), paint);
         }
 

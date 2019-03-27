@@ -9,8 +9,7 @@
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        style="@style/ToolbarStyle.Back" />
 
     <LinearLayout
         android:id="@+id/linearLayout_first"

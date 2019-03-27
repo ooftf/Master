@@ -7,10 +7,7 @@
     tools:context="com.ooftf.widget.activity.PhotoViewActivity">
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_appbar_height"
-        android:navigationIcon="@drawable/vector_arrow_left" />
+        style="@style/ToolbarStyle.Back"/>
 
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/photoView"

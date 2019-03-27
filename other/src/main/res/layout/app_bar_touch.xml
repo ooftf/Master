@@ -9,10 +9,7 @@
         android:layout_height="wrap_content">
 
         <com.ooftf.service.widget.toolbar.TailoredToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            style="@style/ToolbarStyle.Back"
             app:title="事件分发调试" />
 
     </com.google.android.material.appbar.AppBarLayout>

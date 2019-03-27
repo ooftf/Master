@@ -1,23 +1,27 @@
-package com.master.kit.testcase.viewpager;
+package com.ooftf.widget.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.master.kit.R;
 import com.ooftf.service.base.BaseSlidingActivity;
+import com.ooftf.service.constant.RouterPath;
+import com.ooftf.widget.R;
 
-@Route(path = "/main/viewPager")
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+/**
+ * @desc ViewPager控件展示
+ * @author 99474
+ */
+@Route(path = RouterPath.WIDGET_VIEWPAGER)
 public class ViewPagerActivity extends BaseSlidingActivity {
 
     private ViewPager viewPager;
-    private Handler handler;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,27 +51,6 @@ public class ViewPagerActivity extends BaseSlidingActivity {
                 return tv;
             }
         });
-        handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-//                try {
-//                    Field mFirstLayout = viewPager.getClass().getDeclaredField("mFirstLayout");
-//                    mFirstLayout.setAccessible(true);
-//                    mFirstLayout.set(viewPager,false);
-//                    LogUtil.e(null,"----------ok--------------");
-//                } catch (NoSuchFieldException e) {
-//                    LogUtil.e(null,"NoSuchFieldException");
-//                    e.printStackTrace();
-//                } catch (IllegalAccessException e) {
-//                    LogUtil.e(null,"IllegalAccessException");
-//                    e.printStackTrace();
-//                }
-
-                viewPager.setCurrentItem(10);
-
-            }
-        }, 5000);
+        new Handler().postDelayed(() -> viewPager.setCurrentItem(10), 5000);
     }
 }

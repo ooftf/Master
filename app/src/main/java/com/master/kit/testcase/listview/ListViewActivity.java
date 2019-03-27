@@ -14,6 +14,9 @@ import com.ooftf.service.base.BaseSlidingActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author 99474
+ */
 public class ListViewActivity extends BaseSlidingActivity {
     BaseAdapter adapter;
     List<String> list;

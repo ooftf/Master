@@ -9,8 +9,7 @@
     tools:context=".activity.RxEmitterActivity">
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        style="@style/ToolbarStyle.Back"
         app:title="RxJava" />
     <Button
         android:id="@+id/subscribe"

@@ -1,4 +1,4 @@
-package com.master.kit.widget.indicatortextview;
+package com.ooftf.widget.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,10 +8,14 @@ import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
-import com.master.kit.R;
+
+import com.ooftf.widget.R;
 
 import java.util.List;
 
+/**
+ * @author 99474
+ */
 public class Indicator extends FrameLayout {
 
     float progress = 0;
@@ -41,8 +45,8 @@ public class Indicator extends FrameLayout {
 
     private void init() {
         View.inflate(getContext(), R.layout.widget_indicator, this);
-        llMain = (LinearLayout) findViewById(R.id.ll_main);
-        hsvMain = (HorizontalScrollView) findViewById(R.id.hsv_main);
+        llMain =  findViewById(R.id.ll_main);
+        hsvMain =  findViewById(R.id.hsv_main);
     }
 
     public void setData(List<String> data) {

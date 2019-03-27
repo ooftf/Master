@@ -7,8 +7,7 @@
     android:orientation="vertical">
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/ToolbarStyle.Back"
         app:title="反射性能测试" />
 
     <EditText

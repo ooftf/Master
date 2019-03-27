@@ -1,7 +1,6 @@
 package com.ooftf.master.webview.activity;
 
 import android.annotation.SuppressLint;
-import android.hardware.camera2.CameraManager;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -15,11 +14,15 @@ import com.ooftf.service.constant.RouterPath;
 
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * @author ooftf
+ */
 @Route(path = RouterPath.WEBVIEW_ACTIVITY_WEBVIEW)
 public class MasterWebViewActivity extends BaseActivity {
     WebView webView;
     JsInjector jsInjector = new JsInjector();
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -16,13 +16,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_appbar_height"
+        style="@style/ToolbarStyle.Back"
         android:background="@color/transparent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/vector_arrow_left"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:title="登录" />
 
     <androidx.constraintlayout.widget.Guideline
