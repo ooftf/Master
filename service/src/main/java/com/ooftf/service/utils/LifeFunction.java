@@ -18,13 +18,14 @@ public class LifeFunction<T, R> implements Function<T, R> {
 
     public LifeFunction(Function<T,R> real, LifecycleOwner owner) {
         reference = real;
-        owner.getLifecycle().addObserver(new LifecycleObserver() {
+        ThreadUtil.runOnUiThread(() -> owner.getLifecycle().addObserver(new LifecycleObserver() {
             @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
             void onDestroy() {
                 reference = null;
                 owner.getLifecycle().removeObserver(this);
             }
-        });
+        }));
+
     }
 
     public LifeFunction(Function<T,R> real, View owner) {

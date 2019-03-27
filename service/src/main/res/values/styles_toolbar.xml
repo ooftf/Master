@@ -15,4 +15,8 @@
         <!--设置背景颜色的-->
         <!--<item name="android:colorBackground">#223344</item>-->
     </style>
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/colorPrimaryContrast</item>
+    </style>
 </resources>

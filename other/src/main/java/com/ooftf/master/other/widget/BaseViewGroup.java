@@ -16,6 +16,7 @@ public class BaseViewGroup extends FrameLayout {
     public boolean dispatchTouchEvent;
     public boolean onInterceptTouchEvent;
     public boolean onTouchEvent;
+    public boolean isModifyResult;
 
     public BaseViewGroup(Context context) {
         super(context);
@@ -37,27 +38,39 @@ public class BaseViewGroup extends FrameLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        JLog.e(null, 20, this.getClass().getSimpleName(), "start", "dispatchTouchEvent", dispatchTouchEvent);
+        JLog.e(null, 25, this.getClass().getSimpleName(), "start", "dispatchTouchEvent", dispatchTouchEvent);
         boolean result = super.dispatchTouchEvent(ev);
-        JLog.e(null, 20, this.getClass().getSimpleName(), "end", "dispatchTouchEvent", dispatchTouchEvent, "super", result);
+        JLog.e(null, 25, this.getClass().getSimpleName(), "end", "dispatchTouchEvent", dispatchTouchEvent, "super", result);
         JLog.e("-----------------------------" + this.getClass().getSimpleName() + "：：一次事件结束--------------------------------------");
-        return dispatchTouchEvent;
+        if (isModifyResult) {
+            return dispatchTouchEvent;
+        } else {
+            return result;
+        }
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        JLog.e(null, 20, this.getClass().getSimpleName(), "start", "onInterceptTouchEvent", onInterceptTouchEvent);
+        JLog.e(null, 25, this.getClass().getSimpleName(), "start", "onInterceptTouchEvent", onInterceptTouchEvent);
         boolean result = super.onInterceptTouchEvent(ev);
-        JLog.e(null, 20, this.getClass().getSimpleName(), "end", "onInterceptTouchEvent", onInterceptTouchEvent, "super", result);
-        return onInterceptTouchEvent;
+        JLog.e(null, 25, this.getClass().getSimpleName(), "end", "onInterceptTouchEvent", onInterceptTouchEvent, "super", result);
+        if (isModifyResult) {
+            return onInterceptTouchEvent;
+        } else {
+            return result;
+        }
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        JLog.e(null, 20, this.getClass().getSimpleName(), "start", "onTouchEvent", onTouchEvent);
+        JLog.e(null, 25, this.getClass().getSimpleName(), "start", "onTouchEvent", onTouchEvent);
         boolean result = super.onTouchEvent(event);
-        JLog.e(null, 20, this.getClass().getSimpleName(), "end", "onTouchEvent", onTouchEvent, "super", result);
-        return onTouchEvent;
+        JLog.e(null, 25, this.getClass().getSimpleName(), "end", "onTouchEvent", onTouchEvent, "super", result);
+        if (isModifyResult) {
+            return onTouchEvent;
+        } else {
+            return result;
+        }
     }
 
 

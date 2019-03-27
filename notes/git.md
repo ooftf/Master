@@ -57,8 +57,10 @@ https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git
     git rm submodule_name
     git commit -m "remove submodule"
     git push origin master
-
-
+# 问题
+## Fetch和pull的区别 ？
+    Fetch从远端检出一个新的本地分支
+    pull将远程分支和本地分支合并
 # error
 ### already exists in the index
     git rm -r --cached directory

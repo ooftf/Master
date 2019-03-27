@@ -121,14 +121,18 @@ class RxEmitterActivity : BaseBarrageActivity() {
                         addBarrage("Lifecycle  flatMap:如果打印则发生了内存泄漏")
                         Observable.just(it)
                     }, this))
+                    .flatMap {
+                        JLog.e("Lifecycle  flatMap:如果打印则发生了内存泄漏")
+                        addBarrage("Lifecycle  flatMap:如果打印则发生了内存泄漏")
+                        Observable.just(it)
+                    }
                     .doOnSubscribe(LifeConsumer(Consumer<Disposable> { JLog.e("Lifecycle  doOnSubscribe") }, this))
                     .doOnTerminate(LifeAction(Action {
                         addBarrage("Lifecycle  doOnTerminate:如果打印则发生了内存泄漏")
                         JLog.e("Lifecycle  doOnTerminate:如果打印则发生了内存泄漏")
-                    },this))
+                    }, this))
                     .subscribe()
         }
-
     }
 
 
@@ -143,7 +147,7 @@ class RxEmitterActivity : BaseBarrageActivity() {
                 Observable
                         .create<String> { it ->
                             Thread {
-                                Thread.sleep(30000)
+                                Thread.sleep(60000)
                                 it.onNext("10000")
                                 it.onNext("20000")
                                 it.onComplete()

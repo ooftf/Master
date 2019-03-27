@@ -21,7 +21,9 @@ public class JLog {
     public static final String FRAME_LINE_HEADER = "║ ";
     public static final String FRAME_START = "╔══════════════════════════════════════════════════════════════════════════════════════════════════════";
     public static final String FRAME_END = "╚══════════════════════════════════════════════════════════════════════════════════════════════════════";
-
+    private static final String BRACKET_START = "[";
+    private static final String BRACKET_END = "]";
+    private static final String FILLER = " ";
 
     /**
      * Priority constant for the println method; use Log.v.
@@ -48,6 +50,8 @@ public class JLog {
      */
     public static final int ERROR = 6;
     public static final int MAX_LENGTH = 3000;
+    public static final String TAG_EMPTY = "JLog-Empty";
+    public static final String TAG_NULL = "JLog-Null";
 
     public static void v(Object info) {
         v(null, info);
@@ -115,7 +119,7 @@ public class JLog {
     }
 
     /**
-     * 每个 message 固定长度，长度不够的用“-”填补
+     * 每个 message 固定长度，长度不够的用 {@link JLog#FILLER} 填补
      *
      * @param tag
      * @param i
@@ -124,9 +128,12 @@ public class JLog {
     public static void e(String tag, int i, Object... message) {
         StringBuffer result = new StringBuffer();
         for (Object s : message) {
-            StringBuffer per = new StringBuffer(s.toString());
+            StringBuffer per = new StringBuffer();
+            per.append(BRACKET_START);
+            per.append(s.toString());
+            per.append(BRACKET_END);
             while (per.length() < i) {
-                per.append("-");
+                per.append(FILLER);
             }
             result.append(per);
         }
@@ -226,10 +233,10 @@ public class JLog {
 
     private static String parseTag(Object tag) {
         if (tag == null) {
-            return "JLog-Null";
+            return TAG_NULL;
         } else if (tag instanceof String) {
             if (((String) tag).length() == 0) {
-                return "JLog-Empty";
+                return TAG_EMPTY;
             }
             return (String) tag;
         } else {
