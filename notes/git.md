@@ -7,6 +7,12 @@ https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git
 ## 一般git操作
 #### 从服务端拉取代码（Create a new repository）
     git clone http://git.jd.com/lihang36/ShareModule.git
+#### 从服务器拉取所有分支代码
+    git clone xxx
+    cd xxx
+    git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+    git fetch --all
+    git pull --all
 
 ### 提交代码
     git add README.md
@@ -36,15 +42,16 @@ https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git
 ## submodule 相关
 ### 添加 submodule
     git submodule add http://git.jd.com/JmClient/JmShareModule.git
-
+### 将所有 submodule切换到master分支
+    git submodule foreach "git cheackout master"
 ### 从remote拉取某个submodule
-1. 第一种方式
-    cd submodule_name
-    git submodule init 初始化子模块
-    git submodule update 更新子模块
-2. 第二种方式
-    在父module中
-    git submodule update --init --recursive
+    1. 第一种方式
+        cd submodule_name
+        git submodule init 初始化子模块
+        git submodule update 更新子模块
+    2. 第二种方式
+        在父module中
+        git submodule update --init --recursive
 
 ### 删除submodule（暂定）
     git rm submodule_name
