@@ -1,7 +1,6 @@
 package com.master.kit.activity
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.master.kit.R
@@ -11,6 +10,8 @@ import com.ooftf.bottombar.java.FragmentSwitchManager
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.constant.RouterExtra
 import com.ooftf.service.constant.RouterPath
+import com.ooftf.service.engine.main_tab.BottomBarItemBean
+import com.ooftf.service.engine.main_tab.TabManager
 import hugo.weaving.DebugLog
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -27,37 +28,20 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupBottomBar() {
-
         adapter = BottomBarAdapter(this)
-        adapter.add(BottomBarAdapter.BottomBarItemBean(TAB_WIDGET, R.drawable.ic_widget_selected_24dp, R.drawable.ic_widget_24dp, R.color.blue_light, R.color.black))
-        adapter.add(BottomBarAdapter.BottomBarItemBean(TAB_SOURCE, R.drawable.ic_logic_selected_24dp, R.drawable.ic_logic_24dp, R.color.blue_light, R.color.black))
-        adapter.add(BottomBarAdapter.BottomBarItemBean(TAB_APP, R.drawable.ic_app_selected_24dp, R.drawable.ic_app_24dp, R.color.blue_light, R.color.black))
-        adapter.add(BottomBarAdapter.BottomBarItemBean(TAB_DEBUG, R.drawable.ic_debug_selected_24dp, R.drawable.ic_debug_24dp, R.color.blue_light, R.color.black))
-        adapter.add(BottomBarAdapter.BottomBarItemBean(TAB_OTHER, R.drawable.ic_other_selected_24dp, R.drawable.ic_other_24dp, R.color.blue_light, R.color.black))
+        adapter.addAll(TabManager.getTabs())
         switchManager = FragmentSwitchManager(
                 supportFragmentManager,
                 R.id.frame_fragment,
                 adapter.data.map { it.text }.toSet())
         {
-            when (it) {
-                TAB_WIDGET -> ARouter.getInstance().build("/widget/fragment/widget").navigation() as androidx.fragment.app.Fragment
-                TAB_SOURCE -> ARouter.getInstance().build("/source/fragment/source").navigation() as androidx.fragment.app.Fragment
-                TAB_APP -> ARouter.getInstance().build("/applet/fragment/app").navigation() as androidx.fragment.app.Fragment
-                TAB_DEBUG -> ARouter.getInstance().build("/debug/fragment/debug").navigation() as androidx.fragment.app.Fragment
-                TAB_OTHER -> ARouter.getInstance().build("/other/fragment/other").navigation() as androidx.fragment.app.Fragment
-                else -> ARouter.getInstance().build("/applet/fragment/app").navigation() as androidx.fragment.app.Fragment
-            }
-
+            var path = adapter.data.first { item ->
+                item.text == it
+            }.path
+            ARouter.getInstance().build(path).navigation() as androidx.fragment.app.Fragment
         }
         bottomBar.setOnItemSelectChangedListener { _, newIndex ->
-            when (newIndex) {
-                0 -> switchManager.switchFragment(TAB_WIDGET)
-                1 -> switchManager.switchFragment(TAB_SOURCE)
-                2 -> switchManager.switchFragment(TAB_APP)
-                3 -> switchManager.switchFragment(TAB_DEBUG)
-                4 -> switchManager.switchFragment(TAB_OTHER)
-                else -> switchManager.switchFragment(TAB_APP)
-            }
+            switchManager.switchFragment(adapter.getItem(newIndex).text)
         }
         bottomBar.setAdapter(adapter)
         bottomBar.setSelectedIndex(0)
@@ -73,10 +57,4 @@ class MainActivity : BaseActivity() {
             toast("再按一次退出应用")
         }
     }
-
-    val TAB_WIDGET = "widget"
-    val TAB_SOURCE = "source"
-    val TAB_APP = "app"
-    val TAB_DEBUG = "debug"
-    val TAB_OTHER = "other"
 }

@@ -1,7 +1,6 @@
 package com.master.kit.adapter
 
 import android.content.Context
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.master.kit.R
 import com.ooftf.bottombar.java.BottomBar
+import com.ooftf.service.engine.main_tab.BottomBarItemBean
 
-class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapter.ViewHolder, BottomBarAdapter.BottomBarItemBean>() {
+class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapter.ViewHolder, BottomBarItemBean>() {
     private var inflate: LayoutInflater = LayoutInflater.from(context)
     override fun onBindViewHolder(holder: ViewHolder, position: Int, selectedPositiong: Int) {
         var isSelect = position == selectedPositiong
@@ -37,5 +37,4 @@ class BottomBarAdapter(var context: Context) : BottomBar.Adapter<BottomBarAdapte
         var icon: ImageView = itemView.findViewById(R.id.icon)
         var title: TextView = itemView.findViewById(R.id.title)
     }
-    class BottomBarItemBean(var text: String, var selectedImageId: Int, var unSelectedImageId: Int, var selectedColorId: Int, var unSelectedColorId: Int)
 }

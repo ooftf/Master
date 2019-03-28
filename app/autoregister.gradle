@@ -2,8 +2,8 @@ apply plugin: 'auto-register'
 autoregister {
     registerInfo = [
             [
-                    'scanInterface'             : 'com.example.testautoregister.IInterface'
-                    , 'codeInsertToClassName'   : 'com.example.testautoregister.IManager'
+                    'scanInterface'             : 'com.ooftf.service.engine.main_tab.MainTabProvider'
+                    , 'codeInsertToClassName'   : 'com.ooftf.service.engine.main_tab.TabManager'
                     //未指定codeInsertToMethodName，默认插入到static块中，故此处register必须为static方法
                     , 'registerMethodName'      : 'register' //
             ]
