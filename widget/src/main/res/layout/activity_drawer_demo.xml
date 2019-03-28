@@ -3,21 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
     android:orientation="vertical"
     tools:context=".activity.SlidingTextViewActivity">
 
+    <com.ooftf.service.widget.toolbar.TailoredToolbar style="@style/ToolbarStyle.Back"
+        app:title="TextView"/>
+
     <com.ooftf.sliding.SlidingLayout
         android:id="@+id/drawer"
+        app:isShelterMode="false"
         android:layout_width="match_parent"
         android:layout_height="50dp">
-
         <TextView
+            android:id="@+id/text"
+            android:ellipsize="end"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/long_article" />
     </com.ooftf.sliding.SlidingLayout>
-
     <Button
         android:id="@+id/click"
         android:layout_width="match_parent"

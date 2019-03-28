@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.ooftf.service.base.BaseActivity;
 import com.ooftf.sliding.SlidingLayout;
 import com.ooftf.widget.R;
 
@@ -18,7 +19,7 @@ import com.ooftf.widget.R;
  * @author ooftf
  */
 @Route(path = "/widget/activity/slidingRecycleView")
-public class SlidingRecycleViewActivity extends AppCompatActivity {
+public class SlidingRecycleViewActivity extends BaseActivity {
     RecyclerView recyclerView;
     SlidingLayout drawer;
     Button button;
@@ -30,12 +31,7 @@ public class SlidingRecycleViewActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         drawer = findViewById(R.id.drawer);
         button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawer.smoothTurn();
-            }
-        });
+        button.setOnClickListener(v -> drawer.smoothTurn());
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView.setAdapter(new RecyclerView.Adapter() {
             @NonNull
