@@ -32,10 +32,6 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lazyFragmentProxy.onViewCreated(view, savedInstanceState)
-        val toolbar = view.findViewById<View>(getToolbarId())
-        if (toolbar != null) {
-            ImmersionBar.setTitleBar(activity, toolbar)
-        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -46,6 +42,7 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
     override fun onDestroy() {
         super.onDestroy()
         mSimpleImmersionProxy.onDestroy()
+        ImmersionBar.with(this).destroy()
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
@@ -75,6 +72,7 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
         return true
     }
 
+
     /**
      * 是否可以实现沉浸式，当为true的时候才可以执行initImmersionBar方法
      * Immersion bar enabled boolean.
@@ -86,7 +84,12 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
     }
 
     override fun initImmersionBar() {
-        ImmersionBar.with(this).keyboardEnable(true).init()
+        val immersionBar = ImmersionBar.with(this).keyboardEnable(true)
+        val toolbar = view?.findViewById<View>(getToolbarId())
+        if (toolbar != null) {
+            immersionBar.titleBar(toolbar)
+        }
+        immersionBar.init()
     }
 
     open fun getToolbarId(): Int {

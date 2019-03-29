@@ -93,7 +93,7 @@ dependencies {
             implementation project(':widget')
             implementation project(':applet')
             implementation project(':debug')
-            implementation project(':source')
+            //implementation project(':source')
             implementation project(':other')
             implementation project(':sign')
             implementation project(':rn')

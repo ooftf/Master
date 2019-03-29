@@ -10,7 +10,11 @@ import kotlinx.android.synthetic.main.fragment_tab_layout.*
 class TabLayoutFragment : BaseLazyFragment() {
     override fun getLayoutId(): Int = R.layout.fragment_tab_layout
     override fun onLoad() {
-        viewPager.adapter = UltraPagerAdapter(this.childFragmentManager)
+        viewPager.adapter = UltraPagerAdapter(childFragmentManager)
         tabLayout.setupWithViewPager(viewPager)
+    }
+
+    override fun getToolbarId(): Int {
+        return R.id.tabLayout
     }
 }

@@ -1,9 +1,5 @@
 package com.ooftf.widget.adapter
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import android.view.View
 import com.alibaba.android.arouter.launcher.ARouter
 
 class TaobaoPagerAdapter(supportFragmentManager: androidx.fragment.app.FragmentManager) : androidx.fragment.app.FragmentPagerAdapter(supportFragmentManager) {

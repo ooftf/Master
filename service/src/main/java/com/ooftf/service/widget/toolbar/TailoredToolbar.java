@@ -99,7 +99,11 @@ public class TailoredToolbar extends Toolbar {
                 setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
             }
             isTitleCenter = true;
-            setTitle(getTitle());
+            // 这个判断是为了防止二次onAttachedToWindow  会导致title设置为空
+            if (titleText == null) {
+                setTitle(getTitle());
+            }
+
         }
     }
 

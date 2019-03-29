@@ -1,5 +1,6 @@
 package com.ooftf.service.engine.imageloader
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.widget.ImageView
@@ -22,7 +23,7 @@ class GlideImageLoader : IImageLoader {
     override fun display(context: Context, url: String, view: ImageView) {
         GlideApp.with(context).load(url).into(view)
     }
-
+    @SuppressLint("CheckResult")
     override fun display(context: Context, url: String, listener: ImageLoaderListener) {
         GlideApp.with(context).asBitmap().load(url).listener(object : RequestListener<Bitmap> {
             override fun onLoadFailed(e: GlideException?, model: Any, target: Target<Bitmap>, isFirstResource: Boolean): Boolean {
