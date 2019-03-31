@@ -126,6 +126,7 @@
 * debounce 去抖
 * throttleFirst
 * sample
+* retryWhen   onComplete事件
 
 
 
