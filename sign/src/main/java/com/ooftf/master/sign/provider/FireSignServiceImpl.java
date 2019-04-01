@@ -31,10 +31,6 @@ public class FireSignServiceImpl implements ISignService {
     public static PublishSubject<String> signInSubject = PublishSubject.create();
     public static PublishSubject<String> signOutSubject = PublishSubject.create();
 
-    @Override
-    public String getName() {
-        return "Google";
-    }
 
     @Override
     public Single<SignAssistBean> register(String username, String password) {

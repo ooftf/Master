@@ -19,8 +19,13 @@ public class SignInModel implements SignInContract.IModel {
     }
 
     @Override
-    public Observable<SignAssistBean> signIn(String username, String password) {
-        return multiAccountService.getCurrentService().signIn(username, password).toObservable();
+    public Observable<SignAssistBean> signIn(String channelId, String username, String password) {
+        return multiAccountService.getService(channelId).signIn(username, password).toObservable();
 
+    }
+
+    @Override
+    public void switchToChannel(String channelId) {
+        multiAccountService.switchToChannel(channelId);
     }
 }

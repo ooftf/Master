@@ -3,8 +3,6 @@ package com.ooftf.master.sign.ui.sign;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -32,7 +30,6 @@ import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
-import io.reactivex.functions.Predicate;
 
 /**
  * @author ooftf
@@ -94,22 +91,11 @@ public class SignInActivity extends BaseActivity implements SignInContract.IView
 
         List<SignChannelInfo> allChannel = multiAccountService.getAllChannel();
         for (int i = 0; i < allChannel.size(); i++) {
-            if (allChannel.get(i).getId().equals(multiAccountService.getCurrentAccountId())) {
+            if (allChannel.get(i).getId().equals(multiAccountService.getCurrentChannelId())) {
                 spinner.setSelection(i);
                 break;
             }
         }
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                multiAccountService.switchToChannel(multiAccountService.getAllChannel().get(position).getId());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 
     @Override
@@ -131,6 +117,11 @@ public class SignInActivity extends BaseActivity implements SignInContract.IView
     @Override
     public String getPassword() {
         return password.getText().toString();
+    }
+
+    @Override
+    public String getChannelId() {
+        return multiAccountService.getAllChannel().get(spinner.getSelectedItemPosition()).getId();
     }
 
     @Override

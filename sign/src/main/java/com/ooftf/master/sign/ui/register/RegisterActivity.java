@@ -1,6 +1,7 @@
 package com.ooftf.master.sign.ui.register;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -76,22 +77,11 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
                 });
         List<SignChannelInfo> allChannel = multiAccountService.getAllChannel();
         for (int i = 0; i < allChannel.size(); i++) {
-            if (allChannel.get(i).getId().equals(multiAccountService.getCurrentAccountId())) {
+            if (allChannel.get(i).getId().equals(multiAccountService.getCurrentChannelId())) {
                 spinner.setSelection(i);
                 break;
             }
         }
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                multiAccountService.switchToChannel(multiAccountService.getAllChannel().get(position).getId());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 
     @Override
@@ -105,8 +95,19 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.I
     }
 
     @Override
+    public String getChannelId() {
+        return multiAccountService.getAllChannel().get(spinner.getSelectedItemPosition()).getId();
+    }
+
+    @Override
     public Button getRegisterLoadingButton() {
         return register;
     }
+
+    @Override
+    public void showSuccessDialog(String message) {
+        showDialogMessage(message, (dialog, which) -> finish());
+    }
+
 
 }

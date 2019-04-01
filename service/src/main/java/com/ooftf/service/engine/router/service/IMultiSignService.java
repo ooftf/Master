@@ -12,9 +12,11 @@ import java.util.List;
  * @date 2019/1/19 0019
  */
 public interface IMultiSignService extends IProvider {
-    String getCurrentAccountId();
+    String getCurrentChannelId();
 
-    String getCurrentAccountName();
+    String getChannelName(String channelId);
+
+    ISignService getService(String channelId);
 
     ISignService getCurrentService();
 

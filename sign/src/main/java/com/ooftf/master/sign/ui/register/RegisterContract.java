@@ -14,7 +14,11 @@ public interface RegisterContract {
 
         String getPassword();
 
+        String getChannelId();
+
         Button getRegisterLoadingButton();
+
+        void showSuccessDialog(String message);
     }
 
     interface IPresenter extends MvpPresenter<IView, IModel> {
@@ -22,9 +26,9 @@ public interface RegisterContract {
     }
 
     interface IModel {
-        Observable<SignAssistBean> register(String username, String password);
+        Observable<SignAssistBean> register(String channelId, String username, String password);
 
-        String getCurrentServiceName();
+        String getChannelName(String channelId);
 
 
     }

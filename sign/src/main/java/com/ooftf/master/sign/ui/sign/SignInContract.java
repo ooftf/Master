@@ -15,6 +15,8 @@ public interface SignInContract {
 
         String getPassword();
 
+        String getChannelId();
+
         Button getSinInLoadingButton();
 
         void nextActivity();
@@ -25,6 +27,8 @@ public interface SignInContract {
     }
 
     interface IModel {
-        Observable<SignAssistBean> signIn(String username, String password);
+        Observable<SignAssistBean> signIn(String channelId, String username, String password);
+
+        void switchToChannel(String channelId);
     }
 }

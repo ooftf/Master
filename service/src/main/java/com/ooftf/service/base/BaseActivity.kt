@@ -220,9 +220,12 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         toast(content, Toast.LENGTH_SHORT)
     }
 
+    fun showDialogMessage(message: CharSequence, listener: DialogInterface.OnClickListener = DialogInterface.OnClickListener { dialog, which -> dialog?.dismiss() }) {
+        showDialogMessage(message, "确定", listener)
+    }
+
     fun showDialogMessage(message: CharSequence) {
-        showDialogMessage(message, "确定",
-                DialogInterface.OnClickListener { dialog, which -> dialog?.dismiss() })
+        showDialogMessage(message, "确定", DialogInterface.OnClickListener { dialog, which -> dialog?.dismiss() })
     }
 
     fun showDialogMessage(message: CharSequence,

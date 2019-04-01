@@ -17,14 +17,14 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IView, Reg
     @Override
     public void register() {
         getModule()
-                .register(getView().getUsername(), getView().getPassword())
+                .register(getView().getChannelId(), getView().getUsername(), getView().getPassword())
                 .compose(RxLifecycleAndroid.bindView(getView().getRegisterLoadingButton()))
                 .compose(new ButtonAction<>(getView().getRegisterLoadingButton(), "正在注册..."))
                 .subscribe(new EmptyObserver<SignAssistBean>() {
                     @Override
                     public void onNext(SignAssistBean bean) {
                         if (bean.isResult()) {
-                            getView().showDialogMessage(getModule().getCurrentServiceName() + "注册成功");
+                            getView().showSuccessDialog(getModule().getChannelName(getView().getChannelId()) + "注册成功");
                         } else {
                             getView().toast(bean.getMsg());
                         }

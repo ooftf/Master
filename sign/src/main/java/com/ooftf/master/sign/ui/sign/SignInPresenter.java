@@ -21,7 +21,7 @@ public class SignInPresenter extends BasePresenter<SignInContract.IView, SignInC
     @Override
     public void signIn() {
         getModule()
-                .signIn(getView().getUsername(), getView().getPassword())
+                .signIn(getView().getChannelId(), getView().getUsername(), getView().getPassword())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(new ButtonAction<>(getView().getSinInLoadingButton(), "正在登录..."))
                 .compose(RxLifecycleAndroid.bindView(getView().getSinInLoadingButton()))
@@ -29,6 +29,7 @@ public class SignInPresenter extends BasePresenter<SignInContract.IView, SignInC
                     @Override
                     public void onNext(SignAssistBean bean) {
                         if (bean.isResult()) {
+                            getModule().switchToChannel(getView().getChannelId());
                             getView().nextActivity();
                         } else {
                             getView().showDialogMessage(bean.getMsg());

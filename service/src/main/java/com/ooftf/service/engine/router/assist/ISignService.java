@@ -12,7 +12,6 @@ import io.reactivex.subjects.PublishSubject;
  * @date 2018/10/21 0021
  */
 public interface ISignService {
-    String getName();
 
     Single<SignAssistBean> register(String username, String password);
 

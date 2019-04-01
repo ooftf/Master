@@ -19,12 +19,12 @@ public class RegisterModel implements RegisterContract.IModel {
     }
 
     @Override
-    public Observable<SignAssistBean> register(String username, String password) {
-        return multiAccountService.getCurrentService().register(username, password).toObservable();
+    public Observable<SignAssistBean> register(String channelId, String username, String password) {
+        return multiAccountService.getService(channelId).register(username, password).toObservable();
     }
 
     @Override
-    public String getCurrentServiceName() {
-        return multiAccountService.getCurrentService().getName();
+    public String getChannelName(String channelId) {
+        return multiAccountService.getChannelName(channelId);
     }
 }

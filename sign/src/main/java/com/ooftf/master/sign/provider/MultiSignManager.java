@@ -35,8 +35,9 @@ public class MultiSignManager implements IMultiSignService {
 
     @Override
     public ISignService getCurrentService() {
-        return getCurrentAccountInfo().getCreator().invoke();
+        return getCurrentChannelInfo().getCreator().invoke();
     }
+
 
     @Override
     public List<SignChannelInfo> getAllChannel() {
@@ -50,23 +51,36 @@ public class MultiSignManager implements IMultiSignService {
         TyperFactory.getDefault().put(TYPER_KEY_CURRENT_ACCOUNT_ID, id);
     }
 
-    public ChannelInfo getCurrentAccountInfo() {
-        for (ChannelInfo info : accountInfos) {
-            if (getCurrentAccountId().equals(info.getId())) {
-                return info;
-            }
+    public ChannelInfo getCurrentChannelInfo() {
+        ChannelInfo channelInfo = getChannelInfo(getCurrentChannelId());
+        if (channelInfo != null) {
+            return channelInfo;
         }
         return accountInfos.get(0);
     }
 
+    public ChannelInfo getChannelInfo(String channelId) {
+        for (ChannelInfo info : accountInfos) {
+            if (channelId.equals(info.getId())) {
+                return info;
+            }
+        }
+        return null;
+    }
+
     @Override
-    public String getCurrentAccountId() {
+    public String getCurrentChannelId() {
         return TyperFactory.getDefault().getString(TYPER_KEY_CURRENT_ACCOUNT_ID, AccountId.GOOGLE);
     }
 
     @Override
-    public String getCurrentAccountName() {
-        return getCurrentAccountInfo().getName();
+    public String getChannelName(String channelId) {
+        return getChannelInfo(channelId).getName();
+    }
+
+    @Override
+    public ISignService getService(String channelId) {
+        return null;
     }
 
     @Override
