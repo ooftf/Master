@@ -1,4 +1,4 @@
-package com.ooftf.master.sign.activity;
+package com.ooftf.master.sign.ui.sign;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -15,14 +15,16 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.master.sign.R;
 import com.ooftf.master.sign.R2;
-import com.ooftf.master.sign.dagger.component.DaggerSigInComponent;
-import com.ooftf.master.sign.dagger.module.SignInModule;
-import com.ooftf.master.sign.mvp.contract.SignInContract;
+import com.ooftf.master.sign.dagger.component.DaggerActivityComponent;
+import com.ooftf.master.sign.dagger.module.ActivityModule;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.engine.router.FinishCallback;
 import com.ooftf.service.engine.router.PostcardSerializable;
+import com.ooftf.service.engine.router.assist.SignChannelInfo;
 import com.ooftf.service.engine.router.service.IMultiSignService;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -30,13 +32,14 @@ import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
+import io.reactivex.functions.Predicate;
 
 /**
  * @author ooftf
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-@Route(path = "/sign/activity/signIn")
+@Route(path = RouterPath.SIGN_ACTIVITY_SIGN_IN)
 public class SignInActivity extends BaseActivity implements SignInContract.IView {
     @BindView(R2.id.account)
     TextView account;
@@ -54,7 +57,6 @@ public class SignInActivity extends BaseActivity implements SignInContract.IView
     public Bundle successIntent;
     @Inject
     SignInContract.IPresenter presenter;
-    ArrayAdapter<String> adapter;
     @Autowired
     IMultiSignService multiAccountService;
 
@@ -64,22 +66,20 @@ public class SignInActivity extends BaseActivity implements SignInContract.IView
         setContentView(R.layout.activity_sign_in);
         ButterKnife.bind(this);
         ARouter.getInstance().inject(this);
-        initToolbar();
-        DaggerSigInComponent
+        DaggerActivityComponent
                 .builder()
-                .signInModule(new SignInModule(this))
+                .activityModule(new ActivityModule(this))
                 .build()
                 .inject(this);
+        initToolbar();
         signIn.setOnClickListener(v ->
                 presenter.signIn()
         );
         register.setOnClickListener(v ->
                 ARouter.getInstance().build(RouterPath.SIGN_ACTIVITY_REGISTER).navigation()
         );
-
         initSpinner();
-
-
+        presenter.onAttach(this);
     }
 
     @SuppressLint("CheckResult")
@@ -89,9 +89,16 @@ public class SignInActivity extends BaseActivity implements SignInContract.IView
                 .map(accountInfo -> accountInfo.getName())
                 .toList()
                 .subscribe(strings -> {
-                    adapter = new ArrayAdapter<>(SignInActivity.this, R.layout.item_spinner_text, strings);
-                    spinner.setAdapter(adapter);
+                    spinner.setAdapter(new ArrayAdapter<>(SignInActivity.this, R.layout.item_spinner_text, strings));
                 });
+
+        List<SignChannelInfo> allChannel = multiAccountService.getAllChannel();
+        for (int i = 0; i < allChannel.size(); i++) {
+            if (allChannel.get(i).getId().equals(multiAccountService.getCurrentAccountId())) {
+                spinner.setSelection(i);
+                break;
+            }
+        }
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -105,19 +112,15 @@ public class SignInActivity extends BaseActivity implements SignInContract.IView
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        presenter.onDetach();
+        super.onDestroy();
+    }
+
     private void initToolbar() {
-        toolbar.getMenu().add("Google").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                return false;
-            }
-        }).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-        toolbar.getMenu().add("Mob").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                return false;
-            }
-        }).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        toolbar.getMenu().add("Google").setOnMenuItemClickListener(item -> false).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        toolbar.getMenu().add("Mob").setOnMenuItemClickListener(item -> false).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
     }
 
     @Override

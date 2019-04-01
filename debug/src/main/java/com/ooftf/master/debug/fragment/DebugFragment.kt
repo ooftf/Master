@@ -34,7 +34,7 @@ class DebugFragment : BaseListFragment() {
         adapter.add(ScreenItemBean("/debug/activity/ConstraintLayout"))
         adapter.add(ScreenItemBean("/debug/activity/LayoutManager"))
         adapter.add(ScreenItemBean("/debug/activity/imageLoader"))
-        adapter.add(ScreenItemBean(RouterPath.SIGN_ACTIVITY_SIGN_IN))
+        adapter.add(ScreenItemBean(RouterPath.SIGN_ACTIVITY_SIGN_IN, "登录界面"))
         adapter.add(ScreenItemBean("/rn/activity/React"))
         adapter.notifyDataSetChanged()
     }

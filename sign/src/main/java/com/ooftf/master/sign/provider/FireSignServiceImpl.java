@@ -4,6 +4,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.ooftf.service.engine.router.assist.ISignService;
 import com.ooftf.service.engine.router.assist.SignAssistBean;
 
+import hugo.weaving.DebugLog;
 import io.reactivex.Single;
 import io.reactivex.subjects.PublishSubject;
 
@@ -12,7 +13,7 @@ import io.reactivex.subjects.PublishSubject;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-
+@DebugLog
 public class FireSignServiceImpl implements ISignService {
     private final static FireSignServiceImpl INSTANCE = new FireSignServiceImpl();
 
@@ -29,6 +30,11 @@ public class FireSignServiceImpl implements ISignService {
 
     public static PublishSubject<String> signInSubject = PublishSubject.create();
     public static PublishSubject<String> signOutSubject = PublishSubject.create();
+
+    @Override
+    public String getName() {
+        return "Google";
+    }
 
     @Override
     public Single<SignAssistBean> register(String username, String password) {
@@ -70,7 +76,6 @@ public class FireSignServiceImpl implements ISignService {
 
     @Override
     public boolean isSignIn() {
-
         if (mAuth.getCurrentUser() == null) {
             return false;
         } else {

@@ -1,17 +1,20 @@
-package com.ooftf.master.sign.mvp.presenter;
+package com.ooftf.master.sign.ui.sign;
 
 import com.ooftf.hihttp.action.ButtonAction;
-import com.ooftf.master.sign.mvp.contract.SignInContract;
+import com.ooftf.master.sign.mvp.BasePresenter;
 import com.ooftf.service.empty.EmptyObserver;
 import com.ooftf.service.engine.router.assist.SignAssistBean;
 import com.trello.rxlifecycle3.android.RxLifecycleAndroid;
+
+import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class SignInPresenter extends BasePresenter<SignInContract.IView, SignInContract.IModel> implements SignInContract.IPresenter {
 
-    public SignInPresenter(SignInContract.IView attachView, SignInContract.IModel module) {
-        super(attachView, module);
+    @Inject
+    public SignInPresenter(SignInContract.IModel module) {
+        super(module);
     }
 
 
@@ -33,4 +36,5 @@ public class SignInPresenter extends BasePresenter<SignInContract.IView, SignInC
                     }
                 });
     }
+
 }

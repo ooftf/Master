@@ -3,12 +3,12 @@
     package="com.ooftf.master.sign">
 
     <application>
-        <activity android:name=".activity.SignInActivity"
+        <activity android:name=".ui.sign.SignInActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.TranslucentStatus"/>
         <activity
             android:screenOrientation="portrait"
-            android:name=".activity.RegisterActivity"/>
+            android:name=".ui.register.RegisterActivity"/>
     </application>
 
 </manifest>

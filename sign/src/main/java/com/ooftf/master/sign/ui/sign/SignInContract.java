@@ -1,17 +1,16 @@
-package com.ooftf.master.sign.mvp.contract;
+package com.ooftf.master.sign.ui.sign;
 
 import android.widget.Button;
 
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.ooftf.master.sign.mvp.view.IBaseView;
+import com.ooftf.master.sign.mvp.MvpPresenter;
+import com.ooftf.master.sign.mvp.MvpView;
 import com.ooftf.service.engine.router.assist.SignAssistBean;
 
 import io.reactivex.Observable;
 
 public interface SignInContract {
 
-    interface IView extends IBaseView {
+    interface IView extends MvpView {
         String getUsername();
 
         String getPassword();
@@ -21,7 +20,7 @@ public interface SignInContract {
         void nextActivity();
     }
 
-    interface IPresenter {
+    interface IPresenter extends MvpPresenter<IView, IModel> {
         void signIn();
     }
 

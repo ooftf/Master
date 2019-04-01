@@ -11,7 +11,8 @@ import io.reactivex.subjects.PublishSubject;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-public interface ISignService{
+public interface ISignService {
+    String getName();
 
     Single<SignAssistBean> register(String username, String password);
 

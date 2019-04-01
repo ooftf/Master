@@ -1,8 +1,7 @@
-package com.ooftf.master.sign.mvp.model;
+package com.ooftf.master.sign.ui.sign;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.ooftf.master.sign.mvp.contract.SignInContract;
 import com.ooftf.service.engine.router.assist.SignAssistBean;
 import com.ooftf.service.engine.router.service.IMultiSignService;
 

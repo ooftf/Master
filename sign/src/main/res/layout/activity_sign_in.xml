@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".activity.SignInActivity">
+    tools:context=".ui.sign.SignInActivity">
 
     <com.ooftf.service.widget.CurveImageView
         android:id="@+id/banner"
@@ -55,6 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <com.ooftf.operation.OperationEditText
+        android:textSize="@dimen/font_default"
         android:id="@+id/account"
         android:layout_width="0dp"
         android:layout_height="48dp"
@@ -77,6 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/account" />
 
     <com.ooftf.operation.OperationEditText
+        android:textSize="@dimen/font_default"
         android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="48dp"
@@ -102,7 +104,7 @@
     <Button
         android:id="@+id/signIn"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="40dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/shape_rectangle_corners_solid_primary"
         android:padding="2dp"

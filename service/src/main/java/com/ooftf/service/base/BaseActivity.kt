@@ -1,19 +1,18 @@
 package com.ooftf.service.base
 
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
 import com.gyf.barlibrary.ImmersionBar
 import com.gyf.barlibrary.OSUtils
 import com.ooftf.service.R
@@ -56,6 +55,9 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         return touchable
     }
 
+    fun getBaseActivity(): BaseActivity {
+        return this
+    }
 
     init {
         lifecycle.addObserver(object : LifecycleObserver {
