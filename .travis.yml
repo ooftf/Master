@@ -10,11 +10,11 @@ android:
   - android-28
   - add-on
   - extra
-script:
-- ./gradlew :app:assembleRelease
 before_script:
 - chmod +x gradlew
+script:
+- ./gradlew :app:assembleRelease
 before_install:
 - gem install fir-cli
-after_deploy:
+after_success:
 - fir p app/build/outputs/apk/app-release.apk -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"
