@@ -1,3 +1,4 @@
+[![Build Status](https://www.travis-ci.org/ooftf/Master.svg?branch=dev)](https://www.travis-ci.org/ooftf/Master)
 # Master
 自己的开发工具集
 ## Task
