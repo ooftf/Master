@@ -1,10 +1,8 @@
 package com.ooftf.service.net.mob.action;
 
 import android.app.Activity;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.net.mob.bean.MobBaseBean;
 
 import io.reactivex.Observable;

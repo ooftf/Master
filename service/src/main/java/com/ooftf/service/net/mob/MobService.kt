@@ -25,12 +25,6 @@ interface MobService {
     @GET("ip/query")
     fun ipQuery(@Query("ip") ip: String): Observable<IpQueryBean>
 
-    @GET("user/rigister")
-    fun register(@Query("username") username: String, @Query("password") password: String): Observable<MobBaseBean>
-
-    @GET("user/login")
-    fun signIn(@Query("username") username: String, @Query("password") password: String): Observable<SignInBean>
-
     @GET("user/data/put")
     fun put(@Query("item") name: String, @Query("value") value: String): Observable<MobBaseBean>
     @GET("user/data/query")

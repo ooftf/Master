@@ -11,7 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.service.constant.RouterExtra;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.engine.router.PostcardSerializable;
-import com.ooftf.service.engine.router.service.FireSignService;
+import com.ooftf.service.engine.router.service.IMultiSignService;
 import com.ooftf.service.utils.JLog;
 
 /**
@@ -24,18 +24,18 @@ import com.ooftf.service.utils.JLog;
 @Interceptor(priority = 1)
 public class SignInInterceptor implements IInterceptor {
     @Autowired
-    FireSignService signService;
+    IMultiSignService multiAccountService;
 
     @Override
     public void process(Postcard postcard, InterceptorCallback callback) {
 
         int extra = postcard.getExtra();
-        if (RouterExtra.isNeedSign(extra) && !signService.isSignIn()) {
-            JLog.e("interceptor",postcard.getPath());
+        if (RouterExtra.isNeedSign(extra) && !multiAccountService.getCurrentService().isSignIn()) {
+            JLog.e("interceptor", postcard.getPath());
             ARouter.getInstance().build(RouterPath.SIGN_ACTIVITY_SIGN_IN).withBundle("successIntent", PostcardSerializable.toBundle(postcard)).navigation();
             callback.onInterrupt(null);
         } else {
-            JLog.e("onContinue",postcard.getPath());
+            JLog.e("onContinue", postcard.getPath());
             callback.onContinue(postcard);
 
         }
@@ -44,6 +44,5 @@ public class SignInInterceptor implements IInterceptor {
     @Override
     public void init(Context context) {
         ARouter.getInstance().inject(this);
-        JLog.e(signService,signService.toString());
     }
 }

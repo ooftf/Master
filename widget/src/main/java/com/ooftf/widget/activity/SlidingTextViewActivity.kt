@@ -1,5 +1,7 @@
 package com.ooftf.widget.activity
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseActivity
@@ -13,7 +15,18 @@ class SlidingTextViewActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drawer_demo)
         click.setOnClickListener {
+            if (!drawer.isOpen) {
+                text.maxLines = 100
+            }
             drawer.smoothTurn()
         }
+        drawer.setAnimatorChanageListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                if (!drawer.isOpen) {
+                    text.maxLines = 3
+                }
+            }
+        })
+
     }
 }

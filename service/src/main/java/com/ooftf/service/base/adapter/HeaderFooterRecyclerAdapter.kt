@@ -1,6 +1,6 @@
 package tf.ooftf.com.service.base.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import java.util.*
@@ -9,7 +9,7 @@ import java.util.*
  * Created by master on 2017/9/25 0025.
  */
 
-abstract class HeaderFooterRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : BaseRecyclerAdapter<T, RecyclerView.ViewHolder>() {
+abstract class HeaderFooterRecyclerAdapter<T, WH : androidx.recyclerview.widget.RecyclerView.ViewHolder> : BaseRecyclerAdapter<T, androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
     private var header: MutableList<View> = ArrayList()
     private var footer: MutableList<View> = ArrayList()
     override fun getItemCount(): Int {
@@ -36,11 +36,11 @@ abstract class HeaderFooterRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : Ba
         return position - header.size - list.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         return when {
-            isHeaderByType(viewType) -> object : RecyclerView.ViewHolder(getHeaderViewByType(viewType)!!) {
+            isHeaderByType(viewType) -> object : androidx.recyclerview.widget.RecyclerView.ViewHolder(getHeaderViewByType(viewType)!!) {
             }
-            isFooterByType(viewType) -> object : RecyclerView.ViewHolder(getFooterViewByType(viewType)!!) {
+            isFooterByType(viewType) -> object : androidx.recyclerview.widget.RecyclerView.ViewHolder(getFooterViewByType(viewType)!!) {
             }
             else -> onCreateViewHolderSecondary(parent, viewType)
         }
@@ -83,7 +83,7 @@ abstract class HeaderFooterRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : Ba
 
     abstract fun onCreateViewHolderSecondary(parent: ViewGroup, viewType: Int): WH
 
-    override fun onBindViewHolder_(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder_(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         when {
             isHeader(position) -> onBindViewHolderHeader(holder, position)
             isFooter(position) -> onBindViewHolderFooter(holder, getFooterPosition(position))
@@ -92,8 +92,8 @@ abstract class HeaderFooterRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : Ba
     }
 
     abstract fun onBindViewHolderSecondary(holder: WH, position: Int)
-    fun onBindViewHolderHeader(holder: RecyclerView.ViewHolder, position: Int) {}
-    fun onBindViewHolderFooter(holder: RecyclerView.ViewHolder, position: Int) {}
+    fun onBindViewHolderHeader(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {}
+    fun onBindViewHolderFooter(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {}
 
     fun addHeader(layout: View) {
         header.add(0, layout)

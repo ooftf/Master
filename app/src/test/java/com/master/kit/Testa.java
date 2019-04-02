@@ -25,5 +25,6 @@ public class Testa {
 
     public static void main(String[] args) {
         Testa test = new Testa();
+        System.out.print("bbbbb"+"data:image/png;base64,sdfsd".matches("^data:image/[a-z]{3,4};base64,"));
     }
 }

@@ -5,10 +5,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StyleRes;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StyleRes;
+
 import android.util.Log;
 import android.view.Gravity;
 import android.view.WindowManager;
@@ -16,7 +18,6 @@ import android.view.WindowManager;
 import com.blankj.utilcode.util.BarUtils;
 import com.ooftf.service.BuildConfig;
 import com.ooftf.service.utils.ContextUtils;
-import com.ooftf.service.utils.JLog;
 
 /**
  * @author lihang9
@@ -70,9 +71,9 @@ public class BaseDialog extends Dialog {
      * @return
      */
     int getWindowHeight() {
-        if(BarUtils.isStatusBarVisible(getActivity())){
+        if (BarUtils.isStatusBarVisible(getActivity())) {
             return getContext().getResources().getDisplayMetrics().heightPixels - BarUtils.getStatusBarHeight();
-        }else{
+        } else {
             return getContext().getResources().getDisplayMetrics().heightPixels;
         }
     }
@@ -150,10 +151,19 @@ public class BaseDialog extends Dialog {
         try {
             super.show();
         } catch (Exception e) {
-            if (BuildConfig.DEBUG) {
-                Log.e(getClass().getSimpleName(), e.toString());
-            }
+            e.printStackTrace();
+        }
+    }
 
+    @Override
+    public void dismiss() {
+        /**
+         * 捕获BadTokenException崩溃信息，这个只能作为最坏的处理手段，最好找到导致BadTokenException的原因处理掉
+         */
+        try {
+            super.dismiss();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

@@ -1,8 +1,7 @@
 package com.ooftf.applet.activity
 
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AlertDialog
 import android.util.Base64
 import android.util.Log
 import android.widget.Toast
@@ -22,9 +21,9 @@ import com.ooftf.service.net.mob.action.ErrorAction
 import com.ooftf.service.net.mob.action.MobObserver
 import com.ooftf.service.net.mob.bean.ItemDataBean
 import com.ooftf.service.net.mob.bean.MobBaseBean
-import com.ooftf.service.widget.dialog.ListSelectorDialog
+import com.ooftf.service.widget.dialog.ListBlurDialog
 import com.ooftf.service.widget.toolbar.TailoredToolbar
-import com.trello.rxlifecycle2.kotlin.bindToLifecycle
+import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_weekly_consumption.*
@@ -42,7 +41,7 @@ import kotlin.collections.ArrayList
 class WeeklyConsumptionActivity : BaseActivity() {
     lateinit var adapter: PersonRecordAdapter
     lateinit var orderRecord: OrderRecordBean
-    lateinit var operationPanel: ListSelectorDialog
+    lateinit var operationPanel: ListBlurDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weekly_consumption)
@@ -53,7 +52,7 @@ class WeeklyConsumptionActivity : BaseActivity() {
         orderRecord = getData()
         //将本地数据赋值到View上
         adapter = PersonRecordAdapter(this, orderRecord)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerView.adapter = adapter
         monday.setText(orderRecord.monday.toString())
         tuesday.setText(orderRecord.tuesday.toString())
@@ -110,7 +109,7 @@ class WeeklyConsumptionActivity : BaseActivity() {
     }
 
     private fun initOperationPanel() {
-        operationPanel = ListSelectorDialog(this)
+        operationPanel = ListBlurDialog(this)
         var data = ArrayList<String>()
         data.add("从服务器拉取数据")
         data.add("保存数据到服务器")

@@ -3,7 +3,7 @@ package com.ooftf.service.base
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +14,7 @@ import java.util.*
 /**
  * Created by master on 2016/4/12.
  */
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : androidx.fragment.app.Fragment() {
     private var mToast: Toast? = null
     private var touchable = false
     private var alive = false

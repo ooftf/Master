@@ -1,10 +1,12 @@
 package com.master.kit.application;
 
 import com.ooftf.service.base.BaseApplication;
+import com.ooftf.service.utils.JLog;
 import com.tencent.matrix.Matrix;
 import com.tencent.matrix.iocanary.IOCanaryPlugin;
 import com.tencent.matrix.iocanary.config.IOConfig;
 import com.tencent.mrs.plugin.IDynamicConfig;
+import com.wanjian.cockroach.Cockroach;
 
 /**
  * @author ooftf
@@ -22,6 +24,7 @@ public class App extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         initMatrix();
+        //installCockroach();
     }
 
     private void initMatrix() {
@@ -48,5 +51,16 @@ public class App extends BaseApplication {
 
     public static App getInstance() {
         return instance;
+    }
+
+    private void installCockroach() {
+        // 可以达到产生崩溃自动finish activity的效果，但是再某些情况下会导致白屏切无法操作（比如react那个页面）
+        Cockroach.install(new Cockroach.ExceptionHandler() {
+            @Override
+            public void handlerException(Thread thread, Throwable throwable) {
+                JLog.e("Cockroach", throwable.toString());
+            }
+        });
+
     }
 }

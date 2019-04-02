@@ -1,32 +1,78 @@
 package com.ooftf.master.sign.provider;
 
-import android.content.Context;
-
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.ooftf.service.bean.SignInfo;
-import com.ooftf.service.engine.router.ServiceMap;
-import com.ooftf.service.engine.router.service.SignService;
+import com.ooftf.master.sign.bean.SignInBean;
+import com.ooftf.master.sign.net.SignMobServiceHolder;
+import com.ooftf.service.engine.router.assist.ISignService;
+import com.ooftf.service.engine.router.assist.SignAssistBean;
 import com.ooftf.service.engine.typer.TyperFactory;
+import com.ooftf.service.net.mob.bean.MobBaseBean;
 
-import io.reactivex.Observer;
+import hugo.weaving.DebugLog;
+import io.reactivex.Single;
 import io.reactivex.subjects.PublishSubject;
 
 /**
+ * 994749769   965661686
+ *
  * @author ooftf
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-@Route(path = ServiceMap.SIGN, name = "测试服务")
-public class SignServiceImpl implements SignService {
+@DebugLog
+public class SignServiceImpl implements ISignService {
     private static final String KEY_ACCOUNT_INFO = "AccountInfo";
+    private final static SignServiceImpl INSTANCE = new SignServiceImpl();
 
-    @Override
-    public void init(Context context) {
+    private SignServiceImpl() {
 
     }
 
-    public static PublishSubject<SignInfo> signInSubject = PublishSubject.create();
-    public static PublishSubject<SignInfo> signOutSubject = PublishSubject.create();
+    public static SignServiceImpl getInstance() {
+        return INSTANCE;
+    }
+
+    public static PublishSubject<String> signInSubject = PublishSubject.create();
+    public static PublishSubject<String> signOutSubject = PublishSubject.create();
+
+
+    @Override
+    public Single<SignAssistBean> register(String username, String password) {
+        return SignMobServiceHolder
+                .signMobService
+                .register(username, password)
+                .singleOrError()
+                .map(mobBaseBean -> {
+                    SignAssistBean bean = new SignAssistBean();
+                    boolean success = MobBaseBean.success.equals(mobBaseBean.getRetCode());
+                    bean.setResult(success);
+                    if (success) {
+                        bean.setMsg("ok");
+                    } else {
+                        bean.setMsg(mobBaseBean.getMsg());
+                    }
+                    return bean;
+                });
+    }
+
+    @Override
+    public Single<SignAssistBean> signIn(String username, String password) {
+        return SignMobServiceHolder
+                .signMobService
+                .signIn(username, password)
+                .singleOrError()
+                .map(mobBaseBean -> {
+                    SignAssistBean bean = new SignAssistBean();
+                    boolean success = MobBaseBean.success.equals(mobBaseBean.getRetCode());
+                    bean.setResult(success);
+                    if (success) {
+                        TyperFactory.getDefault().put(KEY_ACCOUNT_INFO, mobBaseBean.getResult());
+                        bean.setMsg("ok");
+                    } else {
+                        bean.setMsg(mobBaseBean.getMsg());
+                    }
+                    return bean;
+                });
+    }
 
     @Override
     public boolean isSignIn() {
@@ -42,23 +88,36 @@ public class SignServiceImpl implements SignService {
         TyperFactory.getDefault().remove(KEY_ACCOUNT_INFO);
     }
 
-    @Override
-    public void updateSignInfo(SignInfo info) {
-        TyperFactory.getDefault().put(KEY_ACCOUNT_INFO, info);
+
+    public SignInBean.ResultBean getSignInfo() {
+        return TyperFactory.getDefault().getObject(KEY_ACCOUNT_INFO, SignInBean.ResultBean.class);
     }
 
     @Override
-    public SignInfo getSignInfo() {
-        return TyperFactory.getDefault().getObject(KEY_ACCOUNT_INFO, SignInfo.class);
+    public PublishSubject<String> subscribeSignIn() {
+        return signInSubject;
     }
 
     @Override
-    public void subscribeSignIn(Observer<SignInfo> observer) {
-        signInSubject.subscribe(observer);
+    public PublishSubject<String> subscribeSignOut() {
+        return signOutSubject;
     }
 
     @Override
-    public void subscribeSignOut(Observer<SignInfo> observer) {
-        signOutSubject.subscribe(observer);
+    public String getToken() {
+        if (getSignInfo() != null) {
+            return getSignInfo().getToken();
+        }
+
+        return null;
+    }
+
+    @Override
+    public String getUserId() {
+        if (getSignInfo() != null) {
+            return getSignInfo().getUid();
+        }
+
+        return null;
     }
 }

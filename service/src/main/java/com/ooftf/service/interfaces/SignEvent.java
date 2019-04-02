@@ -1,6 +1,6 @@
 package com.ooftf.service.interfaces;
 
-import android.support.annotation.StringDef;
+import androidx.annotation.StringDef;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

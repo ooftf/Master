@@ -10,9 +10,7 @@
     tools:context="com.ooftf.master.debug.activity.AnnotationActivity">
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_appbar_height"
-        app:navigationIcon="@drawable/vector_arrow_left" />
+        style="@style/ToolbarStyle.Back" />
 
     <TextView
         android:id="@+id/annotation"

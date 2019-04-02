@@ -1,9 +1,0 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-
-    <style name="ThemeOverlay.Toolbar.PopupMenu" parent="ThemeOverlay.AppCompat.Light">
-        <item name="overlapAnchor">false</item>
-    </style>
-
-
-
-</resources>

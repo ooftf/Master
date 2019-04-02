@@ -3,9 +3,9 @@ package com.ooftf.widget.activity
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,9 +22,9 @@ class LotteryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lottery)
         val list = ArrayList<Int>()
         recyclerView.isEnabled = false
-        var layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        var layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this, androidx.recyclerview.widget.RecyclerView.HORIZONTAL, false)
         recyclerView.layoutManager = layoutManager
-        var adapter = object : RecyclerView.Adapter<LotteryViewHolder>() {
+        var adapter = object : androidx.recyclerview.widget.RecyclerView.Adapter<LotteryViewHolder>() {
             override fun onBindViewHolder(holder: LotteryViewHolder, position: Int) {
                 holder.recyclerView.smoothScrollToPosition(list.get(position))
             }
@@ -35,7 +35,7 @@ class LotteryActivity : AppCompatActivity() {
 
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LotteryViewHolder {
                 var holder = LotteryViewHolder(LayoutInflater.from(this@LotteryActivity).inflate(R.layout.item_lottery, parent, false))
-                var layoutManager = com.ooftf.widget.engine.ScrollSpeedLinearLayoutManger(this@LotteryActivity, RecyclerView.VERTICAL, false)
+                var layoutManager = com.ooftf.widget.engine.ScrollSpeedLinearLayoutManger(this@LotteryActivity, androidx.recyclerview.widget.RecyclerView.VERTICAL, false)
                 layoutManager.setSpeedSlow()
                 holder.recyclerView.layoutManager = layoutManager
                 holder.recyclerView.adapter = ItemAdapter(this@LotteryActivity)
@@ -67,15 +67,15 @@ class LotteryActivity : AppCompatActivity() {
         }, 2000)
     }
 
-    class LotteryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var recyclerView: RecyclerView
+    class LotteryViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+        var recyclerView: androidx.recyclerview.widget.RecyclerView
 
         init {
-            recyclerView = itemView as RecyclerView
+            recyclerView = itemView as androidx.recyclerview.widget.RecyclerView
         }
     }
 
-    class LotteryItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class LotteryItemViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         var textView: TextView
 
         init {
@@ -83,7 +83,7 @@ class LotteryActivity : AppCompatActivity() {
         }
     }
 
-    class ItemAdapter(var context: Context) : RecyclerView.Adapter<LotteryItemViewHolder>() {
+    class ItemAdapter(var context: Context) : androidx.recyclerview.widget.RecyclerView.Adapter<LotteryItemViewHolder>() {
         override fun getItemCount(): Int {
             return 21
         }

@@ -1,27 +1,26 @@
 package com.ooftf.service.base
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.OnLifecycleEvent
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
 import com.gyf.barlibrary.ImmersionBar
 import com.gyf.barlibrary.OSUtils
 import com.ooftf.service.R
 import com.ooftf.service.interfaces.ILifecycleState
 import com.ooftf.service.utils.JLog
 import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle
-import com.trello.rxlifecycle2.LifecycleProvider
-import com.trello.rxlifecycle2.LifecycleTransformer
+import com.trello.rxlifecycle3.LifecycleProvider
+import com.trello.rxlifecycle3.LifecycleTransformer
 import hugo.weaving.DebugLog
 import java.util.*
 
@@ -56,6 +55,9 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         return touchable
     }
 
+    fun getBaseActivity(): BaseActivity {
+        return this
+    }
 
     init {
         lifecycle.addObserver(object : LifecycleObserver {
@@ -218,8 +220,12 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         toast(content, Toast.LENGTH_SHORT)
     }
 
+    fun showDialogMessage(message: CharSequence, listener: DialogInterface.OnClickListener = DialogInterface.OnClickListener { dialog, which -> dialog?.dismiss() }) {
+        showDialogMessage(message, "确定", listener)
+    }
+
     fun showDialogMessage(message: CharSequence) {
-        showDialogMessage(message)
+        showDialogMessage(message, "确定", DialogInterface.OnClickListener { dialog, which -> dialog?.dismiss() })
     }
 
     fun showDialogMessage(message: CharSequence,

@@ -1,21 +1,24 @@
 package com.ooftf.master.source.activity
 
-import android.arch.lifecycle.Lifecycle
 import android.os.Bundle
+import androidx.lifecycle.Lifecycle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.hihttp.action.weak.LifeAction
 import com.ooftf.hihttp.action.weak.LifeConsumer
 import com.ooftf.master.source.R
 import com.ooftf.service.base.BaseBarrageActivity
 import com.ooftf.service.utils.JLog
-import com.trello.rxlifecycle2.android.lifecycle.kotlin.bindUntilEvent
+import com.ooftf.service.utils.LifeFunction
+import com.trello.rxlifecycle3.android.lifecycle.kotlin.bindUntilEvent
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
+import io.reactivex.ObservableSource
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Action
 import io.reactivex.functions.Consumer
+import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_rx_emitter.*
 
@@ -41,7 +44,6 @@ class RxEmitterActivity : BaseBarrageActivity() {
         }
         onComplete.setOnClickListener {
             if (emitter == null) {
-
                 addBarrage("emitter == null")
             } else {
                 emitter?.onComplete()
@@ -114,14 +116,23 @@ class RxEmitterActivity : BaseBarrageActivity() {
         button5.setOnClickListener {
             getStaticDelayObservable()
                     .bindUntilEvent(this, Lifecycle.Event.ON_DESTROY)
-                    .doOnSubscribe(LifeConsumer<Disposable>(Consumer<Disposable> { JLog.e("Lifecycle  doOnSubscribe") }, this))
+                    .flatMap(LifeFunction(Function<String, ObservableSource<String>> {
+                        JLog.e("Lifecycle  flatMap:如果打印则发生了内存泄漏")
+                        addBarrage("Lifecycle  flatMap:如果打印则发生了内存泄漏")
+                        Observable.just(it)
+                    }, this))
+                    .flatMap {
+                        JLog.e("Lifecycle  flatMap:如果打印则发生了内存泄漏")
+                        addBarrage("Lifecycle  flatMap:如果打印则发生了内存泄漏")
+                        Observable.just(it)
+                    }
+                    .doOnSubscribe(LifeConsumer(Consumer<Disposable> { JLog.e("Lifecycle  doOnSubscribe") }, this))
                     .doOnTerminate(LifeAction(Action {
                         addBarrage("Lifecycle  doOnTerminate:如果打印则发生了内存泄漏")
                         JLog.e("Lifecycle  doOnTerminate:如果打印则发生了内存泄漏")
                     }, this))
                     .subscribe()
         }
-
     }
 
 
@@ -136,7 +147,7 @@ class RxEmitterActivity : BaseBarrageActivity() {
                 Observable
                         .create<String> { it ->
                             Thread {
-                                Thread.sleep(30000)
+                                Thread.sleep(60000)
                                 it.onNext("10000")
                                 it.onNext("20000")
                                 it.onComplete()

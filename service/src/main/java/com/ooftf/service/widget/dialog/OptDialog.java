@@ -16,7 +16,7 @@ import com.ooftf.service.R;
  * @author ooftf
  * @date 2018/8/22
  **/
-public class OptDialog extends Dialog {
+public class OptDialog extends BaseDialog {
     Activity activity;
     private TextView title;
     private TextView content;

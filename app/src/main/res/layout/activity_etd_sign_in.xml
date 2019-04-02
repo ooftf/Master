@@ -10,10 +10,7 @@
     tools:context="com.master.kit.testcase.retrofit.EtdSignInActivity">
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:navigationIcon="@drawable/vector_arrow_left"
+        style="@style/ToolbarStyle.Back"
         app:title="登录" />
 
     <LinearLayout
@@ -29,7 +26,7 @@
             android:src="@drawable/logo_legacy" />
 
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_item_height"
             android:layout_marginLeft="@dimen/layout_edge_spacing">
@@ -42,7 +39,7 @@
                 android:hint="账号"
                 app:oet_delEnabled="true"
                 app:oet_maskEnabled="false" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <View
             android:layout_width="match_parent"
@@ -50,7 +47,7 @@
             android:background="@color/divider_gray" />
 
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_item_height"
             android:layout_marginLeft="@dimen/layout_edge_spacing">
@@ -63,7 +60,7 @@
                 android:hint="密码"
                 app:oet_delEnabled="true"
                 app:oet_maskEnabled="true" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <View
             android:layout_width="match_parent"
@@ -76,7 +73,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">-
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="@dimen/layout_item_height"
                 android:layout_marginLeft="@dimen/layout_edge_spacing"
@@ -90,7 +87,7 @@
                     android:hint="图形验证码"
                     app:oet_delEnabled="true"
                     app:oet_maskEnabled="false" />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.ooftf.service.net.etd.PicCaptchaLayout
                 android:id="@+id/picCaptcha"

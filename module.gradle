@@ -21,7 +21,8 @@ android {
         }
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName(), DOCKING_MODULE_NAME: project.getName()] //AROUTER_GENERATE_DOC: "enable",
+                arguments = [AROUTER_MODULE_NAME: project.getName(), DOCKING_MODULE_NAME: project.getName()]
+                //AROUTER_GENERATE_DOC: "enable",
             }
         }
         ndk {
@@ -57,10 +58,10 @@ publish {
     userOrg = 'ooftf'      // bintray注册的用户名
     groupId = 'com.ooftf'
     artifactId = "master-${project.getName()}"// bintray创建的package
-    publishVersion = '1.0.0-SNAPSHOT'
+    publishVersion = versions.master
     desc = 'nothing'
     bintrayUser = 'ooftf'
-    bintrayKey = bintray_key
+    bintrayKey = bintrayKey()
     dryRun = false
 }
 tasks.withType(Javadoc) {
@@ -73,10 +74,15 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation deps.constraintLayout
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
-    implementation 'com.ooftf:master-service:1.0.0-SNAPSHOT'
+    if (maven) {
+        implementation "com.ooftf:master-service:$versions.master"
+    } else {
+        implementation project(':service')
+    }
+
 
 }
 

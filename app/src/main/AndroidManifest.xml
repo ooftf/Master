@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
         android:name="com.master.kit.application.App"
@@ -75,21 +76,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-
-        <activity android:name=".testcase.SwitchButtonActivity" />
         <activity
             android:name=".activity.MainActivity"
             android:launchMode="singleTask" />
-        <activity
-            android:name=".testcase.touchevent.TouchActivity"
-            android:label="@string/title_activity_touch" />
-        <activity android:name=".testcase.viewpager.ViewPagerActivity" />
+        <activity android:name="com.ooftf.widget.activity.ViewPagerActivity" />
         <activity
             android:name=".testcase.design.DesignActivity"
             android:label="@string/app_name" />
         <activity android:name=".testcase.listview.ListViewActivity" />
-        <activity android:name=".activity.widget.ProgressBarActivity" />
-        <activity android:name=".testcase.webview.WebViewActivity" />
         <activity android:name=".testcase.design.DesignDispatchActivity" />
         <activity android:name=".testcase.design.flexible.FlexibleActivity" />
         <activity android:name=".testcase.filedownload.DownloadActivity" />

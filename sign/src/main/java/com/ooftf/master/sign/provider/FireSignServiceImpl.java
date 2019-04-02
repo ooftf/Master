@@ -1,18 +1,11 @@
 package com.ooftf.master.sign.provider;
 
-import android.content.Context;
-
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.ooftf.master.sign.dagger.component.DaggerFireSignServiceComponent;
-import com.ooftf.service.bean.SignInfo;
-import com.ooftf.service.engine.router.ServiceMap;
-import com.ooftf.service.engine.router.service.FireSignService;
+import com.ooftf.service.engine.router.assist.ISignService;
+import com.ooftf.service.engine.router.assist.SignAssistBean;
 
-import javax.inject.Inject;
-
-import io.reactivex.Observer;
+import hugo.weaving.DebugLog;
+import io.reactivex.Single;
 import io.reactivex.subjects.PublishSubject;
 
 /**
@@ -20,22 +13,66 @@ import io.reactivex.subjects.PublishSubject;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-@Route(path = ServiceMap.FIRE_SIGN, name = "测试服务")
-public class FireSignServiceImpl implements FireSignService {
-    @Inject
-    FirebaseAuth mAuth;
+@DebugLog
+public class FireSignServiceImpl implements ISignService {
+    private final static FireSignServiceImpl INSTANCE = new FireSignServiceImpl();
 
-    @Override
-    public void init(Context context) {
-        DaggerFireSignServiceComponent.create().inject(this);
+    private FireSignServiceImpl() {
+
     }
 
-    public static PublishSubject<SignInfo> signInSubject = PublishSubject.create();
-    public static PublishSubject<SignInfo> signOutSubject = PublishSubject.create();
+    public static FireSignServiceImpl getInstance() {
+        return INSTANCE;
+    }
+
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+
+    public static PublishSubject<String> signInSubject = PublishSubject.create();
+    public static PublishSubject<String> signOutSubject = PublishSubject.create();
+
+
+    @Override
+    public Single<SignAssistBean> register(String username, String password) {
+        return Single.create(emitter -> mAuth.createUserWithEmailAndPassword(username, password).addOnCompleteListener(task -> {
+            if (emitter.isDisposed()) {
+                return;
+            }
+            SignAssistBean result = new SignAssistBean();
+            result.setResult(task.isSuccessful());
+            if (task.isSuccessful()) {
+                result.setMsg("ok");
+            } else {
+                result.setMsg(task.getException().getMessage());
+            }
+            emitter.onSuccess(result);
+        }));
+    }
+
+    @Override
+    public Single<SignAssistBean> signIn(String username, String password) {
+        return Single.create(emitter ->
+                FirebaseAuth
+                        .getInstance()
+                        .signInWithEmailAndPassword(username, password)
+                        .addOnCompleteListener(task -> {
+                            if (emitter.isDisposed()) {
+                                return;
+                            }
+                            SignAssistBean result = new SignAssistBean();
+                            result.setResult(task.isSuccessful());
+                            if (task.isSuccessful()) {
+                                result.setMsg("ok");
+                            } else {
+                                result.setMsg(task.getException().getMessage());
+                            }
+                            emitter.onSuccess(result);
+                        }));
+    }
 
     @Override
     public boolean isSignIn() {
-        if (getSignInfo() == null) {
+        if (mAuth.getCurrentUser() == null) {
             return false;
         } else {
             return true;
@@ -47,23 +84,24 @@ public class FireSignServiceImpl implements FireSignService {
         mAuth.signOut();
     }
 
+
     @Override
-    public void updateSignInfo(FirebaseUser info) {
-        mAuth.updateCurrentUser(info);
+    public PublishSubject<String> subscribeSignIn() {
+        return signInSubject;
     }
 
     @Override
-    public FirebaseUser getSignInfo() {
-        return mAuth.getCurrentUser();
+    public PublishSubject<String> subscribeSignOut() {
+        return signOutSubject;
     }
 
     @Override
-    public void subscribeSignIn(Observer<SignInfo> observer) {
-        signInSubject.subscribe(observer);
+    public String getToken() {
+        return null;
     }
 
     @Override
-    public void subscribeSignOut(Observer<SignInfo> observer) {
-        signOutSubject.subscribe(observer);
+    public String getUserId() {
+        return null;
     }
 }

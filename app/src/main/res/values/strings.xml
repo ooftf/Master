@@ -4,8 +4,7 @@
     <string name="title_activity_touch_test">TouchTestActivity</string>
     <string name="title_activity_touch">TouchActivity</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+
 
     <string name="action_settings">Settings</string>
     <string name="default_long">En cada actualización se incluyen herramientas de SDK, imágenes de sistema de la muestra, emuladores, documentación de referencia y diferencias de API.

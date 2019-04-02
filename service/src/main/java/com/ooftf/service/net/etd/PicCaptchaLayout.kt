@@ -16,7 +16,7 @@ import com.ooftf.service.R
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.net.ServiceHolder
 import com.ooftf.service.net.etd.bean.PicCaptchaBean
-import com.trello.rxlifecycle2.kotlin.bindToLifecycle
+import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 

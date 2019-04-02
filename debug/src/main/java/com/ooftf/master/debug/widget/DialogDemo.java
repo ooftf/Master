@@ -3,13 +3,13 @@ package com.ooftf.master.debug.widget;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Build;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.WindowManager;
 
 import com.ooftf.master.debug.R;
-import com.ooftf.service.engine.LoopTimer;
+
+import androidx.fragment.app.FragmentActivity;
 
 public class DialogDemo extends Dialog {
     FragmentActivity activity;
@@ -40,23 +40,5 @@ public class DialogDemo extends Dialog {
         }
         Log.e("FragmentIsDestroyed", activity.getSupportFragmentManager().isDestroyed() + "");
         Log.e("isFinishing", activity.isFinishing() + ".............");
-        LoopTimer loopTimer = new LoopTimer(1000, 1000) {
-            int i = 0;
-
-            @Override
-            public void onTrick() {
-                i++;
-                if (i > 20) {
-                    cancel();
-                }
-                Log.e("isShowing", isShowing() + "");
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                    Log.e("isDestroyed", activity.isDestroyed() + "");
-                }
-                Log.e("FragmentIsDestroyed", activity.getSupportFragmentManager().isDestroyed() + "");
-                Log.e("isFinishing", activity.isFinishing() + "");
-            }
-        };
-        loopTimer.start();
     }
 }

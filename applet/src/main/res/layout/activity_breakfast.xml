@@ -9,11 +9,7 @@
     tools:context="com.ooftf.applet.activity.BreakfastActivity">
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_appbar_height"
-        android:background="@color/colorPrimary"
-        app:navigationIcon="@drawable/vector_arrow_left"
+        style="@style/ToolbarStyle.Back"
         app:title="早餐时间" />
 
     <TextView

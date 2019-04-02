@@ -8,8 +8,8 @@ package com.ooftf.widget.adapter
  */
 
 import android.content.Context
-import android.support.annotation.LayoutRes
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.LayoutRes
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -28,7 +28,7 @@ import com.youth.banner.loader.ImageLoaderInterface
  * Created by master on 2017/9/25 0025.
  */
 
-open class WidgetAdapter : RecyclerView.Adapter<BaseViewHolder<View>>() {
+open class WidgetAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<BaseViewHolder<View>>() {
     var body = ArrayList<ScreenItemBean>()
     var spialeList = ArrayList<String>()
 

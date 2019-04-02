@@ -41,5 +41,8 @@ public class ToolbarDemoActivity extends BaseBarrageActivity {
         }));
         toolbar.addMenuItem(new TailoredToolbar.MenuItem(this).layoutLeft().setImage(R.drawable.vector_icon_del));
         toolbar.addMenuItem(new TailoredToolbar.MenuItem(this).layoutLeft().setText("关闭"));
+
+      /*  toolbar.menu.add("外显").setIcon(R.drawable.vector_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)  //监听事件的返回值会影响界面点击效果，返回true没有点击效果，
+        toolbar.menu.add("内藏").setIcon(R.drawable.vector_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)*/
     }
 }

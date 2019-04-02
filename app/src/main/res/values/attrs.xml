@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--SelectorButton-->
-    <declare-styleable name="SelectorBitmap">
-        <attr name="normal" format="reference" />
-        <attr name="selected" format="reference" />
-    </declare-styleable>
+
+
 </resources>

@@ -1,3 +1,4 @@
-<resources>
-
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--改变FloatingActionButton大小-->
+    <dimen name="design_fab_size_normal" tools:ignore="PrivateResource">52dp</dimen>
 </resources>

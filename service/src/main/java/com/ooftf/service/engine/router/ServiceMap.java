@@ -7,7 +7,6 @@ package com.ooftf.service.engine.router;
  */
 public interface ServiceMap {
     String JSON = "/service/service/json";
-    String FIRE_SIGN = "/sign/service/fireSign";
-    String SIGN = "/sign/service/sign";
+    String MULTI_ACCOUNT = "/sign/service/multiAccount";
 
 }

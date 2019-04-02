@@ -18,6 +18,9 @@
         <activity android:name=".activity.PickPhotoListActivity" />
         <activity android:name=".activity.MatissePhotoActivity" />
         <activity android:name=".activity.CameraActivity" />
+        <activity android:name=".activity.ReflectPerformanceTestActivity" />
+        <activity
+            android:name=".activity.TouchActivity" />
     </application>
 
 </manifest>

@@ -5,15 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.ooftf.widget.activity.PatternLockActivity">
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_appbar_height"
-        app:navigationIcon="@drawable/vector_arrow_left"
+        style="@style/ToolbarStyle.Back"
         app:title="手势密码" />
 
     <com.ooftf.pattern.PatternLock

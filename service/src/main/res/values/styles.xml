@@ -9,9 +9,11 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="actionMenuTextColor">@color/colorPrimaryContrast</item>
         <item name="titleTextColor">@color/colorPrimaryContrast</item>
-        <item name="android:textColor">@color/font_black</item>
-        <item name="android:textSize">@dimen/font_default</item>
+        <!--不要轻易设置这种代码，会导致一些控件出问题  <item name="android:textColor">@color/font_black</item>
+        <item name="android:textSize">@dimen/font_default</item>-->
         <item name="actionBarSize">@dimen/layout_appbar_height</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="AppTheme.Fullscreen">
@@ -31,6 +33,7 @@
     <style name="AppTheme.BackgroundTransparent.TranslucentStatus">
         <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
     </style>
+
     <style name="selectableItemBackgroundBorderless">
         <item name="android:background">?android:attr/selectableItemBackground</item>
     </style>

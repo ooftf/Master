@@ -1,3 +1,4 @@
+[![Build Status](https://www.travis-ci.org/ooftf/Master.svg?branch=dev)](https://www.travis-ci.org/ooftf/Master)
 # Master
 自己的开发工具集
 ## Task
@@ -13,7 +14,6 @@
 * 视频播放器
 * 动态化构建页面 Tangram-Android vlayout
 * MVVM Data Binding
-* Androidx
 * DialogFragment
 * app bundles
 * gradle插件
@@ -25,8 +25,18 @@
 * 解决Rn so 包没有导入的问题
 * 为progress-drawable添加文档
 * 人工智能（TensorFlow）
-* AutoRegister
 * 语言切换
+* 非入侵式埋点
+* Hihttp addObserver没有强制主线程
+* 编写脚本
+* 全局dialog
+* codecov
+* 游戏引擎
+* Material Button
+* aop : transform api
+* 全链路协议（Dialog activity fragment）
+* RxJava中 flatmap 和doOn... 会不会导致内存泄漏
+* ASM
 ### DELAY LIST
 * Ktor
 * 吸顶效果代码需要封装
@@ -55,3 +65,9 @@
 * node.js概念
 * 依赖注入
 * 贝塞尔曲线 bezier https://github.com/MrAllRight/BezierView  https://github.com/leeowenowen/beauty-of-math
+* Androidx(升级master项目非常方便，无痛升级，google dad)
+* AutoRegister （很强）
+* protobuf转换项目 传统protobuf和pojo  （pojo  暂时没有找到方法自动生成）
+* （难题） 方法中的一个参数，如何用两个接口定义 ,解决方式：可用<T extends Callback & ILifecycleState>泛型的这个特性，解决部分需求，不能完全解决
+* 扫一扫
+* 悬浮求

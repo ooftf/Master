@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/layout_horizontal_margin"
+    android:paddingTop="@dimen/layout_vertical_margin"
+    android:paddingRight="@dimen/layout_horizontal_margin"
+    android:paddingBottom="@dimen/layout_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_touch">
+
+    <com.ooftf.master.other.widget.FirstViewGroup
+        android:id="@+id/first"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.ooftf.master.other.widget.SecondViewGroup
+            android:id="@+id/second"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.ooftf.master.other.widget.ThirdViewGroup
+                android:id="@+id/third"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></com.ooftf.master.other.widget.ThirdViewGroup>
+        </com.ooftf.master.other.widget.SecondViewGroup>
+    </com.ooftf.master.other.widget.FirstViewGroup>
+
+</RelativeLayout>

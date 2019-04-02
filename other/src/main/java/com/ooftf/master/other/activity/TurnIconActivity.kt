@@ -1,7 +1,7 @@
 package com.ooftf.master.other.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.RadioButton
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.other.R

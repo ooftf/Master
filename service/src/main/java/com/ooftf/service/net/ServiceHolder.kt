@@ -3,7 +3,7 @@ package com.ooftf.service.net
 import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.hihttp.engine.ParamInterceptor
 import com.ooftf.hihttp.engine.ServiceGenerator
-import com.ooftf.service.engine.router.service.SignService
+import com.ooftf.service.engine.router.service.IMultiSignService
 import com.ooftf.service.net.etd.EtdService
 import com.ooftf.service.net.mob.MobService
 
@@ -28,7 +28,12 @@ object ServiceHolder {
         generator.createService(EtdService::class.java)
     }
     val mobService: MobService by lazy {
-        val signService = ARouter.getInstance().navigation(SignService::class.java)
+        val generator = mobServiceGenerator()
+        generator.createService(MobService::class.java)
+    }
+
+    public fun mobServiceGenerator(): ServiceGenerator {
+        val signService = ARouter.getInstance().navigation(IMultiSignService::class.java)
         val generator = ServiceGenerator()
         generator.baseUrl = "http://apicloud.mob.com/"
         generator.loggable = true
@@ -37,14 +42,14 @@ object ServiceHolder {
             it.addInterceptor(object : ParamInterceptor() {
                 override fun paramTransform(oldParams: MutableMap<String, String>): MutableMap<String, String> {
                     oldParams["key"] = "3ab0f1586b2"
-                    if (signService.isSignIn) {
-                        oldParams["token"] = signService.signInfo.token
-                        oldParams["uid"] = signService.signInfo.uid
+                    if (signService.currentService.isSignIn) {
+                        oldParams["token"] = signService.currentService.token
+                        oldParams["uid"] = signService.currentService.userId
                     }
                     return oldParams
                 }
             })
         }
-        generator.createService(MobService::class.java)
+        return generator
     }
 }

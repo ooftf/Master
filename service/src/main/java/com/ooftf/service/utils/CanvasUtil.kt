@@ -3,7 +3,7 @@ package com.ooftf.service.utils
 import android.content.Context
 import android.graphics.*
 import android.os.Build
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 
 /**
  * Created by master on 2016/4/8.

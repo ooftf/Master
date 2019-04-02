@@ -1,11 +1,13 @@
 package com.master.kit.testcase.designtest;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.tabs.TabLayout;
 import com.master.kit.R;
 import com.ooftf.service.base.BaseSlidingActivity;
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -18,9 +20,9 @@ public class TabActivity extends BaseSlidingActivity {
     @BindView(R.id.main_appbar)
     Toolbar appbar;
     @BindView(R.id.main_TabLayout)
-    android.support.design.widget.TabLayout TabLayout;
+    com.google.android.material.tabs.TabLayout TabLayout;
     @BindView(R.id.main_CoordinatorLayout)
-    android.support.design.widget.CoordinatorLayout CoordinatorLayout;
+    androidx.coordinatorlayout.widget.CoordinatorLayout CoordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

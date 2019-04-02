@@ -1,7 +1,7 @@
 package com.ooftf.service.base.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +36,7 @@ class ActivityIntentListAdapter(var context: Context) : BaseRecyclerAdapter<Acti
         }
     }
 
-    class RecyclerHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class RecyclerHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         var name: TextView = itemView.findViewById(R.id.name)
         var describe: TextView = itemView.findViewById(R.id.describe)
         var icon: ImageView = itemView.findViewById(R.id.icon)

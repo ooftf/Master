@@ -31,6 +31,9 @@
             * interval 定时器
             * intervalRange 定时器 固定次数
             * timer 延迟执行
+           高级
+                defer  将获取数据流的操作延迟到订阅时刻
+                fromCallback 将获取数据流的操作延迟到订阅时刻和defer的区别在于这个只能是一次事件
    ### 操作 Observable
            * map 一个数据转为另一个数据
            * flatMap 一个onNext数据 转换成一个 Observable :需要第一个数据源得到后异步获取
@@ -41,9 +44,9 @@
            * doOnSubscribe 在 onSubscribe 之前做一些动作
            * doOnNext: 再onNext 之前做一些动作
            * doOnComplete 在 onComplete之前做一些动作
-           * doAfteSubscribe
+           * doAfterSubscribe
            * doAfterNext 类似
-           * doAfteComplete
+           * doAfterComplete
 
 
            线程切换
@@ -104,6 +107,7 @@
 * 如果 disposable.dispose 之后 还执行了emitter.onError()就会因为异常没有捕获而导致应用崩溃，所以emitter使用之前需要判断一下emitter.isDisposed
 * doOnError 不能防止异常外抛
 * doOn... 等事件中要做防内存泄漏问题，RxLifecycle disposable 并不能防止这种形式的内存泄漏，具体操作可以参照 hi-http
+* 如果doOn事件中需要在主线中操作，要在doOn之前调用线程切换
 # RxJava资料链接
     https://github.com/ReactiveX/RxJava
     https://github.com/ReactiveX/RxAndroid        切换主线程
@@ -114,6 +118,15 @@
     https://github.com/JakeWharton/RxRelay        RxJava 在发射 onError或者onComplete数据后将不能在发射后续数据，RxRelay就是为了解决这个问题而产生的
 # RxJava问题讨论
     再合并多个Observer的时候线程切换是什么结果
+# TODO
+* blocking
+* retry
+* repeat
+* throttle 节流
+* debounce 去抖
+* throttleFirst
+* sample
+* retryWhen   onComplete事件
 
 
 

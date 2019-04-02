@@ -2,24 +2,30 @@ package com.ooftf.service.widget.toolbar;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.Keep;
-import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.ooftf.service.R;
+import com.ooftf.service.utils.ContextUtils;
+import com.ooftf.service.utils.JLog;
 import com.ooftf.support.ViewOffsetHelper;
+
+import java.lang.reflect.Method;
+
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.content.ContextCompat;
 
 /**
  * @author master
@@ -33,18 +39,14 @@ public class TailoredToolbar extends Toolbar {
 
     public TailoredToolbar(Context context) {
         super(context);
-        init();
     }
 
     public TailoredToolbar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
-
     }
 
     public TailoredToolbar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
     }
 
     @Override
@@ -58,7 +60,6 @@ public class TailoredToolbar extends Toolbar {
         } else {
             super.setTitle(title);
         }
-
     }
 
     private void setTitleView() {
@@ -72,11 +73,19 @@ public class TailoredToolbar extends Toolbar {
         addView(titleText);
     }
 
-    private void init() {
-        if (getContext() instanceof Activity) {
-            setNavigationOnClickListener(v -> ((Activity) getContext()).finish());
+    {
+        Activity activity = ContextUtils.toActivity(getContext());
+        if (activity != null) {
+            setNavigationOnClickListener(v -> activity.finish());
         }
         setPopupTheme(R.style.ThemeOverlay_Toolbar_PopupMenu);
+        if (getId() == NO_ID) {
+            JLog.e("NO_ID");
+            setId(R.id.toolbar);
+        } else {
+            JLog.e("HAS_ID");
+        }
+        showOptionMenuIcon(getMenu());
     }
 
     @Override
@@ -85,10 +94,16 @@ public class TailoredToolbar extends Toolbar {
         /**
          * CollapsingToolbarLayout 模式下 是不支持toolbar剧中的，位置会偏离,也不要设置默认背景色
          */
-        if (getBackground() == null && !(getParent() instanceof CollapsingToolbarLayout)) {
-            setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        if (!(getParent() instanceof CollapsingToolbarLayout)) {
+            if (getBackground() == null) {
+                setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+            }
             isTitleCenter = true;
-            setTitle(getTitle());
+            // 这个判断是为了防止二次onAttachedToWindow  会导致title设置为空
+            if (titleText == null) {
+                setTitle(getTitle());
+            }
+
         }
     }
 
@@ -201,4 +216,18 @@ public class TailoredToolbar extends Toolbar {
             return true;
         }
     }
+
+    public static void showOptionMenuIcon(Menu menu) {
+        if (menu != null && menu.getClass().getSimpleName().equals("MenuBuilder")) {
+            try {
+                Method m = menu.getClass().getDeclaredMethod(
+                        "setOptionalIconsVisible", Boolean.TYPE);
+                m.setAccessible(true);
+                m.invoke(menu, true);
+            } catch (NoSuchMethodException e) {
+            } catch (Exception e) {
+            }
+        }
+    }
+
 }

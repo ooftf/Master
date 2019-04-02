@@ -2,14 +2,17 @@ package com.ooftf.widget.fragment
 
 import android.content.Context
 import android.os.Handler
-import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
+import com.blankj.utilcode.util.AppUtils
 import com.ooftf.service.base.BaseLazyFragment
 import com.ooftf.service.bean.ScreenItemBean
+import com.ooftf.service.constant.RouterPath
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.WidgetAdapter
+import com.ooftf.widget.widget.SuspendWindow
 import com.youth.banner.BannerConfig
 import com.youth.banner.loader.ImageLoaderInterface
 import kotlinx.android.synthetic.main.fragment_widget.*
@@ -72,20 +75,21 @@ class WidgetFragment : BaseLazyFragment() {
             }
         }
         toolbarBanner.isAutoPlay(true).update(bannerList)
+        SuspendWindow()
     }
 
 
     private fun setupFloatButton() {
         // {@link com.ooftf.widget.fragment.TabLayoutFragment}
         recycler_view.tag = "widget"
-        recycler_view.addOnScrollListener(object : android.support.v7.widget.RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: android.support.v7.widget.RecyclerView, newState: kotlin.Int) {
+        recycler_view.addOnScrollListener(object : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: androidx.recyclerview.widget.RecyclerView, newState: kotlin.Int) {
                 when (newState) {
-                    android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING -> {
+                    androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_DRAGGING -> {
                         handler.removeCallbacksAndMessages(null)
                         image.animate().translationX(image.width * 0.8.toFloat()).setDuration(300).startDelay = 0
                     }
-                    android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE -> {
+                    androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE -> {
                         handler.removeCallbacksAndMessages(null)
                         handler.postDelayed({
                             image.animate().translationX(0F).duration = 300
@@ -101,7 +105,7 @@ class WidgetFragment : BaseLazyFragment() {
         initSpialeList()
         recycler_view.tag = getRecyclerViewTag()
         recycler_view.adapter = adapter
-        recycler_view.layoutManager = LinearLayoutManager(context)
+        recycler_view.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
     }
 
     override fun onDestroyView() {
@@ -111,9 +115,22 @@ class WidgetFragment : BaseLazyFragment() {
 
     private fun setupToolbar() {
         //toolbar.inflateMenu(R.menu.activity_widget_toolbar_turn)
-        toolbar.menu.add("外显").setIcon(R.drawable.vector_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
-        toolbar.menu.add("内藏").setIcon(R.drawable.vector_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         toolbar.title = "Widget"
+        var scan = toolbar.menu.add("扫一扫")
+        scan.setIcon(R.drawable.ic_scan_qr).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+        scan.setOnMenuItemClickListener {
+            ARouter.getInstance().build(RouterPath.QRCODE_ACTIVITY_QRCODE).navigation()
+            true
+        }
+
+        var setting = toolbar.menu.add("应用设置")
+        setting.setIcon(R.drawable.ic_settings_white).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+        setting.setOnMenuItemClickListener {
+            AppUtils.launchAppDetailsSettings()
+            true
+        }
+
+
     }
 
     private fun getRecyclerViewTag() = "widget"
@@ -127,7 +144,7 @@ class WidgetFragment : BaseLazyFragment() {
         adapter.body.add(ScreenItemBean("/widget/activity/bottomBar", "自定义BottomBar", "BottomBarActivity", category = "自定义控件"))
         adapter.body.add(ScreenItemBean("/widget/activity/pinEditText", "方格输入控件", "类似密码输入控件，但是可以设置内容显示", R.drawable.vector_pin_edit_text, false, "自定义控件"))
         adapter.body.add(ScreenItemBean("/widget/activity/pullToRefresh", "自定义下拉刷星控件", "自定义下拉刷新控件，可实现接口，编写不同header,上拉加载更多控件！", R.drawable.logo_orb, true, "自定义控件"))
-        adapter.body.add(ScreenItemBean("/main/progressBar", "环形进度条", "仿Material进度条", R.drawable.vector_progress_bar, false, "非自定义"))
+        adapter.body.add(ScreenItemBean(RouterPath.WIDGET_PROGRESS_BAR, "环形进度条", "仿Material进度条", R.drawable.vector_progress_bar, false, "非自定义"))
         adapter.body.add(ScreenItemBean("/main/guide", "引导页面", "采用第三方库pageindicatorview制作的指示器", category = "非自定义"))
         adapter.body.add(ScreenItemBean("/widget/activity/tourGuide", "教学页面", "采用第三方库TourGuide制作的教学页面", category = "非自定义"))
         adapter.body.add(ScreenItemBean("/widget/activity/grav", "背景动画", "采用第三方库Grav制作的教学页面", category = "非自定义"))
@@ -141,6 +158,7 @@ class WidgetFragment : BaseLazyFragment() {
         adapter.body.add(ScreenItemBean("/widget/activity/Barrage", "弹幕", "一个弹幕view的示例", category = "非自定义"))
         adapter.body.add(ScreenItemBean("/widget/activity/toolbarDemo", "标题栏", "标题栏方法示例", category = "非自定义"))
         adapter.body.add(ScreenItemBean("/widget/activity/notification", "通知栏", "通知栏示例", category = "非自定义"))
+        adapter.body.add(ScreenItemBean(RouterPath.WIDGET_VIEWPAGER, "ViewPager展示"))
 
         adapter.notifyDataSetChanged()
     }

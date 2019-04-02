@@ -14,7 +14,8 @@ android {
         //生成ARouter文档
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]//, AROUTER_GENERATE_DOC: "enable"
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+//, AROUTER_GENERATE_DOC: "enable"
             }
         }
         renderscriptTargetApi 22
@@ -40,10 +41,10 @@ publish {
     userOrg = 'ooftf'      // bintray注册的用户名
     groupId = 'com.ooftf'
     artifactId = "master-${project.getName()}"// bintray创建的package
-    publishVersion = '1.0.0-SNAPSHOT'
+    publishVersion = versions.master
     desc = 'nothing'
     bintrayUser = 'ooftf'
-    bintrayKey = bintray_key
+    bintrayKey = bintrayKey()
     dryRun = false
 }
 tasks.withType(Javadoc) {
@@ -55,18 +56,18 @@ tasks.withType(Javadoc) {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api deps.constraintLayout
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha4', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
-    api "com.android.support:support-vector-drawable:$versions.support"
-    api "com.android.support:appcompat-v7:$versions.support"
-    api "com.android.support:support-v4:$versions.support"
-    api "com.android.support:cardview-v7:$versions.support"
-    api "com.android.support:design:$versions.support"
-    api "com.android.support:recyclerview-v7:$versions.support"
+    api "androidx.vectordrawable:vectordrawable:$versions.support"
+    api "androidx.appcompat:appcompat:$versions.support"
+    api "androidx.legacy:legacy-support-v4:$versions.support"
+    api "androidx.cardview:cardview:$versions.support"
+    api "com.google.android.material:material:$versions.support"
+    api "androidx.recyclerview:recyclerview:$versions.support"
     api 'com.loopj.android:android-async-http:1.4.9'
     api "com.jakewharton:butterknife:$versions.butterknife"
     api 'com.alibaba:fastjson:1.2.7'
@@ -76,8 +77,8 @@ dependencies {
     api "com.github.bumptech.glide:glide:$versions.glide"
     kapt "com.github.bumptech.glide:compiler:$versions.glide"
     api 'com.makeramen:roundedimageview:2.3.0'
-    api 'com.android.support:multidex:1.0.3'
-    api "com.android.support:support-v13:$versions.support"
+    api 'androidx.multidex:multidex:2.0.1'
+    api "androidx.legacy:legacy-support-v13:$versions.support"
     api 'com.youth.banner:banner:1.4.10'
     api 'com.romandanylyk:pageindicatorview:1.0.2'
     api 'com.orhanobut:logger:2.2.0'
@@ -101,8 +102,10 @@ dependencies {
     api 'com.google.code.gson:gson:2.8.5'
     api 'io.reactivex.rxjava2:rxandroid:2.1.0'
     api "io.reactivex.rxjava2:rxjava:2.2.3"
-
-    api 'com.squareup.leakcanary:leakcanary-android:1.6.2'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+    // Optional, if you use support library fragments:
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
     //releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
     api deps.fastjson
     api 'com.github.ooftf:Support:1.1.1'
@@ -124,8 +127,8 @@ dependencies {
     implementation deps.MMKV
     implementation deps.disklrucache
     // Firebase Crashlytics
-    api "com.trello.rxlifecycle2:rxlifecycle-kotlin:$versions.rxlifecycle"
-    api "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
+    api "com.trello.rxlifecycle3:rxlifecycle-kotlin:$versions.rxlifecycle"
+    api "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
     api 'com.ooftf:docking-api:1.0.0'
     api 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
     //Firebase

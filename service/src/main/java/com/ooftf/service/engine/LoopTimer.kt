@@ -1,8 +1,16 @@
 package com.ooftf.service.engine
 
-import android.app.Activity
-import android.os.Handler
-import com.ooftf.service.empty.EmptyActivityLifecycleCallbacks
+import android.annotation.SuppressLint
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
+import io.reactivex.Completable
+import io.reactivex.Observable
+import io.reactivex.Observer
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import java.util.concurrent.TimeUnit
 
 /**
  *
@@ -12,36 +20,30 @@ import com.ooftf.service.empty.EmptyActivityLifecycleCallbacks
  * period 每次回掉间隔事件
  */
 abstract class LoopTimer(private var delayed: Long = 0, private var period: Long) {
-    constructor(delayed: Long = 0, period: Long, bindActivity: Activity) : this(delayed, period) {
+    private var disposable: Disposable? = null
+    private val observer: InnerObservable by lazy {
+        InnerObservable()
+    }
+
+    @SuppressLint("CheckResult")
+    constructor(delayed: Long = 0, period: Long, bindActivity: AppCompatActivity) : this(delayed, period) {
         /**
          * 绑定activity的生命周期，不用再在activity使用时，去过多的关注生命周期问题
          */
-        bindActivity.application.registerActivityLifecycleCallbacks(object : EmptyActivityLifecycleCallbacks() {
-            override fun onActivityDestroyed(activity: Activity?) {
-                if (activity == bindActivity) {
-                    activity.application.unregisterActivityLifecycleCallbacks(this)
-                    cancel()
+        Completable.complete()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    bindActivity.lifecycle.addObserver(InnerLifecycleObserver())
                 }
-            }
-        })
+
     }
 
-    private val handler: Handler by lazy { Handler() }
-    private var looping = false
     fun start() {
-        if (looping) return
-        looping = true
-        handler.postDelayed(object : Runnable {
-            override fun run() {
-                handler.postDelayed(this, period)
-                onTrick()
-            }
-        }, delayed)
+        Observable.interval(delayed, period, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(observer)
     }
 
     fun cancel() {
-        looping = false
-        handler.removeCallbacksAndMessages(null)
+        disposable?.dispose()
         onCancel()
     }
 
@@ -50,4 +52,29 @@ abstract class LoopTimer(private var delayed: Long = 0, private var period: Long
 
     }
 
+    inner class InnerLifecycleObserver : LifecycleObserver {
+        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+        fun onDestory() {
+            cancel()
+        }
+    }
+
+    inner class InnerObservable : Observer<Long> {
+        override fun onComplete() {
+
+        }
+
+        override fun onSubscribe(d: Disposable) {
+            disposable?.dispose()
+            disposable = d
+        }
+
+        override fun onNext(t: Long) {
+            onTrick()
+        }
+
+        override fun onError(e: Throwable) {
+        }
+
+    }
 }

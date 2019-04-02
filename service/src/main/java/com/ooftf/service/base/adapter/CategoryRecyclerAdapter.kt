@@ -1,32 +1,32 @@
 package com.ooftf.service.base.adapter
 
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import tf.ooftf.com.service.base.adapter.HeaderFooterRecyclerAdapter
 
 /**
  * Created by master on 2017/10/16 0016.
  */
-abstract class CategoryRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : HeaderFooterRecyclerAdapter<T, WH>() {
+abstract class CategoryRecyclerAdapter<T, WH : androidx.recyclerview.widget.RecyclerView.ViewHolder> : HeaderFooterRecyclerAdapter<T, WH>() {
     abstract fun getCategory(position: Int): String
     /**
      * 注意事项：(悬浮标题的id)和(列表Item标题的id)保持一致，最好采用include同一个布局的方式
      *
      */
-    abstract class StickyOnScrollListener(private var stickyView: View) : RecyclerView.OnScrollListener() {
+    abstract class StickyOnScrollListener(private var stickyView: View) : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
 
-        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+        override fun onScrolled(recyclerView: androidx.recyclerview.widget.RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
 
-            if (recyclerView.layoutManager is LinearLayoutManager) {
+            if (recyclerView.layoutManager is androidx.recyclerview.widget.LinearLayoutManager) {
                 whenLinearManager(recyclerView)
             }
         }
 
-        private fun whenLinearManager(recyclerView: RecyclerView) {
+        private fun whenLinearManager(recyclerView: androidx.recyclerview.widget.RecyclerView) {
             var adapter = recyclerView.adapter as CategoryRecyclerAdapter<*, *>
-            var linearLayoutManager = recyclerView.layoutManager as LinearLayoutManager
+            var linearLayoutManager = recyclerView.layoutManager as androidx.recyclerview.widget.LinearLayoutManager
             linearUpdateStickyView(adapter, linearLayoutManager)
             linearTranslationStickyView(adapter, linearLayoutManager)
         }
@@ -36,7 +36,7 @@ abstract class CategoryRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : Header
          * 更新顶部View数据
          *
          */
-        private fun linearUpdateStickyView(adapter: CategoryRecyclerAdapter<*, *>, linearLayoutManager: LinearLayoutManager) {
+        private fun linearUpdateStickyView(adapter: CategoryRecyclerAdapter<*, *>, linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager) {
             //获取到list第一个可见的位置，并转换为body的位置
             var firstVisiblePosition = linearLayoutManager.findFirstVisibleItemPosition()
             //判断是否是 body的位置,也就是去头去尾
@@ -53,7 +53,7 @@ abstract class CategoryRecyclerAdapter<T, WH : RecyclerView.ViewHolder> : Header
          * 思路：从视觉上来看“悬浮stickyView”的滚动效果和最靠近的“item stickyView”有关，最靠近的“item stickyView”是第一个完全可见的Item的一部分
          *      获取到最靠近的“item stickyView”距离上面的距离，根据这个距离计算“悬浮stickyView”的移动距离
          */
-        private fun linearTranslationStickyView(adapter: CategoryRecyclerAdapter<*, *>, linearLayoutManager: LinearLayoutManager) {
+        private fun linearTranslationStickyView(adapter: CategoryRecyclerAdapter<*, *>, linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager) {
             //获取到第一个完全可见的item
             var firstComplete = linearLayoutManager.findFirstCompletelyVisibleItemPosition()
             //判断是否是body位置

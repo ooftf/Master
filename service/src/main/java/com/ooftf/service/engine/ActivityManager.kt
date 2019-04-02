@@ -5,28 +5,46 @@ import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.os.Process
+import java.lang.ref.WeakReference
 
 /**
  * Created by master on 2016/3/3.
+ *
+ * 只适用于单进程Activity
  */
-object ActivityManager : ArrayList<Activity>() {
+object ActivityManager {
+    private val activities = ArrayList<Activity>()
+    private var touchCounter = 0
+    private var showCounter = 0
+    private var top: WeakReference<Activity>? = null
+
     fun init(application: Application) {
         application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
             override fun onActivityPaused(activity: Activity?) {
+                if (top?.get() == activity) {
+                    top = null
+                }
+                touchCounter--
 
             }
 
             override fun onActivityResumed(activity: Activity) {
+                top = WeakReference(activity)
+                touchCounter++
 
             }
 
             override fun onActivityStarted(activity: Activity?) {
+                if (showCounter == 0) {
+                    foregroundObservers.forEach { it.invoke() }
+                }
+                showCounter++
 
             }
 
             override fun onActivityDestroyed(activity: Activity) {
-                remove(activity)
-                if (size == 0) {
+                activities.remove(activity)
+                if (activities.size == 0) {
                     Process.killProcess(Process.myPid())
                 }
             }
@@ -36,27 +54,62 @@ object ActivityManager : ArrayList<Activity>() {
             }
 
             override fun onActivityStopped(activity: Activity?) {
-
+                showCounter--
+                if (showCounter == 0) {
+                    backgroundObservers.forEach { it.invoke() }
+                }
             }
 
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                add(activity)
+                activities.add(activity)
             }
 
         })
     }
 
+    fun getTopActivity(): Activity? = top?.get()
+
+    private var foregroundObservers = LinkedHashSet<() -> Unit>()
+
+    private var backgroundObservers = LinkedHashSet<() -> Unit>()
+
+
+    fun registerForegroundObserver(observer: () -> Unit) {
+        foregroundObservers.add(observer)
+    }
+
+    fun clearForegroundObserver() {
+        foregroundObservers.clear()
+    }
+
+    fun unRegisterForegroundObserver(observer: () -> Unit) {
+        foregroundObservers.remove(observer)
+    }
+
+    fun registerBackgroundObserver(observer: () -> Unit) {
+        backgroundObservers.add(observer)
+    }
+
+    fun clearBackgroundObserver() {
+        backgroundObservers.clear()
+    }
+
+    fun unRegisterBackgroundObserver(observer: () -> Unit) {
+        backgroundObservers.remove(observer)
+    }
+
+    fun isAppForeground() = touchCounter > 0
     fun finishAll() {
-        forEach { it.finish() }
+        activities.forEach { it.finish() }
     }
 
     fun finishActivities(cla: Class<*>) {
-        filter { it.javaClass == cla }
+        activities.filter { it.javaClass == cla }
                 .forEach { it.finish() }
     }
 
     fun finishActivities(cla: Class<*>, resultCode: Int, intent: Intent) {
-        filter { it.javaClass == cla }
+        activities.filter { it.javaClass == cla }
                 .forEach {
                     it.intent = intent
                     it.setResult(resultCode)
@@ -65,12 +118,12 @@ object ActivityManager : ArrayList<Activity>() {
     }
 
     fun finishOther(activity: Activity) {
-        filter { it != activity }
+        activities.filter { it != activity }
                 .forEach { it.finish() }
     }
 
-    fun finishOther(vararg clas: Class<*>) {
-        filter { !clas.contains(it.javaClass) }
+    fun finishOther(vararg cls: Class<*>) {
+        activities.filter { !cls.contains(it.javaClass) }
                 .forEach { it.finish() }
     }
 }

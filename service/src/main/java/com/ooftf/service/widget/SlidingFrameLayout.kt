@@ -3,7 +3,7 @@ package tf.ooftf.com.service.widget
 import android.content.Context
 import android.graphics.Color
 import android.os.Handler
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.FragmentActivity
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.widget.FrameLayout
@@ -95,7 +95,7 @@ class SlidingFrameLayout : FrameLayout {
                             scrollTo(mScroller.currX, mScroller.currY)
                         } else {
                             if (mScroller.currX == -width) {
-                                (context as FragmentActivity).finish()
+                                (context as androidx.fragment.app.FragmentActivity).finish()
                             }
                         }
                     }

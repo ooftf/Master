@@ -1,17 +1,20 @@
 package com.master.kit.testcase.design;
 
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 
 import com.master.kit.R;
 import com.ooftf.service.base.BaseSlidingActivity;
 
+/**
+ * @author 99474
+ */
 public class DesignActivity extends BaseSlidingActivity {
     AppBarLayout appBarLayout;
     Toolbar toolbar;
@@ -40,7 +43,7 @@ public class DesignActivity extends BaseSlidingActivity {
     private void initViews() {
         appBarLayout = findViewById(R.id.main_appbar);
         coordinatorLayout = findViewById(R.id.main_CoordinatorLayout);
-        toolbar = findViewById(R.id.main_toolbar);
+        toolbar = findViewById(R.id.toolbar);
         collapsingToolbarLayout = findViewById(R.id.main_collapsing);
         floatingActionButton = findViewById(R.id.main_fab);
     }

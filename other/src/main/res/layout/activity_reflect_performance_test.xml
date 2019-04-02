@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <com.ooftf.service.widget.toolbar.TailoredToolbar
+        style="@style/ToolbarStyle.Back"
+        app:title="反射性能测试" />
+
+    <EditText
+        android:id="@+id/edit"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="请输入测试次数" />
+
+    <TextView
+        android:id="@+id/reflect_text"
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
+
+    <Button
+        android:id="@+id/reflect_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="reflect" />
+
+    <TextView
+        android:id="@+id/new_text"
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
+
+    <Button
+        android:id="@+id/new_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="new" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="结论：反射构造对象所需的时间大约是普通 new 对象所需时间的三倍" />
+</LinearLayout>

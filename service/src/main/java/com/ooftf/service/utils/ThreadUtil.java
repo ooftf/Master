@@ -2,7 +2,7 @@ package com.ooftf.service.utils;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import java.util.concurrent.ArrayBlockingQueue;
@@ -87,12 +87,7 @@ public class ThreadUtil {
             }
 
             // 捕获多线程处理中的异常
-            thread.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-                @Override
-                public void uncaughtException(Thread thread, Throwable ex) {
-                    Log.e(TAG, "Running task appeared exception! Thread [" + thread.getName() + "], because [" + ex.getMessage() + "]");
-                }
-            });
+            thread.setUncaughtExceptionHandler((thread1, ex) -> Log.e(TAG, "Running task appeared exception! Thread [" + thread1.getName() + "], because [" + ex.getMessage() + "]"));
             return thread;
         }
     }

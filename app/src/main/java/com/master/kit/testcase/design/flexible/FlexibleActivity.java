@@ -1,22 +1,22 @@
 package com.master.kit.testcase.design.flexible;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.master.kit.R;
+import com.ooftf.service.base.BaseActivity;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FlexibleActivity extends AppCompatActivity {
+/**
+ * @author 99474
+ */
+public class FlexibleActivity extends BaseActivity {
 
     @BindView(R.id.main_collapsing)
     CollapsingToolbarLayout mainCollapsing;
@@ -42,19 +42,15 @@ public class FlexibleActivity extends AppCompatActivity {
     }
 
     private void addFabAnimate() {
-        mainAppbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                float percentage = -verticalOffset * 100f / appBarLayout.getTotalScrollRange();
-                if (fabIsShow && percentage > 50) {
-                    fabIsShow = false;
-                    fab.animate().scaleX(0).scaleY(0).setDuration(200).start();
-                }
-                if (!fabIsShow && percentage < 50) {
-                    fabIsShow = true;
-                    fab.animate().scaleX(1).scaleY(1).setDuration(200).start();
-                }
+        mainAppbar.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
+            float percentage = -verticalOffset * 100f / appBarLayout.getTotalScrollRange();
+            if (fabIsShow && percentage > 50) {
+                fabIsShow = false;
+                fab.animate().scaleX(0).scaleY(0).setDuration(200).start();
+            }
+            if (!fabIsShow && percentage < 50) {
+                fabIsShow = true;
+                fab.animate().scaleX(1).scaleY(1).setDuration(200).start();
             }
         });
     }
@@ -62,12 +58,7 @@ public class FlexibleActivity extends AppCompatActivity {
     private void initToolbar() {
         //  toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         // toolbar.setTitle("臣服吧，你们这些小标题");
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
         toolbar.setNavigationContentDescription("badk");
     }
 }

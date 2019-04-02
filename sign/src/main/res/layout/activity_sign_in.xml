@@ -1,99 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".activity.SignInActivity">
+    tools:context=".ui.sign.SignInActivity">
+
     <com.ooftf.service.widget.CurveImageView
         android:id="@+id/banner"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:src="@drawable/sign"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <com.ooftf.service.widget.toolbar.TailoredToolbar
-        android:background="@color/transparent"
-        android:layout_marginTop="@dimen/layout_status_bar_height"
-        app:title="登录"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/vector_arrow_left"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_appbar_height"/>
-    <android.support.constraint.Guideline
-        android:id="@+id/guide_left"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-    <android.support.constraint.Guideline
-        android:id="@+id/guide_right"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="16dp"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-    <com.ooftf.operation.OperationEditText
-        android:hint="请输入账号"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        android:drawablePadding="8dp"
+    <com.ooftf.service.widget.toolbar.TailoredToolbar
+        style="@style/ToolbarStyle.Back"
+        android:background="@color/transparent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="登录" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
         android:layout_marginTop="48dp"
-        app:layout_constraintTop_toBottomOf="@id/banner"
-        app:oet_delEnabled="true"
-        android:drawableLeft="@drawable/ic_tip_account"
-        android:background="@null"
-        android:lines="1"
-        app:layout_constraintRight_toLeftOf="@+id/guide_right"
+        android:spinnerMode="dropdown"
         app:layout_constraintLeft_toRightOf="@+id/guide_left"
+        app:layout_constraintRight_toLeftOf="@+id/guide_right"
+        app:layout_constraintTop_toBottomOf="@id/banner" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/line_height"
+        android:background="@color/gray"
+        app:layout_constraintLeft_toRightOf="@+id/guide_left"
+        app:layout_constraintRight_toLeftOf="@+id/guide_right"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <com.ooftf.operation.OperationEditText
+        android:textSize="@dimen/font_default"
         android:id="@+id/account"
         android:layout_width="0dp"
-        android:layout_height="48dp" />
-    <View
-        app:layout_constraintRight_toLeftOf="@+id/guide_right"
-        app:layout_constraintLeft_toRightOf="@+id/guide_left"
-        android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/account"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/line_height"/>
-    <com.ooftf.operation.OperationEditText
-        android:hint="请输入密码"
-        android:drawablePadding="8dp"
-        app:oet_delEnabled="true"
-        app:oet_maskEnabled="true"
-        android:drawableLeft="@drawable/ic_tip_password"
+        android:layout_height="48dp"
         android:background="@null"
+        android:drawableLeft="@drawable/ic_tip_account"
+        android:drawablePadding="8dp"
+        android:hint="请输入账号"
         android:lines="1"
-        app:layout_constraintRight_toLeftOf="@+id/guide_right"
         app:layout_constraintLeft_toRightOf="@+id/guide_left"
-        app:layout_constraintTop_toBottomOf="@+id/account"
+        app:layout_constraintRight_toLeftOf="@+id/guide_right"
+        app:layout_constraintTop_toBottomOf="@id/spinner"
+        app:oet_delEnabled="true" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/line_height"
+        android:background="@color/gray"
+        app:layout_constraintLeft_toRightOf="@+id/guide_left"
+        app:layout_constraintRight_toLeftOf="@+id/guide_right"
+        app:layout_constraintTop_toBottomOf="@+id/account" />
+
+    <com.ooftf.operation.OperationEditText
+        android:textSize="@dimen/font_default"
         android:id="@+id/password"
         android:layout_width="0dp"
-        android:layout_height="48dp" />
+        android:layout_height="48dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/ic_tip_password"
+        android:drawablePadding="8dp"
+        android:hint="请输入密码"
+        android:lines="1"
+        app:layout_constraintLeft_toRightOf="@+id/guide_left"
+        app:layout_constraintRight_toLeftOf="@+id/guide_right"
+        app:layout_constraintTop_toBottomOf="@+id/account"
+        app:oet_delEnabled="true"
+        app:oet_maskEnabled="true" />
+
     <View
-        app:layout_constraintRight_toLeftOf="@+id/guide_right"
-        app:layout_constraintLeft_toRightOf="@+id/guide_left"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/line_height"
         android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/line_height"/>
-    <Button
-        android:padding="2dp"
-        android:textColor="@color/white"
-        android:text="登  录"
-        android:id="@+id/signIn"
-        app:layout_constraintRight_toLeftOf="@+id/guide_right"
         app:layout_constraintLeft_toRightOf="@+id/guide_left"
-        android:background="@drawable/shape_rectangle_corners_solid_primary"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintRight_toLeftOf="@+id/guide_right"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <Button
+        android:id="@+id/signIn"
         android:layout_width="0dp"
-        android:layout_height="48dp" />
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_rectangle_corners_solid_primary"
+        android:padding="2dp"
+        android:text="登  录"
+        android:textColor="@color/white"
+        app:layout_constraintLeft_toRightOf="@+id/guide_left"
+        app:layout_constraintRight_toLeftOf="@+id/guide_right"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
     <TextView
         android:id="@+id/register"
-        android:layout_marginTop="18dp"
-        app:layout_constraintRight_toLeftOf="@id/guide_right"
-        android:text="快速注册"
-        app:layout_constraintTop_toBottomOf="@+id/signIn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="快速注册"
+        android:textSize="@dimen/font_default"
+        app:layout_constraintRight_toLeftOf="@id/guide_right"
+        app:layout_constraintTop_toBottomOf="@+id/signIn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,21 +1,22 @@
 package com.ooftf.applet.activity
 
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.gson.Gson
 import com.ooftf.applet.R
 import com.ooftf.hihttp.action.DialogAction
 import com.ooftf.hihttp.action.ImageViewAction
+import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.empty.EmptyObserver
 import com.ooftf.service.net.ServiceHolder
-import com.trello.rxlifecycle2.kotlin.bindToLifecycle
+import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_mob_api.*
 
 @Route(path = "/applet/activity/mobApi")
-class MobApiActivity : AppCompatActivity() {
+class MobApiActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mob_api)
