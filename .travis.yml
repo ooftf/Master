@@ -4,18 +4,20 @@ sudo: false
 
 android:
   components:
-    - platform-tools
-    - tools
-    - build-tools-28.0.2
-    - android-28
-    - add-on
-    - extra
+  - platform-tools
+  - tools
+  - build-tools-28.0.2
+  - android-28
+  - add-on
+  - extra
   licenses:
-    - 'android-sdk-preview-license-52d11cd2'
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
+  - 'android-sdk-preview-license-52d11cd2'
+  - 'android-sdk-license-.+'
+  - 'google-gdk-license-.+'
 script:
 - ./gradlew :app:assembleRelease
+before_script:
+- chmod +x gradlew
 before_install:
 - gem install fir-cli
 after_deploy:

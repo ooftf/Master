@@ -120,6 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:text="快速注册"
+        android:textSize="@dimen/font_default"
         app:layout_constraintRight_toLeftOf="@id/guide_right"
         app:layout_constraintTop_toBottomOf="@+id/signIn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
