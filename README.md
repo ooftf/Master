@@ -71,3 +71,6 @@
 * （难题） 方法中的一个参数，如何用两个接口定义 ,解决方式：可用<T extends Callback & ILifecycleState>泛型的这个特性，解决部分需求，不能完全解决
 * 扫一扫
 * 悬浮求
+
+## Introduce
+     MVP + Dagger = Sign
