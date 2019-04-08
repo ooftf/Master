@@ -14,11 +14,9 @@
 * 视频播放器
 * 动态化构建页面 Tangram-Android vlayout
 * MVVM Data Binding
-* DialogFragment
 * app bundles
 * gradle插件
 * sonar 代码质量检测
-* travis
 * 网关（Gateway）概念：又称网间连接器，网络协议转换器，适配器
 * nio
 * xmind
@@ -31,11 +29,9 @@
 * 编写脚本
 * 全局dialog
 * codecov
-* 游戏引擎
-* Material Button
+* 游戏引擎9
 * aop : transform api
 * 全链路协议（Dialog activity fragment）
-* RxJava中 flatmap 和doOn... 会不会导致内存泄漏
 * ASM
 ### DELAY LIST
 * Ktor
@@ -71,6 +67,9 @@
 * （难题） 方法中的一个参数，如何用两个接口定义 ,解决方式：可用<T extends Callback & ILifecycleState>泛型的这个特性，解决部分需求，不能完全解决
 * 扫一扫
 * 悬浮求
-
+* RxJava中 flatmap 和doOn... 会不会导致内存泄漏（结论：会，但是如果用Java8 lamdba 表达式或者kotlin箭头函数，会根据是否包含外部引用从而生成匿名内部类或静态匿名内部类，从而一定情况避免内存泄漏）
+* Material Button 暂时没有发现有什么重要的作用
+* travis  本项目以完成初步集成
+* DialogFragment   将逻辑封装在Dialog内部
 ## Introduce
      MVP + Dagger = Sign
