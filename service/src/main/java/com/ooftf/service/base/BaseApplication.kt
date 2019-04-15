@@ -11,6 +11,7 @@ import com.github.moduth.blockcanary.BlockCanary
 import com.liulishuo.filedownloader.FileDownloader
 import com.ooftf.docking.api.Docking
 import com.ooftf.service.BuildConfig
+import com.ooftf.service.engine.ActivityLifecycleLog
 import com.ooftf.service.engine.ActivityManager
 import com.ooftf.service.engine.typer.TyperFactory
 import com.ooftf.service.utils.JLog
@@ -58,6 +59,7 @@ open class BaseApplication : MultiDexApplication() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         }
+        ActivityLifecycleLog.init(this)
 
     }
 

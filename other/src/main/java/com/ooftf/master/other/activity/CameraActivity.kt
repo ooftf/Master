@@ -1,6 +1,7 @@
 package com.ooftf.master.other.activity
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -12,6 +13,9 @@ import com.ooftf.master.other.engine.HiCamera
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.constant.ProviderConstant
 import com.tbruyelle.rxpermissions2.RxPermissions
+import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle
+import com.trello.rxlifecycle3.kotlin.bind
+import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import kotlinx.android.synthetic.main.activity_camera.*
 
 
@@ -28,6 +32,7 @@ class CameraActivity : BaseActivity() {
     private fun checkPermissionsToCamera() {
         RxPermissions(this)
                 .request(Manifest.permission.CAMERA)
+                .bindDestroy()
                 .subscribe {
                     if (it) {
                         camera()

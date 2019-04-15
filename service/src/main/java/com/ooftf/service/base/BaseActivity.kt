@@ -22,6 +22,7 @@ import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle
 import com.trello.rxlifecycle3.LifecycleProvider
 import com.trello.rxlifecycle3.LifecycleTransformer
 import hugo.weaving.DebugLog
+import io.reactivex.Observable
 import java.util.*
 
 /**
@@ -39,8 +40,13 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         return provider.bindUntilEvent(Lifecycle.Event.ON_DESTROY)
     }
 
+
     fun <T> bindAuto(): LifecycleTransformer<T> {
         return provider.bindToLifecycle()
+    }
+
+    fun <T> Observable<T>.bindDestroy(): Observable<T> {
+        return this.compose(this@BaseActivity.bindDestroy())
     }
 
     override fun isAlive(): Boolean {
@@ -255,4 +261,6 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
     interface Callback {
         fun callback(resultCode: Int, data: Intent?)
     }
+
 }
+
