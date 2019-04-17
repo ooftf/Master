@@ -22,89 +22,25 @@ abstract class BaseFragment : androidx.fragment.app.Fragment() {
     private val onDestroyList: MutableList<() -> Unit> by lazy { ArrayList<() -> Unit>() }
     override fun onAttach(context: Context) {
         alive = true
-        logLifeCycle("onAttach")
         super.onAttach(context)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        logLifeCycle("onCreate", "" + savedInstanceState)
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        logLifeCycle("onCreateView")
-        return super.onCreateView(inflater,container,savedInstanceState)
-    }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        logLifeCycle("onViewCreated")
-        super.onViewCreated(view, savedInstanceState)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        logLifeCycle("onActivityCreated")
-        super.onActivityCreated(savedInstanceState)
-    }
-
-    override fun onStart() {
-        logLifeCycle("onStart")
-        super.onStart()
     }
 
     override fun onResume() {
         touchable = true
-        logLifeCycle("onResume")
         super.onResume()
         doOnResume()
     }
 
     override fun onPause() {
         touchable = false
-        logLifeCycle("onPause")
         super.onPause()
     }
 
-    override fun onStop() {
-        logLifeCycle("onStop")
-        super.onStop()
-    }
-
-    override fun onDestroyView() {
-        logLifeCycle("onDestroyView")
-        super.onDestroyView()
-    }
-
-    override fun onDestroy() {
-        logLifeCycle("onDestroy")
-        super.onDestroy()
-    }
 
     override fun onDetach() {
         alive = false
         doOnDestroy()
-        logLifeCycle("onDetach")
         super.onDetach()
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        logLifeCycle("onSaveInstanceState     " + outState)
-        super.onSaveInstanceState(outState)
-    }
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        logLifeCycle("onHiddenChanged     " + hidden)
-        super.onHiddenChanged(hidden)
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        logLifeCycle("onConfigurationChanged     " + newConfig)
-        super.onConfigurationChanged(newConfig)
-    }
-
-
-
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        logLifeCycle("setUserVisibleHint   $isVisibleToUser")
-        super.setUserVisibleHint(isVisibleToUser)
     }
 
     fun postOnResume(doResume: () -> Unit) {
@@ -139,21 +75,6 @@ abstract class BaseFragment : androidx.fragment.app.Fragment() {
             next.invoke()
             iterator.remove()
         }
-    }
-
-    protected fun logLifeCycle(vararg method: String) {
-        val sb = StringBuilder()
-        method.forEachIndexed { index, s ->
-            if (index == method.size - 1) {
-                sb.append(s)
-            } else {
-                sb.append(s + " , ")
-            }
-        }
-        while (sb.length < 48) {
-            sb.append("-")
-        }
-        Log.w("life-cycle-fragment", sb.toString() + toString() + hashCode())
     }
 
     fun postOnDestroy(doOnDestroy: () -> Unit) {

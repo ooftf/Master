@@ -69,7 +69,6 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         lifecycle.addObserver(object : LifecycleObserver {
             @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
             fun create() {
-                JLog.e(this@BaseActivity.javaClass.simpleName, "LifecycleObserver onCreate")
                 ImmersionBar.with(this@BaseActivity).init()
                 var view = findViewById<View>(getToolbarId())
                 if (view != null) {
@@ -100,24 +99,20 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         if (isScreenForcePortrait()) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
-        JLog.e(this.javaClass.simpleName, "onCreate")
         super.onCreate(savedInstanceState)
         alive = true
     }
 
     override fun setContentView(view: View?) {
         super.setContentView(view)
-        JLog.e(this.javaClass.simpleName, "setContentView view")
     }
 
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
-        JLog.e(this.javaClass.simpleName, "setContentView layoutResID")
     }
 
     override fun setContentView(view: View?, params: ViewGroup.LayoutParams?) {
         super.setContentView(view, params)
-        JLog.e(this.javaClass.simpleName, "setContentView view LayoutParams")
     }
 
     /**
@@ -127,26 +122,22 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
-        JLog.e(this.javaClass.simpleName, "onPostCreate")
 
     }
 
     override fun onStart() {
         showing = true
-        JLog.e(this.javaClass.simpleName, "onStart")
         super.onStart()
     }
 
 
     override fun onRestart() {
-        JLog.e(this.javaClass.simpleName, "onRestart")
         super.onRestart()
     }
 
     override fun onResume() {
         JLog.e(this.javaClass.simpleName, "activeCount::" + Thread.activeCount())
         touchable = true
-        JLog.e(this.javaClass.simpleName, "onResume")
         super.onResume()
         if (OSUtils.isEMUI3_x()) {
             ImmersionBar.with(this).init();
@@ -161,20 +152,17 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
 
     override fun onPause() {
         touchable = false
-        JLog.e(this.javaClass.simpleName, "onPause")
         super.onPause()
     }
 
     override fun onStop() {
         showing = false
-        JLog.e(this.javaClass.simpleName, "onStop")
         super.onStop()
     }
 
     override fun onDestroy() {
         alive = false
         doOnDestroy()
-        JLog.e(this.javaClass.simpleName, "onDestroy")
         super.onDestroy()
         ImmersionBar.with(this).destroy()
     }
@@ -210,7 +198,6 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
     }
 
     override fun onNewIntent(intent: Intent) {
-        JLog.e(this.javaClass.simpleName, "onNewIntent")
         super.onNewIntent(intent)
     }
 

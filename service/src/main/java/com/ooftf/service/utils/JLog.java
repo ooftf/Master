@@ -50,8 +50,8 @@ public class JLog {
      */
     public static final int ERROR = 6;
     public static final int MAX_LENGTH = 3000;
-    public static final String TAG_EMPTY = "JLog-Empty";
-    public static final String TAG_NULL = "JLog-Null";
+    public static final String TAG_EMPTY = "JLog-TAG-Empty";
+    public static final String TAG_NULL = "JLog-TAG-Null";
 
     public static void v(Object info) {
         v(null, info);
@@ -125,20 +125,76 @@ public class JLog {
      * @param i
      * @param message
      */
+    public static void v(String tag, int i, Object... message) {
+        bamboo(VERBOSE, tag, i, message);
+    }
+
+    /**
+     * 每个 message 固定长度，长度不够的用 {@link JLog#FILLER} 填补
+     *
+     * @param tag
+     * @param i
+     * @param message
+     */
+    public static void d(String tag, int i, Object... message) {
+        bamboo(DEBUG, tag, i, message);
+    }
+
+    /**
+     * 每个 message 固定长度，长度不够的用 {@link JLog#FILLER} 填补
+     *
+     * @param tag
+     * @param i
+     * @param message
+     */
+    public static void i(String tag, int i, Object... message) {
+        bamboo(INFO, tag, i, message);
+    }
+
+    /**
+     * 每个 message 固定长度，长度不够的用 {@link JLog#FILLER} 填补
+     *
+     * @param tag
+     * @param i
+     * @param message
+     */
+    public static void w(String tag, int i, Object... message) {
+        bamboo(WARN, tag, i, message);
+    }
+
+    /**
+     * 每个 message 固定长度，长度不够的用 {@link JLog#FILLER} 填补
+     *
+     * @param tag
+     * @param i
+     * @param message
+     */
     public static void e(String tag, int i, Object... message) {
+        bamboo(ERROR, tag, i, message);
+    }
+
+    /**
+     * 每个 message 固定长度，长度不够的用 {@link JLog#FILLER} 填补
+     *
+     * @param tag
+     * @param i
+     * @param message
+     */
+    public static void bamboo(int level, String tag, int i, Object... message) {
         StringBuffer result = new StringBuffer();
         for (Object s : message) {
             StringBuffer per = new StringBuffer();
             per.append(BRACKET_START);
-            per.append(s.toString());
+            per.append(s);
             per.append(BRACKET_END);
             while (per.length() < i) {
                 per.append(FILLER);
             }
             result.append(per);
         }
-        e(tag, result.toString());
+        logObject(level, tag, result.toString());
     }
+
 
     private static void logArray(int level, Object tag, String[] list) {
         logList(level, tag, Arrays.asList(list));
