@@ -3,12 +3,14 @@ package com.ooftf.widget.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.SwipeRecyclerAdapter
 import com.ooftf.widget.bean.SwipeBean
 import com.ooftf.widget.dagger.DaggerSwipeRecyclerComponent
 import com.ooftf.widget.dagger.SwipeModule
+import com.ooftf.widget.test.TestLayoutManager
 import kotlinx.android.synthetic.main.activity_swipe_recycler.*
 import java.util.*
 import javax.inject.Inject
@@ -27,7 +29,7 @@ class SwipeRecyclerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_swipe_recycler)
-        recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager = TestLayoutManager()
         DaggerSwipeRecyclerComponent.builder().swipeModule(SwipeModule(this)).build().inject(this)
         recyclerView.adapter = adapter
         adapter.body.add(SwipeBean(0))

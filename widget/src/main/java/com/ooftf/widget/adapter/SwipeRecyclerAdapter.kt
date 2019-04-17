@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter
+import com.ooftf.service.utils.JLog
 import com.ooftf.widget.R
 import com.ooftf.widget.bean.SwipeBean
 import javax.inject.Inject
@@ -33,10 +34,12 @@ class SwipeRecyclerAdapter : RecyclerSwipeAdapter<SwipeRecyclerAdapter.ViewHolde
 
     var inflater: LayoutInflater
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        JLog.e("onCreateViewHolder")
         return ViewHolder(inflater.inflate(R.layout.item_swiper, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        JLog.e("onBindViewHolder")
         holder.content.text = body[position].position.toString()
         mItemManger.bindView(holder.itemView, position)
     }
