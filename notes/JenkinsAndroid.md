@@ -21,7 +21,11 @@ Attachments ${WORKSPACE}\app\build\outputs\apk\${build_type}\app-${build_type}.a
 app\build\outputs\apk\${build_type}\app-${build_type}.apk,app\build\outputs\qrcode\${BUILD_TYPE}\qrcode.png
 Extended E-mail Notification 和邮件通知是两个不同的功能，都需要各自配置自己的账号信息
 
+##### 阿里云 发邮件失败
+端口改为465  勾选SSL
 
+### CentOS安装Android SDK
+    echo y | ./sdkmanager "build-tools;28.0.3" "platforms;android-28"
 ### Problem
 #### package javax.annotation does not exist 和 cannot find symbol @Generated
      出现原因：JDK版本大于等于9导致
@@ -34,5 +38,8 @@ Extended E-mail Notification 和邮件通知是两个不同的功能，都需要
     Compilation with Kotlin compile daemon was not successful
     java.rmi.UnmarshalException: Error unmarshaling return header; nested exception is: 
         java.io.EOFException
-### CentOS安装Android SDK
-    echo y | ./sdkmanager "build-tools;28.0.3" "platforms;android-28"
+
+#### What went wrong: Gradle build daemon disappeared unexpectedly (it may have been killed or may have crashed)
+在 gradle.properties 中添加 org.gradle.parallel=true 导致的，删掉就可以了
+org.gradle.daemon=false
+
