@@ -29,3 +29,10 @@ Extended E-mail Notification 和邮件通知是两个不同的功能，都需要
 #### Gradle编译突然失败没有任何错误日志
      出现原因：centos 内存不够
      解决方式：增加内存
+     
+#### 有可能是内存过低
+    Compilation with Kotlin compile daemon was not successful
+    java.rmi.UnmarshalException: Error unmarshaling return header; nested exception is: 
+        java.io.EOFException
+### CentOS安装Android SDK
+    echo y | ./sdkmanager "build-tools;28.0.3" "platforms;android-28"
