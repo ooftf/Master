@@ -81,25 +81,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     if (!MoudleDebug) {
         if (maven) {
-            implementation "com.ooftf:master-widget:$versions.master"
-            implementation "com.ooftf:master-applet:$versions.master"
-            implementation "com.ooftf:master-debug:$versions.master"
-            implementation "com.ooftf:master-source:$versions.master"
-            implementation "com.ooftf:master-other:$versions.master"
-            implementation "com.ooftf:master-sign:$versions.master"
-            implementation "com.ooftf:master-rn:$versions.master"
-            implementation "com.ooftf:master-webview:$versions.master"
-            implementation "com.ooftf:master-qrcode:$versions.master"
+            for (int i = 0; i < moduleList.size(); i++) {
+                implementation "com.ooftf:master-${moduleList[i]}:$versions.master"
+            }
         } else {
-            implementation project(':widget')
-            implementation project(':applet')
-            implementation project(':debug')
-            //implementation project(':source')
-            implementation project(':other')
-            implementation project(':sign')
-            implementation project(':rn')
-            implementation project(':qrcode')
-            implementation project(':webview')
+            for (int i = 0; i < moduleList.size(); i++) {
+                implementation project(":${moduleList[i]}")
+            }
         }
     }
     if (maven) {

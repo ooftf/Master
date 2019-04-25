@@ -31,7 +31,7 @@ buildscript {
                 'dagger2_compiler': "com.google.dagger:dagger-compiler:$versions.dagger",
                 'matisse'         : 'com.zhihu.android:matisse:0.5.1'
         ]
-
+        moduleList = module.split(",")
     }
     repositories {
         jcenter()
