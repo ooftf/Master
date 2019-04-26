@@ -42,4 +42,5 @@ Extended E-mail Notification 和邮件通知是两个不同的功能，都需要
 #### What went wrong: Gradle build daemon disappeared unexpectedly (it may have been killed or may have crashed)
 在 gradle.properties 中添加 org.gradle.parallel=true 导致的，删掉就可以了
 org.gradle.daemon=false
+#### 参数化构建中，参数的名字一定要写成大写的，不然某些插件就会出问题，比如蒲公英
 
