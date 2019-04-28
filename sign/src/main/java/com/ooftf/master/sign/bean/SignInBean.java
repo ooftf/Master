@@ -31,6 +31,16 @@ public class SignInBean extends MobBaseBean {
 
         private String token;
         private String uid;
+        private String userName;
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public ResultBean setUserName(String userName) {
+            this.userName = userName;
+            return this;
+        }
 
         public String getToken() {
             return token;

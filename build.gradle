@@ -3,7 +3,7 @@ buildscript {
         MoudleDebug = false
         ext.maven = false
         versions = [
-                'kotlin'     : '1.3.21',
+                'kotlin'     : '1.3.31',
                 'compileSdk' : 28,
                 'minSdk'     : 19,
                 'targetSdk'  : 26,
@@ -78,7 +78,6 @@ allprojects {
         maven {
             url 'https://maven.google.com/'
         }
-
     }
 
 }

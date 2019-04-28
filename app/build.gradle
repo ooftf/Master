@@ -26,7 +26,7 @@ android {
         }
         ndk {
             //设置支持的SO库架构
-            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+            abiFilters 'armeabi-v7a' //, 'x86','armeabi', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
         buildConfigField("String", "APP_BUILD_TIME", "\"" + new Date().format("yyyy/MM/dd HH:mm:ss") + "\"")
 
@@ -38,6 +38,8 @@ android {
     packagingOptions {
         // More than one file was found with OS independent path 'lib/armeabi-v7a/libgnustl_shared.so'
         pickFirst 'lib/armeabi-v7a/libgnustl_shared.so'
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
         pickFirst 'lib/x86/libgnustl_shared.so'
 
     }
@@ -81,12 +83,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     if (!MoudleDebug) {
         if (maven) {
-            for (int i = 0; i < moduleList.size(); i++) {
-                implementation "com.ooftf:master-${moduleList[i]}:$versions.master"
+            moduleList.each {
+                implementation "com.ooftf:master-${it}:$versions.master"
             }
         } else {
-            for (int i = 0; i < moduleList.size(); i++) {
-                implementation project(":${moduleList[i]}")
+            moduleList.each {
+                implementation project(":${it}")
             }
         }
     }

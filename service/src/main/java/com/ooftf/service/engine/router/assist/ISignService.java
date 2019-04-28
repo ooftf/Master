@@ -1,8 +1,5 @@
 package com.ooftf.service.engine.router.assist;
 
-import com.alibaba.android.arouter.facade.template.IProvider;
-import com.ooftf.service.engine.router.assist.SignAssistBean;
-
 import io.reactivex.Single;
 import io.reactivex.subjects.PublishSubject;
 
@@ -40,4 +37,6 @@ public interface ISignService {
     String getToken();
 
     String getUserId();
+
+    String getUserName();
 }

@@ -32,7 +32,6 @@ class SplashActivity : BaseActivity() {
 
     private fun startNextActivity() {
         ARouter.getInstance().build(RouterPath.MAIN_ACTIVITY_MAIN).navigation(this, FinishCallback(this))
-
     }
 
     class MyTimer(var activity: SplashActivity) : CountDownTimer(4000, 200) {

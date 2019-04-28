@@ -65,6 +65,7 @@ public class SignServiceImpl implements ISignService {
                     boolean success = MobBaseBean.success.equals(mobBaseBean.getRetCode());
                     bean.setResult(success);
                     if (success) {
+                        mobBaseBean.getResult().setUserName(username);
                         TyperFactory.getDefault().put(KEY_ACCOUNT_INFO, mobBaseBean.getResult());
                         bean.setMsg("ok");
                     } else {
@@ -116,6 +117,15 @@ public class SignServiceImpl implements ISignService {
     public String getUserId() {
         if (getSignInfo() != null) {
             return getSignInfo().getUid();
+        }
+
+        return null;
+    }
+
+    @Override
+    public String getUserName() {
+        if (getSignInfo() != null) {
+            return getSignInfo().getUserName();
         }
 
         return null;

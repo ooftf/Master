@@ -80,7 +80,7 @@ public class MultiSignManager implements IMultiSignService {
 
     @Override
     public ISignService getService(String channelId) {
-        return null;
+        return getChannelInfo(channelId).creator.invoke();
     }
 
     @Override

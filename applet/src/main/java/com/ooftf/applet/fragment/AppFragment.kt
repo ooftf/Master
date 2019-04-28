@@ -22,6 +22,7 @@ class AppFragment : BaseListFragment() {
         adapter.add(ScreenItemBean("/applet/activity/JX3", "收益计算"))
         adapter.add(ScreenItemBean(RouterPath.APPLET_ACTIVITY_TEXT_TO_VOICE, "文字转语音"))
         adapter.add(ScreenItemBean(RouterPath.APPLET_ACTIVITY_WEEKLY_CONSUMPTION, "周饭计算器"))
+        adapter.add(ScreenItemBean(RouterPath.IM_ACTIVITY_MAIN, "腾讯IM"))
         adapter.notifyDataSetChanged()
     }
 

@@ -29,8 +29,10 @@ public class LifecycleLog {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
                 log(activity, savedInstanceState);
-                FragmentActivity fragmentActivityactivity = (FragmentActivity) activity;
-                fragmentActivityactivity.getSupportFragmentManager().registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacks, true);
+                if(activity instanceof FragmentActivity){
+                    FragmentActivity fragmentActivity = (FragmentActivity) activity;
+                    fragmentActivity.getSupportFragmentManager().registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacks, true);
+                }
             }
 
             @Override

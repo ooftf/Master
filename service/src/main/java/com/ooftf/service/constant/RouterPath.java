@@ -20,4 +20,8 @@ public interface RouterPath {
 
     String WIDGET_VIEWPAGER = "/widget/activity/viewPager";
     String WIDGET_PROGRESS_BAR = "/widget/activity/progressBar";
+
+    String IM_ACTIVITY_MAIN = "/im/activity/main";
+    String IM_ACTIVITY_PERSONAL_CHAT = "/im/activity/personalChat";
+    String IM_ACTIVITY_GROUP_CHAT = "/im/activity/groupChat";
 }

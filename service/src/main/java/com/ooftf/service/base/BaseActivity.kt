@@ -6,7 +6,6 @@ import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -66,21 +65,45 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
     }
 
     init {
-        lifecycle.addObserver(object : LifecycleObserver {
-            @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-            fun create() {
-                ImmersionBar.with(this@BaseActivity).init()
-                var view = findViewById<View>(getToolbarId())
-                if (view != null) {
-                    ImmersionBar.setTitleBar(this@BaseActivity, view)
+        if (isImmersionEnable()) {
+            lifecycle.addObserver(object : LifecycleObserver {
+                @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+                fun create() {
+                    ImmersionBar.with(this@BaseActivity).statusBarDarkFont(isDarkFont()).init()
+                    var view = getToolbar()
+                    if (view == null) {
+                        view = findViewById(getToolbarId())
+                    }
+                    if (view != null) {
+                        ImmersionBar.setTitleBar(this@BaseActivity, view)
+                    }
                 }
-            }
-        })
+
+                @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+                fun destroy() {
+                    ImmersionBar.with(this@BaseActivity).destroy()
+                }
+            })
+        }
+
     }
 
-    private fun getToolbarId(): Int {
+    open fun getToolbarId(): Int {
         return R.id.toolbar
     }
+
+    open fun getToolbar(): View? {
+        return null
+    }
+
+    open fun isDarkFont(): Boolean {
+        return false
+    }
+
+    open fun isImmersionEnable(): Boolean {
+        return true
+    }
+
 
     private val onResumeList: MutableList<() -> Unit> by lazy { ArrayList<() -> Unit>() }
     private val onDestroyList: MutableList<() -> Unit> by lazy { ArrayList<() -> Unit>() }
@@ -103,37 +126,17 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         alive = true
     }
 
-    override fun setContentView(view: View?) {
-        super.setContentView(view)
-    }
-
-    override fun setContentView(layoutResID: Int) {
-        super.setContentView(layoutResID)
-    }
-
-    override fun setContentView(view: View?, params: ViewGroup.LayoutParams?) {
-        super.setContentView(view, params)
-    }
 
     /**
      * 是否强制竖屏
      */
     fun isScreenForcePortrait() = true
 
-    override fun onPostCreate(savedInstanceState: Bundle?) {
-        super.onPostCreate(savedInstanceState)
-
-    }
-
     override fun onStart() {
         showing = true
         super.onStart()
     }
 
-
-    override fun onRestart() {
-        super.onRestart()
-    }
 
     override fun onResume() {
         JLog.e(this.javaClass.simpleName, "activeCount::" + Thread.activeCount())
@@ -164,7 +167,6 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         alive = false
         doOnDestroy()
         super.onDestroy()
-        ImmersionBar.with(this).destroy()
     }
 
     private fun doOnDestroy() {

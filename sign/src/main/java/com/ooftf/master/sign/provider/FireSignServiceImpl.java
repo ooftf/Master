@@ -102,6 +102,11 @@ public class FireSignServiceImpl implements ISignService {
 
     @Override
     public String getUserId() {
-        return null;
+        return  mAuth.getCurrentUser().getUid();
+    }
+
+    @Override
+    public String getUserName() {
+        return mAuth.getCurrentUser().getProviderId();
     }
 }
