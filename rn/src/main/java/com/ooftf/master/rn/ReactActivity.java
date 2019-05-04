@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.facebook.react.LifecycleState;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
+import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import com.ooftf.service.base.BaseActivity;
@@ -53,7 +53,7 @@ public class ReactActivity extends BaseActivity implements DefaultHardwareBackBt
         super.onPause();
 
         if (mReactInstanceManager != null) {
-            mReactInstanceManager.onPause();
+            mReactInstanceManager.onHostPause(this);
         }
     }
 
@@ -62,7 +62,7 @@ public class ReactActivity extends BaseActivity implements DefaultHardwareBackBt
         super.onResume();
 
         if (mReactInstanceManager != null) {
-            mReactInstanceManager.onResume(this, this);
+            mReactInstanceManager.onHostResume(this, this);
         }
     }
 
@@ -71,7 +71,7 @@ public class ReactActivity extends BaseActivity implements DefaultHardwareBackBt
         super.onDestroy();
 
         if (mReactInstanceManager != null) {
-            mReactInstanceManager.onDestroy();
+            mReactInstanceManager.onHostDestroy(this);
         }
     }
 
