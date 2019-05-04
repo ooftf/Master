@@ -35,6 +35,7 @@ public class ReactActivity extends BaseActivity implements DefaultHardwareBackBt
             mReactInstanceManager = ReactInstanceManager.builder()
                     .setApplication(getApplication())
                     .setCurrentActivity(this)
+                    // 首页的文件路径对应index.js
                     .setJSMainModulePath("index")
                     //对应assets下jsBundle的名字
                     .setBundleAssetName("index.android.bundle")
