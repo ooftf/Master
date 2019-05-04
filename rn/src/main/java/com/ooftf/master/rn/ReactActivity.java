@@ -1,5 +1,7 @@
 package com.ooftf.master.rn;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
@@ -10,6 +12,9 @@ import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import com.ooftf.service.base.BaseActivity;
+import com.tbruyelle.rxpermissions2.RxPermissions;
+
+import io.reactivex.functions.Consumer;
 
 /**
  * @author ooftf
@@ -21,31 +26,35 @@ public class ReactActivity extends BaseActivity implements DefaultHardwareBackBt
     private ReactRootView mReactRootView;
     private ReactInstanceManager mReactInstanceManager;
 
+    @SuppressLint("CheckResult")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new RxPermissions(this).request(Manifest.permission.SYSTEM_ALERT_WINDOW).subscribe(aBoolean -> {
+            mReactRootView = new ReactRootView(ReactActivity.this);
+            mReactInstanceManager = ReactInstanceManager.builder()
+                    .setApplication(getApplication())
+                    .setCurrentActivity(this)
+                    .setJSMainModulePath("index")
+                    //对应assets下jsBundle的名字
+                    .setBundleAssetName("index.android.bundle")
+                    //设置android本地功能组件
+                    .addPackage(new MainReactPackage())
+                    .setUseDeveloperSupport(BuildConfig.DEBUG)
+                    .setInitialLifecycleState(LifecycleState.RESUMED)
+                    .build();
+            // 注意这里的MyReactNativeApp必须对应“index.js”中的
+            // “AppRegistry.registerComponent()”的第一个参数
+            mReactRootView.startReactApplication(mReactInstanceManager, "AwesomeProject", null);
 
-        mReactRootView = new ReactRootView(this);
-        mReactInstanceManager = ReactInstanceManager.builder()
-                .setApplication(getApplication())
-                .setJSMainModuleName("index")
-                //对应assets下jsBundle的名字
-                .setBundleAssetName("index.android.bundle")
-                 //设置android本地功能组件
-                .addPackage(new MainReactPackage())
-                .setUseDeveloperSupport(BuildConfig.DEBUG)
-                .setInitialLifecycleState(LifecycleState.RESUMED)
-                .build();
-        // 注意这里的MyReactNativeApp必须对应“index.js”中的
-        // “AppRegistry.registerComponent()”的第一个参数
-        mReactRootView.startReactApplication(mReactInstanceManager, "Hello", null);
+            setContentView(mReactRootView);
+        });
 
-        setContentView(mReactRootView);
     }
 
     @Override
     public void invokeDefaultOnBackPressed() {
-
+        super.onBackPressed();
     }
 
     @Override
