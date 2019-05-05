@@ -4,11 +4,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.Keep;
-import androidx.core.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
+
+import androidx.annotation.Keep;
+import androidx.core.content.FileProvider;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.Utils;
@@ -53,12 +54,9 @@ public class PhotoActivity extends TakePhotoActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_photo);
         initWebView();
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //startPhotoPicker();
-                startTakePhoto();
-            }
+        findViewById(R.id.button).setOnClickListener(v -> {
+            //startPhotoPicker();
+            startTakePhoto();
         });
     }
 

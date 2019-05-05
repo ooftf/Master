@@ -40,6 +40,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
     }
 
 
+
     fun <T> bindAuto(): LifecycleTransformer<T> {
         return provider.bindToLifecycle()
     }
@@ -199,9 +200,6 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         }
     }
 
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-    }
 
     fun toast(content: String, duration: Int = Toast.LENGTH_SHORT) {
         runOnUiThread {

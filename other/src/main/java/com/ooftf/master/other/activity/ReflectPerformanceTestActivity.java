@@ -68,8 +68,8 @@ public class ReflectPerformanceTestActivity extends BaseActivity {
             }
             newText.setText(String.valueOf(System.currentTimeMillis() - start));
         });
-    }
 
+    }
     int getTimers() {
         return Integer.valueOf(editText.getText().toString());
     }
