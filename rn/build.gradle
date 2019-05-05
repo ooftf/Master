@@ -1,4 +1,4 @@
 apply from: '../module.gradle'
 dependencies {
-    api 'com.ooftf.react:react-native:0.46.4'
+    api 'com.ooftf.react:react-native:0.59.5'
 }

@@ -14,4 +14,5 @@ react-native init AwesomeProject --version 0.44.3
 react-native run-android
 ## 打包jsBundle
 react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+react-native bundle --platform android --dev false --entry-file index.js --bundle-output build/assets/index.android.bundle --assets-dest build/res/
 # [yarn命令](https://yarn.bootcss.com/docs/usage/)
