@@ -8,7 +8,7 @@ dependencies {
     })
     testImplementation 'junit:junit:4.12'
     kapt deps.dagger2_compiler
-    implementation 'com.github.ooftf:CalendarView:1.0.5'
+    implementation deps.CalendarView
     implementation 'com.github.ooftf:SpialeLayout:1.1.1'
     implementation 'com.github.ooftf:PatternLock:1.0.4'
     implementation 'com.github.ooftf:StraightLayout:1.0.3'

@@ -29,7 +29,8 @@ buildscript {
                 'disklrucache'    : 'com.jakewharton:disklrucache:2.0.2',
                 'bugly'           : 'com.tencent.bugly:crashreport_upgrade:latest.release',
                 'dagger2_compiler': "com.google.dagger:dagger-compiler:$versions.dagger",
-                'matisse'         : 'com.zhihu.android:matisse:0.5.1'
+                'matisse'         : 'com.zhihu.android:matisse:0.5.1',
+                'CalendarView'    : 'com.github.ooftf:CalendarView:1.0.5'
         ]
         moduleList = module.split(",")
     }

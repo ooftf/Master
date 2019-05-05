@@ -11,7 +11,11 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+import com.ooftf.master.rn.packages.CalendarViewReactPackage;
+import com.ooftf.master.rn.packages.LogReactPackage;
 import com.ooftf.service.base.BaseActivity;
+import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import io.reactivex.functions.Consumer;
@@ -31,7 +35,7 @@ public class ReactActivity extends BaseActivity implements DefaultHardwareBackBt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         new RxPermissions(this).request(Manifest.permission.SYSTEM_ALERT_WINDOW).subscribe(aBoolean -> {
-            mReactRootView = new ReactRootView(ReactActivity.this);
+            mReactRootView = new RNGestureHandlerEnabledRootView(ReactActivity.this);
             mReactInstanceManager = ReactInstanceManager.builder()
                     .setApplication(getApplication())
                     .setCurrentActivity(this)
@@ -40,7 +44,10 @@ public class ReactActivity extends BaseActivity implements DefaultHardwareBackBt
                     //对应assets下jsBundle的名字
                     .setBundleAssetName("index.android.bundle")
                     //设置android本地功能组件
+                    .addPackage(new RNGestureHandlerPackage())
                     .addPackage(new MainReactPackage())
+                    .addPackage(new LogReactPackage())
+                    .addPackage(new CalendarViewReactPackage())
                     .setUseDeveloperSupport(BuildConfig.DEBUG)
                     .setInitialLifecycleState(LifecycleState.RESUMED)
                     .build();
