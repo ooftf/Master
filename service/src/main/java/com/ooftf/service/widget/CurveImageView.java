@@ -9,6 +9,8 @@ import android.util.AttributeSet;
 import com.ooftf.service.utils.DensityUtil;
 
 /**
+ * 曲边ImageView  用于登录界面
+ *
  * @author ooftf
  * @email 994749769@qq.com
  * @date 2018/10/30 0030
@@ -17,6 +19,7 @@ public class CurveImageView extends androidx.appcompat.widget.AppCompatImageView
 
 
     Path path;
+
     public CurveImageView(Context context) {
         super(context);
         init();
@@ -36,6 +39,7 @@ public class CurveImageView extends androidx.appcompat.widget.AppCompatImageView
     private void init() {
 
     }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -43,8 +47,8 @@ public class CurveImageView extends androidx.appcompat.widget.AppCompatImageView
         float bicHeight = DensityUtil.INSTANCE.dip2px(getContext(), 40);
         path = new Path();
         path.lineTo(0, getHeight() - bicHeight);
-        path.cubicTo(edge, getHeight()- bicHeight/2,
-                getWidth() - edge, getHeight() - bicHeight/2,
+        path.cubicTo(edge, getHeight() - bicHeight / 2,
+                getWidth() - edge, getHeight() - bicHeight / 2,
                 getWidth(), getHeight());
         path.lineTo(getWidth(), 0);
         path.lineTo(0, 0);

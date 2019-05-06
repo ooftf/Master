@@ -21,9 +21,16 @@ import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.engine.ActivityManager;
 import com.ooftf.service.utils.JLog;
 import com.ooftf.service.utils.MathUtil;
+import com.ooftf.service.widget.dialog.ListDialog;
 import com.ooftf.widget.R;
 
+import java.util.ArrayList;
+
+import tf.ooftf.com.service.base.adapter.BaseRecyclerAdapter;
+
 /**
+ * 首页开发者工具球
+ *
  * @author ooftf
  * @email 994749769@qq.com
  * @date 2019/3/6 0006
@@ -33,8 +40,13 @@ public class SuspendWindow {
     WindowManager.LayoutParams layoutParams;
     ValueAnimator valueAnimator;
     View view;
+    public static SuspendWindow INSTANCE = new SuspendWindow();
 
-    public SuspendWindow() {
+    public static SuspendWindow getInstance() {
+        return INSTANCE;
+    }
+
+    private SuspendWindow() {
         valueAnimator = new ValueAnimator();
         valueAnimator.setDuration(300);
         valueAnimator.setInterpolator(new DecelerateInterpolator());
@@ -42,15 +54,36 @@ public class SuspendWindow {
         initLayoutParams();
         LayoutInflater layoutInflater = LayoutInflater.from(BaseApplication.instance);
         view = layoutInflater.inflate(R.layout.window_suspend, null);
+        // 设置点击事件
         view.setOnClickListener(v -> {
             Activity topActivity = ActivityManager.INSTANCE.getTopActivity();
             if (topActivity != null) {
-                ViewGroup viewGroup = (ViewGroup) topActivity.getWindow().getDecorView();
-                if (viewGroup.getChildCount() > 0) {
-                    Snackbar.make(viewGroup.getChildAt(0), topActivity.getClass().getName(), Snackbar.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(BaseApplication.instance, topActivity.getClass().getName(), Toast.LENGTH_SHORT).show();
-                }
+                new ListDialog(topActivity)
+                        .setList(new ArrayList<String>() {
+                            {
+                                add("显示当前Activity名称");
+                                add("切换网络环境");
+                            }
+                        })
+                        .setOnItemClickListener((item, position, dialog) -> {
+                            dialog.dismiss();
+                            switch (position) {
+                                case 0:
+                                    ViewGroup viewGroup = (ViewGroup) topActivity.getWindow().getDecorView();
+                                    if (viewGroup.getChildCount() > 0) {
+                                        Snackbar.make(viewGroup.getChildAt(0), topActivity.getClass().getName(), Snackbar.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(BaseApplication.instance, topActivity.getClass().getName(), Toast.LENGTH_SHORT).show();
+                                    }
+                                    break;
+                                case 1:
+                                    break;
+                                case 2:
+                                    break;
+
+                            }
+                        })
+                        .show();
             }
         });
         view.setOnTouchListener(new View.OnTouchListener() {
@@ -61,10 +94,6 @@ public class SuspendWindow {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                JLog.e("onTouch", 10, event.getRawX(), event.getRawY());
-                JLog.e("view.getX()", 10, view.getX(), view.getY());
-                JLog.e("view.getLeft()", 10, view.getLeft(), view.getTop());
-
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     move = false;
                     cX = event.getRawX();

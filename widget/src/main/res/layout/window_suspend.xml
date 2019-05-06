@@ -7,21 +7,11 @@
     <androidx.appcompat.widget.AppCompatImageButton
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:rotation="45"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_floating" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_add" />
+        app:srcCompat="@drawable/android_god_eye_logo" />
     <!--  app:srcCompat="@drawable/ic_floating"
       app:srcCompat="@drawable/ic_add"-->
 </androidx.constraintlayout.widget.ConstraintLayout>

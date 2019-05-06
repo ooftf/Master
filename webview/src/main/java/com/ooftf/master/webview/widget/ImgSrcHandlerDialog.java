@@ -40,7 +40,7 @@ public class ImgSrcHandlerDialog extends ListDialog {
                 add("保存图片");
             }
         });
-        setOnItemClickListener((data, position) -> {
+        setOnItemClickListener((data, position, dialog) -> {
             if (position == 0) {
                 saveImageUlrToAlbum(src);
             }

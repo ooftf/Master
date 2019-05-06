@@ -17,6 +17,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tf.ooftf.com.service.base.adapter.BaseRecyclerAdapter;
@@ -32,6 +33,7 @@ public class ListDialog extends BottomDialog {
     @BindView(R2.id.recycler_view)
     RecyclerView recyclerView;
     InnerAdapter adapter;
+    DialogOnItemClickListener itemClickListener;
 
     public ListDialog(@NotNull Activity activity) {
         super(activity);
@@ -41,16 +43,26 @@ public class ListDialog extends BottomDialog {
         cancel.setOnClickListener(v -> dismiss());
         adapter = new InnerAdapter();
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
+            @Override
+            public void onItemClick(String data, int position) {
+                if (itemClickListener != null) {
+                    itemClickListener.OnItemClick(data, position, ListDialog.this);
+                }
+            }
+        });
     }
 
-    public void setList(List<String> data) {
+    public ListDialog setList(List<String> data) {
         adapter.setList(data);
         adapter.notifyDataSetChanged();
+        return this;
     }
 
-    public void setOnItemClickListener(BaseRecyclerAdapter.OnItemClickListener<String> listener) {
-        adapter.setOnItemClickListener(listener);
+    public ListDialog setOnItemClickListener(DialogOnItemClickListener listener) {
+        itemClickListener = listener;
+        return this;
     }
 
     public static class InnerAdapter extends BaseRecyclerAdapter<String, BaseViewHolder<TextView>> {
@@ -66,7 +78,9 @@ public class ListDialog extends BottomDialog {
         public void onBindViewHolder_(@NonNull BaseViewHolder<TextView> viewHolder, int position) {
             viewHolder.getItemView().setText(getItem(position));
         }
+    }
 
-
+    public interface DialogOnItemClickListener {
+        void OnItemClick(String item, int position, ListDialog dialog);
     }
 }

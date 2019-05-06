@@ -75,7 +75,7 @@ class WidgetFragment : BaseLazyFragment() {
             }
         }
         toolbarBanner.isAutoPlay(true).update(bannerList)
-        SuspendWindow()
+        SuspendWindow.getInstance()
     }
 
 

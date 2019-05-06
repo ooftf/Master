@@ -37,7 +37,6 @@ captures/
 # Intellij
 *.iml
 .idea/
-!/.idea/modules.xml
 !/.idea/gradle.xml
 !/.idea/misc.xml
 # Keystore files

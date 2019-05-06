@@ -16,3 +16,5 @@ react-native run-android
 react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
 react-native bundle --platform android --dev false --entry-file index.js --bundle-output build/assets/index.android.bundle --assets-dest build/res/
 # [yarn命令](https://yarn.bootcss.com/docs/usage/)
+
+# react-native run-android
