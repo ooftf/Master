@@ -13,6 +13,7 @@ import com.ooftf.service.engine.router.service.IMultiSignService;
 import com.ooftf.service.utils.JLog;
 import com.tencent.imsdk.TIMLogLevel;
 import com.tencent.imsdk.TIMSdkConfig;
+import com.tencent.imsdk.session.SessionWrapper;
 import com.tencent.qcloud.uikit.BaseUIKitConfigs;
 import com.tencent.qcloud.uikit.TUIKit;
 import com.tencent.qcloud.uikit.common.IUIKitCallBack;
@@ -29,7 +30,9 @@ public class ImApp implements IApplication {
 
     @Override
     public void onCreate(Application application) {
-        initTencentIm();
+        if(SessionWrapper.isMainProcess(application)){
+            initTencentIm();
+        }
         IMultiSignService service = ARouter.getInstance().navigation(IMultiSignService.class);
         if (service.getCurrentService().isSignIn()) {
             imSignIn(service);
@@ -66,18 +69,8 @@ public class ImApp implements IApplication {
     }
 
     private void initTencentIm() {
-        //初始化 SDK 基本配置
-        TIMSdkConfig config = new TIMSdkConfig(TencentImConts.SDK_APP_ID)
-                // 您可以从 IM 控制台获取 accountType 信息。目前仅支持独立模式，即36862
-                .setAccoutType("36862")
-                // 是否在控制台打印Log?
-                .enableLogPrint(true)
-                // Log输出级别（debug级别会很多）
-                .setLogLevel(TIMLogLevel.DEBUG)
-                .setLogPath(Environment.getExternalStorageDirectory().getPath() + "/justfortest/");
-        // Log文件存放在哪里？
         //应替换成（BaseUIKitConfigs的配置请看后面章节）
-        TUIKit.init(BaseApplication.instance, TencentImConts.SDK_APP_ID, BaseUIKitConfigs.getDefaultConfigs().setTIMSdkConfig(config));
+        TUIKit.init(BaseApplication.instance, TencentImConts.SDK_APP_ID, BaseUIKitConfigs.getDefaultConfigs());
     }
 
     @Override

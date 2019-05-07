@@ -16,7 +16,7 @@ abstract class BottomDialog(activity: Activity) : BaseDialog(activity, R.style.D
 
     init {
         this.setGravity(Gravity.BOTTOM)
-        this.setInOutAnimations(R.style.WindowAnimAlpha)
+        this.setInOutAnimations(R.style.WindowAnimTranslateBottom)
     }
 
     override fun setContentView(layoutResID: Int) {

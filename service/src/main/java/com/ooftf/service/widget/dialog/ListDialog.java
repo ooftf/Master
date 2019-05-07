@@ -33,7 +33,7 @@ public class ListDialog extends BottomDialog {
     @BindView(R2.id.recycler_view)
     RecyclerView recyclerView;
     InnerAdapter adapter;
-    DialogOnItemClickListener itemClickListener;
+    private DialogOnItemClickListener itemClickListener;
 
     public ListDialog(@NotNull Activity activity) {
         super(activity);
@@ -44,12 +44,9 @@ public class ListDialog extends BottomDialog {
         adapter = new InnerAdapter();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
-            @Override
-            public void onItemClick(String data, int position) {
-                if (itemClickListener != null) {
-                    itemClickListener.OnItemClick(data, position, ListDialog.this);
-                }
+        adapter.setOnItemClickListener((data, position) -> {
+            if (itemClickListener != null) {
+                itemClickListener.OnItemClick(data, position, ListDialog.this);
             }
         });
     }
