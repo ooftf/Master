@@ -60,7 +60,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
-    kapt "com.alibaba:arouter-compiler:$versions.arouter"
+    kapt deps.ARouterCompiler
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
     api "androidx.vectordrawable:vectordrawable:$versions.support"
     api "androidx.appcompat:appcompat:$versions.support"
@@ -109,7 +109,7 @@ dependencies {
     //releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
     api deps.fastjson
     api 'com.github.ooftf:Support:1.1.1'
-    api 'com.alibaba:arouter-api:1.4.0'
+    api deps.ARouterApi
     api deps.HiHttp
     api 'com.github.ooftf:OperationEditTextLayout:1.1.3'
     api 'com.github.ooftf:VerticalPagerLayout:1.2.2'
