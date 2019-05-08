@@ -70,6 +70,10 @@ public class ToolbarItem extends LinearLayout {
         this.text.setTextSize(sp);
         return this;
     }
+    public ToolbarItem setText(CharSequence text) {
+        this.text.setText(text);
+        return this;
+    }
 
     public ToolbarItem setMarginSpace(int marginSpace) {
         LayoutParams layoutParams = (LayoutParams) this.text.getLayoutParams();
@@ -77,5 +81,4 @@ public class ToolbarItem extends LinearLayout {
         layoutParams.rightMargin = marginSpace;
         return this;
     }
-
 }

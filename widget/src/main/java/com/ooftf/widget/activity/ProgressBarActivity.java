@@ -10,7 +10,7 @@ import com.ooftf.widget.R;
 /**
  * @author ooftf
  */
-@Route(path = RouterPath.WIDGET_PROGRESS_BAR)
+@Route(path = RouterPath.Widget.Activity.PROGRESS_BAR)
 public class ProgressBarActivity extends BaseSlidingActivity {
 
     @Override

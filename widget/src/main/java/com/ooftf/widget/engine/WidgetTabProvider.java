@@ -1,10 +1,11 @@
 package com.ooftf.widget.engine;
 
+import androidx.annotation.Keep;
+
+import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.engine.main_tab.BottomBarItemBean;
 import com.ooftf.service.engine.main_tab.MainTabProvider;
 import com.ooftf.widget.R;
-
-import androidx.annotation.Keep;
 
 @Keep
 public class WidgetTabProvider implements MainTabProvider {
@@ -12,6 +13,6 @@ public class WidgetTabProvider implements MainTabProvider {
 
     @Override
     public BottomBarItemBean getBottomBarItemBean() {
-        return new BottomBarItemBean(TAB_WIDGET, 100,"/widget/fragment/widget", R.drawable.ic_widget_selected_24dp, R.drawable.ic_widget_24dp, R.color.blue_light, R.color.black);
+        return new BottomBarItemBean(TAB_WIDGET, 100, RouterPath.Widget.Fragment.MAIN, R.drawable.ic_widget_selected_24dp, R.drawable.ic_widget_24dp, R.color.blue_light, R.color.black);
     }
 }

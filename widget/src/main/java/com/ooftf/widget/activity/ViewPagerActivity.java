@@ -18,7 +18,7 @@ import androidx.viewpager.widget.ViewPager;
  * @desc ViewPager控件展示
  * @author 99474
  */
-@Route(path = RouterPath.WIDGET_VIEWPAGER)
+@Route(path = RouterPath.Widget.Activity.VIEWPAGER)
 public class ViewPagerActivity extends BaseSlidingActivity {
 
     private ViewPager viewPager;

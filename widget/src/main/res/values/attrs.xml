@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <declare-styleable name="StateLayoutSwitcher">
+        <attr name="error_layout" format="reference"/>
+        <attr name="loading_layout" format="reference"/>
+        <attr name="empty_layout" format="reference"/>
+    </declare-styleable>
 </resources>

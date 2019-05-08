@@ -18,10 +18,25 @@ public interface RouterPath {
     String QRCODE_ACTIVITY_QRCODE = "/qrcode/activity/qrcode";
     String OTHER_ACTIVITY_TOUCH = "/other/activity/touch";
 
-    String WIDGET_VIEWPAGER = "/widget/activity/viewPager";
-    String WIDGET_PROGRESS_BAR = "/widget/activity/progressBar";
 
     String IM_ACTIVITY_MAIN = "/im/activity/main";
     String IM_ACTIVITY_PERSONAL_CHAT = "/im/activity/personalChat";
     String IM_ACTIVITY_GROUP_CHAT = "/im/activity/groupChat";
+
+
+    interface Widget {
+        String MODULE = "/widget";
+
+        interface Activity {
+            String ACTIVITY = MODULE + "/activity";
+            String STATE_LAYOUT_SAMPLE = ACTIVITY + "/StateLayoutSample";
+            String VIEWPAGER = ACTIVITY + "/viewPager";
+            String PROGRESS_BAR = ACTIVITY + "/progressBar";
+        }
+
+        interface Fragment {
+            String FRAGMENT = MODULE + "/fragment";
+            String MAIN = FRAGMENT + "/widget";
+        }
+    }
 }
