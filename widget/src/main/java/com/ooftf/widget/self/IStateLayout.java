@@ -6,8 +6,6 @@ package com.ooftf.widget.self;
  * @date 2019/5/8 0008
  */
 interface IStateLayout {
-    void switchToNomal();
-
     void switchToEmpty();
 
     void switchToLoading();

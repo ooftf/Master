@@ -66,10 +66,6 @@ public class StateLayoutSwitcher extends FrameLayout implements IStateLayout {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    @Override
-    public void switchToNomal() {
-        showView(normalLayout);
-    }
 
     @Override
     public void switchToEmpty() {
