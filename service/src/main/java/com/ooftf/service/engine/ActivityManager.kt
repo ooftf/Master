@@ -13,7 +13,7 @@ import java.lang.ref.WeakReference
  * 只适用于单进程Activity
  */
 object ActivityManager {
-    private val activities = ArrayList<Activity>()
+    private val activities = ArrayList<WeakReference<Activity>>()
     private var touchCounter = 0
     private var showCounter = 0
     private var top: WeakReference<Activity>? = null
@@ -43,7 +43,13 @@ object ActivityManager {
             }
 
             override fun onActivityDestroyed(activity: Activity) {
-                activities.remove(activity)
+                val iterator = activities.iterator()
+                while (iterator.hasNext()) {
+                    val next = iterator.next()
+                    if (next.get() == null || next.get() == activity) {
+                        iterator.remove()
+                    }
+                }
                 if (activities.size == 0) {
                     Process.killProcess(Process.myPid())
                 }
@@ -61,7 +67,7 @@ object ActivityManager {
             }
 
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                activities.add(activity)
+                activities.add(WeakReference(activity))
             }
 
         })
@@ -100,30 +106,30 @@ object ActivityManager {
 
     fun isAppForeground() = touchCounter > 0
     fun finishAll() {
-        activities.forEach { it.finish() }
+        activities.forEach { it.get()?.finish() }
     }
 
     fun finishActivities(cla: Class<*>) {
-        activities.filter { it.javaClass == cla }
-                .forEach { it.finish() }
+        activities.filter { it.get()?.javaClass == cla }
+                .forEach { it.get()?.finish() }
     }
 
     fun finishActivities(cla: Class<*>, resultCode: Int, intent: Intent) {
         activities.filter { it.javaClass == cla }
                 .forEach {
-                    it.intent = intent
-                    it.setResult(resultCode)
-                    it.finish()
+                    it.get()?.intent = intent
+                    it.get()?.setResult(resultCode)
+                    it.get()?.finish()
                 }
     }
 
     fun finishOther(activity: Activity) {
         activities.filter { it != activity }
-                .forEach { it.finish() }
+                .forEach { it.get()?.finish() }
     }
 
     fun finishOther(vararg cls: Class<*>) {
         activities.filter { !cls.contains(it.javaClass) }
-                .forEach { it.finish() }
+                .forEach { it.get()?.finish() }
     }
 }

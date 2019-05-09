@@ -64,7 +64,7 @@ publish {
     publishVersion = versions.master
     desc = 'nothing'
     bintrayUser = 'ooftf'
-    bintrayKey = bintrayKey()
+    bintrayKey = LocalBintrayKey()
     dryRun = false
 }
 tasks.withType(Javadoc) {
@@ -79,14 +79,13 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation deps.constraintLayout
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
     kapt deps.ARouterCompiler
     if (maven) {
         implementation "com.ooftf:master-service:$versions.master"
     } else {
         implementation project(':service')
     }
-
-
 }
 
 

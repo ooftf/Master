@@ -12,7 +12,6 @@ import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.WidgetAdapter
-import com.ooftf.widget.widget.SuspendWindow
 import com.youth.banner.BannerConfig
 import com.youth.banner.loader.ImageLoaderInterface
 import kotlinx.android.synthetic.main.fragment_widget.*
@@ -75,7 +74,6 @@ class WidgetFragment : BaseLazyFragment() {
             }
         }
         toolbarBanner.isAutoPlay(true).update(bannerList)
-        SuspendWindow.getInstance()
     }
 
 

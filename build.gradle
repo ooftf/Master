@@ -88,7 +88,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-def bintrayKey() {
+def LocalBintrayKey() {
     Properties properties = new Properties()
     InputStream inputStream = rootProject.file('local.properties').newDataInputStream();
     properties.load(inputStream)

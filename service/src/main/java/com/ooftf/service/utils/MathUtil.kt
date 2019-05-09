@@ -11,7 +11,7 @@ object MathUtil {
     fun power(base: Double, power: Int): Double {
         var result = 1.0
         for (i in 0 until power) {
-            result = result * base
+            result *= base
         }
         return result
     }

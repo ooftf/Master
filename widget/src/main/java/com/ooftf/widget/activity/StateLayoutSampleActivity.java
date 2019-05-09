@@ -40,7 +40,7 @@ public class StateLayoutSampleActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_state_layout_sample);
         ButterKnife.bind(this);
-        buttonNormal.setOnClickListener(v -> switcherLayout.switchToNomal());
+        buttonNormal.setOnClickListener(v -> switcherLayout.switchToNormal());
         buttonError.setOnClickListener(v -> switcherLayout.switchToError());
         buttonEmpty.setOnClickListener(v -> switcherLayout.switchToEmpty());
         buttonLoading.setOnClickListener(v -> switcherLayout.switchToLoading());
