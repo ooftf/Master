@@ -7,11 +7,12 @@
     android:background="@color/background"
     tools:context=".activity.StateLayoutSampleActivity">
 
-    <com.ooftf.widget.self.MasterToolbar
+    <com.ooftf.master.widget.toolbar.custom.MasterToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Master" />
 
     <com.ooftf.widget.self.StateLayoutSwitcher
         android:id="@+id/switcherLayout"
@@ -29,36 +30,40 @@
             android:gravity="center"
             android:text="Normal" />
     </com.ooftf.widget.self.StateLayoutSwitcher>
+
     <Button
         android:id="@+id/buttonNormal"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:text="Normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="50dp" />
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/buttonError"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:text="Error"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonNormal"
         app:layout_constraintEnd_toStartOf="@+id/buttonEmpty"
-        android:layout_width="0dp"
-        android:layout_height="50dp" />
+        app:layout_constraintStart_toEndOf="@+id/buttonNormal" />
+
     <Button
         android:id="@+id/buttonEmpty"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:text="Empty"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonError"
         app:layout_constraintEnd_toStartOf="@+id/buttonLoading"
-        android:layout_width="0dp"
-        android:layout_height="50dp" />
+        app:layout_constraintStart_toEndOf="@+id/buttonError" />
+
     <Button
         android:id="@+id/buttonLoading"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:text="Loading"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonEmpty"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="50dp" />
+        app:layout_constraintStart_toEndOf="@+id/buttonEmpty" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

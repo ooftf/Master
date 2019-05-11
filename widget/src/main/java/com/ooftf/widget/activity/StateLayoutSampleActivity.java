@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.ooftf.master.widget.toolbar.custom.MasterToolbar;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.widget.R;
 import com.ooftf.widget.R2;
-import com.ooftf.widget.self.MasterToolbar;
 import com.ooftf.widget.self.StateLayoutSwitcher;
 
 import butterknife.BindView;

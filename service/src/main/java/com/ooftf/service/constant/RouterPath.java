@@ -39,4 +39,18 @@ public interface RouterPath {
             String MAIN = FRAGMENT + "/widget";
         }
     }
+
+    interface Applet {
+        String MODULE = "/applet";
+        interface Activity {
+            String ACTIVITY = MODULE + "/activity";
+            String DuoWanMain = ACTIVITY + "/DuoWanMain";
+        }
+
+        interface Fragment {
+            String FRAGMENT = MODULE + "/fragment";
+            String MAIN = FRAGMENT + "/applet";
+        }
+    }
+
 }
