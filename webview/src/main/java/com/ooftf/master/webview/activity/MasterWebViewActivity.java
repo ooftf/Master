@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.master.webview.R;
 import com.ooftf.master.webview.engine.JsInjector;
 import com.ooftf.master.webview.widget.ImgSrcHandlerDialog;
@@ -21,12 +23,15 @@ import org.jetbrains.annotations.Nullable;
 public class MasterWebViewActivity extends BaseActivity {
     WebView webView;
     JsInjector jsInjector = new JsInjector();
+    @Autowired
+    String url;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_webview);
+        ARouter.getInstance().inject(this);
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
@@ -47,6 +52,11 @@ public class MasterWebViewActivity extends BaseActivity {
                 jsInjector.inject(view);
             }
         });
-        webView.loadUrl("https://mtt.m.jd.com/article/articleView/0b800dcf-1d28-4be8-86d3-3f70535318cb.action");
+        if(url!=null){
+            webView.loadUrl(url);
+        }else{
+            webView.loadUrl("https://mtt.m.jd.com/article/articleView/0b800dcf-1d28-4be8-86d3-3f70535318cb.action");
+        }
+
     }
 }

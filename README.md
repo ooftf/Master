@@ -33,6 +33,7 @@
 * aop : transform api
 * 全链路协议（Dialog activity fragment）
 * ASM
+* Hihttp BaseUrl非空判断
 ### DELAY LIST
 * Ktor
 * 吸顶效果代码需要封装

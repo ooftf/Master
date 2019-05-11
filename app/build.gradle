@@ -71,6 +71,10 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
+
+    dataBinding {
+        enabled true
+    }
 }
 
 //packer-begin

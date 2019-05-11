@@ -25,6 +25,7 @@ public class DuoWanMainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         DuowanMainViewHolder viewHolder = new DuowanMainViewHolder();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_duo_wan_main);
+        binding.setViewHolder(viewHolder);
         DuoWanServiceManager.getDuoWanApiService().get(Constants.HOME_LIST)
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
