@@ -6,12 +6,13 @@ import androidx.databinding.ObservableList;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.applet.BR;
 import com.ooftf.applet.R;
+import com.ooftf.service.binding.OnItemClickListener;
 import com.ooftf.service.constant.RouterPath;
 
 import me.tatarka.bindingcollectionadapter2.ItemBinding;
 
 public class DuowanMainViewHolder {
-    public final OnItemClickListener<MainListResponse.DataBean> listener = data -> ARouter.getInstance().build(RouterPath.WEBVIEW_ACTIVITY_WEBVIEW).withString("url",data.getDestUrl()).navigation();
+    public final OnItemClickListener<MainListResponse.DataBean> listener = data -> ARouter.getInstance().build(RouterPath.Web.Activity.MAIN).withString("url",data.getDestUrl()).navigation();
     public final ObservableList<MainListResponse.DataBean> items = new ObservableArrayList<>();
     public final ItemBinding<MainListResponse.DataBean> itemBinding = ItemBinding.<MainListResponse.DataBean>of(BR.item, R.layout.item_duowan_main).bindExtra(BR.listener,listener);
 

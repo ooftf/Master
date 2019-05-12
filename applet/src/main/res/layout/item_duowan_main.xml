@@ -10,7 +10,7 @@
 
         <variable
             name="listener"
-            type="com.ooftf.applet.modules.duowan.OnItemClickListener" />
+            type="com.ooftf.service.binding.OnItemClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

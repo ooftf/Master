@@ -1,7 +1,6 @@
 package com.ooftf.service.base.adapter
 
 import android.content.Context
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,7 @@ class ActivityIntentListAdapter(var context: Context) : BaseRecyclerAdapter<Acti
     override fun onBindViewHolder_(holder: RecyclerHolder, position: Int) {
         val bean = getItem(position)
         holder.describe.text = bean.describe
-        holder.name.text = bean.name + "(" + bean.clz + ")"
+        holder.name.text = bean.name + "(" + bean.path + ")"
         holder.icon.setImageResource(bean.icon)
 
         if (bean.isIssue) {
@@ -32,7 +31,7 @@ class ActivityIntentListAdapter(var context: Context) : BaseRecyclerAdapter<Acti
         }
 
         holder.itemView.setOnClickListener {
-            ARouter.getInstance().build(bean.clz).navigation()
+            ARouter.getInstance().build(bean.path).navigation()
         }
     }
 

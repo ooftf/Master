@@ -62,7 +62,7 @@ public class ListDialog extends BottomDialog {
         return this;
     }
 
-    public static class InnerAdapter extends BaseRecyclerAdapter<String, BaseViewHolder<TextView>> {
+    private static class InnerAdapter extends BaseRecyclerAdapter<String, BaseViewHolder<TextView>> {
 
 
         @NonNull

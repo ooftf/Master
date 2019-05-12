@@ -4,6 +4,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     kapt deps.dagger2_compiler
-    compile 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.0.0'
-    compile 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.0.0'
+    implementation deps.bindingcollectionadapter
+    implementation deps.bindingcollectionadapter_recycler
 }

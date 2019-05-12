@@ -21,18 +21,21 @@ buildscript {
         ]
 
         deps = [
-                'constraintLayout': 'androidx.constraintlayout:constraintlayout:2.0.0-alpha5',
-                'fastjson'        : 'com.alibaba:fastjson:1.1.70.android',
-                'HiHttp'          : 'com.ooftf:hi-http:3.5.2',
-                'MMKV'            : 'com.tencent:mmkv:1.0.10',
-                'progressDrawable': 'com.github.ooftf:progress-drawable:1.2.0',
-                'disklrucache'    : 'com.jakewharton:disklrucache:2.0.2',
-                'bugly'           : 'com.tencent.bugly:crashreport_upgrade:latest.release',
-                'dagger2_compiler': "com.google.dagger:dagger-compiler:$versions.dagger",
-                'matisse'         : 'com.zhihu.android:matisse:0.5.1',
-                'CalendarView'    : 'com.github.ooftf:CalendarView:1.0.5',
-                'ARouterCompiler' : "com.alibaba:arouter-compiler:$versions.arouter",
-                'ARouterApi'      : 'com.alibaba:arouter-api:1.4.1',
+                'constraintLayout'                 : 'androidx.constraintlayout:constraintlayout:2.0.0-alpha5',
+                'fastjson'                         : 'com.alibaba:fastjson:1.1.70.android',
+                'HiHttp'                           : 'com.ooftf:hi-http:3.5.2',
+                'MMKV'                             : 'com.tencent:mmkv:1.0.10',
+                'progressDrawable'                 : 'com.github.ooftf:progress-drawable:1.2.0',
+                'disklrucache'                     : 'com.jakewharton:disklrucache:2.0.2',
+                'bugly'                            : 'com.tencent.bugly:crashreport_upgrade:latest.release',
+                'dagger2_compiler'                 : "com.google.dagger:dagger-compiler:$versions.dagger",
+                'matisse'                          : 'com.zhihu.android:matisse:0.5.1',
+                'CalendarView'                     : 'com.github.ooftf:CalendarView:1.0.5',
+                'ARouterCompiler'                  : "com.alibaba:arouter-compiler:$versions.arouter",
+                'ARouterApi'                       : 'com.alibaba:arouter-api:1.4.1',
+                'bindingcollectionadapter'         : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.0.0',
+                'bindingcollectionadapter_recycler': 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.0.0',
+
         ]
         moduleList = module.split(",")
     }

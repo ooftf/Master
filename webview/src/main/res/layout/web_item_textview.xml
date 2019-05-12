@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="String" />
+
+        <variable
+            name="listener"
+            type="com.ooftf.service.binding.OnItemClickListener" />
+    </data>
+
+    <TextView
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/font_black"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:onClick="@{()->listener.onItemClick(item)}"
+        android:text="@{item}" />
+</layout>

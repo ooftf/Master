@@ -13,8 +13,6 @@ public interface RouterPath {
     String APPLET_ACTIVITY_TEXT_TO_VOICE = "/applet/activity/textToVoice";
     String APPLET_ACTIVITY_WEEKLY_CONSUMPTION = "/applet/activity/weeklyConsumption";
     String OTHER_ACTIVITY_REFLECT_PERFORMANCE_TEST = "/other/activity/reflectPerformanceTest";
-
-    String WEBVIEW_ACTIVITY_WEBVIEW = "/webview/activity/webview";
     String QRCODE_ACTIVITY_QRCODE = "/qrcode/activity/qrcode";
     String OTHER_ACTIVITY_TOUCH = "/other/activity/touch";
 
@@ -50,6 +48,15 @@ public interface RouterPath {
         interface Fragment {
             String FRAGMENT = MODULE + "/fragment";
             String MAIN = FRAGMENT + "/applet";
+        }
+    }
+
+    interface Web {
+        String MODULE = "/web";
+        interface Activity {
+            String ACTIVITY = MODULE + "/activity";
+            String MAIN = ACTIVITY + "/main";
+            String SHORTCUT = ACTIVITY + "/shortcut";
         }
     }
 

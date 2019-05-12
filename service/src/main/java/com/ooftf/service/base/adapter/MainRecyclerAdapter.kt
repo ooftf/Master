@@ -47,8 +47,8 @@ open class MainRecyclerAdapter(private var baseActivity: BaseActivity, internal 
         }
 
         holder.itemView.setOnClickListener {
-            /*if (Activity::class.java.isAssignableFrom(bean.clz)) {
-                baseActivity.startActivity(bean.clz)
+            /*if (Activity::class.java.isAssignableFrom(bean.path)) {
+                baseActivity.startActivity(bean.path)
             }*/
             ARouter.getInstance().build(bean.clz).navigation()
         }
