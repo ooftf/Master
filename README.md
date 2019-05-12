@@ -34,6 +34,8 @@
 * 全链路协议（Dialog activity fragment）
 * ASM
 * Hihttp BaseUrl非空判断
+* master-widget
+* docking autoRegister
 ### DELAY LIST
 * Ktor
 * 吸顶效果代码需要封装
