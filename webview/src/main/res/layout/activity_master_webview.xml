@@ -14,8 +14,8 @@
 
         <com.ooftf.service.widget.toolbar.TailoredToolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/layout_appbar_height"
+            style="@style/ToolbarStyle.Back"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <WebView

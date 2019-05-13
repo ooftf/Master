@@ -8,31 +8,32 @@
         <variable
             name="items"
             type="java.util.List" />
+
         <variable
             name="itemBinding"
             type="me.tatarka.bindingcollectionadapter2.ItemBinding" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background"
         tools:context=".activity.WebShortcutActivity">
 
         <com.ooftf.service.widget.toolbar.TailoredToolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/layout_appbar_height"
+            style="@style/ToolbarStyle.Back"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:title="Web快捷入口" />
 
         <androidx.recyclerview.widget.RecyclerView
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:items="@{items}"
             app:itemBinding="@{itemBinding}"
+            app:items="@{items}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
     </androidx.constraintlayout.widget.ConstraintLayout>
