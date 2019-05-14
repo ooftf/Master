@@ -20,7 +20,9 @@ public class WidgetApp implements IApplication {
     @Override
     public void onCreate(Application application) {
         JLog.e("WidgetApp","onCreate"+application);
+        JLog.e("WidgetApp","onCreate"+ProcessUtils.isMainProcess());
         if(ProcessUtils.isMainProcess()){
+            JLog.e("WidgetApp","SuspendWindow");
             SuspendWindow.init(application);
             SuspendWindow.getInstance().setOnClickListener(topActivity -> {
 

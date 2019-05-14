@@ -29,14 +29,21 @@ public class DuoWanMainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DuowanMainViewModel viewHolder = new DuowanMainViewModel();
+        DuowanMainViewModel viewModel = new DuowanMainViewModel();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_duo_wan_main);
-        binding.setViewHolder(viewHolder);
-        DuoWanServiceManager.getDuoWanApiService().get(Constants.HOME_LIST)
-                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .flatMap((Function<MainListResponse, ObservableSource<MainListResponse.DataBean>>) response -> Observable.fromIterable(response.getData()))
-                .filter(dataBean -> "news".equals(dataBean.getType()))
-                .toList()
-                .subscribe((Consumer<List<MainListResponse.DataBean>>) viewHolder.items::addAll);
+        binding.setViewHolder(viewModel);
+        binding.refreshLayout.autoRefresh();
+        binding.refreshLayout.setOnRefreshListener(refreshLayout -> {
+            DuoWanServiceManager.getDuoWanApiService().get(Constants.HOME_LIST)
+                    .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                    .flatMap((Function<MainListResponse, ObservableSource<MainListResponse.DataBean>>) response -> Observable.fromIterable(response.getData()))
+                    .filter(dataBean -> "news".equals(dataBean.getType()))
+                    .toList()
+                    .subscribe(item -> {
+                        binding.refreshLayout.finishRefresh(true);
+                        viewModel.items.clear();
+                        viewModel.items.addAll(item);
+                    }, throwable -> binding.refreshLayout.finishRefresh(false));
+        });
     }
 }

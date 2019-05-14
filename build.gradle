@@ -35,6 +35,8 @@ buildscript {
                 'ARouterApi'                       : 'com.alibaba:arouter-api:1.4.1',
                 'bindingcollectionadapter'         : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.0.0',
                 'bindingcollectionadapter_recycler': 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.0.0',
+                'SmartRefreshLayout'               : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-8',
+                'SmartRefreshHeader'               : 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-8',
 
         ]
         moduleList = module.split(",")
