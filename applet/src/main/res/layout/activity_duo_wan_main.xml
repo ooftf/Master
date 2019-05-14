@@ -18,8 +18,6 @@
         android:background="@color/background"
         tools:context=".modules.duowan.DuoWanMainActivity">
 
-
-
         <com.ooftf.service.widget.toolbar.TailoredToolbar
             android:id="@+id/toolbar"
             style="@style/ToolbarStyle.Back"
