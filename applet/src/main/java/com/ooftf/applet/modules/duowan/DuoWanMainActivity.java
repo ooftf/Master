@@ -29,7 +29,7 @@ public class DuoWanMainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DuowanMainViewHolder viewHolder = new DuowanMainViewHolder();
+        DuowanMainViewModel viewHolder = new DuowanMainViewModel();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_duo_wan_main);
         binding.setViewHolder(viewHolder);
         DuoWanServiceManager.getDuoWanApiService().get(Constants.HOME_LIST)

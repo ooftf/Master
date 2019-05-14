@@ -9,7 +9,7 @@
 
         <variable
             name="viewHolder"
-            type="com.ooftf.applet.modules.duowan.DuowanMainViewHolder" />
+            type="com.ooftf.applet.modules.duowan.DuowanMainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,8 +20,8 @@
 
         <com.ooftf.service.widget.toolbar.TailoredToolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/layout_appbar_height"
+            style="@style/ToolbarStyle.Back"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:title="多玩" />
 
