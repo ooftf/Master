@@ -95,7 +95,10 @@ task clean(type: Delete) {
 
 def LocalBintrayKey() {
     Properties properties = new Properties()
-    InputStream inputStream = rootProject.file('local.properties').newDataInputStream();
-    properties.load(inputStream)
-    properties.getProperty('bintrayKey')
+    def file = rootProject.file('local.properties')
+    if(file.exists()){
+        InputStream inputStream = file.newDataInputStream();
+        properties.load(inputStream)
+        properties.getProperty('bintrayKey')
+    }
 }

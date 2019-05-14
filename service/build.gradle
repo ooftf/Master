@@ -132,7 +132,7 @@ dependencies {
     // Firebase Crashlytics
     api "com.trello.rxlifecycle3:rxlifecycle-kotlin:$versions.rxlifecycle"
     api "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
-    api 'com.ooftf:docking-api:1.0.0'
+    api 'com.ooftf:docking-api:2.0.0'
     api 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
     //Firebase
     api 'com.google.firebase:firebase-core:16.0.6'

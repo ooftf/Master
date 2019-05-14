@@ -24,12 +24,16 @@ import com.tls.tls_sigature.tls_sigature;
  * @email 994749769@qq.com
  * @date 2019/4/28 0028
  */
-@com.ooftf.docking.annotation.Application
 public class ImApp implements IApplication {
-
+    private static Application application;
+    @Override
+    public void init(Application application) {
+        this.application = application;
+    }
 
     @Override
-    public void onCreate(Application application) {
+    public void onCreate() {
+        JLog.e("onCreate","ImApp");
         if(SessionWrapper.isMainProcess(application)){
             initTencentIm();
         }
@@ -73,6 +77,8 @@ public class ImApp implements IApplication {
         TUIKit.init(BaseApplication.instance, TencentImConts.SDK_APP_ID, BaseUIKitConfigs.getDefaultConfigs());
     }
 
+
+
     @Override
     public void onLowMemory() {
 
@@ -86,5 +92,14 @@ public class ImApp implements IApplication {
     @Override
     public void attachBaseContext(Context context) {
 
+    }
+
+    @Override
+    public int getPriority() {
+        return 0;
+    }
+
+    public static Application getApplication() {
+        return application;
     }
 }

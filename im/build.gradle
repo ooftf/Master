@@ -6,5 +6,4 @@ dependencies {
     implementation 'com.github.tencentyun:tls-sig-api:1.2'
     compile 'com.github.promeg:tinypinyin:2.0.3'
     kapt deps.dagger2_compiler
-    kapt 'com.ooftf:docking-compiler:1.0.0'
 }

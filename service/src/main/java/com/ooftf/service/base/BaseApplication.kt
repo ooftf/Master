@@ -28,12 +28,16 @@ import io.reactivex.plugins.RxJavaPlugins
  */
 
 open class BaseApplication : MultiDexApplication() {
+    init {
+        instance = this
+        Docking.init(this, true)
+    }
+
     override fun onCreate() {
         TimeRuler.start("MyApplication", "onCreate start")
         super.onCreate()
         CrashReport.initCrashReport(applicationContext, "26a5e838af", false)
         Utils.init(this)
-        instance = this
         //setupThinker()
         setupLeakCanary()
         FileDownloader.init(applicationContext)
@@ -50,7 +54,7 @@ open class BaseApplication : MultiDexApplication() {
         TimeRuler.marker("MyApplication", "TyperFactory start")
         TyperFactory.init(this)
         TimeRuler.marker("MyApplication", "Docking start")
-        Docking.init(this, true, ThreadUtil.getDefaultThreadPool())
+
         TimeRuler.end("MyApplication", "onCreate end")
         RxJavaPlugins.setErrorHandler {
             JLog.e(it.toString())
@@ -60,7 +64,7 @@ open class BaseApplication : MultiDexApplication() {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         }
         LifecycleLog.init(this)
-
+        Docking.notifyOnCreate()
     }
 
     override fun onLowMemory() {

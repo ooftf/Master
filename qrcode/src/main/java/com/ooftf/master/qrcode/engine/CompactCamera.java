@@ -15,7 +15,8 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 
-import com.ooftf.master.qrcode.App;
+import com.ooftf.master.qrcode.QRCodeApp;
+import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.utils.JLog;
 
 import java.nio.ByteBuffer;
@@ -123,7 +124,7 @@ public class CompactCamera implements ICamera {
         return Observable
                 .fromCallable(() -> cameraDevice)
                 .onErrorResumeNext(Observable.create(emitter -> {
-                    CameraManager manager = (CameraManager) App.getInstance().getSystemService(Context.CAMERA_SERVICE);
+                    CameraManager manager = (CameraManager) BaseApplication.instance.getSystemService(Context.CAMERA_SERVICE);
                     String[] cameraIdList = manager.getCameraIdList();
                     manager.openCamera(cameraIdList[0], new CameraDevice.StateCallback() {
                         @Override

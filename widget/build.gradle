@@ -17,6 +17,5 @@ dependencies {
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     implementation 'com.ooftf:master-widget-suspend-window:1.0.1'
     implementation 'com.ooftf:master-widget-toolbar:1.0.1'
-    kapt 'com.ooftf:docking-compiler:1.0.0'
     implementation deps.SmartRefreshLayout
 }
