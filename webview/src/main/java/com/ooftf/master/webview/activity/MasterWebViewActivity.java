@@ -14,6 +14,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -32,6 +33,8 @@ import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.widget.dialog.GridPanelDialog;
 import com.ooftf.service.widget.dialog.ListDialog;
 import com.ooftf.service.widget.toolbar.TailoredToolbar;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -56,6 +59,12 @@ public class MasterWebViewActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_master_webview);
         initToolbar();
         ARouter.getInstance().inject(this);
+        binding.smartRefreshLayout.setOnRefreshListener(refreshLayout -> binding.webView.reload());
+        initWebView();
+
+    }
+
+    private void initWebView() {
         binding.webView.getSettings().setJavaScriptEnabled(true);
         binding.webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -91,6 +100,7 @@ public class MasterWebViewActivity extends BaseActivity {
                     binding.progress.setVisibility(View.VISIBLE);
                 } else {
                     binding.progress.setVisibility(View.GONE);
+                    binding.smartRefreshLayout.finishRefresh();
                 }
                 binding.progress.setProgress(newProgress);
             }
@@ -100,7 +110,6 @@ public class MasterWebViewActivity extends BaseActivity {
         } else {
             toast("Url == null");
         }
-
     }
 
     GridPanelDialog<GridPanelBean> gridPanelDialog;
