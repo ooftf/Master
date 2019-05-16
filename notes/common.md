@@ -17,3 +17,5 @@
 # 手机抓包教程 https://www.jianshu.com/p/724097741bdf
 
 # 渐变色 https://uigradients.com/#Opa
+
+# ObservableField和LiveData set同一个对象  不会触发change事件，可以用ObservableField 的notifyChange
