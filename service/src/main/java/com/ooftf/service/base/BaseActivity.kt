@@ -149,11 +149,11 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         doOnResume()
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         ImmersionBar.with(this).init();
     }
-
     override fun onPause() {
         touchable = false
         super.onPause()

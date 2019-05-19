@@ -158,6 +158,9 @@ class WidgetFragment : BaseLazyFragment() {
         adapter.body.add(ScreenItemBean("/widget/activity/notification", "通知栏", "通知栏示例", category = "非自定义"))
         adapter.body.add(ScreenItemBean(RouterPath.Widget.Activity.VIEWPAGER, "ViewPager展示"))
         adapter.body.add(ScreenItemBean(RouterPath.Widget.Activity.STATE_LAYOUT_SAMPLE, "状态布局Demo"))
+        adapter.body.add(ScreenItemBean(RouterPath.Widget.Activity.SCENE_DEMO, "SceneDemo"))
+        adapter.body.add(ScreenItemBean(RouterPath.Widget.Activity.IMAGE_PREVIEW, "IMAGE_PREVIEW"))
+
         adapter.notifyDataSetChanged()
     }
 

@@ -1,5 +1,6 @@
 package com.ooftf.widget.activity
 
+import android.content.res.Configuration
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseSlidingActivity

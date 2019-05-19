@@ -30,6 +30,9 @@ public interface RouterPath {
             String STATE_LAYOUT_SAMPLE = ACTIVITY + "/StateLayoutSample";
             String VIEWPAGER = ACTIVITY + "/viewPager";
             String PROGRESS_BAR = ACTIVITY + "/progressBar";
+
+            String SCENE_DEMO = ACTIVITY + "/SceneDemo";
+            String IMAGE_PREVIEW = ACTIVITY + "/ImagePreview";
         }
 
         interface Fragment {
