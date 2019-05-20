@@ -1,10 +1,7 @@
 package com.ooftf.master.sign.ui.register;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -37,7 +34,7 @@ import io.reactivex.Observable;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-@Route(path = RouterPath.SIGN_ACTIVITY_REGISTER)
+@Route(path = RouterPath.SIGN_ACTIVITY_REGISTER, extras = 1)
 public class RegisterActivity extends BaseActivity implements RegisterContract.IView {
     @BindView(R2.id.account)
     TextView account;

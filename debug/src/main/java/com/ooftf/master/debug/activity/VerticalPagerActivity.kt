@@ -14,6 +14,7 @@ class VerticalPagerActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ultra_view_pager)
+
         val adapter = UltraPagerAdapter(supportFragmentManager)
         ultraViewPager.adapter = adapter
         ultraViewPager.setScrollEdgeAnalyzer { i, view ->

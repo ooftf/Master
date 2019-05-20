@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
+
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -26,7 +28,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
@@ -36,7 +37,7 @@ import io.reactivex.Observable;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-@Route(path = RouterPath.SIGN_ACTIVITY_SIGN_IN)
+@Route(path = RouterPath.SIGN_ACTIVITY_SIGN_IN, extras = 1)
 public class SignInActivity extends BaseActivity implements SignInContract.IView {
     @BindView(R2.id.account)
     TextView account;

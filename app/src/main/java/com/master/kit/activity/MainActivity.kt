@@ -15,7 +15,7 @@ import com.ooftf.service.engine.main_tab.TabManager
 import hugo.weaving.DebugLog
 import kotlinx.android.synthetic.main.activity_main.*
 
-@Route(path = RouterPath.MAIN_ACTIVITY_MAIN, extras = RouterExtra.Extras.NEED_SIGN)
+@Route(path = RouterPath.MAIN_ACTIVITY_MAIN)
 class MainActivity : BaseActivity() {
     private lateinit var switchManager: FragmentSwitchManager<String>
     private lateinit var adapter: BottomBarAdapter

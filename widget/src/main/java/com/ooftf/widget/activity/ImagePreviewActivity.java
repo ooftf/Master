@@ -66,7 +66,7 @@ public class ImagePreviewActivity extends AppCompatActivity {
       /*  binding.viewPager.getLayoutParams().width = 100;
         binding.viewPager.getLayoutParams().height = 100;*/
         TransitionManager.beginDelayedTransition(binding.viewPager, new ChangeBounds());
-        TransitionManager.
+        //TransitionManager.
       /*  binding.viewPager.getLayoutParams().width = 1000;
         binding.viewPager.getLayoutParams().height = 1000;*/
     }

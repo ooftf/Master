@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.OnLifecycleEvent
 import com.gyf.barlibrary.ImmersionBar
 import com.gyf.barlibrary.OSUtils
@@ -38,7 +39,6 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
     fun <T> bindDestroy(): LifecycleTransformer<T> {
         return provider.bindUntilEvent(Lifecycle.Event.ON_DESTROY)
     }
-
 
 
     fun <T> bindAuto(): LifecycleTransformer<T> {
@@ -154,6 +154,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         super.onConfigurationChanged(newConfig)
         ImmersionBar.with(this).init();
     }
+
     override fun onPause() {
         touchable = false
         super.onPause()
