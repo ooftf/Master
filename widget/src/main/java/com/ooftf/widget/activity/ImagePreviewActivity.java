@@ -9,6 +9,7 @@ import androidx.transition.TransitionManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.graphics.RectF;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.view.animation.LayoutAnimationController;
@@ -42,6 +43,9 @@ public class ImagePreviewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setSharedElementEnterTransition(new android.transition.ChangeBounds());
+        }
         binding = DataBindingUtil.setContentView(this, R.layout.activity_image_preview);
         binding.viewPager.setAdapter(new RecyclerView.Adapter() {
             @NonNull

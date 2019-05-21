@@ -33,6 +33,7 @@ public interface RouterPath {
 
             String SCENE_DEMO = ACTIVITY + "/SceneDemo";
             String IMAGE_PREVIEW = ACTIVITY + "/ImagePreview";
+            String IMAGE_SHOW = ACTIVITY + "/ImageShow";
         }
 
         interface Fragment {

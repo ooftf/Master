@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
 
     <application>
-        <activity android:name=".activity.ImagePreviewActivity"></activity>
+        <activity android:name=".activity.ImageShowActivity"></activity>
+        <activity android:name=".activity.ImagePreviewActivity" />
         <activity android:name=".activity.SceneDemoActivity" />
         <activity android:name=".activity.StateLayoutSampleActivity" />
         <activity

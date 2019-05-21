@@ -21,4 +21,6 @@ dependencies {
     implementation deps.SmartRefreshLayout
     implementation deps.SmartRefreshHeader
     implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha04'
+    implementation deps.bindingcollectionadapter
+    implementation deps.bindingcollectionadapter_recycler
 }

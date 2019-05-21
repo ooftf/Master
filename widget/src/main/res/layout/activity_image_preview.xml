@@ -13,6 +13,7 @@
         tools:context=".activity.ImagePreviewActivity">
 
         <androidx.viewpager2.widget.ViewPager2
+            android:transitionName="@string/image_preview_share_element_200"
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

@@ -25,4 +25,7 @@
 
     <string name="action_share">Share</string>
     <string name="action_reply">Reply</string>
+
+
+    <string name="image_preview_share_element_200">image_preview_share_element_200</string>
 </resources>
