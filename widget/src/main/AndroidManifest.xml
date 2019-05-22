@@ -6,8 +6,10 @@
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
 
     <application>
-        <activity android:name=".activity.ImageShowActivity"></activity>
-        <activity android:name=".activity.ImagePreviewActivity" />
+        <activity android:name=".activity.ImageShowActivity" />
+        <activity
+            android:name=".activity.ImagePreviewActivity"
+            android:theme="@style/ImagePreview" />
         <activity android:name=".activity.SceneDemoActivity" />
         <activity android:name=".activity.StateLayoutSampleActivity" />
         <activity
@@ -35,7 +37,6 @@
         <activity android:name=".activity.CalendarActivity" />
         <activity android:name=".activity.PatternLockActivity" />
         <activity android:name=".activity.TaobaoActivity" />
-        <activity android:name=".activity.BottomBarActivity" />
         <activity android:name=".activity.SlidingTextViewActivity" />
         <activity android:name=".activity.BarrageActivity" />
         <activity android:name=".activity.SlidingListActivity" />

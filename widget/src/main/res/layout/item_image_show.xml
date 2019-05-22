@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.ooftf.widget.activity.ImagePreviewActivity.ImagePreviewBean.Bean" />
+
+        <variable
+            name="clickListener"
+            type="com.ooftf.service.binding.OnItemClickListener3" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:adjustViewBounds="true"
+            android:transitionName="@{item.transitionName}"
+            android:onClick="@{(view)->clickListener.onItemClick(view,item)}"
+            app:url="@{item.url}" />
+    </LinearLayout>
+</layout>

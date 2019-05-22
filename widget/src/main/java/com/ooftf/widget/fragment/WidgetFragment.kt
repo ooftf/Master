@@ -160,7 +160,7 @@ class WidgetFragment : BaseLazyFragment() {
         adapter.body.add(ScreenItemBean(RouterPath.Widget.Activity.STATE_LAYOUT_SAMPLE, "状态布局Demo"))
         adapter.body.add(ScreenItemBean(RouterPath.Widget.Activity.SCENE_DEMO, "SceneDemo"))
         adapter.body.add(ScreenItemBean(RouterPath.Widget.Activity.IMAGE_PREVIEW, "IMAGE_PREVIEW"))
-
+        adapter.body.add(ScreenItemBean(RouterPath.Widget.Activity.IMAGE_SHOW, "IMAGE_SHOW"))
         adapter.notifyDataSetChanged()
     }
 
