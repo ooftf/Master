@@ -39,7 +39,18 @@ public class GroupChatActivity extends BaseActivity {
         chatPanel.setBaseChatId(chatId);
     }
     @Override
+    public boolean isDarkFont() {
+        return true;
+    }
+
+    @Override
     public boolean isImmersionEnable() {
-        return false;
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public View getToolbar() {
+        return chatPanel.getTitleBar();
     }
 }

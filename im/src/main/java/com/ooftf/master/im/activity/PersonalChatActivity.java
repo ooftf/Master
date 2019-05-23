@@ -1,6 +1,7 @@
 package com.ooftf.master.im.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,8 +14,11 @@ import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
 import com.tencent.qcloud.uikit.business.chat.c2c.view.C2CChatPanel;
 
+import org.jetbrains.annotations.Nullable;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 @Route(path = RouterPath.IM_ACTIVITY_PERSONAL_CHAT)
 public class PersonalChatActivity extends BaseActivity {
     @BindView(R2.id.chat_panel)
@@ -33,7 +37,18 @@ public class PersonalChatActivity extends BaseActivity {
     }
 
     @Override
+    public boolean isDarkFont() {
+        return true;
+    }
+
+    @Override
     public boolean isImmersionEnable() {
-        return false;
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public View getToolbar() {
+        return chatPanel.getTitleBar();
     }
 }

@@ -1,6 +1,7 @@
 package com.ooftf.master.im.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -8,9 +9,9 @@ import com.ooftf.master.im.R;
 import com.ooftf.master.im.R2;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
-import com.tencent.qcloud.uikit.business.session.model.SessionInfo;
 import com.tencent.qcloud.uikit.business.session.view.SessionPanel;
-import com.tencent.qcloud.uikit.business.session.view.wedgit.SessionClickListener;
+
+import org.jetbrains.annotations.Nullable;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,18 +44,20 @@ public class ImMainActivity extends BaseActivity {
         });
     }
 
-    /*@Override
-    public int getToolbarId() {
-        return R.id.session_title_panel;
-    }
 
     @Override
     public boolean isDarkFont() {
         return true;
-    }*/
+    }
 
     @Override
     public boolean isImmersionEnable() {
-        return false;
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public View getToolbar() {
+        return sessionPanel.mTitleBar;
     }
 }

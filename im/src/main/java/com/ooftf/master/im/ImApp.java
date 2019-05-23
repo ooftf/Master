@@ -19,6 +19,8 @@ import com.tencent.qcloud.uikit.TUIKit;
 import com.tencent.qcloud.uikit.common.IUIKitCallBack;
 import com.tls.tls_sigature.tls_sigature;
 
+import java.util.ArrayList;
+
 /**
  * @author ooftf
  * @email 994749769@qq.com
@@ -74,7 +76,7 @@ public class ImApp implements IApplication {
 
     private void initTencentIm() {
         //应替换成（BaseUIKitConfigs的配置请看后面章节）
-        TUIKit.init(BaseApplication.instance, TencentImConts.SDK_APP_ID, BaseUIKitConfigs.getDefaultConfigs());
+        TUIKit.init(BaseApplication.instance, TencentImConts.SDK_APP_ID, BaseUIKitConfigs.getDefaultConfigs(),new ArrayList<>());
     }
 
 
