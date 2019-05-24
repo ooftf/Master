@@ -5,5 +5,6 @@ dependencies {
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     implementation 'com.github.tencentyun:tls-sig-api:1.2'
     compile 'com.github.promeg:tinypinyin:2.0.3'
+    implementation 'com.ooftf:tuikit-master:4.3.81'
     kapt deps.dagger2_compiler
 }

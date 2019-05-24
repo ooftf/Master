@@ -30,7 +30,7 @@ public class ImApp implements IApplication {
     private static Application application;
     @Override
     public void init(Application application) {
-        this.application = application;
+        ImApp.application = application;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class ImApp implements IApplication {
 
     private void initTencentIm() {
         //应替换成（BaseUIKitConfigs的配置请看后面章节）
-        TUIKit.init(BaseApplication.instance, TencentImConts.SDK_APP_ID, BaseUIKitConfigs.getDefaultConfigs(),new ArrayList<>());
+        TUIKit.init(BaseApplication.instance, TencentImConts.SDK_APP_ID, BaseUIKitConfigs.getDefaultConfigs());
     }
 
 

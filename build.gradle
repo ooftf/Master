@@ -84,6 +84,9 @@ allprojects {
             url "https://dl.bintray.com/ooftf/maven"
         }
         maven {
+            url "https://dl.bintray.com/ooftf/image"
+        }
+        maven {
             url 'https://maven.google.com/'
         }
     }

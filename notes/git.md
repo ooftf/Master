@@ -16,6 +16,13 @@
     git pull --all
     push到新的git地址
     git push --mirror https://github.com/ooftf/Jdm.git
+#### 从服务端拉取指定文件夹
+    git init TIM_Android
+    cd TIM_Android
+    git remote add origin https://github.com/tencentyun/TIMSDK.git
+    git config core.sparsecheckout true
+    echo "Android/*" >> .git/info/sparse-checkout
+    git pull origin master    
 ### 提交代码
     git add README.md
     git commit -m "add README"
