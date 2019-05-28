@@ -11,5 +11,13 @@ gradlew :app:dependencies
 {一个数组}或者{多个参数}都可以
 ### Intent
 Intent.resolveActivity用来检查是否有隐式注册
-                            
 
+### Toast如果show两次在某些机型（小米的部分手机）会不显示toast
+                            
+### SingleTask或singleInstance 如果在A启动A    虽然不会走大部分生命周期，但是会导致本身和位于其中的Fragment走onResume方法
+    [HomeActivity, onActivityPaused]
+    [HomeFragment, onFragmentPaused]
+    [SupportRequestManagerFragment, onFragmentPaused]
+    [HomeActivity, onActivityResumed]
+    [HomeFragment, onFragmentResumed]
+    [SupportRequestManagerFragment, onFragmentResumed]
