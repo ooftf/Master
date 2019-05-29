@@ -96,6 +96,9 @@
 
 # PublishSubject 更类似于传统观察者模式
 
+多次订阅一个Observable 事件是分开的，因为每次订阅都会生成不同的订阅器
+多次订阅PublishSubject 事件是相同的，可以多次订阅，类似传统观察者模式，但是onError和onComplete会阻断后续事件
+
 # 使用RxJava曾遇到的问题（需要注意的问题）
 * subscribe(Consumer())这种订阅没有做异常处理，如果发生异常会导致应用崩溃
 * RxJava只能捕获当前同步异常,如下情况是无法通过RxJava捕获的

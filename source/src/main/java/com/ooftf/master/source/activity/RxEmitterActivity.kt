@@ -1,26 +1,21 @@
 package com.ooftf.master.source.activity
 
 import android.os.Bundle
-import androidx.lifecycle.Lifecycle
+import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.hihttp.action.weak.LifeAction
-import com.ooftf.hihttp.action.weak.LifeConsumer
 import com.ooftf.master.source.R
 import com.ooftf.service.base.BaseBarrageActivity
 import com.ooftf.service.utils.JLog
-import com.ooftf.service.utils.LifeFunction
-import com.trello.rxlifecycle3.android.lifecycle.kotlin.bindUntilEvent
+import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
-import io.reactivex.ObservableSource
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Action
-import io.reactivex.functions.Consumer
-import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_rx_emitter.*
+import rx.subjects.PublishSubject
+import java.util.concurrent.TimeUnit
 
 @Route(path = "/source/activity/RxEmitter")
 class RxEmitterActivity : BaseBarrageActivity() {
@@ -113,25 +108,20 @@ class RxEmitterActivity : BaseBarrageActivity() {
                         addBarrage(it)
                     }
         }
+        val publish = PublishSubject.create<Long>()
         button5.setOnClickListener {
-            getStaticDelayObservable()
-                    .bindUntilEvent(this, Lifecycle.Event.ON_DESTROY)
-                    .flatMap(LifeFunction(Function<String, ObservableSource<String>> {
-                        JLog.e("Lifecycle  flatMap:如果打印则发生了内存泄漏")
-                        addBarrage("Lifecycle  flatMap:如果打印则发生了内存泄漏")
-                        Observable.just(it)
-                    }, this))
-                    .flatMap {
-                        JLog.e("Lifecycle  flatMap:如果打印则发生了内存泄漏")
-                        addBarrage("Lifecycle  flatMap:如果打印则发生了内存泄漏")
-                        Observable.just(it)
-                    }
-                    .doOnSubscribe(LifeConsumer(Consumer<Disposable> { JLog.e("Lifecycle  doOnSubscribe") }, this))
-                    .doOnTerminate(LifeAction(Action {
-                        addBarrage("Lifecycle  doOnTerminate:如果打印则发生了内存泄漏")
-                        JLog.e("Lifecycle  doOnTerminate:如果打印则发生了内存泄漏")
-                    }, this))
-                    .subscribe()
+            val interval = Observable.interval(1000, TimeUnit.MILLISECONDS);
+            interval.subscribe {
+                publish.onNext(it)
+            }
+            publish.subscribe {
+                JLog.e("subscribe-1", ""+it)
+            }
+            Observable.timer(2000,TimeUnit.MILLISECONDS).subscribe{
+                publish.subscribe {
+                    JLog.e("subscribe-2", ""+it)
+                }
+            }
         }
     }
 

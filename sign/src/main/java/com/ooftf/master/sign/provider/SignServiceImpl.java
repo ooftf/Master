@@ -72,6 +72,8 @@ public class SignServiceImpl implements ISignService {
                         bean.setMsg(mobBaseBean.getMsg());
                     }
                     return bean;
+                }).doOnSuccess(signAssistBean -> {
+                    signInSubject.onNext(signAssistBean.getMsg());
                 });
     }
 
@@ -87,6 +89,7 @@ public class SignServiceImpl implements ISignService {
     @Override
     public void signOut() {
         TyperFactory.getDefault().remove(KEY_ACCOUNT_INFO);
+        signInSubject.onNext("");
     }
 
 

@@ -51,7 +51,7 @@ public class FireSignServiceImpl implements ISignService {
 
     @Override
     public Single<SignAssistBean> signIn(String username, String password) {
-        return Single.create(emitter ->
+        return Single.<SignAssistBean>create(emitter ->
                 FirebaseAuth
                         .getInstance()
                         .signInWithEmailAndPassword(username, password)
@@ -67,7 +67,8 @@ public class FireSignServiceImpl implements ISignService {
                                 result.setMsg(task.getException().getMessage());
                             }
                             emitter.onSuccess(result);
-                        }));
+                        }))
+                .doOnSuccess(signAssistBean -> signInSubject.onNext(signAssistBean.getMsg()));
     }
 
     @Override
@@ -82,6 +83,7 @@ public class FireSignServiceImpl implements ISignService {
     @Override
     public void signOut() {
         mAuth.signOut();
+        signInSubject.onNext("");
     }
 
 
@@ -102,7 +104,7 @@ public class FireSignServiceImpl implements ISignService {
 
     @Override
     public String getUserId() {
-        return  mAuth.getCurrentUser().getUid();
+        return mAuth.getCurrentUser().getUid();
     }
 
     @Override

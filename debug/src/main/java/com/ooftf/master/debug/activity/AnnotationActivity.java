@@ -11,6 +11,9 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.master.debug.R;
 import com.ooftf.master.debug.aspectj.Log;
 
+/**
+ * @author 99474
+ */
 @Route(path = "/debug/activity/annotation")
 @Log
 public class AnnotationActivity extends AppCompatActivity {
