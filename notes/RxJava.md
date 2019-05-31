@@ -121,6 +121,7 @@
     https://github.com/JakeWharton/RxRelay        RxJava 在发射 onError或者onComplete数据后将不能在发射后续数据，RxRelay就是为了解决这个问题而产生的
 # RxJava问题讨论
     再合并多个Observer的时候线程切换是什么结果
+    onNext 时间抛出异常会中断数据流吗
 # TODO
 * blocking
 * retry
