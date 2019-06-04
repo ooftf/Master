@@ -152,7 +152,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        ImmersionBar.with(this).init();
+        ImmersionBar.with(this).init()
     }
 
     override fun onPause() {
