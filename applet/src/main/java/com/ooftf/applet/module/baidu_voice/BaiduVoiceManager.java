@@ -6,5 +6,5 @@ package com.ooftf.applet.module.baidu_voice;
  * @date 2019/5/30 0030
  */
 public class BaiduVoiceManager {
-    EventManager asr = EventManagerFactory.create(this, "asr");
+    //EventManager asr = EventManagerFactory.create(this, "asr");
 }

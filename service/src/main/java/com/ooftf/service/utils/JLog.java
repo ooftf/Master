@@ -11,6 +11,8 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.List;
 
+import io.reactivex.subjects.PublishSubject;
+
 /**
  * @author ooftf
  * @date 2018/9/20 0020
@@ -252,6 +254,12 @@ public class JLog {
         }
     }
 
+    private static PublishSubject<LogBean> logPublisher = PublishSubject.create();
+
+    public static PublishSubject<LogBean> register() {
+        return logPublisher;
+    }
+
     /**
      * 这个方法应该只被 logObject 所调用
      *
@@ -260,6 +268,7 @@ public class JLog {
      * @param msg
      */
     private static void dispatch(int level, String tag, String msg) {
+        logPublisher.onNext(new LogBean(level, tag, msg));
         switch (level) {
             case VERBOSE:
                 Log.v(tag, msg);
@@ -298,5 +307,17 @@ public class JLog {
         } else {
             return tag.getClass().getSimpleName();
         }
+    }
+
+    public static class LogBean {
+        public LogBean(int level, String tag, String msg) {
+            this.level = level;
+            this.tag = tag;
+            this.msg = msg;
+        }
+
+        public int level;
+        public String tag;
+        public String msg;
     }
 }
