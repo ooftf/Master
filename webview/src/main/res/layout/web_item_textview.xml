@@ -9,16 +9,16 @@
 
         <variable
             name="listener"
-            type="com.ooftf.service.binding.OnItemClickListener" />
+            type="com.ooftf.service.interfaces.click.OnClickListener" />
     </data>
 
     <TextView
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:gravity="center_vertical"
-        android:textColor="@color/font_black"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:onClick="@{()->listener.onItemClick(item)}"
-        android:text="@{item}" />
+        android:gravity="center_vertical"
+        android:onClick="@{()->listener.onClick(item)}"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@{item}"
+        android:textColor="@color/font_black" />
 </layout>

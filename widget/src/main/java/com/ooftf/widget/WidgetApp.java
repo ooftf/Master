@@ -2,6 +2,7 @@ package com.ooftf.widget;
 
 import android.app.Application;
 import android.content.Context;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -60,7 +62,9 @@ public class WidgetApp implements IApplication {
             JLog.e("WidgetApp", "SuspendWindow");
             SuspendWindow.init(application);
             SuspendWindow.getInstance().setOnClickListener(topActivity -> {
-
+                if (isHasDialog()) {
+                    return;
+                }
                 new ListDialog(topActivity)
                         .setList(new ArrayList<String>() {
                             {
@@ -69,6 +73,7 @@ public class WidgetApp implements IApplication {
                                 add("显示当前LOG");
                             }
                         })
+                        .setShowCancel(false)
                         .setOnItemClickListener((item, position, dialog) -> {
                             dialog.dismiss();
                             switch (position) {
@@ -81,6 +86,7 @@ public class WidgetApp implements IApplication {
                                     }
                                     break;
                                 case 1:
+
                                     break;
                                 case 2:
                                     Toast.makeText(BaseApplication.instance, queue.toString(), Toast.LENGTH_SHORT).show();
@@ -93,6 +99,37 @@ public class WidgetApp implements IApplication {
         }
     }
 
+    private static ArrayList<View> getWindowViews() {
+        try {
+            View rootView = null;
+            Class wmgClass = Class.forName("android.view.WindowManagerGlobal");
+            Object wmgInstnace = wmgClass.getMethod("getInstance").invoke(null, (Object[]) null);
+            Field mViewsField = wmgClass.getDeclaredField("mViews");
+            mViewsField.setAccessible(true);
+            ArrayList<View> o = (ArrayList<View>) mViewsField.get(wmgInstnace);
+            return o;
+
+//            private final ArrayList<View> mViews = new ArrayList<View>();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    boolean isHasDialog() {
+        ArrayList<View> windowViews = getWindowViews();
+        int decorViewCount = 0;
+        for (View view : windowViews) {
+            if (view.getClass().getSimpleName().contains("DecorView")) {
+                decorViewCount++;
+                if (decorViewCount >= 2) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     @Override
     public void onLowMemory() {

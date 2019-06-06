@@ -10,13 +10,13 @@
 
         <variable
             name="listener"
-            type="com.ooftf.service.binding.OnItemClickListener" />
+            type="com.ooftf.service.interfaces.click.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:onClick="@{()->listener.onItemClick(item)}"
+        android:onClick="@{()->listener.onClick(item)}"
         android:orientation="vertical">
 
         <com.makeramen.roundedimageview.RoundedImageView

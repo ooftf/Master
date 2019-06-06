@@ -24,13 +24,13 @@
     </style>
 
     <style name="WindowAnimTranslateBottom">
-        <item name="@android:windowEnterAnimation">@anim/dialog_enter_bottom</item>
-        <item name="@android:windowExitAnimation">@anim/dialog_outer_bottom</item>
+        <item name="android:windowEnterAnimation">@anim/dialog_enter_bottom</item>
+        <item name="android:windowExitAnimation">@anim/dialog_outer_bottom</item>
     </style>
 
     <style name="WindowAnimAlpha">
-        <item name="@android:windowEnterAnimation">@anim/dialog_enter_alpha</item>
-        <item name="@android:windowExitAnimation">@anim/dialog_outer_alpha</item>
+        <item name="android:windowEnterAnimation">@anim/dialog_enter_alpha</item>
+        <item name="android:windowExitAnimation">@anim/dialog_outer_alpha</item>
     </style>
 
     <style name="DialogTheme.Blur">

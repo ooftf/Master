@@ -2,21 +2,21 @@ package com.ooftf.service.widget.dialog;
 
 import android.app.Activity;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.ooftf.service.R;
-import com.ooftf.service.R2;
-import com.ooftf.service.base.adapter.BaseViewHolder;
-import com.ooftf.service.utils.JLog;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.ooftf.service.R;
+import com.ooftf.service.R2;
+import com.ooftf.service.base.adapter.BaseViewHolder;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +32,8 @@ public class ListDialog extends BottomDialog {
     TextView cancel;
     @BindView(R2.id.recycler_view)
     RecyclerView recyclerView;
+    @BindView(R2.id.cancel_group)
+    View cancelGroup;
     InnerAdapter adapter;
     private DialogOnItemClickListener itemClickListener;
 
@@ -49,6 +51,15 @@ public class ListDialog extends BottomDialog {
                 itemClickListener.OnItemClick(data, position, ListDialog.this);
             }
         });
+    }
+
+    public ListDialog setShowCancel(boolean show) {
+        if (show) {
+            cancelGroup.setVisibility(View.VISIBLE);
+        } else {
+            cancelGroup.setVisibility(View.GONE);
+        }
+        return this;
     }
 
     public ListDialog setList(List<String> data) {

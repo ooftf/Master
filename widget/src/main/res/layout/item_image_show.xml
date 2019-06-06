@@ -10,7 +10,7 @@
 
         <variable
             name="clickListener"
-            type="com.ooftf.service.binding.OnItemClickListener3" />
+            type="com.ooftf.service.interfaces.click.OnClickListener2" />
     </data>
 
     <LinearLayout
@@ -24,7 +24,7 @@
             android:layout_height="120dp"
             android:adjustViewBounds="true"
             android:transitionName="@{item.transitionName}"
-            android:onClick="@{(view)->clickListener.onItemClick(view,item)}"
+            android:onClick="@{(view)->clickListener.onClick(view,item)}"
             app:url="@{item.url}" />
     </LinearLayout>
 </layout>

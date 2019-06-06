@@ -14,7 +14,7 @@ import androidx.databinding.ObservableList;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.service.base.BaseActivity;
-import com.ooftf.service.binding.OnItemClickListener3;
+import com.ooftf.service.interfaces.click.OnClickListener2;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.widget.BR;
 import com.ooftf.widget.R;
@@ -31,7 +31,7 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
 @Route(path = RouterPath.Widget.Activity.IMAGE_SHOW)
 public class ImageShowActivity extends BaseActivity {
     ObservableList<ImagePreviewActivity.ImagePreviewBean.Bean> items = new ObservableArrayList<>();
-    OnItemClickListener3<ImagePreviewActivity.ImagePreviewBean.Bean> clickListener = (view, data) -> {
+    OnClickListener2<ImagePreviewActivity.ImagePreviewBean.Bean> clickListener = (view, data) -> {
 
         ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(ImageShowActivity.this, view, data.transitionName);
         //startActivity(new Intent(ImageShowActivity.this, ImagePreviewActivity.class), transitionActivityOptions.toBundle());

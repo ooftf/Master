@@ -12,14 +12,14 @@ import com.ooftf.master.webview.BR;
 import com.ooftf.master.webview.R;
 import com.ooftf.master.webview.databinding.ActivityWebShortcutBinding;
 import com.ooftf.service.base.BaseActivity;
-import com.ooftf.service.binding.OnItemClickListener;
+import com.ooftf.service.interfaces.click.OnClickListener;
 import com.ooftf.service.constant.RouterPath;
 
 import me.tatarka.bindingcollectionadapter2.ItemBinding;
 
 @Route(path = RouterPath.Web.Activity.SHORTCUT)
 public class WebShortcutActivity extends BaseActivity {
-    public final OnItemClickListener<String> listener = data -> ARouter.getInstance().build(RouterPath.Web.Activity.MAIN).withString("url", data).navigation();
+    public final OnClickListener<String> listener = data -> ARouter.getInstance().build(RouterPath.Web.Activity.MAIN).withString("url", data).navigation();
     public final ObservableList<String> item = new ObservableArrayList<String>() {
         {
             add("https://www.baidu.com/");
