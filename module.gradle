@@ -77,10 +77,10 @@ tasks.withType(Javadoc) {
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation deps.constraintLayout
+    androidTestImplementation test.runner
+    androidTestImplementation test.espresso
+    testImplementation test.junit
+    implementation androidx.constraintLayout
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
     kapt deps.ARouterCompiler
     if (maven) {

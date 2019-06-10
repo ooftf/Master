@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.crashlytics.android.Crashlytics
 import com.ooftf.master.debug.R
 import com.ooftf.master.debug.widget.DialogDemo
-import com.ooftf.service.widget.dialog.ListBlurDialog
+import com.ooftf.master.widget.dialog.ui.ListBlurDialog
 import kotlinx.android.synthetic.main.activity_dialog_debug.*
 
 @Route(path = "/debug/activity/dialog")

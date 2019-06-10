@@ -11,14 +11,8 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -28,19 +22,12 @@ import com.ooftf.master.webview.bean.GridPanelBean;
 import com.ooftf.master.webview.databinding.ActivityMasterWebviewBinding;
 import com.ooftf.master.webview.engine.JsInjector;
 import com.ooftf.master.webview.widget.ImgSrcHandlerDialog;
+import com.ooftf.master.widget.dialog.ui.GridPanelDialog;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
-import com.ooftf.service.widget.dialog.GridPanelDialog;
-import com.ooftf.service.widget.dialog.ListDialog;
-import com.ooftf.service.widget.toolbar.TailoredToolbar;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author ooftf

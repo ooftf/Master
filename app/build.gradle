@@ -85,8 +85,10 @@ packer {
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation deps.constraintLayout
-    testImplementation 'junit:junit:4.12'
+    implementation androidx.constraintLayout
+    androidTestImplementation test.runner
+    androidTestImplementation test.espresso
+    testImplementation test.junit
     if (!MoudleDebug) {
         if (maven) {
             moduleList.each {

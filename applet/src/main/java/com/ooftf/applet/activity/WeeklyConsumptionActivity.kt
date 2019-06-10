@@ -1,10 +1,10 @@
 package com.ooftf.applet.activity
 
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import android.util.Base64
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.gson.Gson
 import com.ooftf.applet.R
@@ -13,6 +13,7 @@ import com.ooftf.applet.bean.OrderRecordBean
 import com.ooftf.applet.bean.PersonRecordBean
 import com.ooftf.applet.engine.text_watcher.*
 import com.ooftf.hihttp.action.DialogAction
+import com.ooftf.master.widget.dialog.ui.ListBlurDialog
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.typer.TyperFactory
@@ -21,13 +22,11 @@ import com.ooftf.service.net.mob.action.ErrorAction
 import com.ooftf.service.net.mob.action.MobObserver
 import com.ooftf.service.net.mob.bean.ItemDataBean
 import com.ooftf.service.net.mob.bean.MobBaseBean
-import com.ooftf.service.widget.dialog.ListBlurDialog
 import com.ooftf.service.widget.toolbar.TailoredToolbar
 import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_weekly_consumption.*
-import tf.ooftf.com.service.base.adapter.BaseRecyclerAdapter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -115,34 +114,33 @@ class WeeklyConsumptionActivity : BaseActivity() {
         data.add("保存数据到服务器")
         data.add("全选")
         data.add("清空")
-        operationPanel.setOnItemClickListener(object : BaseRecyclerAdapter.OnItemClickListener<String> {
-            override fun onItemClick(data: String, position: Int) {
-                when (position) {
-                    0 -> {
-                        requestFromServer()
-                        operationPanel.dismiss()
-                    }
-                    1 -> {
-                        requestSaveToServer()
-                        operationPanel.dismiss()
-                    }
-                    2 -> {
-                        selectAll()
-                        operationPanel.dismiss()
-                    }
-                    3 -> {
-                        operationPanel.dismiss()
-                        AlertDialog.Builder(this@WeeklyConsumptionActivity)
-                                .setMessage("确定清空？")
-                                .setNegativeButton("取消") { dialog, _ -> dialog.dismiss() }
-                                .setPositiveButton("确定") { _, _ -> clearData() }
-                                .show()
-                    }
+        operationPanel.setOnItemClickListener { dialog, position, item ->
 
+            when (position) {
+                0 -> {
+                    requestFromServer()
+                    operationPanel.dismiss()
                 }
+                1 -> {
+                    requestSaveToServer()
+                    operationPanel.dismiss()
+                }
+                2 -> {
+                    selectAll()
+                    operationPanel.dismiss()
+                }
+                3 -> {
+                    operationPanel.dismiss()
+                    AlertDialog.Builder(this@WeeklyConsumptionActivity)
+                            .setMessage("确定清空？")
+                            .setNegativeButton("取消") { dialog, _ -> dialog.dismiss() }
+                            .setPositiveButton("确定") { _, _ -> clearData() }
+                            .show()
+                }
+
             }
 
-        })
+        }
         operationPanel.setList(data)
     }
 

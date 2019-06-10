@@ -9,10 +9,10 @@ import android.widget.Toast;
 import com.blankj.utilcode.util.ProcessUtils;
 import com.google.android.material.snackbar.Snackbar;
 import com.ooftf.docking.api.IApplication;
+import com.ooftf.master.widget.dialog.ui.ListDialog;
 import com.ooftf.master.widget.suspend.SuspendWindow;
 import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.utils.JLog;
-import com.ooftf.service.widget.dialog.ListDialog;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
@@ -74,7 +74,7 @@ public class WidgetApp implements IApplication {
                             }
                         })
                         .setShowCancel(false)
-                        .setOnItemClickListener((item, position, dialog) -> {
+                        .setOnItemClickListener((dialog, position, item) -> {
                             dialog.dismiss();
                             switch (position) {
                                 case 0:
@@ -94,7 +94,7 @@ public class WidgetApp implements IApplication {
                                 default:
                             }
                         })
-                        .show();
+                        .show_();
             }).startShow();
         }
     }

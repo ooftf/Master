@@ -1,11 +1,12 @@
 package com.ooftf.service.base
 
 import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Bundle
-import androidx.annotation.CallSuper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.CallSuper
 import com.gyf.barlibrary.ImmersionBar
 import com.gyf.barlibrary.SimpleImmersionOwner
 import com.gyf.barlibrary.SimpleImmersionProxy
@@ -89,7 +90,7 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
         if (toolbar != null) {
             immersionBar.titleBar(toolbar)
         }
-        immersionBar.init()
+        immersionBar.navigationBarColorInt(Color.WHITE).init()
     }
 
     open fun getToolbarId(): Int {

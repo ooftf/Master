@@ -1,8 +1,9 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
 
     <style name="AppTheme.TranslucentStatus.Splash">
         <item name="android:windowBackground">@drawable/ooftf</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/transparent</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

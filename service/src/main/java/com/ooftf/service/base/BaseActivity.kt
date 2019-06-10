@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,7 +12,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.OnLifecycleEvent
 import com.gyf.barlibrary.ImmersionBar
 import com.gyf.barlibrary.OSUtils
@@ -70,7 +70,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
             lifecycle.addObserver(object : LifecycleObserver {
                 @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
                 fun create() {
-                    ImmersionBar.with(this@BaseActivity).statusBarDarkFont(isDarkFont()).init()
+                    ImmersionBar.with(this@BaseActivity).statusBarDarkFont(isDarkFont()).navigationBarColorInt(Color.WHITE).init()
                     var view = getToolbar()
                     if (view == null) {
                         view = findViewById(getToolbarId())

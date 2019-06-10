@@ -8,10 +8,9 @@ import android.util.Base64;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.utils.IoUtils;
+import com.ooftf.master.widget.dialog.ui.ListDialog;
 import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.empty.EmptyObserver;
-import com.ooftf.service.widget.dialog.ListDialog;
-
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;

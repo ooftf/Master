@@ -58,19 +58,17 @@ tasks.withType(Javadoc) {
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api deps.constraintLayout
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha4', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testImplementation 'junit:junit:4.12'
+    api androidx.constraintLayout
+    androidTestImplementation test.runner
+    androidTestImplementation test.espresso
+    testImplementation test.junit
     kapt deps.ARouterCompiler
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
-    api "androidx.vectordrawable:vectordrawable:$versions.support"
-    api "androidx.appcompat:appcompat:$versions.support"
-    api "androidx.legacy:legacy-support-v4:$versions.support"
-    api "androidx.cardview:cardview:$versions.support"
-    api "com.google.android.material:material:$versions.support"
-    api "androidx.recyclerview:recyclerview:$versions.support"
+    api androidx.vectordrawable
+    api androidx.appcompat
+    api androidx.cardview
+    api deps.material
+    api androidx.recyclerview
     api 'com.loopj.android:android-async-http:1.4.9'
     api "com.jakewharton:butterknife:$versions.butterknife"
     api 'com.alibaba:fastjson:1.2.7'
@@ -81,7 +79,8 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$versions.glide"
     api 'com.makeramen:roundedimageview:2.3.0'
     api 'androidx.multidex:multidex:2.0.1'
-    api "androidx.legacy:legacy-support-v13:$versions.support"
+    api androidx.legacy_v4
+    api androidx.legacy_v13
     api 'com.youth.banner:banner:1.4.10'
     api 'com.romandanylyk:pageindicatorview:1.0.2'
     api 'com.orhanobut:logger:2.2.0'
@@ -129,14 +128,15 @@ dependencies {
     implementation deps.bugly
     implementation deps.MMKV
     implementation deps.disklrucache
-    // Firebase Crashlytics
     api "com.trello.rxlifecycle3:rxlifecycle-kotlin:$versions.rxlifecycle"
     api "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
     api 'com.ooftf:docking-api:2.0.0'
     api 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
+    // Firebase Crashlytics
     //Firebase
     api 'com.google.firebase:firebase-core:16.0.6'
     api 'com.crashlytics.sdk.android:crashlytics:2.9.8'
     api 'com.google.firebase:firebase-auth:16.1.0'
+    api 'com.ooftf:master-widget-dialog:1.0.0'
     //api 'androidx.activity:activity:1.0.0-alpha08'
 }

@@ -7,13 +7,12 @@ buildscript {
                 'compileSdk' : 28,
                 'minSdk'     : 19,
                 'targetSdk'  : 26,
-                'support'    : '1.0.0',
                 'butterknife': "10.1.0",
                 'tinker'     : "1.9.9",
                 'tinkerpatch': "1.2.9",
                 'packerNG'   : "2.0.1",
                 'arouter'    : "1.2.1",
-                'glide'      : "4.8.0",
+                'glide'      : "4.9.0",
                 'dagger'     : '2.22.1',
                 'java'       : JavaVersion.VERSION_1_8,
                 'rxlifecycle': "3.0.0",
@@ -21,7 +20,6 @@ buildscript {
         ]
 
         deps = [
-                'constraintLayout'                 : 'androidx.constraintlayout:constraintlayout:2.0.0-alpha5',
                 'fastjson'                         : 'com.alibaba:fastjson:1.1.70.android',
                 'HiHttp'                           : 'com.ooftf:hi-http:3.5.2',
                 'MMKV'                             : 'com.tencent:mmkv:1.0.10',
@@ -37,14 +35,31 @@ buildscript {
                 'bindingcollectionadapter_recycler': 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.0.0',
                 'SmartRefreshLayout'               : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-8',
                 'SmartRefreshHeader'               : 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-8',
+                'material'                         : 'com.google.android.material:material:1.1.0-alpha07',
 
+        ]
+
+        androidx = [
+                'constraintLayout': 'androidx.constraintlayout:constraintlayout:2.0.0-beta1',
+                'appcompat'       : 'androidx.appcompat:appcompat:1.1.0-beta01',
+                'vectordrawable'  : 'androidx.vectordrawable:vectordrawable:1.1.0-beta02',
+                'cardview'        : 'androidx.cardview:cardview:1.0.0',
+                'recyclerview'    : 'androidx.recyclerview:recyclerview:1.0.0',
+                'legacy_v4'       : 'androidx.legacy:legacy-support-v4:1.0.0',
+                'legacy_v13'      : 'androidx.legacy:legacy-support-v13:1.0.0',
+
+        ]
+        test = [
+                'junit'   : 'junit:junit:4.12',
+                'runner'  : 'androidx.test:runner:1.2.0',
+                'espresso': 'androidx.test.espresso:espresso-core:3.2.0',
         ]
         moduleList = module.split(",")
     }
     repositories {
         jcenter()
-        google()
         mavenCentral()
+        google()
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
         maven {
             url 'https://maven.fabric.io/public'
@@ -99,7 +114,7 @@ task clean(type: Delete) {
 def LocalBintrayKey() {
     Properties properties = new Properties()
     def file = rootProject.file('local.properties')
-    if(file.exists()){
+    if (file.exists()) {
         InputStream inputStream = file.newDataInputStream();
         properties.load(inputStream)
         properties.getProperty('bintrayKey')
