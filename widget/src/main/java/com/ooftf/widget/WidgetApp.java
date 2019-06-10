@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.blankj.utilcode.util.ProcessUtils;
@@ -63,7 +64,7 @@ public class WidgetApp implements IApplication {
             SuspendWindow.init(application);
             SuspendWindow.getInstance().setOnClickListener(topActivity -> {
                 if (isHasDialog()) {
-                    return;
+                     return;
                 }
                 new ListDialog(topActivity)
                         .setList(new ArrayList<String>() {
@@ -119,11 +120,10 @@ public class WidgetApp implements IApplication {
 
     boolean isHasDialog() {
         ArrayList<View> windowViews = getWindowViews();
-        int decorViewCount = 0;
         for (View view : windowViews) {
-            if (view.getClass().getSimpleName().contains("DecorView")) {
-                decorViewCount++;
-                if (decorViewCount >= 2) {
+            if (view instanceof FrameLayout && view.getClass().toString().contains("DecorView")) {
+                FrameLayout frameLayout = (FrameLayout) view;
+                if (frameLayout.getChildCount() == 1) {
                     return true;
                 }
             }

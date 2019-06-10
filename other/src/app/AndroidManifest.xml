@@ -23,7 +23,6 @@
         <activity android:name=".activity.StackGetMinActivity" />
         <activity android:name=".activity.TurnIconActivity" />
         <activity android:name=".activity.ShareActivity" />
-        <activity android:name=".activity.PhotoActivity" />
         <activity
             android:name="me.iwf.photopicker.PhotoPickerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

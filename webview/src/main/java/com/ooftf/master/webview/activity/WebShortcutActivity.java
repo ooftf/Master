@@ -25,6 +25,9 @@ public class WebShortcutActivity extends BaseActivity {
             add("https://www.baidu.com/");
             add("http://lol.duowan.com/");
             add("https://mtt.m.jd.com/article/articleView/0b800dcf-1d28-4be8-86d3-3f70535318cb.action");
+            add("https://www.get-xpress-vpn.info/latest#windows");
+            add("https://www.pornhub.com/");
+            add("https://www.pornhub.com/apps/android");
 
         }
     };

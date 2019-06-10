@@ -30,7 +30,7 @@
             <com.scwang.smartrefresh.header.MaterialHeader
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-            <WebView
+            <com.tencent.smtt.sdk.WebView
                 android:id="@+id/webView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

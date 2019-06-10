@@ -106,7 +106,6 @@ dependencies {
         implementation project(':service')
     }
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
-    implementation 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     def htextview_version = '0.1.6'

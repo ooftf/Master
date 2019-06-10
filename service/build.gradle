@@ -120,7 +120,6 @@ dependencies {
     api 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
     api 'com.github.ooftf:HiShare:1.2.5'
     api 'com.blankj:utilcode:1.23.7'
-    api 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
     api 'com.github.ooftf:BarrageView:1.1.0'
     api 'com.ooftf:bottombar-java:1.2.3'

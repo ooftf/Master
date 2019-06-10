@@ -8,9 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -25,6 +22,10 @@ import com.ooftf.master.webview.widget.ImgSrcHandlerDialog;
 import com.ooftf.master.widget.dialog.ui.GridPanelDialog;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -92,6 +93,16 @@ public class MasterWebViewActivity extends BaseActivity {
                 binding.progress.setProgress(newProgress);
             }
         });
+
+
+        binding.webView.setDownloadListener((s, s1, s2, s3, l) -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            Uri uri = Uri.parse(url);
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.setData(uri);
+            startActivity(intent);
+        });
+
         if (url != null) {
             binding.webView.loadUrl(url);
         } else {
@@ -148,5 +159,11 @@ public class MasterWebViewActivity extends BaseActivity {
     public static void copyToClipboard(Context context, String text) {
         ClipboardManager clip = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         clip.setText(text); // 复制
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding.webView.destroy();
     }
 }

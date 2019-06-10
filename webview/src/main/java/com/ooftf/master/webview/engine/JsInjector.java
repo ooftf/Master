@@ -2,9 +2,10 @@ package com.ooftf.master.webview.engine;
 
 
 import android.annotation.SuppressLint;
-import android.webkit.WebView;
+
 
 import com.ooftf.service.base.BaseApplication;
+import com.tencent.smtt.sdk.WebView;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

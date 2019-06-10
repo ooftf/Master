@@ -9,7 +9,6 @@ import com.ooftf.service.bean.ActivityItemBean
 @Route(path = "/other/activity/pickPhotoList")
 class PickPhotoListActivity : BaseListActivity() {
     override fun setListData(adapter: ActivityIntentListAdapter) {
-        adapter.add(ActivityItemBean("/other/activity/takePhoto", "TakePhoto库"))
         adapter.add(ActivityItemBean("/other/activity/matisse", "Matisse库"))
         adapter.add(ActivityItemBean("/other/activity/camera", "拍照"))
     }
