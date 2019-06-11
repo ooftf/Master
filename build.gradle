@@ -59,11 +59,11 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
-        google()
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
         maven {
             url 'https://maven.fabric.io/public'
         }
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
@@ -87,10 +87,9 @@ buildscript {
 allprojects {
     repositories {
         mavenLocal()
-        jcenter()
-        google()
-        maven { url 'https://jitpack.io' }
         mavenCentral()
+        jcenter()
+        maven { url 'https://jitpack.io' }
         maven() {
             url "https://oss.sonatype.org/content/repositories/snapshots"
         }
@@ -104,6 +103,7 @@ allprojects {
         maven {
             url 'https://maven.google.com/'
         }
+        google()
     }
 
 }
