@@ -7,3 +7,4 @@ SDK中针对所有的路径(/test/1 /test/2)进行分组，分组只有在分组
 不同 module 之间不能用同一个分组
 # service 是以单例的形式存在的
 # withSerializable并不能用Autowired获取传递的值，而withObject可以
+# 使用withLong 传递的参数可以用long接收但是Long接受不到
