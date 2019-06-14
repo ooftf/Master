@@ -22,7 +22,7 @@ buildscript {
         deps = [
                 'fastjson'                         : 'com.alibaba:fastjson:1.1.70.android',
                 'HiHttp'                           : 'com.ooftf:hi-http:3.5.2',
-                'MMKV'                             : 'com.tencent:mmkv:1.0.10',
+                'MMKV'                             : 'com.tencent:mmkv:1.0.22',
                 'progressDrawable'                 : 'com.github.ooftf:progress-drawable:1.2.0',
                 'disklrucache'                     : 'com.jakewharton:disklrucache:2.0.2',
                 'bugly'                            : 'com.tencent.bugly:crashreport_upgrade:latest.release',
@@ -86,10 +86,10 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenLocal()
         mavenCentral()
         jcenter()
         maven { url 'https://jitpack.io' }
+        mavenLocal()
         maven() {
             url "https://oss.sonatype.org/content/repositories/snapshots"
         }
