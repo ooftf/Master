@@ -11,11 +11,11 @@ import com.github.moduth.blockcanary.BlockCanary
 import com.liulishuo.filedownloader.FileDownloader
 import com.ooftf.docking.api.Docking
 import com.ooftf.service.BuildConfig
-import com.ooftf.service.engine.LifecycleLog
 import com.ooftf.service.engine.ActivityManager
+import com.ooftf.service.engine.LifecycleLog
 import com.ooftf.service.engine.typer.TyperFactory
 import com.ooftf.service.utils.JLog
-import com.ooftf.service.utils.ThreadUtil
+import com.ooftf.service.utils.ProcessUtils
 import com.ooftf.service.utils.TimeRuler
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
@@ -36,7 +36,7 @@ open class BaseApplication : MultiDexApplication() {
     override fun onCreate() {
         TimeRuler.start("MyApplication", "onCreate start")
         super.onCreate()
-        CrashReport.initCrashReport(applicationContext, "26a5e838af", false)
+        initBugly()
         Utils.init(this)
         //setupThinker()
         setupLeakCanary()
@@ -65,6 +65,19 @@ open class BaseApplication : MultiDexApplication() {
         }
         LifecycleLog.init(this)
         Docking.notifyOnCreate()
+    }
+
+    private fun initBugly() {
+        val context = applicationContext
+        // 获取当前包名
+        val packageName = context.packageName
+        // 获取当前进程名
+        val processName = ProcessUtils.getProcessName(android.os.Process.myPid())
+        // 设置是否为上报进程
+        val strategy = CrashReport.UserStrategy(context)
+        strategy.isUploadProcess = processName == null || processName == packageName
+        CrashReport.initCrashReport(applicationContext, "26a5e838af", false, strategy)
+        CrashReport.setSdkExtraData(this,"BUILD_TIME",BuildConfig.APP_BUILD_TIME)
     }
 
     override fun onLowMemory() {
