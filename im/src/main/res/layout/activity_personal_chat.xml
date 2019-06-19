@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".activity.PersonalChatActivity">
-    <com.tencent.qcloud.uikit.business.chat.c2c.view.C2CChatPanel
+    <com.tencent.qcloud.tim.uikit.modules.chat.ChatLayout
         android:id="@+id/chat_panel"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -3,8 +3,6 @@ package com.ooftf.master.im.activity;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -12,7 +10,8 @@ import com.ooftf.master.im.R;
 import com.ooftf.master.im.R2;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
-import com.tencent.qcloud.uikit.business.chat.c2c.view.C2CChatPanel;
+import com.tencent.qcloud.tim.uikit.modules.chat.ChatLayout;
+import com.tencent.qcloud.tim.uikit.modules.chat.base.ChatInfo;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -22,7 +21,7 @@ import butterknife.ButterKnife;
 @Route(path = RouterPath.IM_ACTIVITY_PERSONAL_CHAT)
 public class PersonalChatActivity extends BaseActivity {
     @BindView(R2.id.chat_panel)
-    C2CChatPanel chatPanel;
+    ChatLayout chatPanel;
     @Autowired
     String chatId;
 
@@ -33,7 +32,9 @@ public class PersonalChatActivity extends BaseActivity {
         ButterKnife.bind(this);
         ARouter.getInstance().inject(this);
         chatPanel.initDefault();
-        chatPanel.setBaseChatId(chatId);
+        ChatInfo chatInfo = new ChatInfo();
+        chatInfo.setId(chatId);
+        chatPanel.setChatInfo(chatInfo);
     }
 
     @Override

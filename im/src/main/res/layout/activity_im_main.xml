@@ -6,7 +6,7 @@
     android:background="@color/white"
     tools:context=".activity.ImMainActivity">
 
-    <com.tencent.qcloud.uikit.business.session.view.SessionPanel
+    <com.tencent.qcloud.tim.uikit.modules.conversation.ConversationLayout
         android:id="@+id/session_panel"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -2,7 +2,6 @@ package com.ooftf.master.im;
 
 import android.app.Application;
 import android.content.Context;
-import android.os.Environment;
 import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -11,15 +10,10 @@ import com.ooftf.master.im.data.TencentImConts;
 import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.engine.router.service.IMultiSignService;
 import com.ooftf.service.utils.JLog;
-import com.tencent.imsdk.TIMLogLevel;
-import com.tencent.imsdk.TIMSdkConfig;
 import com.tencent.imsdk.session.SessionWrapper;
-import com.tencent.qcloud.uikit.BaseUIKitConfigs;
-import com.tencent.qcloud.uikit.TUIKit;
-import com.tencent.qcloud.uikit.common.IUIKitCallBack;
+import com.tencent.qcloud.tim.uikit.TUIKit;
+import com.tencent.qcloud.tim.uikit.base.IUIKitCallBack;
 import com.tls.tls_sigature.tls_sigature;
-
-import java.util.ArrayList;
 
 /**
  * @author ooftf
@@ -76,7 +70,8 @@ public class ImApp implements IApplication {
 
     private void initTencentIm() {
         //应替换成（BaseUIKitConfigs的配置请看后面章节）
-        TUIKit.init(BaseApplication.instance, TencentImConts.SDK_APP_ID, BaseUIKitConfigs.getDefaultConfigs());
+
+        TUIKit.init(BaseApplication.instance, TencentImConts.SDK_APP_ID, TUIKit.getConfigs());
     }
 
 
