@@ -33,17 +33,14 @@ public class ImMainActivity extends BaseActivity {
         setContentView(R.layout.activity_im_main);
         ButterKnife.bind(this);
         sessionPanel.initDefault();
-        sessionPanel.getConversationList().setOnItemClickListener(new ConversationListLayout.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int i, ConversationInfo conversationInfo) {
-                if (conversationInfo.isGroup()) {
-                    //如果是群组，跳转到群聊界面
-                    ARouter.getInstance().build(RouterPath.IM_ACTIVITY_GROUP_CHAT).withString("chatId", conversationInfo.getId()).navigation();
-                } else {
-                    //否则跳转到C2C单聊界面
-                    ARouter.getInstance().build(RouterPath.IM_ACTIVITY_PERSONAL_CHAT).withString("chatId", conversationInfo.getId()).navigation();
+        sessionPanel.getConversationList().setOnItemClickListener((view, i, conversationInfo) -> {
+            if (conversationInfo.isGroup()) {
+                //如果是群组，跳转到群聊界面
+                ARouter.getInstance().build(RouterPath.IM_ACTIVITY_GROUP_CHAT).withString("chatId", conversationInfo.getId()).navigation();
+            } else {
+                //否则跳转到C2C单聊界面
+                ARouter.getInstance().build(RouterPath.IM_ACTIVITY_PERSONAL_CHAT).withString("chatId", conversationInfo.getId()).navigation();
 
-                }
             }
         });
        /* sessionPanel.setSessionClick(session -> {

@@ -10,9 +10,13 @@ import com.ooftf.master.im.data.TencentImConts;
 import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.engine.router.service.IMultiSignService;
 import com.ooftf.service.utils.JLog;
+import com.tencent.imsdk.TIMSdkConfig;
 import com.tencent.imsdk.session.SessionWrapper;
 import com.tencent.qcloud.tim.uikit.TUIKit;
 import com.tencent.qcloud.tim.uikit.base.IUIKitCallBack;
+import com.tencent.qcloud.tim.uikit.config.CustomFaceConfig;
+import com.tencent.qcloud.tim.uikit.config.GeneralConfig;
+import com.tencent.qcloud.tim.uikit.config.TUIKitConfigs;
 import com.tls.tls_sigature.tls_sigature;
 
 /**
@@ -70,8 +74,11 @@ public class ImApp implements IApplication {
 
     private void initTencentIm() {
         //应替换成（BaseUIKitConfigs的配置请看后面章节）
-
-        TUIKit.init(BaseApplication.instance, TencentImConts.SDK_APP_ID, TUIKit.getConfigs());
+        TUIKitConfigs configs = TUIKit.getConfigs();
+        configs.setSdkConfig(new TIMSdkConfig( TencentImConts.SDK_APP_ID));
+        configs.setCustomFaceConfig(new CustomFaceConfig());
+        configs.setGeneralConfig(new GeneralConfig());
+        TUIKit.init(BaseApplication.instance, TencentImConts.SDK_APP_ID, configs);
     }
 
 
