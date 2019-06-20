@@ -3,7 +3,6 @@ package com.ooftf.service.base
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -13,8 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import com.gyf.barlibrary.ImmersionBar
-import com.gyf.barlibrary.OSUtils
+import com.gyf.immersionbar.ImmersionBar
 import com.ooftf.service.R
 import com.ooftf.service.interfaces.ILifecycleState
 import com.ooftf.service.utils.JLog
@@ -70,6 +68,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
             lifecycle.addObserver(object : LifecycleObserver {
                 @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
                 fun create() {
+
                     ImmersionBar.with(this@BaseActivity).statusBarDarkFont(isDarkFont()).navigationBarColorInt(Color.WHITE).init()
                     var view = getToolbar()
                     if (view == null) {
@@ -80,10 +79,6 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
                     }
                 }
 
-                @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-                fun destroy() {
-                    ImmersionBar.with(this@BaseActivity).destroy()
-                }
             })
         }
 
@@ -120,11 +115,13 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
 
     @DebugLog
     override fun onCreate(savedInstanceState: Bundle?) {
+
         if (isScreenForcePortrait()) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
         super.onCreate(savedInstanceState)
         alive = true
+
     }
 
 
@@ -143,17 +140,10 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         JLog.e(this.javaClass.simpleName, "activeCount::" + Thread.activeCount())
         touchable = true
         super.onResume()
-        if (OSUtils.isEMUI3_x()) {
-            ImmersionBar.with(this).init();
-        }
         doOnResume()
     }
 
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        ImmersionBar.with(this).init()
-    }
 
     override fun onPause() {
         touchable = false

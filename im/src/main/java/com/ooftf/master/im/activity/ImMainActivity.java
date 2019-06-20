@@ -1,19 +1,23 @@
 package com.ooftf.master.im.activity;
 
 import android.os.Bundle;
-import android.view.View;
+import android.util.SparseArray;
+import android.widget.FrameLayout;
+
+import androidx.fragment.app.Fragment;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.ooftf.bottombar.java.FragmentSwitchManager;
 import com.ooftf.master.im.R;
 import com.ooftf.master.im.R2;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
-import com.tencent.qcloud.tim.uikit.modules.conversation.ConversationLayout;
-import com.tencent.qcloud.tim.uikit.modules.conversation.ConversationListLayout;
-import com.tencent.qcloud.tim.uikit.modules.conversation.base.ConversationInfo;
 
-import org.jetbrains.annotations.Nullable;
+import java.util.HashSet;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,36 +28,55 @@ import butterknife.ButterKnife;
 @Route(path = RouterPath.IM_ACTIVITY_MAIN)
 public class ImMainActivity extends BaseActivity {
 
-    @BindView(R2.id.session_panel)
-    ConversationLayout sessionPanel;
+    public static final String TAG_CONVERSATION = "conversation";
+    public static final String TAG_CONTACT = "contact";
+    @BindView(R2.id.container)
+    FrameLayout container;
+    @BindView(R2.id.bottom_navigation_bar)
+    BottomNavigationBar bottomNavigationBar;
+    FragmentSwitchManager<String> fsm;
+    SparseArray<String> kv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_im_main);
         ButterKnife.bind(this);
-        sessionPanel.initDefault();
-        sessionPanel.getConversationList().setOnItemClickListener((view, i, conversationInfo) -> {
-            if (conversationInfo.isGroup()) {
-                //如果是群组，跳转到群聊界面
-                ARouter.getInstance().build(RouterPath.IM_ACTIVITY_GROUP_CHAT).withString("chatId", conversationInfo.getId()).navigation();
-            } else {
-                //否则跳转到C2C单聊界面
-                ARouter.getInstance().build(RouterPath.IM_ACTIVITY_PERSONAL_CHAT).withString("chatId", conversationInfo.getId()).navigation();
+        initFSM();
+        initBottomBar();
+    }
 
+    private void initFSM() {
+        kv = new SparseArray<>();
+        Set<String> tags = new HashSet<>();
+        kv.put(0, TAG_CONVERSATION);
+        kv.put(1, TAG_CONTACT);
+        for (int i = 0; i < kv.size(); i++) {
+            tags.add(kv.get(i));
+        }
+        fsm = new FragmentSwitchManager<String>(getSupportFragmentManager(), R.id.container, tags, tag -> {
+            if (TAG_CONVERSATION.equals(tag)) {
+                return (Fragment) ARouter.getInstance().build("/im/fragment/conversation").navigation();
+            } else {
+                return (Fragment) ARouter.getInstance().build("/im/fragment/contact").navigation();
             }
+
         });
-       /* sessionPanel.setSessionClick(session -> {
-            //此处为demo的实现逻辑，更根据会话类型跳转到相关界面，开发者可根据自己的应用场景灵活实现
-            if (session.isGroup()) {
-                //如果是群组，跳转到群聊界面
-                ARouter.getInstance().build(RouterPath.IM_ACTIVITY_GROUP_CHAT).withString("chatId", session.getPeer()).navigation();
-            } else {
-                //否则跳转到C2C单聊界面
-                ARouter.getInstance().build(RouterPath.IM_ACTIVITY_PERSONAL_CHAT).withString("chatId", session.getPeer()).navigation();
+    }
 
-            }
-        });*/
+    private void initBottomBar() {
+        bottomNavigationBar
+                .addItem(new BottomNavigationItem(R.drawable.ic_conversation, "消息"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_contact, "通讯录"))
+                .setTabSelectedListener(new BottomNavigationBar.SimpleOnTabSelectedListener() {
+                    @Override
+                    public void onTabSelected(int position) {
+                        fsm.switchFragment(kv.get(position));
+                    }
+                })
+                .setFirstSelectedPosition(0)
+                .initialise();
+        fsm.switchFragment(kv.get(0));
     }
 
 
@@ -67,9 +90,4 @@ public class ImMainActivity extends BaseActivity {
         return true;
     }
 
-    @Nullable
-    @Override
-    public View getToolbar() {
-        return sessionPanel.getTitleBar();
-    }
 }

@@ -18,6 +18,7 @@ import com.ooftf.master.webview.R;
 import com.ooftf.master.webview.bean.GridPanelBean;
 import com.ooftf.master.webview.databinding.ActivityMasterWebviewBinding;
 import com.ooftf.master.webview.engine.JsInjector;
+import com.ooftf.master.webview.utils.WebViewUtil;
 import com.ooftf.master.webview.widget.ImgSrcHandlerDialog;
 import com.ooftf.master.widget.dialog.ui.GridPanelDialog;
 import com.ooftf.service.base.BaseActivity;
@@ -164,6 +165,6 @@ public class MasterWebViewActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        binding.webView.destroy();
+        WebViewUtil.destory(binding.webView);
     }
 }

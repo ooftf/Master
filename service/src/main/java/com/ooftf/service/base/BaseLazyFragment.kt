@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.CallSuper
-import com.gyf.barlibrary.ImmersionBar
-import com.gyf.barlibrary.SimpleImmersionOwner
-import com.gyf.barlibrary.SimpleImmersionProxy
+import com.gyf.immersionbar.ImmersionBar
+import com.gyf.immersionbar.components.SimpleImmersionOwner
+import com.gyf.immersionbar.components.SimpleImmersionProxy
 import com.ooftf.service.R
 import com.ooftf.service.engine.LazyFragmentProxy
 
@@ -43,7 +43,6 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
     override fun onDestroy() {
         super.onDestroy()
         mSimpleImmersionProxy.onDestroy()
-        ImmersionBar.with(this).destroy()
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
@@ -85,8 +84,12 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
     }
 
     override fun initImmersionBar() {
-        val immersionBar = ImmersionBar.with(this).keyboardEnable(true)
-        val toolbar = view?.findViewById<View>(getToolbarId())
+
+        val immersionBar = ImmersionBar.with(this).statusBarDarkFont(isDarkFont()).keyboardEnable(true)
+        var toolbar = getToolbar()
+        if (toolbar == null) {
+            toolbar = view?.findViewById<View>(getToolbarId())
+        }
         if (toolbar != null) {
             immersionBar.titleBar(toolbar)
         }
@@ -96,4 +99,13 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
     open fun getToolbarId(): Int {
         return R.id.toolbar
     }
+
+    open fun getToolbar(): View? {
+        return null
+    }
+
+    open fun isDarkFont(): Boolean {
+        return false
+    }
+
 }

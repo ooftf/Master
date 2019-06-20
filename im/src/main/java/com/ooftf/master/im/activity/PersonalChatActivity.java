@@ -23,7 +23,7 @@ public class PersonalChatActivity extends BaseActivity {
     @BindView(R2.id.chat_panel)
     ChatLayout chatPanel;
     @Autowired
-    String chatId;
+    ChatInfo chatInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +32,6 @@ public class PersonalChatActivity extends BaseActivity {
         ButterKnife.bind(this);
         ARouter.getInstance().inject(this);
         chatPanel.initDefault();
-        ChatInfo chatInfo = new ChatInfo();
-        chatInfo.setId(chatId);
         chatPanel.setChatInfo(chatInfo);
     }
 
