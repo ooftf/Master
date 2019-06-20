@@ -6,7 +6,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="260dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <!-- contentScrim  合并时的背景色；layout_scrollFlags滑动时的表现-->
         <com.google.android.material.appbar.CollapsingToolbarLayout
