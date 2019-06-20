@@ -135,6 +135,7 @@ public class MasterWebViewActivity extends BaseActivity {
                                     case 2:
                                         binding.webView.reload();
                                         break;
+                                    default:
                                 }
                                 dialog.dismiss();
                             });
@@ -160,6 +161,16 @@ public class MasterWebViewActivity extends BaseActivity {
     public static void copyToClipboard(Context context, String text) {
         ClipboardManager clip = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         clip.setText(text); // 复制
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (binding.webView.canGoBack()) {
+            binding.webView.goBack();
+        } else {
+            super.onBackPressed();
+        }
+
     }
 
     @Override

@@ -8,3 +8,7 @@ SDK中针对所有的路径(/test/1 /test/2)进行分组，分组只有在分组
 # service 是以单例的形式存在的
 # withSerializable并不能用Autowired获取传递的值，而withObject可以
 # 使用withLong 传递的参数可以用long接收但是Long接受不到
+
+# 只需要在主项目中添加  apply plugin: 'com.alibaba.arouter'   //应该是，没有得到官方回复
+# proguard 
+    在使用注解Autowired生成服务的时候，需要添加@keep
