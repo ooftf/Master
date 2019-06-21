@@ -18,7 +18,10 @@
 
 # 渐变色 https://uigradients.com/#Opa
 
-# ObservableField和LiveData set同一个对象  不会触发change事件，可以用ObservableField 的notifyChange
+# ObservableField和LiveData set同一个对象  不会触发change事件，可以用ObservableField 的notifyChange  ?????
 
 # onCreate(进入)->Application.ActivityLifecycleCallbacks.onActivityCreated->onCreate(出)->LifecycleObserver.onCreate
 # LifecycleObserver.destroy->onDestroy(进入)->Application.ActivityLifecycleCallbacks.onActivityDestroyed->FragmentLifecycleCallbacks.onFragmentViewDestroyed+onFragmentDestroyed->onDestroy(出)
+# LiveData设置同一个对象，也会触发change事件，LiveData.getValue的初始值为null
+# ObservableField设置同一个对象，不会触发change事件,需要用的notifyChange触发.设置不同的对象可以触发；ObservableField.get()初始值为null
+# LiveData和ObservableField的内部属性设置新值都不会触发改变

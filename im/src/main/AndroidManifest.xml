@@ -23,8 +23,8 @@
             android:name=".activity.ImMainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.tencent.qcloud.uikit.operation.c2c.C2CChatStartActivity"
-            android:theme="@style/AppTheme" />
+            android:name=".activity.AddCartActivity" />
+
     </application>
 
 </manifest>

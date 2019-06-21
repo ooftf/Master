@@ -3,6 +3,8 @@ package com.ooftf.service.engine.kv;
 
 import android.content.Context;
 
+import androidx.annotation.Keep;
+
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.service.SerializationService;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -14,6 +16,7 @@ import com.tencent.mmkv.MMKV;
  * @date 2018/10/6 0006
  */
 class MMKVKV implements KV {
+    @Keep
     @Autowired
     SerializationService serializationService;
 

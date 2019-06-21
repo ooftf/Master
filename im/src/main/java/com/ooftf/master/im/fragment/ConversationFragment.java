@@ -1,6 +1,8 @@
 package com.ooftf.master.im.fragment;
 
 
+import android.view.View;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.master.im.R;
@@ -31,7 +33,13 @@ public class ConversationFragment extends BaseLazyFragment {
             chatInfo.setType(conversationInfo.isGroup() ? TIMConversationType.Group : TIMConversationType.C2C);
             chatInfo.setId(conversationInfo.getId());
             chatInfo.setChatName(conversationInfo.getTitle());
-            ARouter.getInstance().build(RouterPath.IM_ACTIVITY_PERSONAL_CHAT).withSerializable("chatInfo",chatInfo).navigation();
+            ARouter.getInstance().build(RouterPath.IM_ACTIVITY_PERSONAL_CHAT).withSerializable("chatInfo", chatInfo).navigation();
+        });
+        sessionPanel.getTitleBar().setOnRightClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(RouterPath.IM_ACTIVITY_ADD_CHAT).navigation();
+            }
         });
     }
 
@@ -44,6 +52,7 @@ public class ConversationFragment extends BaseLazyFragment {
     public int getToolbarId() {
         return R.id.conversation_title;
     }
+
     @Override
     public boolean isDarkFont() {
         return true;

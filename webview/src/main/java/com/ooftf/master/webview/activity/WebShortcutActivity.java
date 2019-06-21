@@ -3,6 +3,7 @@ package com.ooftf.master.webview.activity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableList;
+import androidx.lifecycle.MutableLiveData;
 
 import android.os.Bundle;
 

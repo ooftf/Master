@@ -33,6 +33,7 @@ public class PersonalChatActivity extends BaseActivity {
         ARouter.getInstance().inject(this);
         chatPanel.initDefault();
         chatPanel.setChatInfo(chatInfo);
+
     }
 
     @Override
@@ -49,5 +50,11 @@ public class PersonalChatActivity extends BaseActivity {
     @Override
     public View getToolbar() {
         return chatPanel.getTitleBar();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        chatPanel.exitChat();
     }
 }

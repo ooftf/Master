@@ -120,14 +120,12 @@ class WidgetFragment : BaseLazyFragment() {
             ARouter.getInstance().build(RouterPath.QRCODE_ACTIVITY_QRCODE).navigation()
             true
         }
-
         var setting = toolbar.menu.add("应用设置")
         setting.setIcon(R.drawable.ic_settings_white).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         setting.setOnMenuItemClickListener {
             AppUtils.launchAppDetailsSettings()
             true
         }
-
 
     }
 

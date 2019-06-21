@@ -19,6 +19,7 @@ public interface RouterPath {
 
     String IM_ACTIVITY_MAIN = "/im/activity/main";
     String IM_ACTIVITY_PERSONAL_CHAT = "/im/activity/personalChat";
+    String IM_ACTIVITY_ADD_CHAT = "/im/activity/addChat";
     String IM_ACTIVITY_GROUP_CHAT = "/im/activity/groupChat";
 
 
@@ -44,6 +45,7 @@ public interface RouterPath {
 
     interface Applet {
         String MODULE = "/applet";
+
         interface Activity {
             String ACTIVITY = MODULE + "/activity";
             String DuoWanMain = ACTIVITY + "/DuoWanMain";
@@ -57,6 +59,7 @@ public interface RouterPath {
 
     interface Web {
         String MODULE = "/web";
+
         interface Activity {
             String ACTIVITY = MODULE + "/activity";
             String MAIN = ACTIVITY + "/main";
