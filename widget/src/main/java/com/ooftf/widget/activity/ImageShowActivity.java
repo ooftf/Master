@@ -1,6 +1,7 @@
 package com.ooftf.widget.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,15 +14,19 @@ import androidx.databinding.ObservableList;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.request.RequestOptions;
 import com.ooftf.service.base.BaseActivity;
-import com.ooftf.service.interfaces.click.OnClickListener2;
 import com.ooftf.service.constant.RouterPath;
+import com.ooftf.service.engine.GlideApp;
+import com.ooftf.service.interfaces.click.OnClickListener2;
 import com.ooftf.widget.BR;
 import com.ooftf.widget.R;
 import com.ooftf.widget.databinding.ActivityImageShowBinding;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import me.tatarka.bindingcollectionadapter2.ItemBinding;
 

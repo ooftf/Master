@@ -12,6 +12,7 @@ import com.ooftf.service.constant.RouterPath;
 import com.tencent.imsdk.TIMConversationType;
 import com.tencent.qcloud.tim.uikit.modules.chat.base.ChatInfo;
 import com.tencent.qcloud.tim.uikit.modules.conversation.ConversationLayout;
+import com.tencent.qcloud.tim.uikit.modules.conversation.ConversationManagerKit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,5 +57,12 @@ public class ConversationFragment extends BaseLazyFragment {
     @Override
     public boolean isDarkFont() {
         return true;
+    }
+
+    @Override
+    public void onDestroy() {
+        ConversationManagerKit.getInstance().destroyConversation();
+        super.onDestroy();
+
     }
 }

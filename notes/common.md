@@ -25,3 +25,25 @@
 # LiveData设置同一个对象，也会触发change事件，LiveData.getValue的初始值为null
 # ObservableField设置同一个对象，不会触发change事件,需要用的notifyChange触发.设置不同的对象可以触发；ObservableField.get()初始值为null
 # LiveData和ObservableField的内部属性设置新值都不会触发改变
+
+# 图片选择框架
+    https://github.com/lovetuzitong/MultiImageSelector
+    https://github.com/bingoogolapple/BGAPhotoPicker-Android
+    https://github.com/crazycodeboy/TakePhoto
+    https://github.com/FinalTeam/RxGalleryFinal
+    https://github.com/Bilibili/boxing
+    https://github.com/zhihu/Matisse
+    https://github.com/donglua/PhotoPicker
+    https://github.com/LuckSiege/PictureSelector
+    https://github.com/fishwjy/MultiType-FilePicker
+    https://github.com/DroidNinja/Android-FilePicker
+    
+#   广告
+      try {
+                Drawable drawable = GlideApp.with(this).load("").apply(new RequestOptions().onlyRetrieveFromCache(true)).submit().get();
+                GlideApp.with(this).load("").preload();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
