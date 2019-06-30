@@ -115,7 +115,7 @@ object ActivityManager {
     }
 
     fun finishActivities(cla: Class<*>, resultCode: Int, intent: Intent) {
-        activities.filter { it.javaClass == cla }
+        activities.filter { it.get()?.javaClass == cla }
                 .forEach {
                     it.get()?.intent = intent
                     it.get()?.setResult(resultCode)
@@ -124,12 +124,12 @@ object ActivityManager {
     }
 
     fun finishOther(activity: Activity) {
-        activities.filter { it != activity }
+        activities.filter { it.get() != activity }
                 .forEach { it.get()?.finish() }
     }
 
-    fun finishOther(vararg cls: Class<*>) {
-        activities.filter { !cls.contains(it.javaClass) }
+    fun finishOther(vararg cls: Class<Activity>) {
+        activities.filter { !cls.contains(it.get()?.javaClass) }
                 .forEach { it.get()?.finish() }
     }
 }

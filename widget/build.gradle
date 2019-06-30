@@ -10,11 +10,11 @@ dependencies {
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
     implementation 'com.ooftf:sliding-layout:1.1.2'
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
-    implementation 'com.ooftf:master-widget-suspend-window:1.0.2'
+    implementation 'com.ooftf:master-widget-dev-eye:1.0.0'
     implementation 'com.ooftf:master-widget-toolbar:1.0.1'
     implementation deps.SmartRefreshLayout
     implementation deps.SmartRefreshHeader
-    implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha04'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha05'
     implementation deps.bindingcollectionadapter
     implementation deps.bindingcollectionadapter_recycler
 }

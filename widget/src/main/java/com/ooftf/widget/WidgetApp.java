@@ -1,11 +1,12 @@
 package com.ooftf.widget;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 
 import com.blankj.utilcode.util.ProcessUtils;
 import com.ooftf.docking.api.IApplication;
-import com.ooftf.master.widget.suspend.Suspend;
+import com.ooftf.master.widget.eye.DevEye;
 import com.ooftf.service.utils.JLog;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
@@ -39,10 +40,11 @@ public class WidgetApp implements IApplication {
         initGodEye();
     }
 
+    @SuppressLint("CheckResult")
     private void initGodEye() {
         if (ProcessUtils.isMainProcess()) {
-            Suspend.init(application);
-            JLog.register().subscribe(logBean -> Suspend.log(logBean.msg));
+            DevEye.init(application);
+            JLog.register().subscribe(logBean -> DevEye.log(logBean.msg));
         }
     }
 
