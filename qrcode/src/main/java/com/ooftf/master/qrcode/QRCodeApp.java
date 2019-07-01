@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.ooftf.docking.api.IApplication;
 import com.ooftf.service.utils.JLog;
+import com.ooftf.service.utils.TimeRuler;
 
 /**
  * @author 99474
@@ -13,11 +14,11 @@ public class QRCodeApp implements IApplication {
     private static Application application;
     @Override
     public void init(Application application) {
-        this.application = application;
+        QRCodeApp.application = application;
     }
     @Override
     public void onCreate() {
-        JLog.e("onCreate","QRCodeApp");
+        TimeRuler.marker("MyApplication", "QRCodeApp start");
 
     }
 

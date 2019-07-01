@@ -54,8 +54,8 @@ open class BaseApplication : MultiDexApplication() {
         TimeRuler.marker("MyApplication", "TyperFactory start")
         TyperFactory.init(this)
         TimeRuler.marker("MyApplication", "Docking start")
-
-        TimeRuler.end("MyApplication", "onCreate end")
+        Docking.notifyOnCreate()
+        TimeRuler.marker("MyApplication", "other start")
         RxJavaPlugins.setErrorHandler {
             JLog.e(it.toString())
         }
@@ -64,7 +64,7 @@ open class BaseApplication : MultiDexApplication() {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         }
         LifecycleLog.init(this)
-        Docking.notifyOnCreate()
+        TimeRuler.end("MyApplication", "onCreate end")
     }
 
     private fun initBugly() {

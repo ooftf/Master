@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.ooftf.docking.api.IApplication;
 import com.ooftf.service.utils.JLog;
+import com.ooftf.service.utils.TimeRuler;
 
 public class SignApp implements IApplication {
 
@@ -17,7 +18,7 @@ public class SignApp implements IApplication {
 
     @Override
     public void onCreate() {
-        JLog.e("onCreate","SignApp");
+        TimeRuler.marker("MyApplication", "SignApp start");
     }
 
     @Override

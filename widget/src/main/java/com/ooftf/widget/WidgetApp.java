@@ -8,6 +8,7 @@ import com.blankj.utilcode.util.ProcessUtils;
 import com.ooftf.docking.api.IApplication;
 import com.ooftf.master.widget.eye.DevEye;
 import com.ooftf.service.utils.JLog;
+import com.ooftf.service.utils.TimeRuler;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
@@ -36,13 +37,14 @@ public class WidgetApp implements IApplication {
 
     @Override
     public void onCreate() {
-        JLog.e("onCreate", "WidgetApp");
+        TimeRuler.marker("MyApplication", "WidgetApp start");
         initGodEye();
     }
 
     @SuppressLint("CheckResult")
     private void initGodEye() {
         if (ProcessUtils.isMainProcess()) {
+            TimeRuler.marker("MyApplication", "DevEye start");
             DevEye.init(application);
             JLog.register().subscribe(logBean -> DevEye.log(logBean.msg));
         }
