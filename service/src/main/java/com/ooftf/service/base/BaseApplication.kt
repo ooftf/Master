@@ -10,8 +10,8 @@ import com.facebook.stetho.Stetho
 import com.github.moduth.blockcanary.BlockCanary
 import com.liulishuo.filedownloader.FileDownloader
 import com.ooftf.docking.api.Docking
+import com.ooftf.master.unit.am.ActivityManager
 import com.ooftf.service.BuildConfig
-import com.ooftf.service.engine.ActivityManager
 import com.ooftf.service.engine.LifecycleLog
 import com.ooftf.service.engine.typer.TyperFactory
 import com.ooftf.service.utils.JLog
