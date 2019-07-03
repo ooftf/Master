@@ -141,5 +141,5 @@ dependencies {
     api 'com.google.firebase:firebase-auth:16.1.0'
     api 'com.ooftf:master-widget-dialog:1.0.0'
     api 'com.ooftf:master-unit-activity-manager:1.0.2'
-    //api 'androidx.activity:activity:1.0.0-alpha08'
+    api 'org.aspectj:aspectjrt:1.8.9'
 }
