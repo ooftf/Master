@@ -17,32 +17,32 @@ public class LogAspectJX {
         System.err.println("LogAspectJX aspect:::" + joinPoint.getSignature());
     }
 
-    @Pointcut("execution(* android.app.Activity.onCreate(..))")
+    @Pointcut("execution(* com.ooftf.service.base.BaseActivity.onCreate(..))")
     public void onCreateCutPoint() {
         Log.e("LogAspectJX","onCreateCutPoint");
     }
 
-    @Pointcut("execution(* android.app.Activity.onResume())")
+    @Pointcut("execution(* com.ooftf.service.base.BaseActivity.onResume())")
     public void onResumeCutPoint() {
         Log.e("LogAspectJX","onResumeCutPoint");
     }
 
-    @Pointcut("execution(* android.app.Activity.onPause(..))")
+    @Pointcut("execution(* com.ooftf.service.base.BaseActivity.onPause(..))")
     public void onPauseCutPoint() {
         Log.e("LogAspectJX","onPauseCutPoint");
     }
 
-    @Pointcut("execution(* android.app.Activity.onStart(..))")
+    @Pointcut("execution(* com.ooftf.service.base.BaseActivity.onStart(..))")
     public void onStartCutPoint() {
         Log.e("LogAspectJX","onStartCutPoint");
     }
 
-    @Pointcut("execution(* android.app.Activity.onStop(..))")
+    @Pointcut("execution(* com.ooftf.service.base.BaseActivity.onStop(..))")
     public void onStopCutPoint() {
         Log.e("LogAspectJX","onStopCutPoint");
     }
 
-    @Pointcut("execution(* android.app.Activity.onDestroy(..))")
+    @Pointcut("execution(* com.ooftf.service.base.BaseActivity.onDestroy(..))")
     public void onDestroyCutPoint() {
         Log.e("LogAspectJX","onDestroyCutPoint");
     }

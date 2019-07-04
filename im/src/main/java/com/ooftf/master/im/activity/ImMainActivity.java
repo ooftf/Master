@@ -13,6 +13,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ooftf.bottombar.java.FragmentSwitchManager;
 import com.ooftf.master.im.R;
 import com.ooftf.master.im.R2;
+import com.ooftf.master.im.other.ImManager;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
 
@@ -27,7 +28,9 @@ import butterknife.ButterKnife;
  */
 @Route(path = RouterPath.IM_ACTIVITY_MAIN)
 public class ImMainActivity extends BaseActivity {
-
+    static{
+        ImManager.init();
+    }
     public static final String TAG_CONVERSATION = "conversation";
     public static final String TAG_CONTACT = "contact";
     @BindView(R2.id.container)

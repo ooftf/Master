@@ -32,7 +32,6 @@ public class ImageLoaderActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_loader);
         ButterKnife.bind(this);
-
     }
 
     @OnClick(R2.id.button)

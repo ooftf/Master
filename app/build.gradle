@@ -115,6 +115,7 @@ dependencies {
     implementation "com.hanks:htextview-typer:$htextview_version"// optional
     kapt deps.dagger2_compiler
     implementation 'com.wanjian:cockroach:0.0.5'
+    implementation 'com.ooftf:master-widget-dev-eye:1.0.4'
 
 }
 

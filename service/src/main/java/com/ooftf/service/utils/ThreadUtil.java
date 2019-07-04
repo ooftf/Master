@@ -2,8 +2,9 @@ package com.ooftf.service.utils;
 
 import android.os.Handler;
 import android.os.Looper;
-import androidx.annotation.NonNull;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadFactory;
@@ -35,6 +36,11 @@ public class ThreadUtil {
             mainHandler.post(runnable);
         }
     }
+
+    public static void postOnUiThread(Runnable runnable) {
+        mainHandler.post(runnable);
+    }
+
 
     public static void runOnNewThread(Runnable runnable) {
         if (isMainThread()) {

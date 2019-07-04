@@ -1,9 +1,10 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
 
     <style name="AppTheme.TranslucentStatus.Splash">
         <item name="android:windowBackground">@drawable/ooftf</item>
-        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/transparent</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

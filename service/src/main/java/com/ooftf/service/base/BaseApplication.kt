@@ -16,6 +16,7 @@ import com.ooftf.service.engine.LifecycleLog
 import com.ooftf.service.engine.typer.TyperFactory
 import com.ooftf.service.utils.JLog
 import com.ooftf.service.utils.ProcessUtils
+import com.ooftf.service.utils.ThreadUtil
 import com.ooftf.service.utils.TimeRuler
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
@@ -36,20 +37,26 @@ open class BaseApplication : MultiDexApplication() {
     override fun onCreate() {
         TimeRuler.start("MyApplication", "onCreate start")
         super.onCreate()
+        TimeRuler.marker("MyApplication", "initBugly start")
         initBugly()
+        TimeRuler.marker("MyApplication", "Utils start")
         Utils.init(this)
         //setupThinker()
+        TimeRuler.marker("MyApplication", "setupLeakCanary start")
         setupLeakCanary()
+        TimeRuler.marker("MyApplication", "FileDownloader start")
         FileDownloader.init(applicationContext)
+        TimeRuler.marker("MyApplication", "setupLogger start")
         setupLogger()
         //setupStetho()
+        TimeRuler.marker("MyApplication", "setupBlockCanary start")
         setupBlockCanary()
         ActivityManager.init(this)
+        TimeRuler.marker("MyApplication", "ARouter start")
         if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
             ARouter.openLog()    // 打印日志
             ARouter.openDebug()  // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
-        TimeRuler.marker("MyApplication", "ARouter start")
         ARouter.init(this)
         TimeRuler.marker("MyApplication", "TyperFactory start")
         TyperFactory.init(this)
@@ -64,20 +71,22 @@ open class BaseApplication : MultiDexApplication() {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         }
         LifecycleLog.init(this)
-        TimeRuler.end("MyApplication", "onCreate end")
+        TimeRuler.marker("MyApplication", "onCreate end")
     }
 
     private fun initBugly() {
-        val context = applicationContext
-        // 获取当前包名
-        val packageName = context.packageName
-        // 获取当前进程名
-        val processName = ProcessUtils.getProcessName(android.os.Process.myPid())
-        // 设置是否为上报进程
-        val strategy = CrashReport.UserStrategy(context)
-        strategy.isUploadProcess = processName == null || processName == packageName
-        CrashReport.initCrashReport(applicationContext, "26a5e838af", false, strategy)
-        CrashReport.setSdkExtraData(this,"BUILD_TIME",BuildConfig.APP_BUILD_TIME)
+        ThreadUtil.runOnNewThread {
+            val context = applicationContext
+            // 获取当前包名
+            val packageName = context.packageName
+            // 获取当前进程名
+            val processName = ProcessUtils.getProcessName(android.os.Process.myPid())
+            // 设置是否为上报进程
+            val strategy = CrashReport.UserStrategy(context)
+            strategy.isUploadProcess = processName == null || processName == packageName
+            CrashReport.initCrashReport(applicationContext, "26a5e838af", false, strategy)
+            CrashReport.setSdkExtraData(this,"BUILD_TIME",BuildConfig.APP_BUILD_TIME)
+        }
     }
 
     override fun onLowMemory() {

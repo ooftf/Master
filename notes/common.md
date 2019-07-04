@@ -47,3 +47,8 @@
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            
+            
+# androidx
+       java.lang.NoClassDefFoundError: Failed resolution of: Landroid/support/multidex/MultiDex;
+       clean 以下就可以了

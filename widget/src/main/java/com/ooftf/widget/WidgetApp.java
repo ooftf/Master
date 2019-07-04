@@ -1,14 +1,9 @@
 package com.ooftf.widget;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 
-import com.blankj.utilcode.util.ProcessUtils;
 import com.ooftf.docking.api.IApplication;
-import com.ooftf.master.widget.eye.DevEye;
-import com.ooftf.service.utils.JLog;
-import com.ooftf.service.utils.ThreadUtil;
 import com.ooftf.service.utils.TimeRuler;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
@@ -39,17 +34,9 @@ public class WidgetApp implements IApplication {
     @Override
     public void onCreate() {
         TimeRuler.marker("MyApplication", "WidgetApp start");
-        initGodEye();
     }
 
-    @SuppressLint("CheckResult")
-    private void initGodEye() {
-        if (ProcessUtils.isMainProcess()) {
-            TimeRuler.marker("MyApplication", "DevEye start");
-            DevEye.init(application, ThreadUtil.getDefaultThreadPool());
-            JLog.register().subscribe(logBean -> DevEye.log(logBean.msg));
-        }
-    }
+
 
 
     @Override
