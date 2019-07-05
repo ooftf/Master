@@ -1,15 +1,18 @@
 package com.ooftf.service.base.adapter
 
-import androidx.recyclerview.widget.RecyclerView
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.launcher.ARouter
+import com.amulyakhare.textdrawable.TextDrawable
 import com.ooftf.service.R
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.bean.ScreenItemBean
+import com.ooftf.service.other.ColorGenerator
 
 
 /**
@@ -26,7 +29,7 @@ open class MainRecyclerAdapter(private var baseActivity: BaseActivity, internal 
         val view = inflater.inflate(R.layout.item_recyclerview_main, parent, false)
         return RecyclerHolder(view)
     }
-
+    
 
     override fun onBindViewHolderSecondary(holder: RecyclerHolder, position: Int) {
         val bean = getItem(position)
@@ -38,7 +41,24 @@ open class MainRecyclerAdapter(private var baseActivity: BaseActivity, internal 
         holder.title.text = bean.category
         holder.describe.text = bean.describe
         holder.name.text = bean.name + "(" + bean.clz + ")"
-        holder.icon.setImageResource(bean.icon)
+        if (bean.icon == R.drawable.logo_legacy || bean.icon == 0) {
+
+            val drawable = TextDrawable.builder()
+                    .beginConfig()
+                    .fontSize(26)
+                    .height(64)
+                    .width(64)
+                    .withBorder(4)
+                    .endConfig()
+                    .buildRound(bean.name.subSequence(0, 1).toString(), ColorGenerator.MATERIAL.randomColor)
+            var pain = Paint()
+            pain.isAntiAlias = true
+            holder.icon.setLayerPaint(pain)
+            holder.icon.setImageDrawable(drawable)
+        } else {
+            holder.icon.setImageResource(bean.icon)
+        }
+
 
         if (bean.isIssue) {
             holder.issue.visibility = View.VISIBLE
@@ -54,7 +74,7 @@ open class MainRecyclerAdapter(private var baseActivity: BaseActivity, internal 
         }
     }
 
-    class RecyclerHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+    class RecyclerHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var name: TextView = itemView.findViewById(R.id.name)
         var describe: TextView = itemView.findViewById(R.id.describe)
         var icon: ImageView = itemView.findViewById(R.id.icon)

@@ -3,8 +3,8 @@ package com.master.kit.activity
 import android.Manifest
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.launcher.ARouter
@@ -18,7 +18,13 @@ import com.ooftf.service.utils.ActivityUtil
 import com.ooftf.service.utils.ThreadUtil
 import com.ooftf.service.utils.TimeRuler
 import com.tbruyelle.rxpermissions2.RxPermissions
+import com.trello.rxlifecycle3.android.lifecycle.kotlin.bindUntilEvent
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_splash.*
+import java.util.concurrent.TimeUnit
+import kotlin.math.roundToInt
 
 
 class SplashActivity : AppCompatActivity() {
@@ -43,44 +49,45 @@ class SplashActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         drawableLive.observe(this, Observer<Drawable> { t -> window.setBackgroundDrawable(t) })
         window.setBackgroundDrawable(drawable)
         super.onCreate(savedInstanceState)
         TimeRuler.marker("MyApplication", "SplashActivity onCreate")
-
-
         setContentView(R.layout.activity_splash)
 
         skip.setOnClickListener {
             startNextActivity()
         }
-        timer.start()
         typerTextView.animateText("welcome to ooftf's world")
         RxPermissions(this).requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.CAMERA).subscribe()
         TimeRuler.marker("MyApplication", "SplashActivity onCreate end")
+        Observable.intervalRange(0, 30, 0, 100, TimeUnit.MILLISECONDS)
+                .bindUntilEvent(this, Lifecycle.Event.ON_DESTROY)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : io.reactivex.Observer<Long> {
+                    override fun onComplete() {
+                        ActivityUtil.postOnResume(lifecycle) { startNextActivity() }
+                    }
+
+                    override fun onSubscribe(d: Disposable) {
+
+                    }
+
+                    override fun onNext(t: Long) {
+
+                        skip.text = "跳过${(t * 100 / 1000f).roundToInt()}"
+                    }
+
+                    override fun onError(e: Throwable) {
+                        ActivityUtil.postOnResume(lifecycle) { startNextActivity() }
+                    }
+
+                })
     }
 
-    private var timer: CountDownTimer = MyTimer(this)
-
-    override fun onDestroy() {
-        timer.cancel()
-        super.onDestroy()
-    }
 
     private fun startNextActivity() {
         ARouter.getInstance().build(RouterPath.MAIN_ACTIVITY_MAIN).navigation(this, FinishCallback(this))
     }
 
-    class MyTimer(var activity: SplashActivity) : CountDownTimer(4000, 200) {
-        override fun onFinish() {
-            ActivityUtil.postOnResume(activity.lifecycle) { activity.startNextActivity() }
-        }
-
-        override fun onTick(millisUntilFinished: Long) {
-            var name = Math.round(millisUntilFinished / 1000f)
-            activity.skip.text = "跳过$name"
-        }
-
-    }
 }
