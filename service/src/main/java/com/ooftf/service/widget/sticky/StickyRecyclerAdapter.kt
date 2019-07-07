@@ -40,7 +40,7 @@ abstract class StickyRecyclerAdapter<VH : StickyRecyclerAdapter.StickViewHolder>
     abstract fun createViewHolder(root: LinearLayout): VH
     abstract fun getStickyViewId(): Int
     abstract fun getBodyViewId(): Int
-    class StickViewHolder(itemView: ViewGroup) : RecyclerView.ViewHolder(itemView) {
+    open class StickViewHolder(itemView: ViewGroup) : RecyclerView.ViewHolder(itemView) {
         var stickyView: View = itemView.getChildAt(0)
         var bodyView: View = itemView.getChildAt(1)
 
