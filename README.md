@@ -29,7 +29,6 @@
 * aop : transform api
 * 全链路协议（Dialog activity fragment）
 * ASM
-* Hihttp BaseUrl非空判断
 * master-widget
 * 插件化
 * Vector兼容性问题
