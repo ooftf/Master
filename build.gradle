@@ -21,7 +21,7 @@ buildscript {
 
         deps = [
                 'fastjson'                         : 'com.alibaba:fastjson:1.1.70.android',
-                'HiHttp'                           : 'com.ooftf:hi-http:3.5.2',
+                'HiHttp'                           : 'com.ooftf:hi-http:3.5.3',
                 'MMKV'                             : 'com.tencent:mmkv:1.0.22',
                 'progressDrawable'                 : 'com.github.ooftf:progress-drawable:1.2.0',
                 'disklrucache'                     : 'com.jakewharton:disklrucache:2.0.2',

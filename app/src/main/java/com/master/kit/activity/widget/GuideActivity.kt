@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.master.kit.R
 import com.ooftf.service.base.BaseActivity
@@ -25,9 +26,9 @@ class GuideActivity : BaseActivity() {
         pageIndicatorView.setViewPager(viewPager)
     }
 
-    class SectionsPagerAdapter(fm: androidx.fragment.app.FragmentManager) : androidx.fragment.app.FragmentPagerAdapter(fm) {
+    class SectionsPagerAdapter(fm: FragmentManager) : androidx.fragment.app.FragmentPagerAdapter(fm) {
         override fun getCount() = 3
-        override fun getItem(position: Int): androidx.fragment.app.Fragment {
+        override fun getItem(position: Int): Fragment {
             when (position) {
                 0 -> return FirstFragment.newInstance()
                 1 -> return SecondFragment.newInstance()
@@ -46,7 +47,7 @@ class GuideActivity : BaseActivity() {
         }
     }
 
-    class FirstFragment : androidx.fragment.app.Fragment() {
+    class FirstFragment : Fragment() {
 
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
             val rootView = inflater.inflate(R.layout.fragment_guide_first, container, false)
@@ -63,7 +64,7 @@ class GuideActivity : BaseActivity() {
         }
     }
 
-    class SecondFragment : androidx.fragment.app.Fragment() {
+    class SecondFragment : Fragment() {
 
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
             val rootView = inflater.inflate(R.layout.fragment_guide_second, container, false)
@@ -80,7 +81,7 @@ class GuideActivity : BaseActivity() {
         }
     }
 
-    class ThirdFragment : androidx.fragment.app.Fragment() {
+    class ThirdFragment : Fragment() {
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
             val rootView = inflater.inflate(R.layout.fragment_guide_third, container, false)
             return rootView
