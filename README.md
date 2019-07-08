@@ -21,7 +21,6 @@
 * 人工智能（TensorFlow）
 * 语言切换
 * 非入侵式埋点
-* Hihttp addObserver没有强制主线程
 * 编写脚本
 * 全局dialog
 * codecov
