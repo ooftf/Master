@@ -28,6 +28,7 @@ abstract class StickyRecyclerAdapter<VH : StickyRecyclerAdapter.StickViewHolder>
     var inflater: LayoutInflater? = null
     final override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         var root = LinearLayout(parent.context)
+        root.layoutParams = RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT)
         root.orientation = LinearLayout.VERTICAL
         if (inflater == null) {
             inflater = LayoutInflater.from(parent.context)

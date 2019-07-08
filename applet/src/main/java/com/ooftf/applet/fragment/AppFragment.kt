@@ -1,22 +1,49 @@
 package com.ooftf.applet.fragment
 
+import android.os.Handler
+import androidx.recyclerview.widget.GridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.applet.R
-import com.ooftf.service.base.BaseListFragment
+import com.ooftf.applet.adapter.AppletAdapter2
+import com.ooftf.service.base.BaseLazyFragment
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.widget.toolbar.TailoredToolbar
+import kotlinx.android.synthetic.main.fragment_applet.*
 
 /**
  * Created by master on 2017/9/26 0026.
  */
 @Route(path = "/applet/fragment/app")
-class AppFragment : BaseListFragment() {
-    override fun getScrollViewTag(): String {
+class AppFragment : BaseLazyFragment() {
+    lateinit var adapter: AppletAdapter2
+    val handler = Handler()
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_applet
+    }
+
+    override fun onLoad() {
+        setupRecyclerView()
+        initData()
+        initToolbar(toolbar)
+
+    }
+
+
+
+
+    private fun setupRecyclerView() {
+        adapter = AppletAdapter2()
+        recycler_view.adapter = adapter
+        recycler_view.layoutManager = GridLayoutManager(context, 4)
+        recycler_view.tag = getScrollViewTag()
+    }
+
+    private fun getScrollViewTag(): String {
         return "app"
     }
 
-    override fun initData() {
+    fun initData() {
         adapter.add(ScreenItemBean("/applet/activity/breakfast", "早餐计算器", "计算预定早餐需要的时间", R.drawable.vector_breakfast_icon))
         adapter.add(ScreenItemBean("/applet/activity/mobApi", "MobApi"))
         adapter.add(ScreenItemBean("/applet/activity/JX3", "收益计算"))
@@ -27,9 +54,13 @@ class AppFragment : BaseListFragment() {
         adapter.notifyDataSetChanged()
     }
 
-    override fun initToolbar(toolbar: TailoredToolbar) {
-        super.initToolbar(toolbar)
+    fun initToolbar(toolbar: TailoredToolbar) {
         toolbar.title = "App"
     }
 
+
+    override fun onDestroyView() {
+        handler.removeCallbacksAndMessages(null)
+        super.onDestroyView()
+    }
 }

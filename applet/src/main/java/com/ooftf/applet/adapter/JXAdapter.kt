@@ -13,7 +13,7 @@ import tf.ooftf.com.service.base.adapter.BaseRecyclerAdapter
  * 剑网三 adapter
  * @author ooftf
  */
-class JXAdapter(var inflate: LayoutInflater) : BaseRecyclerAdapter<JXBean, MyViewHolder>() {
+class JXAdapter(var inflate: LayoutInflater) : BaseRecyclerAdapter<JXBean, JXAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(inflate.inflate(R.layout.item_jx, parent, false))
     }
@@ -25,12 +25,12 @@ class JXAdapter(var inflate: LayoutInflater) : BaseRecyclerAdapter<JXBean, MyVie
         holder.textView3.text = "${item.other}:${item.getOtherIncome()}"
         holder.textView4.text = "${item.getTotalIncome()}}"
     }
+    class MyViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+        var textView1: TextView = itemView.findViewById(R.id.textView1)
+        var textView2: TextView = itemView.findViewById(R.id.textView2)
+        var textView3: TextView = itemView.findViewById(R.id.textView3)
+        var textView4: TextView = itemView.findViewById(R.id.textView4)
+
+    }
 }
 
-class MyViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
-    var textView1: TextView = itemView.findViewById(R.id.textView1)
-    var textView2: TextView = itemView.findViewById(R.id.textView2)
-    var textView3: TextView = itemView.findViewById(R.id.textView3)
-    var textView4: TextView = itemView.findViewById(R.id.textView4)
-
-}

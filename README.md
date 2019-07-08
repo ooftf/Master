@@ -5,22 +5,18 @@
 ### TODO LIST
 * 如果只存才一种分辨率的图片，在不同分辨率下的渲染表现和内存表现
 * Jetpack实践#############
-* 内部集成RN
 * 内部集成flutter
 * Java内存整合
-* DrawerLayout需要增加功能，实现实际大小的变化
 * aspectj 深入学习
 * LayoutManager
 * 视频播放器
 * 动态化构建页面 Tangram-Android vlayout
-* MVVM Data Binding
 * app bundles
 * gradle插件
 * sonar 代码质量检测
 * 网关（Gateway）概念：又称网间连接器，网络协议转换器，适配器
 * nio
 * xmind
-* 解决Rn so 包没有导入的问题
 * 为progress-drawable添加文档
 * 人工智能（TensorFlow）
 * 语言切换
@@ -35,10 +31,10 @@
 * ASM
 * Hihttp BaseUrl非空判断
 * master-widget
-* docking autoRegister
+* 插件化
+* Vector兼容性问题
 ### DELAY LIST
 * Ktor
-* 吸顶效果代码需要封装
 ### DONE LIST
 * 为什么会有两个启动图标: 是因为APP独立调试模式，包名起的为debug和debug模式重名，导致debug模式下编译将debug包名下的文件也编译进去了
 * Rxjava compose :已经抽离网络请求；好处：将逻辑部分和界面部分分离，将不用界面处理分离做成更小的可以，使用更灵活
@@ -74,5 +70,10 @@
 * Material Button 暂时没有发现有什么重要的作用
 * travis  本项目以完成初步集成
 * DialogFragment   将逻辑封装在Dialog内部
+* 吸顶效果代码需要封装
+* docking autoRegister
+* 内部集成RN
+* MVVM Data Binding
+* 解决Rn so 包没有导入的问题
 ## Introduce
      MVP + Dagger = Sign
