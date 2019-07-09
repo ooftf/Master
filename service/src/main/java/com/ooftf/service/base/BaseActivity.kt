@@ -27,7 +27,7 @@ import java.util.*
  * Created by master on 2017/10/10 0010.
  */
 @DebugLog
-open class BaseActivity : AppCompatActivity(), ILifecycleState {
+open class BaseActivity : AppCompatActivity() {
     val defaultRequestCode = 837
 
     val provider: LifecycleProvider<Lifecycle.Event> by lazy {
@@ -47,15 +47,15 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         return this.compose(this@BaseActivity.bindDestroy())
     }
 
-    override fun isAlive(): Boolean {
+    fun isAlive(): Boolean {
         return alive
     }
 
-    override fun isShowing(): Boolean {
+    fun isShowing(): Boolean {
         return showing
     }
 
-    override fun isTouchable(): Boolean {
+    fun isTouchable(): Boolean {
         return touchable
     }
 
@@ -185,7 +185,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         }
     }
 
-    override fun postOnDestroy(doOnDestroy: () -> Unit) {
+    fun postOnDestroy(doOnDestroy: () -> Unit) {
         if (!onDestroyList.contains(doOnDestroy)) {
             onDestroyList.add(doOnDestroy)
         }

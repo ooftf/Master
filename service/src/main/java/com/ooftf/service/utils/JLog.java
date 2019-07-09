@@ -2,6 +2,8 @@ package com.ooftf.service.utils;
 
 import android.util.Log;
 
+import com.alibaba.android.arouter.facade.service.SerializationService;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.service.engine.json.JsonFactory;
 
 import org.json.JSONArray;
@@ -218,7 +220,7 @@ public class JLog {
         } else if (msg instanceof String) {
             message = (String) msg;
         } else {
-            message = JsonFactory.getDefault().toJson(msg);
+            message = ARouter.getInstance().navigation(SerializationService.class).object2Json(msg);
         }
         try {
             if (message.startsWith("{")) {
