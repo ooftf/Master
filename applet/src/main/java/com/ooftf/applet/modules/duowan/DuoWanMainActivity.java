@@ -31,7 +31,7 @@ public class DuoWanMainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         DuowanMainViewModel viewModel = new DuowanMainViewModel();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_duo_wan_main);
-        binding.setViewHolder(viewModel);
+        binding.setViewModel(viewModel);
         binding.refreshLayout.autoRefresh();
         binding.refreshLayout.setOnRefreshListener(refreshLayout -> {
             DuoWanServiceManager.getDuoWanApiService().get(Constants.HOME_LIST)

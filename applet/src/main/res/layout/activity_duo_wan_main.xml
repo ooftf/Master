@@ -8,7 +8,7 @@
 
 
         <variable
-            name="viewHolder"
+            name="viewModel"
             type="com.ooftf.applet.modules.duowan.DuowanMainViewModel" />
     </data>
 
@@ -34,8 +34,8 @@
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:itemBinding="@{viewHolder.itemBinding}"
-                app:items="@{viewHolder.items}"
+                app:itemBinding="@{viewModel.itemBinding}"
+                app:items="@{viewModel.items}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 

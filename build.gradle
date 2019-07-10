@@ -20,7 +20,7 @@ buildscript {
         ]
 
         deps = [
-                'fastjson'                         : 'com.alibaba:fastjson:1.1.70.android',
+                'fastjson'                         : 'com.alibaba:fastjson:1.1.71.android',
                 'HiHttp'                           : 'com.ooftf:hi-http:3.5.3',
                 'MMKV'                             : 'com.tencent:mmkv:1.0.22',
                 'progressDrawable'                 : 'com.github.ooftf:progress-drawable:1.2.0',
@@ -66,7 +66,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:3.4.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         // classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
         classpath "com.mcxiaoke.packer-ng:plugin:$versions.packerNG"

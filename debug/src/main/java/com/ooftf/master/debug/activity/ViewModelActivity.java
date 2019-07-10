@@ -4,6 +4,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProviders;
+
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -21,7 +23,7 @@ public class ViewModelActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_model);
         textView = findViewById(R.id.text);
-        MyViewModel myViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MyViewModel.class);
+        MyViewModel myViewModel = ViewModelProviders.of(this).get(MyViewModel.class);
         myViewModel.getScope().observe(this, new Observer<User>() {
             @Override
             public void onChanged(@Nullable User user) {

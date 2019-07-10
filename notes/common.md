@@ -52,3 +52,10 @@
 # androidx
        java.lang.NoClassDefFoundError: Failed resolution of: Landroid/support/multidex/MultiDex;
        clean 以下就可以了
+# dataBinding
+ 
+   主项目app一定要配置
+   dataBinding {
+            enabled true
+        }
+   错误：  java.lang.NoClassDefFoundError: Failed resolution of: Landroidx/databinding/DataBinderMapperImpl;     
