@@ -18,4 +18,9 @@ public class DataBindAdapter {
         }
 
     }
+    @BindingAdapter(value = "srcCompat", requireAll = false)
+    public static void setSrcCompat(ImageView imageView, int id) {
+        imageView.setImageResource(id);
+
+    }
 }
