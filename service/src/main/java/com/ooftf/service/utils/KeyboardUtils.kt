@@ -48,7 +48,7 @@ class KeyboardUtils {
         view.setFocusableInTouchMode(true)
         view.requestFocus()
         imm.showSoftInput(view, flags, object : ResultReceiver(Handler()) {
-            protected override fun onReceiveResult(resultCode: Int, resultData: Bundle) {
+            protected override fun onReceiveResult(resultCode: Int, resultData: Bundle?) {
                 if (resultCode == InputMethodManager.RESULT_UNCHANGED_HIDDEN || resultCode == InputMethodManager.RESULT_HIDDEN) {
                     toggleSoftInput(view.context)
                 }
@@ -79,7 +79,7 @@ class KeyboardUtils {
         val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 ?: return
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0, object : ResultReceiver(Handler()) {
-            protected override fun onReceiveResult(resultCode: Int, resultData: Bundle) {
+            protected override fun onReceiveResult(resultCode: Int, resultData: Bundle?) {
                 if (resultCode == InputMethodManager.RESULT_UNCHANGED_SHOWN || resultCode == InputMethodManager.RESULT_SHOWN) {
                     toggleSoftInput(view.context)
                 }
