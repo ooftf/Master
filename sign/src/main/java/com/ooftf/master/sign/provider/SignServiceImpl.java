@@ -7,7 +7,6 @@ import com.ooftf.service.engine.router.assist.SignAssistBean;
 import com.ooftf.service.engine.typer.TyperFactory;
 import com.ooftf.service.net.mob.bean.MobBaseBean;
 
-import hugo.weaving.DebugLog;
 import io.reactivex.Single;
 import io.reactivex.subjects.PublishSubject;
 
@@ -18,7 +17,6 @@ import io.reactivex.subjects.PublishSubject;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-@DebugLog
 public class SignServiceImpl implements ISignService {
     private static final String KEY_ACCOUNT_INFO = "AccountInfo";
     private final static SignServiceImpl INSTANCE = new SignServiceImpl();

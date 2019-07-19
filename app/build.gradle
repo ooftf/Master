@@ -8,7 +8,7 @@ apply plugin: 'io.fabric'
 apply from: 'matrix.gradle'
 apply from: 'autoregister.gradle'
 apply plugin: 'com.alibaba.arouter'
-apply plugin: 'android-aspectjx'
+apply plugin: 'com.hujiang.android-aspectjx'
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
@@ -23,7 +23,6 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
-//, AROUTER_GENERATE_DOC: "enable"
             }
         }
         ndk {
@@ -39,11 +38,12 @@ android {
     }
     packagingOptions {
         // More than one file was found with OS independent path 'lib/armeabi-v7a/libgnustl_shared.so'
-        pickFirst 'lib/armeabi-v7a/libgnustl_shared.so'
-        pickFirst 'lib/arm64-v8a/libc++_shared.so'
-        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+     /*   pickFirst 'lib/armeabi-v7a/libgnustl_shared.so'
         pickFirst 'lib/x86/libgnustl_shared.so'
+        */
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
         pickFirst 'lib/x86/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
         pickFirst 'lib/x86_64/libc++_shared.so'
 
     }
@@ -78,7 +78,11 @@ android {
         enabled true
     }
 }
-
+/*aspectjx {
+//排除所有package路径中包含`android.support`的class文件及库（jar文件）
+    exclude '*'
+    enabled false
+}*/
 //packer-begin
 packer {
     archiveNameFormat = '${appPkg}-${buildType}-v${versionName}-${channel}'
@@ -119,7 +123,6 @@ dependencies {
 
 }
 
-apply plugin: 'com.jakewharton.hugo'
 //apply from: 'tinkerpatch.gradle'
 //Firebase
 apply plugin: 'com.google.gms.google-services'

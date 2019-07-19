@@ -13,7 +13,6 @@ import com.ooftf.service.utils.Collections;
 import java.util.ArrayList;
 import java.util.List;
 
-import hugo.weaving.DebugLog;
 import kotlin.jvm.functions.Function0;
 
 
@@ -23,7 +22,6 @@ import kotlin.jvm.functions.Function0;
  * @date 2019/1/18 0018
  */
 @Route(path = ServiceMap.MULTI_ACCOUNT, name = "测试服务")
-@DebugLog
 public class MultiSignManager implements IMultiSignService {
     public static final String TYPER_KEY_CURRENT_ACCOUNT_ID = "typer_key_current_account_id";
     private static List<ChannelInfo> accountInfos = new ArrayList<>();

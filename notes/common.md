@@ -59,3 +59,5 @@
             enabled true
         }
    错误：  java.lang.NoClassDefFoundError: Failed resolution of: Landroidx/databinding/DataBinderMapperImpl;     
+# gradle_plugin_android_aspectjx  java.lang.ClassNotFoundException
+       

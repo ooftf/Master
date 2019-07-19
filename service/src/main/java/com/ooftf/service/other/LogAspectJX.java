@@ -1,18 +1,13 @@
 package com.ooftf.service.other;
 
-import android.util.Log;
-
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Pointcut;
-
 /**
  * @author ooftf
  * @email 994749769@qq.com
  * @date 2019/7/3 0003
  */
 public class LogAspectJX {
-    @After("execution(* android.util.Log.printlns(..))")
+
+   /* @After("execution(* android.util.Log.printlns(..))")
     public void aspectImageLoader(JoinPoint joinPoint) throws Throwable {
         System.err.println("LogAspectJX aspect:::" + joinPoint.getSignature());
     }
@@ -45,5 +40,6 @@ public class LogAspectJX {
     @Pointcut("execution(* com.ooftf.service.base.BaseActivity.onDestroy(..))")
     public void onDestroyCutPoint() {
         Log.e("LogAspectJX","onDestroyCutPoint");
-    }
+    }*/
+
 }

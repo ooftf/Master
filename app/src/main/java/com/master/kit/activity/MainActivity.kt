@@ -16,8 +16,6 @@ import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.main_tab.TabManager
 import com.ooftf.service.utils.JLog
 import com.ooftf.service.utils.ThreadUtil
-import com.ooftf.service.utils.TimeRuler
-import hugo.weaving.DebugLog
 import kotlinx.android.synthetic.main.activity_main.*
 
 @Route(path = RouterPath.MAIN_ACTIVITY_MAIN)
@@ -56,7 +54,6 @@ class MainActivity : BaseActivity() {
     }
 
     private var backPressedTime = 0L
-    @DebugLog
     override fun onBackPressed() {
         if (System.currentTimeMillis() - backPressedTime < 2000) {
             android.os.Process.killProcess(android.os.Process.myPid())

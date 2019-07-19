@@ -10,6 +10,8 @@ import com.alibaba.android.arouter.facade.service.SerializationService;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.tencent.mmkv.MMKV;
 
+import java.lang.reflect.Type;
+
 /**
  * @author ooftf
  * @email 994749769@qq.com
@@ -151,7 +153,7 @@ class MMKVKV implements KV {
     }
 
     @Override
-    public <T> T getObject(String key, Class<T> cla) {
+    public <T> T getObject(String key, Type cla) {
         String string = getString(key, null);
         if (string == null) {
             return null;

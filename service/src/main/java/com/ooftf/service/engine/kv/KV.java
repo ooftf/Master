@@ -1,5 +1,7 @@
 package com.ooftf.service.engine.kv;
 
+import java.lang.reflect.Type;
+
 /**
  * @author ooftf
  * @email 994749769@qq.com
@@ -198,7 +200,7 @@ public interface KV {
      * @param <T>
      * @return
      */
-    <T> T getObject(String key, Class<T> cla);
+    <T> T getObject(String key, Type cla);
 
     /**
      *

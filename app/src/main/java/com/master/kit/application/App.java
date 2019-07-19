@@ -1,5 +1,7 @@
 package com.master.kit.application;
 
+import android.content.Context;
+
 import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.utils.JLog;
 import com.tencent.matrix.Matrix;
@@ -7,6 +9,8 @@ import com.tencent.matrix.iocanary.IOCanaryPlugin;
 import com.tencent.matrix.iocanary.config.IOConfig;
 import com.tencent.mrs.plugin.IDynamicConfig;
 import com.wanjian.cockroach.Cockroach;
+
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author ooftf
@@ -62,5 +66,10 @@ public class App extends BaseApplication {
             }
         });
 
+    }
+
+    @Override
+    protected void attachBaseContext(@Nullable Context base) {
+        super.attachBaseContext(base);
     }
 }

@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.service.SerializationService;
 import com.alibaba.android.arouter.launcher.ARouter;
 
+import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 
 /**
@@ -142,7 +143,7 @@ public class SPKV implements KV {
     }
 
     @Override
-    public <T> T getObject(String key, Class<T> cla) {
+    public <T> T getObject(String key, Type cla) {
         String string = getString(PREFIX_OBJECT + key, null);
         if (string == null) {
             return null;

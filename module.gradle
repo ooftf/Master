@@ -7,8 +7,8 @@ if (MoudleDebug) {
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.jakewharton.hugo'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.hujiang.android-aspectjx'
 android {
     compileSdkVersion versions.compileSdk
     //resourcePrefix getMoudleResourcePrefix()
@@ -20,9 +20,10 @@ android {
             applicationId "com.ooftf.${project.getName()}"
             multiDexEnabled true
         }
+
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName(), DOCKING_MODULE_NAME: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
                 //AROUTER_GENERATE_DOC: "enable",
             }
         }

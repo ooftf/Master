@@ -19,14 +19,12 @@ import com.ooftf.service.utils.JLog
 import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle
 import com.trello.rxlifecycle3.LifecycleProvider
 import com.trello.rxlifecycle3.LifecycleTransformer
-import hugo.weaving.DebugLog
 import io.reactivex.Observable
 import java.util.*
 
 /**
  * Created by master on 2017/10/10 0010.
  */
-@DebugLog
 open class BaseActivity : AppCompatActivity() {
     val defaultRequestCode = 837
 
@@ -112,8 +110,6 @@ open class BaseActivity : AppCompatActivity() {
         startActivity(Intent(this, cla))
     }
 
-
-    @DebugLog
     override fun onCreate(savedInstanceState: Bundle?) {
 
         if (isScreenForcePortrait()) {
