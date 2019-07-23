@@ -8,7 +8,6 @@ apply plugin: 'io.fabric'
 apply from: 'matrix.gradle'
 apply from: 'autoregister.gradle'
 apply plugin: 'com.alibaba.arouter'
-apply plugin: 'com.hujiang.android-aspectjx'
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {

@@ -27,10 +27,11 @@
 * 游戏引擎9
 * aop : transform api
 * 全链路协议（Dialog activity fragment）
-* ASM
+* ASM  
 * master-widget
 * 插件化
 * Vector兼容性问题
+* AndAOP
 ### DELAY LIST
 * Ktor
 ### DONE LIST
