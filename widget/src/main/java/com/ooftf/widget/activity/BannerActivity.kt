@@ -61,7 +61,7 @@ class BannerActivity : BaseSlidingActivity() {
 
             override fun displayImage(context: Context, path: Any, imageView: ImageView) {
                 val bean = path as BannerBean.BodyEntity.PicListEntity
-                imageLoader.display(context, bean.picUrl, imageView)
+                imageLoader.display(bean.picUrl, imageView)
             }
 
         })
