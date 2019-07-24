@@ -14,7 +14,7 @@ public class DataBindAdapter {
     public static void setUrl(ImageView imageView, String url) {
         JLog.e("DataBindAdapter", "setUrl::" + url);
         if (url != null) {
-            ImageLoaderFactory.INSTANCE.createInstance().display(BaseApplication.instance, url, imageView);
+            ImageLoaderFactory.INSTANCE.createInstance().display(url, imageView);
         }
 
     }

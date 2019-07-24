@@ -20,8 +20,8 @@ class GlideImageLoader : IImageLoader {
     @Inject
     constructor()
 
-    override fun display(context: Context, url: String, view: ImageView) {
-        GlideApp.with(context).load(url).into(view)
+    override fun display(url: String, view: ImageView) {
+        GlideApp.with(view).load(url).into(view)
     }
     @SuppressLint("CheckResult")
     override fun display(context: Context, url: String, listener: ImageLoaderListener) {
@@ -38,7 +38,7 @@ class GlideImageLoader : IImageLoader {
         })
     }
 
-    override fun display(context: Context, url: String, view: ImageView, config: ImageLoaderConfig) {
-        GlideApp.with(context).load(url).error(config.errorResId).placeholder(config.loadingResId).into(view)
+    override fun display(url: String, view: ImageView, config: ImageLoaderConfig) {
+        GlideApp.with(view).load(url).error(config.errorResId).placeholder(config.loadingResId).into(view)
     }
 }

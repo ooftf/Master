@@ -13,21 +13,22 @@ import android.widget.TextView
 object EnableBinding {
     fun binding(view: View, vararg textViews: TextView) {
         judgeEnable(textViews, view)
+        var textView = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                judgeEnable(textViews, view)
+            }
+
+        };
         textViews.forEach {
-            it.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                    judgeEnable(textViews, view)
-                }
-
-            })
+            it.addTextChangedListener(textView)
         }
     }
 
