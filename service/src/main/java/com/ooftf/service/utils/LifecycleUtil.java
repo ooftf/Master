@@ -9,7 +9,7 @@ import androidx.lifecycle.OnLifecycleEvent;
  * @email 994749769@qq.com
  * @date 2019/7/4 0004
  */
-public class ActivityUtil {
+public class LifecycleUtil {
 
     public static boolean isShow(Lifecycle lifecycle) {
         return lifecycle.getCurrentState().isAtLeast(Lifecycle.State.STARTED);

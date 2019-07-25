@@ -14,7 +14,7 @@ import com.ooftf.service.base.BaseApplication
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.GlideApp
 import com.ooftf.service.engine.router.FinishCallback
-import com.ooftf.service.utils.ActivityUtil
+import com.ooftf.service.utils.LifecycleUtil
 import com.ooftf.service.utils.ThreadUtil
 import com.ooftf.service.utils.TimeRuler
 import com.tbruyelle.rxpermissions2.RxPermissions
@@ -66,7 +66,7 @@ class SplashActivity : AppCompatActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : io.reactivex.Observer<Long> {
                     override fun onComplete() {
-                        ActivityUtil.postOnResume(lifecycle) { startNextActivity() }
+                        LifecycleUtil.postOnResume(lifecycle) { startNextActivity() }
                     }
 
                     override fun onSubscribe(d: Disposable) {
@@ -79,7 +79,7 @@ class SplashActivity : AppCompatActivity() {
                     }
 
                     override fun onError(e: Throwable) {
-                        ActivityUtil.postOnResume(lifecycle) { startNextActivity() }
+                        LifecycleUtil.postOnResume(lifecycle) { startNextActivity() }
                     }
 
                 })
