@@ -21,10 +21,7 @@ import com.ooftf.widget.R;
  * @date 2019/5/8 0008
  */
 public class StateLayoutSwitcher extends FrameLayout implements IStateLayout {
-    public static final int STATE_NORMAL = 0;
-    public static final int STATE_LOAD = 1;
-    public static final int STATE_EMPTY = 2;
-    public static final int STATE_ERROR = 3;
+
 
     int errorLayoutId = NO_ID;
     int loadLayoutId = NO_ID;
@@ -78,6 +75,9 @@ public class StateLayoutSwitcher extends FrameLayout implements IStateLayout {
 
     @Override
     public void switchToLoading() {
+        if (success) {
+            return;
+        }
         if (loadLayoutId != NO_ID && loadLayout == null) {
             loadLayout = LayoutInflater.from(getContext()).inflate(loadLayoutId, this, false);
             this.addView(loadLayout);
@@ -87,15 +87,19 @@ public class StateLayoutSwitcher extends FrameLayout implements IStateLayout {
 
     @Override
     public void switchToError() {
+        if (success) {
+            return;
+        }
         if (errorLayoutId != NO_ID && errorLayout == null) {
             errorLayout = LayoutInflater.from(getContext()).inflate(errorLayoutId, this, false);
             this.addView(errorLayout);
         }
         showView(errorLayout);
     }
-
+    boolean success = false;
     @Override
-    public void switchToNormal() {
+    public void switchToSuccess() {
+        success = true;
         showView(normalLayout);
     }
 
@@ -122,8 +126,8 @@ public class StateLayoutSwitcher extends FrameLayout implements IStateLayout {
     @BindingAdapter(value = {"state"}, requireAll = false)
     public static void setValue(StateLayoutSwitcher view, Integer state) {
         switch (state) {
-            case STATE_NORMAL:
-                view.switchToNormal();
+            case STATE_SUCCESS:
+                view.switchToSuccess();
                 break;
             case STATE_LOAD:
                 view.switchToLoading();
@@ -135,7 +139,7 @@ public class StateLayoutSwitcher extends FrameLayout implements IStateLayout {
                 view.switchToError();
                 break;
             default:
-                view.switchToNormal();
+                view.switchToSuccess();
         }
     }
 }
