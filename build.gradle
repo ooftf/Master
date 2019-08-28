@@ -1,9 +1,11 @@
+
 buildscript {
     ext {
-        MoudleDebug = false
-        ext.maven = false
+        print()
+        MoudleDebug = isModuleDebug()
+        maven = false
         versions = [
-                'kotlin'     : '1.3.41',
+                'kotlin'     : '1.3.50',
                 'compileSdk' : 28,
                 'minSdk'     : 19,
                 'targetSdk'  : 26,
@@ -66,7 +68,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.android.tools.build:gradle:3.5.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         // classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
         classpath "com.mcxiaoke.packer-ng:plugin:$versions.packerNG"

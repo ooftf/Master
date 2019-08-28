@@ -1,6 +1,23 @@
 include ':app', ':service'
-def modules = module.split(",")
-modules.each {
-    include(":$it")
+
+if (isModuleDebug()) {
+    def modules = module.split(",")
+    modules.each {
+        include(":$it")
+    }
+} else {
+    include ":sign", ":applet", ":debug", ":widget", ":source", ":other", ":rn", ":webview", ":qrcode", ":im"
+}
+
+isModuleDebug() {
+    Properties properties = new Properties()
+    def file = new File("local.properties")
+    if (file.exists()) {
+        InputStream inputStream = file.newDataInputStream()
+        properties.load(inputStream)
+        def str = properties.getProperty('MODULE_DEBUG')
+        return Boolean.parseBoolean(str)
+    }
+    return false
 }
 

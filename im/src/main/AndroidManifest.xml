@@ -23,7 +23,7 @@
             android:name=".activity.ImMainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activity.AddCartActivity" />
+            android:name=".activity.AddChatActivity" />
 
     </application>
 

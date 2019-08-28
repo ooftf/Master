@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <com.tencent.qcloud.tim.uikit.modules.conversation.ConversationLayout
-        android:id="@+id/session_panel"
+        android:id="@+id/conversation_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

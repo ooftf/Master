@@ -1,6 +1,6 @@
 apply from: '../module.gradle'
 dependencies {
-    api 'com.tencent.imsdk:imsdk:4.4.479'
+    api 'com.tencent.imsdk:tuikit:4.4.900'
     implementation 'androidx.appcompat:appcompat:1.0.2'
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     implementation 'com.github.tencentyun:tls-sig-api:1.2'
