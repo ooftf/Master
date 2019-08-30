@@ -15,13 +15,9 @@ import com.ooftf.service.BuildConfig
 import com.ooftf.service.engine.LifecycleLog
 import com.ooftf.service.engine.typer.TyperFactory
 import com.ooftf.service.utils.JLog
-import com.ooftf.service.utils.ProcessUtils
-import com.ooftf.service.utils.ThreadUtil
 import com.ooftf.service.utils.TimeRuler
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
-import com.squareup.leakcanary.LeakCanary
-import com.tencent.bugly.crashreport.CrashReport
 import io.reactivex.plugins.RxJavaPlugins
 
 /**
@@ -38,12 +34,11 @@ open class BaseApplication : MultiDexApplication() {
         TimeRuler.start("MyApplication", "onCreate start")
         super.onCreate()
         TimeRuler.marker("MyApplication", "initBugly start")
-        initBugly()
+
         TimeRuler.marker("MyApplication", "Utils start")
         Utils.init(this)
         //setupThinker()
         TimeRuler.marker("MyApplication", "setupLeakCanary start")
-        setupLeakCanary()
         TimeRuler.marker("MyApplication", "FileDownloader start")
         FileDownloader.init(applicationContext)
         TimeRuler.marker("MyApplication", "setupLogger start")
@@ -74,20 +69,7 @@ open class BaseApplication : MultiDexApplication() {
         TimeRuler.marker("MyApplication", "onCreate end")
     }
 
-    private fun initBugly() {
-        ThreadUtil.runOnNewThread {
-            val context = applicationContext
-            // 获取当前包名
-            val packageName = context.packageName
-            // 获取当前进程名
-            val processName = ProcessUtils.getProcessName(android.os.Process.myPid())
-            // 设置是否为上报进程
-            val strategy = CrashReport.UserStrategy(context)
-            strategy.isUploadProcess = processName == null || processName == packageName
-            CrashReport.initCrashReport(applicationContext, "26a5e838af", false, strategy)
-            CrashReport.setSdkExtraData(this,"BUILD_TIME",BuildConfig.APP_BUILD_TIME)
-        }
-    }
+
 
     override fun onLowMemory() {
         Docking.notifyOnLowMemory()
@@ -106,15 +88,6 @@ open class BaseApplication : MultiDexApplication() {
 
     private fun setupBlockCanary() {
         BlockCanary.install(this, AppBlockCanaryContext()).start()
-    }
-
-    private fun setupLeakCanary() {
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not onCreate your app in this process.
-            return
-        }
-        LeakCanary.install(this)
     }
 
     private fun setupStetho() {
