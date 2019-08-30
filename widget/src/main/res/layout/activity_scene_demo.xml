@@ -22,7 +22,7 @@
             android:layout_width="200dp"
             android:layout_height="200dp">
             <ImageView
-                android:src="@drawable/android_god_eye_logo"
+                android:src="@drawable/abc_vector_test"
                 android:id="@+id/textView"
                 android:layout_width="200dp"
                 android:layout_height="200dp"

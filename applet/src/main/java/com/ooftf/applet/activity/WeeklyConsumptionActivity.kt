@@ -14,6 +14,7 @@ import com.ooftf.applet.bean.PersonRecordBean
 import com.ooftf.applet.engine.text_watcher.*
 import com.ooftf.hihttp.action.DialogAction
 import com.ooftf.master.widget.dialog.ui.ListBlurDialog
+import com.ooftf.master.widget.toolbar.official.ToolbarPlus
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.typer.TyperFactory
@@ -22,7 +23,6 @@ import com.ooftf.service.net.mob.action.ErrorAction
 import com.ooftf.service.net.mob.action.MobObserver
 import com.ooftf.service.net.mob.bean.ItemDataBean
 import com.ooftf.service.net.mob.bean.MobBaseBean
-import com.ooftf.service.widget.toolbar.TailoredToolbar
 import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -146,7 +146,7 @@ class WeeklyConsumptionActivity : BaseActivity() {
 
     private fun initToolbar() {
         toolbar.title = "周饭计算器"
-        toolbar.addMenuItem(TailoredToolbar
+        toolbar.addMenuItem(ToolbarPlus
                 .MenuItem(this)
                 .layoutRight()
                 .setImage(R.drawable.ic_more_horiz)

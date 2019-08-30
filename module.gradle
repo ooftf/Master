@@ -1,9 +1,5 @@
-if (MoudleDebug) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-    apply plugin: 'com.novoda.bintray-release'
-}
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -15,11 +11,6 @@ android {
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         vectorDrawables.useSupportLibrary = true
-        if (MoudleDebug) {
-            applicationId "com.ooftf.${project.getName()}"
-            multiDexEnabled true
-        }
-
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
@@ -38,8 +29,8 @@ android {
 
     sourceSets {
         main {
-            if (MoudleDebug) {
-                manifest.srcFile 'src/app/AndroidManifest.xml'
+            if (ModuleDebug) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
                 java.srcDirs = ['src/app/java', 'src/main/java']
                 res.srcDirs = ['src/app/res', 'src/main/res']
             } else {

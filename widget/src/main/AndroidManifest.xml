@@ -45,6 +45,12 @@
         <activity android:name=".activity.NotificationActivity" />
         <activity android:name=".activity.ViewPagerActivity" />
         <activity android:name=".activity.ProgressBarActivity" />
+        <activity android:name="com.ooftf.widget.modules.design.DesignActivity" />
+        <activity android:name="com.ooftf.widget.modules.design.DesignDispatchActivity" />
+        <activity android:name="com.ooftf.widget.modules.design.FlexibleActivity" />
+        <activity android:name="com.ooftf.widget.modules.filedownload.DownloadActivity" />
+
+        <service android:name="com.ooftf.widget.modules.filedownload.DownloadService" />
     </application>
 
 </manifest>

@@ -31,6 +31,19 @@ android {
         buildConfigField("String", "APP_BUILD_TIME", "\"" + new Date().format("yyyy/MM/dd HH:mm:ss") + "\"")
 
     }
+    sourceSets {
+        main {
+            if (ModuleDebug) {
+                manifest.srcFile 'src/app/AndroidManifest.xml'
+                java.srcDirs = ['src/app/java', 'src/main/java']
+                res.srcDirs = ['src/app/res', 'src/main/res']
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java.srcDirs = ['src/main/java']
+                res.srcDirs = ['src/main/res']
+            }
+        }
+    }
     compileOptions {
         sourceCompatibility versions.java
         targetCompatibility versions.java
@@ -44,7 +57,7 @@ android {
         pickFirst 'lib/x86/libc++_shared.so'
         pickFirst 'lib/armeabi-v7a/libc++_shared.so'
         pickFirst 'lib/x86_64/libc++_shared.so'
-        pickFirst 'META-INF/lib_release.kotlin_module'
+        exclude 'META-INF/lib_release.kotlin_module'
 
     }
     signingConfigs {
@@ -95,7 +108,7 @@ dependencies {
     androidTestImplementation test.runner
     androidTestImplementation test.espresso
     testImplementation test.junit
-    if (!MoudleDebug) {
+    if (!ModuleDebug) {
         if (maven) {
             moduleList.each {
                 implementation "com.ooftf:master-${it}:$versions.master"
@@ -105,6 +118,19 @@ dependencies {
                 implementation project(":${it}")
             }
         }
+    }else{
+        implementation project(":sign")
+        implementation project(":applet")
+        implementation project(":debug")
+        implementation project(":widget")
+        implementation project(":source")
+        implementation project(":other")
+        implementation project(":rn")
+        implementation project(":webview")
+        implementation project(":qrcode")
+        implementation project(":im")
+        implementation project(":m-entrance")
+
     }
     if (maven) {
         implementation "com.ooftf:master-service:$versions.master"
@@ -114,12 +140,9 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
-    def htextview_version = '0.1.6'
-    implementation "com.hanks:htextview-base:$htextview_version"
-    implementation "com.hanks:htextview-typer:$htextview_version"// optional
+
     kapt deps.dagger2_compiler
     implementation 'com.wanjian:cockroach:0.0.5'
-    implementation 'com.ooftf:master-widget-dev-eye:1.0.4'
 
 }
 

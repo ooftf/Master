@@ -3,6 +3,7 @@ package com.ooftf.service.base
 import android.os.Handler
 import android.view.View
 import android.widget.TextView
+import com.ooftf.master.widget.toolbar.official.ToolbarPlus
 import com.ooftf.service.R
 import com.ooftf.service.base.adapter.MainRecyclerAdapter2
 import com.ooftf.service.widget.sticky.StickyOnScrollListener
@@ -30,7 +31,7 @@ abstract class BaseListFragment : BaseLazyFragment() {
     }
 
     protected open fun initToolbar(toolbar: TailoredToolbar) {
-        toolbar.addMenuItem(TailoredToolbar.MenuItem(activity).layoutRight().setText("MenuItem").setOnClickListenerChain {
+        toolbar.addMenuItem(ToolbarPlus.MenuItem(activity).layoutRight().setText("MenuItem").setOnClickListenerChain {
             toast("MenuItem")
         })
     }

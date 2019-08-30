@@ -10,6 +10,6 @@
         android:id="@+id/textView"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/android_god_eye_logo"
+        android:src="@drawable/share_weibo"
         android:text="scene" />
 </LinearLayout>

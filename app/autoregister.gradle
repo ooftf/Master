@@ -8,6 +8,12 @@ autoregister {
                     , 'registerMethodName'   : 'register' //
             ],
             [
+                    'scanInterface'          : 'com.ooftf.service.engine.debug.DebugEntranceProvider'
+                    , 'codeInsertToClassName': 'com.ooftf.service.engine.debug.DebugEntranceManager'
+                    //未指定codeInsertToMethodName，默认插入到static块中，故此处register必须为static方法
+                    , 'registerMethodName'   : 'register' //
+            ],
+            [
                     'scanInterface'           : 'com.ooftf.docking.api.IApplication'
                     , 'codeInsertToClassName' : 'com.ooftf.docking.api.ApplicationManager'
                     , 'codeInsertToMethodName': 'init'
