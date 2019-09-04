@@ -13,6 +13,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
 
+import androidx.core.content.FileProvider;
+
+import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 
@@ -43,9 +46,24 @@ public class AndroidUtil {
 
     public static void installApk(Uri uri, Context context) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.setDataAndType(uri, "application/vnd.android.package-archive");
+        String type = "application/vnd.android.package-archive";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        }
+        context.grantUriPermission(context.getPackageName(), uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.setDataAndType(uri, type);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+    }
+
+    public static void installApk(Context context, File file, String authority) {
+        Uri data;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            data = Uri.fromFile(file);
+        } else {
+            data = FileProvider.getUriForFile(context,authority, file);
+        }
+        installApk(data, context);
     }
 
     /**
