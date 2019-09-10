@@ -50,9 +50,9 @@ android {
     }
     packagingOptions {
         // More than one file was found with OS independent path 'lib/armeabi-v7a/libgnustl_shared.so'
-     /* pickFirst 'lib/armeabi-v7a/libgnustl_shared.so'
-        pickFirst 'lib/x86/libgnustl_shared.so'
-        */
+        /* pickFirst 'lib/armeabi-v7a/libgnustl_shared.so'
+           pickFirst 'lib/x86/libgnustl_shared.so'
+           */
         pickFirst 'lib/arm64-v8a/libc++_shared.so'
         pickFirst 'lib/x86/libc++_shared.so'
         pickFirst 'lib/armeabi-v7a/libc++_shared.so'
@@ -108,7 +108,7 @@ dependencies {
     androidTestImplementation test.runner
     androidTestImplementation test.espresso
     testImplementation test.junit
-    if (!ModuleDebug) {
+    if (ModuleDebug) {
         if (maven) {
             moduleList.each {
                 implementation "com.ooftf:master-${it}:$versions.master"
@@ -118,7 +118,7 @@ dependencies {
                 implementation project(":${it}")
             }
         }
-    }else{
+    } else {
         implementation project(":sign")
         implementation project(":applet")
         implementation project(":debug")

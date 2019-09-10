@@ -46,8 +46,7 @@ public class AndroidUtil {
 
     public static void installApk(Uri uri, Context context) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        String type = "application/vnd.android.package-archive";
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        String type = "application/vnd.android.package-archive";·
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         }
         context.grantUriPermission(context.getPackageName(), uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
