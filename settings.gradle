@@ -1,4 +1,4 @@
-include ':app', ':service', ':m-monitor'
+include ':app', ':service'
 
 if (isModuleDebug()) {
     def modules = readModules()
@@ -6,7 +6,7 @@ if (isModuleDebug()) {
         include(":$it")
     }
 } else {
-    include ":sign", ":applet", ":debug", ":widget", ":source", ":other", ":rn", ":webview", ":qrcode", ":im",':m-entrance'
+    include ":sign", ":applet", ":debug", ":widget", ":source", ":other", ":rn", ":webview", ":qrcode", ":im", ':m-entrance', ':m-monitor'
 }
 
 def isModuleDebug() {
@@ -16,9 +16,9 @@ def isModuleDebug() {
         InputStream inputStream = file.newDataInputStream()
         properties.load(inputStream)
         def str = properties.getProperty('MODULE_DEBUG')
-        if(str == null){
+        if (str == null) {
             return false
-        }else{
+        } else {
             return Boolean.parseBoolean(str)
         }
 

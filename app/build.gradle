@@ -130,6 +130,7 @@ dependencies {
         implementation project(":qrcode")
         implementation project(":im")
         implementation project(":m-entrance")
+        implementation project(":m-monitor")
 
     }
     if (maven) {
@@ -143,7 +144,6 @@ dependencies {
 
     kapt deps.dagger2_compiler
     implementation 'com.wanjian:cockroach:0.0.5'
-
 }
 
 //apply from: 'tinkerpatch.gradle'

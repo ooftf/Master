@@ -1,5 +1,6 @@
 
 ### 获取密钥详情
+需要Java环境
 keytool -list -v -alias master -keystore C:\StudioProjects\Master\app\lihang.jks
 
 ### 项目打印依赖

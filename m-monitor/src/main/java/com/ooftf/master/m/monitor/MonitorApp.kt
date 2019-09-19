@@ -1,7 +1,9 @@
 package com.ooftf.master.m.monitor
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.os.Bundle
 
 import com.ooftf.docking.api.IApplication
 import com.ooftf.service.BuildConfig
@@ -9,6 +11,7 @@ import com.ooftf.service.base.BaseApplication
 import com.ooftf.service.utils.ProcessUtils
 import com.ooftf.service.utils.ThreadUtil
 import com.tencent.bugly.crashreport.CrashReport
+//import com.zhuge.analysis.stat.ZhugeSDK
 
 /**
  * @author ooftf
@@ -17,6 +20,38 @@ import com.tencent.bugly.crashreport.CrashReport
  */
 class MonitorApp : IApplication {
     override fun init(application: Application) {
+        application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
+            override fun onActivityPaused(activity: Activity?) {
+
+            }
+
+            override fun onActivityResumed(activity: Activity?) {
+            }
+
+            override fun onActivityStarted(activity: Activity?) {
+            }
+
+            override fun onActivityDestroyed(activity: Activity) {
+                if(activity.javaClass.name == "com.ooftf.master.m.entrance.ui.MainActivity"){
+                    //ZhugeSDK.getInstance().flush(activity?.applicationContext)
+                }
+
+            }
+
+            override fun onActivitySaveInstanceState(activity: Activity?, outState: Bundle?) {
+            }
+
+            override fun onActivityStopped(activity: Activity?) {
+            }
+
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+                if(activity.javaClass.name == "com.ooftf.master.m.entrance.ui.MainActivity"){
+                    //ZhugeSDK.getInstance().init(activity?.applicationContext)
+                }
+
+            }
+
+        })
         //        /BaseApplication.instance
     }
 

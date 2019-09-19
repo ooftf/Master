@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.blankj.utilcode.util.AppUtils
 import com.mcxiaoke.packer.helper.PackerNg
 import com.ooftf.bottombar.java.FragmentSwitchManager
 import com.ooftf.master.m.entrance.R
@@ -15,7 +16,9 @@ import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.main_tab.TabManager
 import com.ooftf.service.utils.JLog
 import com.ooftf.service.utils.ThreadUtil
+import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.concurrent.TimeUnit
 
 @Route(path = RouterPath.MAIN_ACTIVITY_MAIN)
 class MainActivity : BaseActivity() {
