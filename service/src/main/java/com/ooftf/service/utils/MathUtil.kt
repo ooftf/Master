@@ -18,7 +18,7 @@ object MathUtil {
 
     //求两点之间的距离
     fun distance(x1: Double, y1: Double, x2: Double, y2: Double): Double {
-        return java.lang.Math.sqrt(power(x2 - x1, 2) + power(y2 - y1, 2))
+        return Math.sqrt(power(x2 - x1, 2) + power(y2 - y1, 2))
     }
 
     //求两点之间的距离
