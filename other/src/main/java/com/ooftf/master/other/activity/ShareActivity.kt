@@ -22,13 +22,11 @@ class ShareActivity : BaseActivity() {
             share()
         }*/
         val flutterView = Flutter.createView(
-                this@ShareActivity,
+                this,
                 lifecycle,
                 "route1"
         )
-        val layout = FrameLayout.LayoutParams(600, 800)
-        layout.leftMargin = 100
-        layout.topMargin = 200
+        val layout = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT)
         addContentView(flutterView, layout)
     }
 

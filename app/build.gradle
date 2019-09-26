@@ -8,6 +8,7 @@ apply plugin: 'io.fabric'
 apply from: 'matrix.gradle'
 apply from: 'autoregister.gradle'
 apply plugin: 'com.alibaba.arouter'
+apply plugin: 'plugin.test'
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
