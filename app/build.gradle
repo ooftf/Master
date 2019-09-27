@@ -133,7 +133,6 @@ dependencies {
         implementation project(":im")
         implementation project(":m-entrance")
         implementation project(":m-monitor")
-
     }
     if (maven) {
         implementation "com.ooftf:master-service:$versions.master"
