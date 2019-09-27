@@ -12,6 +12,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import io.reactivex.Scheduler;
+import io.reactivex.schedulers.Schedulers;
+
 /**
  * AndroidUtil 主要负责硬件层级
  * App主要负责软件层级
@@ -54,13 +57,17 @@ public class ThreadUtil {
         return threadPool;
     }
 
+    public static Scheduler newThreadScheduler() {
+        return Schedulers.from(getDefaultThreadPool());
+    }
+
     private static ThreadPoolExecutor createThreadPool() {
         return new ThreadPoolExecutor(
                 INIT_THREAD_COUNT,
                 MAX_THREAD_COUNT,
                 SURPLUS_THREAD_LIFE,
                 TimeUnit.SECONDS,
-                new ArrayBlockingQueue<Runnable>(64),
+                new ArrayBlockingQueue<>(64),
                 new DefaultThreadFactory());
     }
 
