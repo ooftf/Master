@@ -1,12 +1,17 @@
 package com.ooftf.service.engine;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+
+import com.ooftf.service.utils.LifecycleUtil;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.lang.ref.WeakReference;
 
 /**
  * @author ooftf
@@ -15,7 +20,7 @@ import android.view.ViewGroup;
  */
 public class LazyFragmentProxy<T extends Fragment & LazyFragmentProxy.LazyFragmentOwner> {
     T fragment;
-    View rootView;
+    WeakReference<View> rootViewReference;
 
     public LazyFragmentProxy(T fragment) {
         this.fragment = fragment;
@@ -25,14 +30,20 @@ public class LazyFragmentProxy<T extends Fragment & LazyFragmentProxy.LazyFragme
 
     public final View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (fragment.lazyEnabled()) {
-            if (rootView == null) {
-                rootView = fragment.getView();
+            View view = null;
+            if (rootViewReference != null) {
+                view = rootViewReference.get();
             }
-            if (rootView == null) {
+            if (view == null) {
+                view = fragment.getView();
+                rootViewReference = new WeakReference<>(view);
+            }
+            if (view == null) {
                 isLoaded = false;
-                rootView = inflater.inflate(fragment.getLayoutId(), container, false);
+                view = inflater.inflate(fragment.getLayoutId(), container, false);
+                rootViewReference = new WeakReference<>(view);
             }
-            return rootView;
+            return view;
         } else {
             if (fragment.getView() == null) {
                 return inflater.inflate(fragment.getLayoutId(), container, false);
@@ -45,14 +56,14 @@ public class LazyFragmentProxy<T extends Fragment & LazyFragmentProxy.LazyFragme
         if (fragment.lazyEnabled()) {
             loadJudgment();
         } else {
-            fragment.onLoad();
+            fragment.onLoad(view);
         }
     }
 
     private void loadJudgment() {
-        if (fragment.getView() != null && fragment.getUserVisibleHint() && !isLoaded) {
+        if (fragment.getView() != null && fragment.getUserVisibleHint() && !isLoaded && !fragment.isHidden() && LifecycleUtil.isShow(fragment.getLifecycle())) {
             isLoaded = true;
-            fragment.onLoad();
+            fragment.onLoad(fragment.getView());
         }
     }
 
@@ -61,6 +72,22 @@ public class LazyFragmentProxy<T extends Fragment & LazyFragmentProxy.LazyFragme
             loadJudgment();
         }
 
+    }
+
+    public void onHiddenChanged() {
+        if (fragment.lazyEnabled()) {
+            loadJudgment();
+        }
+    }
+
+    public void onResume() {
+        if (fragment.lazyEnabled()) {
+            loadJudgment();
+        }
+    }
+
+    public void onDetach() {
+        rootViewReference = null;
     }
 
 
@@ -76,7 +103,7 @@ public class LazyFragmentProxy<T extends Fragment & LazyFragmentProxy.LazyFragme
          * 初始化界面
          */
 
-        void onLoad();
+        void onLoad(@NotNull View rootView);
 
         boolean lazyEnabled();
     }

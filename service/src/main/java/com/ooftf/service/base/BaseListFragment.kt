@@ -3,6 +3,7 @@ package com.ooftf.service.base
 import android.os.Handler
 import android.view.View
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.ooftf.master.widget.toolbar.official.ToolbarPlus
 import com.ooftf.service.R
 import com.ooftf.service.base.adapter.MainRecyclerAdapter2
@@ -22,7 +23,7 @@ abstract class BaseListFragment : BaseLazyFragment() {
         return R.layout.fragment_home_base
     }
 
-    override fun onLoad() {
+    override fun onLoad(rootView: View) {
         setupRecyclerView()
         initData()
         setupFloatButton()

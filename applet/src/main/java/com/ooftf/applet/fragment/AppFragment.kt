@@ -1,6 +1,7 @@
 package com.ooftf.applet.fragment
 
 import android.os.Handler
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.applet.R
@@ -22,7 +23,7 @@ class AppFragment : BaseLazyFragment() {
         return R.layout.fragment_applet
     }
 
-    override fun onLoad() {
+    override fun onLoad(rootView: View) {
         setupRecyclerView()
         initData()
         initToolbar(toolbar)

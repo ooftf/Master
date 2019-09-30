@@ -48,6 +48,7 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         mSimpleImmersionProxy.onHiddenChanged(hidden)
+        lazyFragmentProxy.onHiddenChanged()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -58,7 +59,7 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
     /**
      * 这个时候view已经创建
      */
-    abstract override fun onLoad()
+    abstract override fun onLoad(rootView: View)
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
@@ -107,5 +108,17 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
     open fun isDarkFont(): Boolean {
         return false
     }
+
+
+    override fun onResume() {
+        super.onResume()
+        lazyFragmentProxy.onResume()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        lazyFragmentProxy.onDetach()
+    }
+
 
 }

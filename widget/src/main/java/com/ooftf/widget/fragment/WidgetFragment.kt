@@ -3,6 +3,7 @@ package com.ooftf.widget.fragment
 import android.content.Context
 import android.os.Handler
 import android.view.MenuItem
+import android.view.View
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -29,7 +30,7 @@ class WidgetFragment : BaseLazyFragment() {
         return R.layout.fragment_widget
     }
 
-    override fun onLoad() {
+    override fun onLoad(rootView: View) {
         setupToolbar()
         setupRecyclerView()
         initData()

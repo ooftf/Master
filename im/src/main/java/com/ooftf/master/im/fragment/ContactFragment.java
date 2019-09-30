@@ -1,6 +1,8 @@
 package com.ooftf.master.im.fragment;
 
 
+import android.view.View;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.master.im.R;
 import com.ooftf.master.im.R2;
@@ -18,7 +20,7 @@ public class ContactFragment extends BaseLazyFragment {
     ContactLayout contactLayout;
 
     @Override
-    public void onLoad() {
+    public void onLoad(View rootView) {
         ButterKnife.bind(this, getView());
         contactLayout.initDefault();
     }

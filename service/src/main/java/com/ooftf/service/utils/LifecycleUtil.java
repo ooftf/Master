@@ -18,6 +18,9 @@ public class LifecycleUtil {
     public static boolean isTouch(Lifecycle lifecycle) {
         return lifecycle.getCurrentState().isAtLeast(Lifecycle.State.RESUMED);
     }
+    public static boolean isDestroy(Lifecycle lifecycle) {
+        return lifecycle.getCurrentState() == Lifecycle.State.DESTROYED;
+    }
 
     public static void postOnResume(Lifecycle lifecycle, Runnable runnable) {
         if (isTouch(lifecycle)) {
@@ -40,6 +43,19 @@ public class LifecycleUtil {
             lifecycle.addObserver(new LifecycleObserver() {
                 @OnLifecycleEvent(Lifecycle.Event.ON_START)
                 void onStart() {
+                    runnable.run();
+                    lifecycle.removeObserver(this);
+                }
+            });
+        }
+    }
+    public static void postOnDestroy(Lifecycle lifecycle, Runnable runnable) {
+        if (isDestroy(lifecycle)) {
+            runnable.run();
+        } else {
+            lifecycle.addObserver(new LifecycleObserver() {
+                @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+                void onDestroy() {
                     runnable.run();
                     lifecycle.removeObserver(this);
                 }

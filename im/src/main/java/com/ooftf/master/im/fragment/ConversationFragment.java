@@ -2,6 +2,7 @@ package com.ooftf.master.im.fragment;
 
 
 import android.graphics.Color;
+import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -26,7 +27,7 @@ public class ConversationFragment extends BaseLazyFragment {
     ConversationLayout conversationLayout;
 
     @Override
-    public void onLoad() {
+    public void onLoad(View rootView) {
         ButterKnife.bind(this, getView());
         conversationLayout.initDefault();
         conversationLayout.getConversationList().setOnItemClickListener((view, i, conversationInfo) -> {
