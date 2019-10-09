@@ -67,7 +67,10 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
         mSimpleImmersionProxy.isUserVisibleHint = isVisibleToUser
     }
 
-    abstract override fun getLayoutId(): Int
+    abstract fun getLayoutId(): Int
+    override fun getContentView(inflater: LayoutInflater, container: ViewGroup?): View {
+        return inflater.inflate(getLayoutId(), container, false)
+    }
 
     override fun lazyEnabled(): Boolean {
         return true

@@ -12,6 +12,5 @@ dependencies {
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     implementation deps.SmartRefreshLayout
     implementation deps.SmartRefreshHeader
-    implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha05'
 
 }

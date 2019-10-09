@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import com.ooftf.service.utils.LifecycleUtil;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.ref.WeakReference;
 
@@ -40,13 +41,13 @@ public class LazyFragmentProxy<T extends Fragment & LazyFragmentProxy.LazyFragme
             }
             if (view == null) {
                 isLoaded = false;
-                view = inflater.inflate(fragment.getLayoutId(), container, false);
+                view = fragment.getContentView(inflater,container);
                 rootViewReference = new WeakReference<>(view);
             }
             return view;
         } else {
             if (fragment.getView() == null) {
-                return inflater.inflate(fragment.getLayoutId(), container, false);
+                return fragment.getContentView(inflater,container);
             }
             return fragment.getView();
         }
@@ -92,12 +93,8 @@ public class LazyFragmentProxy<T extends Fragment & LazyFragmentProxy.LazyFragme
 
 
     public interface LazyFragmentOwner {
-        /**
-         * fragment 的布局文件
-         *
-         * @return
-         */
-        int getLayoutId();
+
+        View getContentView(@NotNull LayoutInflater inflater,@Nullable ViewGroup container);
 
         /**
          * 初始化界面

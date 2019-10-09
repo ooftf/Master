@@ -1,4 +1,4 @@
-include ':app', ':service', ':m-flutter'
+include ':app', ':service', ':m-flutter', ':lib-statelayout'
 
 if (isModuleDebug()) {
     def modules = readModules()

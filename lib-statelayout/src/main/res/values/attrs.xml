@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StateLayoutSwitcher">
+        <attr name="error_layout" format="reference" />
+        <attr name="loading_layout" format="reference" />
+        <attr name="empty_layout" format="reference" />
+        <attr name="empty_action" format="reference" />
+        <attr name="error_refresh" format="reference" />
+        <attr name="block_reloading" format="boolean" />
+    </declare-styleable>
+</resources>

@@ -59,6 +59,7 @@ tasks.withType(Javadoc) {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api androidx.constraintLayout
+    implementation project(":lib-statelayout")
     androidTestImplementation test.runner
     androidTestImplementation test.espresso
     testImplementation test.junit
@@ -142,4 +143,7 @@ dependencies {
     api 'com.ooftf:master-widget-toolbar:1.0.7'
     api deps.bindingcollectionadapter
     api deps.bindingcollectionadapter_recycler
+    api 'androidx.viewpager2:viewpager2:1.0.0-beta04'
+    api deps.SmartRefreshHeader
+    api deps.SmartRefreshLayout
 }
