@@ -60,8 +60,8 @@ buildscript {
                 'CalendarView'                     : 'com.github.ooftf:CalendarView:1.0.5',
                 'ARouterCompiler'                  : "com.alibaba:arouter-compiler:$versions.arouter",
                 'ARouterApi'                       : 'com.alibaba:arouter-api:1.4.1',
-                'bindingcollectionadapter'         : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.0.0',
-                'bindingcollectionadapter_recycler': 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.0.0',
+                'bindingcollectionadapter'         : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.1.1',
+                'bindingcollectionadapter_recycler': 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.1.1',
                 'SmartRefreshLayout'               : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-8',
                 'SmartRefreshHeader'               : 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-8',
                 'material'                         : 'com.google.android.material:material:1.1.0-alpha07',
@@ -101,7 +101,7 @@ buildscript {
         // classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
         classpath "com.mcxiaoke.packer-ng:plugin:$versions.packerNG"
         classpath "com.alibaba:arouter-register:1.0.2"
-        classpath 'com.billy.android:autoregister:1.4.1'
+        classpath 'com.billy.android:autoregister:1.4.2'
         classpath "com.jakewharton:butterknife-gradle-plugin:$versions.butterknife"
         //Firebase
         classpath 'com.google.gms:google-services:4.3.2'

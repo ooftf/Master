@@ -6,12 +6,9 @@
     <data>
 
         <variable
-            name="items"
-            type="java.util.List" />
+            name="viewModel"
+            type="com.ooftf.master.webview.activity.WebShortcutViewModel" />
 
-        <variable
-            name="itemBinding"
-            type="me.tatarka.bindingcollectionadapter2.ItemBinding" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,8 +28,8 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:itemBinding="@{itemBinding}"
-            app:items="@{items}"
+            app:itemBinding="@{viewModel.itemBinding}"
+            app:items="@{viewModel.items}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />

@@ -8,8 +8,8 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 
 import com.alibaba.android.arouter.facade.Postcard;
-import com.ooftf.master.statelayout.IStateLayout;
 import com.ooftf.service.utils.ThreadUtil;
+import com.ooftf.widget.statelayout.IStateLayout;
 
 /**
  * @author ooftf

@@ -27,7 +27,6 @@ class AppFragment : BaseLazyFragment() {
                     0 -> NativeFragment()
                     1 -> ReactNativeFragment()
                     2 -> FlutterFragment()
-                    3 -> FlutterFragment()
                     else -> FlutterFragment()
                 }
             }
@@ -51,5 +50,6 @@ class AppFragment : BaseLazyFragment() {
     override fun getLayoutId(): Int {
         return R.layout.fragment_applet
     }
+
 
 }
