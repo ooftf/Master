@@ -1,4 +1,4 @@
-include ':app', ':service', ':m-flutter'
+include ':app', ':service'
 
 if (isModuleDebug()) {
     def modules = readModules()
@@ -6,7 +6,7 @@ if (isModuleDebug()) {
         include(":$it")
     }
 } else {
-    include ":sign", ":applet", ":debug", ":widget", ":source", ":other", ":rn", ":webview", ":qrcode", ":im", ':m-entrance', ':m-monitor'
+    include ':m-sign', ':m-applet', ':m-debug', ':m-widget', ':m-source', ':m-other', ':m-rn', ':m-webview', ':m-qrcode', ':m-im', ':m-entrance', ':m-monitor', ':m-flutter'
 }
 
 def isModuleDebug() {

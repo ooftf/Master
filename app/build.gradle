@@ -121,18 +121,19 @@ dependencies {
             }
         }
     } else {
-        implementation project(":sign")
-        implementation project(":applet")
-        implementation project(":debug")
-        implementation project(":widget")
-        implementation project(":source")
-        implementation project(":other")
-        implementation project(":rn")
-        implementation project(":webview")
-        implementation project(":qrcode")
-        implementation project(":im")
+        implementation project(":m-sign")
+        implementation project(":m-applet")
+        implementation project(":m-debug")
+        implementation project(":m-widget")
+        implementation project(":m-source")
+        implementation project(":m-other")
+        implementation project(":m-rn")
+        implementation project(":m-webview")
+        implementation project(":m-qrcode")
+        implementation project(":m-im")
         implementation project(":m-entrance")
         implementation project(":m-monitor")
+        implementation project(":m-flutter")
     }
     if (maven) {
         implementation "com.ooftf:master-service:$versions.master"
