@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer;
 import java.lang.reflect.Method;
 
 /**
+ * 需要对继承LiveData进行Keep
+ *
  * @author ooftf
  * @email 994749769@qq.com
  * @date 2019/7/10 0010

@@ -11,12 +11,12 @@ import com.ooftf.service.base.BaseActivity
 import java.lang.reflect.ParameterizedType
 
 /**
- *
+ * 需要对继承ViewDataBinding进行keep
  * @author ooftf
  * @email 994749769@qq.com
  * @date 2019/8/2 0002
  */
-abstract class BaseQuickActivity<B : ViewDataBinding, V : BaseViewModel> : BaseActivity() {
+abstract class BaseMvvmActivity<B : ViewDataBinding, V : BaseViewModel> : BaseActivity() {
     lateinit var binding: B
     lateinit var viewModel: V
     lateinit var baseLiveDataObserve: BaseLiveDataObserve

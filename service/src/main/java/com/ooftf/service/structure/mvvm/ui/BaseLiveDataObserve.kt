@@ -61,24 +61,21 @@ class BaseLiveDataObserve(private var liveData: BaseLiveData, private var owner:
                     it.finishRefresh()
                     it.resetNoMoreData()
                 }
-            } /*else if (isSmartsNone()) {
-                smarts.forEach {
-                    it.autoRefreshAnimationOnly()
-                }
-            }*/
+            }
         })
 
         liveData.smartLoadMore.observe(owner, Observer { integer ->
-            if (integer == 1) {
+            if (integer == UIEvent.SMART_LAYOUT_LOADMORE_FINISH) {
                 smarts.forEach {
                     it.finishLoadMore()
                 }
-            } else if (integer == 2) {
+            } else if (integer == UIEvent.SMART_LAYOUT_LOADMORE_FINISH_AND_NO_MORE) {
                 smarts.forEach {
                     it.finishLoadMoreWithNoMoreData()
                 }
             }
         })
     }
+
 
 }

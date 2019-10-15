@@ -14,13 +14,11 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.gyf.immersionbar.ImmersionBar
 import com.ooftf.service.R
-import com.ooftf.service.interfaces.ILifecycleState
 import com.ooftf.service.utils.JLog
 import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle
 import com.trello.rxlifecycle3.LifecycleProvider
 import com.trello.rxlifecycle3.LifecycleTransformer
 import io.reactivex.Observable
-import java.util.*
 
 /**
  * Created by master on 2017/10/10 0010.
@@ -69,12 +67,15 @@ open class BaseActivity : AppCompatActivity() {
 
                     ImmersionBar.with(this@BaseActivity).statusBarDarkFont(isDarkFont()).navigationBarColorInt(Color.WHITE).init()
                     var view = getToolbar()
-                    if (view == null) {
-                        view = findViewById(getToolbarId())
+                    var list: MutableList<View> = ArrayList()
+                    getToolbarId().forEach {
+                        list.add(findViewById<View>(it))
                     }
-                    if (view != null) {
-                        ImmersionBar.setTitleBar(this@BaseActivity, view)
+                    getToolbar().forEach {
+                        list.add(it)
                     }
+                    ImmersionBar.setTitleBar(this@BaseActivity, *list.toTypedArray())
+
                 }
 
             })
@@ -82,12 +83,12 @@ open class BaseActivity : AppCompatActivity() {
 
     }
 
-    open fun getToolbarId(): Int {
-        return R.id.toolbar
+    open fun getToolbarId(): IntArray {
+        return intArrayOf(R.id.toolbar)
     }
 
-    open fun getToolbar(): View? {
-        return null
+    open fun getToolbar(): Array<View> {
+        return emptyArray()
     }
 
     open fun isDarkFont(): Boolean {
@@ -138,7 +139,6 @@ open class BaseActivity : AppCompatActivity() {
         super.onResume()
         doOnResume()
     }
-
 
 
     override fun onPause() {

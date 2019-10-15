@@ -12,12 +12,12 @@ import com.ooftf.service.structure.mvvm.ui.BaseLiveDataObserve
 import java.lang.reflect.ParameterizedType
 
 /**
- *
+ * 需要对继承ViewDataBinding进行keep
  * @author ooftf
  * @email 994749769@qq.com
  * @date 2019/10/9
  */
-class BaseQuickFragment<B : ViewDataBinding, V : BaseViewModel> : BaseLazyFragment() {
+class BaseMvvmFragment<B : ViewDataBinding, V : BaseViewModel> : BaseLazyFragment() {
     lateinit var binding: B
     lateinit var viewModel: V
     lateinit var baseLiveDataObserve: BaseLiveDataObserve

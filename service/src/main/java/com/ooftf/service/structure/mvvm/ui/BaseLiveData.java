@@ -57,8 +57,6 @@ public class BaseLiveData {
     }
 
 
-
-
     /**
      * finish
      */
@@ -129,11 +127,11 @@ public class BaseLiveData {
     }
 
     public void finishLoadMore() {
-        smartLoadMore.postValue(1);
+        smartLoadMore.postValue(UIEvent.SMART_LAYOUT_LOADMORE_FINISH);
     }
 
     public void finishLoadMoreWithNoMoreData() {
-        smartLoadMore.postValue(2);
+        smartLoadMore.postValue(UIEvent.SMART_LAYOUT_LOADMORE_FINISH_AND_NO_MORE);
     }
 
 
@@ -161,21 +159,14 @@ public class BaseLiveData {
         });
     }
 
-  /*  public void observeMessage(MutableLiveData<String> liveData) {
-        messageLiveData.observeForever(new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                liveData.setValue(s);
-            }
-        });
-    }*/
-
     public BaseLiveDataObserve attach(LifecycleOwner owner, Activity activity) {
         return new BaseLiveDataObserve(this, owner, activity);
     }
-    public BaseLiveDataObserve attach( AppCompatActivity activity) {
+
+    public BaseLiveDataObserve attach(AppCompatActivity activity) {
         return new BaseLiveDataObserve(this, activity, activity);
     }
+
     public BaseLiveDataObserve attach(Fragment fragment) {
         return new BaseLiveDataObserve(this, fragment, fragment.getActivity());
     }
