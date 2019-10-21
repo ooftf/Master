@@ -10,19 +10,22 @@ import com.ooftf.master.im.R;
 import com.ooftf.service.base.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import butterknife.ButterKnife;
+
 /**
  * @author 99474
  */
 @Route(path = RouterPath.IM_ACTIVITY_GROUP_CHAT)
 public class GroupChatActivity extends BaseActivity {
 
- /*   @BindView(R2.id.chat_panel)
-    GroupChatPanel chatPanel;*/
+    /*   @BindView(R2.id.chat_panel)
+       GroupChatPanel chatPanel;*/
     @Autowired
     String chatId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,7 @@ public class GroupChatActivity extends BaseActivity {
        /* chatPanel.initDefault();
         chatPanel.setBaseChatId(chatId);*/
     }
+
     @Override
     public boolean isDarkFont() {
         return true;
@@ -41,11 +45,10 @@ public class GroupChatActivity extends BaseActivity {
     public boolean isImmersionEnable() {
         return true;
     }
-
-    @Nullable
+    @NotNull
     @Override
-    public View getToolbar() {
-        return null;
-       // return chatPanel.getTitleBar();
+    public View[] getToolbar() {
+        return new View[0];
+        // return chatPanel.getTitleBar();
     }
 }

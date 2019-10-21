@@ -64,12 +64,12 @@ open class BaseActivity : AppCompatActivity() {
             lifecycle.addObserver(object : LifecycleObserver {
                 @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
                 fun create() {
-
                     ImmersionBar.with(this@BaseActivity).statusBarDarkFont(isDarkFont()).navigationBarColorInt(Color.WHITE).init()
-                    var view = getToolbar()
                     var list: MutableList<View> = ArrayList()
                     getToolbarId().forEach {
-                        list.add(findViewById<View>(it))
+                        findViewById<View>(it)?.let { it ->
+                            list.add(it)
+                        }
                     }
                     getToolbar().forEach {
                         list.add(it)

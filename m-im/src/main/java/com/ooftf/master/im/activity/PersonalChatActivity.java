@@ -13,7 +13,7 @@ import com.ooftf.service.constant.RouterPath;
 import com.tencent.qcloud.tim.uikit.modules.chat.ChatLayout;
 import com.tencent.qcloud.tim.uikit.modules.chat.base.ChatInfo;
 
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,10 +46,10 @@ public class PersonalChatActivity extends BaseActivity {
         return true;
     }
 
-    @Nullable
+    @NotNull
     @Override
-    public View getToolbar() {
-        return chatPanel.getTitleBar();
+    public View[] getToolbar() {
+        return new View[]{chatPanel.getTitleBar()};
     }
 
     @Override

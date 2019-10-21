@@ -20,7 +20,6 @@ import com.tencent.imsdk.TIMValueCallBack;
 import com.tencent.imsdk.friendship.TIMFriendRequest;
 import com.tencent.imsdk.friendship.TIMFriendResult;
 import com.tencent.imsdk.friendship.TIMFriendStatus;
-import com.tencent.qcloud.tim.uikit.modules.contact.ContactListView;
 import com.tencent.qcloud.tim.uikit.utils.SoftKeyBoardUtil;
 import com.tencent.qcloud.tim.uikit.utils.TUIKitConstants;
 import com.tencent.qcloud.tim.uikit.utils.ToastUtil;
@@ -52,8 +51,8 @@ public class AddChatActivity extends BaseActivity {
 
     @Nullable
     @Override
-    public View getToolbar() {
-        return binding.addFriendTitlebar;
+    public View[] getToolbar() {
+        return new View[]{binding.addFriendTitlebar};
     }
 
     public void add(View view) {
