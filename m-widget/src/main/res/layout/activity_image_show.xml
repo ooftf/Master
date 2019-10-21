@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="items"
+            type="java.util.List" />
+        <variable
+            name="itemBinding"
+            type="me.tatarka.bindingcollectionadapter2.ItemBinding" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.ImageShowActivity">
+
+        <com.ooftf.service.widget.toolbar.TailoredToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_appbar_height"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="图片展示" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:itemBinding="@{itemBinding}"
+            app:items="@{items}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:spanCount="4" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

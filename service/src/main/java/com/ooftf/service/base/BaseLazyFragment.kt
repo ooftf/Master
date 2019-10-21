@@ -1,14 +1,15 @@
 package com.ooftf.service.base
 
 import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Bundle
-import androidx.annotation.CallSuper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.gyf.barlibrary.ImmersionBar
-import com.gyf.barlibrary.SimpleImmersionOwner
-import com.gyf.barlibrary.SimpleImmersionProxy
+import androidx.annotation.CallSuper
+import com.gyf.immersionbar.ImmersionBar
+import com.gyf.immersionbar.components.SimpleImmersionOwner
+import com.gyf.immersionbar.components.SimpleImmersionProxy
 import com.ooftf.service.R
 import com.ooftf.service.engine.LazyFragmentProxy
 
@@ -42,12 +43,12 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
     override fun onDestroy() {
         super.onDestroy()
         mSimpleImmersionProxy.onDestroy()
-        ImmersionBar.with(this).destroy()
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         mSimpleImmersionProxy.onHiddenChanged(hidden)
+        lazyFragmentProxy.onHiddenChanged()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -58,7 +59,7 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
     /**
      * 这个时候view已经创建
      */
-    abstract override fun onLoad()
+    abstract override fun onLoad(rootView: View)
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
@@ -66,7 +67,10 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
         mSimpleImmersionProxy.isUserVisibleHint = isVisibleToUser
     }
 
-    abstract override fun getLayoutId(): Int
+    abstract fun getLayoutId(): Int
+    override fun getContentView(inflater: LayoutInflater, container: ViewGroup?): View {
+        return inflater.inflate(getLayoutId(), container, false)
+    }
 
     override fun lazyEnabled(): Boolean {
         return true
@@ -84,15 +88,40 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
     }
 
     override fun initImmersionBar() {
-        val immersionBar = ImmersionBar.with(this).keyboardEnable(true)
-        val toolbar = view?.findViewById<View>(getToolbarId())
+
+        val immersionBar = ImmersionBar.with(this).statusBarDarkFont(isDarkFont()).keyboardEnable(true)
+        var toolbar = getToolbar()
+        if (toolbar == null) {
+            toolbar = view?.findViewById<View>(getToolbarId())
+        }
         if (toolbar != null) {
             immersionBar.titleBar(toolbar)
         }
-        immersionBar.init()
+        immersionBar.navigationBarColorInt(Color.WHITE).init()
     }
 
     open fun getToolbarId(): Int {
         return R.id.toolbar
     }
+
+    open fun getToolbar(): View? {
+        return null
+    }
+
+    open fun isDarkFont(): Boolean {
+        return false
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        lazyFragmentProxy.onResume()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        lazyFragmentProxy.onDetach()
+    }
+
+
 }

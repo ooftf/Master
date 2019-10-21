@@ -3,7 +3,7 @@ package com.ooftf.service.base
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -12,23 +12,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import com.gyf.barlibrary.ImmersionBar
-import com.gyf.barlibrary.OSUtils
+import com.gyf.immersionbar.ImmersionBar
 import com.ooftf.service.R
-import com.ooftf.service.interfaces.ILifecycleState
 import com.ooftf.service.utils.JLog
 import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle
 import com.trello.rxlifecycle3.LifecycleProvider
 import com.trello.rxlifecycle3.LifecycleTransformer
-import hugo.weaving.DebugLog
 import io.reactivex.Observable
-import java.util.*
 
 /**
  * Created by master on 2017/10/10 0010.
  */
-@DebugLog
-open class BaseActivity : AppCompatActivity(), ILifecycleState {
+open class BaseActivity : AppCompatActivity() {
     val defaultRequestCode = 837
 
     val provider: LifecycleProvider<Lifecycle.Event> by lazy {
@@ -40,7 +35,6 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
     }
 
 
-
     fun <T> bindAuto(): LifecycleTransformer<T> {
         return provider.bindToLifecycle()
     }
@@ -49,15 +43,15 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         return this.compose(this@BaseActivity.bindDestroy())
     }
 
-    override fun isAlive(): Boolean {
+    fun isAlive(): Boolean {
         return alive
     }
 
-    override fun isShowing(): Boolean {
+    fun isShowing(): Boolean {
         return showing
     }
 
-    override fun isTouchable(): Boolean {
+    fun isTouchable(): Boolean {
         return touchable
     }
 
@@ -70,31 +64,31 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
             lifecycle.addObserver(object : LifecycleObserver {
                 @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
                 fun create() {
-                    ImmersionBar.with(this@BaseActivity).statusBarDarkFont(isDarkFont()).init()
-                    var view = getToolbar()
-                    if (view == null) {
-                        view = findViewById(getToolbarId())
+                    ImmersionBar.with(this@BaseActivity).statusBarDarkFont(isDarkFont()).navigationBarColorInt(Color.WHITE).init()
+                    var list: MutableList<View> = ArrayList()
+                    getToolbarId().forEach {
+                        findViewById<View>(it)?.let { it ->
+                            list.add(it)
+                        }
                     }
-                    if (view != null) {
-                        ImmersionBar.setTitleBar(this@BaseActivity, view)
+                    getToolbar().forEach {
+                        list.add(it)
                     }
+                    ImmersionBar.setTitleBar(this@BaseActivity, *list.toTypedArray())
+
                 }
 
-                @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-                fun destroy() {
-                    ImmersionBar.with(this@BaseActivity).destroy()
-                }
             })
         }
 
     }
 
-    open fun getToolbarId(): Int {
-        return R.id.toolbar
+    open fun getToolbarId(): IntArray {
+        return intArrayOf(R.id.toolbar)
     }
 
-    open fun getToolbar(): View? {
-        return null
+    open fun getToolbar(): Array<View> {
+        return emptyArray()
     }
 
     open fun isDarkFont(): Boolean {
@@ -117,14 +111,14 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         startActivity(Intent(this, cla))
     }
 
-
-    @DebugLog
     override fun onCreate(savedInstanceState: Bundle?) {
+
         if (isScreenForcePortrait()) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
         super.onCreate(savedInstanceState)
         alive = true
+
     }
 
 
@@ -143,16 +137,9 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         JLog.e(this.javaClass.simpleName, "activeCount::" + Thread.activeCount())
         touchable = true
         super.onResume()
-        if (OSUtils.isEMUI3_x()) {
-            ImmersionBar.with(this).init();
-        }
         doOnResume()
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
-        super.onConfigurationChanged(newConfig)
-        ImmersionBar.with(this).init();
-    }
 
     override fun onPause() {
         touchable = false
@@ -194,7 +181,7 @@ open class BaseActivity : AppCompatActivity(), ILifecycleState {
         }
     }
 
-    override fun postOnDestroy(doOnDestroy: () -> Unit) {
+    fun postOnDestroy(doOnDestroy: () -> Unit) {
         if (!onDestroyList.contains(doOnDestroy)) {
             onDestroyList.add(doOnDestroy)
         }

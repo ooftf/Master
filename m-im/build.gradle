@@ -1,0 +1,10 @@
+apply from: '../module.gradle'
+dependencies {
+    api 'com.tencent.imsdk:tuikit:4.4.900'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
+    implementation 'com.github.tencentyun:tls-sig-api:1.2'
+    compile 'com.github.promeg:tinypinyin:2.0.3'
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
+    kapt deps.dagger2_compiler
+}

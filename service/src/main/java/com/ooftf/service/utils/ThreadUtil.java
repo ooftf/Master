@@ -2,14 +2,18 @@ package com.ooftf.service.utils;
 
 import android.os.Handler;
 import android.os.Looper;
-import androidx.annotation.NonNull;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import io.reactivex.Scheduler;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * AndroidUtil 主要负责硬件层级
@@ -36,6 +40,11 @@ public class ThreadUtil {
         }
     }
 
+    public static void postOnUiThread(Runnable runnable) {
+        mainHandler.post(runnable);
+    }
+
+
     public static void runOnNewThread(Runnable runnable) {
         if (isMainThread()) {
             threadPool.execute(runnable);
@@ -48,13 +57,17 @@ public class ThreadUtil {
         return threadPool;
     }
 
+    public static Scheduler newThreadScheduler() {
+        return Schedulers.from(getDefaultThreadPool());
+    }
+
     private static ThreadPoolExecutor createThreadPool() {
         return new ThreadPoolExecutor(
                 INIT_THREAD_COUNT,
                 MAX_THREAD_COUNT,
                 SURPLUS_THREAD_LIFE,
                 TimeUnit.SECONDS,
-                new ArrayBlockingQueue<Runnable>(64),
+                new ArrayBlockingQueue<>(64),
                 new DefaultThreadFactory());
     }
 

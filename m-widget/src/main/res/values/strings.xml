@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">self-made</string>
+    <string name="load_more_tip">上拉加载更多</string>
+    <string name="shared_element_icon">icon</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_bottom_bar">BottomBarActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+
+    <string name="new_message_notification_title_template">New message: %1$s</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <string name="new_message_notification_placeholder_text_template">You said %1$s and lorem ipsum
+        dolor sit amet, consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit vel
+        semper venenatis, magna odio volutpat velit, at ullamcorper nulla lacus sed turpis.
+        Pellentesque vitae metus elit, nec tincidunt tellus. Integer sed nisl sem, ullamcorper
+        ornare lacus. Duis ac mauris sed massa congue volutpat. Donec sed erat sit amet turpis
+        viverra rhoncus sit amet nec magna. Donec lacinia ligula at libero volutpat volutpat nec nec
+        tortor.
+    </string>
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
+
+
+    <string name="image_preview_share_element_200">image_preview_share_element_200</string>
+
+    <string name="default_long">En cada actualización se incluyen herramientas de SDK, imágenes de sistema de la muestra, emuladores, documentación de referencia y diferencias de API.
+
+En las primeras tres milestone de la muestra se proporciona un entorno de prueba y desarrollo tempranos que te permitirá identificar problemas de compatibilidad en tus aplicaciones actuales y planificar tareas relacionadas con la migración o las funciones que se necesitan para orientar la nueva plataforma. Este será el período de prioridad en el cual nos enviarás tus comentarios sobre funciones y problemas de compatibilidad de API y archivos; para hacerlo, usa el sistema se seguimiento de problemas. Podrás contar con cambios en las API en estas actualizaciones.
+
+Entre las Preview 4 y 5, tendrás acceso a las API y al SDK finales de Android N para tareas de desarrollo, y también a imágenes de sistema casi definitivas para poner a prueba comportamientos y funciones del sistema. Durante este período, Android N ofrecerá un nivel de API estándar. Puedes iniciar la prueba de compatibilidad de tus aplicaciones heredadas y optimizar el código nuevo en el que se usen las API o funciones de Android N.
+
+A su vez, a partir de la Preview 4, podrás publicar aplicaciones en dispositivos con Android N cuyo nivel de API sea el oficial (por ejemplo, dispositivos de consumidores inscritos en el Programa de Android beta). Puedes realizar primero publicaciones en los canales alpha y beta de Google Play, a fin de probar tus aplicaciones con consumidores de Android beta antes de proceder con la distribución a gran escala en la tienda.
+
+A medida que pruebes Android N y lo uses para tus desarrollos, te recomendamos enfáticamente mantener actualizado tu entorno de desarrollo conforme se lancen actualizaciones de la muestra. Para facilitar el proceso, puedes registrar tus dispositivos de prueba en el Programa de Android Beta y obtener actualizaciones inalámbricas (OTA) en cada versión milestone. Como alternativa, habrá disponibles imágenes de preview actualizadas que puedes descargar y actualizar de manera manual.</string>
+    <string name="title_activity_key_board">KeyBoardActivity</string>
+</resources>

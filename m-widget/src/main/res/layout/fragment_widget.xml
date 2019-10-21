@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!-- contentScrim  合并时的背景色；layout_scrollFlags滑动时的表现-->
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <com.youth.banner.Banner
+                android:id="@+id/toolbarBanner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_collapseMode="parallax" />
+
+            <com.ooftf.service.widget.toolbar.TailoredToolbar
+                android:id="@+id/toolbar"
+                style="@style/ToolbarStyle"
+                app:layout_collapseMode="pin" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <!--com.ooftf.widget.self.behavior.ToolbarBehavior-->
+    <com.ooftf.service.widget.ReturnTopLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:scrollId="@+id/recycler_view">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/image"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/logo_legacy" />
+    </com.ooftf.service.widget.ReturnTopLayout>
+
+
+    <!--app:layout_behavior="com.ooftf.widget.self.behavior.ToolbarBehavior"-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

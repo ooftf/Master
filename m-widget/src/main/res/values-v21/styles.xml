@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.BackgroundTransparent.SharedElement">
+        <item name="android:windowContentTransitions">true</item>
+        <!-- specify enter and exit transitions -->
+        <!--     <item name="android:windowEnterTransition">@transition/explode</item>
+             <item name="android:windowExitTransition">@transition/explode</item>
+
+             &lt;!&ndash; specify shared element transitions &ndash;&gt;
+             <item name="android:windowSharedElementEnterTransition">@transition/changebounds</item>
+             <item name="android:windowSharedElementExitTransition">@transition/changebounds</item>-->
+    </style>
+
+    <style name="ImagePreview" parent="AppTheme.Fullscreen">
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+</resources>

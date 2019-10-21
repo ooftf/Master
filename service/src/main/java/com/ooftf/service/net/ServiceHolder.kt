@@ -32,7 +32,7 @@ object ServiceHolder {
         generator.createService(MobService::class.java)
     }
 
-    public fun mobServiceGenerator(): ServiceGenerator {
+    fun mobServiceGenerator(): ServiceGenerator {
         val signService = ARouter.getInstance().navigation(IMultiSignService::class.java)
         val generator = ServiceGenerator()
         generator.baseUrl = "http://apicloud.mob.com/"

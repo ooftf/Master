@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.ContextThemeWrapper;
 
+import androidx.annotation.Nullable;
+
 /**
  * @author ooftf
  * @email 994749769@qq.com
@@ -16,7 +18,7 @@ public class ContextUtils {
      * @param context
      * @return
      */
-    public static Activity toActivity(Context context) {
+    public static @Nullable Activity toActivity(Context context) {
         if (context instanceof Activity) {
             return (Activity) context;
         } else if (context instanceof ContextThemeWrapper) {

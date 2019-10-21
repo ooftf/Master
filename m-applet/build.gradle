@@ -1,0 +1,8 @@
+apply from: '../module.gradle'
+dependencies {
+    kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
+    kapt deps.dagger2_compiler
+    implementation deps.bindingcollectionadapter
+    implementation deps.bindingcollectionadapter_recycler
+    implementation deps.SmartRefreshLayout
+}

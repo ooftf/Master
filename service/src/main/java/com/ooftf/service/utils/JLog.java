@@ -2,6 +2,8 @@ package com.ooftf.service.utils;
 
 import android.util.Log;
 
+import com.alibaba.android.arouter.facade.service.SerializationService;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.service.engine.json.JsonFactory;
 
 import org.json.JSONArray;
@@ -10,6 +12,8 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
+
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * @author ooftf
@@ -216,7 +220,7 @@ public class JLog {
         } else if (msg instanceof String) {
             message = (String) msg;
         } else {
-            message = JsonFactory.getDefault().toJson(msg);
+            message = ARouter.getInstance().navigation(SerializationService.class).object2Json(msg);
         }
         try {
             if (message.startsWith("{")) {
@@ -252,6 +256,12 @@ public class JLog {
         }
     }
 
+    private static PublishSubject<LogBean> logPublisher = PublishSubject.create();
+
+    public static PublishSubject<LogBean> register() {
+        return logPublisher;
+    }
+
     /**
      * 这个方法应该只被 logObject 所调用
      *
@@ -260,6 +270,7 @@ public class JLog {
      * @param msg
      */
     private static void dispatch(int level, String tag, String msg) {
+        logPublisher.onNext(new LogBean(level, tag, msg));
         switch (level) {
             case VERBOSE:
                 Log.v(tag, msg);
@@ -298,5 +309,17 @@ public class JLog {
         } else {
             return tag.getClass().getSimpleName();
         }
+    }
+
+    public static class LogBean {
+        public LogBean(int level, String tag, String msg) {
+            this.level = level;
+            this.tag = tag;
+            this.msg = msg;
+        }
+
+        public int level;
+        public String tag;
+        public String msg;
     }
 }

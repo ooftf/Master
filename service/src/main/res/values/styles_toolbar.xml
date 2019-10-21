@@ -2,7 +2,6 @@
 
     <style name="ToolbarStyle" parent="Widget.AppCompat.Toolbar">
         <item name="android:elevation" tools:targetApi="lollipop">2dp</item>
-        <item name="android:id">@id/toolbar</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="overlapAnchor">false</item>

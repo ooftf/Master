@@ -1,27 +1,19 @@
-if (MoudleDebug) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-    apply plugin: 'com.novoda.bintray-release'
-}
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.jakewharton.hugo'
 apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion versions.compileSdk
+    //resourcePrefix getMoudleResourcePrefix()
     defaultConfig {
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         vectorDrawables.useSupportLibrary = true
-        if (MoudleDebug) {
-            applicationId "com.ooftf.${project.getName()}"
-            multiDexEnabled true
-        }
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName(), DOCKING_MODULE_NAME: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
                 //AROUTER_GENERATE_DOC: "enable",
             }
         }
@@ -34,10 +26,11 @@ android {
         sourceCompatibility versions.java
         targetCompatibility versions.java
     }
+
     sourceSets {
         main {
-            if (MoudleDebug) {
-                manifest.srcFile 'src/app/AndroidManifest.xml'
+            if (ModuleDebug) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
                 java.srcDirs = ['src/app/java', 'src/main/java']
                 res.srcDirs = ['src/app/res', 'src/main/res']
             } else {
@@ -50,6 +43,9 @@ android {
     lintOptions {
         abortOnError false
     }
+    dataBinding {
+        enabled true
+    }
 }
 sourceCompatibility = "7"
 targetCompatibility = "7"
@@ -61,7 +57,7 @@ publish {
     publishVersion = versions.master
     desc = 'nothing'
     bintrayUser = 'ooftf'
-    bintrayKey = bintrayKey()
+    bintrayKey = LocalBintrayKey()
     dryRun = false
 }
 tasks.withType(Javadoc) {
@@ -72,18 +68,17 @@ tasks.withType(Javadoc) {
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation deps.constraintLayout
-    kapt "com.alibaba:arouter-compiler:$versions.arouter"
+    androidTestImplementation test.runner
+    androidTestImplementation test.espresso
+    testImplementation test.junit
+    implementation androidx.constraintLayout
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+    kapt deps.ARouterCompiler
     if (maven) {
         implementation "com.ooftf:master-service:$versions.master"
     } else {
         implementation project(':service')
     }
-
-
 }
 
 

@@ -10,17 +10,14 @@ import com.facebook.stetho.Stetho
 import com.github.moduth.blockcanary.BlockCanary
 import com.liulishuo.filedownloader.FileDownloader
 import com.ooftf.docking.api.Docking
+import com.ooftf.master.unit.am.ActivityManager
 import com.ooftf.service.BuildConfig
 import com.ooftf.service.engine.LifecycleLog
-import com.ooftf.service.engine.ActivityManager
 import com.ooftf.service.engine.typer.TyperFactory
 import com.ooftf.service.utils.JLog
-import com.ooftf.service.utils.ThreadUtil
 import com.ooftf.service.utils.TimeRuler
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
-import com.squareup.leakcanary.LeakCanary
-import com.tencent.bugly.crashreport.CrashReport
 import io.reactivex.plugins.RxJavaPlugins
 
 /**
@@ -28,30 +25,39 @@ import io.reactivex.plugins.RxJavaPlugins
  */
 
 open class BaseApplication : MultiDexApplication() {
+    init {
+        instance = this
+        Docking.init(this, true)
+    }
+
     override fun onCreate() {
         TimeRuler.start("MyApplication", "onCreate start")
         super.onCreate()
-        CrashReport.initCrashReport(applicationContext, "26a5e838af", false)
+        TimeRuler.marker("MyApplication", "initBugly start")
+
+        TimeRuler.marker("MyApplication", "Utils start")
         Utils.init(this)
-        instance = this
         //setupThinker()
-        setupLeakCanary()
+        TimeRuler.marker("MyApplication", "setupLeakCanary start")
+        TimeRuler.marker("MyApplication", "FileDownloader start")
         FileDownloader.init(applicationContext)
+        TimeRuler.marker("MyApplication", "setupLogger start")
         setupLogger()
         //setupStetho()
+        TimeRuler.marker("MyApplication", "setupBlockCanary start")
         setupBlockCanary()
         ActivityManager.init(this)
+        TimeRuler.marker("MyApplication", "ARouter start")
         if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
             ARouter.openLog()    // 打印日志
             ARouter.openDebug()  // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
-        TimeRuler.marker("MyApplication", "ARouter start")
         ARouter.init(this)
         TimeRuler.marker("MyApplication", "TyperFactory start")
         TyperFactory.init(this)
         TimeRuler.marker("MyApplication", "Docking start")
-        Docking.init(this, true, ThreadUtil.getDefaultThreadPool())
-        TimeRuler.end("MyApplication", "onCreate end")
+        Docking.notifyOnCreate()
+        TimeRuler.marker("MyApplication", "other start")
         RxJavaPlugins.setErrorHandler {
             JLog.e(it.toString())
         }
@@ -60,8 +66,10 @@ open class BaseApplication : MultiDexApplication() {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         }
         LifecycleLog.init(this)
-
+        TimeRuler.marker("MyApplication", "onCreate end")
     }
+
+
 
     override fun onLowMemory() {
         Docking.notifyOnLowMemory()
@@ -80,15 +88,6 @@ open class BaseApplication : MultiDexApplication() {
 
     private fun setupBlockCanary() {
         BlockCanary.install(this, AppBlockCanaryContext()).start()
-    }
-
-    private fun setupLeakCanary() {
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not onCreate your app in this process.
-            return
-        }
-        LeakCanary.install(this)
     }
 
     private fun setupStetho() {

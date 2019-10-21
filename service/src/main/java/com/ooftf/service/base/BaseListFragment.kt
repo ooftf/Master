@@ -3,10 +3,11 @@ package com.ooftf.service.base
 import android.os.Handler
 import android.view.View
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.Fragment
+import com.ooftf.master.widget.toolbar.official.ToolbarPlus
 import com.ooftf.service.R
-import com.ooftf.service.base.adapter.CategoryRecyclerAdapter
-import com.ooftf.service.base.adapter.MainRecyclerAdapter
+import com.ooftf.service.base.adapter.MainRecyclerAdapter2
+import com.ooftf.service.widget.sticky.StickyOnScrollListener
 import com.ooftf.service.widget.toolbar.TailoredToolbar
 import kotlinx.android.synthetic.main.fragment_home_base.*
 import kotlinx.android.synthetic.main.layout_sticky_header.*
@@ -16,13 +17,13 @@ import kotlinx.android.synthetic.main.layout_sticky_header.*
  */
 
 abstract class BaseListFragment : BaseLazyFragment() {
-    lateinit var adapter: MainRecyclerAdapter
+    lateinit var adapter: MainRecyclerAdapter2
     val handler = Handler()
     override fun getLayoutId(): Int {
         return R.layout.fragment_home_base
     }
 
-    override fun onLoad() {
+    override fun onLoad(rootView: View) {
         setupRecyclerView()
         initData()
         setupFloatButton()
@@ -31,7 +32,7 @@ abstract class BaseListFragment : BaseLazyFragment() {
     }
 
     protected open fun initToolbar(toolbar: TailoredToolbar) {
-        toolbar.addMenuItem(TailoredToolbar.MenuItem(activity).layoutRight().setText("MenuItem").setOnClickListenerChain {
+        toolbar.addMenuItem(ToolbarPlus.MenuItem(activity).layoutRight().setText("MenuItem").setOnClickListenerChain {
             toast("MenuItem")
         })
     }
@@ -41,7 +42,7 @@ abstract class BaseListFragment : BaseLazyFragment() {
     }
 
     private fun setupRecyclerView() {
-        adapter = MainRecyclerAdapter(getBaseActivity(), stickyView)
+        adapter = MainRecyclerAdapter2()
         recycler_view.adapter = adapter
         recycler_view.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         /* DividerItemDecoration divider = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
@@ -57,7 +58,7 @@ abstract class BaseListFragment : BaseLazyFragment() {
         }
         adapter.addFooter(pullToLoadingLayout)*/
         recycler_view.setTag(getScrollViewTag())
-        recycler_view.addOnScrollListener(object : CategoryRecyclerAdapter.StickyOnScrollListener(stickyView) {
+        recycler_view.addOnScrollListener(object : StickyOnScrollListener(stickyView) {
             override fun setCategory(view: View, category: String) {
                 (view as TextView).text = category
             }

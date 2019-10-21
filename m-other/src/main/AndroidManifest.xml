@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ooftf.master.other">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <application>
+        <activity android:name=".activity.FibonacciActivity" />
+        <activity android:name=".activity.StackGetMinActivity" />
+        <activity android:name=".activity.TurnIconActivity" />
+        <activity android:name=".activity.ShareActivity" />
+        <activity
+            android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".activity.PickPhotoListActivity" />
+        <activity android:name=".activity.MatissePhotoActivity" />
+        <activity android:name=".activity.CameraActivity" />
+        <activity android:name=".activity.ReflectPerformanceTestActivity" />
+        <activity
+            android:name=".activity.TouchActivity" />
+    </application>
+
+</manifest>

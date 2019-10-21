@@ -1,9 +1,7 @@
 <resources>
 
 
-    <style name="AppTheme.TranslucentStatus.Splash">
-        <item name="android:windowBackground">@drawable/ooftf</item>
-    </style>
+
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

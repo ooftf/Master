@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import java.lang.reflect.Type
 
 private class Jackson : IJson {
+
     val mapper = ObjectMapper()
 
     init {

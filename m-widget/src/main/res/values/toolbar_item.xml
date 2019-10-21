@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MasterToolbar">
+        <attr name="leftIcon" format="reference" />
+        <attr name="rightIcon" format="reference" />
+        <attr name="leftText" format="reference|string" />
+        <attr name="rightText" format="reference|string" />
+        <attr name="title" format="reference|string" />
+    </declare-styleable>
+</resources>

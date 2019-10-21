@@ -1,6 +1,44 @@
 include ':app', ':service'
-def modules = module.split(",")
-modules.each {
-    include(":$it")
+
+if (isModuleDebug()) {
+    def modules = readModules()
+    modules.each {
+        include(":$it")
+    }
+} else {
+    include ':m-sign', ':m-applet', ':m-debug', ':m-widget', ':m-source', ':m-other', ':m-rn', ':m-webview', ':m-qrcode', ':m-im', ':m-entrance', ':m-monitor', ':m-flutter'
 }
 
+def isModuleDebug() {
+    Properties properties = new Properties()
+    def file = new File("local.properties")
+    if (file.exists()) {
+        InputStream inputStream = file.newDataInputStream()
+        properties.load(inputStream)
+        def str = properties.getProperty('MODULE_DEBUG')
+        if (str == null) {
+            return false
+        } else {
+            return Boolean.parseBoolean(str)
+        }
+
+    }
+    return false
+}
+
+def readModules() {
+    Properties properties = new Properties()
+    def file = new File("local.properties")
+    if (file.exists()) {
+        InputStream inputStream = file.newDataInputStream()
+        properties.load(inputStream)
+        def str = properties.getProperty('MODULES')
+        if (str == null) {
+            return []
+        } else {
+            return str.split(",")
+        }
+
+    }
+    return []
+}

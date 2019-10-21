@@ -7,6 +7,9 @@ apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'io.fabric'
 apply from: 'matrix.gradle'
 apply from: 'autoregister.gradle'
+apply plugin: 'com.alibaba.arouter'
+apply plugin: 'plugin.test'
+apply plugin: 'docking-register'
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
@@ -21,7 +24,6 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
-//, AROUTER_GENERATE_DOC: "enable"
             }
         }
         ndk {
@@ -31,18 +33,33 @@ android {
         buildConfigField("String", "APP_BUILD_TIME", "\"" + new Date().format("yyyy/MM/dd HH:mm:ss") + "\"")
 
     }
+    sourceSets {
+        main {
+            if (ModuleDebug) {
+                manifest.srcFile 'src/app/AndroidManifest.xml'
+                java.srcDirs = ['src/app/java', 'src/main/java']
+                res.srcDirs = ['src/app/res', 'src/main/res']
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java.srcDirs = ['src/main/java']
+                res.srcDirs = ['src/main/res']
+            }
+        }
+    }
     compileOptions {
         sourceCompatibility versions.java
         targetCompatibility versions.java
     }
     packagingOptions {
         // More than one file was found with OS independent path 'lib/armeabi-v7a/libgnustl_shared.so'
-        pickFirst 'lib/armeabi-v7a/libgnustl_shared.so'
+        /* pickFirst 'lib/armeabi-v7a/libgnustl_shared.so'
+           pickFirst 'lib/x86/libgnustl_shared.so'
+           */
         pickFirst 'lib/arm64-v8a/libc++_shared.so'
-        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
-        pickFirst 'lib/x86/libgnustl_shared.so'
         pickFirst 'lib/x86/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
         pickFirst 'lib/x86_64/libc++_shared.so'
+        exclude 'META-INF/lib_release.kotlin_module'
 
     }
     signingConfigs {
@@ -61,6 +78,8 @@ android {
         }
         debug {
             minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
         }
@@ -71,8 +90,16 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
-}
 
+    dataBinding {
+        enabled true
+    }
+}
+/*aspectjx {
+//排除所有package路径中包含`android.support`的class文件及库（jar文件）
+    exclude '*'
+    enabled false
+}*/
 //packer-begin
 packer {
     archiveNameFormat = '${appPkg}-${buildType}-v${versionName}-${channel}'
@@ -81,9 +108,11 @@ packer {
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation deps.constraintLayout
-    testImplementation 'junit:junit:4.12'
-    if (!MoudleDebug) {
+    implementation androidx.constraintLayout
+    androidTestImplementation test.runner
+    androidTestImplementation test.espresso
+    testImplementation test.junit
+    if (ModuleDebug) {
         if (maven) {
             moduleList.each {
                 implementation "com.ooftf:master-${it}:$versions.master"
@@ -93,6 +122,20 @@ dependencies {
                 implementation project(":${it}")
             }
         }
+    } else {
+        implementation project(":m-sign")
+        implementation project(":m-applet")
+        implementation project(":m-debug")
+        implementation project(":m-widget")
+        implementation project(":m-source")
+        implementation project(":m-other")
+        implementation project(":m-rn")
+        implementation project(":m-webview")
+        implementation project(":m-qrcode")
+        implementation project(":m-im")
+        implementation project(":m-entrance")
+        implementation project(":m-monitor")
+        implementation project(":m-flutter")
     }
     if (maven) {
         implementation "com.ooftf:master-service:$versions.master"
@@ -100,18 +143,13 @@ dependencies {
         implementation project(':service')
     }
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
-    implementation 'com.github.ooftf:JsBridge-TencentX5:1.2.0'
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
-    def htextview_version = '0.1.6'
-    implementation "com.hanks:htextview-base:$htextview_version"
-    implementation "com.hanks:htextview-typer:$htextview_version"// optional
+
     kapt deps.dagger2_compiler
     implementation 'com.wanjian:cockroach:0.0.5'
-
 }
 
-apply plugin: 'com.jakewharton.hugo'
 //apply from: 'tinkerpatch.gradle'
 //Firebase
 apply plugin: 'com.google.gms.google-services'

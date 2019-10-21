@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ooftf.master.m.monitor" >
+    <application>
+        <meta-data android:value="14d1241a3d7146fc93cafe2636718260" android:name = "ZHUGE_APPKEY"/>
+    </application>
+</manifest>
