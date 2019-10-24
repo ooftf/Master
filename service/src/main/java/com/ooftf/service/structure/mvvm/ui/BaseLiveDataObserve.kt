@@ -9,6 +9,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.ooftf.service.utils.extend.toast
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import retrofit2.Call
 
 /**
  * @author ooftf
@@ -20,7 +21,15 @@ class BaseLiveDataObserve(private var liveData: BaseLiveData, private var owner:
     constructor(liveData: BaseLiveData, fragment: Fragment) : this(liveData, fragment, fragment.activity!!)
 
     private val loadingDialog by lazy {
-        ProgressDialog(activity)
+        var dialog = ProgressDialog(activity);
+        dialog.setOnCancelListener {
+            (dialog.window.decorView.tag)?.let {
+                (it as List<Call<Any>>).forEach { item ->
+                    item?.cancel()
+                }
+            }
+        }
+        dialog
     }
     private val smarts = ArrayList<SmartRefreshLayout>()
 
@@ -29,8 +38,9 @@ class BaseLiveDataObserve(private var liveData: BaseLiveData, private var owner:
             activity.setResult(integer)
             activity.finish()
         })
-        liveData.showLoading.observe(owner, Observer { integer ->
-            if (integer > 0) {
+        liveData.showLoading.observe(owner, Observer { calls ->
+            loadingDialog.window?.decorView?.tag = calls
+            if (calls.size > 0) {
                 loadingDialog.show()
             } else {
                 loadingDialog.dismiss()
@@ -42,8 +52,8 @@ class BaseLiveDataObserve(private var liveData: BaseLiveData, private var owner:
 
         liveData.finishWithData.observe(owner, Observer {
             var intent = Intent()
-            intent.putExtra("data",it.data)
-            activity.setResult(it.code,intent)
+            intent.putExtra("data", it.data)
+            activity.setResult(it.code, intent)
             activity.finish()
         })
         setSmartObserve()

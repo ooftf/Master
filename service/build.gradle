@@ -4,6 +4,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'com.novoda.bintray-release'
+def getGitHash = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'rev-parse', '--short', 'HEAD'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
@@ -25,6 +33,7 @@ android {
             abiFilters 'armeabi-v7a' //, 'x86','armeabi', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
         buildConfigField("String", "APP_BUILD_TIME", "\"" + new Date().format("yyyy/MM/dd HH:mm:ss") + "\"")
+        buildConfigField "String", "GitHash", "\"${getGitHash()}\""
     }
     compileOptions {
         sourceCompatibility versions.java
@@ -37,6 +46,7 @@ android {
         enabled true
     }
 }
+
 sourceCompatibility = "8"
 targetCompatibility = "8"
 publish {

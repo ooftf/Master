@@ -11,6 +11,11 @@ import com.alibaba.android.arouter.facade.Postcard;
 import com.ooftf.service.utils.ThreadUtil;
 import com.ooftf.widget.statelayout.IStateLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+
 /**
  * @author ooftf
  * @email 994749769@qq.com
@@ -40,7 +45,7 @@ public class BaseLiveData {
     /**
      * showLoading
      */
-    public MutableLiveData<Integer> showLoading = new MutableLiveData<>();
+    public MutableLiveData<List<Call>> showLoading = new MutableLiveData<>();
 
 
     public MutableLiveData<Integer> smartRefresh = new MutableLiveData<>();
@@ -78,28 +83,38 @@ public class BaseLiveData {
     /**
      * showDialog
      */
-    public void showDialog() {
+    public void showDialog(Call call) {
         ThreadUtil.runOnUiThread(() -> {
             if (showLoading.getValue() == null) {
-                showLoading.setValue(1);
+                ArrayList<Call> calls = new ArrayList<>();
+                calls.add(call);
+                showLoading.setValue(calls);
             } else {
-                showLoading.setValue(showLoading.getValue() + 1);
+                List<Call> calls = showLoading.getValue();
+                calls.add(call);
+                showLoading.setValue(calls);
             }
         });
     }
 
+
     /**
      * dismissDialog
      */
-    public void dismissDialog() {
+    public void dismissDialog(Call call) {
         ThreadUtil.runOnUiThread(() -> {
             if (showLoading.getValue() == null) {
-                showLoading.setValue(0);
+                showLoading.setValue(new ArrayList<>());
             } else {
-                showLoading.setValue(showLoading.getValue() - 1);
+                List<Call> calls = showLoading.getValue();
+                if (!calls.remove(call)) {
+                    calls.remove(null);
+                }
+                showLoading.setValue(calls);
             }
         });
     }
+
 
     public void showMessage(String message) {
         this.messageLiveData.postValue(message);
