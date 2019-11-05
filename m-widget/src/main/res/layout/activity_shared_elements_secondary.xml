@@ -3,11 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    android:gravity="center_horizontal|bottom"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="com.ooftf.widget.activity.SharedElementsSecondaryActivity">
+    <com.ooftf.service.widget.toolbar.TailoredToolbar
+        app:title="共享元素二"
+        style="@style/ToolbarStyle.Back" />
     <ImageView
+        android:layout_marginTop="300dp"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/s7"

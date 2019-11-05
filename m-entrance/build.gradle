@@ -4,4 +4,5 @@ dependencies {
     def htextview_version = '0.1.6'
     implementation "com.hanks:htextview-base:$htextview_version"
     implementation "com.hanks:htextview-typer:$htextview_version"// optional
+    implementation 'com.github.princekin-f:EasyFloat:1.1.2'
 }

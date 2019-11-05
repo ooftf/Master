@@ -5,6 +5,9 @@ import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.AppUtils
+import com.lzf.easyfloat.EasyFloat
+import com.lzf.easyfloat.interfaces.OnPermissionResult
+import com.lzf.easyfloat.permission.PermissionUtils
 import com.mcxiaoke.packer.helper.PackerNg
 import com.ooftf.bottombar.java.FragmentSwitchManager
 import com.ooftf.master.m.entrance.R
@@ -30,6 +33,14 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         title = PackerNg.getChannel(this)
         setupBottomBar()
+
+        PermissionUtils.checkPermission(this)
+        PermissionUtils.requestPermission(this, object : OnPermissionResult{
+            override fun permissionResult(isOpen: Boolean) {
+                //EasyFloat.with(this).setLayout(R.layout.float_test).show()
+            }
+
+        })
     }
 
     @SuppressLint("CheckResult")

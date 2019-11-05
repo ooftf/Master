@@ -3,17 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="com.ooftf.widget.activity.SharedElementsActivity">
+
+    <com.ooftf.service.widget.toolbar.TailoredToolbar
+        app:title="共享元素"
+        style="@style/ToolbarStyle.Back" />
+
     <ImageView
+        android:layout_marginTop="16dp"
         android:id="@+id/sharedView"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/s7"
         android:transitionName="@string/shared_element_icon" />
+
     <Button
+        android:layout_marginTop="16dp"
         android:id="@+id/next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

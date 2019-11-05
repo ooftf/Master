@@ -73,6 +73,19 @@
         <activity
             android:name="com.ooftf.master.m.entrance.ui.GuideActivity"
             android:theme="@style/AppTheme.TranslucentStatus" />
+        <activity android:name=".ui.SchameFilterActivity" >
+            <!-- Schame -->
+            <intent-filter>
+                <data
+                    android:host="ooftf.com"
+                    android:scheme="master" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
 
     </application>
 </manifest>
