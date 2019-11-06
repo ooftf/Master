@@ -20,7 +20,7 @@
 * 为progress-drawable添加文档
 * 人工智能（TensorFlow）
 * 语言切换
-* 非入侵式埋点
+* 非入侵式埋点（全埋点，无埋点）
 * 编写脚本
 * 全局dialog
 * codecov
@@ -34,7 +34,7 @@
 * AndAOP
 * 从 .java文件到运行的APP都经历了什么
 * Android长连接
-* 在学习netty
+* 再学习netty
 ### DELAY LIST
 * Ktor
 ### DONE LIST
