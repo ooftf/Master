@@ -32,6 +32,9 @@
 * 插件化
 * Vector兼容性问题
 * AndAOP
+* 从 .java文件到运行的APP都经历了什么
+* Android长连接
+* 在学习netty
 ### DELAY LIST
 * Ktor
 ### DONE LIST
