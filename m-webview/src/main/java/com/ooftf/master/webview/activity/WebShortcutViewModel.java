@@ -31,6 +31,8 @@ public class WebShortcutViewModel extends BaseViewModel {
             add("https://www.get-xpress-vpn.info/latest#windows");
             add("https://www.pornhub.com/");
             add("https://www.pornhub.com/apps/android");
+            add("master://ooftf.com");
+            add("zdclient://paySuccess");
 
         }
     };
