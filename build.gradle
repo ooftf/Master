@@ -96,7 +96,7 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:3.5.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         // classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
         classpath "com.mcxiaoke.packer-ng:plugin:$versions.packerNG"
@@ -138,6 +138,24 @@ allprojects {
             url 'https://maven.google.com/'
         }
         google()
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+
+        maven {
+            credentials {
+                username 'XeiNW4'
+                password 'RR3XPNBSd2'
+            }
+            url 'https://repo.rdc.aliyun.com/repository/78416-release-TOhjiY/'
+        }
+        maven {
+            credentials {
+                username 'XeiNW4'
+                password 'RR3XPNBSd2'
+            }
+            url 'https://repo.rdc.aliyun.com/repository/78416-snapshot-YPE3KZ/'
+        }
     }
 
 }

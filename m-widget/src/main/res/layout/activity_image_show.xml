@@ -6,10 +6,10 @@
     <data>
         <variable
             name="items"
-            type="java.util.List" />
+            type="java.util.List&lt;com.ooftf.widget.activity.ImagePreviewActivity.ImagePreviewBean.Bean>" />
         <variable
             name="itemBinding"
-            type="me.tatarka.bindingcollectionadapter2.ItemBinding" />
+            type="me.tatarka.bindingcollectionadapter2.ItemBinding&lt;com.ooftf.widget.activity.ImagePreviewActivity.ImagePreviewBean.Bean>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
