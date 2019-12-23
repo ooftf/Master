@@ -35,6 +35,8 @@
 * 从 .java文件到运行的APP都经历了什么
 * Android长连接
 * 再学习netty
+* statelayout  没有view的时候不切换
+* ui-mapping 添加自定义通道
 ### DELAY LIST
 * Ktor
 ### DONE LIST
