@@ -23,7 +23,7 @@ class FlutterActivity :BaseActivity(){
         val flutterView = Flutter.createView(
                 this,
                 lifecycle,
-                "route1"
+                "route2"
         )
         val layout = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT)
         addContentView(flutterView, layout)

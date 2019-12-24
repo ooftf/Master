@@ -94,6 +94,9 @@ buildscript {
         }
         google()
         mavenLocal()
+        maven {
+            url "https://dl.bintray.com/ooftf/maven"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
@@ -110,7 +113,6 @@ buildscript {
         classpath("com.tencent.matrix:matrix-gradle-plugin:${MATRIX_VERSION}") { changing = true }
         classpath 'com.novoda:bintray-release:0.9.1'
         classpath 'com.ooftf:plugin-task-time:1.0.0'
-        classpath 'com.ooftf:docking-plugin:2.1.0'
     }
 
 }
