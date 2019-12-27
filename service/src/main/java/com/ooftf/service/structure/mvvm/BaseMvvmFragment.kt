@@ -17,14 +17,14 @@ import java.lang.reflect.ParameterizedType
  * @email 994749769@qq.com
  * @date 2019/10/9
  */
-class BaseMvvmFragment<B : ViewDataBinding, V : BaseViewModel> : BaseLazyFragment() {
+open class BaseMvvmFragment<B : ViewDataBinding, V : BaseViewModel> : BaseLazyFragment() {
     lateinit var binding: B
     lateinit var viewModel: V
     lateinit var baseLiveDataObserve: BaseLiveDataObserve
     override fun onLoad(rootView: View) {
         viewModel = ViewModelProviders.of(this, getViewModelFactory()).get(getVClass())
-        binding.lifecycleOwner = this
         binding.setVariable(getVariableId(), viewModel)
+        binding.lifecycleOwner = this
         baseLiveDataObserve = viewModel.baseLiveData.attach(this)
     }
 
