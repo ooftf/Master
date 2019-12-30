@@ -42,8 +42,18 @@ abstract class BaseFragment : androidx.fragment.app.Fragment() {
     }
 
     fun isAlive(): Boolean = alive
+    fun isShowing(): Boolean = showing
 
-    fun isShowing(): Boolean = userVisibleHint
+    var showing = false
+    override fun onStart() {
+        super.onStart()
+        showing = true
+    }
+
+    override fun onStop() {
+        showing = false
+        super.onStop()
+    }
 
     fun isTouchable(): Boolean = touchable
 

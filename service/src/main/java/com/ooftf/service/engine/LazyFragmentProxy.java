@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.ooftf.service.utils.LifecycleUtil;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,13 +39,13 @@ public class LazyFragmentProxy<T extends Fragment & LazyFragmentProxy.LazyFragme
             }
             if (view == null) {
                 isLoaded = false;
-                view = fragment.getContentView(inflater,container);
+                view = fragment.getContentView(inflater, container);
                 rootViewReference = new WeakReference<>(view);
             }
             return view;
         } else {
             if (fragment.getView() == null) {
-                return fragment.getContentView(inflater,container);
+                return fragment.getContentView(inflater, container);
             }
             return fragment.getView();
         }
@@ -62,7 +60,7 @@ public class LazyFragmentProxy<T extends Fragment & LazyFragmentProxy.LazyFragme
     }
 
     private void loadJudgment() {
-        if (fragment.getView() != null && fragment.getUserVisibleHint() && !isLoaded && !fragment.isHidden() && LifecycleUtil.isShow(fragment.getLifecycle())) {
+        if (fragment.getView() != null && fragment.getUserVisibleHint() && !isLoaded && !fragment.isHidden() && fragment.isShowing()) {
             isLoaded = true;
             fragment.onLoad(fragment.getView());
         }
@@ -75,13 +73,13 @@ public class LazyFragmentProxy<T extends Fragment & LazyFragmentProxy.LazyFragme
 
     }
 
-    public void onHiddenChanged() {
+    public void onStart() {
         if (fragment.lazyEnabled()) {
             loadJudgment();
         }
     }
 
-    public void onResume() {
+    public void onHiddenChanged() {
         if (fragment.lazyEnabled()) {
             loadJudgment();
         }
@@ -94,7 +92,7 @@ public class LazyFragmentProxy<T extends Fragment & LazyFragmentProxy.LazyFragme
 
     public interface LazyFragmentOwner {
 
-        View getContentView(@NotNull LayoutInflater inflater,@Nullable ViewGroup container);
+        View getContentView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container);
 
         /**
          * 初始化界面
@@ -103,5 +101,7 @@ public class LazyFragmentProxy<T extends Fragment & LazyFragmentProxy.LazyFragme
         void onLoad(@NotNull View rootView);
 
         boolean lazyEnabled();
+
+        boolean isShowing();
     }
 }

@@ -112,10 +112,9 @@ abstract class BaseLazyFragment : BaseFragment(), LazyFragmentProxy.LazyFragment
         return false
     }
 
-
-    override fun onResume() {
-        super.onResume()
-        lazyFragmentProxy.onResume()
+    override fun onStart() {
+        super.onStart()
+        lazyFragmentProxy.onStart()
     }
 
     override fun onDetach() {
