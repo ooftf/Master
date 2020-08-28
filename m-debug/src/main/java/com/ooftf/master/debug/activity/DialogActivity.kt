@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.crashlytics.android.Crashlytics
 import com.ooftf.master.debug.R
 import com.ooftf.master.debug.widget.DialogDemo
 import com.ooftf.master.widget.dialog.ui.ListBlurDialog
@@ -23,7 +22,6 @@ class DialogActivity : AppCompatActivity() {
             }, 5000)
         }
         finishButton.setOnClickListener {
-            Crashlytics.getInstance().crash()
             dialog = DialogDemo(this)
             dialog.logLeak()
             finish()

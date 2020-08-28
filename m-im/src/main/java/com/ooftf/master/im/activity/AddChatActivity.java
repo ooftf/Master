@@ -25,9 +25,6 @@ import com.tencent.qcloud.tim.uikit.utils.TUIKitConstants;
 import com.tencent.qcloud.tim.uikit.utils.ToastUtil;
 
 import org.jetbrains.annotations.Nullable;
-
-import butterknife.ButterKnife;
-
 /**
  * @author ooftf
  * @email 994749769@qq.com
@@ -45,8 +42,6 @@ public class AddChatActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.im_activity_add_cart);
         ARouter.getInstance().inject(this);
-        ButterKnife.bind(this);
-
     }
 
     @Nullable

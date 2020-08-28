@@ -1,9 +1,8 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+/*apply plugin: 'com.novoda.bintray-release'*/
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion versions.compileSdk
     //resourcePrefix getMoudleResourcePrefix()
@@ -49,7 +48,7 @@ android {
 }
 sourceCompatibility = "7"
 targetCompatibility = "7"
-publish {
+/*publish {
     repoName = 'maven'
     userOrg = 'ooftf'      // bintray注册的用户名
     groupId = 'com.ooftf'
@@ -59,7 +58,7 @@ publish {
     bintrayUser = 'ooftf'
     bintrayKey = LocalBintrayKey()
     dryRun = false
-}
+}*/
 tasks.withType(Javadoc) {
     enabled = false
     options.addStringOption('Xdoclint:none', '-quiet')

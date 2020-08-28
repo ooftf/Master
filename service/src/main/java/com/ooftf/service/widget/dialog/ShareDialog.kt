@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.ooftf.hishare.HiShare
+import com.ooftf.master.widget.dialog.ui.BottomDialog
 import com.ooftf.service.R
 import com.ooftf.service.utils.ShareUtil
 

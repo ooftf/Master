@@ -9,6 +9,7 @@
         android:layout_height="wrap_content">
 
         <com.ooftf.service.widget.toolbar.TailoredToolbar
+            android:id="@+id/toolbar"
             style="@style/ToolbarStyle.Back"
             app:title="事件分发调试" />
 

@@ -1,14 +1,7 @@
 package com.ooftf.master.sign.provider;
 
-import android.app.Activity;
-
-import com.google.firebase.auth.FirebaseAuth;
 import com.ooftf.service.engine.router.assist.ISignService;
 import com.ooftf.service.engine.router.assist.SignAssistBean;
-import com.tencent.tauth.IUiListener;
-import com.tencent.tauth.Tencent;
-import com.tencent.tauth.UiError;
-
 import io.reactivex.Single;
 import io.reactivex.subjects.PublishSubject;
 
@@ -29,64 +22,28 @@ public class FireSignServiceImpl implements ISignService {
         return INSTANCE;
     }
 
-    FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
-
     public static PublishSubject<String> signInSubject = PublishSubject.create();
     public static PublishSubject<String> signOutSubject = PublishSubject.create();
 
 
     @Override
     public Single<SignAssistBean> register(String username, String password) {
-        return Single.create(emitter -> mAuth.createUserWithEmailAndPassword(username, password).addOnCompleteListener(task -> {
-            if (emitter.isDisposed()) {
-                return;
-            }
-            SignAssistBean result = new SignAssistBean();
-            result.setResult(task.isSuccessful());
-            if (task.isSuccessful()) {
-                result.setMsg("ok");
-            } else {
-                result.setMsg(task.getException().getMessage());
-            }
-            emitter.onSuccess(result);
-        }));
+        return null;
     }
 
     @Override
     public Single<SignAssistBean> signIn(String username, String password) {
-        return Single.<SignAssistBean>create(emitter ->
-                FirebaseAuth
-                        .getInstance()
-                        .signInWithEmailAndPassword(username, password)
-                        .addOnCompleteListener(task -> {
-                            if (emitter.isDisposed()) {
-                                return;
-                            }
-                            SignAssistBean result = new SignAssistBean();
-                            result.setResult(task.isSuccessful());
-                            if (task.isSuccessful()) {
-                                result.setMsg("ok");
-                            } else {
-                                result.setMsg(task.getException().getMessage());
-                            }
-                            emitter.onSuccess(result);
-                        }))
-                .doOnSuccess(signAssistBean -> signInSubject.onNext(signAssistBean.getMsg()));
+        return null;
     }
 
     @Override
     public boolean isSignIn() {
-        if (mAuth.getCurrentUser() == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return false;
     }
 
     @Override
     public void signOut() {
-        mAuth.signOut();
+        //mAuth.signOut();
         signInSubject.onNext("");
     }
 
@@ -108,11 +65,11 @@ public class FireSignServiceImpl implements ISignService {
 
     @Override
     public String getUserId() {
-        return mAuth.getCurrentUser().getUid();
+        return  "";
     }
 
     @Override
     public String getUserName() {
-        return mAuth.getCurrentUser().getProviderId();
+        return  "";
     }
 }

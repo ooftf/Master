@@ -23,9 +23,9 @@ class BaseLiveDataObserve(private var liveData: BaseLiveData, private var owner:
     private val loadingDialog by lazy {
         var dialog = ProgressDialog(activity);
         dialog.setOnCancelListener {
-            (dialog.window.decorView.tag)?.let {
-                (it as List<Call<Any>>).forEach { item ->
-                    item?.cancel()
+            (dialog.window?.decorView?.tag)?.let {
+                (it as? List<Call<Any>>)?.forEach { item ->
+                    item.cancel()
                 }
             }
         }

@@ -4,7 +4,6 @@ dependencies {
     implementation('com.alibaba.android:ultraviewpager:1.0.6.1@aar') {
         transitive = true
     }
-    kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     implementation deps.progressDrawable
     kapt deps.dagger2_compiler
     //implementation 'org.aspectj:aspectjtools:1.9.1'

@@ -1,24 +1,14 @@
-package com.ooftf.master.other.activity;
+package com.ooftf.master.other.activity
 
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.ooftf.master.other.R;
-import com.ooftf.master.other.R2;
-import com.ooftf.service.base.BaseActivity;
-import com.ooftf.service.constant.RouterPath;
-import com.ooftf.service.net.etd.bean.BaseBean;
-
-import org.jetbrains.annotations.Nullable;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import android.os.Bundle
+import android.view.View
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.ooftf.master.other.R
+import com.ooftf.service.base.BaseActivity
+import com.ooftf.service.constant.RouterPath
+import com.ooftf.service.net.etd.bean.BaseBean
+import kotlinx.android.synthetic.main.activity_reflect_performance_test.*
+import java.lang.reflect.InvocationTargetException
 
 /**
  * @author ooftf
@@ -26,51 +16,37 @@ import butterknife.ButterKnife;
  * @date 2019/3/3 0003
  */
 @Route(path = RouterPath.OTHER_ACTIVITY_REFLECT_PERFORMANCE_TEST)
-public class ReflectPerformanceTestActivity extends BaseActivity {
-    @BindView(R2.id.edit)
-    EditText editText;
-    @BindView(R2.id.reflect_button)
-    Button reflectButton;
-    @BindView(R2.id.new_button)
-    Button newButton;
-    @BindView(R2.id.reflect_text)
-    TextView reflectText;
-    @BindView(R2.id.new_text)
-    TextView newText;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reflect_performance_test);
-        ButterKnife.bind(this);
-        reflectButton.setOnClickListener(v -> {
-            long start = System.currentTimeMillis();
-            for (int i = 0; i < getTimers(); i++) {
+class ReflectPerformanceTestActivity : BaseActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_reflect_performance_test)
+        reflect_button!!.setOnClickListener { v: View? ->
+            val start = System.currentTimeMillis()
+            for (i in 0 until timers) {
                 try {
-                    Constructor<BaseBean> constructor = BaseBean.class.getConstructor();
-                    BaseBean baseBean = constructor.newInstance();
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
+                    val constructor = BaseBean::class.java.getConstructor()
+                    val baseBean = constructor.newInstance()
+                } catch (e: NoSuchMethodException) {
+                    e.printStackTrace()
+                } catch (e: IllegalAccessException) {
+                    e.printStackTrace()
+                } catch (e: InstantiationException) {
+                    e.printStackTrace()
+                } catch (e: InvocationTargetException) {
+                    e.printStackTrace()
                 }
             }
-            reflectText.setText(String.valueOf(System.currentTimeMillis() - start));
-        });
-        newButton.setOnClickListener(v -> {
-            long start = System.currentTimeMillis();
-            for (int i = 0; i < getTimers(); i++) {
-                BaseBean baseBean = new BaseBean();
+            reflect_text!!.text = (System.currentTimeMillis() - start).toString()
+        }
+        new_button!!.setOnClickListener { v: View? ->
+            val start = System.currentTimeMillis()
+            for (i in 0 until timers) {
+                val baseBean = BaseBean()
             }
-            newText.setText(String.valueOf(System.currentTimeMillis() - start));
-        });
+            new_text!!.text = (System.currentTimeMillis() - start).toString()
+        }
+    }
 
-    }
-    int getTimers() {
-        return Integer.valueOf(editText.getText().toString());
-    }
+    val timers: Int
+        get() = Integer.valueOf(edit!!.text.toString())
 }

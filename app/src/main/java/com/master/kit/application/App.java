@@ -4,10 +4,6 @@ import android.content.Context;
 
 import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.utils.JLog;
-import com.tencent.matrix.Matrix;
-import com.tencent.matrix.iocanary.IOCanaryPlugin;
-import com.tencent.matrix.iocanary.config.IOConfig;
-import com.tencent.mrs.plugin.IDynamicConfig;
 import com.wanjian.cockroach.Cockroach;
 
 import org.jetbrains.annotations.Nullable;
@@ -27,11 +23,11 @@ public class App extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        initMatrix();
+       // initMatrix();
         //installCockroach();
     }
 
-    private void initMatrix() {
+   /* private void initMatrix() {
         // build matrix
         Matrix.Builder builder = new Matrix.Builder(this);
         // add general pluginListener
@@ -51,7 +47,7 @@ public class App extends BaseApplication {
 
         // start plugin
         ioCanaryPlugin.start();
-    }
+    }*/
 
     public static App getInstance() {
         return instance;

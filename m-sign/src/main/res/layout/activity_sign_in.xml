@@ -17,6 +17,7 @@
 
     <com.ooftf.service.widget.toolbar.TailoredToolbar
         style="@style/ToolbarStyle.Back"
+        android:id="@+id/toolbar"
         android:background="@color/transparent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -79,7 +80,7 @@
 
     <com.ooftf.operation.OperationEditText
         android:textSize="@dimen/font_default"
-        android:id="@+id/password"
+        android:id="@+id/passwordView"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:background="@null"
@@ -99,7 +100,7 @@
         android:background="@color/gray"
         app:layout_constraintLeft_toRightOf="@+id/guide_left"
         app:layout_constraintRight_toLeftOf="@+id/guide_right"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordView" />
 
     <Button
         android:id="@+id/signIn"
@@ -112,7 +113,7 @@
         android:textColor="@color/white"
         app:layout_constraintLeft_toRightOf="@+id/guide_left"
         app:layout_constraintRight_toLeftOf="@+id/guide_right"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordView" />
 
     <TextView
         android:id="@+id/register"

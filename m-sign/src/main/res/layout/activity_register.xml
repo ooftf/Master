@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/account" />
 
     <com.ooftf.operation.OperationEditText
-        android:id="@+id/password"
+        android:id="@+id/passwordView"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:background="@null"
@@ -89,7 +89,7 @@
         android:background="@color/gray"
         app:layout_constraintLeft_toRightOf="@+id/guide_left"
         app:layout_constraintRight_toLeftOf="@+id/guide_right"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordView" />
 
     <Button
         android:id="@+id/register"
@@ -101,5 +101,5 @@
         android:textColor="@color/white"
         app:layout_constraintLeft_toRightOf="@+id/guide_left"
         app:layout_constraintRight_toLeftOf="@+id/guide_right"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

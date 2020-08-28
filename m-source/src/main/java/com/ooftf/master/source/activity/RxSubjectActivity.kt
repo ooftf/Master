@@ -1,46 +1,35 @@
-package com.ooftf.master.source.activity;
+package com.ooftf.master.source.activity
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.Button;
-
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.ooftf.master.source.R;
-import com.ooftf.master.source.R2;
-import com.ooftf.service.base.BaseBarrageActivity;
-import com.ooftf.service.constant.RouterPath;
-import com.ooftf.service.empty.EmptyObserver;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import io.reactivex.subjects.PublishSubject;
+import android.os.Bundle
+import android.view.View
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.ooftf.master.source.R
+import com.ooftf.service.base.BaseBarrageActivity
+import com.ooftf.service.constant.RouterPath
+import com.ooftf.service.empty.EmptyObserver
+import io.reactivex.subjects.PublishSubject
+import kotlinx.android.synthetic.main.activity_rx_subject.*
 
 /**
  *
  * @author lihang9
  */
 @Route(path = RouterPath.SOURCE_ACTIVITY_RX_SUBJECT)
-public class RxSubjectActivity extends BaseBarrageActivity {
-    @BindView(R2.id.button)
-    Button button;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rx_subject);
-        ButterKnife.bind(this);
-        PublishSubject<String> objectPublishSubject = PublishSubject.create();
-        button.setOnClickListener(v -> objectPublishSubject.onNext("onClick"));
-        objectPublishSubject.subscribe(new EmptyObserver<String>(){
-            @Override
-            public void onNext(String o) {
-                addBarrage("1 :: "+o);
+class RxSubjectActivity : BaseBarrageActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_rx_subject)
+        val objectPublishSubject = PublishSubject.create<String>()
+        button.setOnClickListener { v: View? -> objectPublishSubject.onNext("onClick") }
+        objectPublishSubject.subscribe(object : EmptyObserver<String?>() {
+            override fun onNext(o: String) {
+                addBarrage("1 :: $o")
             }
-        });
-        objectPublishSubject.subscribe(new EmptyObserver<String>(){
-            @Override
-            public void onNext(String o) {
-                addBarrage("2 :: "+o);
+        })
+        objectPublishSubject.subscribe(object : EmptyObserver<String?>() {
+            override fun onNext(o: String) {
+                addBarrage("2 :: $o")
             }
-        });
+        })
     }
 }

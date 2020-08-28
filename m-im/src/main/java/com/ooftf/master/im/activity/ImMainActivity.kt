@@ -1,96 +1,80 @@
-package com.ooftf.master.im.activity;
+package com.ooftf.master.im.activity
 
-import android.os.Bundle;
-import android.util.SparseArray;
-import android.widget.FrameLayout;
-
-import androidx.fragment.app.Fragment;
-
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.ashokvarma.bottomnavigation.BottomNavigationBar;
-import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.ooftf.bottombar.java.FragmentSwitchManager;
-import com.ooftf.master.im.R;
-import com.ooftf.master.im.R2;
-import com.ooftf.master.im.other.ImManager;
-import com.ooftf.service.base.BaseActivity;
-import com.ooftf.service.constant.RouterPath;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import android.os.Bundle
+import android.util.SparseArray
+import androidx.fragment.app.Fragment
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
+import com.ashokvarma.bottomnavigation.BottomNavigationBar.SimpleOnTabSelectedListener
+import com.ashokvarma.bottomnavigation.BottomNavigationItem
+import com.ooftf.bottombar.java.FragmentCreator
+import com.ooftf.bottombar.java.FragmentSwitchManager
+import com.ooftf.master.im.R
+import com.ooftf.master.im.other.ImManager
+import com.ooftf.service.base.BaseActivity
+import com.ooftf.service.constant.RouterPath
+import kotlinx.android.synthetic.main.activity_im_main.*
+import java.util.*
 
 /**
  * @author 99474
  */
 @Route(path = RouterPath.IM_ACTIVITY_MAIN)
-public class ImMainActivity extends BaseActivity {
-    static{
-        ImManager.init();
-    }
-    public static final String TAG_CONVERSATION = "conversation";
-    public static final String TAG_CONTACT = "contact";
-    @BindView(R2.id.container)
-    FrameLayout container;
-    @BindView(R2.id.bottom_navigation_bar)
-    BottomNavigationBar bottomNavigationBar;
-    FragmentSwitchManager<String> fsm;
-    SparseArray<String> kv;
+class ImMainActivity : BaseActivity() {
+    companion object {
+        const val TAG_CONVERSATION = "conversation"
+        const val TAG_CONTACT = "contact"
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_im_main);
-        ButterKnife.bind(this);
-        initFSM();
-        initBottomBar();
-    }
-
-    private void initFSM() {
-        kv = new SparseArray<>();
-        Set<String> tags = new HashSet<>();
-        kv.put(0, TAG_CONVERSATION);
-        kv.put(1, TAG_CONTACT);
-        for (int i = 0; i < kv.size(); i++) {
-            tags.add(kv.get(i));
+        init {
+            ImManager.init()
         }
-        fsm = new FragmentSwitchManager<String>(getSupportFragmentManager(), R.id.container, tags, tag -> {
-            if (TAG_CONVERSATION.equals(tag)) {
-                return (Fragment) ARouter.getInstance().build("/im/fragment/conversation").navigation();
-            } else {
-                return (Fragment) ARouter.getInstance().build("/im/fragment/contact").navigation();
-            }
-
-        });
     }
 
-    private void initBottomBar() {
-        bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.ic_conversation, "消息"))
-                .addItem(new BottomNavigationItem(R.drawable.ic_contact, "通讯录"))
-                .setTabSelectedListener(new BottomNavigationBar.SimpleOnTabSelectedListener() {
-                    @Override
-                    public void onTabSelected(int position) {
-                        fsm.switchFragment(kv.get(position));
+    var fsm: FragmentSwitchManager<String>? = null
+    var kv: SparseArray<String>? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_im_main)
+        initFSM()
+        initBottomBar()
+    }
+
+    private fun initFSM() {
+        kv = SparseArray()
+        val tags: MutableSet<String> = HashSet()
+        kv!!.put(0, TAG_CONVERSATION)
+        kv!!.put(1, TAG_CONTACT)
+        for (i in 0 until kv!!.size()) {
+            tags.add(kv!![i])
+        }
+        fsm = FragmentSwitchManager(supportFragmentManager, R.id.container, tags) { tag: String ->
+            if (TAG_CONVERSATION == tag) {
+                ARouter.getInstance().build("/im/fragment/conversation").navigation() as Fragment
+            } else {
+                ARouter.getInstance().build("/im/fragment/contact").navigation() as Fragment
+            }
+        }
+    }
+
+    private fun initBottomBar() {
+        bottom_navigation_bar
+                .addItem(BottomNavigationItem(R.drawable.ic_conversation, "消息"))
+                .addItem(BottomNavigationItem(R.drawable.ic_contact, "通讯录"))
+                .setTabSelectedListener(object : SimpleOnTabSelectedListener() {
+                    override fun onTabSelected(position: Int) {
+                        fsm!!.switchFragment(kv!![position])
                     }
                 })
                 .setFirstSelectedPosition(0)
-                .initialise();
-        fsm.switchFragment(kv.get(0));
+                .initialise()
+        fsm!!.switchFragment(kv!![0])
     }
 
-
-    @Override
-    public boolean isDarkFont() {
-        return true;
+    override fun isDarkFont(): Boolean {
+        return true
     }
 
-    @Override
-    public boolean isImmersionEnable() {
-        return true;
+    override fun isImmersionEnable(): Boolean {
+        return true
     }
-
 }

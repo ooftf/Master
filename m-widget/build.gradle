@@ -9,7 +9,6 @@ dependencies {
     implementation 'com.github.ooftf:StraightLayout:1.0.3'
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
     implementation 'com.ooftf:sliding-layout:1.1.2'
-    kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     implementation deps.SmartRefreshLayout
     implementation deps.SmartRefreshHeader
 

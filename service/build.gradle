@@ -2,8 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.jakewharton.butterknife'
-apply plugin: 'com.novoda.bintray-release'
 def getGitHash = { ->
     def stdout = new ByteArrayOutputStream()
     exec {
@@ -49,7 +47,7 @@ android {
 
 sourceCompatibility = "8"
 targetCompatibility = "8"
-publish {
+/*publish {
     repoName = 'maven'
     userOrg = 'ooftf'      // bintray注册的用户名
     groupId = 'com.ooftf'
@@ -59,7 +57,7 @@ publish {
     bintrayUser = 'ooftf'
     bintrayKey = bintrayKey()
     dryRun = false
-}
+}*/
 tasks.withType(Javadoc) {
     enabled = false
     options.addStringOption('Xdoclint:none', '-quiet')
@@ -79,8 +77,8 @@ dependencies {
     api androidx.cardview
     api deps.material
     api androidx.recyclerview
+    api 'androidx.core:core-ktx:1.3.1'
     api 'com.loopj.android:android-async-http:1.4.9'
-    api "com.jakewharton:butterknife:$versions.butterknife"
     api 'com.alibaba:fastjson:1.2.7'
     api 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     api 'com.liulishuo.filedownloader:library:1.7.1'
@@ -102,7 +100,6 @@ dependencies {
     api 'com.github.chrisbanes:PhotoView:2.3.0'
     api 'com.alimuzaffar.lib:pinentryedittext:1.3.1'
     api 'com.daimajia.swipelayout:library:1.2.0@aar'
-    kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     kapt deps.dagger2_compiler
     api 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
     api "com.mcxiaoke.packer-ng:helper:$versions.packerNG"
@@ -111,9 +108,9 @@ dependencies {
     // annotationProcessor ("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker")
     // compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker")
     // api("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$versions.tinkerpatch")
-    api 'com.google.code.gson:gson:2.8.5'
-    api 'io.reactivex.rxjava2:rxandroid:2.1.0'
-    api "io.reactivex.rxjava2:rxjava:2.2.3"
+    api 'com.google.code.gson:gson:2.8.6'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    api "io.reactivex.rxjava2:rxjava:2.2.19"
     //releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
     api deps.fastjson
     api 'com.github.ooftf:Support:1.1.1'
@@ -125,10 +122,10 @@ dependencies {
     //releaseApi 'com.github.markzhai:blockcanary-no-op:1.5.0'
     api 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
     api 'com.github.ooftf:HiShare:1.2.5'
-    api 'com.blankj:utilcodex:1.25.9'
+    api 'com.blankj:utilcodex:1.29.0'
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
     api 'com.github.ooftf:BarrageView:1.1.0'
-    api 'com.ooftf:bottombar-java:1.2.5'
+    api 'com.ooftf:bottombar-java:1.2.6'
     api 'com.hwangjr.rxbus:rxbus:1.0.6'
     implementation deps.MMKV
     implementation deps.disklrucache
@@ -140,20 +137,17 @@ dependencies {
     api 'com.gyf.immersionbar:immersionbar-components:3.0.0-beta05'
     // Firebase Crashlytics
     //Firebase
-    api 'com.google.firebase:firebase-core:17.0.1'
-    api 'com.crashlytics.sdk.android:crashlytics:2.10.1'
-    api 'com.google.firebase:firebase-auth:18.1.0'
-    api 'com.ooftf:master-widget-dialog:1.0.2'
+    api 'com.ooftf:master-widget-dialog:1.0.8'
     api 'com.ooftf:master-unit-activity-manager:1.0.2'
     //api 'org.aspectj:aspectjrt:1.8.9'
     api 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
-    api 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     api 'androidx.multidex:multidex:2.0.1'
-    api 'com.ooftf:master-widget-toolbar:1.0.7'
+    api 'com.ooftf:master-widget-toolbar:1.1.3'
     api deps.bindingcollectionadapter
     api deps.bindingcollectionadapter_recycler
-    api 'androidx.viewpager2:viewpager2:1.0.0-beta04'
+    api 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
     api deps.SmartRefreshHeader
     api deps.SmartRefreshLayout
-    api "com.ooftf:master-widget-statelayout:1.0.0"
+    api "com.ooftf:master-widget-statelayout:1.1.1"
 }
