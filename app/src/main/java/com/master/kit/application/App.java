@@ -1,6 +1,7 @@
 package com.master.kit.application;
 
 import android.content.Context;
+import android.view.View;
 
 import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.utils.JLog;
