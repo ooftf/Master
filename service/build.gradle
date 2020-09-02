@@ -131,7 +131,7 @@ dependencies {
     implementation deps.disklrucache
     api "com.trello.rxlifecycle3:rxlifecycle-kotlin:$versions.rxlifecycle"
     api "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
-    api 'com.ooftf:docking-api:2.0.0'
+    api 'com.ooftf:docking-api:2.1.0'
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta05'
     // fragment快速实现（可选）
     api 'com.gyf.immersionbar:immersionbar-components:3.0.0-beta05'

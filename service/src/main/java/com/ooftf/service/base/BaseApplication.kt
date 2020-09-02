@@ -56,7 +56,7 @@ open class BaseApplication : MultiDexApplication() {
         TimeRuler.marker("MyApplication", "TyperFactory start")
         TyperFactory.init(this)
         TimeRuler.marker("MyApplication", "Docking start")
-        Docking.notifyOnCreate()
+        Docking.notifyOnCreate(this)
         TimeRuler.marker("MyApplication", "other start")
         RxJavaPlugins.setErrorHandler {
             JLog.e(it.toString())
@@ -71,15 +71,6 @@ open class BaseApplication : MultiDexApplication() {
 
 
 
-    override fun onLowMemory() {
-        Docking.notifyOnLowMemory()
-        super.onLowMemory()
-    }
-
-    override fun onTerminate() {
-        Docking.notifyOnTerminate()
-        super.onTerminate()
-    }
 
     override fun attachBaseContext(base: Context?) {
         Docking.notifyAttachBaseContext(base)

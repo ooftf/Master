@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.docking.api.IApplication;
+import com.ooftf.docking.api.MainProcess;
 import com.ooftf.master.im.data.TencentImConts;
 import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.engine.router.service.IMultiSignService;
@@ -33,23 +34,10 @@ public class ImApp implements IApplication {
     public void init(Application application) {
         ImApp.application = application;
     }
-
+    @MainProcess
     @Override
-    public void onCreate() {
+    public void onCreate(Application application) {
 
-
-    }
-
-
-
-
-    @Override
-    public void onLowMemory() {
-
-    }
-
-    @Override
-    public void onTerminate() {
 
     }
 

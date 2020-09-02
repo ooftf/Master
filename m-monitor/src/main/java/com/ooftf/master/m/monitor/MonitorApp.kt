@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 
 import com.ooftf.docking.api.IApplication
+import com.ooftf.docking.api.MainProcess
 import com.ooftf.service.BuildConfig
 import com.ooftf.service.base.BaseApplication
 import com.ooftf.service.utils.ProcessUtils
@@ -57,8 +58,8 @@ class MonitorApp : IApplication {
 
 
     }
-
-    override fun onCreate() {
+    @MainProcess
+    override fun onCreate(application:Application) {
         initBugly(BaseApplication.instance)
         TCAgent.LOG_ON = true
         // App ID: 在TalkingData创建应用后，进入数据报表页中，在“系统设置”-“编辑应用”页面里查看App ID。
@@ -69,13 +70,6 @@ class MonitorApp : IApplication {
         //        /BaseApplication.instance
     }
 
-    override fun onLowMemory() {
-
-    }
-
-    override fun onTerminate() {
-
-    }
 
     override fun attachBaseContext(context: Context) {
 

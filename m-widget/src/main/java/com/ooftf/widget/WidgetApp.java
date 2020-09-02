@@ -32,22 +32,11 @@ public class WidgetApp implements IApplication {
     }
 
     @Override
-    public void onCreate() {
+    public void onCreate(Application application) {
         TimeRuler.marker("MyApplication", "WidgetApp start");
     }
 
 
-
-
-    @Override
-    public void onLowMemory() {
-
-    }
-
-    @Override
-    public void onTerminate() {
-
-    }
 
     @Override
     public void attachBaseContext(Context context) {
