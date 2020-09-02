@@ -1,6 +1,6 @@
 package com.ooftf.service.empty;
 
-import com.ooftf.service.utils.JLog;
+import com.ooftf.log.JLog;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

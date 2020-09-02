@@ -12,7 +12,7 @@ import com.ooftf.service.constant.RouterExtra;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.engine.router.PostcardSerializable;
 import com.ooftf.service.engine.router.service.IMultiSignService;
-import com.ooftf.service.utils.JLog;
+import com.ooftf.log.JLog;
 
 /**
  * 登录拦截器

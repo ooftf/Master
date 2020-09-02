@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.ooftf.service.base.BaseApplication;
-import com.ooftf.service.utils.JLog;
+import com.ooftf.log.JLog;
 import com.wanjian.cockroach.Cockroach;
 
 import org.jetbrains.annotations.Nullable;

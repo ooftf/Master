@@ -5,7 +5,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.ooftf.docking.api.IApplication;
-import com.ooftf.service.utils.JLog;
+import com.ooftf.log.JLog;
 import com.ooftf.service.utils.TimeRuler;
 
 public class SignApp implements IApplication {

@@ -14,7 +14,7 @@ import com.ooftf.master.unit.am.ActivityManager
 import com.ooftf.service.BuildConfig
 import com.ooftf.service.engine.LifecycleLog
 import com.ooftf.service.engine.typer.TyperFactory
-import com.ooftf.service.utils.JLog
+import com.ooftf.log.JLog
 import com.ooftf.service.utils.TimeRuler
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger

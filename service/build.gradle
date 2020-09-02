@@ -137,7 +137,7 @@ dependencies {
     api 'com.gyf.immersionbar:immersionbar-components:3.0.0-beta05'
     // Firebase Crashlytics
     //Firebase
-    api 'com.ooftf:master-widget-dialog:1.0.8'
+    api 'com.ooftf:master-widget-dialog:1.1.0'
     api 'com.ooftf:master-unit-activity-manager:1.0.2'
     //api 'org.aspectj:aspectjrt:1.8.9'
     api 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
@@ -150,4 +150,5 @@ dependencies {
     api deps.SmartRefreshHeader
     api deps.SmartRefreshLayout
     api "com.ooftf:master-widget-statelayout:1.1.1"
+    api "com.ooftf:JLog:1.0.0"
 }

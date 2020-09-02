@@ -14,7 +14,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.gyf.immersionbar.ImmersionBar
 import com.ooftf.service.R
-import com.ooftf.service.utils.JLog
+import com.ooftf.log.JLog
 import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle
 import com.trello.rxlifecycle3.LifecycleProvider
 import com.trello.rxlifecycle3.LifecycleTransformer

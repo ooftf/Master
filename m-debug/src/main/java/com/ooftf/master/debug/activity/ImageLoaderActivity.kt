@@ -7,7 +7,7 @@ import com.ooftf.master.debug.R
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.engine.imageloader.ImageLoaderFactory.createInstance
 import com.ooftf.service.engine.imageloader.ImageLoaderListener
-import com.ooftf.service.utils.JLog
+import com.ooftf.log.JLog
 import kotlinx.android.synthetic.main.activity_image_loader.*
 
 /**

@@ -9,7 +9,7 @@ import com.ooftf.applet.R
 import com.ooftf.applet.adapter.JXAdapter
 import com.ooftf.applet.bean.JXBean
 import com.ooftf.service.base.BaseActivity
-import com.ooftf.service.utils.JLog
+import com.ooftf.log.JLog
 import kotlinx.android.synthetic.main.activity_jx3.*
 
 /**

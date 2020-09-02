@@ -4,24 +4,20 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.blankj.utilcode.util.AppUtils
-import com.lzf.easyfloat.EasyFloat
 import com.lzf.easyfloat.interfaces.OnPermissionResult
 import com.lzf.easyfloat.permission.PermissionUtils
 import com.mcxiaoke.packer.helper.PackerNg
 import com.ooftf.bottombar.java.FragmentSwitchManager
 import com.ooftf.master.m.entrance.R
 import com.ooftf.master.m.entrance.adapter.BottomBarAdapter
+import com.ooftf.master.unit.am.ActivityManager
 import com.ooftf.master.widget.eye.DevEye
+import com.ooftf.master.widget.eye.DevEyeProvider
 import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.base.BaseApplication
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.main_tab.TabManager
-import com.ooftf.service.utils.JLog
-import com.ooftf.service.utils.ThreadUtil
-import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.concurrent.TimeUnit
 
 @Route(path = RouterPath.MAIN_ACTIVITY_MAIN)
 class MainActivity : BaseActivity() {
@@ -33,14 +29,14 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         title = PackerNg.getChannel(this)
         setupBottomBar()
-
         PermissionUtils.checkPermission(this)
-        PermissionUtils.requestPermission(this, object : OnPermissionResult{
+        PermissionUtils.requestPermission(this, object : OnPermissionResult {
             override fun permissionResult(isOpen: Boolean) {
                 //EasyFloat.with(this).setLayout(R.layout.float_test).show()
             }
 
         })
+        DevEye.show(this)
     }
 
     @SuppressLint("CheckResult")
@@ -73,14 +69,16 @@ class MainActivity : BaseActivity() {
             toast("再按一次退出应用")
         }
     }
-    companion object
-    {
+
+    companion object {
         init {
             initGodEye()
         }
+
         private fun initGodEye() {
-            DevEye.init(BaseApplication.instance, ThreadUtil.getDefaultThreadPool())
-            JLog.register().subscribe { logBean -> DevEye.log(logBean.msg) }
+            DevEye.init(BaseApplication.instance, DevEyeProvider {
+                ActivityManager.getTopActivity()!!
+            })
         }
     }
 }

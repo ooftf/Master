@@ -1,8 +1,8 @@
 apply from: '../module.gradle'
 dependencies {
-    implementation 'com.ooftf:master-widget-dev-eye:1.0.4'
+    implementation 'com.ooftf:master-widget-dev-eye:1.1.0'
     def htextview_version = '0.1.6'
     implementation "com.hanks:htextview-base:$htextview_version"
     implementation "com.hanks:htextview-typer:$htextview_version"// optional
-    implementation 'com.github.princekin-f:EasyFloat:1.1.2'
+    implementation 'com.github.princekin-f:EasyFloat:1.3.3'
 }

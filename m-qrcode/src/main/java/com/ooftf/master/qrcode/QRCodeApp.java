@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.ooftf.docking.api.IApplication;
-import com.ooftf.service.utils.JLog;
+import com.ooftf.log.JLog;
 import com.ooftf.service.utils.TimeRuler;
 
 /**

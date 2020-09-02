@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ooftf.service.R;
 import com.ooftf.service.utils.DensityUtil;
-import com.ooftf.service.utils.JLog;
+import com.ooftf.log.JLog;
 
 /**
  * @author ooftf

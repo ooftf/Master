@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
 import com.ooftf.master.debug.engine.layoutmanager.CustomLayoutManager
-import com.ooftf.service.utils.JLog
+import com.ooftf.log.JLog
 import kotlinx.android.synthetic.main.activity_layout_manager.*
 
 /**

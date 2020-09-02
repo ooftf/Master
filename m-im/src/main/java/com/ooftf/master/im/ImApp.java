@@ -9,7 +9,7 @@ import com.ooftf.docking.api.IApplication;
 import com.ooftf.master.im.data.TencentImConts;
 import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.engine.router.service.IMultiSignService;
-import com.ooftf.service.utils.JLog;
+import com.ooftf.log.JLog;
 import com.ooftf.service.utils.ThreadUtil;
 import com.ooftf.service.utils.TimeRuler;
 import com.tencent.imsdk.TIMSdkConfig;

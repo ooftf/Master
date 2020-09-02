@@ -6,7 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
-import com.ooftf.service.utils.JLog;
+import com.ooftf.log.JLog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
