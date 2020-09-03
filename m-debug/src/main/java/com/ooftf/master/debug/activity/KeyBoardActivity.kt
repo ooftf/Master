@@ -7,7 +7,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
 import com.ooftf.master.debug.widget.KeyBoard
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import kotlinx.android.synthetic.main.content_key_board.*
 
 @Route(path = "/debug/activity/keyBoard")

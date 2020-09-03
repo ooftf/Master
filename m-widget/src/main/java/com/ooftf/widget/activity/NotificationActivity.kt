@@ -7,7 +7,7 @@ import android.view.View
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.log.JLog
 import com.ooftf.widget.R
 import com.ooftf.widget.notification.NotificationChannelManager

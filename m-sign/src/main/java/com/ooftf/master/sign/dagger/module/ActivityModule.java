@@ -6,7 +6,7 @@ import com.ooftf.master.sign.ui.register.RegisterPresenter;
 import com.ooftf.master.sign.ui.sign.SignInContract;
 import com.ooftf.master.sign.ui.sign.SignInModel;
 import com.ooftf.master.sign.ui.sign.SignInPresenter;
-import com.ooftf.service.base.BaseActivity;
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 
 import dagger.Module;
 import dagger.Provides;

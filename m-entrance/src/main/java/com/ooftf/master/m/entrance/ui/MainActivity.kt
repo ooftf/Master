@@ -12,10 +12,11 @@ import com.ooftf.master.m.entrance.adapter.BottomBarAdapter
 import com.ooftf.master.unit.am.ActivityManager
 import com.ooftf.master.widget.eye.DevEye
 import com.ooftf.master.widget.eye.DevEyeProvider
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.base.BaseApplication
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.main_tab.TabManager
+import com.ooftf.service.utils.extend.toast
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit

@@ -9,7 +9,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.ooftf.applet.R
 import com.ooftf.applet.modules.main.FlutterFragment
 import com.ooftf.applet.modules.main.ReactNativeFragment
-import com.ooftf.service.base.BaseLazyFragment
+import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
 import kotlinx.android.synthetic.main.fragment_applet.*
 
 /**

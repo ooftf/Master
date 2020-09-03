@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.hishare.HiShare
 import com.ooftf.master.other.R
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.widget.dialog.ShareDialog
 import kotlinx.android.synthetic.main.activity_share.*
 

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.other.R
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.net.etd.bean.BaseBean
 import kotlinx.android.synthetic.main.activity_reflect_performance_test.*

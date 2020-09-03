@@ -13,7 +13,7 @@ import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import com.ooftf.master.rn.packages.CalendarViewReactPackage;
 import com.ooftf.master.rn.packages.LogReactPackage;
-import com.ooftf.service.base.BaseActivity;
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.tbruyelle.rxpermissions2.RxPermissions;

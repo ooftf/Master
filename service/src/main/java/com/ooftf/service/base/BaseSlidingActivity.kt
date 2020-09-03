@@ -1,6 +1,7 @@
 package com.ooftf.service.base
 
 import android.view.View
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import tf.ooftf.com.service.widget.SlidingFrameLayout
 
 /**

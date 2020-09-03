@@ -15,6 +15,6 @@ fun Context.inflate(layoutId: Int, parent: ViewGroup, isAttach: Boolean = false)
     return LayoutInflater.from(this).inflate(layoutId, parent, isAttach)
 }
 
-fun ViewGroup.infale(layoutId: Int, isAttach: Boolean = false): View {
+fun ViewGroup.inflate(layoutId: Int, isAttach: Boolean = false): View {
     return this.context.inflate(layoutId, this, isAttach)
 }

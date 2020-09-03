@@ -7,7 +7,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.ooftf.service.BR
-import com.ooftf.service.base.BaseLazyFragment
+import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
 import com.ooftf.service.structure.mvvm.ui.BaseLiveDataObserve
 import java.lang.reflect.ParameterizedType
 

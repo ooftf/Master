@@ -10,7 +10,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.baidu.tts.client.SpeechSynthesizer
 import com.baidu.tts.client.TtsMode
 import com.ooftf.applet.R
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.utils.ThreadUtil
 import com.ooftf.service.utils.TimeRuler

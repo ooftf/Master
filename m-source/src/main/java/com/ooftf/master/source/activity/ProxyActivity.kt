@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.source.R
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_proxy.*
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method

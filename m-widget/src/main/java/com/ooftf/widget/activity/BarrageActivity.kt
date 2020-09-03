@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.TextView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.barrage.BarrageView
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.widget.R
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers

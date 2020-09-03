@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.ooftf.arch.frame.mvvm.activity.BaseMvvmActivity
 import com.ooftf.service.BR
 import com.ooftf.service.structure.mvvm.ui.BaseLiveDataObserve
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -27,7 +28,6 @@ abstract class BaseMvvmActivity<B : ViewDataBinding, V : BaseViewModel> : BaseAc
         binding.lifecycleOwner = this
         binding.setVariable(getVariableId(), viewModel)
         baseLiveDataObserve = viewModel.baseLiveData.attach(this, this)
-
     }
 
     open fun getViewModelFactory(): ViewModelProvider.Factory? {

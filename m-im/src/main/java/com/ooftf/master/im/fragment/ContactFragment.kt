@@ -3,7 +3,7 @@ package com.ooftf.master.im.fragment
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.im.R
-import com.ooftf.service.base.BaseLazyFragment
+import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
 import kotlinx.android.synthetic.main.im_fragment_contact.*
 
 @Route(path = "/im/fragment/contact")

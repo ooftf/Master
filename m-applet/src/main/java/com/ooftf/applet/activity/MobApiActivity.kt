@@ -8,7 +8,7 @@ import com.google.gson.Gson
 import com.ooftf.applet.R
 import com.ooftf.hihttp.action.DialogAction
 import com.ooftf.hihttp.action.ImageViewAction
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.empty.EmptyObserver
 import com.ooftf.service.net.ServiceHolder
 import com.trello.rxlifecycle3.kotlin.bindToLifecycle

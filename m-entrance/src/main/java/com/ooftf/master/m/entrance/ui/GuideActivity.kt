@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.m.entrance.R
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_guide.*
 
 @Route(path = "/entrance/guide")

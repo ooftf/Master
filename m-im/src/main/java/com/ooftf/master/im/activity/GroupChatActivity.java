@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.master.im.R;
-import com.ooftf.service.base.BaseActivity;
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
 
 import org.jetbrains.annotations.NotNull;

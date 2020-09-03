@@ -1,6 +1,7 @@
 package com.ooftf.service.base
 
 import android.os.Bundle
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.R
 import com.ooftf.service.base.adapter.ActivityIntentListAdapter
 import kotlinx.android.synthetic.main.activity_list.*

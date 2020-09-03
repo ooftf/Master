@@ -4,6 +4,7 @@ import com.ooftf.hihttp.action.ButtonAction;
 import com.ooftf.master.sign.mvp.BasePresenter;
 import com.ooftf.service.empty.EmptyObserver;
 import com.ooftf.service.engine.router.assist.SignAssistBean;
+import com.ooftf.service.utils.extend.ToastExtendKt;
 import com.trello.rxlifecycle3.android.RxLifecycleAndroid;
 
 import javax.inject.Inject;
@@ -26,7 +27,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IView, Reg
                         if (bean.isResult()) {
                             getView().showSuccessDialog(getModule().getChannelName(getView().getChannelId()) + "注册成功");
                         } else {
-                            getView().toast(bean.getMsg());
+                            ToastExtendKt.toast(bean.getMsg());
                         }
                     }
                 });

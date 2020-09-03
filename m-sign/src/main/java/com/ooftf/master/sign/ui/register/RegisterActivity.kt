@@ -8,10 +8,10 @@ import android.widget.Button
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.master.sign.R
 import com.ooftf.master.sign.dagger.component.DaggerActivityComponent
 import com.ooftf.master.sign.dagger.module.ActivityModule
-import com.ooftf.service.base.BaseActivity
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.router.assist.SignChannelInfo
 import com.ooftf.service.engine.router.service.IMultiSignService
@@ -58,6 +58,7 @@ class RegisterActivity : BaseActivity(), RegisterContract.IView {
             }
         }
     }
+
 
     override fun getUsername(): String {
         return account.text.toString()

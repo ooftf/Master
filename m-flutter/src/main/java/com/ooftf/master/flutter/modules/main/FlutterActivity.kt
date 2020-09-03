@@ -3,7 +3,7 @@ package com.ooftf.master.flutter.modules.main
 import android.os.Bundle
 import android.widget.FrameLayout
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import io.flutter.facade.Flutter
 
 /**

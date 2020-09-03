@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.ooftf.service.base.BaseActivity;
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 import com.ooftf.sliding.SlidingLayout;
 import com.ooftf.widget.R;
 

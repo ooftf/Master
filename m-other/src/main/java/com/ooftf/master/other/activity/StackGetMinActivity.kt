@@ -3,7 +3,7 @@ package com.ooftf.master.other.activity
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.other.R
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_stack_get_min.*
 import java.util.*
 

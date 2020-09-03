@@ -11,7 +11,7 @@ import com.ooftf.bottombar.java.FragmentCreator
 import com.ooftf.bottombar.java.FragmentSwitchManager
 import com.ooftf.master.im.R
 import com.ooftf.master.im.other.ImManager
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.constant.RouterPath
 import kotlinx.android.synthetic.main.activity_im_main.*
 import java.util.*

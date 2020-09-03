@@ -11,7 +11,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.master.debug.R;
 import com.ooftf.master.debug.bean.User;
 import com.ooftf.master.debug.viewmodel.MyViewModel;
-import com.ooftf.service.base.BaseActivity;
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 
 /**
  * @author 99474

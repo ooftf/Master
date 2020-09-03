@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.widget.R
 import kotlinx.android.synthetic.main.activity_state_layout_sample.*

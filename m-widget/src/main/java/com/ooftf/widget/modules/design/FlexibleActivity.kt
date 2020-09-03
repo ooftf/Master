@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.widget.R
 import kotlinx.android.synthetic.main.activity_flexible.*
 

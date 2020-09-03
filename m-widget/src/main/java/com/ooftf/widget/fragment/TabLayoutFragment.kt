@@ -2,7 +2,7 @@ package com.ooftf.widget.fragment
 
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.service.base.BaseLazyFragment
+import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.UltraPagerAdapter
 import kotlinx.android.synthetic.main.fragment_tab_layout.*

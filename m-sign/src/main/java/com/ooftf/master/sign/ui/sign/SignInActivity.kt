@@ -12,10 +12,8 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.master.sign.R
 import com.ooftf.master.sign.dagger.component.DaggerActivityComponent
 import com.ooftf.master.sign.dagger.module.ActivityModule
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.constant.RouterPath
-import com.ooftf.service.engine.router.FinishCallback
-import com.ooftf.service.engine.router.PostcardSerializable
 import com.ooftf.service.engine.router.assist.SignChannelInfo
 import com.ooftf.service.engine.router.service.IMultiSignService
 import io.reactivex.Observable
@@ -30,9 +28,6 @@ import javax.inject.Inject
 @Route(path = RouterPath.SIGN_ACTIVITY_SIGN_IN, extras = 1)
 class SignInActivity : BaseActivity(), SignInContract.IView {
 
-    @JvmField
-    @Autowired
-    var successIntent: Bundle? = null
 
     @JvmField
     @Inject
@@ -100,10 +95,6 @@ class SignInActivity : BaseActivity(), SignInContract.IView {
     }
 
     override fun nextActivity() {
-        if (successIntent != null) {
-            PostcardSerializable.toPostcard(successIntent).navigation(this@SignInActivity, FinishCallback(this@SignInActivity))
-        } else {
-            finish()
-        }
+        finishSuccess()
     }
 }

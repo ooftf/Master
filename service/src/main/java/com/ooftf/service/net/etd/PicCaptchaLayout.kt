@@ -13,7 +13,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import com.ooftf.service.R
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.net.ServiceHolder
 import com.ooftf.service.net.etd.bean.PicCaptchaBean
 import com.trello.rxlifecycle3.kotlin.bindToLifecycle

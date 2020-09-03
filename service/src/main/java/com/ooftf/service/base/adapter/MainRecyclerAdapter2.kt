@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.launcher.ARouter
 import com.amulyakhare.textdrawable.TextDrawable
 import com.ooftf.service.R
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.service.other.ColorGenerator
 import com.ooftf.service.widget.sticky.StickyRecyclerAdapter

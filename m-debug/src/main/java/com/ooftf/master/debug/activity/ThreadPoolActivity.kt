@@ -5,7 +5,8 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.service.utils.extend.toast
 import kotlinx.android.synthetic.main.activity_thread_pool.*
 import java.util.concurrent.Executors
 import java.util.concurrent.LinkedBlockingQueue

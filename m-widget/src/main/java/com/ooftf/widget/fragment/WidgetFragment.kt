@@ -8,7 +8,7 @@ import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.AppUtils
-import com.ooftf.service.base.BaseLazyFragment
+import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.widget.R

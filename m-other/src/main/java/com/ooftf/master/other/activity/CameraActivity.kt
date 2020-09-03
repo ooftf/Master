@@ -10,8 +10,9 @@ import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.other.R
 import com.ooftf.master.other.engine.HiCamera
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.constant.ProviderConstant
+import com.ooftf.service.utils.extend.toast
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle
 import com.trello.rxlifecycle3.kotlin.bind

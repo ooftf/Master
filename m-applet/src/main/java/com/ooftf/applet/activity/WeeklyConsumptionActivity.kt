@@ -15,7 +15,7 @@ import com.ooftf.applet.engine.text_watcher.*
 import com.ooftf.hihttp.action.DialogAction
 import com.ooftf.master.widget.dialog.ui.ListBlurDialog
 import com.ooftf.master.widget.toolbar.official.ToolbarPlus
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.typer.TyperFactory
 import com.ooftf.service.net.ServiceHolder
