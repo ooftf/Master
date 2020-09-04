@@ -24,6 +24,8 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activity.AddChatActivity" />
+        <activity android:name=".modules.friendprofile.FriendProfileActivity" />
+        <activity android:name=".modules.newfriend.NewFriendActivity" />
 
     </application>
 

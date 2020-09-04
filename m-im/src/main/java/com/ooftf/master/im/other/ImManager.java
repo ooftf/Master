@@ -3,12 +3,14 @@ package com.ooftf.master.im.other;
 import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.ooftf.master.im.ImApp;
 import com.ooftf.master.im.data.TencentImConts;
 import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.engine.router.service.IMultiSignService;
 import com.ooftf.log.JLog;
 import com.ooftf.service.utils.TimeRuler;
 import com.tencent.imsdk.TIMSdkConfig;
+import com.tencent.imsdk.v2.V2TIMSDKConfig;
 import com.tencent.qcloud.tim.uikit.TUIKit;
 import com.tencent.qcloud.tim.uikit.base.IUIKitCallBack;
 import com.tencent.qcloud.tim.uikit.config.CustomFaceConfig;
@@ -61,11 +63,12 @@ public class ImManager {
     }
 
     private static void initTencentIm() {
-        //应替换成（BaseUIKitConfigs的配置请看后面章节）
+        // 配置 Config，请按需配置
         TUIKitConfigs configs = TUIKit.getConfigs();
-        configs.setSdkConfig(new TIMSdkConfig(TencentImConts.SDK_APP_ID));
+        configs.setSdkConfig(new V2TIMSDKConfig());
         configs.setCustomFaceConfig(new CustomFaceConfig());
         configs.setGeneralConfig(new GeneralConfig());
-        TUIKit.init(BaseApplication.instance, TencentImConts.SDK_APP_ID, configs);
+
+        TUIKit.init(ImApp.getApplication(), TencentImConts.SDK_APP_ID, configs);
     }
 }

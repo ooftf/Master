@@ -34,7 +34,7 @@ class PersonalChatActivity : BaseActivity() {
     }
 
     override fun getToolbar(): Array<View> {
-        return arrayOf(chat_panel.getTitleBar())
+        return arrayOf(chat_panel.titleBar)
     }
 
     public override fun onDestroy() {

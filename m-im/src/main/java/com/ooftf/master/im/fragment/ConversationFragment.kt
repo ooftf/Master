@@ -4,8 +4,8 @@ import android.graphics.Color
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.ooftf.master.im.R
 import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
+import com.ooftf.master.im.R
 import com.ooftf.service.constant.RouterPath
 import com.tencent.imsdk.TIMConversationType
 import com.tencent.qcloud.tim.uikit.modules.chat.base.ChatInfo
@@ -21,7 +21,7 @@ class ConversationFragment : BaseLazyFragment() {
         conversation_layout.conversationList.setOnItemClickListener { view: View?, i: Int, conversationInfo: ConversationInfo ->
             //此处为demo的实现逻辑，更根据会话类型跳转到相关界面，开发者可根据自己的应用场景灵活实现
             val chatInfo = ChatInfo()
-            chatInfo.type = if (conversationInfo.isGroup) TIMConversationType.Group else TIMConversationType.C2C
+            chatInfo.type = if (conversationInfo.isGroup) TIMConversationType.Group.value() else TIMConversationType.C2C.value()
             chatInfo.id = conversationInfo.id
             chatInfo.chatName = conversationInfo.title
             ARouter.getInstance().build(RouterPath.IM_ACTIVITY_PERSONAL_CHAT).withSerializable("chatInfo", chatInfo).navigation()

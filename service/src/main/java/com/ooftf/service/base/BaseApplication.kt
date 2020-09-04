@@ -62,9 +62,6 @@ open class BaseApplication : MultiDexApplication() {
             JLog.e(it.toString())
         }
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-        }
         LifecycleLog.init(this)
         TimeRuler.marker("MyApplication", "onCreate end")
     }
