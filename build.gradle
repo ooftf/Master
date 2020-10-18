@@ -90,13 +90,13 @@ buildscript {
         mavenCentral()
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
         google()
-        mavenLocal()
         maven {
             url "https://dl.bintray.com/ooftf/maven"
         }
+        mavenLocal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.android.tools.build:gradle:4.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         // classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
         classpath "com.mcxiaoke.packer-ng:plugin:$versions.packerNG"

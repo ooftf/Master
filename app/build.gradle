@@ -98,11 +98,6 @@ android {
         force 'com.google.code.gson:gson:2.8.5'//暂时不要升级
     }
 }*/
-/*aspectjx {
-//排除所有package路径中包含`android.support`的class文件及库（jar文件）
-    exclude '*'
-    enabled false
-}*/
 //packer-begin
 /*packer {
     archiveNameFormat = '${appPkg}-${buildType}-v${versionName}-${channel}'

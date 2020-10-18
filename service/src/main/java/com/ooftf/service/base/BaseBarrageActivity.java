@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 import com.ooftf.barrage.BarrageView;
 
 import org.jetbrains.annotations.Nullable;
