@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.hihttp.action.ButtonAction
 import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.service.engine.imageloader.IImageLoader
 import com.ooftf.service.net.ServiceHolder
@@ -13,9 +12,9 @@ import com.ooftf.service.net.etd.bean.BannerBean
 import com.ooftf.service.utils.DensityUtil
 import com.ooftf.widget.R
 import com.ooftf.widget.dagger.DaggerBannerComponent
-import com.trello.rxlifecycle3.kotlin.bindToLifecycle
+import com.trello.rxlifecycle4.kotlin.bindToLifecycle
 import com.youth.banner.loader.ImageLoaderInterface
-import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_banner.*
 import javax.inject.Inject
 
@@ -31,14 +30,14 @@ class BannerActivity : BaseSlidingActivity() {
         setContentView(R.layout.activity_banner)
         setupBanner()
         requestBanner()
-        responseLayout.setOnRetryListener { requestBanner() }
+       // responseLayout.setOnRetryListener { requestBanner() }
         next.setOnClickListener {
             ServiceHolder
                     .service
                     .getBanner("1", "2")
                     .bindToLifecycle(banner)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .compose(ButtonAction(next, "正在获取Banner"))
+                    //.compose(ButtonAction(next, "正在获取Banner"))
                     .subscribe(object : BaseResponse<BannerBean>() {
                         override fun onSuccess(bean: BannerBean) {
                             banner.setImages(bean.body.picList)
@@ -73,7 +72,7 @@ class BannerActivity : BaseSlidingActivity() {
                 .getBanner("1", "2")
                 .bindToLifecycle(banner)
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose(responseLayout.getAction())
+               // .compose(responseLayout.getAction())
                 .subscribe(object : BaseResponse<BannerBean>() {
                     override fun onSuccess(bean: BannerBean) {
                         banner.setImages(bean.body.picList)

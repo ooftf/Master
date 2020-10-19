@@ -129,8 +129,6 @@ dependencies {
     api 'com.hwangjr.rxbus:rxbus:1.0.6'
     implementation deps.MMKV
     implementation deps.disklrucache
-    api "com.trello.rxlifecycle3:rxlifecycle-kotlin:$versions.rxlifecycle"
-    api "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
     api 'com.ooftf:docking-api:2.1.0'
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
     // fragment快速实现（可选）
@@ -151,7 +149,18 @@ dependencies {
     api deps.SmartRefreshLayout
     api "com.ooftf:master-widget-statelayout:1.1.1"
     api "com.ooftf:JLog:1.0.0"
-    api 'com.ooftf:arch-frame-mvvm:0.0.4'
+    api 'com.ooftf:arch-frame-mvvm:0.0.6'
     api 'com.ooftf:http-ui-mapping:1.3.0'
     api 'com.ooftf:basic:0.0.4'
+    api 'com.ooftf:dataBinging-extensions:1.0.2'
+    api 'io.reactivex.rxjava3:rxjava:3.0.7'
+    api "com.trello.rxlifecycle4:rxlifecycle:$versions.rxlifecycle"
+// If you want to bind to Android-specific lifecycles
+    api "com.trello.rxlifecycle4:rxlifecycle-android:$versions.rxlifecycle"
+    // If you want to use Android Lifecycle for providers
+    api "com.trello.rxlifecycle4:rxlifecycle-android-lifecycle:$versions.rxlifecycle"
+// If you want to use Kotlin syntax
+    api "com.trello.rxlifecycle4:rxlifecycle-kotlin:$versions.rxlifecycle"
+// If you want to use Kotlin syntax with Android Lifecycle
+    api "com.trello.rxlifecycle4:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
 }

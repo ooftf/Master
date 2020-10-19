@@ -16,9 +16,8 @@ import com.ooftf.service.R
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.net.ServiceHolder
 import com.ooftf.service.net.etd.bean.PicCaptchaBean
-import com.trello.rxlifecycle3.kotlin.bindToLifecycle
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
+import com.trello.rxlifecycle4.kotlin.bindToLifecycle
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
 /**
  * Created by master on 2017/10/20 0020.
@@ -48,9 +47,8 @@ class PicCaptchaLayout : RelativeLayout {
                 .bindToLifecycle(this)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : BaseResponse<PicCaptchaBean>() {
-                    override fun onSubscribe(d: Disposable) {
-                        pic.visibility = View.INVISIBLE
-                        progressBar.visibility = View.VISIBLE
+                    override fun onSubscribe(d: io.reactivex.rxjava3.disposables.Disposable?) {
+                        super.onSubscribe(d)
                     }
 
                     override fun onSuccess(bean: PicCaptchaBean) {
@@ -69,14 +67,14 @@ class PicCaptchaLayout : RelativeLayout {
                         Log.e("onError", "onError")
                         pic.visibility = View.VISIBLE
                         progressBar.visibility = View.INVISIBLE
-                        pic.setImageResource(R.drawable.vector_net_error)
+                        //pic.setImageResource(R.drawable.vector_net_error)
                     }
 
                     override fun onError(e: Throwable) {
                         Log.e("onError", "onError")
                         pic.visibility = View.VISIBLE
                         progressBar.visibility = View.INVISIBLE
-                        pic.setImageResource(R.drawable.vector_net_error)
+                        //pic.setImageResource(R.drawable.vector_net_error)
                     }
 
 

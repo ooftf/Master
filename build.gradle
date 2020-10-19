@@ -41,16 +41,16 @@ buildscript {
                 'tinkerpatch': "1.2.9",
                 'packerNG'   : "2.0.1",
                 'arouter'    : "1.2.1",
-                'glide'      : "4.9.0",
+                'glide'      : "4.11.0",
                 'dagger'     : '2.22.1',
                 'java'       : JavaVersion.VERSION_1_8,
-                'rxlifecycle': "3.0.0",
+                'rxlifecycle': "4.0.0",
                 'master'     : "1.0.1-SNAPSHOT"
         ]
 
         deps = [
                 'fastjson'                         : 'com.alibaba:fastjson:1.1.71.android',
-                'HiHttp'                           : 'com.ooftf:hi-http:3.5.3',
+                'HiHttp'                           : 'com.ooftf:hi-http:4.2.4',
                 'MMKV'                             : 'com.tencent:mmkv:1.0.22',
                 'progressDrawable'                 : 'com.github.ooftf:progress-drawable:1.2.0',
                 'disklrucache'                     : 'com.jakewharton:disklrucache:2.0.2',
@@ -112,7 +112,7 @@ allprojects {
         mavenCentral()
         jcenter()
         maven { url 'https://jitpack.io' }
-        mavenLocal()
+        //mavenLocal()
         maven() {
             url "https://oss.sonatype.org/content/repositories/snapshots"
         }

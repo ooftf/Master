@@ -16,7 +16,7 @@ import com.ooftf.master.rn.packages.LogReactPackage;
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
-import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.tbruyelle.rxpermissions3.RxPermissions;
 
 import io.reactivex.functions.Consumer;
 

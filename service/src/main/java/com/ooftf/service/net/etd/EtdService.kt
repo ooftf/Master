@@ -3,7 +3,7 @@ package com.ooftf.service.net.etd
 import com.ooftf.service.net.etd.bean.BannerBean
 import com.ooftf.service.net.etd.bean.BaseBean
 import com.ooftf.service.net.etd.bean.PicCaptchaBean
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST

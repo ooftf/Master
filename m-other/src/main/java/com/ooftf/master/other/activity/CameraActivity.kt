@@ -1,22 +1,18 @@
 package com.ooftf.master.other.activity
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.master.other.R
 import com.ooftf.master.other.engine.HiCamera
-import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.constant.ProviderConstant
-import com.ooftf.service.utils.extend.toast
-import com.tbruyelle.rxpermissions2.RxPermissions
-import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle
-import com.trello.rxlifecycle3.kotlin.bind
-import com.trello.rxlifecycle3.kotlin.bindToLifecycle
+import com.tbruyelle.rxpermissions3.RxPermissions
+import com.trello.rxlifecycle4.android.lifecycle.kotlin.bindToLifecycle
 import kotlinx.android.synthetic.main.activity_camera.*
 
 

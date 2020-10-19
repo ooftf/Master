@@ -19,11 +19,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.ObservableSource;
+import io.reactivex.rxjava3.functions.Function;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -221,7 +221,9 @@ public class ImgSrcHandlerDialog extends ListDialog {
 
     private static File getFile(String format) {
         File appDir = new File(Environment.getExternalStorageDirectory(), "JmImage");
-        if (!appDir.exists()) appDir.mkdirs();
+        if (!appDir.exists()) {
+            appDir.mkdirs();
+        }
         String fileName = System.currentTimeMillis() + "." + format;
         return new File(appDir, fileName);
     }

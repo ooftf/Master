@@ -25,9 +25,9 @@ import java.util.concurrent.TimeUnit
 class MainActivity : BaseActivity() {
     companion object{
         init {
-            DevEye.init(BaseApplication.instance, DevEyeProvider {
+            DevEye.init(BaseApplication.instance) {
                 ActivityManager.getTopActivity()!!
-            })
+            }
         }
     }
     private lateinit var switchManager: FragmentSwitchManager<String>

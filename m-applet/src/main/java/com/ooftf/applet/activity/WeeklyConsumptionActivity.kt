@@ -12,7 +12,6 @@ import com.ooftf.applet.adapter.PersonRecordAdapter
 import com.ooftf.applet.bean.OrderRecordBean
 import com.ooftf.applet.bean.PersonRecordBean
 import com.ooftf.applet.engine.text_watcher.*
-import com.ooftf.hihttp.action.DialogAction
 import com.ooftf.master.widget.dialog.ui.ListBlurDialog
 import com.ooftf.master.widget.toolbar.official.ToolbarPlus
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
@@ -23,9 +22,9 @@ import com.ooftf.service.net.mob.action.ErrorAction
 import com.ooftf.service.net.mob.action.MobObserver
 import com.ooftf.service.net.mob.bean.ItemDataBean
 import com.ooftf.service.net.mob.bean.MobBaseBean
-import com.trello.rxlifecycle3.kotlin.bindToLifecycle
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import com.trello.rxlifecycle4.kotlin.bindToLifecycle
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_weekly_consumption.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -71,8 +70,8 @@ class WeeklyConsumptionActivity : BaseActivity() {
                 .put(getItemName(), Base64.encodeToString(Gson().toJson(orderRecord).toByteArray(), Base64.DEFAULT))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose(DialogAction<MobBaseBean>(this))
-                .compose(ErrorAction<MobBaseBean>(this))
+                //.compose(DialogAction<MobBaseBean>(this))
+                //.compose(ErrorAction<MobBaseBean>(this))
                 .bindToLifecycle(window.decorView)
                 .subscribe(object : MobObserver<MobBaseBean>() {
                     override fun onSuccess(bean: MobBaseBean?) {
@@ -88,8 +87,8 @@ class WeeklyConsumptionActivity : BaseActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .bindToLifecycle(window.decorView)
-                .compose(DialogAction<ItemDataBean>(this))
-                .compose(ErrorAction<ItemDataBean>(this))
+                //.compose(DialogAction<ItemDataBean>(this))
+                //.compose(ErrorAction<ItemDataBean>(this))
                 .subscribe(object : MobObserver<ItemDataBean>() {
                     override fun onSuccess(bean: ItemDataBean) {
                         Log.e("onNext", "。。。。。。。。。。。" + System.currentTimeMillis())

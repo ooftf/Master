@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.callback.NavigationCallback;
+import com.ooftf.log.JLog;
 
 /**
  * 因为ARouter 添加拦截器后，导致开启activity变慢，如果直接finish就会导致，关闭和打开衔接不上
@@ -26,11 +27,13 @@ public class FinishCallback implements NavigationCallback {
 
     @Override
     public void onArrival(Postcard postcard) {
+        JLog.e("onArrival");
         mActivity.finish();
     }
 
     @Override
     public void onInterrupt(Postcard postcard) {
+        JLog.e("onInterrupt");
         mActivity.finish();
     }
 }

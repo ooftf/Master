@@ -12,7 +12,7 @@ import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 import com.ooftf.service.constant.RouterExtra;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.engine.router.PostcardSerializable;
-import com.ooftf.service.engine.router.service.IMultiSignService;
+import com.ooftf.service.engine.router.assist.ISignService;
 import com.ooftf.log.JLog;
 
 /**
@@ -25,13 +25,13 @@ import com.ooftf.log.JLog;
 @Interceptor(priority = 1)
 public class SignInInterceptor implements IInterceptor {
     @Autowired
-    IMultiSignService multiAccountService;
+    ISignService multiAccountService;
 
     @Override
     public void process(Postcard postcard, InterceptorCallback callback) {
 
         int extra = postcard.getExtra();
-        if (RouterExtra.isNeedSign(extra) && !multiAccountService.getCurrentService().isSignIn()) {
+        if (RouterExtra.isNeedSign(extra) && !multiAccountService.isSignIn()) {
             JLog.e("interceptor", postcard.getPath());
             ARouter.getInstance().build(RouterPath.SIGN_ACTIVITY_SIGN_IN).withBundle(BaseActivity.INTENT_DATA_SUCCESS_INTENT, PostcardSerializable.toBundle(postcard)).navigation();
             callback.onInterrupt(null);

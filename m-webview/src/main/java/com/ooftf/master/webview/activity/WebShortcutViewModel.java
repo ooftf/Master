@@ -6,11 +6,11 @@ import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableList;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.ooftf.arch.frame.mvvm.vm.BaseViewModel;
 import com.ooftf.master.webview.BR;
 import com.ooftf.master.webview.R;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.interfaces.click.OnClickListener;
-import com.ooftf.service.structure.mvvm.BaseViewModel;
 
 import org.jetbrains.annotations.NotNull;
 

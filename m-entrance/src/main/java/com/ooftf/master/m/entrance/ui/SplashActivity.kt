@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.launcher.ARouter
 import com.bumptech.glide.request.RequestOptions
+import com.ooftf.basic.AppHolder
 import com.ooftf.master.m.entrance.R
 import com.ooftf.service.base.BaseApplication
 import com.ooftf.service.constant.RouterPath
@@ -17,15 +18,14 @@ import com.ooftf.service.engine.router.FinishCallback
 import com.ooftf.service.utils.LifecycleUtil
 import com.ooftf.service.utils.ThreadUtil
 import com.ooftf.service.utils.TimeRuler
-import com.tbruyelle.rxpermissions2.RxPermissions
-import com.trello.rxlifecycle3.android.lifecycle.kotlin.bindUntilEvent
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
+import com.tbruyelle.rxpermissions3.RxPermissions
+import com.trello.rxlifecycle4.android.lifecycle.kotlin.bindUntilEvent
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
-
 
 class SplashActivity : AppCompatActivity() {
     var drawable: Drawable? = null
@@ -43,7 +43,7 @@ class SplashActivity : AppCompatActivity() {
                 }
                 TimeRuler.end("drawable", "end")
             } catch (e: Exception) {
-                GlideApp.with(BaseApplication.instance).load(url).preload()
+                GlideApp.with(AppHolder.app).load(url).preload()
             }
         }
     }
@@ -64,7 +64,7 @@ class SplashActivity : AppCompatActivity() {
         Observable.intervalRange(0, 30, 0, 100, TimeUnit.MILLISECONDS)
                 .bindUntilEvent(this, Lifecycle.Event.ON_DESTROY)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : io.reactivex.Observer<Long> {
+                .subscribe(object : io.reactivex.rxjava3.core.Observer<Long> {
                     override fun onComplete() {
                         LifecycleUtil.postOnResume(lifecycle) { startNextActivity() }
                     }
@@ -75,7 +75,7 @@ class SplashActivity : AppCompatActivity() {
 
                     override fun onNext(t: Long) {
 
-                        skip.text = "跳过${(t * 100 / 1000f).roundToInt()}"
+                        skip.text = "跳过${((3000 - t * 100) / 1000f).roundToInt()}"
                     }
 
                     override fun onError(e: Throwable) {

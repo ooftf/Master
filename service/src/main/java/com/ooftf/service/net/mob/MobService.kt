@@ -1,7 +1,7 @@
 package com.ooftf.service.net.mob
 
 import com.ooftf.service.net.mob.bean.*
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
 

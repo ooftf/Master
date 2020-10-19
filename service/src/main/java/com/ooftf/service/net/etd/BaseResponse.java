@@ -2,8 +2,9 @@ package com.ooftf.service.net.etd;
 
 import com.ooftf.service.net.etd.bean.BaseBean;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
+
 
 /**
  * @author ooftf
