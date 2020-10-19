@@ -20,7 +20,7 @@
 * 为progress-drawable添加文档
 * 人工智能（TensorFlow）
 * 语言切换
-* 非入侵式埋点
+* 非入侵式埋点（全埋点，无埋点）
 * 编写脚本
 * 全局dialog
 * codecov
@@ -32,6 +32,11 @@
 * 插件化
 * Vector兼容性问题
 * AndAOP
+* 从 .java文件到运行的APP都经历了什么
+* Android长连接
+* 再学习netty
+* statelayout  没有view的时候不切换
+* ui-mapping 添加自定义通道
 ### DELAY LIST
 * Ktor
 ### DONE LIST

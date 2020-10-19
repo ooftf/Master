@@ -3,7 +3,8 @@ package com.ooftf.service.net
 import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.hihttp.engine.ParamInterceptor
 import com.ooftf.hihttp.engine.ServiceGenerator
-import com.ooftf.service.engine.router.service.IMultiSignService
+import com.ooftf.hihttp.engine.ServiceGeneratorBuilder
+import com.ooftf.service.engine.router.assist.ISignService
 import com.ooftf.service.net.etd.EtdService
 import com.ooftf.service.net.mob.MobService
 
@@ -12,20 +13,21 @@ import com.ooftf.service.net.mob.MobService
  */
 object ServiceHolder {
     val service: EtdService by lazy {
-        val generator = ServiceGenerator()
-        generator.baseUrl = "https://api.etongdai.com/"
-        generator.ignoreSSL = true
-        generator.loggable = true
-        generator.buildOkhttp = {
-            it.addInterceptor(object : ParamInterceptor() {
-                override fun paramTransform(oldParams: MutableMap<String, String>): MutableMap<String, String> {
-                    oldParams["terminalType"] = "3"
-                    oldParams["appVersion"] = "3.0.0"
-                    return oldParams
-                }
-            })
-        }
-        generator.createService(EtdService::class.java)
+        ServiceGeneratorBuilder().setBaseUrl("https://api.etongdai.com/")
+                .setIgnoreSSL(true)
+                .setBuildOkHttp {
+                    it.addInterceptor(object : ParamInterceptor() {
+                        override fun getAddHeaders(params: MutableMap<String, String>?): Map<String, String> {
+                            return params ?: HashMap()
+                        }
+
+                        override fun paramTransform(oldParams: MutableMap<String, String>): MutableMap<String, String> {
+                            oldParams["terminalType"] = "3"
+                            oldParams["appVersion"] = "3.0.0"
+                            return oldParams
+                        }
+                    })
+                }.build().createService(EtdService::class.java)
     }
     val mobService: MobService by lazy {
         val generator = mobServiceGenerator()
@@ -33,23 +35,25 @@ object ServiceHolder {
     }
 
     fun mobServiceGenerator(): ServiceGenerator {
-        val signService = ARouter.getInstance().navigation(IMultiSignService::class.java)
-        val generator = ServiceGenerator()
-        generator.baseUrl = "http://apicloud.mob.com/"
-        generator.loggable = true
+        val signService = ARouter.getInstance().navigation(ISignService::class.java)
+        return ServiceGeneratorBuilder()
+                .setBaseUrl("http://apicloud.mob.com/")
+                .setBuildOkHttp {
+                    it.addInterceptor(object : ParamInterceptor() {
+                        override fun getAddHeaders(params: MutableMap<String, String>?): Map<String, String> {
+                            return params ?: HashMap()
+                        }
 
-        generator.buildOkhttp = {
-            it.addInterceptor(object : ParamInterceptor() {
-                override fun paramTransform(oldParams: MutableMap<String, String>): MutableMap<String, String> {
-                    oldParams["key"] = "3ab0f1586b2"
-                    if (signService.currentService.isSignIn) {
-                        oldParams["token"] = signService.currentService.token
-                        oldParams["uid"] = signService.currentService.userId
-                    }
-                    return oldParams
-                }
-            })
-        }
-        return generator
+                        override fun paramTransform(oldParams: MutableMap<String, String>): MutableMap<String, String> {
+                            oldParams["key"] = "3ab0f1586b2"
+                            if (signService.isSignIn) {
+                                oldParams["token"] = signService.token
+                                oldParams["uid"] = signService.userId
+                            }
+                            return oldParams
+                        }
+                    })
+                }.build()
+
     }
 }

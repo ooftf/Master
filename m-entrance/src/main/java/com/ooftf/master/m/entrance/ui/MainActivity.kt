@@ -4,24 +4,32 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.blankj.utilcode.util.AppUtils
 import com.mcxiaoke.packer.helper.PackerNg
 import com.ooftf.bottombar.java.FragmentSwitchManager
+import com.ooftf.log.JLog
 import com.ooftf.master.m.entrance.R
 import com.ooftf.master.m.entrance.adapter.BottomBarAdapter
+import com.ooftf.master.unit.am.ActivityManager
 import com.ooftf.master.widget.eye.DevEye
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.master.widget.eye.DevEyeProvider
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.base.BaseApplication
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.main_tab.TabManager
-import com.ooftf.service.utils.JLog
-import com.ooftf.service.utils.ThreadUtil
+import com.ooftf.service.utils.extend.toast
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 
 @Route(path = RouterPath.MAIN_ACTIVITY_MAIN)
 class MainActivity : BaseActivity() {
+    companion object{
+        init {
+            DevEye.init(BaseApplication.instance) {
+                ActivityManager.getTopActivity()!!
+            }
+        }
+    }
     private lateinit var switchManager: FragmentSwitchManager<String>
     private lateinit var adapter: BottomBarAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +38,10 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         title = PackerNg.getChannel(this)
         setupBottomBar()
+        DevEye.showFloat(this)
+      /*  Observable.interval(1,TimeUnit.SECONDS).subscribe {
+            JLog.e(it.toString())
+        }*/
     }
 
     @SuppressLint("CheckResult")
@@ -60,16 +72,6 @@ class MainActivity : BaseActivity() {
         } else {
             backPressedTime = System.currentTimeMillis()
             toast("再按一次退出应用")
-        }
-    }
-    companion object
-    {
-        init {
-            initGodEye()
-        }
-        private fun initGodEye() {
-            DevEye.init(BaseApplication.instance, ThreadUtil.getDefaultThreadPool())
-            JLog.register().subscribe { logBean -> DevEye.log(logBean.msg) }
         }
     }
 }

@@ -6,7 +6,7 @@ import androidx.databinding.BindingAdapter;
 
 import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.engine.imageloader.ImageLoaderFactory;
-import com.ooftf.service.utils.JLog;
+import com.ooftf.log.JLog;
 
 public class DataBindAdapter {
 

@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ooftf.master.m.entrance">
 
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <application>
         <activity
             android:name="com.ooftf.master.m.entrance.ui.SplashActivity"
@@ -73,6 +76,19 @@
         <activity
             android:name="com.ooftf.master.m.entrance.ui.GuideActivity"
             android:theme="@style/AppTheme.TranslucentStatus" />
+        <activity android:name=".ui.SchameFilterActivity" >
+            <!-- Schame -->
+            <intent-filter>
+                <data
+                    android:host="ooftf.com"
+                    android:scheme="master" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
 
     </application>
 </manifest>

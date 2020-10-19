@@ -1,9 +1,10 @@
 package com.ooftf.service.empty;
 
-import com.ooftf.service.utils.JLog;
+import com.ooftf.log.JLog;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
+
 
 /**
  * @author ooftf

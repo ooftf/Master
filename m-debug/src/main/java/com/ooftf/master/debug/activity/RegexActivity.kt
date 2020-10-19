@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
 import kotlinx.android.synthetic.main.activity_regex.*
-import tf.ooftf.com.service.engine.inputfilter.IdCardNumInputFilter
-import tf.ooftf.com.service.engine.inputfilter.RegexInputFilter
+import com.ooftf.service.engine.inputfilter.IdCardNumInputFilter
+import com.ooftf.service.engine.inputfilter.RegexInputFilter
 
 @Route(path = "/debug/activity/regex")
 class RegexActivity : AppCompatActivity() {

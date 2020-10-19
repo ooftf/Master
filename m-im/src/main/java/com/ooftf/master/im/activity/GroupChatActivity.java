@@ -7,22 +7,16 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.master.im.R;
-import com.ooftf.service.base.BaseActivity;
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import butterknife.ButterKnife;
-
 /**
  * @author 99474
  */
 @Route(path = RouterPath.IM_ACTIVITY_GROUP_CHAT)
 public class GroupChatActivity extends BaseActivity {
 
-    /*   @BindView(R2.id.chat_panel)
-       GroupChatPanel chatPanel;*/
     @Autowired
     String chatId;
 
@@ -30,10 +24,7 @@ public class GroupChatActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_chat);
-        ButterKnife.bind(this);
         ARouter.getInstance().inject(this);
-       /* chatPanel.initDefault();
-        chatPanel.setBaseChatId(chatId);*/
     }
 
     @Override
@@ -49,6 +40,5 @@ public class GroupChatActivity extends BaseActivity {
     @Override
     public View[] getToolbar() {
         return new View[0];
-        // return chatPanel.getTitleBar();
     }
 }

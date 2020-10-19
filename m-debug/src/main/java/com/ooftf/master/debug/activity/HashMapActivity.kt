@@ -3,7 +3,8 @@ package com.ooftf.master.debug.activity
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.service.utils.extend.toast
 import kotlinx.android.synthetic.main.activity_hash_map.*
 
 @Route(path = "/debug/activity/hashMap")

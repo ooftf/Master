@@ -6,7 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.widget.R
 import kotlinx.android.synthetic.main.activity_shared_elements.*
 

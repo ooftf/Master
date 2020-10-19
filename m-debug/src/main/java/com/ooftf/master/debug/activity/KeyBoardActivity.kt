@@ -4,11 +4,10 @@ import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import android.view.View
-import butterknife.ButterKnife
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
 import com.ooftf.master.debug.widget.KeyBoard
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import kotlinx.android.synthetic.main.content_key_board.*
 
 @Route(path = "/debug/activity/keyBoard")
@@ -18,7 +17,6 @@ class KeyBoardActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_key_board)
-        ButterKnife.bind(this)
         keyBoard = KeyBoard(this@KeyBoardActivity)
         keyBoard.bindEditText(editTest)
         val fab = findViewById<View>(R.id.fab) as FloatingActionButton

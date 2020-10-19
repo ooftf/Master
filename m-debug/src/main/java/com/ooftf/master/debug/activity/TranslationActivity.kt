@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_translation_debug.*
 /**
  * 调试控件的移动

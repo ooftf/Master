@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.ooftf.applet.R
 import com.ooftf.applet.adapter.AppletAdapter2
 
-import com.ooftf.service.base.BaseLazyFragment
+import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.widget.toolbar.TailoredToolbar

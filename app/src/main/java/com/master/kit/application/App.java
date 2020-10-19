@@ -2,15 +2,17 @@ package com.master.kit.application;
 
 import android.content.Context;
 
+import com.alibaba.android.arouter.facade.service.SerializationService;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.ooftf.log.Interceptor;
+import com.ooftf.log.JLog;
+import com.ooftf.log.JsonParser;
 import com.ooftf.service.base.BaseApplication;
-import com.ooftf.service.utils.JLog;
-import com.tencent.matrix.Matrix;
-import com.tencent.matrix.iocanary.IOCanaryPlugin;
-import com.tencent.matrix.iocanary.config.IOConfig;
-import com.tencent.mrs.plugin.IDynamicConfig;
 import com.wanjian.cockroach.Cockroach;
 
 import org.jetbrains.annotations.Nullable;
+
+import java.lang.reflect.Type;
 
 /**
  * @author ooftf
@@ -27,30 +29,21 @@ public class App extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        initMatrix();
+        JLog.INSTANCE.setInterceptor(i -> true);
+        JLog.INSTANCE.setJsonParser(new JsonParser() {
+            @Nullable
+            @Override
+            public String object2Json(@Nullable Object o) {
+                return ARouter.getInstance().navigation(SerializationService.class).object2Json(o);
+            }
+
+            @Override
+            public <T> T parseObject(@Nullable String s, @Nullable Type type) {
+                return ARouter.getInstance().navigation(SerializationService.class).parseObject(s, type);
+            }
+        });
+        // initMatrix();
         //installCockroach();
-    }
-
-    private void initMatrix() {
-        // build matrix
-        Matrix.Builder builder = new Matrix.Builder(this);
-        // add general pluginListener
-        builder.patchListener(new MasterPluginListener(this));
-        // dynamic config
-        IDynamicConfig dynamicConfig = new MasterDynamicConfig();
-
-        // onCreate plugin
-        IOCanaryPlugin ioCanaryPlugin = new IOCanaryPlugin(new IOConfig.Builder()
-                .dynamicConfig(dynamicConfig)
-                .build());
-        //add to matrix
-        builder.plugin(ioCanaryPlugin);
-
-        //onCreate matrix
-        Matrix.init(builder.build());
-
-        // start plugin
-        ioCanaryPlugin.start();
     }
 
     public static App getInstance() {

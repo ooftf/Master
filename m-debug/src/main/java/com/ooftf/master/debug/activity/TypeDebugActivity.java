@@ -3,7 +3,7 @@ package com.ooftf.master.debug.activity;
 import android.os.Bundle;
 
 import com.ooftf.master.debug.R;
-import com.ooftf.service.base.BaseActivity;
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

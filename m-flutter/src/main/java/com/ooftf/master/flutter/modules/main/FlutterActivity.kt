@@ -3,7 +3,7 @@ package com.ooftf.master.flutter.modules.main
 import android.os.Bundle
 import android.widget.FrameLayout
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import io.flutter.facade.Flutter
 
 /**
@@ -23,7 +23,7 @@ class FlutterActivity :BaseActivity(){
         val flutterView = Flutter.createView(
                 this,
                 lifecycle,
-                "route1"
+                "route2"
         )
         val layout = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT)
         addContentView(flutterView, layout)

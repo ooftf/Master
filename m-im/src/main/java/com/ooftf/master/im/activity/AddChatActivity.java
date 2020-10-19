@@ -11,7 +11,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.master.im.R;
 import com.ooftf.master.im.databinding.ImActivityAddCartBinding;
-import com.ooftf.service.base.BaseActivity;
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
 import com.tencent.imsdk.TIMCallBack;
 import com.tencent.imsdk.TIMFriendshipManager;
@@ -25,9 +25,6 @@ import com.tencent.qcloud.tim.uikit.utils.TUIKitConstants;
 import com.tencent.qcloud.tim.uikit.utils.ToastUtil;
 
 import org.jetbrains.annotations.Nullable;
-
-import butterknife.ButterKnife;
-
 /**
  * @author ooftf
  * @email 994749769@qq.com
@@ -45,8 +42,6 @@ public class AddChatActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.im_activity_add_cart);
         ARouter.getInstance().inject(this);
-        ButterKnife.bind(this);
-
     }
 
     @Nullable

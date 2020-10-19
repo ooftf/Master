@@ -1,6 +1,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ooftf.master.m.monitor" >
+    package="com.ooftf.master.m.monitor">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
     <application>
-        <meta-data android:value="14d1241a3d7146fc93cafe2636718260" android:name = "ZHUGE_APPKEY"/>
+        <meta-data
+            android:name="ZHUGE_APPKEY"
+            android:value="14d1241a3d7146fc93cafe2636718260" />
+        <service
+            android:name="com.talkingdata.sdk.TDAntiCheatingService"
+            android:process="com.talkingdata.sdk.TDAntiCheatingService">  <!--用户质量评估Service可以配置在主进程或者单独进程-->
+            <intent-filter>
+                <action android:name="com.talkingdata.sdk.TDAntiCheatingService" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="TD_APP_ID"
+            android:value="FDA79E8C0AED42E09B1C89BB6C86C877" />
+        <meta-data
+            android:name="TD_CHANNEL_ID"
+            android:value="Undefined" />
     </application>
 </manifest>

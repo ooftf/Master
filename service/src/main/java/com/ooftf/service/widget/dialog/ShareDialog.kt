@@ -9,24 +9,25 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.ooftf.hishare.HiShare
+import com.ooftf.master.widget.dialog.ui.BottomDialog
 import com.ooftf.service.R
 import com.ooftf.service.utils.ShareUtil
 
 class ShareDialog(activity: Activity) : BottomDialog(activity) {
 
-    var recycler_view: androidx.recyclerview.widget.RecyclerView;
+    var recycler_view: RecyclerView;
 
     init {
         setContentView(R.layout.dialog_share)
         recycler_view = findViewById(R.id.recycler_view)
-        recycler_view.layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 4)
+        recycler_view.layoutManager = GridLayoutManager(context, 4)
     }
 
     fun setData(shareData: ShareData) {
-        recycler_view.adapter = MyAdapter(activity, shareData)
+        recycler_view.adapter = MyAdapter(activity!!, shareData)
     }
 
-    class MyAdapter(var activity: Activity, var shareData: ShareData) : androidx.recyclerview.widget.RecyclerView.Adapter<ViewHolder>() {
+    class MyAdapter(var activity: Activity, var shareData: ShareData) : RecyclerView.Adapter<ViewHolder>() {
         var inflater = LayoutInflater.from(activity)
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             return ViewHolder(inflater.inflate(R.layout.item_share, parent, false))
@@ -48,7 +49,7 @@ class ShareDialog(activity: Activity) : BottomDialog(activity) {
 
     }
 
-    class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var name: TextView = itemView.findViewById(R.id.name)
         var image: ImageView = itemView.findViewById(R.id.image)
     }

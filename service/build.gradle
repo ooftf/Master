@@ -2,8 +2,14 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.jakewharton.butterknife'
-apply plugin: 'com.novoda.bintray-release'
+def getGitHash = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'rev-parse', '--short', 'HEAD'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
@@ -25,6 +31,7 @@ android {
             abiFilters 'armeabi-v7a' //, 'x86','armeabi', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
         buildConfigField("String", "APP_BUILD_TIME", "\"" + new Date().format("yyyy/MM/dd HH:mm:ss") + "\"")
+        buildConfigField "String", "GitHash", "\"${getGitHash()}\""
     }
     compileOptions {
         sourceCompatibility versions.java
@@ -33,13 +40,14 @@ android {
     lintOptions {
         abortOnError false
     }
-    dataBinding {
-        enabled true
+    buildFeatures{
+        dataBinding true
     }
 }
+
 sourceCompatibility = "8"
 targetCompatibility = "8"
-publish {
+/*publish {
     repoName = 'maven'
     userOrg = 'ooftf'      // bintray注册的用户名
     groupId = 'com.ooftf'
@@ -49,7 +57,7 @@ publish {
     bintrayUser = 'ooftf'
     bintrayKey = bintrayKey()
     dryRun = false
-}
+}*/
 tasks.withType(Javadoc) {
     enabled = false
     options.addStringOption('Xdoclint:none', '-quiet')
@@ -69,8 +77,8 @@ dependencies {
     api androidx.cardview
     api deps.material
     api androidx.recyclerview
+    api 'androidx.core:core-ktx:1.3.2'
     api 'com.loopj.android:android-async-http:1.4.9'
-    api "com.jakewharton:butterknife:$versions.butterknife"
     api 'com.alibaba:fastjson:1.2.7'
     api 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     api 'com.liulishuo.filedownloader:library:1.7.1'
@@ -92,7 +100,6 @@ dependencies {
     api 'com.github.chrisbanes:PhotoView:2.3.0'
     api 'com.alimuzaffar.lib:pinentryedittext:1.3.1'
     api 'com.daimajia.swipelayout:library:1.2.0@aar'
-    kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
     kapt deps.dagger2_compiler
     api 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
     api "com.mcxiaoke.packer-ng:helper:$versions.packerNG"
@@ -101,9 +108,9 @@ dependencies {
     // annotationProcessor ("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker")
     // compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker")
     // api("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$versions.tinkerpatch")
-    api 'com.google.code.gson:gson:2.8.5'
-    api 'io.reactivex.rxjava2:rxandroid:2.1.0'
-    api "io.reactivex.rxjava2:rxjava:2.2.3"
+    api 'com.google.code.gson:gson:2.8.6'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    api "io.reactivex.rxjava2:rxjava:2.2.19"
     //releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
     api deps.fastjson
     api 'com.github.ooftf:Support:1.1.1'
@@ -113,37 +120,47 @@ dependencies {
     api 'com.github.ooftf:VerticalPagerLayout:2.0.0'
     api 'com.github.markzhai:blockcanary-android:1.5.0'
     //releaseApi 'com.github.markzhai:blockcanary-no-op:1.5.0'
-    api 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.10.4'
     api 'com.github.ooftf:HiShare:1.2.5'
-    api 'com.blankj:utilcodex:1.25.9'
-    api 'com.github.tbruyelle:rxpermissions:0.10.2'
+    api 'com.blankj:utilcodex:1.29.0'
+    api 'com.github.tbruyelle:rxpermissions:0.12'
     api 'com.github.ooftf:BarrageView:1.1.0'
-    api 'com.ooftf:bottombar-java:1.2.5'
+    api 'com.ooftf:bottombar-java:1.2.6'
     api 'com.hwangjr.rxbus:rxbus:1.0.6'
     implementation deps.MMKV
     implementation deps.disklrucache
-    api "com.trello.rxlifecycle3:rxlifecycle-kotlin:$versions.rxlifecycle"
-    api "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
-    api 'com.ooftf:docking-api:2.0.0'
-    implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta05'
+    api 'com.ooftf:docking-api:2.1.0'
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
     // fragment快速实现（可选）
-    api 'com.gyf.immersionbar:immersionbar-components:3.0.0-beta05'
+    api 'com.gyf.immersionbar:immersionbar-components:3.0.0'
     // Firebase Crashlytics
     //Firebase
-    api 'com.google.firebase:firebase-core:17.0.1'
-    api 'com.crashlytics.sdk.android:crashlytics:2.10.1'
-    api 'com.google.firebase:firebase-auth:18.1.0'
-    api 'com.ooftf:master-widget-dialog:1.0.2'
+    api 'com.ooftf:master-widget-dialog:1.1.0'
     api 'com.ooftf:master-unit-activity-manager:1.0.2'
     //api 'org.aspectj:aspectjrt:1.8.9'
     api 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
-    api 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     api 'androidx.multidex:multidex:2.0.1'
-    api 'com.ooftf:master-widget-toolbar:1.0.7'
+    api 'com.ooftf:master-widget-toolbar:1.1.4'
     api deps.bindingcollectionadapter
     api deps.bindingcollectionadapter_recycler
-    api 'androidx.viewpager2:viewpager2:1.0.0-beta04'
+    api 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
     api deps.SmartRefreshHeader
     api deps.SmartRefreshLayout
-    api "com.ooftf:master-widget-statelayout:1.0.0"
+    api "com.ooftf:master-widget-statelayout:1.1.1"
+    api "com.ooftf:JLog:1.0.0"
+    api 'com.ooftf:arch-frame-mvvm:0.0.6'
+    api 'com.ooftf:http-ui-mapping:1.3.0'
+    api 'com.ooftf:basic:0.0.4'
+    api 'com.ooftf:dataBinging-extensions:1.0.2'
+    api 'io.reactivex.rxjava3:rxjava:3.0.7'
+    api "com.trello.rxlifecycle4:rxlifecycle:$versions.rxlifecycle"
+// If you want to bind to Android-specific lifecycles
+    api "com.trello.rxlifecycle4:rxlifecycle-android:$versions.rxlifecycle"
+    // If you want to use Android Lifecycle for providers
+    api "com.trello.rxlifecycle4:rxlifecycle-android-lifecycle:$versions.rxlifecycle"
+// If you want to use Kotlin syntax
+    api "com.trello.rxlifecycle4:rxlifecycle-kotlin:$versions.rxlifecycle"
+// If you want to use Kotlin syntax with Android Lifecycle
+    api "com.trello.rxlifecycle4:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
 }

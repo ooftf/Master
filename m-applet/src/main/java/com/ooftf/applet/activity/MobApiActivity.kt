@@ -6,13 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.gson.Gson
 import com.ooftf.applet.R
-import com.ooftf.hihttp.action.DialogAction
-import com.ooftf.hihttp.action.ImageViewAction
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.empty.EmptyObserver
 import com.ooftf.service.net.ServiceHolder
-import com.trello.rxlifecycle3.kotlin.bindToLifecycle
-import io.reactivex.android.schedulers.AndroidSchedulers
+import com.trello.rxlifecycle4.kotlin.bindToLifecycle
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_mob_api.*
 
 @Route(path = "/applet/activity/mobApi")
@@ -26,7 +24,6 @@ class MobApiActivity : BaseActivity() {
                     .bankQuery(bankCard.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .compose(ImageViewAction(bankCardQuery))
                     .subscribe(BankCardObserve())
         }
         phoneQuery.setOnClickListener {
@@ -35,7 +32,6 @@ class MobApiActivity : BaseActivity() {
                     .phoneQuery(phone.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .compose(DialogAction(this))
                     .subscribe(BankCardObserve())
         }
         idCardQuery.setOnClickListener {
@@ -44,7 +40,6 @@ class MobApiActivity : BaseActivity() {
                     .idCardQuery(idCard.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .compose(DialogAction(this))
                     .subscribe(BankCardObserve())
         }
         postcodeQuery.setOnClickListener {
@@ -53,7 +48,6 @@ class MobApiActivity : BaseActivity() {
                     .postcodeQuery(postcode.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .compose(DialogAction(this))
                     .subscribe(BankCardObserve())
         }
         ipQuery.setOnClickListener {
@@ -62,7 +56,6 @@ class MobApiActivity : BaseActivity() {
                     .ipQuery(ip.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .compose(DialogAction(this))
                     .subscribe(BankCardObserve())
         }
     }

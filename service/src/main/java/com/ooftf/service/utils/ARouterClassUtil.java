@@ -10,6 +10,7 @@ import android.util.Log;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.android.arouter.thread.DefaultPoolExecutor;
 import com.alibaba.android.arouter.utils.Consts;
+import com.ooftf.log.JLog;
 
 import java.io.File;
 import java.io.IOException;

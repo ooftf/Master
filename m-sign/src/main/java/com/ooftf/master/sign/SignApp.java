@@ -5,7 +5,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.ooftf.docking.api.IApplication;
-import com.ooftf.service.utils.JLog;
+import com.ooftf.docking.api.MainProcess;
+import com.ooftf.log.JLog;
 import com.ooftf.service.utils.TimeRuler;
 
 public class SignApp implements IApplication {
@@ -13,23 +14,14 @@ public class SignApp implements IApplication {
     private static Application application;
     @Override
     public void init(Application application) {
-        this.application = application;
+        SignApp.application = application;
     }
-
+    @MainProcess
     @Override
-    public void onCreate() {
+    public void onCreate(Application application) {
         TimeRuler.marker("MyApplication", "SignApp start");
     }
 
-    @Override
-    public void onLowMemory() {
-
-    }
-
-    @Override
-    public void onTerminate() {
-
-    }
 
     @Override
     public void attachBaseContext(Context context) {

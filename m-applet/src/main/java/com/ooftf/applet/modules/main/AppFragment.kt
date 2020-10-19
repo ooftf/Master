@@ -9,7 +9,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.ooftf.applet.R
 import com.ooftf.applet.modules.main.FlutterFragment
 import com.ooftf.applet.modules.main.ReactNativeFragment
-import com.ooftf.service.base.BaseLazyFragment
+import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
 import kotlinx.android.synthetic.main.fragment_applet.*
 
 /**
@@ -36,7 +36,8 @@ class AppFragment : BaseLazyFragment() {
 
         }
         viewPager2.adapter = adapter
-        TabLayoutMediator(tabLayout, viewPager2, TabLayoutMediator.OnConfigureTabCallback { tab, position ->
+
+        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
             when (position) {
                 0 -> tab.text = "Native"
                 1 -> tab.text = "ReactNative"
@@ -45,7 +46,7 @@ class AppFragment : BaseLazyFragment() {
                 else -> tab.text = "Undefined"
             }
 
-        }).attach()
+        }.attach()
     }
 
     override fun getLayoutId(): Int {

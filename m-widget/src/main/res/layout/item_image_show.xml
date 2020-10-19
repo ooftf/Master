@@ -10,7 +10,7 @@
 
         <variable
             name="clickListener"
-            type="com.ooftf.service.interfaces.click.OnClickListener2" />
+            type="com.ooftf.service.interfaces.click.OnClickListener2&lt;com.ooftf.widget.activity.ImagePreviewActivity.ImagePreviewBean.Bean>" />
     </data>
 
     <LinearLayout

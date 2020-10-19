@@ -18,6 +18,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * AndroidUtil 主要负责硬件层级
  * App主要负责软件层级
+ * @author ooftf
  */
 public class ThreadUtil {
     public static final String TAG = "ThreadUtil";

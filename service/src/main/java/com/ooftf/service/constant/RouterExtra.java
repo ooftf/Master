@@ -1,7 +1,7 @@
 package com.ooftf.service.constant;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.ooftf.service.utils.JLog;
+import com.ooftf.log.JLog;
 
 /**
  * @author ooftf

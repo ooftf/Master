@@ -1,13 +1,12 @@
 package com.ooftf.master.sign.provider;
 
-import com.ooftf.master.sign.bean.SignInBean;
-import com.ooftf.master.sign.net.SignMobServiceHolder;
-import com.ooftf.service.engine.router.assist.ISignService;
-import com.ooftf.service.engine.router.assist.SignAssistBean;
-import com.ooftf.service.engine.typer.TyperFactory;
-import com.ooftf.service.net.mob.bean.MobBaseBean;
+import android.content.Context;
 
-import io.reactivex.Single;
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.ooftf.master.sign.bean.SignInBean;
+import com.ooftf.service.engine.router.assist.ISignService;
+import com.ooftf.service.engine.typer.TyperFactory;
+
 import io.reactivex.subjects.PublishSubject;
 
 /**
@@ -17,62 +16,18 @@ import io.reactivex.subjects.PublishSubject;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
+@Route(path = "/sign/SignServiceImpl", name = "用户登录服务")
 public class SignServiceImpl implements ISignService {
     private static final String KEY_ACCOUNT_INFO = "AccountInfo";
-    private final static SignServiceImpl INSTANCE = new SignServiceImpl();
 
-    private SignServiceImpl() {
-
-    }
-
-    public static SignServiceImpl getInstance() {
-        return INSTANCE;
-    }
 
     public static PublishSubject<String> signInSubject = PublishSubject.create();
     public static PublishSubject<String> signOutSubject = PublishSubject.create();
 
 
-    @Override
-    public Single<SignAssistBean> register(String username, String password) {
-        return SignMobServiceHolder
-                .signMobService
-                .register(username, password)
-                .singleOrError()
-                .map(mobBaseBean -> {
-                    SignAssistBean bean = new SignAssistBean();
-                    boolean success = MobBaseBean.success.equals(mobBaseBean.getRetCode());
-                    bean.setResult(success);
-                    if (success) {
-                        bean.setMsg("ok");
-                    } else {
-                        bean.setMsg(mobBaseBean.getMsg());
-                    }
-                    return bean;
-                });
-    }
-
-    @Override
-    public Single<SignAssistBean> signIn(String username, String password) {
-        return SignMobServiceHolder
-                .signMobService
-                .signIn(username, password)
-                .singleOrError()
-                .map(mobBaseBean -> {
-                    SignAssistBean bean = new SignAssistBean();
-                    boolean success = MobBaseBean.success.equals(mobBaseBean.getRetCode());
-                    bean.setResult(success);
-                    if (success) {
-                        mobBaseBean.getResult().setUserName(username);
-                        TyperFactory.getDefault().put(KEY_ACCOUNT_INFO, mobBaseBean.getResult());
-                        bean.setMsg("ok");
-                    } else {
-                        bean.setMsg(mobBaseBean.getMsg());
-                    }
-                    return bean;
-                }).doOnSuccess(signAssistBean -> {
-                    signInSubject.onNext(signAssistBean.getMsg());
-                });
+    public void signIn(SignInBean.ResultBean bean) {
+        TyperFactory.getDefault().put(KEY_ACCOUNT_INFO, bean);
+        signInSubject.onNext("");
     }
 
     @Override
@@ -128,7 +83,11 @@ public class SignServiceImpl implements ISignService {
         if (getSignInfo() != null) {
             return getSignInfo().getUserName();
         }
-
         return null;
+    }
+
+    @Override
+    public void init(Context context) {
+
     }
 }

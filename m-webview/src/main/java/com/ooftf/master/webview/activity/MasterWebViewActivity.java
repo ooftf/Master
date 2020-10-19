@@ -21,8 +21,9 @@ import com.ooftf.master.webview.engine.JsInjector;
 import com.ooftf.master.webview.utils.WebViewUtil;
 import com.ooftf.master.webview.widget.ImgSrcHandlerDialog;
 import com.ooftf.master.widget.dialog.ui.GridPanelDialog;
-import com.ooftf.service.base.BaseActivity;
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
+import com.ooftf.service.utils.extend.ToastExtendKt;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
@@ -107,7 +108,7 @@ public class MasterWebViewActivity extends BaseActivity {
         if (url != null) {
             binding.webView.loadUrl(url);
         } else {
-            toast("Url == null");
+            ToastExtendKt.toast("Url == null");
         }
     }
 

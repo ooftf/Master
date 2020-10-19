@@ -5,7 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ooftf.applet.R
 import com.ooftf.applet.adapter.AppletAdapter2
-import com.ooftf.service.base.BaseLazyFragment
+import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
 import com.ooftf.service.widget.toolbar.TailoredToolbar
 import kotlinx.android.synthetic.main.fragment_applet_tab.*
 

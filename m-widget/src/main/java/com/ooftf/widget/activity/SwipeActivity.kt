@@ -2,7 +2,7 @@ package com.ooftf.widget.activity
 
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.SwipeAdapter
 import com.ooftf.widget.bean.SwipeBean

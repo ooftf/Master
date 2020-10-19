@@ -9,7 +9,7 @@ import androidx.core.os.CancellationSignal
 import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_fingerprint.*
 
 @Route(path = "/debug/activity/fingerprint")

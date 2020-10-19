@@ -14,7 +14,7 @@ import com.ooftf.master.unit.am.ActivityManager
 import com.ooftf.service.BuildConfig
 import com.ooftf.service.engine.LifecycleLog
 import com.ooftf.service.engine.typer.TyperFactory
-import com.ooftf.service.utils.JLog
+import com.ooftf.log.JLog
 import com.ooftf.service.utils.TimeRuler
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
@@ -56,30 +56,18 @@ open class BaseApplication : MultiDexApplication() {
         TimeRuler.marker("MyApplication", "TyperFactory start")
         TyperFactory.init(this)
         TimeRuler.marker("MyApplication", "Docking start")
-        Docking.notifyOnCreate()
+        Docking.notifyOnCreate(this)
         TimeRuler.marker("MyApplication", "other start")
         RxJavaPlugins.setErrorHandler {
             JLog.e(it.toString())
         }
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-        }
         LifecycleLog.init(this)
         TimeRuler.marker("MyApplication", "onCreate end")
     }
 
 
 
-    override fun onLowMemory() {
-        Docking.notifyOnLowMemory()
-        super.onLowMemory()
-    }
-
-    override fun onTerminate() {
-        Docking.notifyOnTerminate()
-        super.onTerminate()
-    }
 
     override fun attachBaseContext(base: Context?) {
         Docking.notifyAttachBaseContext(base)

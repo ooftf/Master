@@ -3,7 +3,7 @@ package com.ooftf.master.debug.activity
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.engine.PerspectiveCompact
 import kotlinx.android.synthetic.main.activity_drawable_debug.*
 

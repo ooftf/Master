@@ -2,14 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'packer'
-apply plugin: 'com.jakewharton.butterknife'
-apply plugin: 'io.fabric'
-apply from: 'matrix.gradle'
+/*apply plugin: 'packer'*/
+/*apply plugin: 'io.fabric'*/
+/*apply from: 'matrix.gradle'*/
 apply from: 'autoregister.gradle'
 apply plugin: 'com.alibaba.arouter'
-apply plugin: 'plugin.test'
-apply plugin: 'docking-register'
+/*apply plugin: 'plugin.test'*/
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
@@ -91,21 +89,21 @@ android {
         abortOnError false
     }
 
-    dataBinding {
-        enabled true
+    buildFeatures{
+        dataBinding true
     }
 }
-/*aspectjx {
-//排除所有package路径中包含`android.support`的class文件及库（jar文件）
-    exclude '*'
-    enabled false
+/*configurations.all {
+    resolutionStrategy {
+        force 'com.google.code.gson:gson:2.8.5'//暂时不要升级
+    }
 }*/
 //packer-begin
-packer {
+/*packer {
     archiveNameFormat = '${appPkg}-${buildType}-v${versionName}-${channel}'
     archiveOutput = new File(project.rootProject.buildDir, "apks")
     channelList = ['*Douban*', 'Google/', '中文/@#市场']
-}
+}*/
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation androidx.constraintLayout
@@ -144,12 +142,9 @@ dependencies {
     }
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
-    kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
-
     kapt deps.dagger2_compiler
     implementation 'com.wanjian:cockroach:0.0.5'
 }
 
 //apply from: 'tinkerpatch.gradle'
 //Firebase
-apply plugin: 'com.google.gms.google-services'

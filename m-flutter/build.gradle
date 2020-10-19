@@ -1,1 +1,4 @@
 apply from: '../module.gradle'
+dependencies{
+    implementation 'com.ooftf:flutter-test:1.0.2'
+}

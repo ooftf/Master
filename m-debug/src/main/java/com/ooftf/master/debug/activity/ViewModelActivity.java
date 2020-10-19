@@ -1,7 +1,6 @@
 package com.ooftf.master.debug.activity;
 
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
@@ -12,8 +11,11 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.master.debug.R;
 import com.ooftf.master.debug.bean.User;
 import com.ooftf.master.debug.viewmodel.MyViewModel;
-import com.ooftf.service.base.BaseActivity;
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 
+/**
+ * @author 99474
+ */
 @Route(path = "/debug/activity/ViewModel")
 public class ViewModelActivity extends BaseActivity {
     TextView textView;

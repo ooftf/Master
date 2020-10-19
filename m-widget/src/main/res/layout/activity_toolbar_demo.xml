@@ -20,8 +20,8 @@
         android:layout_marginTop="20dp"
         android:background="@color/colorPrimary"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:left_icon="@drawable/vector_arrow_left"
-        app:left_text="返回"
-        app:right_text="很好"
+        app:leftIcon="@drawable/vector_arrow_left"
+        app:leftText="返回"
+        app:rightText="很好"
         app:title="你好" />
 </androidx.constraintlayout.widget.ConstraintLayout>

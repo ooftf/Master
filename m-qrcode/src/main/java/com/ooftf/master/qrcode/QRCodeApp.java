@@ -4,7 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.ooftf.docking.api.IApplication;
-import com.ooftf.service.utils.JLog;
+import com.ooftf.docking.api.MainProcess;
+import com.ooftf.log.JLog;
 import com.ooftf.service.utils.TimeRuler;
 
 /**
@@ -16,19 +17,10 @@ public class QRCodeApp implements IApplication {
     public void init(Application application) {
         QRCodeApp.application = application;
     }
+    @MainProcess
     @Override
-    public void onCreate() {
+    public void onCreate(Application application) {
         TimeRuler.marker("MyApplication", "QRCodeApp start");
-
-    }
-
-    @Override
-    public void onLowMemory() {
-
-    }
-
-    @Override
-    public void onTerminate() {
 
     }
 

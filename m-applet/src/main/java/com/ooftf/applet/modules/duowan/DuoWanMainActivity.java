@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.applet.R;
 import com.ooftf.applet.databinding.ActivityDuoWanMainBinding;
-import com.ooftf.service.base.BaseActivity;
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 import com.ooftf.service.constant.RouterPath;
 
 import java.util.List;

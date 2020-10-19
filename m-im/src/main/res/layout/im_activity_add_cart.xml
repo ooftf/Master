@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/main_bg_color"
+        android:background="@color/white"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:orientation="vertical">
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/page_title_height"
             android:background="@color/white"
-            app:left_text="返回"
+            app:leftText="返回"
             app:title="添加好友" />
 
         <LinearLayout

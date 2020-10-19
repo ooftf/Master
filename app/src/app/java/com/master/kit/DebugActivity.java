@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.master.kit.databinding.ActivityModuleDebugBinding;
-import com.ooftf.service.base.BaseActivity;
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
 import com.ooftf.service.widget.RubberItemDecoration;
 
 import org.jetbrains.annotations.Nullable;

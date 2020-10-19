@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.ooftf.master.debug.bean.User;
 
+/**
+ * @author 99474
+ */
 public class MyViewModel extends ViewModel {
     private MutableLiveData<User> scope;
 

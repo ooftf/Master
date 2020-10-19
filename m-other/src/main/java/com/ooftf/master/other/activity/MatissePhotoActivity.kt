@@ -9,9 +9,9 @@ import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.other.R
 import com.ooftf.master.other.engine.GlideEngineV471
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.constant.ProviderConstant
-import com.tbruyelle.rxpermissions2.RxPermissions
+import com.tbruyelle.rxpermissions3.RxPermissions
 import com.zhihu.matisse.Matisse
 import com.zhihu.matisse.MimeType
 import com.zhihu.matisse.internal.entity.CaptureStrategy

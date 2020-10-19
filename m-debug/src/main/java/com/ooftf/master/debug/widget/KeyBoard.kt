@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import butterknife.ButterKnife
 import com.ooftf.master.debug.R
 import com.ooftf.service.widget.MasterPopupWindow
 import java.util.*
@@ -26,7 +25,6 @@ class KeyBoard(context: Context) : MasterPopupWindow(context) {
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.widget_key_board, null)
         contentView = view
-        ButterKnife.bind(view)
         setBackgroundDrawable(ColorDrawable(Color.parseColor("#ffffff")))
         width = ViewGroup.LayoutParams.MATCH_PARENT
         height = ViewGroup.LayoutParams.WRAP_CONTENT

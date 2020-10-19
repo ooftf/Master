@@ -5,7 +5,7 @@ import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.source.R
 import com.ooftf.service.base.BaseBarrageActivity
-import com.ooftf.service.utils.JLog
+import com.ooftf.log.JLog
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter

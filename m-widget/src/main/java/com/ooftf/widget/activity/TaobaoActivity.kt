@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.service.base.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.vertical.ScrollEdgeEngine
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.TaobaoPagerAdapter

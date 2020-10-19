@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter
-import com.ooftf.service.utils.JLog
+import com.ooftf.log.JLog
 import com.ooftf.widget.R
 import com.ooftf.widget.bean.SwipeBean
 import javax.inject.Inject

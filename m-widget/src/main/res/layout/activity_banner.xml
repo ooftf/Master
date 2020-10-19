@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.ooftf.hihttp.action.ActionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/responseLayout"
     android:layout_width="match_parent"
@@ -24,4 +24,4 @@
             android:layout_marginTop="150dp"
             android:text="refresh" />
     </LinearLayout>
-</com.ooftf.hihttp.action.ActionLayout>
+</FrameLayout>
