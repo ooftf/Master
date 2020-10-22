@@ -163,4 +163,14 @@ dependencies {
     api "com.trello.rxlifecycle4:rxlifecycle-kotlin:$versions.rxlifecycle"
 // If you want to use Kotlin syntax with Android Lifecycle
     api "com.trello.rxlifecycle4:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
+
+    def  smart = '2.0.1'
+    api  " com.scwang.smart:refresh-layout-kernel:$smart"      //核心必须依赖
+    api  "com.scwang.smart:refresh-header-classics:$smart"   //经典刷新头
+    api  "com.scwang.smart:refresh-header-radar:$smart"     //雷达刷新头
+    api  "com.scwang.smart:refresh-header-falsify:$smart"     //虚拟刷新头
+    api  "com.scwang.smart:refresh-header-material:$smart"   //谷歌刷新头
+    api  "com.scwang.smart:refresh-header-two-level:$smart"   //二级刷新头
+    api  "com.scwang.smart:refresh-footer-ball:$smart"      //球脉冲加载
+    api  "com.scwang.smart:refresh-footer-classics:$smart"    //经典加载
 }
