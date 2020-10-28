@@ -13,12 +13,12 @@
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginTop="@dimen/layout_appbar_height"
+        android:layout_marginTop="@dimen/layout_toolbar_height"
         android:background="?android:attr/windowBackground"
         android:elevation="20dp" />
 
     <com.roughike.bottombar.BottomBar
         android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_appbar_height"
-        android:layout_marginTop="@dimen/layout_appbar_height" />
+        android:layout_height="@dimen/layout_toolbar_height"
+        android:layout_marginTop="@dimen/layout_toolbar_height" />
 </LinearLayout>

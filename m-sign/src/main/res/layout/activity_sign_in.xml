@@ -9,6 +9,8 @@
             name="viewModel"
             type="com.ooftf.master.sign.ui.sign.SignViewModel" />
 
+        <import type="android.view.View" />
+
         <import type="com.ooftf.service.constant.RouterPath" />
     </data>
 
@@ -18,21 +20,14 @@
         android:background="@color/background"
         tools:context=".ui.sign.SignInActivity">
 
-        <com.ooftf.service.widget.CurveImageView
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/sign"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.ooftf.service.widget.toolbar.TailoredToolbar
+        <LinearLayout
             android:id="@+id/toolbar"
-            style="@style/ToolbarStyle.Back"
-            android:background="@color/transparent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="登录" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_left"
@@ -48,86 +43,111 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="16dp" />
 
-        <Spinner
-            android:id="@+id/spinner"
+        <TextView
+            android:id="@+id/title"
+            exMarginTop="@{viewModel.marginTop}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="84dp"
+            android:text="登录MASTER"
+            android:textColor="@color/font_black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        <!--    app:hintTextAppearance="@style/userHintTextAppTheme"-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutPhone"
+            exMarginTop="@{viewModel.marginTop}"
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="48dp"
-            android:spinnerMode="dropdown"
-            app:layout_constraintLeft_toRightOf="@+id/guide_left"
-            app:layout_constraintRight_toLeftOf="@+id/guide_right"
-            app:layout_constraintTop_toBottomOf="@id/banner" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="84dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="账号"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="@dimen/layout_radius"
+            app:boxCornerRadiusBottomStart="@dimen/layout_radius"
+            app:boxCornerRadiusTopEnd="@dimen/layout_radius"
+            app:boxCornerRadiusTopStart="@dimen/layout_radius"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:boxStrokeWidth="@dimen/layout_divider"
+            app:boxStrokeWidthFocused="@dimen/layout_divider_double"
+            app:layout_constraintEnd_toEndOf="@id/guide_right"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@+id/title">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="@dimen/line_height"
-            android:background="@color/gray"
-            app:layout_constraintLeft_toRightOf="@+id/guide_left"
-            app:layout_constraintRight_toLeftOf="@+id/guide_right"
-            app:layout_constraintTop_toBottomOf="@+id/spinner" />
+            <com.ooftf.operation.OperationEditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:inputType="number"
+                android:maxLength="15"
+                android:maxLines="1"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@={viewModel.username}"
+                android:textColorHint="#ff999999"
+                android:textSize="16sp"
+                app:oet_delEnabled="true"
+                app:oet_drawableMargin="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.ooftf.operation.OperationEditText
-            android:id="@+id/account"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/c_pwd"
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:background="@null"
-            android:drawableLeft="@drawable/ic_tip_account"
-            android:drawablePadding="8dp"
-            android:hint="请输入账号"
-            android:lines="1"
-            android:text="@={viewModel.username}"
-            android:textSize="@dimen/font_default"
-            app:layout_constraintLeft_toRightOf="@+id/guide_left"
-            app:layout_constraintRight_toLeftOf="@+id/guide_right"
-            app:layout_constraintTop_toBottomOf="@id/spinner"
-            app:oet_delEnabled="true" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="@dimen/layout_radius"
+            app:boxCornerRadiusBottomStart="@dimen/layout_radius"
+            app:boxCornerRadiusTopEnd="@dimen/layout_radius"
+            app:boxCornerRadiusTopStart="@dimen/layout_radius"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:boxStrokeWidth="@dimen/layout_divider"
+            app:boxStrokeWidthFocused="@dimen/layout_divider_double"
+            app:layout_constraintEnd_toEndOf="@id/guide_right"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@+id/layoutPhone"
+            app:passwordToggleEnabled="true">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="@dimen/line_height"
-            android:background="@color/gray"
-            app:layout_constraintLeft_toRightOf="@+id/guide_left"
-            app:layout_constraintRight_toLeftOf="@+id/guide_right"
-            app:layout_constraintTop_toBottomOf="@+id/account" />
+            <com.ooftf.operation.OperationEditText
+                android:id="@+id/code"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="密码"
+                android:inputType="number"
+                android:maxLength="15"
+                android:maxLines="1"
+                android:paddingStart="16dp"
+                android:paddingEnd="48dp"
+                android:text="@={viewModel.password}"
+                android:textColorHint="#ff999999"
+                android:textSize="16sp"
+                app:oet_delEnabled="true"
+                app:oet_maskEnabled="false" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.ooftf.operation.OperationEditText
-            android:id="@+id/passwordView"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:background="@null"
-            android:drawableLeft="@drawable/ic_tip_password"
-            android:drawablePadding="8dp"
-            android:hint="请输入密码"
-            android:lines="1"
-            android:text="@={viewModel.password}"
-            android:textSize="@dimen/font_default"
-            app:layout_constraintLeft_toRightOf="@+id/guide_left"
-            app:layout_constraintRight_toLeftOf="@+id/guide_right"
-            app:layout_constraintTop_toBottomOf="@+id/account"
-            app:oet_delEnabled="true"
-            app:oet_maskEnabled="true" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="@dimen/line_height"
-            android:background="@color/gray"
-            app:layout_constraintLeft_toRightOf="@+id/guide_left"
-            app:layout_constraintRight_toLeftOf="@+id/guide_right"
-            app:layout_constraintTop_toBottomOf="@+id/passwordView" />
 
         <Button
-            android:id="@+id/signIn"
-            exOnClick="@{v->viewModel.signIn()}"
+            android:id="@+id/login"
+            style="@style/base_button"
             android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/shape_rectangle_corners_solid_primary"
-            android:padding="2dp"
-            android:text="登  录"
-            android:textColor="@color/white"
-            app:layout_constraintLeft_toRightOf="@+id/guide_left"
-            app:layout_constraintRight_toLeftOf="@+id/guide_right"
-            app:layout_constraintTop_toBottomOf="@+id/passwordView" />
+            android:layout_marginTop="48dp"
+            android:elevation="@dimen/bb_default_elevation"
+            android:letterSpacing="1"
+            android:onClick="@{view->viewModel.signIn()}"
+            android:text="登录"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/guide_right"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@+id/c_pwd"
+            app:layout_goneMarginTop="44dp" />
+
 
         <TextView
             android:id="@+id/register"
@@ -135,9 +155,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
+            android:letterSpacing="0.1"
             android:text="快速注册"
             android:textSize="@dimen/font_default"
             app:layout_constraintRight_toLeftOf="@id/guide_right"
-            app:layout_constraintTop_toBottomOf="@+id/signIn" />
+            app:layout_constraintTop_toBottomOf="@+id/login" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/layout_divider"
+            android:background="@color/divider_gray"
+            android:visibility="@{viewModel.keyBoardShow?View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/fastSign"
+            app:layout_constraintLeft_toRightOf="@+id/guide_left"
+            app:layout_constraintRight_toLeftOf="@+id/guide_right"
+            app:layout_constraintTop_toTopOf="@+id/fastSign" />
+
+        <TextView
+            android:id="@+id/fastSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_edge_spacing"
+            android:background="@color/background"
+            android:letterSpacing="0.1"
+            android:padding="8dp"
+            android:text="快速登录"
+            android:visibility="@{viewModel.keyBoardShow?View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toTopOf="@+id/qq"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/qq"
+            exOnClick="@{v->viewModel.qq()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:src="@mipmap/ic_qq"
+            android:visibility="@{viewModel.keyBoardShow?View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

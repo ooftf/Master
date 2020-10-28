@@ -6,15 +6,11 @@ import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.service.engine.imageloader.IImageLoader
-import com.ooftf.service.net.ServiceHolder
-import com.ooftf.service.net.etd.BaseResponse
 import com.ooftf.service.net.etd.bean.BannerBean
 import com.ooftf.service.utils.DensityUtil
 import com.ooftf.widget.R
 import com.ooftf.widget.dagger.DaggerBannerComponent
-import com.trello.rxlifecycle4.kotlin.bindToLifecycle
 import com.youth.banner.loader.ImageLoaderInterface
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_banner.*
 import javax.inject.Inject
 
@@ -32,7 +28,7 @@ class BannerActivity : BaseSlidingActivity() {
         requestBanner()
        // responseLayout.setOnRetryListener { requestBanner() }
         next.setOnClickListener {
-            ServiceHolder
+            /*ServiceHolder
                     .service
                     .getBanner("1", "2")
                     .bindToLifecycle(banner)
@@ -44,7 +40,7 @@ class BannerActivity : BaseSlidingActivity() {
                             banner.start()
                         }
 
-                    })
+                    })*/
         }
     }
 
@@ -67,7 +63,7 @@ class BannerActivity : BaseSlidingActivity() {
     }
 
     private fun requestBanner() {
-        ServiceHolder
+       /* ServiceHolder
                 .service
                 .getBanner("1", "2")
                 .bindToLifecycle(banner)
@@ -79,7 +75,7 @@ class BannerActivity : BaseSlidingActivity() {
                         banner.start()
                     }
 
-                })
+                })*/
     }
 
 }

@@ -21,7 +21,7 @@
         <com.ooftf.service.widget.toolbar.TailoredToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/layout_appbar_height"
+            android:layout_height="@dimen/layout_toolbar_height"
             app:layout_constraintTop_toTopOf="parent"
             app:title="图片展示" />
 

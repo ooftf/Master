@@ -38,7 +38,6 @@ public class SignInInterceptor implements IInterceptor {
         } else {
             JLog.e("onContinue", postcard.getPath());
             callback.onContinue(postcard);
-
         }
     }
 

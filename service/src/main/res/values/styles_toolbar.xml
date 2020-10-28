@@ -11,7 +11,7 @@
         <!--设置背景颜色的-->
         <!--<item name="android:colorBackground">#223344</item>-->
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
-        <item name="actionBarSize">@dimen/layout_appbar_height</item>
+        <item name="actionBarSize">@dimen/layout_toolbar_height</item>
         <item name="titleTextColor">@color/colorPrimaryContrast</item>
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="layout_constraintTop_toTopOf">parent</item>

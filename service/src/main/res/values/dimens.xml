@@ -28,11 +28,13 @@
     <dimen name="layout_screen_spacing">16dp</dimen>
     <dimen name="layout_drawer_spacing">56dp</dimen>
 
-    <dimen name="layout_appbar_height">52dp</dimen>
+    <dimen name="layout_toolbar_height">52dp</dimen>
     <dimen name="layout_item_height">56dp</dimen>
     <dimen name="layout_item_height_large">64dp</dimen>
     <dimen name="layout_icon">24dp</dimen>
-    <dimen name="layout_divider">0.5dp</dimen>
+    <dimen name="layout_divider">1px</dimen>
+    <dimen name="layout_divider_double">2px</dimen>
+    <dimen name="layout_radius">4dp</dimen>
     <dimen name="layout_edge_spacing">16dp</dimen>
     <dimen name="layout_between_content_spacing">16dp</dimen>
     <dimen name="layout_card_spacing">8dp</dimen>

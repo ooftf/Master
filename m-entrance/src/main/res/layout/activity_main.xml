@@ -16,7 +16,7 @@
     <com.ooftf.bottombar.java.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_appbar_height"
+        android:layout_height="@dimen/layout_toolbar_height"
         android:background="@color/background"
         android:elevation="20dp" />
 </LinearLayout>

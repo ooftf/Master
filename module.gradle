@@ -78,6 +78,7 @@ dependencies {
     } else {
         implementation project(':service')
     }
+    implementation project(':session')
 }
 
 

@@ -1,6 +1,5 @@
 package com.ooftf.master.other.activity
 
-import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -31,10 +30,5 @@ class ShareActivity : BaseActivity() {
         shareData.channelShare.add(ShareDialog.ShareItem("微信朋友圈", R.mipmap.ic_wx_moment, HiShare.ShareType.WX_MOMENT))
         dialog.setData(shareData);
         dialog.show()
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        HiShare.onNewIntent(intent)
     }
 }

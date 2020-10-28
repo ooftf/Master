@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.gson.Gson
 import com.ooftf.applet.R
+import com.ooftf.applet.net.MobService
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.empty.EmptyObserver
-import com.ooftf.service.net.ServiceHolder
 import com.trello.rxlifecycle4.kotlin.bindToLifecycle
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_mob_api.*
@@ -19,40 +19,35 @@ class MobApiActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mob_api)
         bankCardQuery.setOnClickListener {
-            ServiceHolder
-                    .mobService
+            MobService()
                     .bankQuery(bankCard.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(BankCardObserve())
         }
         phoneQuery.setOnClickListener {
-            ServiceHolder
-                    .mobService
+            MobService()
                     .phoneQuery(phone.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(BankCardObserve())
         }
         idCardQuery.setOnClickListener {
-            ServiceHolder
-                    .mobService
+            MobService()
                     .idCardQuery(idCard.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(BankCardObserve())
         }
         postcodeQuery.setOnClickListener {
-            ServiceHolder
-                    .mobService
+            MobService()
                     .postcodeQuery(postcode.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(BankCardObserve())
         }
         ipQuery.setOnClickListener {
-            ServiceHolder
-                    .mobService
+            MobService()
                     .ipQuery(ip.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())

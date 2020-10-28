@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:orientation="vertical"
     tools:context=".activity.ShareActivity">
+
+    <com.ooftf.service.widget.toolbar.TailoredToolbar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_toolbar_height"
+        android:background="@color/colorPrimary"
+        app:title="分享" />
 
     <Button
         android:id="@+id/wbShare"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
         android:text="@string/app_name" />
 </LinearLayout>

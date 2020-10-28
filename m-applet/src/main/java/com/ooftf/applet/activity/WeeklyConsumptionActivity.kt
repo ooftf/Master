@@ -12,16 +12,13 @@ import com.ooftf.applet.adapter.PersonRecordAdapter
 import com.ooftf.applet.bean.OrderRecordBean
 import com.ooftf.applet.bean.PersonRecordBean
 import com.ooftf.applet.engine.text_watcher.*
+import com.ooftf.applet.net.MobService
 import com.ooftf.master.widget.dialog.ui.ListBlurDialog
 import com.ooftf.master.widget.toolbar.official.ToolbarPlus
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.typer.TyperFactory
-import com.ooftf.service.net.ServiceHolder
-import com.ooftf.service.net.mob.action.ErrorAction
-import com.ooftf.service.net.mob.action.MobObserver
-import com.ooftf.service.net.mob.bean.ItemDataBean
-import com.ooftf.service.net.mob.bean.MobBaseBean
+import com.ooftf.master.session.net.MobBaseBean
 import com.trello.rxlifecycle4.kotlin.bindToLifecycle
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -65,15 +62,14 @@ class WeeklyConsumptionActivity : BaseActivity() {
     }
 
     fun requestSaveToServer() {
-        ServiceHolder
-                .mobService
+        MobService()
                 .put(getItemName(), Base64.encodeToString(Gson().toJson(orderRecord).toByteArray(), Base64.DEFAULT))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 //.compose(DialogAction<MobBaseBean>(this))
                 //.compose(ErrorAction<MobBaseBean>(this))
                 .bindToLifecycle(window.decorView)
-                .subscribe(object : MobObserver<MobBaseBean>() {
+                .subscribe(object : com.ooftf.applet.net.action.MobObserver<MobBaseBean>() {
                     override fun onSuccess(bean: MobBaseBean?) {
                         Toast.makeText(this@WeeklyConsumptionActivity, bean?.msg, Toast.LENGTH_LONG).show()
                     }
@@ -81,16 +77,15 @@ class WeeklyConsumptionActivity : BaseActivity() {
     }
 
     fun requestFromServer() {
-        ServiceHolder
-                .mobService
+        MobService()
                 .query(getItemName())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .bindToLifecycle(window.decorView)
                 //.compose(DialogAction<ItemDataBean>(this))
                 //.compose(ErrorAction<ItemDataBean>(this))
-                .subscribe(object : MobObserver<ItemDataBean>() {
-                    override fun onSuccess(bean: ItemDataBean) {
+                .subscribe(object : com.ooftf.applet.net.action.MobObserver<com.ooftf.applet.net.bean.ItemDataBean>() {
+                    override fun onSuccess(bean: com.ooftf.applet.net.bean.ItemDataBean) {
                         Log.e("onNext", "。。。。。。。。。。。" + System.currentTimeMillis())
                         bean.result.let {
                             orderRecord = Gson().fromJson(String(Base64.decode(it, Base64.DEFAULT)), OrderRecordBean::class.java)

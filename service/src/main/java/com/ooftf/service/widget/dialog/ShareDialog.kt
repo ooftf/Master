@@ -42,7 +42,7 @@ class ShareDialog(activity: Activity) : BottomDialog(activity) {
             holder.image.setImageResource(shareItem.image)
             holder.name.text = shareItem.name
             holder.itemView.setOnClickListener {
-                ShareUtil.share(activity, shareItem.channel, shareData.params)
+                ShareUtil.share(shareItem.channel, shareData.params)
             }
 
         }

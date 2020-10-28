@@ -89,7 +89,7 @@ android {
         abortOnError false
     }
 
-    buildFeatures{
+    buildFeatures {
         dataBinding true
     }
 }
@@ -134,12 +134,14 @@ dependencies {
         implementation project(":m-entrance")
         implementation project(":m-monitor")
         implementation project(":m-flutter")
+        implementation project(":m-impl")
     }
     if (maven) {
         implementation "com.ooftf:master-service:$versions.master"
     } else {
         implementation project(':service')
     }
+    implementation project(':session')
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
     kapt deps.dagger2_compiler
