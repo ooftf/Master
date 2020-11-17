@@ -58,6 +58,8 @@ android {
         pickFirst 'lib/armeabi-v7a/libc++_shared.so'
         pickFirst 'lib/x86_64/libc++_shared.so'
         exclude 'META-INF/lib_release.kotlin_module'
+        pickFirst 'META-INF/rxlifecycle-android-lifecycle-kotlin_release.kotlin_module'
+        pickFirst 'META-INF/rxlifecycle-kotlin_release.kotlin_module'
 
     }
     signingConfigs {
@@ -143,7 +145,7 @@ dependencies {
     }
     implementation project(':session')
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
-    kapt "com.alibaba:arouter-compiler:$versions.arouter"
+    kapt deps.ARouterCompiler
     kapt deps.dagger2_compiler
     implementation 'com.wanjian:cockroach:0.0.5'
 }

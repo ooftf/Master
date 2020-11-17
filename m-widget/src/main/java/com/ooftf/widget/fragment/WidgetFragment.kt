@@ -1,21 +1,26 @@
 package com.ooftf.widget.fragment
 
-import android.content.Context
 import android.os.Handler
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
+import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.AppUtils
+import com.bumptech.glide.Glide
+import com.bumptech.glide.GlideBuilder
 import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.service.constant.RouterPath
+import com.ooftf.service.engine.imageloader.IImageLoader
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.WidgetAdapter
-import com.youth.banner.BannerConfig
-import com.youth.banner.loader.ImageLoaderInterface
+import com.youth.banner.adapter.BannerAdapter
 import kotlinx.android.synthetic.main.fragment_widget.*
+import javax.inject.Inject
 
 /**
  *
@@ -25,6 +30,7 @@ import kotlinx.android.synthetic.main.fragment_widget.*
 @Route(path = RouterPath.Widget.Fragment.MAIN)
 class WidgetFragment : BaseLazyFragment() {
     lateinit var adapter: WidgetAdapter
+    lateinit var bannerAdapter: TheBannerAdapter
     val handler = Handler()
     override fun getLayoutId(): Int {
         return R.layout.fragment_widget
@@ -46,49 +52,35 @@ class WidgetFragment : BaseLazyFragment() {
     }
 
     private fun initToolbarBanner() {
-        toolbarBanner.setBannerStyle(BannerConfig.NOT_INDICATOR)
-        toolbarBanner.setImageLoader(object : ImageLoaderInterface<ImageView> {
-            override fun createImageView(context: Context): ImageView? {
-                return null
-            }
-
-            override fun displayImage(context: Context, path: Any, imageView: ImageView) {
-                imageView.setImageResource(path as Int)
-            }
-
-        })
-        var bannerList = object : ArrayList<Int>() {
+        var bannerList = object : ArrayList<String>() {
             init {
-                add(R.drawable.tiaotiao1)
-                add(R.drawable.tiaotiao2)
-                add(R.drawable.tiaotiao3)
-                add(R.drawable.tiaotiao4)
-                add(R.drawable.tiaotiao5)
-                add(R.drawable.tiaotiao6)
-                add(R.drawable.tiaotiao7)
-                add(R.drawable.tiaotiao8)
-                add(R.drawable.tiaotiao9)
-                add(R.drawable.tiaotiao10)
-                add(R.drawable.tiaotiao11)
-                add(R.drawable.tiaotiao12)
-                add(R.drawable.tiaotiao13)
+                add("http://pic.netbian.com/uploads/allimg/190824/212516-1566653116f355.jpg")
+                add("http://pic.netbian.com/uploads/allimg/201112/000443-16051106836aa6.jpg")
+                add("http://pic.netbian.com/uploads/allimg/200714/224033-15947376338459.jpg")
+                add("http://pic.netbian.com/uploads/allimg/200511/234750-158921207029df.jpg")
+                add("http://pic.netbian.com/uploads/allimg/200410/213246-1586525566e909.jpg")
+                add("http://pic.netbian.com/uploads/allimg/201110/234958-1605023398e2c3.jpg")
+                add("http://pic.netbian.com/uploads/allimg/200108/202307-157848618760a1.jpg")
+                add("http://pic.netbian.com/uploads/allimg/190726/230851-1564153731ce2b.jpg")
             }
         }
-        toolbarBanner.isAutoPlay(true).update(bannerList)
+        bannerAdapter = TheBannerAdapter(bannerList)
+        toolbarBanner.adapter = bannerAdapter
+        toolbarBanner.addBannerLifecycleObserver(this)
     }
 
 
     private fun setupFloatButton() {
         // {@link com.ooftf.widget.fragment.TabLayoutFragment}
         recycler_view.tag = "widget"
-        recycler_view.addOnScrollListener(object : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: androidx.recyclerview.widget.RecyclerView, newState: kotlin.Int) {
+        recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 when (newState) {
-                    androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_DRAGGING -> {
+                    RecyclerView.SCROLL_STATE_DRAGGING -> {
                         handler.removeCallbacksAndMessages(null)
                         image.animate().translationX(image.width * 0.8.toFloat()).setDuration(300).startDelay = 0
                     }
-                    androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE -> {
+                    RecyclerView.SCROLL_STATE_IDLE -> {
                         handler.removeCallbacksAndMessages(null)
                         handler.postDelayed({
                             image.animate().translationX(0F).duration = 300
@@ -190,4 +182,28 @@ class WidgetFragment : BaseLazyFragment() {
         adapter.spialeList.add("Ktor")
 
     }
+
+
+}
+
+class TheBannerAdapter(datas: MutableList<String>?) : BannerAdapter<String, RecyclerView.ViewHolder>(datas) {
+    @JvmField
+    @Autowired
+    var imageLoader: IImageLoader? = null
+
+    init {
+        ARouter.getInstance().inject(this)
+    }
+
+    override fun onCreateHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val imageView = ImageView(parent.context)
+        imageView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
+        imageView.scaleType  = ImageView.ScaleType.CENTER_CROP
+        return object : RecyclerView.ViewHolder(imageView) {}
+    }
+
+    override fun onBindView(holder: RecyclerView.ViewHolder, data: String, position: Int, size: Int) {
+        imageLoader?.display(data, holder.itemView as? ImageView)
+    }
+
 }

@@ -40,11 +40,10 @@ buildscript {
                 'tinker'     : "1.9.9",
                 'tinkerpatch': "1.2.9",
                 'packerNG'   : "2.0.1",
-                'arouter'    : "1.2.1",
                 'glide'      : "4.11.0",
                 'dagger'     : '2.22.1',
                 'java'       : JavaVersion.VERSION_1_8,
-                'rxlifecycle': "4.0.0",
+                'rxlifecycle': "4.0.1",
                 'master'     : "1.0.1-SNAPSHOT"
         ]
 
@@ -58,8 +57,8 @@ buildscript {
                 'dagger2_compiler'                 : "com.google.dagger:dagger-compiler:$versions.dagger",
                 'matisse'                          : 'com.zhihu.android:matisse:0.5.2-beta4',
                 'CalendarView'                     : 'com.github.ooftf:CalendarView:1.0.5',
-                'ARouterCompiler'                  : "com.alibaba:arouter-compiler:$versions.arouter",
-                'ARouterApi'                       : 'com.alibaba:arouter-api:1.4.1',
+                'ARouterCompiler'                  : "com.alibaba:arouter-compiler:1.5.1",
+                'ARouterApi'                       : 'com.alibaba:arouter-api:1.5.1',
                 'bindingcollectionadapter'         : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.1.1',
                 'bindingcollectionadapter_recycler': 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.1.1',
                 'SmartRefreshLayout'               : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-8',
@@ -98,7 +97,7 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath 'com.android.tools.build:gradle:4.1.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         // classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
         classpath "com.mcxiaoke.packer-ng:plugin:$versions.packerNG"
@@ -156,14 +155,4 @@ allprojects {
 }
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-def LocalBintrayKey() {
-    Properties properties = new Properties()
-    def file = rootProject.file('local.properties')
-    if (file.exists()) {
-        InputStream inputStream = file.newDataInputStream()
-        properties.load(inputStream)
-        properties.getProperty('bintrayKey')
-    }
 }

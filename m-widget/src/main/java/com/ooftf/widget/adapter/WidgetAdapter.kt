@@ -7,7 +7,6 @@ package com.ooftf.widget.adapter
  * @date 2018/11/6 0006
  */
 
-import android.content.Context
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
@@ -17,18 +16,15 @@ import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.service.base.adapter.BaseViewHolder
 import com.ooftf.service.bean.ScreenItemBean
-import com.ooftf.service.utils.DensityUtil
 import com.ooftf.spiale.SpialeLayout
 import com.ooftf.widget.R
-import com.youth.banner.Banner
-import com.youth.banner.loader.ImageLoaderInterface
 
 
 /**
  * Created by master on 2017/9/25 0025.
  */
 
-open class WidgetAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<BaseViewHolder<View>>() {
+open class WidgetAdapter : RecyclerView.Adapter<BaseViewHolder<View>>() {
     var body = ArrayList<ScreenItemBean>()
     var spialeList = ArrayList<String>()
 

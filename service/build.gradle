@@ -79,7 +79,7 @@ dependencies {
     api androidx.recyclerview
     api 'androidx.core:core-ktx:1.3.2'
     api 'com.loopj.android:android-async-http:1.4.9'
-    api 'com.alibaba:fastjson:1.2.7'
+    api 'com.alibaba:fastjson:1.2.48'
     api 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     api 'com.liulishuo.filedownloader:library:1.7.1'
     api 'com.roughike:bottom-bar:2.3.1'
@@ -89,7 +89,7 @@ dependencies {
     api 'androidx.multidex:multidex:2.0.1'
     api androidx.legacy_v4
     api androidx.legacy_v13
-    api 'com.youth.banner:banner:1.4.10'
+    api 'com.youth.banner:banner:2.1.0'
     api 'com.romandanylyk:pageindicatorview:1.0.2'
     api 'com.orhanobut:logger:2.2.0'
     api "com.google.dagger:dagger:$versions.dagger"
@@ -135,7 +135,7 @@ dependencies {
     api 'com.gyf.immersionbar:immersionbar-components:3.0.0'
     // Firebase Crashlytics
     //Firebase
-    api 'com.ooftf:master-widget-dialog:1.1.0'
+    api 'com.ooftf:master-widget-dialog:1.1.1'
     api 'com.ooftf:master-unit-activity-manager:1.0.2'
     //api 'org.aspectj:aspectjrt:1.8.9'
     api 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
@@ -149,10 +149,10 @@ dependencies {
     api deps.SmartRefreshLayout
     api "com.ooftf:master-widget-statelayout:1.1.2"
     api "com.ooftf:JLog:1.0.0"
-    api 'com.ooftf:arch-frame-mvvm:0.0.7'
-    api 'com.ooftf:http-ui-mapping:1.3.3'
-    api 'com.ooftf:basic:0.0.4'
-    api 'com.ooftf:dataBinging-extensions:1.0.4'
+    api 'com.ooftf:arch-frame-mvvm:0.1.3'
+    api 'com.ooftf:http-ui-mapping:1.3.6'
+    api 'com.ooftf:basic:0.1.0'
+    api 'com.ooftf:dataBinging-extensions:1.0.6'
     api 'io.reactivex.rxjava3:rxjava:3.0.7'
     api "com.trello.rxlifecycle4:rxlifecycle:$versions.rxlifecycle"
 // If you want to bind to Android-specific lifecycles

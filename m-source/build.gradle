@@ -2,7 +2,8 @@ apply from: '../module.gradle'
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     kapt deps.dagger2_compiler
+    kapt deps.ARouterCompiler
     implementation androidx.constraintLayout
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.1'
     kapt "com.alibaba:arouter-compiler:$versions.arouter"
 }
