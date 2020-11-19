@@ -10,13 +10,13 @@ import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.launcher.ARouter
 import com.bumptech.glide.request.RequestOptions
 import com.ooftf.basic.AppHolder
+import com.ooftf.basic.utils.ThreadUtil
 import com.ooftf.master.m.entrance.R
 import com.ooftf.service.base.BaseApplication
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.GlideApp
 import com.ooftf.service.engine.router.FinishCallback
 import com.ooftf.service.utils.LifecycleUtil
-import com.ooftf.service.utils.ThreadUtil
 import com.ooftf.service.utils.TimeRuler
 import com.tbruyelle.rxpermissions3.RxPermissions
 import com.trello.rxlifecycle4.android.lifecycle.kotlin.bindUntilEvent

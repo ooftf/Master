@@ -84,7 +84,6 @@ buildscript {
         ]
         versions.kotlin = '1.4.10'
         versions.kotlin = '1.4.10'
-
     }
     repositories {
         jcenter()
@@ -104,6 +103,7 @@ buildscript {
         classpath "com.alibaba:arouter-register:1.0.2"
         classpath 'com.ooftf:autoregister:1.4.3'
         classpath 'com.ooftf:plugin-task-time:1.0.0'
+        classpath 'com.didichuxing.doraemonkit:dokitx-plugin:3.3.5'
     }
 
 }

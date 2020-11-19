@@ -1,16 +1,15 @@
 package com.ooftf.master.m.monitor
 
-import android.app.Activity
 import android.app.Application
 import android.content.Context
-import android.os.Bundle
+import com.didichuxing.doraemonkit.DoraemonKit
+import com.ooftf.basic.utils.ThreadUtil
 
 import com.ooftf.docking.api.IApplication
 import com.ooftf.docking.api.MainProcess
 import com.ooftf.service.BuildConfig
 import com.ooftf.service.base.BaseApplication
 import com.ooftf.service.utils.ProcessUtils
-import com.ooftf.service.utils.ThreadUtil
 import com.tencent.bugly.crashreport.CrashReport
 import com.tendcloud.tenddata.TCAgent
 
@@ -23,50 +22,19 @@ import com.tendcloud.tenddata.TCAgent
  */
 class MonitorApp : IApplication {
     override fun init(application: Application) {
-        application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
-            override fun onActivityPaused(activity: Activity?) {
-
-            }
-
-            override fun onActivityResumed(activity: Activity?) {
-            }
-
-            override fun onActivityStarted(activity: Activity?) {
-            }
-
-            override fun onActivityDestroyed(activity: Activity) {
-                if (activity.javaClass.name == "com.ooftf.master.m.entrance.ui.MainActivity") {
-                    //ZhugeSDK.getInstance().flush(activity?.applicationContext)
-                }
-
-            }
-
-            override fun onActivitySaveInstanceState(activity: Activity?, outState: Bundle?) {
-            }
-
-            override fun onActivityStopped(activity: Activity?) {
-            }
-
-            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                if (activity.javaClass.name == "com.ooftf.master.m.entrance.ui.MainActivity") {
-                    //ZhugeSDK.getInstance().init(activity?.applicationContext)
-                }
-
-            }
-
-        })
 
 
     }
     @MainProcess
     override fun onCreate(application:Application) {
-        initBugly(BaseApplication.instance)
+        initBugly(application)
         TCAgent.LOG_ON = true
         // App ID: 在TalkingData创建应用后，进入数据报表页中，在“系统设置”-“编辑应用”页面里查看App ID。
         // 渠道 ID: 是渠道标识符，可通过不同渠道单独追踪数据。
         TCAgent.init(BaseApplication.instance)
         // 如果已经在AndroidManifest.xml配置了App ID和渠道ID，调用TCAgent.init(this)即可；或与AndroidManifest.xml中的对应参数保持一致。
         TCAgent.setReportUncaughtExceptions(false)
+        DoraemonKit.install(application," b7015bbad3f596beb78ff5e9f5ee7b96");
         //        /BaseApplication.instance
     }
 

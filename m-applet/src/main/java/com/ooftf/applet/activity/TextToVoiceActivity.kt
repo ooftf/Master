@@ -11,8 +11,8 @@ import com.baidu.tts.client.SpeechSynthesizer
 import com.baidu.tts.client.TtsMode
 import com.ooftf.applet.R
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.basic.utils.ThreadUtil
 import com.ooftf.service.constant.RouterPath
-import com.ooftf.service.utils.ThreadUtil
 import com.ooftf.service.utils.TimeRuler
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers

@@ -6,6 +6,9 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
+
+import com.ooftf.basic.utils.ThreadUtil;
+
 import io.reactivex.functions.Function;
 
 /**
