@@ -7,8 +7,9 @@ apply plugin: 'kotlin-kapt'
 /*apply from: 'matrix.gradle'*/
 apply from: 'autoregister.gradle'
 apply plugin: 'com.alibaba.arouter'
-apply plugin: 'com.didi.dokit'
+apply from: 'didi.gradle'
 /*apply plugin: 'plugin.test'*/
+
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
@@ -144,7 +145,7 @@ dependencies {
     } else {
         implementation project(':service')
     }
-    implementation project(':session')
+    //implementation project(':session')
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     kapt deps.ARouterCompiler
     kapt deps.dagger2_compiler
