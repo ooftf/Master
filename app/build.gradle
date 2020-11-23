@@ -145,7 +145,7 @@ dependencies {
     } else {
         implementation project(':service')
     }
-    //implementation project(':session')
+    implementation project(':session')
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     kapt deps.ARouterCompiler
     kapt deps.dagger2_compiler
