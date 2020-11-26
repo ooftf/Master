@@ -1,5 +1,6 @@
 package com.ooftf.service.bean
 
+import android.view.View
 import com.ooftf.service.R
 
 /**
@@ -11,4 +12,5 @@ class ScreenItemBean(var clz: String = "/applet/activity/breakfast",
                      var describe: String = clz,
                      var icon: Int = R.drawable.logo_legacy,
                      var isIssue: Boolean = false,
-                     var category: String = "未定义")
+                     var category: String = "未定义",
+                     var onClickListener: View.OnClickListener? = null)

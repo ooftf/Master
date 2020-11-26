@@ -31,13 +31,14 @@ open class AppletAdapter2 : BaseRecyclerAdapter<ScreenItemBean, AppletAdapter2.R
             holder.iconText.visibility = View.GONE
             holder.icon.setImageResource(bean.icon)
         }
-
-        holder.itemView.setOnClickListener {
-            /*if (Activity::class.java.isAssignableFrom(bean.path)) {
-                baseActivity.startActivity(bean.path)
-            }*/
-            ARouter.getInstance().build(bean.clz).navigation()
+        if (bean.onClickListener == null) {
+            holder.itemView.setOnClickListener {
+                ARouter.getInstance().build(bean.clz).navigation()
+            }
+        } else {
+            holder.itemView.setOnClickListener(bean.onClickListener)
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerHolder {

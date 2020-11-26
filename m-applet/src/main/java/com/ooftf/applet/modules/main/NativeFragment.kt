@@ -1,16 +1,10 @@
 package com.ooftf.applet.modules.main
 
-import android.os.Handler
-import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
+import com.blankj.utilcode.util.AppUtils
 import com.ooftf.applet.R
 import com.ooftf.applet.adapter.AppletAdapter2
-
-import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.service.constant.RouterPath
-import com.ooftf.service.widget.toolbar.TailoredToolbar
-import kotlinx.android.synthetic.main.fragment_applet_tab.*
 
 /**
  * @author ooftf
@@ -26,6 +20,18 @@ class NativeFragment : BaseTabFragment() {
         adapter.add(ScreenItemBean(RouterPath.APPLET_ACTIVITY_WEEKLY_CONSUMPTION, "周饭计算器"))
         adapter.add(ScreenItemBean(RouterPath.IM_ACTIVITY_MAIN, "腾讯IM"))
         adapter.add(ScreenItemBean(RouterPath.Applet.Activity.DuoWanMain, "多玩LoL"))
+        adapter.add(ScreenItemBean(name = "VPN") {
+            AppUtils.launchApp("com.expressvpn.vpn")
+        })
+        adapter.add(ScreenItemBean(name = "笔记") {
+            AppUtils.launchApp("com.app.pornhub")
+        })
+        adapter.add(ScreenItemBean(name = "学习") {
+            AppUtils.launchApp("com.wg.xvideos.app")
+        })
+        adapter.add(ScreenItemBean(name = "联系人") {
+            AppUtils.launchApp("com.xiawa8.phonelive27")
+        })
         adapter.notifyDataSetChanged()
     }
 }
