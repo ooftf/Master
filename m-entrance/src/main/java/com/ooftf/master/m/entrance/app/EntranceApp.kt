@@ -2,10 +2,8 @@ package com.ooftf.master.m.entrance.app
 
 import android.app.Application
 import android.content.Context
-import com.lzf.easyfloat.EasyFloat
 import com.ooftf.docking.api.IApplication
 import com.ooftf.docking.api.MainProcess
-import com.ooftf.master.m.entrance.BuildConfig
 
 /**
  *
@@ -19,7 +17,6 @@ class EntranceApp:IApplication{
     }
     @MainProcess
     override fun onCreate(application: Application) {
-        EasyFloat.init(application, BuildConfig.DEBUG)
     }
 
     override fun attachBaseContext(context: Context) {

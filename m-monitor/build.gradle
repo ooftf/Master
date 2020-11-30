@@ -1,10 +1,8 @@
 apply from: '../module.gradle'
-//project(':app').apply plugin: 'com.didi.dokit'
-//project(':app')
 
 dependencies {
     implementation deps.bugly
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
-    implementation 'com.didichuxing.doraemonkit:dokitx:3.3.5'
+    implementation 'com.ooftf:director:1.0.0'
 }
 

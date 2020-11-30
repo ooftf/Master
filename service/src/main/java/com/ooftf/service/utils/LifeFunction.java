@@ -7,6 +7,7 @@ import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
 
+import com.ooftf.basic.utils.LifecycleExtendKt;
 import com.ooftf.basic.utils.ThreadUtil;
 
 import io.reactivex.functions.Function;
@@ -19,19 +20,24 @@ import io.reactivex.functions.Function;
 public class LifeFunction<T, R> implements Function<T, R> {
     private Function<T, R> reference;
 
-    public LifeFunction(Function<T,R> real, LifecycleOwner owner) {
+    public LifeFunction(Function<T, R> real, LifecycleOwner owner) {
         reference = real;
-        ThreadUtil.runOnUiThread(() -> owner.getLifecycle().addObserver(new LifecycleObserver() {
-            @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-            void onDestroy() {
-                reference = null;
-                owner.getLifecycle().removeObserver(this);
+        ThreadUtil.INSTANCE.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                owner.getLifecycle().addObserver(new LifecycleObserver() {
+                    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+                    void onDestroy() {
+                        reference = null;
+                        owner.getLifecycle().removeObserver(this);
+                    }
+                });
             }
-        }));
+        });
 
     }
 
-    public LifeFunction(Function<T,R> real, View owner) {
+    public LifeFunction(Function<T, R> real, View owner) {
         reference = real;
         owner.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
             @Override

@@ -34,7 +34,7 @@ class TextToVoiceActivity : BaseActivity() {
         TimeRuler.start(TAG, "0")
         initPermission()
         TimeRuler.marker(TAG, "1")
-        Completable.complete().observeOn(Schedulers.from(ThreadUtil.getDefaultThreadPool()))
+        Completable.complete().observeOn(Schedulers.from(ThreadUtil.defaultThreadPool))
         initVoice()
         TimeRuler.marker(TAG, "2")
         button!!.setOnClickListener { v: View? -> instance!!.speak(text!!.text.toString()) }

@@ -30,7 +30,6 @@ import kotlin.math.roundToInt
 class SplashActivity : AppCompatActivity() {
     var drawable: Drawable? = null
     var drawableLive = MutableLiveData<Drawable>()
-
     init {
         TimeRuler.marker("MyApplication", "SplashActivity init")
         ThreadUtil.runOnNewThread {
