@@ -32,11 +32,12 @@ public class SignServiceImpl implements ISignService {
 
     @Override
     public boolean isSignIn() {
-        if (getSignInfo() == null) {
+        return true;
+        /*if (getSignInfo() == null) {
             return false;
         } else {
             return true;
-        }
+        }*/
     }
 
     @Override

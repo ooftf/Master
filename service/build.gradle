@@ -173,4 +173,5 @@ dependencies {
     api "com.scwang.smart:refresh-header-two-level:$smart"   //二级刷新头
     api "com.scwang.smart:refresh-footer-ball:$smart"      //球脉冲加载
     api "com.scwang.smart:refresh-footer-classics:$smart"    //经典加载
+    api 'com.ooftf:director:1.0.1'
 }

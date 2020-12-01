@@ -24,9 +24,9 @@ dokitExt {
             //默认值为 5ms 小于该值的函数在调用栈中不显示
             thresholdTime 10
             //调用栈函数入口
-            //enterMethods = ["com.ooftf.master.m.entrance.ui.MainActivity"]
+            enterMethods = ["com.ooftf.master.m.entrance.ui.MainActivity"]
             //黑名单 粒度最小到类 暂不支持到方法
-            methodBlacklist = ["org.bouncycastle"]
+            methodBlacklist = ["org.bouncycastle.cert.AttributeCertificateHolder"]
         }
         //普通模式配置
         normalMethod {
@@ -36,7 +36,7 @@ dokitExt {
             packageNames = ["com.master", "com.ooftf"]
             //不需要针对函数插装的包名&类名
             //methodBlacklist = ["com.didichuxing.doraemondemo.dokit"]
-            methodBlacklist = ["org.bouncycastle"]
+            methodBlacklist = ["org.bouncycastle.cert.AttributeCertificateHolder"]
         }
     }
 }

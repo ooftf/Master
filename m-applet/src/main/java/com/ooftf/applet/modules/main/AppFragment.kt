@@ -1,5 +1,6 @@
 package com.ooftf.applet.modules.main
 
+import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -10,6 +11,7 @@ import com.ooftf.applet.R
 import com.ooftf.applet.modules.main.FlutterFragment
 import com.ooftf.applet.modules.main.ReactNativeFragment
 import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
+import com.ooftf.director.app.Director
 import kotlinx.android.synthetic.main.fragment_applet.*
 
 /**
@@ -47,6 +49,8 @@ class AppFragment : BaseLazyFragment() {
             }
 
         }.attach()
+        //toolbar.menu.add("").setIcon(R.drawable.logo_empty).setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        Director.setDebugEntranceView(toolbar)
     }
 
     override fun getLayoutId(): Int {
