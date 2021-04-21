@@ -15,28 +15,22 @@ dokitExt {
     slowMethod {
         //0:默认模式 打印函数调用栈 需添加指定入口  默认为application onCreate 和attachBaseContext
         //1:普通模式 运行时打印某个函数的耗时 全局业务代码函数插入
-        strategy 0
-        //函数功能开关
-        methodSwitch true
-
         //调用栈模式配置
         stackMethod {
             //默认值为 5ms 小于该值的函数在调用栈中不显示
             thresholdTime 10
             //调用栈函数入口
-            enterMethods = ["com.ooftf.master.m.entrance.ui.MainActivity"]
             //黑名单 粒度最小到类 暂不支持到方法
-            methodBlacklist = ["org.bouncycastle.cert.AttributeCertificateHolder"]
+            methodBlacklist = ["org.bouncycastle.*"]
         }
         //普通模式配置
         normalMethod {
             //默认值为 500ms 小于该值的函数在运行时不会在控制台中被打印
             thresholdTime 500
             //需要针对函数插装的包名
-            packageNames = ["com.master", "com.ooftf"]
             //不需要针对函数插装的包名&类名
             //methodBlacklist = ["com.didichuxing.doraemondemo.dokit"]
-            methodBlacklist = ["org.bouncycastle.cert.AttributeCertificateHolder"]
+            methodBlacklist = ["org.bouncycastle.*"]
         }
     }
 }

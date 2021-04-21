@@ -12,6 +12,8 @@ import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.main_tab.TabManager
 import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.internal.closeQuietly
+import java.io.FileInputStream
 
 @Route(path = RouterPath.MAIN_ACTIVITY_MAIN)
 class MainActivity : BaseActivity() {
@@ -47,6 +49,7 @@ class MainActivity : BaseActivity() {
         }
         bottomBar.setAdapter(adapter)
         bottomBar.setSelectedIndex(0)
+
     }
 
     private var backPressedTime = 0L

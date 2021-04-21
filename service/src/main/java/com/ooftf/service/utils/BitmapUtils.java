@@ -12,7 +12,6 @@ import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.util.Log;
 
-import com.nostra13.universalimageloader.utils.IoUtils;
 import com.ooftf.log.JLog;
 
 import androidx.annotation.NonNull;

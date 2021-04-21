@@ -7,10 +7,11 @@ import android.os.Environment;
 import android.util.Base64;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.utils.IoUtils;
 import com.ooftf.master.widget.dialog.ui.ListDialog;
 import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.empty.EmptyObserver;
+import com.ooftf.service.utils.IoUtils;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -27,6 +28,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.internal.Util;
 
 public class ImgSrcHandlerDialog extends ListDialog {
     String src;
@@ -103,7 +105,7 @@ public class ImgSrcHandlerDialog extends ListDialog {
                 emitter.onError(e);
                 e.printStackTrace();
             } finally {
-                IoUtils.closeSilently(fos);
+                Util.closeQuietly(fos);
             }
             emitter.onNext(file);
             emitter.onComplete();
@@ -197,7 +199,8 @@ public class ImgSrcHandlerDialog extends ListDialog {
             FileOutputStream fos = null;
             try {
                 fos = new FileOutputStream(file);
-                IoUtils.copyStream(is, fos, null);
+
+                IoUtils.copyStream(is, fos, 1024);
                 fos.flush();
                 if (emitter == null || emitter.isDisposed()) {
                     return;
