@@ -1,9 +1,7 @@
 package com.ooftf.service.base
 
+import android.app.Application
 import android.content.Context
-import android.os.Build
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.Utils
 import com.facebook.stetho.Stetho
@@ -24,7 +22,7 @@ import io.reactivex.plugins.RxJavaPlugins
  * Created by master on 2016/12/26.
  */
 
-open class BaseApplication : MultiDexApplication() {
+open class BaseApplication : Application() {
     init {
         instance = this
         Docking.init(this, true)

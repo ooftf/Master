@@ -30,7 +30,6 @@ dokitExt {
             //需要针对函数插装的包名
             //不需要针对函数插装的包名&类名
             //methodBlacklist = ["com.didichuxing.doraemondemo.dokit"]
-            methodBlacklist = ["org.bouncycastle.*"]
         }
     }
 }

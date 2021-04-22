@@ -3,13 +3,14 @@ package com.ooftf.service.utils;
 import android.app.Activity;
 import android.graphics.Bitmap;
 
+import com.ooftf.basic.AppHolder;
 import com.ooftf.hishare.DefaultShareCallback;
 import com.ooftf.hishare.HiShare;
 import com.ooftf.service.base.BaseApplication;
 
 public class ShareUtil {
     static {
-        HiShare.init(BaseApplication.instance);
+        HiShare.init(AppHolder.INSTANCE.getApp());
         HiShare.initWbShare("755399387");
         HiShare.initTencentShare("101516080");
         HiShare.initWXShare("755399387");

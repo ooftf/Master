@@ -1,13 +1,16 @@
 package com.master.kit.application;
 
-import android.content.Context;
-
 import com.alibaba.android.arouter.facade.service.SerializationService;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.ooftf.log.Interceptor;
+import com.master.kit.matrix.MyDynamicConfig;
+import com.master.kit.matrix.MyPluginListener;
+import com.tencent.matrix.Matrix;
+import com.tencent.matrix.iocanary.IOCanaryPlugin;
+import com.tencent.matrix.iocanary.config.IOConfig;
 import com.ooftf.log.JLog;
 import com.ooftf.log.JsonParser;
 import com.ooftf.service.base.BaseApplication;
+
 import com.wanjian.cockroach.Cockroach;
 
 import org.jetbrains.annotations.Nullable;
@@ -42,8 +45,28 @@ public class App extends BaseApplication {
                 return ARouter.getInstance().navigation(SerializationService.class).parseObject(s, type);
             }
         });
-        // initMatrix();
+        initMatrix();
         //installCockroach();
+    }
+
+    private void initMatrix() {
+
+        Matrix.Builder builder = new Matrix.Builder(this); // build matrix
+        builder.patchListener(new MyPluginListener(this)); // add general pluginListener
+        MyDynamicConfig dynamicConfig = new MyDynamicConfig(); // dynamic config
+
+        // init plugin
+        IOCanaryPlugin ioCanaryPlugin = new IOCanaryPlugin(new IOConfig.Builder()
+                .dynamicConfig(dynamicConfig)
+                .build());
+        //add to matrix
+        builder.plugin(ioCanaryPlugin);
+
+        //init matrix
+        Matrix.init(builder.build());
+
+        // start plugin
+        ioCanaryPlugin.start();
     }
 
     public static App getInstance() {
@@ -61,8 +84,4 @@ public class App extends BaseApplication {
 
     }
 
-    @Override
-    protected void attachBaseContext(@Nullable Context base) {
-        super.attachBaseContext(base);
-    }
 }

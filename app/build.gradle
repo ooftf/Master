@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 /*apply plugin: 'packer'*/
 /*apply plugin: 'io.fabric'*/
-/*apply from: 'matrix.gradle'*/
+apply from: 'matrix.gradle'
 apply from: 'autoregister.gradle'
 apply plugin: 'com.alibaba.arouter'
 apply from: 'didi.gradle'

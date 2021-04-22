@@ -13,7 +13,6 @@ import com.tencent.qcloud.tim.uikit.base.IUIKitCallBack;
 import com.tencent.qcloud.tim.uikit.config.CustomFaceConfig;
 import com.tencent.qcloud.tim.uikit.config.GeneralConfig;
 import com.tencent.qcloud.tim.uikit.config.TUIKitConfigs;
-import com.tls.tls_sigature.tls_sigature;
 
 /**
  * @author ooftf
@@ -38,11 +37,7 @@ public class ImManager {
         JLog.e("ImAppOnCreate");
         Log.e("ImApp,getUserId", service.getUserId());
         String userId = service.getUserName();
-        tls_sigature.GenTLSSignatureResult result = tls_sigature.GenTLSSignatureEx(TencentImConts.SDK_APP_ID, userId, TencentImConts.PRI_KEY, 24 * 3600 * 180);
-        JLog.e("ImAppOnCreate userId", userId);
-        JLog.e("ImAppOnCreate urlSig", result.urlSig);
-        JLog.e("ImAppOnCreate urlSig", result.errMessage);
-        TUIKit.login(userId, result.urlSig, new IUIKitCallBack() {
+        TUIKit.login(userId, GenerateTestUserSig.genTestUserSig(userId), new IUIKitCallBack() {
             @Override
             public void onSuccess(Object data) {
                 /**

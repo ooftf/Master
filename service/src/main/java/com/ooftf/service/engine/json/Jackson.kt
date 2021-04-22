@@ -18,19 +18,31 @@ private class Jackson : IJson {
         mapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
     }
 
-    override fun toJson(obj: Any): String {
+    override fun toJson(obj: Any?): String? {
+        if(obj == null){
+            return null
+        }
         return mapper.writeValueAsString(obj)
     }
 
-    override fun <T> fromJson(json: String, clazz: Class<T>): T {
+    override fun <T> fromJson(json: String?, clazz: Class<T>): T? {
+        if(json == null){
+            return null
+        }
         return mapper.readValue(json, clazz)
     }
 
-    override fun <T> fromJson(jsonString: String, type: Type): T {
+    override fun <T> fromJson(jsonString: String?, type: Type): T? {
+        if(jsonString == null){
+            return null
+        }
         return mapper.readValue(jsonString, mapper.typeFactory.constructType(type))
     }
 
-    override fun <T> fromJsonToArray(jsonString: String, itemClazz: Class<T>): List<T> {
+    override fun <T> fromJsonToArray(jsonString: String?, itemClazz: Class<T>): List<T>? {
+        if(jsonString == null){
+            return null
+        }
         return mapper.readValue(jsonString, mapper.typeFactory.constructArrayType(itemClazz))
     }
 

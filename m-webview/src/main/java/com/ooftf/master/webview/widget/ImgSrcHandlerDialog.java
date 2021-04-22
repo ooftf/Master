@@ -7,6 +7,7 @@ import android.os.Environment;
 import android.util.Base64;
 import android.widget.Toast;
 
+import com.ooftf.basic.AppHolder;
 import com.ooftf.master.widget.dialog.ui.ListDialog;
 import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.empty.EmptyObserver;
@@ -70,8 +71,8 @@ public class ImgSrcHandlerDialog extends ListDialog {
                 .subscribe(new EmptyObserver<File>() {
                     @Override
                     public void onNext(File file) {
-                        BaseApplication.instance.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)));
-                        Toast.makeText(BaseApplication.instance, "保存成功", Toast.LENGTH_SHORT).show();
+                        AppHolder.INSTANCE.getApp().sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)));
+                        Toast.makeText(AppHolder.INSTANCE.getApp(), "保存成功", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -127,7 +128,7 @@ public class ImgSrcHandlerDialog extends ListDialog {
     }
 
     public static void toasts(String message) {
-        Toast.makeText(BaseApplication.instance, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(AppHolder.INSTANCE.getApp(), message, Toast.LENGTH_SHORT).show();
     }
 
     private static Observable<InputStream> getImageInputStream(final String imageUrl) {
