@@ -17,10 +17,9 @@ public class GlideEngineV471 implements ImageEngine {
         GlideApp.with(context)
                 .asBitmap()  // some .jpeg files are actually gif
                 .load(uri)
-                .apply(new GlideOptions()
-                        .override(resize, resize)
-                        .centerCrop()
-                        .placeholder(placeholder))
+                .override(resize, resize)
+                .centerCrop()
+                .placeholder(placeholder)
                 .into(imageView);
     }
 

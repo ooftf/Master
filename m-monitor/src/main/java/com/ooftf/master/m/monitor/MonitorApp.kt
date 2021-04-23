@@ -2,8 +2,12 @@ package com.ooftf.master.m.monitor
 
 import android.app.Application
 import android.content.Context
+import com.ooftf.basic.AppHolder
 import com.ooftf.basic.utils.ThreadUtil
 import com.ooftf.director.app.Director
+import com.ooftf.director.app.Director.init
+import com.ooftf.director.app.PanelDialog.showFloat
+import com.ooftf.director.app.ShowEntranceSwitch
 import com.ooftf.docking.api.IApplication
 import com.ooftf.docking.api.MainProcess
 import com.ooftf.service.BuildConfig
@@ -34,11 +38,13 @@ class MonitorApp : IApplication {
         TCAgent.init(BaseApplication.instance)
         // 如果已经在AndroidManifest.xml配置了App ID和渠道ID，调用TCAgent.init(this)即可；或与AndroidManifest.xml中的对应参数保持一致。
         TCAgent.setReportUncaughtExceptions(false)
-        Director.init("b7015bbad3f596beb78ff5e9f5ee7b96", com.ooftf.master.m.monitor.BuildConfig.DEBUG)
-        //DoraemonKit.setAwaysShowMainIcon(false)
-        //        /BaseApplication.instance
+        initDirector()
     }
-
+    private fun initDirector() {
+        init("b6a6080607d1a37310565aca1998e0e9", com.ooftf.master.m.monitor.BuildConfig.DEBUG)
+        ShowEntranceSwitch.set(true)
+        showFloat(AppHolder.app)
+    }
 
     override fun attachBaseContext(context: Context) {
 

@@ -1,46 +1,40 @@
-include ':m-impl'
-include ':session'
-include ':app', ':service'
+include ':app'
+includeCompat(':service')
+includeCompat ':m-impl'
+includeCompat ':session'
+includeCompat(':m-sign')
+includeCompat(':m-applet')
+includeCompat(':m-debug')
+includeCompat(':m-widget')
+includeCompat(':m-source')
+includeCompat(':m-other')
+includeCompat(':m-rn')
+includeCompat(':m-webview')
+includeCompat(':m-qrcode')
+includeCompat(':m-im')
+includeCompat(':m-entrance')
+includeCompat(':m-monitor')
+includeCompat(':m-flutter')
 
-if (isModuleDebug()) {
-    def modules = readModules()
-    modules.each {
-        include(":$it")
+def includeCompat(String name) {
+    if (!isMaven(name)) {
+        include(name)
     }
-} else {
-    include ':m-sign', ':m-applet', ':m-debug', ':m-widget', ':m-source', ':m-other', ':m-rn', ':m-webview', ':m-qrcode', ':m-im', ':m-entrance', ':m-monitor', ':m-flutter'
 }
 
-def isModuleDebug() {
+def isMaven(String name) {
+    println("isMaven" + name)
     Properties properties = new Properties()
-    def file = new File("local.properties")
+    def file = new File("${name.replace(":", "")}/maven.properties")
     if (file.exists()) {
         InputStream inputStream = file.newDataInputStream()
         properties.load(inputStream)
-        def str = properties.getProperty('MODULE_DEBUG')
+        def str = properties.getProperty('MAVEN')
         if (str == null) {
             return false
         } else {
             return Boolean.parseBoolean(str)
         }
-
     }
     return false
-}
-
-def readModules() {
-    Properties properties = new Properties()
-    def file = new File("local.properties")
-    if (file.exists()) {
-        InputStream inputStream = file.newDataInputStream()
-        properties.load(inputStream)
-        def str = properties.getProperty('MODULES')
-        if (str == null) {
-            return []
-        } else {
-            return str.split(",")
-        }
-
-    }
-    return []
 }

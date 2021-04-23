@@ -33,19 +33,6 @@ android {
         buildConfigField("String", "APP_BUILD_TIME", "\"" + new Date().format("yyyy/MM/dd HH:mm:ss") + "\"")
 
     }
-    sourceSets {
-        main {
-            if (ModuleDebug) {
-                manifest.srcFile 'src/app/AndroidManifest.xml'
-                java.srcDirs = ['src/app/java', 'src/main/java']
-                res.srcDirs = ['src/app/res', 'src/main/res']
-            } else {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-                java.srcDirs = ['src/main/java']
-                res.srcDirs = ['src/main/res']
-            }
-        }
-    }
     compileOptions {
         sourceCompatibility versions.java
         targetCompatibility versions.java
@@ -114,38 +101,23 @@ dependencies {
     androidTestImplementation test.runner
     androidTestImplementation test.espresso
     testImplementation test.junit
-    if (ModuleDebug) {
-        if (maven) {
-            moduleList.each {
-                implementation "com.ooftf:master-${it}:$versions.master"
-            }
-        } else {
-            moduleList.each {
-                implementation project(":${it}")
-            }
-        }
-    } else {
-        implementation project(":m-sign")
-        implementation project(":m-applet")
-        implementation project(":m-debug")
-        implementation project(":m-widget")
-        implementation project(":m-source")
-        implementation project(":m-other")
-        implementation project(":m-rn")
-        implementation project(":m-webview")
-        implementation project(":m-qrcode")
-        implementation project(":m-im")
-        implementation project(":m-entrance")
-        implementation project(":m-monitor")
-        implementation project(":m-flutter")
-        implementation project(":m-impl")
-    }
-    if (maven) {
-        implementation "com.ooftf:master-service:$versions.master"
-    } else {
-        implementation project(':service')
-    }
-    implementation project(':session')
+
+    implementation projectCompat(":m-sign")
+    implementation projectCompat(":m-applet")
+    implementation projectCompat(":m-debug")
+    implementation projectCompat(":m-widget")
+    implementation projectCompat(":m-source")
+    implementation projectCompat(":m-other")
+    implementation projectCompat(":m-rn")
+    implementation projectCompat(":m-webview")
+    implementation projectCompat(":m-qrcode")
+    implementation projectCompat(":m-im")
+    implementation projectCompat(":m-entrance")
+    implementation projectCompat(":m-monitor")
+    implementation projectCompat(":m-flutter")
+    implementation projectCompat(":m-impl")
+    implementation projectCompat(':service')
+    implementation projectCompat(':session')
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     kapt deps.ARouterCompiler
     kapt deps.dagger2_compiler

@@ -3,6 +3,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply from: '../publish.gradle'
 android {
     compileSdkVersion versions.compileSdk
     //resourcePrefix getMoudleResourcePrefix()
@@ -26,19 +27,6 @@ android {
         targetCompatibility versions.java
     }
 
-    sourceSets {
-        main {
-            if (ModuleDebug) {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-                java.srcDirs = ['src/app/java', 'src/main/java']
-                res.srcDirs = ['src/app/res', 'src/main/res']
-            } else {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-                java.srcDirs = ['src/main/java']
-                res.srcDirs = ['src/main/res']
-            }
-        }
-    }
     lintOptions {
         abortOnError false
     }
@@ -73,12 +61,9 @@ dependencies {
     implementation androidx.constraintLayout
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
     kapt deps.ARouterCompiler
-    if (maven) {
-        implementation "com.ooftf:master-service:$versions.master"
-    } else {
-        implementation project(':service')
-    }
-    implementation project(':session')
+
+    compileOnly projectCompat(':service')
+    compileOnly projectCompat(':session')
 }
 
 

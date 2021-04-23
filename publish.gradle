@@ -1,0 +1,27 @@
+apply plugin: 'maven-publish'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.ooftf.project.master'
+                artifactId = project.name
+                version = mavenVersion(project.name)
+                artifact generateSourcesJar
+            }
+        }
+        repositories {
+            maven {
+                url = "https://packages.aliyun.com/maven/repository/2017033-release-61klBZ/"
+                credentials {
+                    username = "5f0eaf7299d2094b1a8c6600"
+                    password = "JWiB]Owny)E7"
+                }
+            }
+        }
+    }
+}
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}

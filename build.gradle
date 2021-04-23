@@ -1,36 +1,44 @@
 buildscript {
+    ext.isMaven = { name ->
+        Properties properties = new Properties()
+        def file = rootProject.file("${name}/maven.properties")
+        if (file.exists()) {
+            InputStream inputStream = file.newDataInputStream()
+            properties.load(inputStream)
+            def str = properties.getProperty('MAVEN')
+            if (str == null) {
+                return false
+            } else {
+                return Boolean.parseBoolean(str)
+            }
+        }
+        return false
+    }
+    ext.mavenVersion = { name ->
+        println("mavenVersion::${name}")
+        Properties properties = new Properties()
+        def file = rootProject.file("${name}/maven.properties")
+        if (file.exists()) {
+            InputStream inputStream = file.newDataInputStream()
+            properties.load(inputStream)
+            def str = properties.getProperty('VERSION')
+            if (str == null) {
+                throw Exception(file.path + "    VERSION == null")
+            } else {
+                return str
+            }
+        }
+        return ""
+    }
+    ext.projectCompat = { name ->
+        def realName = name.replace(":", "")
+        if (isMaven(realName)) {
+            return "com.ooftf.project.master:${realName}:${mavenVersion(realName)}"
+        } else {
+            return project(name)
+        }
+    }
     ext {
-        ModuleDebug = {
-            Properties properties = new Properties()
-            def file = rootProject.file('local.properties')
-            if (file.exists()) {
-                InputStream inputStream = file.newDataInputStream()
-                properties.load(inputStream)
-                def str = properties.getProperty('MODULE_DEBUG')
-                if(str == null){
-                    return false
-                }else{
-                    return Boolean.parseBoolean(str)
-                }
-            }
-            return false
-        }.call()
-        moduleList = {
-            Properties properties = new Properties()
-            def file = rootProject.file('local.properties')
-            if (file.exists()) {
-                InputStream inputStream = file.newDataInputStream()
-                properties.load(inputStream)
-                def str = properties.getProperty('MODULES')
-                if (str == null) {
-                    return []
-                } else {
-                    return str.split(",")
-                }
-            }
-            return []
-        }.call()
-        maven = false
         versions = [
                 'kotlin'     : '1.4.20',
                 'compileSdk' : 29,
@@ -133,6 +141,13 @@ allprojects {
         }
         maven {
             credentials {
+                username '5f0eaf7299d2094b1a8c6600'
+                password 'JWiB]Owny)E7'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2017033-release-61klBZ/'
+        }
+        maven {
+            credentials {
                 username 'XeiNW4'
                 password 'RR3XPNBSd2'
             }
@@ -152,3 +167,34 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+def publishTask = task(group: 'publish', publishAll) {
+
+}
+gradle.addBuildListener(new BuildListener() {
+    void buildStarted(Gradle var1) {
+        println '【开始构建】'
+    }
+
+    void settingsEvaluated(Settings var1) {
+        // 注意：在这里不能访问 var1.gradle.rootProject，因为 Project 还没有初始化
+        println '【settings.gradle 解析完成】'
+    }
+
+    void projectsLoaded(Gradle var1) {
+        println '【初始化阶段结束】'
+    }
+
+    void projectsEvaluated(Gradle var1) {
+        println '【配置阶段结束】'
+        var1.allprojects { childProject ->
+            def childTask = childProject.tasks.findByName('publish')
+            if (childTask != null) {
+                publishTask.dependsOn(childProject.tasks.findByName('publish'))
+            }
+        }
+    }
+
+    void buildFinished(BuildResult var1) {
+        println '【构建过程结束】'
+    }
+})

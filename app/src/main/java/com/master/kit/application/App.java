@@ -2,15 +2,18 @@ package com.master.kit.application;
 
 import com.alibaba.android.arouter.facade.service.SerializationService;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.master.kit.BuildConfig;
 import com.master.kit.matrix.MyDynamicConfig;
 import com.master.kit.matrix.MyPluginListener;
-import com.tencent.matrix.Matrix;
-import com.tencent.matrix.iocanary.IOCanaryPlugin;
-import com.tencent.matrix.iocanary.config.IOConfig;
+import com.ooftf.director.app.Director;
+import com.ooftf.director.app.PanelDialog;
+import com.ooftf.director.app.ShowEntranceSwitch;
 import com.ooftf.log.JLog;
 import com.ooftf.log.JsonParser;
 import com.ooftf.service.base.BaseApplication;
-
+import com.tencent.matrix.Matrix;
+import com.tencent.matrix.iocanary.IOCanaryPlugin;
+import com.tencent.matrix.iocanary.config.IOConfig;
 import com.wanjian.cockroach.Cockroach;
 
 import org.jetbrains.annotations.Nullable;
@@ -32,6 +35,7 @@ public class App extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+
         JLog.INSTANCE.setInterceptor(i -> true);
         JLog.INSTANCE.setJsonParser(new JsonParser() {
             @Nullable
@@ -48,6 +52,8 @@ public class App extends BaseApplication {
         initMatrix();
         //installCockroach();
     }
+
+
 
     private void initMatrix() {
 
