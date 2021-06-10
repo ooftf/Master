@@ -40,8 +40,7 @@ buildscript {
     }
     ext {
         versions = [
-                'kotlin'     : '1.4.20',
-                'compileSdk' : 29,
+                'compileSdk' : 30,
                 'minSdk'     : 21,
                 'targetSdk'  : 26,
                 'butterknife': "10.1.0",
@@ -72,6 +71,9 @@ buildscript {
                 'SmartRefreshLayout'               : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-8',
                 'SmartRefreshHeader'               : 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-8',
                 'material'                         : 'com.google.android.material:material:1.3.0',
+                'imagePreview'                     : 'com.github.ooftf:image-preview:2.3.0',
+                'basic'                            : 'com.github.ooftf:basic:0.3.2',
+                'kvLayout'                         : 'com.github.ooftf:kv-layout:1.0.9'
 
         ]
 
@@ -90,7 +92,7 @@ buildscript {
                 'runner'  : 'androidx.test:runner:1.2.0',
                 'espresso': 'androidx.test.espresso:espresso-core:3.2.0',
         ]
-        versions.kotlin = '1.4.32'
+        versions.kotlin = '1.5.10'
     }
     repositories {
         jcenter()
@@ -103,7 +105,7 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.3'
+        classpath 'com.android.tools.build:gradle:4.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         // classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
         classpath ("com.tencent.matrix:matrix-gradle-plugin:${MATRIX_VERSION}") { changing = true }
@@ -112,6 +114,7 @@ buildscript {
         classpath 'com.ooftf:autoregister:1.4.3'
         classpath 'com.ooftf:plugin-task-time:1.0.0'
         classpath 'com.didichuxing.doraemonkit:dokitx-plugin:3.3.5'
+
     }
 
 }
@@ -125,19 +128,6 @@ allprojects {
         //mavenLocal()
         maven() {
             url "https://oss.sonatype.org/content/repositories/snapshots"
-        }
-        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
-        maven {
-            url "https://dl.bintray.com/ooftf/maven"
-        }
-        maven {
-            url "https://dl.bintray.com/ooftf/image"
-        }
-        maven {
-            url 'http://dl.bintray.com/amulyakhare/maven'
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/public'
         }
         maven {
             credentials {
@@ -162,7 +152,37 @@ allprojects {
         }
         maven {url 'http://developer.huawei.com/repo/'}
     }
-
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'com.ooftf') {
+                if (details.requested.name == 'http-ui-mapping') {
+                    details.useTarget('com.github.ooftf:http-ui-mapping:1.4.1')
+                } else if (details.requested.name == 'arch-frame-mvvm') {
+                    details.useTarget('com.github.ooftf:arch-frame-mvvm:0.1.5')
+                } else if (details.requested.name == 'basic') {
+                    details.useTarget(deps.basic)
+                } else if (details.requested.name == 'master-widget-statelayout') {
+                    details.useTarget('com.github.ooftf:master-widget-statelayout:1.1.2')
+                } else if (details.requested.name == 'master-widget-dialog') {
+                    details.useTarget('com.github.ooftf:master-widget-dialog:1.2.3')
+                } else if (details.requested.name == 'ImagePreview') {
+                    details.useTarget(deps.imagePreview)
+                } else if (details.requested.name == 'kv-layout') {
+                    details.useTarget(deps.kvLayout)
+                } else if (details.requested.name == 'dataBinging-extensions') {
+                    details.useTarget('com.github.ooftf:dataBinging-extensions:1.2.3')
+                } else if (details.requested.name == 'tableview') {
+                    details.useTarget('com.github.ooftf:tableview:0.8.9.3.1')
+                } else if (details.requested.name == 'master-widget-toolbar') {
+                    details.useTarget('com.github.ooftf:master-widget-toolbar:1.1.7')
+                } else if (details.requested.name == 'JLog') {
+                    details.useTarget('com.github.ooftf:JLog:1.0.0')
+                } else if (details.requested.name == 'gson-adapter-extensions') {
+                    details.useTarget('com.github.ooftf:gson-adapter-extensions:0.0.4')
+                }
+            }
+        }
+    }
 }
 task clean(type: Delete) {
     delete rootProject.buildDir
