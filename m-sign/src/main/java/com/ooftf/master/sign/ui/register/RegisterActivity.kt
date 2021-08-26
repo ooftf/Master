@@ -7,8 +7,6 @@ import com.ooftf.arch.frame.mvvm.activity.BaseMvvmActivity
 import com.ooftf.master.sign.databinding.ActivityRegisterBinding
 import com.ooftf.service.constant.RouterPath
 
-import kotlinx.android.synthetic.main.activity_register.*
-
 /**
  * @author ooftf
  * @email 994749769@qq.com

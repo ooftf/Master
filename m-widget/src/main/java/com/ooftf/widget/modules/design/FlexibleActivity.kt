@@ -6,34 +6,34 @@ import androidx.appcompat.widget.Toolbar
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.widget.R
-import kotlinx.android.synthetic.main.activity_flexible.*
+import com.ooftf.widget.databinding.ActivityFlexibleBinding
 
 /**
  * @author 99474
  */
-class FlexibleActivity : BaseActivity() {
+class FlexibleActivity : BaseViewBindingActivity<ActivityFlexibleBinding>() {
 
     var fabIsShow = true
 
     var toolbar: Toolbar? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_flexible)
         initToolbar()
         addFabAnimate()
     }
 
     private fun addFabAnimate() {
-        main_appbar!!.addOnOffsetChangedListener(OnOffsetChangedListener { appBarLayout: AppBarLayout, verticalOffset: Int ->
+        binding.mainAppbar!!.addOnOffsetChangedListener(OnOffsetChangedListener { appBarLayout: AppBarLayout, verticalOffset: Int ->
             val percentage = -verticalOffset * 100f / appBarLayout.totalScrollRange
             if (fabIsShow && percentage > 50) {
                 fabIsShow = false
-                fab!!.animate().scaleX(0f).scaleY(0f).setDuration(200).start()
+                binding.fab!!.animate().scaleX(0f).scaleY(0f).setDuration(200).start()
             }
             if (!fabIsShow && percentage < 50) {
                 fabIsShow = true
-                fab!!.animate().scaleX(1f).scaleY(1f).setDuration(200).start()
+                binding.fab!!.animate().scaleX(1f).scaleY(1f).setDuration(200).start()
             }
         })
     }

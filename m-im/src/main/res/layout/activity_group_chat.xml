@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".activity.GroupChatActivity">
-    <com.tencent.qcloud.uikit.business.chat.group.view.GroupChatPanel
+   <!-- <com.tencent.qcloud.uikit.business.chat.group.view.GroupChatPanel
         android:id="@+id/chat_panel"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

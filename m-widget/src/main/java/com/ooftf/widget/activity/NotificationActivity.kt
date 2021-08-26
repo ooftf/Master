@@ -7,26 +7,25 @@ import android.view.View
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.log.JLog
 import com.ooftf.widget.R
+import com.ooftf.widget.databinding.ActivityNotificationBinding
 import com.ooftf.widget.notification.NotificationChannelManager
 import com.ooftf.widget.widget.NewMessageNotification
-import kotlinx.android.synthetic.main.activity_notification.*
 
 /**
  * @author ooftf
  */
 @Route(path = "/widget/activity/notification")
-class NotificationActivity : BaseActivity() {
+class NotificationActivity : BaseViewBindingActivity<ActivityNotificationBinding>() {
     var notificationManager: NotificationManager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_notification)
         notificationManager = this.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-        show.setOnClickListener { v: View? -> showNotification() }
-        show2.setOnClickListener { v: View? -> NewMessageNotification.notify(this@NotificationActivity, "这是什么啊", 15) }
-        show3.setOnClickListener { v: View? -> JLog.e(NotificationChannelManager.getChannel(this, "One")) }
+        binding.show.setOnClickListener { v: View? -> showNotification() }
+        binding.show2.setOnClickListener { v: View? -> NewMessageNotification.notify(this@NotificationActivity, "这是什么啊", 15) }
+        binding.show3.setOnClickListener { v: View? -> JLog.e(NotificationChannelManager.getChannel(this, "One")) }
     }
 
     private fun showNotificationCompat() {

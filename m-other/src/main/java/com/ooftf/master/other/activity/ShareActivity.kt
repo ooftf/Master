@@ -4,19 +4,19 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.hishare.HiShare
 import com.ooftf.master.other.R
+import com.ooftf.master.other.databinding.ActivityShareBinding
 import com.ooftf.service.widget.dialog.ShareDialog
-import kotlinx.android.synthetic.main.activity_share.*
 
 
 @Route(path = "/other/activity/share")
-class ShareActivity : BaseActivity() {
+class ShareActivity : BaseViewBindingActivity<ActivityShareBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_share)
-        wbShare.setOnClickListener {
+        binding.wbShare.setOnClickListener {
             share()
         }
     }

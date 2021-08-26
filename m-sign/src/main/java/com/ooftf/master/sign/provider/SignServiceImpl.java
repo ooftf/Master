@@ -25,7 +25,7 @@ public class SignServiceImpl implements ISignService {
     public static PublishSubject<String> signOutSubject = PublishSubject.create();
 
 
-    public void signIn(SignInBean.ResultBean bean) {
+    public void signIn(SignInBean.DataBean bean) {
         TyperFactory.getDefault().put(KEY_ACCOUNT_INFO, bean);
         signInSubject.onNext("");
     }
@@ -46,8 +46,8 @@ public class SignServiceImpl implements ISignService {
     }
 
 
-    public SignInBean.ResultBean getSignInfo() {
-        return TyperFactory.getDefault().getObject(KEY_ACCOUNT_INFO, SignInBean.ResultBean.class);
+    public SignInBean.DataBean getSignInfo() {
+        return TyperFactory.getDefault().getObject(KEY_ACCOUNT_INFO, SignInBean.DataBean.class);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class SignServiceImpl implements ISignService {
     @Override
     public String getUserId() {
         if (getSignInfo() != null) {
-            return getSignInfo().getUid();
+            return getSignInfo().getId();
         }
 
         return null;
@@ -81,7 +81,7 @@ public class SignServiceImpl implements ISignService {
     @Override
     public String getUserName() {
         if (getSignInfo() != null) {
-            return getSignInfo().getUserName();
+            return getSignInfo().getUsername();
         }
         return null;
     }

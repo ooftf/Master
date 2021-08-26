@@ -9,57 +9,61 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.snackbar.Snackbar
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.master.other.R
-import com.ooftf.service.base.BaseSlidingActivity
+import com.ooftf.master.other.databinding.ActivityTouchBinding
+import com.ooftf.master.other.databinding.AppBarTouchBinding
+import com.ooftf.master.other.databinding.ContentTouchBinding
+import com.ooftf.master.other.databinding.ContentTouchNavigationBinding
 import com.ooftf.service.constant.RouterPath
-import kotlinx.android.synthetic.main.activity_touch.*
-import kotlinx.android.synthetic.main.app_bar_touch.*
-import kotlinx.android.synthetic.main.content_touch.*
-import kotlinx.android.synthetic.main.content_touch_navigation.*
 
 @Route(path = RouterPath.OTHER_ACTIVITY_TOUCH)
-class TouchActivity : BaseSlidingActivity(), CompoundButton.OnCheckedChangeListener {
-    var third_isModify: Switch? = null
+class TouchActivity : BaseViewBindingActivity<ActivityTouchBinding>(), CompoundButton.OnCheckedChangeListener {
+    lateinit var appBarBinding : AppBarTouchBinding
+    lateinit var contentTouchBinding : ContentTouchBinding
+    lateinit var contentTouchNavigationBinding : ContentTouchNavigationBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_touch)
-        fab!!.setOnClickListener { view: View? ->
-            Snackbar.make(view!!, "Replace with your own action", Snackbar.LENGTH_LONG)
+        appBarBinding = AppBarTouchBinding.bind(binding.root)
+        contentTouchBinding = ContentTouchBinding.bind(binding.root)
+        contentTouchNavigationBinding = ContentTouchNavigationBinding.bind(binding.root)
+        appBarBinding.fab.setOnClickListener { view: View ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
         val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout!!.addDrawerListener(toggle)
+                this, binding.drawerLayout, appBarBinding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         initClick()
     }
 
     private fun initClick() {
-        first_isModify!!.setOnCheckedChangeListener(this)
-        sb_first_dispatchTouchEvent!!.setOnCheckedChangeListener(this)
-        sb_first_onInterceptTouchEvent!!.setOnCheckedChangeListener(this)
-        sb_first_onTouchEvent!!.setOnCheckedChangeListener(this)
-        second_isModify!!.setOnCheckedChangeListener(this)
-        sb_second_dispatchTouchEvent!!.setOnCheckedChangeListener(this)
-        sb_second_onInterceptTouchEvent!!.setOnCheckedChangeListener(this)
-        sb_second_onTouchEvent!!.setOnCheckedChangeListener(this)
-        third_isModify!!.setOnCheckedChangeListener(this)
-        sb_third_dispatchTouchEvent!!.setOnCheckedChangeListener(this)
-        sb_third_onInterceptTouchEvent!!.setOnCheckedChangeListener(this)
-        sb_third_onTouchEvent!!.setOnCheckedChangeListener(this)
+        contentTouchNavigationBinding.firstIsModify.setOnCheckedChangeListener(this)
+        contentTouchNavigationBinding.sbFirstDispatchTouchEvent.setOnCheckedChangeListener(this)
+        contentTouchNavigationBinding.sbFirstOnInterceptTouchEvent.setOnCheckedChangeListener(this)
+        contentTouchNavigationBinding.sbFirstOnTouchEvent.setOnCheckedChangeListener(this)
+        contentTouchNavigationBinding.secondIsModify.setOnCheckedChangeListener(this)
+        contentTouchNavigationBinding.sbSecondDispatchTouchEvent.setOnCheckedChangeListener(this)
+        contentTouchNavigationBinding.sbSecondOnInterceptTouchEvent.setOnCheckedChangeListener(this)
+        contentTouchNavigationBinding.sbSecondOnTouchEvent.setOnCheckedChangeListener(this)
+        contentTouchNavigationBinding.thirdIsModify.setOnCheckedChangeListener(this)
+        contentTouchNavigationBinding.sbThirdDispatchTouchEvent.setOnCheckedChangeListener(this)
+        contentTouchNavigationBinding.sbThirdOnInterceptTouchEvent.setOnCheckedChangeListener(this)
+        contentTouchNavigationBinding.sbThirdOnTouchEvent.setOnCheckedChangeListener(this)
         //同步
-        first_isModify!!.isChecked = false
-        second_isModify!!.isChecked = false
-        third_isModify!!.isChecked = false
-        sb_first_dispatchTouchEvent!!.isChecked = false
-        sb_first_onInterceptTouchEvent!!.isChecked = false
-        sb_first_onTouchEvent!!.isChecked = false
-        sb_second_dispatchTouchEvent!!.isChecked = false
-        sb_second_onInterceptTouchEvent!!.isChecked = false
-        sb_second_onTouchEvent!!.isChecked = false
-        sb_third_dispatchTouchEvent!!.isChecked = false
-        sb_third_onInterceptTouchEvent!!.isChecked = false
-        sb_third_onTouchEvent!!.isChecked = false
+        contentTouchNavigationBinding.firstIsModify.isChecked = false
+        contentTouchNavigationBinding.secondIsModify.isChecked = false
+        contentTouchNavigationBinding.thirdIsModify.isChecked = false
+        contentTouchNavigationBinding.sbFirstDispatchTouchEvent.isChecked = false
+        contentTouchNavigationBinding.sbFirstOnInterceptTouchEvent.isChecked = false
+        contentTouchNavigationBinding.sbFirstOnTouchEvent.isChecked = false
+        contentTouchNavigationBinding.sbSecondDispatchTouchEvent.isChecked = false
+        contentTouchNavigationBinding. sbSecondOnInterceptTouchEvent.isChecked = false
+        contentTouchNavigationBinding. sbSecondOnTouchEvent.isChecked = false
+        contentTouchNavigationBinding. sbThirdDispatchTouchEvent.isChecked = false
+        contentTouchNavigationBinding. sbThirdOnInterceptTouchEvent.isChecked = false
+        contentTouchNavigationBinding.sbThirdOnTouchEvent.isChecked = false
     }
 
     override fun onBackPressed() {
@@ -74,29 +78,29 @@ class TouchActivity : BaseSlidingActivity(), CompoundButton.OnCheckedChangeListe
     override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
         val i = buttonView.id
         if (i == R.id.sb_first_dispatchTouchEvent) {
-            first!!.dispatchTouchEvent = isChecked
+            contentTouchBinding.first.dispatchTouchEvent = isChecked
         } else if (i == R.id.sb_first_onInterceptTouchEvent) {
-            first!!.onInterceptTouchEvent = isChecked
+            contentTouchBinding.first.onInterceptTouchEvent = isChecked
         } else if (i == R.id.sb_first_onTouchEvent) {
-            first!!.onTouchEvent = isChecked
+            contentTouchBinding.first.onTouchEvent = isChecked
         } else if (i == R.id.sb_second_dispatchTouchEvent) {
-            second!!.dispatchTouchEvent = isChecked
+            contentTouchBinding.second.dispatchTouchEvent = isChecked
         } else if (i == R.id.sb_second_onInterceptTouchEvent) {
-            second!!.onInterceptTouchEvent = isChecked
+            contentTouchBinding.second.onInterceptTouchEvent = isChecked
         } else if (i == R.id.sb_second_onTouchEvent) {
-            second!!.onTouchEvent = isChecked
+            contentTouchBinding.second.onTouchEvent = isChecked
         } else if (i == R.id.sb_third_dispatchTouchEvent) {
-            third!!.dispatchTouchEvent = isChecked
+            contentTouchBinding.third.dispatchTouchEvent = isChecked
         } else if (i == R.id.sb_third_onInterceptTouchEvent) {
-            third!!.onInterceptTouchEvent = isChecked
+            contentTouchBinding.third.onInterceptTouchEvent = isChecked
         } else if (i == R.id.sb_third_onTouchEvent) {
-            third!!.onTouchEvent = isChecked
+            contentTouchBinding.third.onTouchEvent = isChecked
         } else if (i == R.id.first_isModify) {
-            first!!.isModifyResult = isChecked
+            contentTouchBinding.first.isModifyResult = isChecked
         } else if (i == R.id.second_isModify) {
-            second!!.isModifyResult = isChecked
+            contentTouchBinding.second.isModifyResult = isChecked
         } else if (i == R.id.third_isModify) {
-            third!!.isModifyResult = isChecked
+            contentTouchBinding.third.isModifyResult = isChecked
         }
     }
 }

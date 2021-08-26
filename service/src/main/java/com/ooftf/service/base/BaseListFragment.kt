@@ -17,15 +17,16 @@ import com.ooftf.service.widget.toolbar.TailoredToolbar
  * Created by master on 2017/9/29 0029.
  */
 
-abstract class BaseListFragment : BaseViewBindingFragment<FragmentHomeBaseBinding>() {
+abstract class BaseListFragment : BaseLazyFragment() {
     lateinit var adapter: MainRecyclerAdapter2
+    lateinit var binding :FragmentHomeBaseBinding
     val handler = Handler()
     override fun getLayoutId(): Int {
         return R.layout.fragment_home_base
     }
 
     override fun onLoad(rootView: View) {
-        super.onLoad(rootView)
+        binding = FragmentHomeBaseBinding.bind(rootView)
         setupRecyclerView()
         initData()
         setupFloatButton()

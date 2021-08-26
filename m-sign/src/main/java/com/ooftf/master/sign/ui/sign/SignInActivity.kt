@@ -5,7 +5,7 @@ import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.gyf.immersionbar.ImmersionBar
+import com.blankj.utilcode.util.KeyboardUtils
 import com.ooftf.arch.frame.mvvm.activity.BaseMvvmActivity
 import com.ooftf.basic.utils.DensityUtil
 import com.ooftf.log.JLog
@@ -34,20 +34,20 @@ class SignInActivity : BaseMvvmActivity<ActivitySignInBinding, SignViewModel>() 
         viewModel.baseLiveData.getLiveData(SignInBean::class.java).observe(this) {
             finishSuccess()
         }
-        ImmersionBar.with(this)
-                .setOnKeyboardListener { isPopup, keyboardHeight ->
-                    viewModel.keyBoardShow.value = isPopup
-                    if (isPopup) {
-                        animator.cancel()
-                        animator.setFloatValues(MAX_SIZE, MIN_SIZE)
-                        animator.start()
 
-                    } else {
-                        animator.cancel()
-                        animator.setFloatValues(MIN_SIZE, MAX_SIZE)
-                        animator.start()
-                    }
-                }
+        KeyboardUtils.registerSoftInputChangedListener(this){
+            val show = it != 0
+            viewModel.keyBoardShow.value = show
+            if (show) {
+                animator.cancel()
+                animator.setFloatValues(MAX_SIZE, MIN_SIZE)
+                animator.start()
+            } else {
+                animator.cancel()
+                animator.setFloatValues(MIN_SIZE, MAX_SIZE)
+                animator.start()
+            }
+        }
     }
 
     companion object {

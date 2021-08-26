@@ -8,20 +8,19 @@ import android.os.Bundle
 import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.master.other.R
+import com.ooftf.master.other.databinding.ActivityCameraBinding
 import com.ooftf.master.other.engine.HiCamera
 import com.ooftf.service.constant.ProviderConstant
 import com.tbruyelle.rxpermissions3.RxPermissions
-import com.trello.rxlifecycle4.android.lifecycle.kotlin.bindToLifecycle
-import kotlinx.android.synthetic.main.activity_camera.*
 
 
 @Route(path = "/other/activity/camera")
-class CameraActivity : BaseActivity() {
+class CameraActivity : BaseViewBindingActivity<ActivityCameraBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_camera)
-        button.setOnClickListener {
+        binding.button.setOnClickListener {
             checkPermissionsToCamera();
         }
     }
@@ -52,7 +51,7 @@ class CameraActivity : BaseActivity() {
         if (requestCode == REQUEST_CODE_CAMERA && resultCode == Activity.RESULT_OK) {
             //操作File对象
             Log.e("hiCamera", hiCamera?.resultFile!!.path)
-            imageView.setImageBitmap(BitmapFactory.decodeFile(hiCamera!!.resultFile!!.absolutePath))
+            binding.imageView.setImageBitmap(BitmapFactory.decodeFile(hiCamera!!.resultFile!!.absolutePath))
         }
     }
 

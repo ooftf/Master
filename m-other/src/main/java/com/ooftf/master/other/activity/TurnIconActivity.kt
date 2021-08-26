@@ -1,21 +1,20 @@
 package com.ooftf.master.other.activity
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.RadioButton
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.master.other.R
+import com.ooftf.master.other.databinding.ActivityTurnIconBinding
 import com.ooftf.service.engine.AppIconEngine
-import kotlinx.android.synthetic.main.activity_turn_icon.*
 
 @Route(path = "/other/activity/turnIcon")
-class TurnIconActivity : AppCompatActivity() {
+class TurnIconActivity : BaseViewBindingActivity<ActivityTurnIconBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_turn_icon)
         AppIconEngine.getAllAlias().forEach { aliasName ->
-            val radioButton = layoutInflater.inflate(R.layout.item_radio_item, radioGroup, false) as RadioButton
+            val radioButton = layoutInflater.inflate(R.layout.item_radio_item, binding.radioGroup, false) as RadioButton
             radioButton.tag = aliasName
             radioButton.text = aliasName
             radioButton.setOnClickListener {
@@ -27,7 +26,7 @@ class TurnIconActivity : AppCompatActivity() {
                     radioButton.setCompoundDrawablesWithIntrinsicBounds(null, null, iconDrawable, null)
                 }
             }
-            radioGroup.addView(radioButton)
+            binding.radioGroup.addView(radioButton)
             val iconDrawable = AppIconEngine.getDrawableFromName(this, aliasName)
             if (iconDrawable != null) {
                 radioButton.setCompoundDrawablesWithIntrinsicBounds(null, null, iconDrawable, null)

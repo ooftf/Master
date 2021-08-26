@@ -4,26 +4,24 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.arch.frame.mvvm.activity.BaseActivity
-import com.ooftf.widget.R
-import kotlinx.android.synthetic.main.activity_drawer_demo.*
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
+import com.ooftf.widget.databinding.ActivityDrawerDemoBinding
 
 @Route(path = "/widget/activity/slidingTextView")
-class SlidingTextViewActivity : BaseActivity() {
+class SlidingTextViewActivity : BaseViewBindingActivity<ActivityDrawerDemoBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_drawer_demo)
-        click.setOnClickListener {
-            if (!drawer.isOpen) {
-                text.maxLines = 100
+        binding.click.setOnClickListener {
+            if (!binding.drawer.isOpen) {
+                binding.text.maxLines = 100
             }
-            drawer.smoothTurn()
+            binding.drawer.smoothTurn()
         }
-        drawer.setAnimatorChanageListener(object : AnimatorListenerAdapter() {
+        binding.drawer.setAnimatorChanageListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator?) {
-                if (!drawer.isOpen) {
-                    text.maxLines = 3
+                if (!binding.drawer.isOpen) {
+                    binding.text.maxLines = 3
                 }
             }
         })

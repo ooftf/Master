@@ -5,18 +5,18 @@ import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.source.R
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
-import kotlinx.android.synthetic.main.activity_proxy.*
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
+import com.ooftf.master.source.databinding.ActivityProxyBinding
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
 import java.lang.reflect.Proxy
 
 @Route(path = "/source/activity/proxy")
-class ProxyActivity : BaseActivity() {
+class ProxyActivity : BaseViewBindingActivity<ActivityProxyBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_proxy)
-        button.setOnClickListener {
+        binding.button.setOnClickListener {
             var impl = OneImpl()
             val proxyImpl = OneImplDynamicProxy(impl).newProxyInstance() as OneInterface
             impl.doSomething()

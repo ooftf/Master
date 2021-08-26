@@ -18,7 +18,6 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 class MobApiActivity : BaseViewBindingActivity<ActivityMobApiBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mob_api)
         binding.bankCardQuery.setOnClickListener {
             MobService()
                     .bankQuery(binding.bankCard.text.toString())

@@ -13,13 +13,14 @@ import com.blankj.utilcode.util.AppUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.GlideBuilder
 import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
+import com.ooftf.arch.frame.mvvm.fragment.BaseViewBindingFragment
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.imageloader.IImageLoader
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.WidgetAdapter
+import com.ooftf.widget.databinding.FragmentWidgetBinding
 import com.youth.banner.adapter.BannerAdapter
-import kotlinx.android.synthetic.main.fragment_widget.*
 import javax.inject.Inject
 
 /**
@@ -28,15 +29,13 @@ import javax.inject.Inject
  *
  */
 @Route(path = RouterPath.Widget.Fragment.MAIN)
-class WidgetFragment : BaseLazyFragment() {
+class WidgetFragment : BaseViewBindingFragment<FragmentWidgetBinding>() {
     lateinit var adapter: WidgetAdapter
     lateinit var bannerAdapter: TheBannerAdapter
     val handler = Handler()
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_widget
-    }
 
     override fun onLoad(rootView: View) {
+        super.onLoad(rootView)
         setupToolbar()
         setupRecyclerView()
         initData()
@@ -65,25 +64,25 @@ class WidgetFragment : BaseLazyFragment() {
             }
         }
         bannerAdapter = TheBannerAdapter(bannerList)
-        toolbarBanner.adapter = bannerAdapter
-        toolbarBanner.addBannerLifecycleObserver(this)
+        binding.toolbarBanner.setAdapter(bannerAdapter)
+        binding.toolbarBanner.addBannerLifecycleObserver(this)
     }
 
 
     private fun setupFloatButton() {
         // {@link com.ooftf.widget.fragment.TabLayoutFragment}
-        recycler_view.tag = "widget"
-        recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        binding.recyclerView.tag = "widget"
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 when (newState) {
                     RecyclerView.SCROLL_STATE_DRAGGING -> {
                         handler.removeCallbacksAndMessages(null)
-                        image.animate().translationX(image.width * 0.8.toFloat()).setDuration(300).startDelay = 0
+                        binding.image.animate().translationX(binding.image.width * 0.8.toFloat()).setDuration(300).startDelay = 0
                     }
                     RecyclerView.SCROLL_STATE_IDLE -> {
                         handler.removeCallbacksAndMessages(null)
                         handler.postDelayed({
-                            image.animate().translationX(0F).duration = 300
+                            binding.image.animate().translationX(0F).duration = 300
                         }, 800)
                     }
                 }
@@ -94,9 +93,9 @@ class WidgetFragment : BaseLazyFragment() {
     private fun setupRecyclerView() {
         adapter = WidgetAdapter()
         initSpialeList()
-        recycler_view.tag = getRecyclerViewTag()
-        recycler_view.adapter = adapter
-        recycler_view.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+        binding.recyclerView.tag = getRecyclerViewTag()
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
     }
 
     override fun onDestroyView() {
@@ -106,14 +105,14 @@ class WidgetFragment : BaseLazyFragment() {
 
     private fun setupToolbar() {
         //toolbar.inflateMenu(R.menu.activity_widget_toolbar_turn)
-        toolbar.title = "Widget"
-        var scan = toolbar.menu.add("扫一扫")
+        binding.toolbar.title = "Widget"
+        var scan = binding.toolbar.menu.add("扫一扫")
         scan.setIcon(R.drawable.ic_scan_qr).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         scan.setOnMenuItemClickListener {
             ARouter.getInstance().build(RouterPath.QRCODE_ACTIVITY_QRCODE).navigation()
             true
         }
-        var setting = toolbar.menu.add("应用设置")
+        var setting = binding.toolbar.menu.add("应用设置")
         setting.setIcon(R.drawable.ic_settings_white).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         setting.setOnMenuItemClickListener {
             AppUtils.launchAppDetailsSettings()

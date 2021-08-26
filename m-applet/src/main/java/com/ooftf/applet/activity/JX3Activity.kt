@@ -20,7 +20,6 @@ class JX3Activity : BaseViewBindingActivity<ActivityJx3Binding>() {
     lateinit var adapter: JXAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding.result.setOnClickListener {
             adapter.add(JXBean(getBasic(), getDamage(), getOther()))
             adapter.notifyDataSetChanged()

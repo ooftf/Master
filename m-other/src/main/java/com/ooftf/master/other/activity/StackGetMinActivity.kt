@@ -2,35 +2,33 @@ package com.ooftf.master.other.activity
 
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.master.other.R
-import com.ooftf.arch.frame.mvvm.activity.BaseActivity
-import kotlinx.android.synthetic.main.activity_stack_get_min.*
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
+import com.ooftf.master.other.databinding.ActivityStackGetMinBinding
 import java.util.*
 
 /**
  * 获取到栈的最小值
  */
 @Route(path = "/other/activity/stackGetMin")
-class StackGetMinActivity : BaseActivity() {
+class StackGetMinActivity : BaseViewBindingActivity<ActivityStackGetMinBinding>() {
     private val stack = Stack<Int>()
     private var stackMin = Stack<Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_stack_get_min)
-        pushButton.setOnClickListener {
-            push(pushEdit.text.toString().toInt())
+        binding.pushButton.setOnClickListener {
+            push(binding.pushEdit.text.toString().toInt())
             print()
         }
-        popButton.setOnClickListener {
-            popText.text = pop().toString()
+        binding.popButton.setOnClickListener {
+            binding.popText.text = pop().toString()
             print()
         }
     }
 
     private fun print() {
-        printMainStack.text = "主堆栈：$stack"
-        printMinStack.text = "最小值堆栈：$stackMin"
-        printMin.text = "最小值：${getMin()}"
+        binding.printMainStack.text = "主堆栈：$stack"
+        binding.printMinStack.text = "最小值堆栈：$stackMin"
+        binding.printMin.text = "最小值：${getMin()}"
     }
 
     private fun push(i: Int) {

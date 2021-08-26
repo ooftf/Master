@@ -6,9 +6,11 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.master.session.net.IServiceCreator
 import com.ooftf.hihttp.engine.ParamInterceptor
 import com.ooftf.hihttp.engine.ServiceGeneratorBuilder
+import com.ooftf.log.JLog
 import com.ooftf.mapping.lib.BaseCallAdapterFactory
 import com.ooftf.mapping.lib.LiveDataCallAdapterFactory
 import com.ooftf.service.engine.router.assist.ISignService
+import okhttp3.logging.HttpLoggingInterceptor
 
 /**
  *
@@ -48,6 +50,13 @@ class ServiceCreator : IServiceCreator {
                             return oldParams
                         }
                     })
+                    it.addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message ->
+                        if (message == null) {
+                            JLog.dJson("http", "null")
+                            return@Logger
+                        }
+                        JLog.dJson("http", message)
+                    }).setLevel(HttpLoggingInterceptor.Level.BODY))
                 }.build()
     }
 }

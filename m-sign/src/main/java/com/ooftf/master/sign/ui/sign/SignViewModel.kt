@@ -39,7 +39,7 @@ class SignViewModel(application: Application) : BaseViewModel(application) {
                 .doOnResponseSuccess { call, body ->
                     (ARouter.getInstance().navigation(ISignService::class.java) as SignServiceImpl)
                             .let {
-                                it.signIn(body.result)
+                                it.signIn(body.data)
                             }
                     baseLiveData.post(body)
                 }

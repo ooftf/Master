@@ -16,7 +16,6 @@ import java.util.*
 class BreakfastActivity : BaseViewBindingActivity<ActivityBreakfastBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_breakfast)
         setupTimePicker()
         computingTime()
     }

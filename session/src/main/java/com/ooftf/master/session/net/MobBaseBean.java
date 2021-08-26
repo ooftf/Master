@@ -10,34 +10,34 @@ import org.jetbrains.annotations.NotNull;
  * @date 2018/10/21 0021
  */
 public class MobBaseBean implements IResponse {
-    public static String success = "200";
-    private String msg;
-    private String retCode;
+    public static String success = "0";
+    private String errorMsg;
+    private String errorCode;
 
     public String getMsg() {
-        return msg;
+        return errorMsg;
     }
 
     public void setMsg(String msg) {
-        this.msg = msg;
+        this.errorMsg = msg;
     }
     public String getRetCode() {
-        return retCode;
+        return errorCode;
     }
 
     public void setRetCode(String retCode) {
-        this.retCode = retCode;
+        this.errorCode = retCode;
     }
 
     @NotNull
     @Override
     public String getMessage() {
-        return msg;
+        return errorMsg;
     }
 
     @Override
     public boolean isSuccess() {
-        return success.equals(retCode);
+        return success.equals(errorCode);
     }
 
     @Override

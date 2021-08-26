@@ -7,21 +7,21 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.widget.R
-import kotlinx.android.synthetic.main.activity_shared_elements.*
+import com.ooftf.widget.databinding.ActivitySharedElementsBinding
 
 @Route(path = "/widget/activity/sharedElements")
-class SharedElementsActivity : BaseActivity() {
+class SharedElementsActivity : BaseViewBindingActivity<ActivitySharedElementsBinding>() {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_shared_elements)
-        next.setOnClickListener {
+        binding.next.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 val i = Intent(this@SharedElementsActivity, SharedElementsSecondaryActivity::class.java)
                 val transitionName = getString(R.string.shared_element_icon)
-                val transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(this@SharedElementsActivity, sharedView, transitionName)
+                val transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(this@SharedElementsActivity, binding.sharedView, transitionName)
 
                 startActivity(i, transitionActivityOptions.toBundle())
             } else {

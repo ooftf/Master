@@ -3,27 +3,24 @@ package com.ooftf.widget.activity
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.widget.R
-import kotlinx.android.synthetic.main.activity_lottery.*
+import com.ooftf.widget.databinding.ActivityLotteryBinding
 
 @Route(path = "/widget/activity/lottery")
-class LotteryActivity : AppCompatActivity() {
+class LotteryActivity : BaseViewBindingActivity<ActivityLotteryBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lottery)
         val list = ArrayList<Int>()
-        recyclerView.isEnabled = false
+        binding.recyclerView.isEnabled = false
         var layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this, androidx.recyclerview.widget.RecyclerView.HORIZONTAL, false)
-        recyclerView.layoutManager = layoutManager
+        binding.recyclerView.layoutManager = layoutManager
         var adapter = object : androidx.recyclerview.widget.RecyclerView.Adapter<LotteryViewHolder>() {
             override fun onBindViewHolder(holder: LotteryViewHolder, position: Int) {
                 holder.recyclerView.smoothScrollToPosition(list.get(position))
@@ -43,7 +40,7 @@ class LotteryActivity : AppCompatActivity() {
             }
 
         }
-        recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter
         list.add(0)
         list.add(0)
         list.add(0)

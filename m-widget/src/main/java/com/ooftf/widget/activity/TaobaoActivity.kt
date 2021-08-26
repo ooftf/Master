@@ -1,23 +1,21 @@
 package com.ooftf.widget.activity
 
 import android.os.Bundle
-import androidx.viewpager.widget.ViewPager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.vertical.ScrollEdgeEngine
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.TaobaoPagerAdapter
-import kotlinx.android.synthetic.main.activity_taobao.*
+import com.ooftf.widget.databinding.ActivityTaobaoBinding
 
 @Route(path = "/widget/activity/taobao")
-class TaobaoActivity : BaseActivity() {
+class TaobaoActivity : BaseViewBindingActivity<ActivityTaobaoBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_taobao)
-        viewPager.adapter = TaobaoPagerAdapter(supportFragmentManager)
-        viewPager.setScrollEdgeAnalyzer { i, viewGroup ->
+        binding.viewPager.adapter = TaobaoPagerAdapter(supportFragmentManager)
+        binding.viewPager.setScrollEdgeAnalyzer { i, viewGroup ->
             when (i) {
                 1 -> {
                     var pager = viewGroup.findViewById(R.id.viewPager) as androidx.viewpager.widget.ViewPager

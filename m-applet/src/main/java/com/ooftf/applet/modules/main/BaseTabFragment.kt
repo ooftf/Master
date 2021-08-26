@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.ooftf.applet.R
 import com.ooftf.applet.adapter.AppletAdapter2
 import com.ooftf.applet.databinding.FragmentAppletTabBinding
+import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
 import com.ooftf.arch.frame.mvvm.fragment.BaseViewBindingFragment
 
 /**
@@ -14,7 +15,8 @@ import com.ooftf.arch.frame.mvvm.fragment.BaseViewBindingFragment
  * @email 994749769@qq.com
  * @date 2019/10/9
  */
-abstract class BaseTabFragment : BaseViewBindingFragment<FragmentAppletTabBinding>() {
+abstract class BaseTabFragment : BaseLazyFragment() {
+    lateinit var binding:FragmentAppletTabBinding
     lateinit var adapter: AppletAdapter2
     val handler = Handler()
     override fun getLayoutId(): Int {
@@ -22,6 +24,7 @@ abstract class BaseTabFragment : BaseViewBindingFragment<FragmentAppletTabBindin
     }
 
     override fun onLoad(rootView: View) {
+        binding = FragmentAppletTabBinding.bind(rootView)
         setupRecyclerView()
         initData(adapter)
 

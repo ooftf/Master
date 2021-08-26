@@ -8,26 +8,22 @@ import com.mcxiaoke.packer.helper.PackerNg
 import com.ooftf.bottombar.java.FragmentSwitchManager
 import com.ooftf.master.m.entrance.R
 import com.ooftf.master.m.entrance.adapter.BottomBarAdapter
-import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
+import com.ooftf.master.m.entrance.databinding.ActivityMainBinding
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.main_tab.TabManager
-import kotlinx.android.synthetic.main.activity_main.*
-import okhttp3.internal.closeQuietly
-import java.io.FileInputStream
+import dagger.hilt.android.AndroidEntryPoint
 
 @Route(path = RouterPath.MAIN_ACTIVITY_MAIN)
-class MainActivity : BaseActivity() {
+@AndroidEntryPoint
+class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
     private lateinit var switchManager: FragmentSwitchManager<String>
     private lateinit var adapter: BottomBarAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ARouter.getInstance().inject(this)
-        setContentView(R.layout.activity_main)
         title = PackerNg.getChannel(this)
         setupBottomBar()
-      /*  Observable.interval(1,TimeUnit.SECONDS).subscribe {
-            JLog.e(it.toString())
-        }*/
     }
 
     @SuppressLint("CheckResult")
@@ -44,11 +40,11 @@ class MainActivity : BaseActivity() {
             }.path
             ARouter.getInstance().build(path).navigation() as androidx.fragment.app.Fragment
         }
-        bottomBar.setOnItemSelectChangedListener { _, newIndex ->
+        binding.bottomBar.setOnItemSelectChangedListener { _, newIndex ->
             switchManager.switchFragment(adapter.getItem(newIndex).text)
         }
-        bottomBar.setAdapter(adapter)
-        bottomBar.setSelectedIndex(0)
+        binding.bottomBar.setAdapter(adapter)
+        binding.bottomBar.setSelectedIndex(0)
 
     }
 

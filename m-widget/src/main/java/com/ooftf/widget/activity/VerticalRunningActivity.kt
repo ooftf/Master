@@ -6,16 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.service.base.adapter.AbstractSimpleAdapter
 import com.ooftf.widget.R
-import kotlinx.android.synthetic.main.activity_vertical_running.*
+import com.ooftf.widget.databinding.ActivityVerticalRunningBinding
 
 @Route(path = "/widget/activity/verticalRunning")
-class VerticalRunningActivity : BaseSlidingActivity() {
+class VerticalRunningActivity : BaseViewBindingActivity<ActivityVerticalRunningBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_vertical_running)
         var adapter = object : AbstractSimpleAdapter<String>() {
             override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
                 var view: TextView
@@ -29,7 +29,7 @@ class VerticalRunningActivity : BaseSlidingActivity() {
                 return view
             }
         }
-        spialeLayout.adapter = adapter
+        binding.spialeLayout.adapter = adapter
         adapter.list.add(" First ")
         adapter.list.add(" Second ")
         adapter.notifyDataSetChanged()

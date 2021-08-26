@@ -20,7 +20,6 @@ class FingerprintActivity : BaseViewBindingActivity<ActivityFingerprintBinding>(
     lateinit var callback: FingerprintManagerCompat.AuthenticationCallback
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fingerprint)
         fingerprintManager = FingerprintManagerCompat.from(this)
         if (!fingerprintManager.isHardwareDetected) {
             binding.describe.text = "你的手机暂不支持指纹识别"

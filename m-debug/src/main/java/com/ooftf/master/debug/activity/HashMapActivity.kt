@@ -4,19 +4,18 @@ import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
-import com.ooftf.service.utils.extend.toast
-import kotlinx.android.synthetic.main.activity_hash_map.*
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
+import com.ooftf.master.debug.databinding.ActivityHashMapBinding
 
 @Route(path = "/debug/activity/hashMap")
-class HashMapActivity : BaseActivity() {
+class HashMapActivity : BaseViewBindingActivity<ActivityHashMapBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_hash_map)
         var map = HashMap<CustomObject, String>()
         map[CustomObject("aa", 15)] = "15"
         map[CustomObject2("aa", 15)] = "15"
-        button.setOnClickListener {
+        binding.button.setOnClickListener {
             toast("只重写了equals方法：${map[CustomObject("aa", 15)]}," +
                     "\n 重写了equals和hashcode：${map[CustomObject2("aa", 15)]} ")
         }

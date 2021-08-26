@@ -7,27 +7,25 @@ import android.view.Gravity
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.service.base.BaseSlidingActivity
-import com.ooftf.widget.R
-import kotlinx.android.synthetic.main.activity_tour_guide.*
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
+import com.ooftf.widget.databinding.ActivityTourGuideBinding
 import tourguide.tourguide.Overlay
 import tourguide.tourguide.Pointer
 import tourguide.tourguide.ToolTip
 import tourguide.tourguide.TourGuide
 
 @Route(path = "/widget/activity/tourGuide")
-class TourGuideActivity : BaseSlidingActivity() {
+class TourGuideActivity : BaseViewBindingActivity<ActivityTourGuideBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tour_guide)
         var pointer = Pointer().setColor(Color.RED).setGravity(Gravity.BOTTOM or Gravity.RIGHT)
         var overlay = Overlay().setStyle(Overlay.Style.RECTANGLE)
         val mTourGuideHandler0 = TourGuide.init(this).with(TourGuide.Technique.CLICK)
                 .setPointer(pointer)
                 .setToolTip(getToolTip().setTitle("欢迎").setDescription("第一步，点击第一个按钮"))
                 .setOverlay(overlay)
-                .playOn(textView0)
+                .playOn(binding.textView0)
         val mTourGuideHandler1 = TourGuide.init(this).with(TourGuide.Technique.CLICK)
                 .setPointer(pointer)
                 .setToolTip(getToolTip().setTitle("第二步").setDescription("点击第二个按钮"))
@@ -41,19 +39,19 @@ class TourGuideActivity : BaseSlidingActivity() {
                 .setToolTip(getToolTip().setTitle("最后一步").setDescription("点击第四个按钮结束教程"))
                 .setOverlay(overlay)
 
-        textView0.setOnClickListener {
+        binding.textView0.setOnClickListener {
             mTourGuideHandler0.cleanUp()
-            mTourGuideHandler1.playOn(textView1)
+            mTourGuideHandler1.playOn(binding.textView1)
         }
-        textView1.setOnClickListener {
+        binding.textView1.setOnClickListener {
             mTourGuideHandler1.cleanUp()
-            mTourGuideHandler2.playOn(textView2)
+            mTourGuideHandler2.playOn(binding.textView2)
         }
-        textView2.setOnClickListener {
+        binding.textView2.setOnClickListener {
             mTourGuideHandler2.cleanUp()
-            mTourGuideHandler3.playOn(textView3)
+            mTourGuideHandler3.playOn(binding.textView3)
         }
-        textView3.setOnClickListener {
+        binding.textView3.setOnClickListener {
             mTourGuideHandler3.cleanUp()
         }
     }

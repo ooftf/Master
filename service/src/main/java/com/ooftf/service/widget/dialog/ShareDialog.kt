@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.ooftf.hishare.HiShare
 //import com.ooftf.hishare.HiShare
 import com.ooftf.master.widget.dialog.ui.BottomDialog
 import com.ooftf.service.R
@@ -55,7 +56,7 @@ class ShareDialog(activity: Activity) : BottomDialog(activity) {
     }
 
     class ShareData {
-        //var params: HiShare.ShareParams = HiShare.ShareParams(null, null, null, null, null)
+        var params: HiShare.ShareParams = HiShare.ShareParams(null, null, null, null, null)
         var channelShare: MutableList<ShareItem> = ArrayList()
     }
 
@@ -63,12 +64,12 @@ class ShareDialog(activity: Activity) : BottomDialog(activity) {
         constructor(name: String, image: Int, channel: Int) {
             this.name = name
             this.image = image
-            //this.channel = channel
+            this.channel = channel
         }
 
         var name: String = "QQ分享"
         var image: Int = R.drawable.share_qq
-        //var channel: Int = HiShare.ShareType.QQ_FRIEND
+        var channel: Int = HiShare.ShareType.QQ_FRIEND
     }
 
 }

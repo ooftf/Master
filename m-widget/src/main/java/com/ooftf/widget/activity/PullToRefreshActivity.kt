@@ -12,14 +12,14 @@ import android.widget.TextView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.service.base.BaseSlidingActivity
 import com.ooftf.widget.R
+import com.ooftf.widget.databinding.ActivityPullToRefreshBinding
 import com.ooftf.widget.self.pulltoloading.PullToLoadingLayout
 import com.ooftf.widget.self.pulltoloading.PullToLoadingView
-import kotlinx.android.synthetic.main.activity_pull_to_refresh.*
 import java.util.*
 
 @Route(path = "/widget/activity/pullToRefresh")
 class PullToRefreshActivity : BaseSlidingActivity() {
-
+    lateinit var binding : ActivityPullToRefreshBinding
     private var handler = Handler()
     val adapter by lazy {
         MyAdapter(this)
@@ -27,22 +27,23 @@ class PullToRefreshActivity : BaseSlidingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pull_to_refresh)
-        listView.adapter = adapter
+        binding = ActivityPullToRefreshBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.listView.adapter = adapter
         fillData()
         val pullToLoadMoreFooter = PullToLoadingLayout(this, PullToLoadingView(this), false)
-        pullToLoadMoreFooter.setListView(listView)
+        pullToLoadMoreFooter.setListView(binding.listView)
         pullToLoadMoreFooter.setLoadEvent { simulateLoadingMore(pullToLoadMoreFooter) }
-        pullToRefreshRoot.setOnRefreshListener {
+        binding.pullToRefreshRoot.setOnRefreshListener {
             simulatePullDownRefresh(pullToLoadMoreFooter)
         }
-        listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ -> Log.e("OnItemClickListener", "position::" + position) }
+        binding.listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ -> Log.e("OnItemClickListener", "position::" + position) }
 
     }
 
     private fun simulatePullDownRefresh(pullToLoadMoreFooter: PullToLoadingLayout) {
         handler.postDelayed({
-            pullToRefreshRoot.onRefreshComplete()
+            binding.pullToRefreshRoot.onRefreshComplete()
             pullToLoadMoreFooter.normal()
         }, 5000)
     }
@@ -50,7 +51,7 @@ class PullToRefreshActivity : BaseSlidingActivity() {
     private fun simulateLoadingMore(pullToLoadMoreFooter: PullToLoadingLayout) {
         handler.postDelayed({
             fillData()
-            if (switchView.isChecked) {
+            if (binding.switchView.isChecked) {
                 pullToLoadMoreFooter.error()
             } else {
                 pullToLoadMoreFooter.normal()

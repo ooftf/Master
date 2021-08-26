@@ -2,12 +2,10 @@ package com.ooftf.widget.activity
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.service.constant.RouterPath
-import com.ooftf.widget.R
-import kotlinx.android.synthetic.main.activity_state_layout_sample.*
+import com.ooftf.widget.databinding.ActivityStateLayoutSampleBinding
 
 /**
  * 状态切换布局的Demo页面
@@ -15,13 +13,12 @@ import kotlinx.android.synthetic.main.activity_state_layout_sample.*
  * @author 99474
  */
 @Route(path = RouterPath.Widget.Activity.STATE_LAYOUT_SAMPLE)
-class StateLayoutSampleActivity : BaseActivity() {
+class StateLayoutSampleActivity : BaseViewBindingActivity<ActivityStateLayoutSampleBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_state_layout_sample)
-        buttonNormal.setOnClickListener { v: View -> switcherLayout!!.switchToSuccess() }
-        buttonError.setOnClickListener { v: View -> switcherLayout!!.switchToError() }
-        buttonEmpty.setOnClickListener { v: View -> switcherLayout!!.switchToEmpty() }
-        buttonLoading.setOnClickListener { v: View -> switcherLayout!!.switchToLoading() }
+        binding.buttonNormal.setOnClickListener { v: View -> binding.switcherLayout.switchToSuccess() }
+        binding.buttonError.setOnClickListener { v: View -> binding.switcherLayout.switchToError() }
+        binding.buttonEmpty.setOnClickListener { v: View -> binding.switcherLayout.switchToEmpty() }
+        binding.buttonLoading.setOnClickListener { v: View -> binding.switcherLayout.switchToLoading() }
     }
 }

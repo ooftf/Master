@@ -17,7 +17,6 @@ class GuideActivity : BaseViewBindingActivity<ActivityGuideBinding>() {
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_guide)
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
         binding.viewPager.adapter = mSectionsPagerAdapter
         binding.viewPager.offscreenPageLimit = 5

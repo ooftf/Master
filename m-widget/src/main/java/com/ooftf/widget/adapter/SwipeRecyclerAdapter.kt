@@ -10,18 +10,15 @@ import com.daimajia.swipe.adapters.RecyclerSwipeAdapter
 import com.ooftf.log.JLog
 import com.ooftf.widget.R
 import com.ooftf.widget.bean.SwipeBean
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 /**
  * Created by 99474 on 2017/11/7 0007.
  */
-class SwipeRecyclerAdapter : RecyclerSwipeAdapter<SwipeRecyclerAdapter.ViewHolder> {
-    var context: Context
-
-    @Inject constructor(context: Context) {
-        this.context = context
-        inflater = LayoutInflater.from(context)
-    }
+class SwipeRecyclerAdapter @Inject constructor(@ApplicationContext val context: Context) :
+    RecyclerSwipeAdapter<SwipeRecyclerAdapter.ViewHolder>() {
+    val inflater = LayoutInflater.from(context)
 
     var body = ArrayList<SwipeBean>()
     override fun getItemCount(): Int {
@@ -32,7 +29,6 @@ class SwipeRecyclerAdapter : RecyclerSwipeAdapter<SwipeRecyclerAdapter.ViewHolde
         return R.id.swipeLayout
     }
 
-    var inflater: LayoutInflater
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         JLog.e("onCreateViewHolder")
         return ViewHolder(inflater.inflate(R.layout.item_swiper, parent, false))

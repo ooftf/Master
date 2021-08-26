@@ -8,17 +8,17 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
 import com.ooftf.master.debug.widget.KeyBoard
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
-import kotlinx.android.synthetic.main.content_key_board.*
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
+import com.ooftf.master.debug.databinding.ContentKeyBoardBinding
 
 @Route(path = "/debug/activity/keyBoard")
-class KeyBoardActivity : BaseActivity() {
+class KeyBoardActivity : BaseViewBindingActivity<ContentKeyBoardBinding>() {
 
     lateinit var keyBoard: KeyBoard
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_key_board)
         keyBoard = KeyBoard(this@KeyBoardActivity)
-        keyBoard.bindEditText(editTest)
+        keyBoard.bindEditText(binding.editTest)
         val fab = findViewById<View>(R.id.fab) as FloatingActionButton
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

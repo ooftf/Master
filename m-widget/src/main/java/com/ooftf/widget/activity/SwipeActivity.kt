@@ -2,15 +2,15 @@ package com.ooftf.widget.activity
 
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.SwipeAdapter
 import com.ooftf.widget.bean.SwipeBean
-import kotlinx.android.synthetic.main.activity_swipe.*
+import com.ooftf.widget.databinding.ActivitySwipeBinding
 import java.util.*
 
 @Route(path = "/widget/activity/swipe")
-class SwipeActivity : BaseActivity() {
+class SwipeActivity : BaseViewBindingActivity<ActivitySwipeBinding>() {
     lateinit var adapter: SwipeAdapter
     lateinit var timer: Timer
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +18,7 @@ class SwipeActivity : BaseActivity() {
         setContentView(R.layout.activity_swipe)
         //listView.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         adapter = SwipeAdapter(this)
-        listView.adapter = adapter
+        binding.listView.adapter = adapter
         adapter.body.add(SwipeBean(0))
         adapter.body.add(SwipeBean(1))
         adapter.body.add(SwipeBean(2))

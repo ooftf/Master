@@ -83,7 +83,6 @@
                 android:layout_height="48dp"
                 android:background="@null"
                 android:gravity="center_vertical"
-                android:inputType="number"
                 android:maxLength="15"
                 android:maxLines="1"
                 android:paddingStart="16dp"
