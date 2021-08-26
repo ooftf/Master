@@ -20,11 +20,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Type;
 
+import dagger.hilt.android.HiltAndroidApp;
+
 /**
  * @author ooftf
  * @email 994749769@qq.com
  * @date 2019/1/3 0003
  */
+@HiltAndroidApp
 public class App extends BaseApplication {
     private static App instance;
 

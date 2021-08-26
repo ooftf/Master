@@ -10,10 +10,11 @@ import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.debug.R
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
-import kotlinx.android.synthetic.main.activity_fingerprint.*
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
+import com.ooftf.master.debug.databinding.ActivityFingerprintBinding
 
 @Route(path = "/debug/activity/fingerprint")
-class FingerprintActivity : BaseActivity() {
+class FingerprintActivity : BaseViewBindingActivity<ActivityFingerprintBinding>() {
     lateinit var fingerprintManager: FingerprintManagerCompat
     lateinit var cancellationSignal: CancellationSignal
     lateinit var callback: FingerprintManagerCompat.AuthenticationCallback
@@ -22,11 +23,11 @@ class FingerprintActivity : BaseActivity() {
         setContentView(R.layout.activity_fingerprint)
         fingerprintManager = FingerprintManagerCompat.from(this)
         if (!fingerprintManager.isHardwareDetected) {
-            describe.text = "你的手机暂不支持指纹识别"
+            binding.describe.text = "你的手机暂不支持指纹识别"
         } else if (!fingerprintManager.hasEnrolledFingerprints()) {
-            describe.text = "你的手机还没有录入指纹"
+            binding.describe.text = "你的手机还没有录入指纹"
         } else {
-            describe.text = "可以指纹识别"
+            binding.describe.text = "可以指纹识别"
         }
         cancellationSignal = CancellationSignal()
         callback = object : FingerprintManagerCompat.AuthenticationCallback() {
@@ -53,7 +54,7 @@ class FingerprintActivity : BaseActivity() {
 
         }
 
-        button.setOnClickListener {
+        binding.button.setOnClickListener {
             openFingerPrintSettingPage(this)
         }
     }

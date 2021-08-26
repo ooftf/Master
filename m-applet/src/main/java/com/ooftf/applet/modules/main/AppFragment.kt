@@ -1,25 +1,26 @@
 package com.ooftf.applet.modules.main
 
-import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.tabs.TabLayoutMediator
-import com.ooftf.applet.R
-import com.ooftf.applet.modules.main.FlutterFragment
-import com.ooftf.applet.modules.main.ReactNativeFragment
-import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
-import com.ooftf.director.app.Director
-import kotlinx.android.synthetic.main.fragment_applet.*
+import com.ooftf.applet.databinding.FragmentAppletBinding
+import com.ooftf.arch.frame.mvvm.fragment.BaseViewBindingFragment
+import com.ooftf.master.session.monitor.IMonitorService
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * Created by master on 2017/9/26 0026.
  */
 @Route(path = "/applet/fragment/app")
-class AppFragment : BaseLazyFragment() {
+@AndroidEntryPoint
+class AppFragment : BaseViewBindingFragment<FragmentAppletBinding>() {
+    @Inject
+    lateinit var monitorService: IMonitorService
     override fun onLoad(rootView: View) {
+        super.onLoad(rootView)
         var adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount(): Int {
                 return 3
@@ -35,11 +36,10 @@ class AppFragment : BaseLazyFragment() {
             }
 
 
-
         }
-        viewPager2.adapter = adapter
+        binding.viewPager2.adapter = adapter
 
-        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+        TabLayoutMediator(binding.tabLayout, binding.viewPager2) { tab, position ->
             when (position) {
                 0 -> tab.text = "Native"
                 1 -> tab.text = "ReactNative"
@@ -50,12 +50,6 @@ class AppFragment : BaseLazyFragment() {
 
         }.attach()
         //toolbar.menu.add("").setIcon(R.drawable.logo_empty).setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-        Director.setDebugEntranceView(toolbar)
+        monitorService.setDebugEntranceView(binding.toolbar)
     }
-
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_applet
-    }
-
-
 }

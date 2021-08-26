@@ -3,5 +3,4 @@ dependencies {
     api 'com.tencent.imsdk:tuikit:5.1.56'
     /*implementation 'com.github.promeg:tinypinyin:2.0.3'*/
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
-    kapt deps.dagger2_compiler
 }

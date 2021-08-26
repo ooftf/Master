@@ -5,19 +5,19 @@ import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
+import com.ooftf.arch.frame.mvvm.fragment.BaseViewBindingFragment
 import com.ooftf.master.widget.toolbar.official.ToolbarPlus
 import com.ooftf.service.R
 import com.ooftf.service.base.adapter.MainRecyclerAdapter2
+import com.ooftf.service.databinding.FragmentHomeBaseBinding
 import com.ooftf.service.widget.sticky.StickyOnScrollListener
 import com.ooftf.service.widget.toolbar.TailoredToolbar
-import kotlinx.android.synthetic.main.fragment_home_base.*
-import kotlinx.android.synthetic.main.layout_sticky_header.*
 
 /**
  * Created by master on 2017/9/29 0029.
  */
 
-abstract class BaseListFragment : BaseLazyFragment() {
+abstract class BaseListFragment : BaseViewBindingFragment<FragmentHomeBaseBinding>() {
     lateinit var adapter: MainRecyclerAdapter2
     val handler = Handler()
     override fun getLayoutId(): Int {
@@ -25,10 +25,11 @@ abstract class BaseListFragment : BaseLazyFragment() {
     }
 
     override fun onLoad(rootView: View) {
+        super.onLoad(rootView)
         setupRecyclerView()
         initData()
         setupFloatButton()
-        initToolbar(toolbar)
+        initToolbar(binding.toolbar)
 
     }
 
@@ -39,13 +40,13 @@ abstract class BaseListFragment : BaseLazyFragment() {
     }
 
     private fun setupFloatButton() {
-        recycler_view.addOnScrollListener(ShyAnimateScrollListener(image, handler))
+        binding.recyclerView.addOnScrollListener(ShyAnimateScrollListener(binding.image, handler))
     }
 
     private fun setupRecyclerView() {
         adapter = MainRecyclerAdapter2()
-        recycler_view.adapter = adapter
-        recycler_view.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         /* DividerItemDecoration divider = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
         //divider.setDrawable(new ColorDrawable(Color.GRAY));
         recyclerView.addItemDecoration(divider);*/
@@ -58,8 +59,8 @@ abstract class BaseListFragment : BaseLazyFragment() {
             },2000)
         }
         adapter.addFooter(pullToLoadingLayout)*/
-        recycler_view.setTag(getScrollViewTag())
-        recycler_view.addOnScrollListener(object : StickyOnScrollListener(stickyView) {
+        binding.recyclerView.setTag(getScrollViewTag())
+        binding.recyclerView.addOnScrollListener(object : StickyOnScrollListener(requireView().findViewById(R.id.stickyView)) {
             override fun setCategory(view: View, category: String) {
                 (view as TextView).text = category
             }

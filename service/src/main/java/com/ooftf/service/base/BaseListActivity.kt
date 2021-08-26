@@ -2,25 +2,25 @@ package com.ooftf.service.base
 
 import android.os.Bundle
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.service.R
 import com.ooftf.service.base.adapter.ActivityIntentListAdapter
-import kotlinx.android.synthetic.main.activity_list.*
+import com.ooftf.service.databinding.ActivityListBinding
 
-abstract class BaseListActivity : BaseActivity() {
+abstract class BaseListActivity : BaseViewBindingActivity<ActivityListBinding>() {
     lateinit var adapter: ActivityIntentListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list)
         setupRecyclerView()
         setListData(adapter)
-        toolbar.title = this.javaClass.simpleName
+        binding.toolbar.title = this.javaClass.simpleName
     }
 
     abstract fun setListData(adapter: ActivityIntentListAdapter)
 
     private fun setupRecyclerView() {
         adapter = ActivityIntentListAdapter(this)
-        recycler_view.adapter = adapter
-        recycler_view.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
     }
 }

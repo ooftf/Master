@@ -7,13 +7,13 @@ import android.view.MenuItem
 import android.widget.TimePicker
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.applet.R
-import com.ooftf.service.base.BaseSlidingActivity
-import kotlinx.android.synthetic.main.activity_breakfast.*
+import com.ooftf.applet.databinding.ActivityBreakfastBinding
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
 @Route(path = "/applet/activity/breakfast")
-class BreakfastActivity : BaseSlidingActivity() {
+class BreakfastActivity : BaseViewBindingActivity<ActivityBreakfastBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_breakfast)
@@ -23,17 +23,17 @@ class BreakfastActivity : BaseSlidingActivity() {
 
     @Suppress("DEPRECATION")
     private fun setupTimePicker() {
-        timePicker.setIs24HourView(true)
-        timePicker.currentHour = 7
-        timePicker.currentMinute = 40
-        timePicker.setOnTimeChangedListener { _: TimePicker, _: Int, _: Int ->
+        binding.timePicker.setIs24HourView(true)
+        binding.timePicker.currentHour = 7
+        binding.timePicker.currentMinute = 40
+        binding.timePicker.setOnTimeChangedListener { _: TimePicker, _: Int, _: Int ->
             computingTime()
         }
     }
 
     fun computingTime() {
         var difference = getTargetTime().timeInMillis - Calendar.getInstance().timeInMillis
-        result.text = "预计需要时间：" + difference / 1000 / 60 / 60 + "时" + difference / 1000 / 60 % 60 + "分"
+        binding.result.text = "预计需要时间：" + difference / 1000 / 60 / 60 + "时" + difference / 1000 / 60 % 60 + "分"
     }
 
     fun getTargetTime(): Calendar {
@@ -58,12 +58,12 @@ class BreakfastActivity : BaseSlidingActivity() {
 
     @Suppress("DEPRECATION")
     private fun getHour(): Int {
-        return timePicker.currentHour
+        return  binding.timePicker.currentHour
     }
 
     @Suppress("DEPRECATION")
     private fun getMinute(): Int {
-        return timePicker.currentMinute
+        return  binding.timePicker.currentMinute
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

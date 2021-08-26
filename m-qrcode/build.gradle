@@ -1,6 +1,5 @@
 apply from: '../module.gradle'
 
 dependencies {
-    kapt deps.dagger2_compiler
     implementation 'com.huawei.hms:scanplus:1.2.2.300'
 }

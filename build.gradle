@@ -1,4 +1,5 @@
 buildscript {
+    ext.hilt_version = "2.38.1"
     ext.isMaven = { name ->
         Properties properties = new Properties()
         def file = rootProject.file("${name}/maven.properties")
@@ -48,7 +49,6 @@ buildscript {
                 'tinkerpatch': "1.2.9",
                 'packerNG'   : "2.0.1",
                 'glide'      : "4.11.0",
-                'dagger'     : '2.22.1',
                 'java'       : JavaVersion.VERSION_1_8,
                 'rxlifecycle': "4.0.1",
                 'master'     : "1.0.1-SNAPSHOT"
@@ -61,7 +61,6 @@ buildscript {
                 'progressDrawable'                 : 'com.github.ooftf:progress-drawable:1.2.0',
                 'disklrucache'                     : 'com.jakewharton:disklrucache:2.0.2',
                 'bugly'                            : 'com.tencent.bugly:crashreport_upgrade:latest.release',
-                'dagger2_compiler'                 : "com.google.dagger:dagger-compiler:$versions.dagger",
                 'matisse'                          : 'com.zhihu.android:matisse:0.5.2-beta4',
                 'CalendarView'                     : 'com.github.ooftf:CalendarView:1.0.5',
                 'ARouterCompiler'                  : "com.alibaba:arouter-compiler:1.5.1",
@@ -71,10 +70,18 @@ buildscript {
                 'SmartRefreshLayout'               : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-8',
                 'SmartRefreshHeader'               : 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-8',
                 'material'                         : 'com.google.android.material:material:1.3.0',
-                'imagePreview'                     : 'com.github.ooftf:image-preview:2.3.0',
-                'basic'                            : 'com.github.ooftf:basic:0.3.2',
-                'kvLayout'                         : 'com.github.ooftf:kv-layout:1.0.9'
-
+                'banner'                           : 'io.github.youth5201314:banner:2.2.2',
+                'kvLayout'                         : 'com.github.ooftf:kv-layout:1.0.9',
+                'imagePreview'                     : 'com.github.ooftf:image-preview:2.3.1',
+                'basic'                            : 'com.github.ooftf:basic:0.4.2',
+                'afm'                              : 'com.github.ooftf:arch-frame-mvvm:0.2.2',
+                'x5Webview'                        : 'com.tencent.tbs.tbssdk:sdk:43993',
+                'statelayout'                      : 'com.github.ooftf:master-widget-statelayout:1.1.3',
+                'toolbar'                          : 'com.github.ooftf:master-widget-toolbar:1.1.8',
+                'dataBindingEx'                    : 'com.github.ooftf:dataBinding-extensions:1.2.6',
+                'tablayoutPro'                     : 'com.github.ooftf:tablayout-pro:0.0.3',
+                'dialog'                           : 'com.github.ooftf:master-widget-dialog:1.2.4',
+                'HpptUiMapping'                              : 'com.github.ooftf:http-ui-mapping:1.4.2'
         ]
 
         androidx = [
@@ -92,28 +99,25 @@ buildscript {
                 'runner'  : 'androidx.test:runner:1.2.0',
                 'espresso': 'androidx.test.espresso:espresso-core:3.2.0',
         ]
-        versions.kotlin = '1.5.10'
+        versions.kotlin = '1.5.21'
     }
     repositories {
         jcenter()
         mavenCentral()
         google()
-        maven {
-            url "https://dl.bintray.com/ooftf/maven"
-        }
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
         mavenLocal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.1'
+        classpath 'com.android.tools.build:gradle:4.2.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         // classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
         classpath ("com.tencent.matrix:matrix-gradle-plugin:${MATRIX_VERSION}") { changing = true }
         classpath "com.mcxiaoke.packer-ng:plugin:$versions.packerNG"
         classpath "com.alibaba:arouter-register:1.0.2"
-        classpath 'com.ooftf:autoregister:1.4.3'
-        classpath 'com.ooftf:plugin-task-time:1.0.0'
-        classpath 'com.didichuxing.doraemonkit:dokitx-plugin:3.3.5'
+        classpath 'com.github.ooftf:autoregister:1.4.4'
+        classpath "io.github.didi.dokit:dokitx-plugin:3.4.3.1"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
 
     }
 
@@ -125,7 +129,7 @@ allprojects {
         jcenter()
         google()
         maven { url 'https://jitpack.io' }
-        //mavenLocal()
+        mavenLocal()
         maven() {
             url "https://oss.sonatype.org/content/repositories/snapshots"
         }
@@ -156,65 +160,45 @@ allprojects {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
             if (details.requested.group == 'com.ooftf') {
                 if (details.requested.name == 'http-ui-mapping') {
-                    details.useTarget('com.github.ooftf:http-ui-mapping:1.4.1')
+                    details.useTarget(deps.HpptUiMapping)
                 } else if (details.requested.name == 'arch-frame-mvvm') {
-                    details.useTarget('com.github.ooftf:arch-frame-mvvm:0.1.5')
+                    details.useTarget(deps.afm)
                 } else if (details.requested.name == 'basic') {
                     details.useTarget(deps.basic)
                 } else if (details.requested.name == 'master-widget-statelayout') {
-                    details.useTarget('com.github.ooftf:master-widget-statelayout:1.1.2')
+                    details.useTarget(deps.statelayout)
                 } else if (details.requested.name == 'master-widget-dialog') {
-                    details.useTarget('com.github.ooftf:master-widget-dialog:1.2.3')
+                    details.useTarget(deps.dialog)
                 } else if (details.requested.name == 'ImagePreview') {
                     details.useTarget(deps.imagePreview)
                 } else if (details.requested.name == 'kv-layout') {
                     details.useTarget(deps.kvLayout)
                 } else if (details.requested.name == 'dataBinging-extensions') {
-                    details.useTarget('com.github.ooftf:dataBinging-extensions:1.2.3')
+                    details.useTarget(deps.dataBindingEx)
                 } else if (details.requested.name == 'tableview') {
                     details.useTarget('com.github.ooftf:tableview:0.8.9.3.1')
                 } else if (details.requested.name == 'master-widget-toolbar') {
-                    details.useTarget('com.github.ooftf:master-widget-toolbar:1.1.7')
+                    details.useTarget(deps.toolbar)
                 } else if (details.requested.name == 'JLog') {
                     details.useTarget('com.github.ooftf:JLog:1.0.0')
                 } else if (details.requested.name == 'gson-adapter-extensions') {
                     details.useTarget('com.github.ooftf:gson-adapter-extensions:0.0.4')
+                } else if (details.requested.name == 'hi-http') {
+                    details.useTarget(deps.HiHttp)
                 }
+            } else if (details.requested.group == 'com.github.ybq' && details.requested.name == 'Android-SpinKit') {
+                details.useTarget('com.github.ooftf:loading-view:0.0.1')
+            } else if (details.requested.group == 'com.github.ooftf' && details.requested.name == 'dataBinging-extensions') {
+                details.useTarget(deps.dataBindingEx)
+            } else if (details.requested.group == 'com.github.razerdp' && details.requested.name == 'BasePopup') {
+                details.useTarget('io.github.razerdp:BasePopup:3.1.4')
+            } else if (details.requested.group == 'com.youth.banner' && details.requested.name == 'banner') {
+                details.useTarget(deps.banner)
             }
+
         }
     }
 }
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-def publishTask = task(group: 'publish', publishAll) {
-
-}
-gradle.addBuildListener(new BuildListener() {
-    void buildStarted(Gradle var1) {
-        println '【开始构建】'
-    }
-
-    void settingsEvaluated(Settings var1) {
-        // 注意：在这里不能访问 var1.gradle.rootProject，因为 Project 还没有初始化
-        println '【settings.gradle 解析完成】'
-    }
-
-    void projectsLoaded(Gradle var1) {
-        println '【初始化阶段结束】'
-    }
-
-    void projectsEvaluated(Gradle var1) {
-        println '【配置阶段结束】'
-        var1.allprojects { childProject ->
-            def childTask = childProject.tasks.findByName('publish')
-            if (childTask != null) {
-                publishTask.dependsOn(childProject.tasks.findByName('publish'))
-            }
-        }
-    }
-
-    void buildFinished(BuildResult var1) {
-        println '【构建过程结束】'
-    }
-})

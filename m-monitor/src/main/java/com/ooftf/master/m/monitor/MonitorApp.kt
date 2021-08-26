@@ -43,7 +43,6 @@ class MonitorApp : IApplication {
     private fun initDirector() {
         init("b6a6080607d1a37310565aca1998e0e9", com.ooftf.master.m.monitor.BuildConfig.DEBUG)
         ShowEntranceSwitch.set(true)
-        showFloat(AppHolder.app)
     }
 
     override fun attachBaseContext(context: Context) {

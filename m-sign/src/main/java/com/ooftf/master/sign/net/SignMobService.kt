@@ -5,15 +5,16 @@ import com.ooftf.master.session.net.IServiceCreator
 import com.ooftf.master.sign.bean.SignInBean
 import com.ooftf.master.session.net.MobBaseBean
 import com.ooftf.service.utils.extend.navigation
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface SignMobService {
-    @GET("user/login")
-    fun signIn(@Query("cellphone") username: String, @Query("password") password: String): LiveDataOperator<SignInBean>
+    @POST("user/login")
+    @FormUrlEncoded
+    fun signIn(@Field("username") username: String, @Field("password") password: String): LiveDataOperator<SignInBean>
 
-    @GET("user/rigister")
-    fun register(@Query("username") username: String, @Query("password") password: String): LiveDataOperator<MobBaseBean>
+    @POST("user/register")
+    @FormUrlEncoded
+    fun register(@Field("username") username: String, @Field("password") password: String, @Field("repassword") repassword: String = password): LiveDataOperator<MobBaseBean>
 
     companion object {
         private val instance = IServiceCreator::class.java.navigation()

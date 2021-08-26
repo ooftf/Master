@@ -28,7 +28,7 @@ class ServiceCreator : IServiceCreator {
     val mobServiceGenerator by lazy {
         val signService = ARouter.getInstance().navigation(ISignService::class.java)
         ServiceGeneratorBuilder()
-                .setBaseUrl("http://test.51zhaolian.com:8088/wech/wechapi/")
+                .setBaseUrl("https://www.wanandroid.com/")
                 .setBuildRetrofit {
                     it.addCallAdapterFactory(LiveDataCallAdapterFactory())
                     it.addCallAdapterFactory(BaseCallAdapterFactory())

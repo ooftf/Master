@@ -8,7 +8,6 @@ import com.facebook.stetho.Stetho
 import com.github.moduth.blockcanary.BlockCanary
 import com.liulishuo.filedownloader.FileDownloader
 import com.ooftf.docking.api.Docking
-import com.ooftf.master.unit.am.ActivityManager
 import com.ooftf.service.BuildConfig
 import com.ooftf.service.engine.LifecycleLog
 import com.ooftf.service.engine.typer.TyperFactory
@@ -44,7 +43,6 @@ open class BaseApplication : Application() {
         //setupStetho()
         TimeRuler.marker("MyApplication", "setupBlockCanary start")
         setupBlockCanary()
-        ActivityManager.init(this)
         TimeRuler.marker("MyApplication", "ARouter start")
         if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
             ARouter.openLog()    // 打印日志

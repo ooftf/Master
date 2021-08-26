@@ -1,6 +1,6 @@
 apply from: '../module.gradle'
 dependencies {
-    api 'com.ooftf.react:react-native:0.59.5'
-    implementation 'com.ooftf:react-native-gesture-handler:1.2.1'
+    //api 'com.ooftf.react:react-native:0.59.5'
+    //implementation 'com.ooftf:react-native-gesture-handler:1.2.1'
     implementation deps.CalendarView
 }

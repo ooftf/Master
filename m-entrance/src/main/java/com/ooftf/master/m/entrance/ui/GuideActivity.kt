@@ -9,19 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ooftf.master.m.entrance.R
-import com.ooftf.arch.frame.mvvm.activity.BaseActivity
-import kotlinx.android.synthetic.main.activity_guide.*
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
+import com.ooftf.master.m.entrance.databinding.ActivityGuideBinding
 
 @Route(path = "/entrance/guide")
-class GuideActivity : BaseActivity() {
+class GuideActivity : BaseViewBindingActivity<ActivityGuideBinding>() {
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guide)
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
-        viewPager.adapter = mSectionsPagerAdapter
-        viewPager.offscreenPageLimit = 5
-        pageIndicatorView.setViewPager(viewPager)
+        binding.viewPager.adapter = mSectionsPagerAdapter
+        binding.viewPager.offscreenPageLimit = 5
+        binding.pageIndicatorView.setViewPager(binding.viewPager)
     }
 
     class SectionsPagerAdapter(fm: FragmentManager) : androidx.fragment.app.FragmentPagerAdapter(fm) {

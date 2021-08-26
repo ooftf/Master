@@ -2,31 +2,29 @@ package com.ooftf.master.debug.activity
 
 import android.os.Bundle
 import android.os.Handler
-import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.master.debug.R
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
+import com.ooftf.master.debug.databinding.ActivityDialogDebugBinding
 import com.ooftf.master.debug.widget.DialogDemo
 import com.ooftf.master.widget.dialog.ui.ListBlurDialog
-import kotlinx.android.synthetic.main.activity_dialog_debug.*
 
 @Route(path = "/debug/activity/dialog")
-class DialogActivity : AppCompatActivity() {
+class DialogActivity : BaseViewBindingActivity<ActivityDialogDebugBinding>() {
     lateinit var dialog: DialogDemo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dialog_debug)
-        button.setOnClickListener {
+        binding.button.setOnClickListener {
             Handler().postDelayed({
                 dialog = DialogDemo(this)
                 dialog.show()
             }, 5000)
         }
-        finishButton.setOnClickListener {
+        binding.finishButton.setOnClickListener {
             dialog = DialogDemo(this)
             dialog.logLeak()
             finish()
         }
-        ListSelector.setOnClickListener {
+        binding.ListSelector.setOnClickListener {
             var data = ArrayList<String>()
             data.add("first")
             data.add("second")

@@ -1,6 +1,5 @@
 apply from: '../module.gradle'
 dependencies {
-    kapt deps.dagger2_compiler
     implementation deps.bindingcollectionadapter
     implementation deps.bindingcollectionadapter_recycler
     implementation deps.SmartRefreshLayout

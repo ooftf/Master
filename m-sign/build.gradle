@@ -1,7 +1,6 @@
 apply from: '../module.gradle'
 
 dependencies {
-    kapt deps.dagger2_compiler
     //implementation project(path: ':lib-qq')
     //implementation project(path: ':BaiduLBS')
 }

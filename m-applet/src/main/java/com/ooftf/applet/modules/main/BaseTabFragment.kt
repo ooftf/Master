@@ -5,9 +5,8 @@ import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ooftf.applet.R
 import com.ooftf.applet.adapter.AppletAdapter2
-import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
-import com.ooftf.service.widget.toolbar.TailoredToolbar
-import kotlinx.android.synthetic.main.fragment_applet_tab.*
+import com.ooftf.applet.databinding.FragmentAppletTabBinding
+import com.ooftf.arch.frame.mvvm.fragment.BaseViewBindingFragment
 
 /**
  *
@@ -15,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_applet_tab.*
  * @email 994749769@qq.com
  * @date 2019/10/9
  */
-abstract class BaseTabFragment : BaseLazyFragment() {
+abstract class BaseTabFragment : BaseViewBindingFragment<FragmentAppletTabBinding>() {
     lateinit var adapter: AppletAdapter2
     val handler = Handler()
     override fun getLayoutId(): Int {
@@ -31,8 +30,8 @@ abstract class BaseTabFragment : BaseLazyFragment() {
 
     private fun setupRecyclerView() {
         adapter = AppletAdapter2()
-        recycler_view.adapter = adapter
-        recycler_view.layoutManager = GridLayoutManager(context, 4)
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = GridLayoutManager(context, 4)
     }
 
     abstract fun initData(adapter: AppletAdapter2)

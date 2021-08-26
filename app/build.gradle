@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 /*apply plugin: 'packer'*/
 /*apply plugin: 'io.fabric'*/
@@ -8,6 +7,7 @@ apply from: 'matrix.gradle'
 apply from: 'autoregister.gradle'
 apply plugin: 'com.alibaba.arouter'
 apply from: 'didi.gradle'
+apply plugin: 'dagger.hilt.android.plugin'
 /*apply plugin: 'plugin.test'*/
 
 android {
@@ -21,11 +21,6 @@ android {
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         //生成ARouter文档
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
         ndk {
             //设置支持的SO库架构
             abiFilters 'armeabi-v7a' //, 'x86','armeabi', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
@@ -82,13 +77,16 @@ android {
 
     buildFeatures {
         dataBinding true
+        viewBinding true
     }
 }
-/*configurations.all {
-    resolutionStrategy {
-        force 'com.google.code.gson:gson:2.8.5'//暂时不要升级
+kapt {
+    correctErrorTypes true
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
     }
-}*/
+}
+
 //packer-begin
 /*packer {
     archiveNameFormat = '${appPkg}-${buildType}-v${versionName}-${channel}'
@@ -108,20 +106,25 @@ dependencies {
     implementation projectCompat(":m-widget")
     implementation projectCompat(":m-source")
     implementation projectCompat(":m-other")
-    implementation projectCompat(":m-rn")
+    //implementation projectCompat(":m-rn")
     implementation projectCompat(":m-webview")
     implementation projectCompat(":m-qrcode")
     implementation projectCompat(":m-im")
     implementation projectCompat(":m-entrance")
     implementation projectCompat(":m-monitor")
     implementation projectCompat(":m-flutter")
-    implementation projectCompat(":m-impl")
+    implementation projectCompat(":f-net")
     implementation projectCompat(':service')
     implementation projectCompat(':session')
-    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+    //kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     kapt deps.ARouterCompiler
-    kapt deps.dagger2_compiler
+    //kapt deps.dagger2_compiler
     implementation 'com.wanjian:cockroach:0.0.5'
+
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
 }
 
 //apply from: 'tinkerpatch.gradle'

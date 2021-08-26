@@ -2,7 +2,6 @@ apply from: '../module.gradle'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    kapt deps.dagger2_compiler
     implementation deps.CalendarView
     implementation 'com.github.ooftf:SpialeLayout:1.1.2'
     implementation 'com.github.ooftf:PatternLock:1.0.4'

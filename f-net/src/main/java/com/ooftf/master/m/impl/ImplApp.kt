@@ -8,7 +8,6 @@ import com.ooftf.docking.api.IApplication
 import com.ooftf.mapping.lib.HttpUiMapping
 import com.ooftf.mapping.lib.IResponse
 import com.ooftf.master.m.impl.ui.LoadingDialog
-import com.ooftf.master.unit.am.ActivityManager
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.router.assist.ISignService
 
@@ -33,7 +32,6 @@ class ImplApp : IApplication {
                 ARouter.getInstance().navigation(ISignService::class.java)?.run {
                     if (isSignIn) {
                         //clear()
-                        ActivityManager.finishAll()
                         ARouter.getInstance().build(RouterPath.SIGN_ACTIVITY_SIGN_IN).navigation()
                     }
                 }

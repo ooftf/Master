@@ -1,6 +1,6 @@
 include ':app'
 includeCompat(':service')
-includeCompat ':m-impl'
+includeCompat ':f-net'
 includeCompat ':session'
 includeCompat(':m-sign')
 includeCompat(':m-applet')
@@ -8,7 +8,7 @@ includeCompat(':m-debug')
 includeCompat(':m-widget')
 includeCompat(':m-source')
 includeCompat(':m-other')
-includeCompat(':m-rn')
+//includeCompat(':m-rn')
 includeCompat(':m-webview')
 includeCompat(':m-qrcode')
 includeCompat(':m-im')

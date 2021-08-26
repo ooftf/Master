@@ -11,18 +11,19 @@ import com.ooftf.applet.R
 import com.ooftf.applet.adapter.PersonRecordAdapter
 import com.ooftf.applet.bean.OrderRecordBean
 import com.ooftf.applet.bean.PersonRecordBean
+import com.ooftf.applet.databinding.ActivityWeeklyConsumptionBinding
 import com.ooftf.applet.engine.text_watcher.*
 import com.ooftf.applet.net.MobService
 import com.ooftf.master.widget.dialog.ui.ListBlurDialog
 import com.ooftf.master.widget.toolbar.official.ToolbarPlus
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.typer.TyperFactory
 import com.ooftf.master.session.net.MobBaseBean
 import com.trello.rxlifecycle4.kotlin.bindToLifecycle
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_weekly_consumption.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -33,13 +34,12 @@ import kotlin.collections.ArrayList
  * @date 2018/10/25 0025
  */
 @Route(path = RouterPath.APPLET_ACTIVITY_WEEKLY_CONSUMPTION)
-class WeeklyConsumptionActivity : BaseActivity() {
+class WeeklyConsumptionActivity : BaseViewBindingActivity<ActivityWeeklyConsumptionBinding>() {
     lateinit var adapter: PersonRecordAdapter
     lateinit var orderRecord: OrderRecordBean
     lateinit var operationPanel: ListBlurDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_weekly_consumption)
         initToolbar()
         initOperationPanel()
 
@@ -47,13 +47,13 @@ class WeeklyConsumptionActivity : BaseActivity() {
         orderRecord = getData()
         //将本地数据赋值到View上
         adapter = PersonRecordAdapter(this, orderRecord)
-        recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
-        recyclerView.adapter = adapter
-        monday.setText(orderRecord.monday.toString())
-        tuesday.setText(orderRecord.tuesday.toString())
-        wednesday.setText(orderRecord.wednesday.toString())
-        thursday.setText(orderRecord.thursday.toString())
-        friday.setText(orderRecord.friday.toString())
+        binding.recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+        binding.recyclerView.adapter = adapter
+        binding.monday.setText(orderRecord.monday.toString())
+        binding.tuesday.setText(orderRecord.tuesday.toString())
+        binding.wednesday.setText(orderRecord.wednesday.toString())
+        binding.thursday.setText(orderRecord.thursday.toString())
+        binding.friday.setText(orderRecord.friday.toString())
         //监听TextView
         addTextChangedListener();
 
@@ -90,11 +90,11 @@ class WeeklyConsumptionActivity : BaseActivity() {
                         bean.result.let {
                             orderRecord = Gson().fromJson(String(Base64.decode(it, Base64.DEFAULT)), OrderRecordBean::class.java)
                             adapter.data = orderRecord
-                            monday.setText(orderRecord.monday.toString())
-                            tuesday.setText(orderRecord.tuesday.toString())
-                            wednesday.setText(orderRecord.wednesday.toString())
-                            thursday.setText(orderRecord.thursday.toString())
-                            friday.setText(orderRecord.friday.toString())
+                            binding.monday.setText(orderRecord.monday.toString())
+                            binding.tuesday.setText(orderRecord.tuesday.toString())
+                            binding.wednesday.setText(orderRecord.wednesday.toString())
+                            binding.thursday.setText(orderRecord.thursday.toString())
+                            binding.friday.setText(orderRecord.friday.toString())
                             adapter.notifyDataSetChanged()
                         }
                     }
@@ -139,8 +139,8 @@ class WeeklyConsumptionActivity : BaseActivity() {
     }
 
     private fun initToolbar() {
-        toolbar.title = "周饭计算器"
-        toolbar.addMenuItem(ToolbarPlus
+        binding.toolbar.title = "周饭计算器"
+        binding.toolbar.addMenuItem(ToolbarPlus
                 .MenuItem(this)
                 .layoutRight()
                 .setImage(R.drawable.ic_more_horiz)
@@ -150,10 +150,10 @@ class WeeklyConsumptionActivity : BaseActivity() {
     private fun getItemName(): String {
         val instance = Calendar.getInstance()
         val year = instance.get(Calendar.YEAR).toString()
-        var dateKey = if (weeks.text.isEmpty()) {
+        var dateKey = if (binding.weeks.text.isEmpty()) {
             year + instance.get(Calendar.WEEK_OF_YEAR)
         } else {
-            year + weeks.text.toString()
+            year + binding.weeks.text.toString()
         }
         return "WeeklyConsumption_$dateKey"
     }
@@ -183,39 +183,39 @@ class WeeklyConsumptionActivity : BaseActivity() {
         orderRecord.thursday = 0.0
         orderRecord.monday = 0.0
         orderRecord.friday = 0.0
-        monday.setText(orderRecord.monday.toString())
-        tuesday.setText(orderRecord.tuesday.toString())
-        wednesday.setText(orderRecord.wednesday.toString())
-        thursday.setText(orderRecord.thursday.toString())
-        friday.setText(orderRecord.friday.toString())
+        binding.monday.setText(orderRecord.monday.toString())
+        binding.tuesday.setText(orderRecord.tuesday.toString())
+        binding.wednesday.setText(orderRecord.wednesday.toString())
+        binding.thursday.setText(orderRecord.thursday.toString())
+        binding.friday.setText(orderRecord.friday.toString())
         adapter.notifyDataSetChanged()
     }
 
     private fun addTextChangedListener() {
-        monday.addTextChangedListener(MondayTextWatcher(orderRecord, adapter))
-        tuesday.addTextChangedListener(TuesdayTextWatcher(orderRecord, adapter))
-        wednesday.addTextChangedListener(WednesdayTextWatcher(orderRecord, adapter))
-        thursday.addTextChangedListener(ThursdayTextWatcher(orderRecord, adapter))
-        friday.addTextChangedListener(FridayTextWatcher(orderRecord, adapter))
+        binding.monday.addTextChangedListener(MondayTextWatcher(orderRecord, adapter))
+        binding.tuesday.addTextChangedListener(TuesdayTextWatcher(orderRecord, adapter))
+        binding.wednesday.addTextChangedListener(WednesdayTextWatcher(orderRecord, adapter))
+        binding.thursday.addTextChangedListener(ThursdayTextWatcher(orderRecord, adapter))
+        binding.friday.addTextChangedListener(FridayTextWatcher(orderRecord, adapter))
     }
 
     private fun changePerson() {
-        add.setOnClickListener {
-            if (add_name.text.isEmpty()) {
+        binding.add.setOnClickListener {
+            if (binding.addName.text.isEmpty()) {
                 return@setOnClickListener
             }
             val person = PersonRecordBean()
-            person.name = add_name.text.toString()
+            person.name = binding.addName.text.toString()
             adapter.data.persons.add(person)
             adapter.notifyDataSetChanged()
-            add_name.text.clear()
+            binding.addName.text.clear()
 
         }
-        remove.setOnClickListener {
-            if (add_name.text.isEmpty()) {
+        binding.remove.setOnClickListener {
+            if (binding.addName.text.isEmpty()) {
                 return@setOnClickListener
             }
-            orderRecord.persons.removeAll { it.name.equals(add_name.text.toString()) }
+            orderRecord.persons.removeAll { it.name.equals(binding.addName.text.toString()) }
             adapter.notifyDataSetChanged()
         }
     }

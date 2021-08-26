@@ -39,7 +39,7 @@ if (DEBUG.toBoolean()) {
         }
     }
     dependencies {
-        implementation 'com.github.ooftf:director:1.3.1'
+        implementation 'com.github.ooftf:director:1.3.3'
     }
 } else {
     dependencies {

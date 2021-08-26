@@ -10,13 +10,15 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.baidu.tts.client.SpeechSynthesizer
 import com.baidu.tts.client.TtsMode
 import com.ooftf.applet.R
+import com.ooftf.applet.databinding.ActivityTextToVoiceBinding
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
+import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
+import com.ooftf.arch.frame.mvvm.fragment.BaseViewBindingFragment
 import com.ooftf.basic.utils.ThreadUtil
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.utils.TimeRuler
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_text_to_voice.*
 import java.util.*
 
 /**
@@ -27,17 +29,16 @@ import java.util.*
  * @date 2018/10/25 0025
  */
 @Route(path = RouterPath.APPLET_ACTIVITY_TEXT_TO_VOICE)
-class TextToVoiceActivity : BaseActivity() {
+class TextToVoiceActivity : BaseViewBindingActivity<ActivityTextToVoiceBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_text_to_voice)
         TimeRuler.start(TAG, "0")
         initPermission()
         TimeRuler.marker(TAG, "1")
         Completable.complete().observeOn(Schedulers.from(ThreadUtil.defaultThreadPool))
         initVoice()
         TimeRuler.marker(TAG, "2")
-        button!!.setOnClickListener { v: View? -> instance!!.speak(text!!.text.toString()) }
+        binding.button!!.setOnClickListener { v: View? -> instance!!.speak(binding.text!!.text.toString()) }
         TimeRuler.end(TAG, "0")
     }
 
@@ -82,6 +83,7 @@ class TextToVoiceActivity : BaseActivity() {
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         // 此处为android 6.0以上动态授权的回调，用户自行实现。
     }
 
