@@ -10,18 +10,14 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.AppUtils
-import com.bumptech.glide.Glide
-import com.bumptech.glide.GlideBuilder
-import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
 import com.ooftf.arch.frame.mvvm.fragment.BaseViewBindingFragment
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.service.constant.RouterPath
-import com.ooftf.service.engine.imageloader.IImageLoader
+import com.ooftf.master.session.f.common.IImageLoader.IImageLoader
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.WidgetAdapter
 import com.ooftf.widget.databinding.FragmentWidgetBinding
 import com.youth.banner.adapter.BannerAdapter
-import javax.inject.Inject
 
 /**
  *

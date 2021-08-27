@@ -33,12 +33,4 @@ interface MobService {
     @GET("user/data/query")
     fun query(@Query("item") name: String): Observable<ItemDataBean>
 
-    companion object {
-        private val instance = IServiceCreator::class.java.navigation()
-                .create(MobService::class.java)
-
-        operator fun invoke(): MobService {
-            return instance
-        }
-    }
 }

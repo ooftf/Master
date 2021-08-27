@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-/*apply plugin: 'com.novoda.bintray-release'*/
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply from: '../publish.gradle'

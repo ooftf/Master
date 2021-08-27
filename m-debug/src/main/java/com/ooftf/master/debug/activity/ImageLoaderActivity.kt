@@ -3,8 +3,6 @@ package com.ooftf.master.debug.activity
 import android.graphics.Bitmap
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ooftf.master.debug.R
-import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.service.engine.imageloader.ImageLoaderFactory.createInstance
 import com.ooftf.service.engine.imageloader.ImageLoaderListener

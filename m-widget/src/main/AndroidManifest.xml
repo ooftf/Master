@@ -31,7 +31,7 @@
         <activity android:name=".activity.LotteryActivity" />
         <activity android:name=".activity.PullToRefreshActivity" />
         <activity
-            android:name=".activity.BannerActivity"
+            android:name=".modules.banner.BannerActivity"
             android:theme="@style/AppTheme.BackgroundTransparent.TranslucentStatus" />
         <activity android:name=".activity.PinEditTextActivity" />
         <activity android:name=".activity.CalendarActivity" />

@@ -22,9 +22,11 @@ import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.typer.TyperFactory
 import com.ooftf.master.session.net.MobBaseBean
 import com.trello.rxlifecycle4.kotlin.bindToLifecycle
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
+import javax.inject.Inject
 import kotlin.collections.ArrayList
 
 /**
@@ -34,7 +36,10 @@ import kotlin.collections.ArrayList
  * @date 2018/10/25 0025
  */
 @Route(path = RouterPath.APPLET_ACTIVITY_WEEKLY_CONSUMPTION)
+@AndroidEntryPoint
 class WeeklyConsumptionActivity : BaseViewBindingActivity<ActivityWeeklyConsumptionBinding>() {
+    @Inject
+    lateinit var mobApi:MobService
     lateinit var adapter: PersonRecordAdapter
     lateinit var orderRecord: OrderRecordBean
     lateinit var operationPanel: ListBlurDialog
@@ -62,7 +67,7 @@ class WeeklyConsumptionActivity : BaseViewBindingActivity<ActivityWeeklyConsumpt
     }
 
     fun requestSaveToServer() {
-        MobService()
+        mobApi
                 .put(getItemName(), Base64.encodeToString(Gson().toJson(orderRecord).toByteArray(), Base64.DEFAULT))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -77,7 +82,7 @@ class WeeklyConsumptionActivity : BaseViewBindingActivity<ActivityWeeklyConsumpt
     }
 
     fun requestFromServer() {
-        MobService()
+        mobApi
                 .query(getItemName())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

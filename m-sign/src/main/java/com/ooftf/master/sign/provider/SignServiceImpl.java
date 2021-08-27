@@ -7,6 +7,9 @@ import com.ooftf.master.sign.bean.SignInBean;
 import com.ooftf.service.engine.router.assist.ISignService;
 import com.ooftf.service.engine.typer.TyperFactory;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import io.reactivex.subjects.PublishSubject;
 
 /**
@@ -17,7 +20,12 @@ import io.reactivex.subjects.PublishSubject;
  * @date 2018/10/21 0021
  */
 @Route(path = "/sign/SignServiceImpl", name = "用户登录服务")
+@Singleton
 public class SignServiceImpl implements ISignService {
+    @Inject
+    public SignServiceImpl(){
+
+    }
     private static final String KEY_ACCOUNT_INFO = "AccountInfo";
 
 

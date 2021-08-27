@@ -16,8 +16,6 @@ import com.ooftf.service.engine.GlideApp
  */
 @Route(path = "/service/GlideImageLoader", name = "图片加载")
 class GlideImageLoader : IImageLoader {
-    override fun init(context: Context?) {
-    }
 
     override fun display(url: String, view: ImageView) {
         GlideApp.with(view).load(url).into(view)

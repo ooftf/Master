@@ -4,7 +4,6 @@ import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
 
-import com.ooftf.service.base.BaseApplication;
 import com.ooftf.service.engine.imageloader.ImageLoaderFactory;
 import com.ooftf.log.JLog;
 

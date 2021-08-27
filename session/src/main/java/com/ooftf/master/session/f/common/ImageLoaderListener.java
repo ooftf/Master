@@ -1,4 +1,4 @@
-package com.ooftf.service.engine.imageloader;
+package com.ooftf.master.session.f.common;
 
 import android.graphics.Bitmap;
 

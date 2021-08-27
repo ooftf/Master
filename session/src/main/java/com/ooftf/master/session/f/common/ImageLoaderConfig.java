@@ -1,4 +1,4 @@
-package com.ooftf.service.engine.imageloader;
+package com.ooftf.master.session.f.common;
 
 /**
  * Created by master on 2017/9/29 0029.

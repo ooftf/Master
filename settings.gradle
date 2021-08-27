@@ -15,7 +15,7 @@ includeCompat(':m-im')
 includeCompat(':m-entrance')
 includeCompat(':m-monitor')
 includeCompat(':m-flutter')
-
+includeCompat ':f-common'
 def includeCompat(String name) {
     if (!isMaven(name)) {
         include(name)
@@ -38,3 +38,5 @@ def isMaven(String name) {
     }
     return false
 }
+
+

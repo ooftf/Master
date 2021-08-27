@@ -12,42 +12,47 @@ import com.ooftf.arch.frame.mvvm.activity.BaseActivity
 import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
 import com.ooftf.service.empty.EmptyObserver
 import com.trello.rxlifecycle4.kotlin.bindToLifecycle
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import javax.inject.Inject
 
 @Route(path = "/applet/activity/mobApi")
+@AndroidEntryPoint
 class MobApiActivity : BaseViewBindingActivity<ActivityMobApiBinding>() {
+    @Inject
+    lateinit var mobApi:MobService
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.bankCardQuery.setOnClickListener {
-            MobService()
+            mobApi
                     .bankQuery(binding.bankCard.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(BankCardObserve())
         }
         binding.phoneQuery.setOnClickListener {
-            MobService()
+            mobApi
                     .phoneQuery(binding.phone.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(BankCardObserve())
         }
         binding.idCardQuery.setOnClickListener {
-            MobService()
+            mobApi
                     .idCardQuery(binding.idCard.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(BankCardObserve())
         }
         binding.postcodeQuery.setOnClickListener {
-            MobService()
+            mobApi
                     .postcodeQuery(binding.postcode.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(BankCardObserve())
         }
         binding.ipQuery.setOnClickListener {
-            MobService()
+            mobApi
                     .ipQuery(binding.ip.text.toString())
                     .bindToLifecycle(window.decorView)
                     .observeOn(AndroidSchedulers.mainThread())

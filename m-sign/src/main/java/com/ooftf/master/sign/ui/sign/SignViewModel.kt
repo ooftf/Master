@@ -18,7 +18,9 @@ import com.tencent.connect.UserInfo
 import com.tencent.tauth.IUiListener
 import com.tencent.tauth.Tencent
 import com.tencent.tauth.UiError
+import dagger.hilt.android.lifecycle.HiltViewModel
 import org.json.JSONObject
+import javax.inject.Inject
 
 /**
  *
@@ -26,18 +28,26 @@ import org.json.JSONObject
  * @email 994749769@qq.com
  * @date 2020/10/16
  */
-class SignViewModel(application: Application) : BaseViewModel(application) {
+@HiltViewModel
+class SignViewModel @Inject constructor(application: Application) : BaseViewModel(application) {
     val username = InitLiveData("")
     val password = InitLiveData("")
     val keyBoardShow = InitLiveData(false)
     val marginTop = InitLiveData(DensityUtil.dip2px(SignInActivity.MAX_SIZE).toInt())
+    @Inject
+    lateinit var signMobApi:SignMobService
+    @Inject
+    lateinit var tencent:Tencent
+    @Inject
+    lateinit var signService:SignServiceImpl
+
     fun signIn() {
-        SignMobService()
+        signMobApi
                 .signIn(username.value, password.value)
                 .setLiveData(baseLiveData)
                 .bindDialog()
                 .doOnResponseSuccess { call, body ->
-                    (ARouter.getInstance().navigation(ISignService::class.java) as SignServiceImpl)
+                    signService
                             .let {
                                 it.signIn(body.data)
                             }
@@ -45,9 +55,6 @@ class SignViewModel(application: Application) : BaseViewModel(application) {
                 }
     }
 
-    val tencent by lazy {
-        Tencent.createInstance("101516080", getApplication())
-    }
     val listener = object : IUiListener {
         override fun onComplete(p0: Any?) {
             (p0 as? JSONObject)?.let {

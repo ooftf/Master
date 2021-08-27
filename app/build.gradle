@@ -114,6 +114,7 @@ dependencies {
     implementation projectCompat(":m-monitor")
     implementation projectCompat(":m-flutter")
     implementation projectCompat(":f-net")
+    implementation projectCompat(':f-common')
     implementation projectCompat(':service')
     implementation projectCompat(':session')
     //kapt "com.google.dagger:dagger-compiler:$versions.dagger"

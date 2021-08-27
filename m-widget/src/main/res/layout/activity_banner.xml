@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context="com.ooftf.widget.activity.BannerActivity">
+    tools:context="com.ooftf.widget.modules.banner.BannerActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
