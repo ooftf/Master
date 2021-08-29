@@ -1,4 +1,4 @@
-package com.ooftf.service.engine.router.assist;
+package com.ooftf.master.session.m.sign;
 
 import com.alibaba.android.arouter.facade.template.IProvider;
 
@@ -10,7 +10,7 @@ import io.reactivex.subjects.PublishSubject;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-public interface ISignService extends IProvider {
+public interface ISignService {
 
     /**
      * 是否已经登陆

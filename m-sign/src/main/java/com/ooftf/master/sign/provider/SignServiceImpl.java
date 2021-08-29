@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.master.sign.bean.SignInBean;
-import com.ooftf.service.engine.router.assist.ISignService;
+import com.ooftf.master.session.m.sign.ISignService;
 import com.ooftf.service.engine.typer.TyperFactory;
 
 import javax.inject.Inject;
@@ -19,7 +19,6 @@ import io.reactivex.subjects.PublishSubject;
  * @email 994749769@qq.com
  * @date 2018/10/21 0021
  */
-@Route(path = "/sign/SignServiceImpl", name = "用户登录服务")
 @Singleton
 public class SignServiceImpl implements ISignService {
     @Inject
@@ -92,10 +91,5 @@ public class SignServiceImpl implements ISignService {
             return getSignInfo().getUsername();
         }
         return null;
-    }
-
-    @Override
-    public void init(Context context) {
-
     }
 }

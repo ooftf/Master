@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.master.im.ImApp;
 import com.ooftf.master.im.data.TencentImConts;
 import com.ooftf.log.JLog;
-import com.ooftf.service.engine.router.assist.ISignService;
+import com.ooftf.master.session.m.sign.ISignService;
 import com.tencent.imsdk.v2.V2TIMSDKConfig;
 import com.tencent.qcloud.tim.uikit.TUIKit;
 import com.tencent.qcloud.tim.uikit.base.IUIKitCallBack;

@@ -1,9 +1,6 @@
 package com.ooftf.master.sign.ui.sign
 
 import android.app.Application
-import android.content.Intent
-import android.net.Uri
-import com.alibaba.android.arouter.launcher.ARouter
 import com.ooftf.arch.frame.mvvm.vm.BaseViewModel
 import com.ooftf.basic.AppHolder
 import com.ooftf.basic.armor.InitLiveData
@@ -12,7 +9,6 @@ import com.ooftf.basic.utils.toast
 import com.ooftf.log.JLog
 import com.ooftf.master.sign.net.SignMobService
 import com.ooftf.master.sign.provider.SignServiceImpl
-import com.ooftf.service.engine.router.assist.ISignService
 import com.tencent.connect.UnionInfo
 import com.tencent.connect.UserInfo
 import com.tencent.tauth.IUiListener

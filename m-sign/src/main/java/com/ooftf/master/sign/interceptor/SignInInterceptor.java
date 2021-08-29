@@ -9,11 +9,15 @@ import com.alibaba.android.arouter.facade.callback.InterceptorCallback;
 import com.alibaba.android.arouter.facade.template.IInterceptor;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
+import com.ooftf.basic.AppHolder;
+import com.ooftf.master.session.di.SingletonEntryPoint;
 import com.ooftf.service.constant.RouterExtra;
 import com.ooftf.service.constant.RouterPath;
 import com.ooftf.service.engine.router.PostcardSerializable;
-import com.ooftf.service.engine.router.assist.ISignService;
+import com.ooftf.master.session.m.sign.ISignService;
 import com.ooftf.log.JLog;
+
+import dagger.hilt.android.EntryPointAccessors;
 
 /**
  * 登录拦截器
@@ -24,7 +28,7 @@ import com.ooftf.log.JLog;
  */
 @Interceptor(priority = 1)
 public class SignInInterceptor implements IInterceptor {
-    @Autowired
+
     ISignService multiAccountService;
 
     @Override
@@ -43,6 +47,6 @@ public class SignInInterceptor implements IInterceptor {
 
     @Override
     public void init(Context context) {
-        ARouter.getInstance().inject(this);
+        multiAccountService = EntryPointAccessors.fromApplication(AppHolder.INSTANCE.getApp(), SingletonEntryPoint.class).getSignService();
     }
 }

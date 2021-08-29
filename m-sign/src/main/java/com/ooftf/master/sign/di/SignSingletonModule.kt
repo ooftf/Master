@@ -4,7 +4,7 @@ import android.app.Application
 import com.ooftf.master.session.net.IServiceCreator
 import com.ooftf.master.sign.net.SignMobService
 import com.ooftf.master.sign.provider.SignServiceImpl
-import com.ooftf.service.engine.router.assist.ISignService
+import com.ooftf.master.session.m.sign.ISignService
 import com.tencent.tauth.Tencent
 import dagger.Binds
 import dagger.Module

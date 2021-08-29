@@ -8,8 +8,10 @@ import com.ooftf.docking.api.IApplication
 import com.ooftf.mapping.lib.HttpUiMapping
 import com.ooftf.mapping.lib.IResponse
 import com.ooftf.master.m.impl.ui.LoadingDialog
+import com.ooftf.master.session.di.SingletonEntryPoint
 import com.ooftf.service.constant.RouterPath
-import com.ooftf.service.engine.router.assist.ISignService
+import com.ooftf.master.session.m.sign.ISignService
+import dagger.hilt.android.EntryPointAccessors
 
 /**
  *
@@ -18,18 +20,20 @@ import com.ooftf.service.engine.router.assist.ISignService
  * @date 2020/10/27
  */
 class ImplApp : IApplication {
+    lateinit var signService:ISignService
     override fun init(application: Application) {
 
     }
 
     override fun onCreate(application: Application) {
+        signService = EntryPointAccessors.fromApplication(application,SingletonEntryPoint::class.java).getSignService()
         HttpUiMapping.init(object : HttpUiMapping.Provider {
             override fun createLoadingDialog(activity: Activity): HttpUiMapping.MyDialogInterface {
                 return LoadingDialog(activity)
             }
 
             override fun onTokenInvalid(baseResponse: IResponse) {
-                ARouter.getInstance().navigation(ISignService::class.java)?.run {
+                signService.run {
                     if (isSignIn) {
                         //clear()
                         ARouter.getInstance().build(RouterPath.SIGN_ACTIVITY_SIGN_IN).navigation()

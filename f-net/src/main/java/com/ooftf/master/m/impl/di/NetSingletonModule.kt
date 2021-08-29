@@ -3,13 +3,12 @@ package com.ooftf.master.m.impl.di
 import com.ooftf.hihttp.engine.ParamInterceptor
 import com.ooftf.hihttp.engine.ServiceGenerator
 import com.ooftf.hihttp.engine.ServiceGeneratorBuilder
-import com.ooftf.log.JLog
 import com.ooftf.mapping.lib.BaseCallAdapterFactory
 import com.ooftf.mapping.lib.LiveDataCallAdapterFactory
 import com.ooftf.master.m.impl.net.LogInterceptor
 import com.ooftf.master.m.impl.net.ServiceCreator
 import com.ooftf.master.session.net.IServiceCreator
-import com.ooftf.service.engine.router.assist.ISignService
+import com.ooftf.master.session.m.sign.               ISignService
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
