@@ -25,6 +25,6 @@
             android:adjustViewBounds="true"
             android:transitionName="@{item.transitionName}"
             android:onClick="@{(view)->clickListener.onClick(view,item)}"
-            app:url="@{item.url}" />
+            android:src="@{item.url}" />
     </LinearLayout>
 </layout>

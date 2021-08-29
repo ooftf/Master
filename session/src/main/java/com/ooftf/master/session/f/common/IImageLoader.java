@@ -3,9 +3,6 @@ package com.ooftf.master.session.f.common;
 import android.content.Context;
 import android.widget.ImageView;
 
-import com.ooftf.service.engine.imageloader.ImageLoaderConfig;
-import com.ooftf.service.engine.imageloader.ImageLoaderListener;
-
 /**
  * Created by master on 2017/1/22.
  */

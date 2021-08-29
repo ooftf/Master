@@ -29,7 +29,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:riv_corner_radius="2dp"
-            app:url="@{item.photo}" />
+            android:src="@{item.photo}" />
 
         <TextView
             android:id="@+id/title"

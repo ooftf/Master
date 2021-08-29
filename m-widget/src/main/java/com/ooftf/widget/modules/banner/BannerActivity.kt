@@ -18,6 +18,9 @@ class BannerActivity : BaseSlidingActivity() {
     lateinit var binding:ActivityBannerBinding
     @Inject
     lateinit var api:IWidgetApi
+
+    @Inject
+    lateinit var factory: TheBannerAdapter.TheBannerAdapterFactory
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBannerBinding.inflate(layoutInflater)
@@ -29,9 +32,9 @@ class BannerActivity : BaseSlidingActivity() {
         }
     }
 
-    val bannerAdapter = TheBannerAdapter(null)
+    lateinit var  bannerAdapter:TheBannerAdapter
     private fun setupBanner() {
-
+        bannerAdapter = factory.create(null)
         binding.banner.setAdapter(bannerAdapter)
         binding.banner.addBannerLifecycleObserver(this)
     }

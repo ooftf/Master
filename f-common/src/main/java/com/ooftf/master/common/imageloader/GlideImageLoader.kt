@@ -1,4 +1,4 @@
-package com.ooftf.service.engine.imageloader
+package com.ooftf.master.common.imageloader
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,13 +9,18 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.ooftf.master.session.f.common.IImageLoader
+import com.ooftf.master.session.f.common.ImageLoaderConfig
+import com.ooftf.master.session.f.common.ImageLoaderListener
 import com.ooftf.service.engine.GlideApp
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by master on 2017/1/22.
  */
-@Route(path = "/service/GlideImageLoader", name = "图片加载")
-class GlideImageLoader : IImageLoader {
+@Singleton
+class GlideImageLoader @Inject constructor() : IImageLoader {
 
     override fun display(url: String, view: ImageView) {
         GlideApp.with(view).load(url).into(view)

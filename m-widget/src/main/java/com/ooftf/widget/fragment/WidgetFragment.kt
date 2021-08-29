@@ -11,13 +11,21 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.AppUtils
 import com.ooftf.arch.frame.mvvm.fragment.BaseViewBindingFragment
+import com.ooftf.log.JLog
+import com.ooftf.master.session.f.common.IImageLoader
 import com.ooftf.service.bean.ScreenItemBean
 import com.ooftf.service.constant.RouterPath
-import com.ooftf.master.session.f.common.IImageLoader.IImageLoader
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.WidgetAdapter
 import com.ooftf.widget.databinding.FragmentWidgetBinding
+import com.ooftf.widget.modules.banner.TheBannerAdapter
 import com.youth.banner.adapter.BannerAdapter
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.scopes.FragmentScoped
+import javax.inject.Inject
 
 /**
  *
@@ -25,13 +33,16 @@ import com.youth.banner.adapter.BannerAdapter
  *
  */
 @Route(path = RouterPath.Widget.Fragment.MAIN)
+@AndroidEntryPoint
 class WidgetFragment : BaseViewBindingFragment<FragmentWidgetBinding>() {
     lateinit var adapter: WidgetAdapter
     lateinit var bannerAdapter: TheBannerAdapter
     val handler = Handler()
-
+    @Inject
+    lateinit var factory: TheBannerAdapter.TheBannerAdapterFactory
     override fun onLoad(rootView: View) {
         super.onLoad(rootView)
+
         setupToolbar()
         setupRecyclerView()
         initData()
@@ -59,7 +70,10 @@ class WidgetFragment : BaseViewBindingFragment<FragmentWidgetBinding>() {
                 add("http://pic.netbian.com/uploads/allimg/190726/230851-1564153731ce2b.jpg")
             }
         }
-        bannerAdapter = TheBannerAdapter(bannerList)
+        bannerAdapter = factory.create(bannerList)
+        JLog.e("bannerAdapter",bannerAdapter.toString())
+        bannerAdapter = factory.create(bannerList)
+        JLog.e("bannerAdapter",bannerAdapter.toString())
         binding.toolbarBanner.setAdapter(bannerAdapter)
         binding.toolbarBanner.addBannerLifecycleObserver(this)
     }
@@ -178,27 +192,5 @@ class WidgetFragment : BaseViewBindingFragment<FragmentWidgetBinding>() {
 
     }
 
-
-}
-
-class TheBannerAdapter(datas: MutableList<String>?) : BannerAdapter<String, RecyclerView.ViewHolder>(datas) {
-    @JvmField
-    @Autowired
-    var imageLoader: IImageLoader? = null
-
-    init {
-        ARouter.getInstance().inject(this)
-    }
-
-    override fun onCreateHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val imageView = ImageView(parent.context)
-        imageView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
-        imageView.scaleType  = ImageView.ScaleType.CENTER_CROP
-        return object : RecyclerView.ViewHolder(imageView) {}
-    }
-
-    override fun onBindView(holder: RecyclerView.ViewHolder, data: String, position: Int, size: Int) {
-        imageLoader?.display(data, holder.itemView as? ImageView)
-    }
 
 }
