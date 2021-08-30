@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="AppTheme.TranslucentStatus.Splash">
         <item name="android:windowBackground">@drawable/ooftf</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowNoTitle">true</item>
     </style>
 </resources>

@@ -2,7 +2,9 @@ package com.ooftf.master.m.entrance.ui
 
 import android.Manifest
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.MutableLiveData
@@ -49,9 +51,9 @@ class SplashActivity : BaseViewBindingActivity<ActivitySplashBinding>() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        drawableLive.observe(this, Observer<Drawable> { t -> window.setBackgroundDrawable(t) })
-        window.setBackgroundDrawable(drawable)
         super.onCreate(savedInstanceState)
+        drawableLive.observe(this, Observer<Drawable> { t -> binding.container.background = t })
+        binding.container.background = drawable
         TimeRuler.marker("MyApplication", "SplashActivity onCreate")
 
         binding.skip.setOnClickListener {

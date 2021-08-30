@@ -8,7 +8,7 @@ import com.ooftf.mapping.lib.LiveDataCallAdapterFactory
 import com.ooftf.master.m.impl.net.LogInterceptor
 import com.ooftf.master.m.impl.net.ServiceCreator
 import com.ooftf.master.session.net.IServiceCreator
-import com.ooftf.master.session.m.sign.               ISignService
+import com.ooftf.master.session.m.sign.ISignService
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

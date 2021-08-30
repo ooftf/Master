@@ -8,8 +8,10 @@ import com.ooftf.vertical.ScrollEdgeEngine
 import com.ooftf.widget.R
 import com.ooftf.widget.adapter.TaobaoPagerAdapter
 import com.ooftf.widget.databinding.ActivityTaobaoBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 @Route(path = "/widget/activity/taobao")
+@AndroidEntryPoint
 class TaobaoActivity : BaseViewBindingActivity<ActivityTaobaoBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

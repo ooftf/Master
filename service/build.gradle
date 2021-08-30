@@ -131,7 +131,7 @@ dependencies {
     api deps.SmartRefreshLayout
     api "com.ooftf:master-widget-statelayout:1.1.2"
     api "com.ooftf:JLog:1.0.0"
-    api 'com.ooftf:arch-frame-mvvm:0.1.5'
+    api deps.afm
     api 'com.ooftf:http-ui-mapping:1.3.9'
     api 'com.ooftf:basic:0.2.11'
     api 'com.ooftf:dataBinging-extensions:1.2.3'

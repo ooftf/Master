@@ -7,6 +7,7 @@ import com.ooftf.widget.adapter.SwipeRecyclerAdapter
 import com.ooftf.widget.bean.SwipeBean
 import com.ooftf.widget.databinding.ActivitySwipeRecyclerBinding
 import com.ooftf.widget.test.TestLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 import javax.inject.Inject
 
@@ -16,6 +17,7 @@ import javax.inject.Inject
  * 结论：菜单栏回缩有可能是SwipeLayout的onLayout监听里面
  */
 @Route(path = "/widget/activity/swipeRecycler")
+@AndroidEntryPoint
 class SwipeRecyclerActivity : BaseViewBindingActivity<ActivitySwipeRecyclerBinding>() {
 
     @Inject

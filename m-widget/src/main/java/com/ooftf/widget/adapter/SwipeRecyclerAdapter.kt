@@ -16,6 +16,7 @@ import javax.inject.Inject
 /**
  * Created by 99474 on 2017/11/7 0007.
  */
+
 class SwipeRecyclerAdapter @Inject constructor(@ApplicationContext val context: Context) :
     RecyclerSwipeAdapter<SwipeRecyclerAdapter.ViewHolder>() {
     val inflater = LayoutInflater.from(context)
@@ -40,7 +41,7 @@ class SwipeRecyclerAdapter @Inject constructor(@ApplicationContext val context: 
         mItemManger.bindView(holder.itemView, position)
     }
 
-    class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var content = itemView.findViewById<TextView>(R.id.content)
     }
 }
