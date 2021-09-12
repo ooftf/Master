@@ -122,9 +122,9 @@ dependencies {
     //kapt deps.dagger2_compiler
     implementation 'com.wanjian:cockroach:0.0.5'
 
-    implementation Hilt.hiltAndroid
+    api Hilt.hiltAndroid
     kapt Hilt.hiltAndroidCompiler
-    implementation Hilt.hiltLifecycleViewmodel
+    api Hilt.hiltLifecycleViewmodel
     kapt Hilt.compiler
 }
 

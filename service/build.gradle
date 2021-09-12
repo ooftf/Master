@@ -142,8 +142,8 @@ dependencies {
     api OOFTF.dataBindingEx
     api OOFTF.dockingApi
 
-    implementation Hilt.hiltAndroid
+    api Hilt.hiltAndroid
     kapt Hilt.hiltAndroidCompiler
-    implementation Hilt.hiltLifecycleViewmodel
+    api Hilt.hiltLifecycleViewmodel
     kapt Hilt.compiler
 }
