@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.Utils
-import com.facebook.stetho.Stetho
 import com.github.moduth.blockcanary.BlockCanary
 import com.liulishuo.filedownloader.FileDownloader
 import com.ooftf.docking.api.Docking
@@ -24,7 +23,6 @@ import io.reactivex.plugins.RxJavaPlugins
 open class BaseApplication : Application() {
     init {
         instance = this
-        Docking.init(this, true)
     }
 
     override fun onCreate() {
@@ -66,7 +64,6 @@ open class BaseApplication : Application() {
 
 
     override fun attachBaseContext(base: Context?) {
-        Docking.notifyAttachBaseContext(base)
         super.attachBaseContext(base)
     }
 
@@ -74,9 +71,6 @@ open class BaseApplication : Application() {
         BlockCanary.install(this, AppBlockCanaryContext()).start()
     }
 
-    private fun setupStetho() {
-        Stetho.initializeWithDefaults(this)
-    }
 
     private fun setupThinker() {
         // 我们可以从这里获得Tinker加载过程的信息

@@ -11,11 +11,11 @@ apply plugin: 'dagger.hilt.android.plugin'
 /*apply plugin: 'plugin.test'*/
 
 android {
-    compileSdkVersion versions.compileSdk
+    compileSdkVersion Versions.compileSdk
     defaultConfig {
         applicationId "com.master.kit"
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
         versionCode 10000
         versionName "1.0.0"
         multiDexEnabled true
@@ -29,8 +29,8 @@ android {
 
     }
     compileOptions {
-        sourceCompatibility versions.java
-        targetCompatibility versions.java
+        sourceCompatibility Versions.java
+        targetCompatibility Versions.java
     }
     packagingOptions {
         // More than one file was found with OS independent path 'lib/armeabi-v7a/libgnustl_shared.so'
@@ -95,10 +95,10 @@ kapt {
 }*/
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation androidx.constraintLayout
-    androidTestImplementation test.runner
-    androidTestImplementation test.espresso
-    testImplementation test.junit
+    implementation AndroidX.constraintLayout
+    androidTestImplementation TestDeps.runner
+    androidTestImplementation TestDeps.espresso
+    testImplementation TestDeps.junit
 
     implementation projectCompat(":m-sign")
     implementation projectCompat(":m-applet")
@@ -118,14 +118,14 @@ dependencies {
     implementation projectCompat(':service')
     implementation projectCompat(':session')
     //kapt "com.google.dagger:dagger-compiler:$versions.dagger"
-    kapt deps.ARouterCompiler
+    kapt ARouter.compiler
     //kapt deps.dagger2_compiler
     implementation 'com.wanjian:cockroach:0.0.5'
 
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
-    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+    implementation Hilt.hiltAndroid
+    kapt Hilt.hiltAndroidCompiler
+    implementation Hilt.hiltLifecycleViewmodel
+    kapt Hilt.compiler
 }
 
 //apply from: 'tinkerpatch.gradle'

@@ -21,9 +21,6 @@ import dagger.hilt.android.EntryPointAccessors
  */
 class ImplApp : IApplication {
     lateinit var signService:ISignService
-    override fun init(application: Application) {
-
-    }
 
     override fun onCreate(application: Application) {
         signService = EntryPointAccessors.fromApplication(application,SingletonEntryPoint::class.java).getSignService()
@@ -49,9 +46,6 @@ class ImplApp : IApplication {
             }
 
         }, BuildConfig.DEBUG)
-    }
-
-    override fun attachBaseContext(context: Context) {
     }
 
     override fun getPriority(): Int {

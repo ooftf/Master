@@ -12,16 +12,11 @@ import com.ooftf.docking.api.MainProcess
  * @date 2020/9/2
  */
 class EntranceApp:IApplication{
-    override fun init(application: Application) {
 
-    }
     @MainProcess
     override fun onCreate(application: Application) {
     }
 
-    override fun attachBaseContext(context: Context) {
-
-    }
 
     override fun getPriority(): Int {
         return 100

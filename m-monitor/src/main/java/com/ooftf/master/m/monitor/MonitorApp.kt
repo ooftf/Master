@@ -24,10 +24,6 @@ import com.tendcloud.tenddata.TCAgent
  * @date 2019/8/30 0030
  */
 class MonitorApp : IApplication {
-    override fun init(application: Application) {
-
-
-    }
 
     @MainProcess
     override fun onCreate(application: Application) {
@@ -45,9 +41,6 @@ class MonitorApp : IApplication {
         ShowEntranceSwitch.set(true)
     }
 
-    override fun attachBaseContext(context: Context) {
-
-    }
 
     override fun getPriority(): Int {
         return 0

@@ -1,6 +1,3 @@
 apply from: '../module.gradle'
 dependencies {
-    implementation deps.bindingcollectionadapter
-    implementation deps.bindingcollectionadapter_recycler
-    implementation deps.SmartRefreshLayout
 }

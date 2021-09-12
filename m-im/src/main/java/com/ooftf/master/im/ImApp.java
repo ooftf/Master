@@ -13,21 +13,13 @@ import com.ooftf.docking.api.MainProcess;
 public class ImApp implements IApplication {
     private static Application application;
 
-    @Override
-    public void init(Application application) {
-        ImApp.application = application;
-    }
     @MainProcess
     @Override
     public void onCreate(Application application) {
-
-
-    }
-
-    @Override
-    public void attachBaseContext(Context context) {
+        ImApp.application = application;
 
     }
+
 
     @Override
     public int getPriority() {

@@ -4,7 +4,7 @@ dependencies {
     implementation('com.alibaba.android:ultraviewpager:1.0.6.1@aar') {
         transitive = true
     }
-    implementation deps.progressDrawable
+    implementation OOFTF.progressDrawable
     //implementation 'org.aspectj:aspectjtools:1.9.1'
     //compile 'org.aspectj:aspectjrt:1.9.1'
     //implementation "android.arch.lifecycle:viewmodel:$lifecycle_version"

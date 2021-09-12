@@ -39,7 +39,7 @@ buildscript {
             return project(name)
         }
     }
-    ext {
+/*    ext {
         versions = [
                 'compileSdk' : 30,
                 'minSdk'     : 21,
@@ -81,7 +81,7 @@ buildscript {
                 'dataBindingEx'                    : 'com.github.ooftf:dataBinding-extensions:1.2.6',
                 'tablayoutPro'                     : 'com.github.ooftf:tablayout-pro:0.0.3',
                 'dialog'                           : 'com.github.ooftf:master-widget-dialog:1.2.4',
-                'HpptUiMapping'                              : 'com.github.ooftf:http-ui-mapping:1.4.2'
+                'HttpUiMapping'                              : 'com.github.ooftf:http-ui-mapping:1.4.2'
         ]
 
         androidx = [
@@ -100,7 +100,7 @@ buildscript {
                 'espresso': 'androidx.test.espresso:espresso-core:3.2.0',
         ]
         versions.kotlin = '1.5.21'
-    }
+    }*/
     repositories {
         jcenter()
         mavenCentral()
@@ -110,14 +110,14 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+        classpath Kotlins.plugin
         // classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
         classpath ("com.tencent.matrix:matrix-gradle-plugin:${MATRIX_VERSION}") { changing = true }
-        classpath "com.mcxiaoke.packer-ng:plugin:$versions.packerNG"
-        classpath "com.alibaba:arouter-register:1.0.2"
-        classpath 'com.github.ooftf:autoregister:1.4.4'
-        classpath "io.github.didi.dokit:dokitx-plugin:3.4.3.1"
-        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        classpath Deps.packerNG
+        classpath ARouter.plugin
+        classpath Plugins.autoregister
+        classpath Dokit.plugin
+        classpath Hilt.plugin
 
     }
 
@@ -160,40 +160,40 @@ allprojects {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
             if (details.requested.group == 'com.ooftf') {
                 if (details.requested.name == 'http-ui-mapping') {
-                    details.useTarget(deps.HpptUiMapping)
+                    details.useTarget(OOFTF.HttpUiMapping)
                 } else if (details.requested.name == 'arch-frame-mvvm') {
-                    details.useTarget(deps.afm)
+                    details.useTarget(OOFTF.afm)
                 } else if (details.requested.name == 'basic') {
-                    details.useTarget(deps.basic)
+                    details.useTarget(OOFTF.basic)
                 } else if (details.requested.name == 'master-widget-statelayout') {
-                    details.useTarget(deps.statelayout)
+                    details.useTarget(OOFTF.statelayout)
                 } else if (details.requested.name == 'master-widget-dialog') {
-                    details.useTarget(deps.dialog)
+                    details.useTarget(OOFTF.dialog)
                 } else if (details.requested.name == 'ImagePreview') {
-                    details.useTarget(deps.imagePreview)
+                    details.useTarget(OOFTF.imagePreview)
                 } else if (details.requested.name == 'kv-layout') {
-                    details.useTarget(deps.kvLayout)
+                    details.useTarget(OOFTF.kvLayout)
                 } else if (details.requested.name == 'dataBinging-extensions') {
-                    details.useTarget(deps.dataBindingEx)
+                    details.useTarget(OOFTF.dataBindingEx)
                 } else if (details.requested.name == 'tableview') {
                     details.useTarget('com.github.ooftf:tableview:0.8.9.3.1')
                 } else if (details.requested.name == 'master-widget-toolbar') {
-                    details.useTarget(deps.toolbar)
+                    details.useTarget(OOFTF.toolbar)
                 } else if (details.requested.name == 'JLog') {
-                    details.useTarget('com.github.ooftf:JLog:1.0.0')
+                    details.useTarget(OOFTF.log)
                 } else if (details.requested.name == 'gson-adapter-extensions') {
-                    details.useTarget('com.github.ooftf:gson-adapter-extensions:0.0.4')
+                    details.useTarget(OOFTF.gsonAdapterExtensions)
                 } else if (details.requested.name == 'hi-http') {
-                    details.useTarget(deps.HiHttp)
+                    details.useTarget(OOFTF.HiHttp)
                 }
             } else if (details.requested.group == 'com.github.ybq' && details.requested.name == 'Android-SpinKit') {
-                details.useTarget('com.github.ooftf:loading-view:0.0.1')
+                details.useTarget(OOFTF.loadingView)
             } else if (details.requested.group == 'com.github.ooftf' && details.requested.name == 'dataBinging-extensions') {
-                details.useTarget(deps.dataBindingEx)
+                details.useTarget(OOFTF.dataBindingEx)
             } else if (details.requested.group == 'com.github.razerdp' && details.requested.name == 'BasePopup') {
                 details.useTarget('io.github.razerdp:BasePopup:3.1.4')
             } else if (details.requested.group == 'com.youth.banner' && details.requested.name == 'banner') {
-                details.useTarget(deps.banner)
+                details.useTarget(Deps.banner)
             }
 
         }

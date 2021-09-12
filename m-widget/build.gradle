@@ -2,13 +2,12 @@ apply from: '../module.gradle'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation deps.CalendarView
-    implementation 'com.github.ooftf:SpialeLayout:1.1.2'
-    implementation 'com.github.ooftf:PatternLock:1.0.4'
-    implementation 'com.github.ooftf:StraightLayout:1.0.3'
-    kapt deps.ARouterCompiler
-    implementation 'com.ooftf:sliding-layout:1.1.2'
-    implementation deps.SmartRefreshLayout
-    implementation deps.SmartRefreshHeader
+    implementation OOFTF.CalendarView
+    implementation OOFTF.straightLayout
+    implementation OOFTF.spialeLayout
+    implementation OOFTF.patternLock
+    implementation OOFTF.slidingLayout
+    kapt ARouter.compiler
+
 
 }

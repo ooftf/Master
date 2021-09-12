@@ -2,13 +2,13 @@ package com.ooftf.master.m.entrance.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.mcxiaoke.packer.helper.PackerNg
-import com.ooftf.bottombar.java.FragmentSwitchManager
 import com.ooftf.master.m.entrance.R
 import com.ooftf.master.m.entrance.adapter.BottomBarAdapter
 import com.ooftf.arch.frame.mvvm.activity.BaseViewBindingActivity
+import com.ooftf.bottombar.FragmentSwitchManager
 import com.ooftf.master.m.entrance.databinding.ActivityMainBinding
 import com.ooftf.service.constant.RouterPath
 import com.ooftf.service.engine.main_tab.TabManager
@@ -22,26 +22,24 @@ class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ARouter.getInstance().inject(this)
-        title = PackerNg.getChannel(this)
         setupBottomBar()
     }
 
     @SuppressLint("CheckResult")
     private fun setupBottomBar() {
         adapter = BottomBarAdapter(this)
-        adapter.addAll(TabManager.getTabs())
+        adapter.list.addAll(TabManager.getTabs())
         switchManager = FragmentSwitchManager(
                 supportFragmentManager,
-                R.id.frame_fragment,
-                adapter.data.map { it.text }.toSet())
+                R.id.frame_fragment)
         {
-            var path = adapter.data.first { item ->
+            var path = adapter.list.first { item ->
                 item.text == it
             }.path
-            ARouter.getInstance().build(path).navigation() as androidx.fragment.app.Fragment
+            ARouter.getInstance().build(path).navigation() as Fragment
         }
-        binding.bottomBar.setOnItemSelectChangedListener { _, newIndex ->
-            switchManager.switchFragment(adapter.getItem(newIndex).text)
+        binding.bottomBar.onItemSelectChangedListener =  { oldIndex, newIndex ->
+            switchManager.switchFragment(adapter.list[newIndex].text)
         }
         binding.bottomBar.setAdapter(adapter)
         binding.bottomBar.setSelectedIndex(0)

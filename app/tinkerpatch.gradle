@@ -73,11 +73,11 @@ tinkerPatch {
     }
 }
 dependencies {
-    annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker") {
+    annotationProcessor("com.tinkerpatch.tinker:tinker-android-anno:1.9.9") {
         changing = true
     }
-    compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker") { changing = true }
-    implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$versions.tinkerpatch") {
+    compileOnly("com.tinkerpatch.tinker:tinker-android-anno:1.9.9") { changing = true }
+    implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.2.9") {
         changing = true
     }
 }

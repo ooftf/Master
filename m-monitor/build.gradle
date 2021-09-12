@@ -1,8 +1,8 @@
 apply from: '../module.gradle'
 
 dependencies {
-    implementation deps.bugly
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
-    compileOnly 'com.github.ooftf:director:1.3.3'
+    implementation Deps.bugly
+    debugImplementation Deps.leakcanary
+    compileOnly OOFTF.director
 }
 

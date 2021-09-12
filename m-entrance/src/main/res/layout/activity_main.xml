@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <com.ooftf.bottombar.java.BottomBar
+    <com.ooftf.bottombar.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_toolbar_height"

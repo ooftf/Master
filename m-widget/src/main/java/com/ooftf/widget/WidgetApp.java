@@ -12,10 +12,6 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 public class WidgetApp implements IApplication {
     private static Application application;
 
-    @Override
-    public void init(Application application) {
-        WidgetApp.application = application;
-    }
 
     //static 代码段可以防止内存泄露
     static {
@@ -33,15 +29,12 @@ public class WidgetApp implements IApplication {
 
     @Override
     public void onCreate(Application application) {
+        WidgetApp.application = application;
         TimeRuler.marker("MyApplication", "WidgetApp start");
     }
 
 
 
-    @Override
-    public void attachBaseContext(Context context) {
-
-    }
 
     @Override
     public int getPriority() {

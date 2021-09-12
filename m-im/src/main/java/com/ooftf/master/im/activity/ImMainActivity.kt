@@ -7,8 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.ashokvarma.bottomnavigation.BottomNavigationBar.SimpleOnTabSelectedListener
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
-import com.ooftf.bottombar.java.FragmentCreator
-import com.ooftf.bottombar.java.FragmentSwitchManager
+import com.ooftf.bottombar.FragmentSwitchManager
 import com.ooftf.master.im.R
 import com.ooftf.master.im.other.ImManager
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity
@@ -47,7 +46,7 @@ class ImMainActivity : BaseViewBindingActivity<ActivityImMainBinding>() {
         for (i in 0 until kv!!.size()) {
             tags.add(kv!![i])
         }
-        fsm = FragmentSwitchManager(supportFragmentManager, R.id.container, tags) { tag: String ->
+        fsm = FragmentSwitchManager(supportFragmentManager, R.id.container) { tag: String ->
             if (TAG_CONVERSATION == tag) {
                 ARouter.getInstance().build("/im/fragment/conversation").navigation() as Fragment
             } else {

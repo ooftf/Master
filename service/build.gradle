@@ -12,10 +12,10 @@ def getGitHash = { ->
     return stdout.toString().trim()
 }
 android {
-    compileSdkVersion versions.compileSdk
+    compileSdkVersion Versions.compileSdk
     defaultConfig {
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
         vectorDrawables.useSupportLibrary = true
         //生成ARouter文档
         renderscriptTargetApi 22
@@ -29,8 +29,8 @@ android {
         buildConfigField "String", "GitHash", "\"${getGitHash()}\""
     }
     compileOptions {
-        sourceCompatibility versions.java
-        targetCompatibility versions.java
+        sourceCompatibility Versions.java
+        targetCompatibility Versions.java
     }
     lintOptions {
         abortOnError false
@@ -51,112 +51,99 @@ kapt {
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api androidx.constraintLayout
-    androidTestImplementation test.runner
-    androidTestImplementation test.espresso
-    testImplementation test.junit
-    kapt deps.ARouterCompiler
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
-    api androidx.vectordrawable
-    api androidx.appcompat
-    api androidx.cardview
-    api deps.material
-    api androidx.recyclerview
-    api 'androidx.core:core-ktx:1.3.2'
-    api 'com.loopj.android:android-async-http:1.4.9'
-    api 'com.alibaba:fastjson:1.2.69'
-    api 'com.liulishuo.filedownloader:library:1.7.1'
-    api 'com.roughike:bottom-bar:2.3.1'
-    api "com.github.bumptech.glide:glide:$versions.glide"
-    kapt "com.github.bumptech.glide:compiler:$versions.glide"
-    api 'com.makeramen:roundedimageview:2.3.0'
-    api androidx.legacy_v4
-    api androidx.legacy_v13
-    api deps.banner
-    api 'com.romandanylyk:pageindicatorview:1.0.2'
-    api 'com.orhanobut:logger:2.2.0'
-    api "com.google.dagger:dagger:$versions.dagger"
-    api('com.github.worker8:tourguide:1.0.19-SNAPSHOT@aar') {
+
+    androidTestImplementation TestDeps.runner
+    androidTestImplementation TestDeps.espresso
+    testImplementation TestDeps.junit
+
+    api AndroidX.constraintLayout
+    api AndroidX.legacy_v4
+    api AndroidX.legacy_v13
+    api AndroidX.vectordrawable
+    api AndroidX.appcompat
+    api AndroidX.cardview
+    api AndroidX.recyclerview
+    api AndroidX.coreKtx
+
+    api ARouter.api
+    kapt ARouter.compiler
+
+    api Kotlins.jdk
+
+    api Deps.material
+    api Deps.fastJson
+    api Deps.bottomBar
+    api Deps.glideApi
+    kapt Deps.glideCompiler
+    api Deps.roundedImageView
+    api Deps.banner
+    api Deps.pageIndicatorView
+    api Deps.logger
+    //    api 'com.github.glomadrian:Grav:1.1'
+    api Deps.photoView
+    api(Deps.tourGuide) {
         transitive = true
     }
-    //    api 'com.github.glomadrian:Grav:1.1'
-    api 'com.github.chrisbanes:PhotoView:2.3.0'
-    api 'com.alimuzaffar.lib:pinentryedittext:1.3.1'
-    api 'com.daimajia.swipelayout:library:1.2.0@aar'
-    api 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
-    api "com.mcxiaoke.packer-ng:helper:$versions.packerNG"
-    api 'com.facebook.stetho:stetho:1.5.0'
-    api 'com.facebook.stetho:stetho-okhttp3:1.5.0'
-    // annotationProcessor ("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker")
-    // compileOnly("com.tinkerpatch.tinker:tinker-android-anno:$versions.tinker")
-    // api("com.tinkerpatch.sdk:tinkerpatch-android-sdk:$versions.tinkerpatch")
-    api 'com.google.code.gson:gson:2.8.6'
-    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    api "io.reactivex.rxjava2:rxjava:2.2.19"
-    //releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
-    api deps.fastjson
-    api 'com.github.ooftf:Support:1.1.1'
-    api deps.ARouterApi
-    api deps.HiHttp
-    api 'com.github.ooftf:OperationEditTextLayout:1.1.4'
-    api 'com.github.ooftf:VerticalPagerLayout:2.0.0'
-    api 'com.github.markzhai:blockcanary-android:1.5.0'
-    //releaseApi 'com.github.markzhai:blockcanary-no-op:1.5.0'
-    api 'com.fasterxml.jackson.core:jackson-databind:2.10.4'
-    //api 'com.github.ooftf:HiShare:1.2.6'
-    api 'com.blankj:utilcodex:1.30.6'
-    api 'com.github.tbruyelle:rxpermissions:0.12'
-    api 'com.github.ooftf:BarrageView:1.1.0'
-    api 'com.ooftf:bottombar-java:1.2.6'
-    api 'com.hwangjr.rxbus:rxbus:1.0.6'
-    implementation deps.MMKV
-    implementation deps.disklrucache
-    api 'com.ooftf:docking-api:2.1.0'
-    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
-    // fragment快速实现（可选）
-    api 'com.gyf.immersionbar:immersionbar-components:3.0.0'
-    // Firebase Crashlytics
-    //Firebase
+    api Deps.asyncHttp
+    api Deps.fileDownloader
+    api Deps.pinEntryEdittext
+    api Deps.swipeLayout
+    api Deps.gson
+    api Deps.utilCodeX
+    api Deps.blockCanary
+    api Deps.jackson
+    api Deps.textDrawable
+    api Deps.MMKV
+    api Deps.disklrucache
+    api Deps.fastJson
+    api Deps.bindingcollectionadapter
+    api Deps.bindingcollectionadapter_recycler
+    api Deps.smartRefreshHeader
+    api Deps.smartRefreshLayout
 
-    api 'com.github.ooftf:hi-share:2.0.0'
-    api 'com.ooftf:master-widget-dialog:1.2.4'
-    //api 'org.aspectj:aspectjrt:1.8.9'
-    api 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
-    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    api 'com.ooftf:master-widget-toolbar:1.1.6'
-    api deps.bindingcollectionadapter
-    api deps.bindingcollectionadapter_recycler
-    api 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
-    api deps.SmartRefreshHeader
-    api deps.SmartRefreshLayout
-    api "com.ooftf:master-widget-statelayout:1.1.2"
-    api "com.ooftf:JLog:1.0.0"
-    api deps.afm
-    api 'com.ooftf:http-ui-mapping:1.3.9'
-    api 'com.ooftf:basic:0.2.11'
-    api 'com.ooftf:dataBinging-extensions:1.2.3'
-    api 'io.reactivex.rxjava3:rxjava:3.0.13'
-    api "com.trello.rxlifecycle4:rxlifecycle:$versions.rxlifecycle"
-// If you want to bind to Android-specific lifecycles
-    api "com.trello.rxlifecycle4:rxlifecycle-android:$versions.rxlifecycle"
-    // If you want to use Android Lifecycle for providers
-    api "com.trello.rxlifecycle4:rxlifecycle-android-lifecycle:$versions.rxlifecycle"
-// If you want to use Kotlin syntax
-    api "com.trello.rxlifecycle4:rxlifecycle-kotlin:$versions.rxlifecycle"
-// If you want to use Kotlin syntax with Android Lifecycle
-    api "com.trello.rxlifecycle4:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle"
 
-    def smart = '2.0.3'
-    api "com.scwang.smart:refresh-layout-kernel:$smart"      //核心必须依赖
-    api "com.scwang.smart:refresh-header-classics:$smart"   //经典刷新头
-    api "com.scwang.smart:refresh-header-radar:$smart"     //雷达刷新头
-    api "com.scwang.smart:refresh-header-falsify:$smart"     //虚拟刷新头
-    api "com.scwang.smart:refresh-header-material:$smart"   //谷歌刷新头
-    api "com.scwang.smart:refresh-header-two-level:$smart"   //二级刷新头
-    api "com.scwang.smart:refresh-footer-ball:$smart"      //球脉冲加载
-    api "com.scwang.smart:refresh-footer-classics:$smart"    //经典加载
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
-    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+
+
+
+    api SmartRefresh.kernel
+    api SmartRefresh.headerClassics
+    api SmartRefresh.headerRadar
+    api SmartRefresh.headerFalsify
+    api SmartRefresh.headerMaterial
+    api SmartRefresh.headerTwoLevel
+    api SmartRefresh.footerBall
+    api SmartRefresh.footerClassics
+
+    api RxJava.rxPermissions
+    api RxJava.rxBus
+    api RxJava.rxJava3
+    api RxJava.rxJava
+    api RxJava.rxAndroid
+    api RxJava.rxLifecycle
+    api RxJava.rxLifecycleAndroid
+    api RxJava.rxLifecycleAndroidLifecycle
+    api RxJava.rxLifecycleKotlin
+    api RxJava.rxLifecycleAndroidLifecycleKotlin
+
+    api OOFTF.support
+    api OOFTF.HiHttp
+    api OOFTF.OperationEditTextLayout
+    api OOFTF.bottomBar
+    api OOFTF.barrageView
+    api OOFTF.verticalPagerLayout
+    api OOFTF.statelayout
+    api OOFTF.log
+    api OOFTF.afm
+    api OOFTF.HttpUiMapping
+    api OOFTF.basic
+    api OOFTF.dialog
+    api OOFTF.share
+    api OOFTF.toolbar
+    api OOFTF.dataBindingEx
+    api OOFTF.dockingApi
+
+    implementation Hilt.hiltAndroid
+    kapt Hilt.hiltAndroidCompiler
+    implementation Hilt.hiltLifecycleViewmodel
+    kapt Hilt.compiler
 }

@@ -1,5 +1,5 @@
 apply from: '../module.gradle'
 dependencies {
     api 'org.devio.takephoto:takephoto_library:4.1.0'
-    api deps.matisse
+    api Deps.matisse
 }

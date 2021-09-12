@@ -4,11 +4,11 @@ apply plugin: 'kotlin-kapt'
 apply from: '../publish.gradle'
 apply plugin: 'dagger.hilt.android.plugin'
 android {
-    compileSdkVersion versions.compileSdk
+    compileSdkVersion Versions.compileSdk
     //resourcePrefix getMoudleResourcePrefix()
     defaultConfig {
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
         vectorDrawables.useSupportLibrary = true
         ndk {
             //设置支持的SO库架构
@@ -16,8 +16,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility versions.java
-        targetCompatibility versions.java
+        sourceCompatibility Versions.java
+        targetCompatibility Versions.java
     }
     kotlinOptions{
         jvmTarget = '1.8'
@@ -40,20 +40,18 @@ kapt {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    androidTestImplementation test.runner
-    androidTestImplementation test.espresso
-    testImplementation test.junit
-    implementation androidx.constraintLayout
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
-    kapt deps.ARouterCompiler
-
+    androidTestImplementation TestDeps.runner
+    androidTestImplementation TestDeps.espresso
+    testImplementation TestDeps.junit
+    implementation AndroidX.constraintLayout
+    implementation Kotlins.jdk
+    kapt ARouter.compiler
     compileOnly projectCompat(':service')
     compileOnly projectCompat(':session')
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
-    kapt 'androidx.hilt:hilt-compiler:1.0.0'
-    api 'com.ooftf:master-widget-dialog:1.2.4'
+    implementation Hilt.hiltAndroid
+    kapt Hilt.hiltAndroidCompiler
+    implementation Hilt.hiltLifecycleViewmodel
+    kapt Hilt.compiler
 }
 
 
