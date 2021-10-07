@@ -9,4 +9,5 @@ object AndroidX {
    const val coreKtx ="androidx.core:core-ktx:1.6.0"
    const val viewpager2 ="androidx.viewpager2:viewpager2:1.1.0-beta01"
    const val lifecycleExtensions ="androidx.lifecycle:lifecycle-extensions:2.2.0"
+   const val startup = "androidx.startup:startup-runtime:1.0.0"
 }

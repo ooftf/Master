@@ -3,7 +3,7 @@ package com.ooftf.master.im.other;
 import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.ooftf.master.im.ImApp;
+import com.ooftf.basic.AppHolder;
 import com.ooftf.master.im.data.TencentImConts;
 import com.ooftf.log.JLog;
 import com.ooftf.master.session.m.sign.ISignService;
@@ -59,6 +59,6 @@ public class ImManager {
         configs.setSdkConfig(new V2TIMSDKConfig());
         configs.setCustomFaceConfig(new CustomFaceConfig());
         configs.setGeneralConfig(new GeneralConfig());
-        TUIKit.init(ImApp.getApplication(), TencentImConts.SDK_APP_ID, configs);
+        TUIKit.init(AppHolder.INSTANCE.getApp(), TencentImConts.SDK_APP_ID, configs);
     }
 }

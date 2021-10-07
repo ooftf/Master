@@ -5,9 +5,8 @@ import android.graphics.Color
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.ooftf.arch.frame.mvvm.fragment.BaseLazyFragment
 import com.ooftf.arch.frame.mvvm.fragment.BaseViewBindingFragment
-import com.ooftf.master.im.ImApp
+import com.ooftf.basic.AppHolder
 import com.ooftf.master.im.R
 import com.ooftf.master.im.databinding.ImFragmentContactBinding
 import com.ooftf.master.im.modules.friendprofile.FriendProfileActivity
@@ -35,9 +34,9 @@ class ContactFragment : BaseViewBindingFragment<ImFragmentContactBinding>() {
     fun itemClick(){
         binding.contactLayout.contactListView.setOnItemClickListener { position, contact ->
             if (position == 0) {
-                val intent = Intent(ImApp.getApplication(), NewFriendActivity::class.java)
+                val intent = Intent(AppHolder.app, NewFriendActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                ImApp.getApplication().startActivity(intent)
+                AppHolder.app.startActivity(intent)
             } else if (position == 1) {
                 /* val intent = Intent(ImApp.getApplication(), GroupListActivity::class.java)
                  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -47,10 +46,10 @@ class ContactFragment : BaseViewBindingFragment<ImFragmentContactBinding>() {
                  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                  ImApp.getApplication().startActivity(intent)*/
             } else {
-                val intent = Intent(ImApp.getApplication(), FriendProfileActivity::class.java)
+                val intent = Intent(AppHolder.app, FriendProfileActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 intent.putExtra(TUIKitConstants.ProfileType.CONTENT, contact)
-                ImApp.getApplication().startActivity(intent)
+                AppHolder.app.startActivity(intent)
             }
         }
     }

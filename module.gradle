@@ -52,6 +52,7 @@ dependencies {
     kapt Hilt.hiltAndroidCompiler
     implementation Hilt.hiltLifecycleViewmodel
     kapt Hilt.compiler
+    implementation AndroidX.startup
 }
 
 

@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ooftf.master.im.ImApp;
+import com.ooftf.basic.AppHolder;
 import com.ooftf.master.im.R;
 import com.ooftf.master.im.modules.friendprofile.FriendProfileActivity;
 import com.tencent.imsdk.v2.V2TIMFriendApplication;
@@ -59,14 +59,11 @@ public class NewFriendListAdapter extends ArrayAdapter<V2TIMFriendApplication> {
             mViewHolder = (ViewHolder) mView.getTag();
         } else {
             mView = LayoutInflater.from(getContext()).inflate(mResourceId, null);
-            mView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(ImApp.getApplication(), FriendProfileActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.putExtra(TUIKitConstants.ProfileType.CONTENT, data);
-                    ImApp.getApplication().startActivity(intent);
-                }
+            mView.setOnClickListener(v -> {
+                Intent intent = new Intent(AppHolder.INSTANCE.getApp(), FriendProfileActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(TUIKitConstants.ProfileType.CONTENT, data);
+                AppHolder.INSTANCE.getApp().startActivity(intent);
             });
             mViewHolder = new ViewHolder();
             mViewHolder.avatar = (CircleImageView) mView.findViewById(R.id.avatar);

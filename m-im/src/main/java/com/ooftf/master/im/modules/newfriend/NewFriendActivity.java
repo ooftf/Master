@@ -2,7 +2,7 @@ package com.ooftf.master.im.modules.newfriend;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
+
 import androidx.annotation.Nullable;
 
 import android.view.View;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
-import com.ooftf.master.im.ImApp;
+import com.ooftf.basic.AppHolder;
 import com.ooftf.master.im.R;
 import com.ooftf.master.im.activity.AddChatActivity;
 import com.tencent.imsdk.v2.V2TIMFriendApplication;
@@ -25,8 +25,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.google.gson.internal.$Gson$Types.arrayOf;
 
 /**
  * @author 99474
@@ -75,7 +73,7 @@ public class NewFriendActivity extends BaseActivity {
         mTitleBar.setOnRightClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ImApp.getApplication(), AddChatActivity.class);//AddMoreActivity
+                Intent intent = new Intent(AppHolder.INSTANCE.getApp(), AddChatActivity.class);//AddMoreActivity
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("isGroup", false);
                 startActivity(intent);

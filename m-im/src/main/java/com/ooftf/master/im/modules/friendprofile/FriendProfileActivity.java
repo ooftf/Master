@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ooftf.arch.frame.mvvm.activity.BaseActivity;
-import com.ooftf.master.im.ImApp;
+import com.ooftf.basic.AppHolder;
 import com.ooftf.master.im.R;
 import com.ooftf.master.im.activity.ImMainActivity;
 import com.ooftf.service.constant.RouterPath;
@@ -46,7 +46,7 @@ public class FriendProfileActivity extends BaseActivity {
 
             @Override
             public void onDeleteFriendClick(String id) {
-                Intent intent = new Intent(ImApp.getApplication(), ImMainActivity.class);
+                Intent intent = new Intent(AppHolder.INSTANCE.getApp(), ImMainActivity.class);
                 startActivity(intent);
             }
         });
