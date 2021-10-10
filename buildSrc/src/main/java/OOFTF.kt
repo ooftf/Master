@@ -28,6 +28,7 @@ object OOFTF {
     const val patternLock = "com.github.ooftf:PatternLock:1.0.4"
     const val straightLayout = "com.github.ooftf:StraightLayout:1.0.3"
     const val slidingLayout = "com.ooftf:sliding-layout:1.1.2"
-    const val director = "com.github.ooftf:director:1.3.3"
+    const val director = "com.github.ooftf:director:1.3.4"
+    const val directorNoOp = "com.github.ooftf:director-no-op:1.3.4"
 
 }
