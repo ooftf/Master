@@ -1,6 +1,6 @@
 apply from: '../module.gradle'
 dependencies {
-    api 'com.tencent.imsdk:tuikit:5.1.56'
+   // api 'com.tencent.imsdk:tuikit:5.7.1435'
     /*implementation 'com.github.promeg:tinypinyin:2.0.3'*/
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
 }

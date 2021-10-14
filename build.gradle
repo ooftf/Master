@@ -46,7 +46,7 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath 'com.android.tools.build:gradle:7.0.3'
         classpath Kotlins.plugin
         // classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:$versions.tinkerpatch"
         classpath ("com.tencent.matrix:matrix-gradle-plugin:${MATRIX_VERSION}") { changing = true }
@@ -92,6 +92,7 @@ allprojects {
             url 'https://repo.rdc.aliyun.com/repository/78416-snapshot-YPE3KZ/'
         }
         maven {url 'https://developer.huawei.com/repo/'}
+        maven { url "https://mirrors.tencent.com/nexus/repository/maven-public/" }
     }
     configurations.all {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->

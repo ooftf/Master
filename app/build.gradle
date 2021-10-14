@@ -109,7 +109,7 @@ dependencies {
     //implementation projectCompat(":m-rn")
     implementation projectCompat(":m-webview")
     implementation projectCompat(":m-qrcode")
-    implementation projectCompat(":m-im")
+    //implementation projectCompat(":m-im")
     implementation projectCompat(":m-entrance")
     implementation projectCompat(":m-monitor")
     implementation projectCompat(":m-flutter")
